@@ -31,9 +31,6 @@ linear_reaction_coefficients(model)
 
 model.reactions.get_by_id("r1").bounds = (-1.33, 0.0)
 
-
-
-
 """
 # %% --- Inicialización del modelo
 from cobra import Model, Reaction, Metabolite
