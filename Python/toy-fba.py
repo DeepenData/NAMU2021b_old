@@ -91,7 +91,7 @@ from cobra.util import create_stoichiometric_matrix
 model.add_reactions([r1, r2, r3, r4, r5, r6, r7, r8])
 model.reactions.get_by_id('r3')
 
-create_stoichiometric_matrix(model)
+
 
 
 # %% --- Crea la reacción para objetivo de optimización
@@ -100,12 +100,113 @@ obj = Reaction("obj")
 obj.add_metabolites({m2: -1.0, m3: -1.0, m5: -1.0, m4: 1.0}) 
 
 
-#ptimización del modelo
- 
-model.obj
-ective = "obj"
-model.reactions.get_by_id("obj").upper_bound = 1000.0
-# %%
+model.add_reactions([obj])
+model.reactions.get_by_id("obj")
 
-m
-odel.reactions
+# %% 
+
+#Optimización del modelo
+ 
+model.objective = "obj"
+model.reactions.get_by_id("obj").bounds = (0, 1000)
+
+# %% --- Exporta un grafo
+import networkx as nx
+from networkx.algorithms.bipartite.matrix import biadjacency_matrix      # Extrae matriz de adyacencia
+from networkx.algorithms.bipartite.matrix import from_biadjacency_matrix # Crea el grafo
+from sklearn.preprocessing import binarize
+from scipy.sparse import csr_matrix
+
+tmp = binarize(create_stoichiometric_matrix(model))
+tmp = csr_matrix(tmp)
+tmp = from_biadjacency_matrix(tmp) 
+
+total_nodes = range(0,len(tmp.nodes(data=False))) # Rango de nodos
+particiones = [tmp.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo
+
+reactions_nodes   = [n for n, d in tmp.nodes(data=True) if d["bipartite"] == 1] # 
+reaction_names    = ["r1","r2","r3","r4","r5","r6","r7","r8"]
+metabolites_nodes = [n for n, d in tmp.nodes(data=True) if d["bipartite"] == 0] # 
+metabolites_names = ["m1","m2","m3","m4","m5"]
+
+names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reaction_names))
+tmp = nx.relabel_nodes(tmp, names_mapped)
+
+nodos = metabolites_names + reaction_names # Lista con nombres de nodos
+
+tmp_prices =   solution.shadow_prices.tolist() + ['']*8 # Shadow Prices
+tmp_fluxes = ['']*5 + solution.fluxes.tolist()          # Flujos
+
+tmp_prices = { nodos[i] : (tmp_prices)[i] for i in range(0, len(tmp_prices)) } 
+tmp_fluxes = { nodos[i] : (tmp_fluxes)[i] for i in range(0, len(tmp_prices)) } 
+
+nx.set_node_attributes(tmp, tmp_prices, 'prices' ) # Añade una columna de precios
+nx.set_node_attributes(tmp, tmp_fluxes, 'fluxes' ) # Añade una columna de flujos
+
+# tmp.nodes(data=True) # VIS: muestra como deberia verse el grafo
+nx.write_gexf(tmp, "grafo.gexf") # Salida para Gephi
+
+# TODO: Convertir esto en una función de verdad f(modelo, filename)
+
+# %% --- Algo más que no se que hace ---
+
+solution = model.optimize()
+solution = solution.to_frame()
+
+all_reactions = [model.reactions[i].reaction  for i in range(0,len(model.reactions)) ]
+solution["all_reactions"] = all_reactions
+
+# Función que tome los flux y los pegue como atributo NetworkX
+
+
+# %% --- CENTRALITY
+from networkx import degree_centrality
+from networkx import eigenvector_centrality
+from networkx import closeness_centrality
+from networkx import betweenness_centrality
+from networkx import load_centrality
+from networkx import harmonic_centrality
+from networkx import current_flow_closeness_centrality
+from networkx import information_centrality
+from networkx import current_flow_betweenness_centrality
+from networkx import communicability_betweenness_centrality
+from networkx import second_order_centrality
+
+import time
+import warnings
+warnings.filterwarnings('ignore')
+# %% 
+graph   = nx.read_gpickle(" .gpickle")
+
+dc      = nx.degree_centrality(graph)
+ec      = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
+cc      = nx.closeness_centrality(graph, distance=None, wf_improved=True)
+bc      = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
+lc      = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
+hc      = nx.harmonic_centrality(graph, nbunch=None, distance=None)
+cfcc    = nx.current_flow_closeness_centrality(graph)
+ic      = nx.information_centrality(graph)
+cfbc    = nx.current_flow_betweenness_centrality(graph)
+cbc     = nx.communicability_betweenness_centrality(graph)
+soc     = nx.second_order_centrality(graph)
+
+# %% 
+
+model
+
+# %% SAMPLING THE STEADY-STATE
+
+from cobra.sampling import sample
+
+from cobra.sampling.optgp import OptGPSampler
+
+flux_samples = OptGPSampler(model,  processes=16, thinning=500, nproj=100, seed=23)
+
+flux_samples = flux_samples.sample(n = 1000)
+flux_samples
+
+# %% Pairwise correlations between flux distributions
+
+import seaborn as sns
+
+sns.pairplot(flux_samples, corner=True)
