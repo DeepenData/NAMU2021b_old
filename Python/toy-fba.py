@@ -106,13 +106,13 @@ model.reactions.get_by_id("obj")
 model.objective = "obj"
 model.reactions.get_by_id("obj").bounds = (0, 1000)
 
-# %% --- Exporta un grafo
-def model2gephi():
-"""Necesidad que vamos a tener el, osea, el FBA, y vamos a tener el grafo en NetworkX,
-y vamos a tener un grafo vacio. La idea es anexarle el resultado del FBA al objeto NetworkX.
-Todas las reacciones necesitan su flujo, reduced cost (sensibilidad), y los metabolitos que 
-solo tienen shadow-proces. 
-"""    
+# %% MM  --- 2021-01-15 10:27 --- Exporta un grafo 
+def cobra2networkx(modelo):
+    """Toma un modelo de cobra y genera un grafo bipartito de NetworkX
+
+
+    """    
+    return grafo
 
 import networkx as nx
 from networkx.algorithms.bipartite.matrix import biadjacency_matrix      # Extrae matriz de adyacencia
@@ -135,7 +135,7 @@ reaction_names    = ["r1","r2","r3","r4","r5","r6","r7","r8"] # Añade nombres
 names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reaction_names))
 tmp = nx.relabel_nodes(tmp, names_mapped)
 
-# ----- DEF:  Convertir esto en otra función
+# %% MM --- 2021-01-15 10:28 --- Funcción que aplica atributos desde dos vectores
 def met_atributos(grafo, name, vector, skip = 0):
     """Toma una lista de atributos y se los asigna a un objeto para Gephi
 
@@ -174,7 +174,7 @@ def met_atributos(grafo, name, vector, skip = 0):
 
 # TODO: Convertir esto en una función de verdad f(modelo, filename)
 
-# %% --- Función toma dos listas y añade atributos
+# %% MM --- 2021-01-15 10:24 --- Función toma dos listas y añade atributos
 def list2attr(grafo, nodos, atributos, nombre):
     """Toma dos listas de nombres de nodos y atributos y las añade a un grafo
 
