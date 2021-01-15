@@ -164,7 +164,7 @@ def list2attr(grafo, nodos, atributos, nombre):
     nx.set_node_attributes(grafo, tmp_list, nombre ) # Añade los atributos
     return grafo
 
-# %% AA 15_ene_2020 --- Stoichiometric matrix to directed bipartite graph
+# %% AA 15_ene_2021 --- Stoichiometric matrix to directed bipartite graph
 from sklearn.preprocessing import binarize
 from scipy.sparse import csr_matrix
 import networkx as nx
@@ -249,83 +249,65 @@ from   iteration_utilities import deepflatten
 
 
 merged_dicts           = functools.reduce(mergeDict, eval(my_centralities))
-
-
 merged_centralities    = [[i for i in deepflatten(merged_dicts[i])] for i in range(0,len(merged_dicts))]
-
-nombres_cols    = my_centralities.strip('][').split(',')
+nombres_cols           = my_centralities.strip('][').split(',')
 nombres_cols.reverse()
 
 merged_directed_centralities_df = pd.DataFrame(merged_centralities, index= node_labels, columns= nombres_cols)
-merged_directed_centralities_df
 
 # %% Undirected centralities 
 UNdirected_stoichiometric_matrix        =  binarize(abs(create_stoichiometric_matrix(model)))
 
-
 sparse_undirected_stoichiometric_matrix = csr_matrix(UNdirected_stoichiometric_matrix)
 UNdirected_bipartite_graph              = from_biadjacency_matrix(sparse_undirected_stoichiometric_matrix) 
 UNdirected_incidence_matrix = biadjacency_matrix(UNdirected_bipartite_graph, row_order = range(0,UNdirected_stoichiometric_matrix.shape[0])) 
-print((UNdirected_incidence_matrix == undirected_stoichiometric_matrix).all(),UNdirected_bipartite_graph.is_directed())
-
+print((UNdirected_incidence_matrix == UNdirected_stoichiometric_matrix).all(),UNdirected_bipartite_graph.is_directed())
 
 G2    = UNdirected_bipartite_graph.copy()
 #calculo de centralidades 
-#dc2   = nx.degree_centrality(G2)
-#indc2 = nx.in_degree_centrality(G2)
-#oudc2 = nx.out_degree_centrality(G2)
-pr2   = nx.pagerank(G2)
-kc2   = nx.katz_centrality(G2)
-ec2   = nx.eigenvector_centrality(G2)
-cc2   = nx.closeness_centrality(G2)
-bc2   = nx.betweenness_centrality(G2)
-lc2   = nx.load_centrality(G2)
-hc2   = nx.harmonic_centrality(G2)
-cfcc2 = nx.current_flow_closeness_centrality(G2)
-ic2   = nx.information_centrality(G2)
-cfbc2 = nx.current_flow_betweenness_centrality(G2)
-cbc2  = nx.communicability_betweenness_centrality(G2)
-soc2  = nx.second_order_centrality(G2)
+undirected_dc  = nx.degree_centrality(G2)
+undirected_pr   = nx.pagerank(G2)
+undirected_kc   = nx.katz_centrality(G2)
+undirected_ec   = nx.eigenvector_centrality(G2)
+undirected_cc   = nx.closeness_centrality(G2)
+undirected_bc   = nx.betweenness_centrality(G2)
+undirected_lc   = nx.load_centrality(G2)
+undirected_hc   = nx.harmonic_centrality(G2)
+undirected_cfcc = nx.current_flow_closeness_centrality(G2)
+undirected_ic   = nx.information_centrality(G2)
+undirected_cfbc = nx.current_flow_betweenness_centrality(G2)
+undirected_cbc  = nx.communicability_betweenness_centrality(G2)
+undirected_soc  = nx.second_order_centrality(G2)
 
+my_UNDIRECTED_centralities = \
+"[undirected_dc, undirected_pr, undirected_kc, undirected_ec, undirected_cc, undirected_bc, undirected_lc, undirected_hc,\
+     undirected_cfcc, undirected_ic, undirected_cfbc, undirected_cbc, undirected_soc]"
 
-my_UNDIRECTED_centralities = "[dc, indc, oudc, pr, kc, cc, bc, lc, hc]"
+merged_dicts           = functools.reduce(mergeDict, eval(my_UNDIRECTED_centralities))
+merged_centralities    = [[i for i in deepflatten(merged_dicts[i])] for i in range(0,len(merged_dicts))]
+nombres_cols           = my_UNDIRECTED_centralities.strip('][').split(',')
+nombres_cols.reverse()
+merged_UNdirected_centralities_df = pd.DataFrame(merged_centralities, index= node_labels, columns= nombres_cols)
 
-# %% 
-
-sparse_stoichiometric_matrix = csr_matrix(stoichiometric_matrix)
-directed_bipartite_graph     = from_biadjacency_matrix(sparse_stoichiometric_matrix, create_using= nx.DiGraph) 
-incidence_matrix = biadjacency_matrix(directed_bipartite_graph, row_order = range(0,stoichiometric_matrix.shape[0]))
-
-print((incidence_matrix == stoichiometric_matrix).all(),directed_bipartite_graph.is_directed())
-
-
-reactions_nodes   = [n for n, d in directed_bipartite_graph.nodes(data=True) if d["bipartite"] == 1] # 
-metabolites_nodes = [n for n, d in directed_bipartite_graph.nodes(data=True) if d["bipartite"] == 0] # 
-
-# --- Poniendole nombres a metabolitos y reacciones
-reaction_names    = ["r1","r2","r3","r4","r5","r6","r7","r8",'obj']
-metabolites_names = ["m1","m2","m3","m4","m5"]
-# 
-names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reaction_names  ))
-    # el formato + permite uni listas; como vectores en R; y zip crea tuplas
-
-directed_bipartite_graph_labeled_nodes = nx.relabel_nodes(directed_bipartite_graph, names_mapped)
-directed_bipartite_graph_labeled_nodes.nodes(data=True) 
-
-node_labels = list(directed_bipartite_graph_labeled_nodes.nodes)
+# %% Merge directed and undirected centralities
+(merged_UNdirected_centralities_df["undirected_dc"] == merged_directed_centralities_df["dc"]).all()
+all_centralities_DF = merged_directed_centralities_df.join(merged_UNdirected_centralities_df)
+#RESULTADO IMPORTANTE 1
+all_centralities_DF
+# %%
+model.optimize()
 # %% SAMPLING THE STEADY-STATE
-
 from cobra.sampling import sample
-
+import seaborn as sns
 from cobra.sampling.optgp import OptGPSampler
 
 flux_samples = OptGPSampler(model,  processes=16, thinning=500, nproj=100, seed=23)
-
 flux_samples = flux_samples.sample(n = 1000)
+#Se pueden hacer más análisis estadísticos!
+samples_means    = flux_samples.T.mean(axis=1)
+samples_means_DF = pd.DataFrame(samples_means, columns=["samples_mean"])
+#RESULTADO IMPORTANTE 2
+samples_means_DF
 
-
-# %% Pairwise correlations between flux distributions
-
-import seaborn as sns
-
-sns.pairplot(flux_samples, corner=True)
+# %%
+#sns.pairplot(flux_samples, corner=True)
