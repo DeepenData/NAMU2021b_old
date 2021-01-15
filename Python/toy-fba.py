@@ -79,8 +79,8 @@ solution
 def cobra2networkx(modelo):
     """Toma un modelo de cobra y genera un grafo bipartito de NetworkX
 
-    Params
-    ------
+    Parameters
+    ----------
     modelo : cobra_model
         Un modelo de reacciones metabolicas en COBRA
     
@@ -106,8 +106,8 @@ def cobra2networkx(modelo):
     tmp = csr_matrix(tmp) # Convierte la matriz a una matriz dispersa
     tmp = from_biadjacency_matrix(tmp) # Usa la dispersa para un grafo bipartito
 
-    total_nodes = range(0 , len(tmp.nodes(data=False))) # Rango de nodos
-    particiones = [tmp.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo
+    # total_nodes = range(0 , len(tmp.nodes(data=False))) # Rango de nodos
+    # particiones = [tmp.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo
 
     metabolites_nodes = [n for n, d in tmp.nodes(data=True) if d["bipartite"] == 0] # Crea una lista de metabolitos
     metabolites_n     = len(model.metabolites) # Numero de metabolitos
@@ -117,7 +117,7 @@ def cobra2networkx(modelo):
     reactions_n       = len(model.reactions)   # Numero de reacciones
     reactions_names   = [model.reactions[i].id   for i in range(0, reactions_n)   ]
 
-    names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reaction_names))
+    names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reactions_names))
     tmp = nx.relabel_nodes(tmp, names_mapped)
     # En este punto el grafo ya cuenta con los nodos y labels segun IDs
 
@@ -125,7 +125,7 @@ def cobra2networkx(modelo):
     solution = solution.to_frame() # Ni esto tampoco
 
     # Crea diccionarios con atributos para el grafo
-    
+    nodos = metabolites_nodes + reactions_nodes
     # Diccionario para precios (sensibilidad del metabolito) y nx.asignación
     tmp_prices = solution.shadow_prices.tolist() + (['']*reactions_n) # Shadow Prices
     tmp_prices = { nodos[i] : (tmp_prices)[i] for i in range(0, len(tmp_prices)) } 
@@ -136,10 +136,11 @@ def cobra2networkx(modelo):
     tmp_fluxes = { nodos[i] : (tmp_fluxes)[i] for i in range(0, len(tmp_prices)) } 
     nx.set_node_attributes(tmp, tmp_fluxes, 'fluxes' ) # Añade una columna de flujos
 
+    grafo = tmp # Asigna tmp al grafo
     return grafo
 
 # %% MM --- 2021-01-15 12:10 --- Función toma dos listas y añade atributos
-def list2attr(grafo, nod_os, atributos, nombre):
+def list2attr(grafo, nodos, atributos, nombre):
     """Toma dos listas de nombres de nodos y atributos y las añade a un grafo
 
     Parameters
@@ -170,6 +171,10 @@ import networkx as nx
 from networkx.algorithms.bipartite.matrix import biadjacency_matrix      # Extrae matriz de adyacencia
 from networkx.algorithms.bipartite.matrix import from_biadjacency_matrix # Crea el grafo
 from cobra.util import create_stoichiometric_matrix
+import numpy as np
+import pandas as pd
+
+#graph   = nx.read_gpickle(" .gpickle")
 
 stoichiometric_matrix        =  create_stoichiometric_matrix(model)
 stoichiometric_matrix        =  np.where(stoichiometric_matrix < 0, -1, stoichiometric_matrix)
@@ -178,56 +183,136 @@ stoichiometric_matrix        =  np.where(stoichiometric_matrix > 0,  1, stoichio
 
 sparse_stoichiometric_matrix = csr_matrix(stoichiometric_matrix)
 directed_bipartite_graph     = from_biadjacency_matrix(sparse_stoichiometric_matrix, create_using= nx.DiGraph) 
-
-# row_order (list of nodes) – The rows of the matrix are ordered according to the list of nodes.
-
 incidence_matrix = biadjacency_matrix(directed_bipartite_graph, row_order = range(0,stoichiometric_matrix.shape[0]))
 
-print(
-(incidence_matrix == stoichiometric_matrix).all(),
-directed_bipartite_graph.is_directed())
-
-nx.in_degree_centrality(directed_bipartite_graph)
-nx.out_degree_centrality(directed_bipartite_graph)
-nx.pagerank(directed_bipartite_graph)
- 
+print((incidence_matrix == stoichiometric_matrix).all(),directed_bipartite_graph.is_directed())
 
 
-# %% --- CENTRALITY
-from networkx import degree_centrality
-from networkx import eigenvector_centrality
-from networkx import closeness_centrality
-from networkx import betweenness_centrality
-from networkx import load_centrality
-from networkx import harmonic_centrality
-from networkx import current_flow_closeness_centrality
-from networkx import information_centrality
-from networkx import current_flow_betweenness_centrality
-from networkx import communicability_betweenness_centrality
-from networkx import second_order_centrality
+reactions_nodes   = [n for n, d in directed_bipartite_graph.nodes(data=True) if d["bipartite"] == 1] # 
+metabolites_nodes = [n for n, d in directed_bipartite_graph.nodes(data=True) if d["bipartite"] == 0] # 
 
-import time
-import warnings
-warnings.filterwarnings('ignore')
+# --- Poniendole nombres a metabolitos y reacciones
+reaction_names    = ["r1","r2","r3","r4","r5","r6","r7","r8",'obj']
+metabolites_names = ["m1","m2","m3","m4","m5"]
+# 
+names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reaction_names  ))
+    # el formato + permite uni listas; como vectores en R; y zip crea tuplas
+
+directed_bipartite_graph_labeled_nodes = nx.relabel_nodes(directed_bipartite_graph, names_mapped)
+directed_bipartite_graph_labeled_nodes.nodes(data=True) 
+
+node_labels = list(directed_bipartite_graph_labeled_nodes.nodes)
+
+# %% --- Directed centralities
+
+
+G    = directed_bipartite_graph.copy()
+#calculo de centralidades 
+dc   = nx.degree_centrality(G)
+indc = nx.in_degree_centrality(G)
+oudc = nx.out_degree_centrality(G)
+pr   = nx.pagerank(G)
+kc   = nx.katz_centrality(G)
+#ec   = nx.eigenvector_centrality(G)
+cc   = nx.closeness_centrality(G)
+bc   = nx.betweenness_centrality(G)
+lc   = nx.load_centrality(G)
+hc   = nx.harmonic_centrality(G)
+#cfcc = nx.current_flow_closeness_centrality(G)
+#ic   = nx.information_centrality(G)
+#cfbc = nx.current_flow_betweenness_centrality(G)
+#cbc  = nx.communicability_betweenness_centrality(G)
+#soc  = nx.second_order_centrality(G)
+
+my_centralities = "[dc, indc, oudc, pr, kc, cc, bc, lc, hc]"
+
+
+def mergeDict(dict1, dict2):
+   """Une dos diccioanrios y conserva los values de keys coindicentes
+   
+   Parameters
+   ----------
+    dict1 : dict
+        Diccionario
+    dict1 : dict
+        Diccionario
+   """ 
+   dict3 = {**dict1, **dict2}
+   for key, value in dict3.items():
+       if key in dict1 and key in dict2:
+               dict3[key] = [value , dict1[key]]
+   return dict3 
+
+
+import functools
+from   iteration_utilities import deepflatten
+
+
+merged_dicts           = functools.reduce(mergeDict, eval(my_centralities))
+
+
+merged_centralities    = [[i for i in deepflatten(merged_dicts[i])] for i in range(0,len(merged_dicts))]
+
+nombres_cols    = my_centralities.strip('][').split(',')
+nombres_cols.reverse()
+
+merged_directed_centralities_df = pd.DataFrame(merged_centralities, index= node_labels, columns= nombres_cols)
+merged_directed_centralities_df
+
+# %% Undirected centralities 
+UNdirected_stoichiometric_matrix        =  binarize(abs(create_stoichiometric_matrix(model)))
+
+
+sparse_undirected_stoichiometric_matrix = csr_matrix(UNdirected_stoichiometric_matrix)
+UNdirected_bipartite_graph              = from_biadjacency_matrix(sparse_undirected_stoichiometric_matrix) 
+UNdirected_incidence_matrix = biadjacency_matrix(UNdirected_bipartite_graph, row_order = range(0,UNdirected_stoichiometric_matrix.shape[0])) 
+print((UNdirected_incidence_matrix == undirected_stoichiometric_matrix).all(),UNdirected_bipartite_graph.is_directed())
+
+
+G2    = UNdirected_bipartite_graph.copy()
+#calculo de centralidades 
+#dc2   = nx.degree_centrality(G2)
+#indc2 = nx.in_degree_centrality(G2)
+#oudc2 = nx.out_degree_centrality(G2)
+pr2   = nx.pagerank(G2)
+kc2   = nx.katz_centrality(G2)
+ec2   = nx.eigenvector_centrality(G2)
+cc2   = nx.closeness_centrality(G2)
+bc2   = nx.betweenness_centrality(G2)
+lc2   = nx.load_centrality(G2)
+hc2   = nx.harmonic_centrality(G2)
+cfcc2 = nx.current_flow_closeness_centrality(G2)
+ic2   = nx.information_centrality(G2)
+cfbc2 = nx.current_flow_betweenness_centrality(G2)
+cbc2  = nx.communicability_betweenness_centrality(G2)
+soc2  = nx.second_order_centrality(G2)
+
+
+my_UNDIRECTED_centralities = "[dc, indc, oudc, pr, kc, cc, bc, lc, hc]"
+
 # %% 
-graph   = nx.read_gpickle(" .gpickle")
 
-dc      = nx.degree_centrality(graph)
-ec      = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
-cc      = nx.closeness_centrality(graph, distance=None, wf_improved=True)
-bc      = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
-lc      = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
-hc      = nx.harmonic_centrality(graph, nbunch=None, distance=None)
-cfcc    = nx.current_flow_closeness_centrality(graph)
-ic      = nx.information_centrality(graph)
-cfbc    = nx.current_flow_betweenness_centrality(graph)
-cbc     = nx.communicability_betweenness_centrality(graph)
-soc     = nx.second_order_centrality(graph)
+sparse_stoichiometric_matrix = csr_matrix(stoichiometric_matrix)
+directed_bipartite_graph     = from_biadjacency_matrix(sparse_stoichiometric_matrix, create_using= nx.DiGraph) 
+incidence_matrix = biadjacency_matrix(directed_bipartite_graph, row_order = range(0,stoichiometric_matrix.shape[0]))
 
-# %% 
+print((incidence_matrix == stoichiometric_matrix).all(),directed_bipartite_graph.is_directed())
 
-model
 
+reactions_nodes   = [n for n, d in directed_bipartite_graph.nodes(data=True) if d["bipartite"] == 1] # 
+metabolites_nodes = [n for n, d in directed_bipartite_graph.nodes(data=True) if d["bipartite"] == 0] # 
+
+# --- Poniendole nombres a metabolitos y reacciones
+reaction_names    = ["r1","r2","r3","r4","r5","r6","r7","r8",'obj']
+metabolites_names = ["m1","m2","m3","m4","m5"]
+# 
+names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reaction_names  ))
+    # el formato + permite uni listas; como vectores en R; y zip crea tuplas
+
+directed_bipartite_graph_labeled_nodes = nx.relabel_nodes(directed_bipartite_graph, names_mapped)
+directed_bipartite_graph_labeled_nodes.nodes(data=True) 
+
+node_labels = list(directed_bipartite_graph_labeled_nodes.nodes)
 # %% SAMPLING THE STEADY-STATE
 
 from cobra.sampling import sample
@@ -237,7 +322,7 @@ from cobra.sampling.optgp import OptGPSampler
 flux_samples = OptGPSampler(model,  processes=16, thinning=500, nproj=100, seed=23)
 
 flux_samples = flux_samples.sample(n = 1000)
-flux_samples
+
 
 # %% Pairwise correlations between flux distributions
 

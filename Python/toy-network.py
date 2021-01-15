@@ -48,16 +48,16 @@ biadjacency_matrix.shape) # Cuenta cuantos unos  hay en la lista
 reactions_nodes   = [n for n, d in bipartite_graph.nodes(data=True) if d["bipartite"] == 1] # 
 metabolites_nodes = [n for n, d in bipartite_graph.nodes(data=True) if d["bipartite"] == 0] # 
 
-# %% --- Poniendole nombres a metabolitos y reacciones
+# --- Poniendole nombres a metabolitos y reacciones
 reaction_names    = ["r1","r2","r3","r4","r5","r6","r7","r8"]
 metabolites_names = ["m1","m2","m3","m4","m5"]
-# %% --- 
-
+# 
 names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reaction_names  ))
     # el formato + permite uni listas; como vectores en R; y zip crea tuplas
-
+names_mapped
+# %% 
 bipartite_graph = nx.relabel_nodes(bipartite_graph, names_mapped)
-# bipartite_graph.nodes(data=True) # VIS: 
+bipartite_graph.nodes(data=True) # VIS: 
 
 # %% --- Creación de subsistemas
 """
