@@ -91,14 +91,10 @@ from cobra.util import create_stoichiometric_matrix
 model.add_reactions([r1, r2, r3, r4, r5, r6, r7, r8])
 model.reactions.get_by_id('r3')
 
-
-
-
 # %% --- Crea la reacción para objetivo de optimización
 
 obj = Reaction("obj")
 obj.add_metabolites({m2: -1.0, m3: -1.0, m5: -1.0, m4: 1.0}) 
-
 
 model.add_reactions([obj])
 model.reactions.get_by_id("obj")
@@ -111,6 +107,13 @@ model.objective = "obj"
 model.reactions.get_by_id("obj").bounds = (0, 1000)
 
 # %% --- Exporta un grafo
+def model2gephi():
+"""Necesidad que vamos a tener el, osea, el FBA, y vamos a tener el grafo en NetworkX,
+y vamos a tener un grafo vacio. La idea es anexarle el resultado del FBA al objeto NetworkX.
+Todas las reacciones necesitan su flujo, reduced cost (sensibilidad), y los metabolitos que 
+solo tienen shadow-proces. 
+"""    
+
 import networkx as nx
 from networkx.algorithms.bipartite.matrix import biadjacency_matrix      # Extrae matriz de adyacencia
 from networkx.algorithms.bipartite.matrix import from_biadjacency_matrix # Crea el grafo
@@ -124,29 +127,77 @@ tmp = from_biadjacency_matrix(tmp)
 total_nodes = range(0,len(tmp.nodes(data=False))) # Rango de nodos
 particiones = [tmp.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo
 
-reactions_nodes   = [n for n, d in tmp.nodes(data=True) if d["bipartite"] == 1] # 
-reaction_names    = ["r1","r2","r3","r4","r5","r6","r7","r8"]
-metabolites_nodes = [n for n, d in tmp.nodes(data=True) if d["bipartite"] == 0] # 
-metabolites_names = ["m1","m2","m3","m4","m5"]
+metabolites_nodes = [n for n, d in tmp.nodes(data=True) if d["bipartite"] == 0] # Crea una lista de metabolitos
+metabolites_names = ["m1","m2","m3","m4","m5"] # Añade nombres
+reactions_nodes   = [n for n, d in tmp.nodes(data=True) if d["bipartite"] == 1] # Crea una lista de reacciones
+reaction_names    = ["r1","r2","r3","r4","r5","r6","r7","r8"] # Añade nombres
 
 names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reaction_names))
 tmp = nx.relabel_nodes(tmp, names_mapped)
 
-nodos = metabolites_names + reaction_names # Lista con nombres de nodos
+# ----- DEF:  Convertir esto en otra función
+def met_atributos(grafo, name, vector, skip = 0):
+    """Toma una lista de atributos y se los asigna a un objeto para Gephi
 
-tmp_prices =   solution.shadow_prices.tolist() + ['']*8 # Shadow Prices
-tmp_fluxes = ['']*5 + solution.fluxes.tolist()          # Flujos
+    Parameters
+    ----------
+    grafo : bipartite_graph
+        Un grafo bipartito de NetworkX 
+    nombre : str
+        Nombre del atributo siendo asignado. Ie. nombre de la columna en Gephi
+    vector : list
+        Una lista con valores para atributos. Se asigna desde el nodo [0] + skip
+    skip : int
+        Cantidad de nodos a omitir. Por defecto, los nodos de los metabolitos
+        van primero en la estructura de datos. Reacciones=len(model.metabolites)
+    Returns
+    -------
+    grafo : bipartite_graph
+        Un grafo bipartito de NetworkX 
+    """
+    grafo.nodes(data=False) # Consigue nombre de los nodos
+    nodos = metabolites_names + reaction_names # Lista con nombres de nodos
 
-tmp_prices = { nodos[i] : (tmp_prices)[i] for i in range(0, len(tmp_prices)) } 
-tmp_fluxes = { nodos[i] : (tmp_fluxes)[i] for i in range(0, len(tmp_prices)) } 
+    tmp_prices =   solution.shadow_prices.tolist() + ['']*8 # Shadow Prices
+    tmp_fluxes = ['']*5 + solution.fluxes.tolist()          # Flujos
 
-nx.set_node_attributes(tmp, tmp_prices, 'prices' ) # Añade una columna de precios
-nx.set_node_attributes(tmp, tmp_fluxes, 'fluxes' ) # Añade una columna de flujos
+    tmp_prices = { nodos[i] : (tmp_prices)[i] for i in range(0, len(tmp_prices)) } 
+    tmp_fluxes = { nodos[i] : (tmp_fluxes)[i] for i in range(0, len(tmp_prices)) } 
 
-# tmp.nodes(data=True) # VIS: muestra como deberia verse el grafo
-nx.write_gexf(tmp, "grafo.gexf") # Salida para Gephi
+    nx.set_node_attributes(tmp, tmp_prices, 'prices' ) # Añade una columna de precios
+    nx.set_node_attributes(tmp, tmp_fluxes, 'fluxes' ) # Añade una columna de flujos
+    # ----- END
+    # tmp.nodes(data=True) # VIS: muestra como deberia verse el grafo
+    nx.write_gexf(tmp, "grafo.gexf") # Salida para Gephi
+
+    return grafo
 
 # TODO: Convertir esto en una función de verdad f(modelo, filename)
+
+# %% --- Función toma dos listas y añade atributos
+def list2attr(grafo, nodos, atributos, nombre):
+    """Toma dos listas de nombres de nodos y atributos y las añade a un grafo
+
+    Parameters
+    ----------
+    grafo : bipartite_graph
+        Un grafo bipartito de NetworkX 
+    nodos: list
+        Una lista de nombres de nodos
+    atributos : list
+        Una lista de valores para los nodos en la lista anterior.
+        Ambas listas deben ser del mismo largo. 
+    nombre : str
+        Nombre del atributo siendo asignado. Ie. nombre de la columna en Gephi
+    
+    Returns
+    -------
+    grafo: bipartite_graph
+        Un grafo bipartito con un nuevo atributo para un set de nodos "nodos". 
+    """
+    tmp_list = { nodos[i] : (atributos)[i] for i in range(0, len(atributos)) }
+    nx.set_node_attributes(grafo, tmp_list, nombre ) # Añade los atributos
+    return grafo
 
 # %% --- Algo más que no se que hace ---
 
