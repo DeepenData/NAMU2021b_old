@@ -94,7 +94,7 @@ def cobra2networkx(modelo):
     -----
         - nx.write_gexf(grafo, "grafo.gexf") Crea una salida para Gephi
     """
-    import networkx as nx
+    import networkx
     from cobra.util import create_stoichiometric_matrix
 
     from networkx.algorithms.bipartite.matrix import biadjacency_matrix      # Extrae matriz de adyacencia
@@ -118,30 +118,14 @@ def cobra2networkx(modelo):
     reactions_names   = [model.reactions[i].id   for i in range(0, reactions_n)   ]
 
     names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reactions_names))
-    tmp = nx.relabel_nodes(tmp, names_mapped)
-    # En este punto el grafo ya cuenta con los nodos y labels segun IDs
-
-    solution = model.optimize()    # Esto posiblemente no deberia estar aqui
-    solution = solution.to_frame() # Ni esto tampoco
-
-    # Crea diccionarios con atributos para el grafo
-    nodos = metabolites_nodes + reactions_nodes
-    # Diccionario para precios (sensibilidad del metabolito) y nx.asignación
-    tmp_prices = solution.shadow_prices.tolist() + (['']*reactions_n) # Shadow Prices
-    tmp_prices = { nodos[i] : (tmp_prices)[i] for i in range(0, len(tmp_prices)) } 
-    nx.set_node_attributes(tmp, tmp_prices, 'prices' ) # Añade una columna de precios
+    tmp = networkx.relabel_nodes(tmp, names_mapped)
     
-    # Diccionario para flujos (flujo de la reaccion) y nx.asignación
-    tmp_fluxes = ['']*metabolites_n + solution.fluxes.tolist()  # Flujos de reacciones
-    tmp_fluxes = { nodos[i] : (tmp_fluxes)[i] for i in range(0, len(tmp_prices)) } 
-    nx.set_node_attributes(tmp, tmp_fluxes, 'fluxes' ) # Añade una columna de flujos
-
     grafo = tmp # Asigna tmp al grafo
     return grafo
 
 # %% MM --- 2021-01-15 12:10 --- Función toma dos listas y añade atributos
 def list2attr(grafo, nodos, atributos, nombre):
-    """Toma dos listas de nombres de nodos y atributos y las añade a un grafo
+    """Toma dos listas: nombres de nodos y atributos; y las añade a un grafo
 
     Parameters
     ----------
@@ -160,8 +144,51 @@ def list2attr(grafo, nodos, atributos, nombre):
     grafo: bipartite_graph
         Un grafo bipartito con un nuevo atributo para un set de nodos "nodos". 
     """
-    tmp_list = { nodos[i] : (atributos)[i] for i in range(0, len(atributos)) }
+    import networkx as nx
+    assert len(nodos) == len(atributos), "Ambas listas deben ser del mismo largo."
+    tmp_list = { nodos[i] : atributos[i] for i in range(0, len(atributos)) }
     nx.set_node_attributes(grafo, tmp_list, nombre ) # Añade los atributos
+    return grafo
+
+# %% --- MM 2021-01-18 09:51 --- Una función que añade atributos a subsets definidos
+def list2subgraph(grafo, lista, nombre, asignar=0):
+    """Añade atributos a todo un grafo, solo metabolitos, o solo reacciones.
+    Parameters
+    ----------
+        grafo:
+            Un objeto de NetworkX.
+        lista: list
+            Una lista de atributos a asignar a un subset de nodos. 
+            Debe ser del largo del subset de metabolitos, reacciones, o todo.
+        nombre: str
+            El nombre bajo el que se asignaran los atributos
+        asignar: int
+            A que subset se esta asignando. Por defecto todos los nodos. 
+            0 = todos, 1 = metabolitos, 2 = reacciones
+    Returns
+    -------
+        grafo:
+            Un objeto de NetworkX con nuevos atributos. 
+    """
+    assert asignar in [0,1,2], "La asignación debe ser 0 = todos, 1 = metabolitos, o 2 = reacciones"
+    
+    total_nodes = range(0 , len(grafo.nodes(data=False))) # Rango de nodos
+    #particiones = [grafo.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo (0:met, 1:rxn)
+
+    metabolites_nodes = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 0] # Crea una lista de metabolitos
+    reactions_nodes   = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 1] # Crea una lista de reacciones
+
+    if   asignar == 0: 
+        nodos = metabolites_nodes + reactions_nodes  # 0: todos
+        assert len(lista) == len(nodos),             "El largo debe ser len(grafo.nodes)"
+    elif asignar == 1: 
+        nodos = metabolites_nodes                    # 1: metabolitos
+        assert len(lista) == len(metabolites_nodes), "El largo no coincide con los metabolitos"
+    elif asignar == 2: 
+        nodos = reactions_nodes                      # 2: reacciones
+        assert len(lista) == len(reactions_nodes),   "El largo no coincide con las reacciones"
+
+    grafo = list2attr(grafo, nodos, lista, nombre)
     return grafo
 
 # %% AA 15_ene_2021 --- Stoichiometric matrix to directed bipartite graph
