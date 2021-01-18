@@ -14,8 +14,8 @@ def cobra2networkx(model, direccionado=True):
 
     Parameters
     ----------
-    model : cobra_model
-        Un modelo de reacciones metabolicas en COBRA
+    model : cobra.core.model.Model
+        Un modelo no-optimizado de reacciones metabolicas en COBRA
     direccionado : bool
         Selecciona si el objeto creado sera un grafo direccionado o no.
         Por defecto crea grafos direccionados. 
@@ -37,6 +37,8 @@ def cobra2networkx(model, direccionado=True):
     from networkx.algorithms.bipartite.matrix import from_biadjacency_matrix # Crea el grafo
     from sklearn.preprocessing import binarize
     from scipy.sparse import csr_matrix
+
+    #assert str(type(human)) == "<class 'cobra.core.model.Model'>", "El objeto debe ser un modelo, no un optimizado (modelo.optimize())"
 
     tmp = binarize(abs(create_stoichiometric_matrix(model))) # Crea una matriz
     tmp = csr_matrix(tmp) # Convierte la matriz a una matriz dispersa
@@ -80,7 +82,7 @@ def list2attr(grafo, nodos, nombre, atributos):
         Un grafo bipartito con un nuevo atributo para un set de nodos "nodos". 
     """
     import networkx as nx
-    assert len(nodos) == len(atributos), "Ambas listas deben ser del mismo largo."
+    ##assert len(nodos) == len(atributos), "Ambas listas deben ser del mismo largo."
     tmp_list = { nodos[i] : atributos[i] for i in range(0, len(atributos)) }
     nx.set_node_attributes(grafo, tmp_list, nombre ) # Añade los atributos
     return grafo
@@ -96,7 +98,7 @@ def attr2partition(grafo, lista, nombre, asignar=0):
         Debe ser del largo del subset de metabolitos, reacciones, o todo.
     nombre: str
         El nombre bajo el que se asignaran los atributos
-    asignar: int
+    asignar: int, default 0
         A que subset se esta asignando. Por defecto todos los nodos. 
         0 = todos, 1 = metabolitos, 2 = reacciones
     Returns
@@ -104,7 +106,7 @@ def attr2partition(grafo, lista, nombre, asignar=0):
     grafo:
         Un objeto de NetworkX con nuevos atributos. 
     """
-    assert asignar in [0,1,2], "La asignación debe ser 0 = todos, 1 = metabolitos, o 2 = reacciones"
+    #assert asignar in [0,1,2], "La asignación debe ser 0 = todos, 1 = metabolitos, o 2 = reacciones"
     
     #total_nodes = range(0 , len(grafo.nodes(data=False))) # Rango de nodos
     #particiones = [grafo.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo (0:met, 1:rxn)
@@ -114,13 +116,13 @@ def attr2partition(grafo, lista, nombre, asignar=0):
 
     if   asignar == 0: 
         nodos = metabolites_nodes + reactions_nodes  # 0: todos
-        assert len(lista) == len(nodos),             "El largo debe ser len(grafo.nodes)"
+        #assert len(lista) == len(nodos),             "El largo debe ser len(grafo.nodes)"
     elif asignar == 1: 
         nodos = metabolites_nodes                    # 1: metabolitos
-        assert len(lista) == len(metabolites_nodes), "El largo no coincide con los metabolitos"
+        #assert len(lista) == len(metabolites_nodes), "El largo no coincide con los metabolitos"
     elif asignar == 2: 
         nodos = reactions_nodes                      # 2: reacciones
-        assert len(lista) == len(reactions_nodes),   "El largo no coincide con las reacciones"
+        #assert len(lista) == len(reactions_nodes),   "El largo no coincide con las reacciones"
 
     grafo = list2attr(grafo, nodos, lista, nombre)
     return grafo
@@ -130,9 +132,9 @@ def fba_solutions(modelo):
 
     Parameters
     ----------
-    modelo : Solution
-        Un modelo COBRA optimizado. La función fallara sin los parametros 
-        creados por la optimización. Utiliza modelo.optimize().
+    modelo : cobra.core.model.Model | cobra.core.solution.Solution
+        Un modelo COBRA optimizado o slucion. La función fallara sin los 
+        parametros creados por la optimización. Utiliza modelo.optimize().
     
     Returns
     -------
@@ -143,28 +145,50 @@ def fba_solutions(modelo):
     reduced_cost : list
         Sensibilidad de las reacciones. 
     """
-    #assert ,"El modelo no esta optimizado. Utiliza modelo.optimize()"
+    #assert str(type(modelo)) in ["<class 'cobra.core.model.Model'>","<class 'cobra.core.solution.Solution'>"] ,"No es modelo o solución. Utiliza modelo.optimize()"
 
-    shadow_prices = [modelo.metabolites[i].shadow_price for i in range(0, len(modelo.metabolites)) ]
-    fluxes        = [modelo.reactions[i].flux           for i in range(0, len(modelo.reactions  )) ]
-    reduced_costs = [modelo.reactions[i].reduced_cost   for i in range(0, len(modelo.reactions  )) ]
+    if str(type(modelo)) == "<class 'cobra.core.model.Model'>":
+        shadow_prices = [modelo.metabolites[i].shadow_price for i in range(0, len(modelo.metabolites)) ]
+        fluxes        = [modelo.reactions[i].flux           for i in range(0, len(modelo.reactions  )) ]
+        reduced_costs = [modelo.reactions[i].reduced_cost   for i in range(0, len(modelo.reactions  )) ]
+    else:
+        shadow_prices = modelo.shadow_prices
+        fluxes        = modelo.fluxes
+        reduced_costs = modelo.reduced_costs
 
     return shadow_prices, fluxes, reduced_costs
 
 # %% MM --- 2021-01-18 16:44 --- Empieza cosas interesantes
 
-human = human.optimize() # Resolución del FBA
-
 grafo = cobra2networkx(human) # Crea el bipartito
+
+human_fba_solution = human.optimize() # Resolución del FBA
+
+"""Tareas de Manu
+- Terminar función dataframe2attr(grafo, dataframe)
+- maldita attr2partition :<
+- Hacer codigo script que haga todo en chunks (lineal)
+
+"""
 
 # %% MM --- 2021-01-18 16:51 --- Añade atributos al grafo
 
-shadow_prices, fluxes, reduced_costs = fba_solutions(human)
+shadow_prices, fluxes, reduced_costs = fba_solutions(human_fba_solution)
 
-grafo  = attr2partition(grafo, shadow_prices, "Shadow Price", 1) # Asigna sensibilidad (met)
+# %%
+grafo  = attr2partition(grafo, shadow_prices, "Shadow Price", 2) # Asigna sensibilidad (met)
+# %%
 grafo  = attr2partition(grafo, fluxes, "Flux", 2) # Asigna flujos 
 grafo  = attr2partition(grafo, reduced_costs, "Reduced cost", 2) # Asigna sensibilidad (rxn)
+# %% 
+aa_metabolites_nodes = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 0]
+
+print(
+len(aa_metabolites_nodes),
+len(shadow_prices))
 
 # %% MM --- 2021-01-18 16:51 --- Exporta a Gephi
 
 nx.write_gexf(grafo, "human_thermo2.gexf") # Crea una salida para Gephi
+
+human.shadow_prices
