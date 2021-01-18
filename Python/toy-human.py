@@ -9,12 +9,12 @@ import pandas as pd
 human = cobra.io.load_json_model("GEM_Recon2_thermocurated_redHUMAN.json")
 
 # %% MM --- 2021-01-18 16:40 --- Funciones utilitarias
-def cobra2networkx(modelo, direccionado=True):
+def cobra2networkx(model, direccionado=True):
     """Toma un modelo de cobra y genera un grafo bipartito de NetworkX
 
     Parameters
     ----------
-    modelo : cobra_model
+    model : cobra_model
         Un modelo de reacciones metabolicas en COBRA
     direccionado : bool
         Selecciona si el objeto creado sera un grafo direccionado o no.
@@ -28,7 +28,7 @@ def cobra2networkx(modelo, direccionado=True):
     
     Notes
     -----
-        - nx.write_gexf(grafo, "grafo.gexf") Crea una salida para Gephi
+    - nx.write_gexf(grafo, "grafo.gexf") Crea una salida para Gephi
     """
     import networkx
     from cobra.util import create_stoichiometric_matrix
@@ -89,24 +89,24 @@ def attr2partition(grafo, lista, nombre, asignar=0):
     """Añade atributos a todo un grafo, solo metabolitos, o solo reacciones.
     Parameters
     ----------
-        grafo:
-            Un objeto de NetworkX.
-        lista: list
-            Una lista de atributos a asignar a un subset de nodos. 
-            Debe ser del largo del subset de metabolitos, reacciones, o todo.
-        nombre: str
-            El nombre bajo el que se asignaran los atributos
-        asignar: int
-            A que subset se esta asignando. Por defecto todos los nodos. 
-            0 = todos, 1 = metabolitos, 2 = reacciones
+    grafo:
+        Un objeto de NetworkX.
+    lista: list
+        Una lista de atributos a asignar a un subset de nodos. 
+        Debe ser del largo del subset de metabolitos, reacciones, o todo.
+    nombre: str
+        El nombre bajo el que se asignaran los atributos
+    asignar: int
+        A que subset se esta asignando. Por defecto todos los nodos. 
+        0 = todos, 1 = metabolitos, 2 = reacciones
     Returns
     -------
-        grafo:
-            Un objeto de NetworkX con nuevos atributos. 
+    grafo:
+        Un objeto de NetworkX con nuevos atributos. 
     """
     assert asignar in [0,1,2], "La asignación debe ser 0 = todos, 1 = metabolitos, o 2 = reacciones"
     
-    total_nodes = range(0 , len(grafo.nodes(data=False))) # Rango de nodos
+    #total_nodes = range(0 , len(grafo.nodes(data=False))) # Rango de nodos
     #particiones = [grafo.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo (0:met, 1:rxn)
 
     metabolites_nodes = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 0] # Crea una lista de metabolitos
@@ -126,22 +126,22 @@ def attr2partition(grafo, lista, nombre, asignar=0):
     return grafo
 
 def fba_solutions(modelo):
-    """Extrae parametros de un modelo optimizado
+    """Extrae flujos y sensibilidades de un modelo optimizado
 
     Parameters
     ----------
-        modelo : Solution
-            Un modelo COBRA optimizado. La función fallara sin los parametros 
-            creados por la optimización. Utiliza modelo.optimize().
+    modelo : Solution
+        Un modelo COBRA optimizado. La función fallara sin los parametros 
+        creados por la optimización. Utiliza modelo.optimize().
     
     Returns
     -------
-        shadow_prices : list
-            Sensibilidad de los metabolitos. 
-        fluxes : list
-            Flujo de metabolitos en cada reacción.
-        reduced_cost : list
-            Sensibilidad de las reacciones. 
+    shadow_prices : list
+        Sensibilidad de los metabolitos. 
+    fluxes : list
+        Flujo de metabolitos en cada reacción.
+    reduced_cost : list
+        Sensibilidad de las reacciones. 
     """
     #assert ,"El modelo no esta optimizado. Utiliza modelo.optimize()"
 
@@ -155,7 +155,7 @@ def fba_solutions(modelo):
 
 human = human.optimize() # Resolución del FBA
 
-grafo = cobra2network(human) # Crea el bipartito
+grafo = cobra2networkx(human) # Crea el bipartito
 
 # %% MM --- 2021-01-18 16:51 --- Añade atributos al grafo
 
