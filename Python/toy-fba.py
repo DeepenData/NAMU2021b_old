@@ -76,19 +76,21 @@ solution["all_reactions"] = all_reactions
 solution
 ### === TERMINA EL TOY ===
 # %% MM --- 2021-01-15 12:11 --- Exporta un grafo
-def cobra2networkx(modelo):
+def cobra2networkx(modelo, direccionado=True):
     """Toma un modelo de cobra y genera un grafo bipartito de NetworkX
 
     Parameters
     ----------
     modelo : cobra_model
         Un modelo de reacciones metabolicas en COBRA
-    
+    direccionado : bool
+        Selecciona si el objeto creado sera un grafo direccionado o no.
+        Por defecto crea grafos direccionados. 
+
     Returns
     -------
     grafo : 
-        un grafo bipartito de NetworkX. Incluye atributos de flujo del modelo y
-        sensibilidad de metabolitos y reacciones. 
+        un grafo bipartito de NetworkX. 
     
     Notes
     -----
@@ -102,10 +104,10 @@ def cobra2networkx(modelo):
     from sklearn.preprocessing import binarize
     from scipy.sparse import csr_matrix
 
-    tmp = binarize(create_stoichiometric_matrix(model)) # Crea una matriz
+    tmp = binarize(abs(create_stoichiometric_matrix(model))) # Crea una matriz
     tmp = csr_matrix(tmp) # Convierte la matriz a una matriz dispersa
     tmp = from_biadjacency_matrix(tmp) # Usa la dispersa para un grafo bipartito
-
+    # Eventualmente hacer gtrafos direccionoas y no-direccionados
     # total_nodes = range(0 , len(tmp.nodes(data=False))) # Rango de nodos
     # particiones = [tmp.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo
 
@@ -124,7 +126,7 @@ def cobra2networkx(modelo):
     return grafo
 
 # %% MM --- 2021-01-15 12:10 --- Función toma dos listas y añade atributos
-def list2attr(grafo, nodos, atributos, nombre):
+def list2attr(grafo, nodos, nombre, atributos):
     """Toma dos listas: nombres de nodos y atributos; y las añade a un grafo
 
     Parameters
@@ -133,11 +135,11 @@ def list2attr(grafo, nodos, atributos, nombre):
         Un grafo bipartito de NetworkX 
     nodos: list
         Una lista de nombres de nodos
+    nombre : str
+        Nombre del atributo siendo asignado. Ie. nombre de la columna en Gephi
     atributos : list
         Una lista de valores para los nodos en la lista anterior.
         Ambas listas deben ser del mismo largo. 
-    nombre : str
-        Nombre del atributo siendo asignado. Ie. nombre de la columna en Gephi
     
     Returns
     -------
@@ -151,7 +153,7 @@ def list2attr(grafo, nodos, atributos, nombre):
     return grafo
 
 # %% --- MM 2021-01-18 09:51 --- Una función que añade atributos a subsets definidos
-def list2subgraph(grafo, lista, nombre, asignar=0):
+def attr2partition(grafo, lista, nombre, asignar=0):
     """Añade atributos a todo un grafo, solo metabolitos, o solo reacciones.
     Parameters
     ----------
