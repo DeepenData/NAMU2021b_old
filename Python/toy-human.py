@@ -130,10 +130,20 @@ def fba_solutions(modelo):
 
     Parameters
     ----------
-
+        modelo : Solution
+            Un modelo COBRA optimizado. La función fallara sin los parametros 
+            creados por la optimización. Utiliza modelo.optimize().
     
+    Returns
+    -------
+        shadow_prices : list
+            Sensibilidad de los metabolitos. 
+        fluxes : list
+            Flujo de metabolitos en cada reacción.
+        reduced_cost : list
+            Sensibilidad de las reacciones. 
     """
-    assert , "El modelo no esta optimizado. Utiliza modelo.optimize()"
+    #assert ,"El modelo no esta optimizado. Utiliza modelo.optimize()"
 
     shadow_prices = [modelo.metabolites[i].shadow_price for i in range(0, len(modelo.metabolites)) ]
     fluxes        = [modelo.reactions[i].flux           for i in range(0, len(modelo.reactions  )) ]
@@ -148,13 +158,11 @@ human = human.optimize() # Resolución del FBA
 grafo = cobra2network(human) # Crea el bipartito
 
 # %% MM --- 2021-01-18 16:51 --- Añade atributos al grafo
-shadow_prices = [human.metabolites[i].shadow_price for i in range(0, len(human.metabolites)) ]
+
+shadow_prices, fluxes, reduced_costs = fba_solutions(human)
+
 grafo  = attr2partition(grafo, shadow_prices, "Shadow Price", 1) # Asigna sensibilidad (met)
-
-fluxes        = [human.reactions[i].flux for i in range(0, len(human.reactions)) ]
 grafo  = attr2partition(grafo, fluxes, "Flux", 2) # Asigna flujos 
-
-reduced_costs = [human.reactions[i].reduced_cost for i in range(0, len(human.reactions)) ]
 grafo  = attr2partition(grafo, reduced_costs, "Reduced cost", 2) # Asigna sensibilidad (rxn)
 
 # %% MM --- 2021-01-18 16:51 --- Exporta a Gephi
