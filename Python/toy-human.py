@@ -6,10 +6,8 @@ import cobra
 import networkx as nx
 import pandas as pd
 
-human = cobra.io.load_json_model("GEM_Recon2_thermocurated_redHUMAN.json")
-
 # %% MM --- 2021-01-18 16:40 --- Funciones utilitarias
-def cobra2networkx(model, direccionado=True):
+def cobra2networkx(modelo, direccionado=True):
     """Toma un modelo de cobra y genera un grafo bipartito de NetworkX
 
     Parameters
@@ -30,35 +28,29 @@ def cobra2networkx(model, direccionado=True):
     -----
     - nx.write_gexf(grafo, "grafo.gexf") Crea una salida para Gephi
     """
-    import networkx
-    from cobra.util import create_stoichiometric_matrix
 
-    from networkx.algorithms.bipartite.matrix import biadjacency_matrix      # Extrae matriz de adyacencia
-    from networkx.algorithms.bipartite.matrix import from_biadjacency_matrix # Crea el grafo
+    from cobra.util import create_stoichiometric_matrix
+    from networkx import relabel_nodes, nodes
+    from networkx.algorithms.bipartite.matrix import biadjacency_matrix, from_biadjacency_matrix
     from sklearn.preprocessing import binarize
     from scipy.sparse import csr_matrix
 
-    #assert str(type(human)) == "<class 'cobra.core.model.Model'>", "El objeto debe ser un modelo, no un optimizado (modelo.optimize())"
+    assert str(type(modelo)) == "<class 'cobra.core.model.Model'>", "El objeto debe ser un modelo, no un optimizado (modelo.optimize())"
 
-    tmp = binarize(abs(create_stoichiometric_matrix(model))) # Crea una matriz
-    tmp = csr_matrix(tmp) # Convierte la matriz a una matriz dispersa
-    tmp = from_biadjacency_matrix(tmp) # Usa la dispersa para un grafo bipartito
-    # Eventualmente hacer gtrafos direccionoas y no-direccionados
-    # total_nodes = range(0 , len(tmp.nodes(data=False))) # Rango de nodos
-    # particiones = [tmp.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo
+    grafo = binarize(abs(create_stoichiometric_matrix(modelo))) # Crea una matriz
+    grafo = csr_matrix(grafo) # Convierte la matriz a una matriz dispersa
+    grafo = from_biadjacency_matrix(grafo) # Usa la dispersa para un grafo bipartito
+    
+    metabolites_nodes = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 0] # Crea una lista de metabolitos
+    metabolites_n     = len(modelo.metabolites) # Numero de metabolitos
+    metabolites_names = [modelo.metabolites[i].id for i in range(0, metabolites_n) ]
 
-    metabolites_nodes = [n for n, d in tmp.nodes(data=True) if d["bipartite"] == 0] # Crea una lista de metabolitos
-    metabolites_n     = len(model.metabolites) # Numero de metabolitos
-    metabolites_names = [model.metabolites[i].id for i in range(0, metabolites_n) ]
-
-    reactions_nodes   = [n for n, d in tmp.nodes(data=True) if d["bipartite"] == 1] # Crea una lista de reacciones
-    reactions_n       = len(model.reactions)   # Numero de reacciones
-    reactions_names   = [model.reactions[i].id   for i in range(0, reactions_n)   ]
+    reactions_nodes   = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 1] # Crea una lista de reacciones
+    reactions_n       = len(modelo.reactions)   # Numero de reacciones
+    reactions_names   = [modelo.reactions[i].id   for i in range(0, reactions_n)   ]
 
     names_mapped =  dict(zip( metabolites_nodes + reactions_nodes, metabolites_names + reactions_names))
-    tmp = networkx.relabel_nodes(tmp, names_mapped)
-    
-    grafo = tmp # Asigna tmp al grafo
+    grafo = relabel_nodes(grafo, names_mapped)
     return grafo
 
 def list2attr(grafo, nodos, nombre, atributos):
@@ -81,10 +73,12 @@ def list2attr(grafo, nodos, nombre, atributos):
     grafo: bipartite_graph
         Un grafo bipartito con un nuevo atributo para un set de nodos "nodos". 
     """
-    import networkx as nx
-    ##assert len(nodos) == len(atributos), "Ambas listas deben ser del mismo largo."
+    assert len(nodos) == len(atributos), "Ambas listas deben ser del mismo largo."
     tmp_list = { nodos[i] : atributos[i] for i in range(0, len(atributos)) }
-    nx.set_node_attributes(grafo, tmp_list, nombre ) # Añade los atributos
+    
+    from networkx import set_node_attributes
+    set_node_attributes(grafo, tmp_list, nombre ) # Añade los atributos
+    
     return grafo
 
 def attr2partition(grafo, lista, nombre, asignar=0):
@@ -106,13 +100,12 @@ def attr2partition(grafo, lista, nombre, asignar=0):
     grafo:
         Un objeto de NetworkX con nuevos atributos. 
     """
-    #assert asignar in [0,1,2], "La asignación debe ser 0 = todos, 1 = metabolitos, o 2 = reacciones"
-    
-    #total_nodes = range(0 , len(grafo.nodes(data=False))) # Rango de nodos
-    #particiones = [grafo.nodes(data=True)[i]["bipartite"] for i in total_nodes] # Tipo nodo (0:met, 1:rxn)
+    assert asignar in [0,1,2], "La asignación debe ser 0 = todos, 1 = metabolitos, o 2 = reacciones"
 
     metabolites_nodes = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 0] # Crea una lista de metabolitos
     reactions_nodes   = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 1] # Crea una lista de reacciones
+
+    print("Metabolitos:", len(metabolites_nodes), " | Reacciones:", len(reactions_nodes)," | Z:", len(metabolites_nodes) + len(reactions_nodes)) # Debug
 
     if   asignar == 0: 
         nodos = metabolites_nodes + reactions_nodes  # 0: todos
@@ -124,71 +117,56 @@ def attr2partition(grafo, lista, nombre, asignar=0):
         nodos = reactions_nodes                      # 2: reacciones
         #assert len(lista) == len(reactions_nodes),   "El largo no coincide con las reacciones"
 
-    grafo = list2attr(grafo, nodos, lista, nombre)
+    from networkx import set_node_attributes
+    set_node_attributes(grafo, {nodos[i] : lista[i] for i in range(0, len(lista))}, nombre)
+    
     return grafo
 
-def fba_solutions(modelo):
-    """Extrae flujos y sensibilidades de un modelo optimizado
-
-    Parameters
-    ----------
-    modelo : cobra.core.model.Model | cobra.core.solution.Solution
-        Un modelo COBRA optimizado o slucion. La función fallara sin los 
-        parametros creados por la optimización. Utiliza modelo.optimize().
-    
-    Returns
-    -------
-    shadow_prices : list
-        Sensibilidad de los metabolitos. 
-    fluxes : list
-        Flujo de metabolitos en cada reacción.
-    reduced_cost : list
-        Sensibilidad de las reacciones. 
+def solution2attr(solucion, grafo):
+    """Docstring
     """
-    #assert str(type(modelo)) in ["<class 'cobra.core.model.Model'>","<class 'cobra.core.solution.Solution'>"] ,"No es modelo o solución. Utiliza modelo.optimize()"
 
-    if str(type(modelo)) == "<class 'cobra.core.model.Model'>":
-        shadow_prices = [modelo.metabolites[i].shadow_price for i in range(0, len(modelo.metabolites)) ]
-        fluxes        = [modelo.reactions[i].flux           for i in range(0, len(modelo.reactions  )) ]
-        reduced_costs = [modelo.reactions[i].reduced_cost   for i in range(0, len(modelo.reactions  )) ]
-    else:
-        shadow_prices = modelo.shadow_prices
-        fluxes        = modelo.fluxes
-        reduced_costs = modelo.reduced_costs
+    metabolites_nodes = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 0] # Crea una lista de metabolitos
+    reactions_nodes   = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 1] # Crea una lista de reacciones
 
-    return shadow_prices, fluxes, reduced_costs
+    print("Metabolitos:", len(metabolites_nodes), " | Reacciones:", len(reactions_nodes)) # Debug
 
-# %% MM --- 2021-01-18 16:44 --- Empieza cosas interesantes
+    shadow_prices = solucion.shadow_prices.tolist() # De solucion, pasa a lista
+    fluxes        = solucion.fluxes.tolist()        # posiblemente es más rapido de usar que desde el modelo
+    reduced_costs = solucion.reduced_costs.tolist() # considerando el menor parsing pero si requiere pandas
 
-grafo = cobra2networkx(human) # Crea el bipartito
+    print("Shadow prices:", len(shadow_prices),"| Fluxes:", len(fluxes),"| Reduced costs:", len(reduced_costs)) # Debug
 
-human_fba_solution = human.optimize() # Resolución del FBA
+    from networkx import set_node_attributes
 
-"""Tareas de Manu
-- Terminar función dataframe2attr(grafo, dataframe)
-- maldita attr2partition :<
-- Hacer codigo script que haga todo en chunks (lineal)
+    # ASIGNA Shadow_prices, fluxes, reduced_costs
+    set_node_attributes(grafo, { metabolites_nodes[i] : shadow_prices[i] for i in range(0, len(shadow_prices)) } , "Shadow Price") 
+    set_node_attributes(grafo, { reactions_nodes[i] : fluxes[i] for i in range(0, len(fluxes)) } , "Flux") 
+    set_node_attributes(grafo, { reactions_nodes[i] : reduced_costs[i] for i in range(0, len(reduced_costs)) } , "Reduced cost") 
 
-"""
+    #grafo.nodes(data=True) # Debug
 
-# %% MM --- 2021-01-18 16:51 --- Añade atributos al grafo
+    return grafo
 
-shadow_prices, fluxes, reduced_costs = fba_solutions(human_fba_solution)
+# %% MM --- 2021-01-18 16:44 --- Empieza cosas interesantes (human)
 
-# %%
-grafo  = attr2partition(grafo, shadow_prices, "Shadow Price", 2) # Asigna sensibilidad (met)
-# %%
-grafo  = attr2partition(grafo, fluxes, "Flux", 2) # Asigna flujos 
-grafo  = attr2partition(grafo, reduced_costs, "Reduced cost", 2) # Asigna sensibilidad (rxn)
-# %% 
-aa_metabolites_nodes = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 0]
+human = cobra.io.load_json_model("GEM_Recon2_thermocurated_redHUMAN.json") # INPUT
 
-print(
-len(aa_metabolites_nodes),
-len(shadow_prices))
+grafo = cobra2networkx(human) # Función interesante 1
 
-# %% MM --- 2021-01-18 16:51 --- Exporta a Gephi
+solucion = human.optimize()
 
-nx.write_gexf(grafo, "human_thermo2.gexf") # Crea una salida para Gephi
+grafo = solution2attr(solucion, grafo) # Función interesante 2
 
-human.shadow_prices
+from networkx import write_gexf
+write_gexf(grafo, "human_thermo2.gexf")
+
+# %% AA --- 2021-01-19 16:47 --- Cosas interesantes con modelo de cerebro
+
+brain = 
+
+grafo_brain = cobra2networkx(brain)
+solucion_brain = brain.optimize()
+grafo_brain = solution2attr(solucion_brain, grafo_brain)
+
+# %% MM --- 2021-01-19 17:20 --- Calculos de centralidades (funcionalizados!)
