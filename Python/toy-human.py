@@ -1,10 +1,6 @@
 """Prueba de las funciones previamente definidas en un grafo usando un JSON con
 las reacciones del metabolismo humano
 """
-# %% MM --- 2021-01-18 16:40 --- Importa el modelo JSON
-import cobra 
-import networkx as nx
-import pandas as pd
 
 # %% MM --- 2021-01-18 16:40 --- Funciones utilitarias
 def cobra2networkx(modelo, direccionado=True):
@@ -122,8 +118,17 @@ def attr2partition(grafo, lista, nombre, asignar=0):
     
     return grafo
 
-def solution2attr(solucion, grafo):
+def solution2attr(solucion, grafo, estandarizar=False, umbral=1e-7):
     """Docstring
+
+    Parameters
+    ----------
+    solucion : 
+    grafo : 
+    estandarizar : bool, default False
+        Define si se aplican estandarizaciones al modelo final. Estas son entre
+    umbral : float
+        El umbral en que un flujo o sensibilidad se consideran 0. 
     """
 
     metabolites_nodes = [n for n, d in grafo.nodes(data=True) if d["bipartite"] == 0] # Crea una lista de metabolitos
@@ -131,11 +136,30 @@ def solution2attr(solucion, grafo):
 
     print("Metabolitos:", len(metabolites_nodes), " | Reacciones:", len(reactions_nodes)) # Debug
 
-    shadow_prices = solucion.shadow_prices.tolist() # De solucion, pasa a lista
-    fluxes        = solucion.fluxes.tolist()        # posiblemente es más rapido de usar que desde el modelo
-    reduced_costs = solucion.reduced_costs.tolist() # considerando el menor parsing pero si requiere pandas
+    from numpy import abs # Permite absolutos vectorizados
+
+    shadow_prices = abs(solucion.shadow_prices).tolist() # De solucion, pasa a lista
+    fluxes        = abs(solucion.fluxes).tolist()       # posiblemente es más rapido de usar que desde el modelo
+    reduced_costs = abs(solucion.reduced_costs).tolist() # considerando el menor parsing pero si requiere pandas
 
     print("Shadow prices:", len(shadow_prices),"| Fluxes:", len(fluxes),"| Reduced costs:", len(reduced_costs)) # Debug
+
+    # Neutraliza sub-umbral (por defecto 0.0000001)
+    shadow_prices = [ 0 if i < umbral else i for i in shadow_prices]
+    fluxes        = [ 0 if i < umbral else i for i in fluxes]
+    reduced_costs = [ 0 if i < umbral else i for i in reduced_costs]
+
+    if estandarizar == True:
+        def estandariza(tmp):
+            from numpy import array, log10, inf, min, max
+            tmp = log10(array(tmp))
+            tmp[tmp == -inf] = tmp[tmp != -inf].min()
+            tmp = (tmp - tmp.min() ) / ( tmp.max() - tmp.min() )
+            return tmp
+        
+        shadow_prices = estandariza(shadow_prices)
+        fluxes = estandariza(fluxes)
+        reduced_costs = estandariza(reduced_costs)
 
     from networkx import set_node_attributes
 
@@ -148,6 +172,12 @@ def solution2attr(solucion, grafo):
 
     return grafo
 
+
+# %% MM --- 2021-01-18 16:40 --- Importa el modelo JSON
+import cobra 
+import networkx as nx
+import pandas as pd
+
 # %% MM --- 2021-01-18 16:44 --- Empieza cosas interesantes (human)
 
 human = cobra.io.load_json_model("GEM_Recon2_thermocurated_redHUMAN.json") # INPUT
@@ -156,17 +186,38 @@ grafo = cobra2networkx(human) # Función interesante 1
 
 solucion = human.optimize()
 
-grafo = solution2attr(solucion, grafo) # Función interesante 2
+grafo = solution2attr(solucion, grafo, estandarizar=True) # Función interesante 2
 
 from networkx import write_gexf
 write_gexf(grafo, "human_thermo2.gexf")
 
 # %% AA --- 2021-01-19 16:47 --- Cosas interesantes con modelo de cerebro
+brain_nodes_attr_df = pd.read_csv("reaction_nodes_attributes.csv") #atributos de las reacciones
+brain               = cobra.io.load_json_model("stimulated.json") # modelo cobra
 
-brain = 
+grafo_brain0    = cobra2networkx(brain)
+solucion_brain  = brain.optimize()
 
-grafo_brain = cobra2networkx(brain)
-solucion_brain = brain.optimize()
-grafo_brain = solution2attr(solucion_brain, grafo_brain)
+grafo_brain0    = solution2attr(solucion_brain, grafo_brain0, estandarizar=True)
 
-# %% MM --- 2021-01-19 17:20 --- Calculos de centralidades (funcionalizados!)
+
+grafo_brain_rxns   =  [n for n, d in grafo_brain0.nodes(data=True) if d["bipartite"] == 1] # extracción de las reacciones
+
+print(set(list(grafo_brain_rxns)) - set(brain_nodes_attr_df.Name),set(brain_nodes_attr_df.Name) -set(list(grafo_brain_rxns))) #chequeo
+
+grafo_brain  = list2attr(grafo_brain0, nodos = brain_nodes_attr_df.Name , nombre = "type", atributos = brain_nodes_attr_df.Node)
+
+
+largest_component = max(nx.connected_components(grafo_brain), key=len) #selección del componente más grande
+grafo_brain =   grafo_brain.subgraph(largest_component) #grafo final conformado solo por el componente más grande
+#grafo_brain.nodes(data = True)
+
+write_gexf(grafo_brain, "grafo_brain.gexf")
+
+
+# %%
+
+
+
+
+grafo_brain.nodes
