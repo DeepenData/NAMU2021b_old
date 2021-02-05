@@ -1,20 +1,5 @@
 """
-A_Exchange:               A[e]<-                         
-A_Uptake:                 A[e]-> A[c]
-r1:             A[c] + atp[c] -> B[c]
-r2:                     B[c]  -> 2 atp[c] + 3 nadh[c] + C[c]
-r3:                      C[c] -> 2 nadh[c] + 0.2 C[c]
-r5:          C[c] + 2 nadh[c] -> 3 E[c]
-OxPhox:       nadh[c] + o2[c] -> 2 atp[c]
-ATP_demand:            atp[c] ->
-C_sink:                  C[c] ->
-O2_EX:                   o2[e]<- 
-O2_Uptake:               o2[e]-> o2[c]
-E_Exchange              E[e] <=> 
-E_Uptake                E[e] <=> E[c]
-
 """
-
 # %% --- 
 from cobra import Model, Reaction, Metabolite
 
@@ -67,22 +52,32 @@ model.add_reactions([A_Exchange, A_Uptake, r1, r2, r3, r5, OxPhox, \
 
 
 model.reactions.get_by_id("A_Exchange").bounds = (-1000, 0)       
-model.reactions.get_by_id("A_Uptake").bounds = (0, 3.3)    
-model.reactions.get_by_id("r1").bounds = (0, 1000)     
-model.reactions.get_by_id("r2").bounds = (0, 1000)     
-model.reactions.get_by_id("r3").bounds = (0, 1000)    
-model.reactions.get_by_id("r5").bounds =(-1000, 1000)     
-model.reactions.get_by_id("OxPhox").bounds = (0, 1000)     
-model.reactions.get_by_id("ATP_demand").bounds = (3, 1000)   
-model.reactions.get_by_id("C_sink").bounds = (0, 1000)   
-model.reactions.get_by_id("O2_Exchange").bounds = (-1000, 0)    
-model.reactions.get_by_id("O2_Uptake").bounds = (0, 10)
-model.reactions.get_by_id("E_Exchange").bounds = (-10000, 1000)     
-model.reactions.get_by_id("E_Uptake").bounds = (-1000, 2.2)     
+model.reactions.get_by_id("A_Uptake").bounds = (0, 3.3)     #
+model.reactions.get_by_id("r1").bounds = (0, 1000)          # 
+model.reactions.get_by_id("r2").bounds = (0, 1000)          # 
+model.reactions.get_by_id("r3").bounds = (0, 1000)          # 
+model.reactions.get_by_id("r5").bounds =(-1000, 1000)       # 
+model.reactions.get_by_id("OxPhox").bounds = (0, 1000)      # 
+model.reactions.get_by_id("ATP_demand").bounds = (3, 1000)  # 
+model.reactions.get_by_id("C_sink").bounds = (0, 1000)      # 
+model.reactions.get_by_id("O2_Exchange").bounds = (-1000, 0) # EXC   
+model.reactions.get_by_id("O2_Uptake").bounds = (0, 10)     # 
+model.reactions.get_by_id("E_Exchange").bounds = (-10000, 1000) # EXC     
+model.reactions.get_by_id("E_Uptake").bounds = (-1000, 2.2) #      
 import pandas as pd
+"""
+1) eliminar los exchanges de la célula interna.
+    aggr.reactions.getbyid(%nombre_celula$boundry%) <- null
+2) reescribir el uptake de la célula interna para q quede con un metabolito
+intermediario, por ejemplo:
+  old: A_Uptake_interior_cell:	A[e] --> A[c] (remove)
+  new: A_Uptake_interior_cell:	A[I] --> A[c]
 
-#pd.DataFrame(list(zip([model.reactions[i].id for i in range(0,len(model.reactions))],
-#[model.reactions[i].reaction for i in range(0,len(model.reactions))])))   
+3) crear nuevo flujo de transport en la célula intermediaria:
+     A_Uptake_intermedian_cell:	A[c] --> A[I] (create)
+"""
+pd.DataFrame(list(zip([model.reactions[i].id for i in range(0,len(model.reactions))],
+[model.reactions[i].reaction for i in range(0,len(model.reactions))])))   
 
 # %%
 model.objective = "C_sink"

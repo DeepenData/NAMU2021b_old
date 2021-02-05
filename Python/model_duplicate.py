@@ -4,11 +4,12 @@ Por ahora, se limita a duplicar modelos
 Parametros: modelo_base, *modelos_suma
 """
 # %% --- Importar modelo
-from cobra.io import load_json_model
+from cobra.io import load_json_model, save_json_model
 model = load_json_model('toy_model.json')
 
 # Lista de modelos a agregar
 # TODO: convertir esto en input del programa
+
 models = [model]
 
 print ('%i modelos importados' % len(models)) # Sanity check
@@ -25,13 +26,15 @@ for model in models:
     model.id = str(i) + '_' + model.id
     i = i + 1 # Contador de ID en el array de modelos
 
-# %% --- Renombar reacciones
+# %% --- Renombar reacciones y metabolitos
 """Esta sección se encarga de obtener las reacciones en una lista de modelos,
-cambiar el nombre de las reacciones normales y sink para incluir el ID del
-modelo.  
+cambiar el nombre de las reacciones y metabolitos para incluir el ID del modelo.
 Consideraciones:
+- Reacciones boundry pueden comportarse de forma extraña
 - Algunas reacciones boundry pueden importar directamente a la célula; que pasa
-si chocan con otras celulas que importan directamente?"""
+si chocan con otras celulas que importan directamente?
+- NO ES NECESARIO RENOMBRAR COMPARTIMIENTOS, porque aunque esten en el mismo
+  lugar los metabolitos no interactuarian entre si, por las nuevas reacciones"""
 
 from cobra import Model, Reaction, Metabolite
 
@@ -52,12 +55,9 @@ def subpend_id(model):
         reaction.id   = model.id + '_' + reaction.id
     model.repair()
 
-
-# TODO: crear algo que renombre los compartimientos internos; tipo, if !(x=='e')
-#       cambiar de nombre
-
 for model in models:
-    subpned_id(model)
+    subpend_id(model)
+    # Posiblemente remover boundary
 
 # %% --- Inicialización del agragado
 """Carga el modelo base que se utiliza para añadir el resto de los modelos. 
@@ -77,8 +77,11 @@ for model in models:
     aggregated.add_metabolites( model.metabolites )
     aggregated.add_reactions( model.reactions )
 
-print('%i reacciones iniciales' % len(model.reactions))
-print('%i metabolitos iniciales' % len(model.metabolites))
-
+print('%i reacciones  finales' % len(model.reactions))
+print('%i metabolitos finales' % len(model.metabolites))
 
 # %% --- Sopa
+"""Esta sección se encarga de exportar un JSON finla agregado, que es una sopa"""
+
+OUTPUT = 'soup.json'
+save_json_model(aggregated, OUTPUT)
