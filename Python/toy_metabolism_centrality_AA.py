@@ -20,20 +20,27 @@ solution_fba.fluxes # Check si los flujos funcionan
 2. Binarización de matriz de incidencia para eliminar los pesos y dirección de 
    las reacciones. Los coeficientes son un artefacto, cuando solo nos interesa
    la conectividad
-3. Proyección de la matriz de incidencia hacia el espacio de las reacciones, lo
+4. Convierte la matriz en una sparce matix, para optimizar el uso de memoria en
+   la computación de redes más grandes
+5. Proyección de la matriz de incidencia hacia el espacio de las reacciones, lo
    que genera en matriz de adyacencia de reacciones
-4. Ceros a la diagonal de la matriz, para eliminar auto-conexiones
-4. Binarización, de nuevo. Solo nos interesa saber si una reaccion comparte 
+6. Ceros a la diagonal de la matriz, para eliminar auto-conexiones
+7. Binarización, de nuevo. Solo nos interesa saber si una reaccion comparte 
    pathway con otra, no cuantos metabolitos comparten"""
 
 import numpy as np
 import networkx as nx
+
 from   cobra.util.array import create_stoichiometric_matrix
+from sklearn.preprocessing import binarize
+from scipy.sparse import csr_matrix
 
 S_matrix = create_stoichiometric_matrix(model) # Crea matriz de incidencia
+S_matrix = binarize( abs(S_matrix) ) # Binarización de la matriz de incidencia 
+ # para eliminar pesos y dirección que no son necesarios en este resultado
+S_matrix = csr_matrix( S_matrix ) # Convierte a matriz dispersa optimizando RAM
 
-S_matrix = (S_matrix !=0).astype(int) # Binarización de la matriz de incidencia 
-  # para eliminar pesos y dirección
+# S_matrix = (S_matrix !=0).astype(int) # Binarización de la matriz de incidencia 
 
 projected_S_matrix = np.matmul(S_matrix.T, S_matrix) # Proyección al espacio de 
   # las reacciones de la matriz en matriz de incidencia
