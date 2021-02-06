@@ -109,12 +109,11 @@ def eight_centralities(grafo):
     """ Requieren un grafo full conected """
     if not (nx.is_connected(grafo)) : 
         ic = {}; soc = {}
-        continue
     else:
         ic  = nx.information_centrality(grafo)
         soc = nx.second_order_centrality(grafo)
 
-centralities = [hc, ec, dc, bc, cc, lc, ic, soc]
+    centralities = [hc, ec, dc, bc, cc, lc, ic, soc]
 
     return centralities
 
@@ -186,7 +185,7 @@ def delta_centralities(grafo, list_remove, prefix='',subfix=''):
         centrality = eight_centralities(delta)
         if (centrality[-1] == {}):
             print( str(node), 'breaks continuity!')
-            breaks.append( removed )
+            breaks.append( str(node) )
         cents.append( centrality )
         # Asigna centralidades calculadas a los nodos
         # grafo = assign_eight_centralities(grafo, centralities, subfix=removed)
@@ -195,6 +194,9 @@ def delta_centralities(grafo, list_remove, prefix='',subfix=''):
 
 # Calcula centralidades delta para cada nodo del grafo
 G, cents, breaks = delta_centralities(G, G.nodes) 
+
+# TODO: crear el loop que asigna los diccionarios de cents[i][ii] como atrobutos
+# al grafo G. Se cae porque no puede iterarlo?
 
 # %% --- Celtralidades delta por subsistema
 """
