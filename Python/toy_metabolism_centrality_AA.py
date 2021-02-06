@@ -198,11 +198,44 @@ G, cents, breaks = delta_centralities(G, G.nodes)
 # TODO: crear el loop que asigna los diccionarios de cents[i][ii] como atrobutos
 # al grafo G. Se cae porque no puede iterarlo?
 
-# %% --- Celtralidades delta por subsistema
+
+# %%
+
+
+means_rmvs= []
+my_range  =list(set(range(251,500))-set(disconnected)-set(energy_cores))#list(set(range(len(G2.nodes)))-set(disconnected))
+"""Da un rango de nodos que hace?
+
+1000 nodos
+
+4 notebook con rangos de 250 nodos cada uno
+cada notebook se ejecuto en una máquina 
+
+notebook_rango(250)_i (internamente paralelo) -> máquina_i(8 nucleos 64 ram)
+
+1- paralelismo de nodos en 4 maquinas
+    2- paralelismo de nucleos y threads por cosa 
+
 """
-subsystem_s =  [r1, r2, r3]
+with concurrent.futures.ProcessPoolExecutor() as executor: # +400 USD
+     for r in executor.map(calc_centr_rmv, my_range):      # +400 USD
+         means_rmvs.append(r)                              # +400 USD 
+
+"""
+overall_centrality_node_i =sum(abs(delta_C_eigenv_i_subsystem_1), abs(delta_C_harmonic_i_subsystem_1),...,... abs(delta_C_eigenv_i_subsystem_2),abs(delta_C_harmonic_i_subsystem_2),...))
+
+
+"""
+# %% 
+"""-- Celtralidades delta por subsistema
+subsystem_S =  [r1, r2, r3]
 
 nodes_without_subsystem_s = set(nodes) - set(subsystem_s)
+
+# TODO: calcular las centralidades por subsistema
+# TODO: delta centrality saca logaritmo y contribución a centralidad de subsistema
+
+F, cents, breaks = delta_centralities(G, nodes_without_subsystem_s)
 
 baseline centralities: (C_r1), (C_r2), (C_r3)
 perturbed centralities: C_r1_node_i_removed, C_r2_node_i_removed, C_r3_node_i_removed
@@ -210,11 +243,20 @@ unperturbed: mean(C_r1, C_r2, C_r3)
 perturbed:   mean(C_r1_node_i_removed, C_r2_node_i_removed, C_r3_node_i_removed )
 node_i_contribution_to_S = np.log2(unperturbed/perturbed)
 
-Parallel
+otro horror:
 
-with concurrent.futures.ProcessPoolExecutor() as executor:
-     for r in executor.map(calc_centr_rmv, my_range):
-         
+# TODO tabla: filas=nodos, columnas= ids, reaction formulas, flux, sensitivities, overall_centrality
 
+# TODO: contruir los grafos GHEPI
+    # TODO: grfx bipartito
+    # TODO: gefx [flujos, sensibilidades, centralidad total]
 
+3 gexfs: 
+1.- bipartito.
+2.-unipartito
+ 1.- unipartito flujos.
+ 2.- unipartito sensibilidades.
+ 3.-unipartito centralidad total(overall)
+
+# TODO: INVESTIGACIÓN QUE TENGA ALGUN SENTIDO  
 """
