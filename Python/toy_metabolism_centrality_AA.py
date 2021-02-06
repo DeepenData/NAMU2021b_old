@@ -65,6 +65,7 @@ if not (nx.is_connected(G)):
     print ('Removed',len(G.nodes) - len(largest_component), 'nodes.')
     G = G.subgraph(largest_component)
 
+# TODO: funcionalizar esto?
 # %% --- Reasigna nombres a nodos
 
 from networkx import relabel_nodes
@@ -104,10 +105,16 @@ def eight_centralities(grafo):
     """↓ Here be dragons ↓"""
     cc  = nx.closeness_centrality(grafo, distance=None, wf_improved=True)
     lc  = nx.load_centrality(grafo, cutoff=None, normalized=True, weight=None)
-    ic  = nx.information_centrality(grafo)
-    soc = nx.second_order_centrality(grafo)
+    
+    """ Requieren un grafo full conected """
+    if not (nx.is_connected(grafo)) : 
+        ic = {}; soc = {}
+        continue
+    else:
+        ic  = nx.information_centrality(grafo)
+        soc = nx.second_order_centrality(grafo)
 
-    centralities = [hc, ec, dc, bc, cc, lc, ic, soc]
+centralities = [hc, ec, dc, bc, cc, lc, ic, soc]
 
     return centralities
 
@@ -133,12 +140,12 @@ def assign_eight_centralities(grafo, centralities, prefix='',subfix=''):
     centralities_names = ['harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality',
     'closeness_centrality', 'load_centrality', 'information_centrality', 'second_order_centrality']
    
-    centralities_names = [ (prefix + name + subfix) for name in cent_list]
+    centralities_names = [ (prefix + name + subfix) for name in centralities_names]
    
     for i in range(0, 7):
         nx.set_node_attributes(grafo, centralities[i], centralities_names[i])
     
-    return graph
+    return grafo
 
 centralities = eight_centralities(G) # Calcula las centralidades
 G = assign_eight_centralities(G, centralities) # Asigna centralidades a nodos
@@ -146,7 +153,7 @@ G = assign_eight_centralities(G, centralities) # Asigna centralidades a nodos
 # %% --- Calcula centralidades para cada nodo del grafo
 
 def delta_centralities(grafo, list_remove, prefix='',subfix=''):
-	"""Toma un grafo y una lista de nodos y calcula la centralidad del grafo al
+    """Toma un grafo y una lista de nodos y calcula la centralidad del grafo al
     remover cada uno de esos nodos.
 
     Prefix y subfix son información sobre la lista de los nodos removidos. El
@@ -165,19 +172,29 @@ def delta_centralities(grafo, list_remove, prefix='',subfix=''):
     ------
     grafo :
         Un grafo de NetworkX con atributos de centralidad por cada nodo removido
-	"""
+    breaks : list
+        Lista de nodos que rompen la continuidad del espacio-tiempo (y la red)
+    """
+    import networkx
+    from copy import deepcopy
+    breaks = []; cents = []
     for node in list_remove:
-		delta = grafo.copy 
+        print( 'Iterando en:', node )
+        delta = deepcopy( grafo )
         removed = prefix + '_REMOVED_' + str(node) + subfix
-		delta.remove_node( node ) # Elimina el nodo de la iteración
-		centralities = eight_centralities(delta)   
-		# Asigna centralidades calculadas a los nodos
-		grafo = assign_eight_centralities(grafo, centralities, subfix=removed)
-   
-    return grafo
+        delta.remove_node( str(node) ) # Elimina el nodo de la iteración
+        centrality = eight_centralities(delta)
+        if (centrality[-1] == {}):
+            print( str(node), 'breaks continuity!')
+            breaks.append( removed )
+        cents.append( centrality )
+        # Asigna centralidades calculadas a los nodos
+        # grafo = assign_eight_centralities(grafo, centralities, subfix=removed)
+
+    return grafo, cents, breaks
 
 # Calcula centralidades delta para cada nodo del grafo
-G = delta_centralities(G, G.nodes) 
+G, cents, breaks = delta_centralities(G, G.nodes) 
 
 # %% --- Celtralidades delta por subsistema
 """
@@ -185,22 +202,17 @@ subsystem_s =  [r1, r2, r3]
 
 nodes_without_subsystem_s = set(nodes) - set(subsystem_s)
 
-
-
-
 baseline centralities: (C_r1), (C_r2), (C_r3)
-
-
 perturbed centralities: C_r1_node_i_removed, C_r2_node_i_removed, C_r3_node_i_removed
-
-
-
-
 unperturbed: mean(C_r1, C_r2, C_r3)
 perturbed:   mean(C_r1_node_i_removed, C_r2_node_i_removed, C_r3_node_i_removed )
-
-
 node_i_contribution_to_S = np.log2(unperturbed/perturbed)
+
+Parallel
+
+with concurrent.futures.ProcessPoolExecutor() as executor:
+     for r in executor.map(calc_centr_rmv, my_range):
+         
 
 
 """
