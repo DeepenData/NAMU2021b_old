@@ -1,0 +1,21 @@
+# Archivos temporales y scraps
+tmp.*
+
+# Cosas de proyectos RStudio
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.opynb_checkpoints
+
+# Claves secretas y eso
+.pem
+.dcf
+
+# No Jupyter!
+.ipynb
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
