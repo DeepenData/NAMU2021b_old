@@ -8,7 +8,7 @@ Output: CENTRALIDADES.tsv"""
 # %% --- Importa el modelo
 from cobra.io import load_json_model, save_json_model
 
-INPUT = 'toy_metabolism_AA.json'
+INPUT = '../data/toy_metabolism_AA.json'
 model = load_json_model(INPUT)
 
 solution_fba = model.optimize() # Optimización del modelo para check
@@ -40,6 +40,7 @@ S_matrix = binarize(abs(S_matrix) ) # Binarización de la matriz de incidencia
 
 projected_S_matrix = np.matmul(S_matrix.T, S_matrix) # Proyección al espacio de 
   # las reacciones de la matriz en matriz de incidencia
+  # De momento, numpy no soporta multiplicación de matrices sparce. Usa normal. 
 
 """La diagonal contiene la cantidad de metablitos que estan en cada reacción.
 Si una reacción tiene 1 podemos afirmar que es una reacción de Boundary.  
@@ -52,11 +53,9 @@ reaction_adjacency_matrix = (projected_S_matrix !=0).astype(int) # Re-binariza,
     # para eliminar el peso al compartir más de un metabolito entre reacciones
 
 # %% --- Crea el grafo a partir de la matriz de adyacencia
-from scipy.sparse import csr_matrix
 
-from networkx.convert_matrix import from_scipy_sparse_matrix
-reaction_adjacency_matrix = csr_matrix(reaction_adjacency_matrix)
-G = from_scipy_sparse_matrix(reaction_adjacency_matrix)
+from networkx.convert_matrix import from_numpy_matrix
+G = from_numpy_matrix( reaction_adjacency_matrix )
 
 if not (nx.is_connected(G)):
     # Check si este grafo tiene nodos huerfanos
@@ -146,12 +145,12 @@ def assign_eight_centralities(grafo, centralities, prefix='',subfix=''):
     
     return grafo
 
-centralities = eight_centralities(G) # Calcula las centralidades
-G = assign_eight_centralities(G, centralities) # Asigna centralidades a nodos
+baseline_centralities = eight_centralities(G) # Calcula las centralidades
+#G = assign_eight_centralities(G, centralities) # Asigna centralidades a nodos
 
 # %% --- Calcula centralidades para cada nodo del grafo
 
-def delta_centralities(grafo, list_remove, prefix='',subfix=''):
+def delta_centralities(grafo, removed_nodes, prefix='',subfix=''):
     """Toma un grafo y una lista de nodos y calcula la centralidad del grafo al
     remover cada uno de esos nodos.
 
@@ -162,7 +161,7 @@ def delta_centralities(grafo, list_remove, prefix='',subfix=''):
     ----------
     grafo : 
         Un grafo de NetworkX 
-    list_remove :
+    removed_nodes :
         Una lista de nodos a remover. Puede ser grafo.nodes
     prefix : str, default = ''
     subfix : str, default = ''
@@ -171,81 +170,122 @@ def delta_centralities(grafo, list_remove, prefix='',subfix=''):
     ------
     grafo :
         Un grafo de NetworkX con atributos de centralidad por cada nodo removido
+    centralities : list
+        Una lista de diccionarios con calculos de centralidades
     breaks : list
         Lista de nodos que rompen la continuidad del espacio-tiempo (y la red)
     """
     import networkx
     from copy import deepcopy
-    breaks = []; cents = []
-    for node in list_remove:
+    breaks = []; centralities = []
+    for node in removed_nodes:
         print( 'Iterando en:', node )
         delta = deepcopy( grafo )
-        removed = prefix + '_REMOVED_' + str(node) + subfix
+        #removed = prefix + '_REMOVED_' + str(node) + subfix
         delta.remove_node( str(node) ) # Elimina el nodo de la iteración
         centrality = eight_centralities(delta)
         if (centrality[-1] == {}):
             print( str(node), 'breaks continuity!')
             breaks.append( str(node) )
-        cents.append( centrality )
+        centralities.append( centrality )
         # Asigna centralidades calculadas a los nodos
         # grafo = assign_eight_centralities(grafo, centralities, subfix=removed)
 
-    return grafo, cents, breaks
+    return centralities, breaks
 
 # Calcula centralidades delta para cada nodo del grafo
-G, cents, breaks = delta_centralities(G, G.nodes) 
+# SUBSYSTEM
+removed_nodes = G.nodes
+delta_centralities, breaks = delta_centralities(G, removed_nodes) 
 
-# TODO: crear el loop que asigna los diccionarios de cents[i][ii] como atrobutos
-# al grafo G. Se cae porque no puede iterarlo?
+# TODO: hacer algo con 'braks' ? Deberia ser una tabla de nodos y los desconectados
 
+# %% --- Comprimir deltas en objetos manejables
+"""Genera un objeto dataframe de [nodos A] columnas y [nodos removidos B] filas. 
+Cada celda contiene el promedio de las ocho centralidades calculadas para ese 
+nodo A en la remoción del nodo B correspondiente a la fila. Si el valor es NaN, 
+es porque el nodo B removido en la fila es el mismo nodo A (cuya centralidad no 
+existe porque fue removido)"""
 
-# %%
+import pandas as pd
 
+perturbed_centralities = []
 
-means_rmvs= []
-my_range  =list(set(range(251,500))-set(disconnected)-set(energy_cores))#list(set(range(len(G2.nodes)))-set(disconnected))
-"""Da un rango de nodos que hace?
+for delta in delta_centralities:
+    tmp = pd.DataFrame.from_dict( delta ) # Selecciona un grupo de 8 centralidades
+    tmp = dict( tmp.mean( axis=0 ) ) # Calcula el promedio de centralidades
+    perturbed_centralities.append( tmp ) # Al diccionario de centralidades perturbadas
 
-1000 nodos
+print("Nodes removed for iterative delta centralities calculation:", len(removed_nodes))
+print("Unconected graphs generated:", len(breaks) )
 
-4 notebook con rangos de 250 nodos cada uno
-cada notebook se ejecuto en una máquina 
+perturbed_centralities = pd.DataFrame.from_dict( perturbed_centralities ) # Tabla por nodo
 
-notebook_rango(250)_i (internamente paralelo) -> máquina_i(8 nucleos 64 ram)
+cols = list(perturbed_centralities.columns); cols = [cols[-1]] + cols[:-1] # Reordena columnas
+perturbed_centralities = perturbed_centralities[cols] # Así la primera es la primera reacción 
+# TODO: exportar esta tabla? 
 
-1- paralelismo de nodos en 4 maquinas
-    2- paralelismo de nucleos y threads por cosa 
+perturbed = perturbed_centralities.mean( axis=0 ) # Promedio de perturbadas
 
-"""
-with concurrent.futures.ProcessPoolExecutor() as executor: # +400 USD
-     for r in executor.map(calc_centr_rmv, my_range):      # +400 USD
-         means_rmvs.append(r)                              # +400 USD 
+# Termina de comprimir las centralidades originales porque antes no cargo pandas
 
-"""
-overall_centrality_node_i =sum(abs(delta_C_eigenv_i_subsystem_1), abs(delta_C_harmonic_i_subsystem_1),...,... abs(delta_C_eigenv_i_subsystem_2),abs(delta_C_harmonic_i_subsystem_2),...))
+baseline = pd.DataFrame.from_dict( baseline_centralities )
+baseline = baseline.transpose() # Por algun motivo queda con la otra orientación ?
+baseline = baseline.mean( axis=1 )
 
+# %% --- Calcula contribución a centralidades de S
+"""Como nos interesa saber cual es la contribución del resto de los nodos al sub
+-sistema que estamos estudiando, sacamos el fold-change en base al promedio de 
+los nodos cuando son removidos. Ie. control / experimental; en lugar de el más 
+comun experimental / control. Basicamente porque aqui la existencia del subsistema
+es nuestra condición experimental"""
 
-"""
+log2_contribution = np.log2( baseline / perturbed )
+
+# %% --- Empacando todo en un Dataframe que servira como resultados
+
+tabla_resultado = pd.DataFrame({
+    "ids" :         [rx.id           for rx in model.reactions],
+    "formula" :     [rx.reaction     for rx in model.reactions],
+    "flux" :        [rx.flux         for rx in model.reactions],
+    "sensitivity" : [rx.reduced_cost for rx in model.reactions],
+    "baseline_centrality": baseline,
+    "preturbed_centrality": perturbed,
+    "log2_centrality_contribution" : log2_contribution
+})
+
+# Exporta esta tabla de datos intermedio
+# index=False porque id contiene lo mismo que el index. 
+tabla_resultado.to_csv('../results/reactions_delta_centrality.csv', index=False)
+
 # %% 
 """-- Celtralidades delta por subsistema
-subsystem_S =  [r1, r2, r3]
+subsystem_S =  [r1, r2, r3] <- removed
 
+# Basicamente los nodos que no son parte del subsistema
 nodes_without_subsystem_s = set(nodes) - set(subsystem_s)
 
-# TODO: calcular las centralidades por subsistema
-# TODO: delta centrality saca logaritmo y contribución a centralidad de subsistema
+# DONE calcular las centralidades por subsistema
+# DONE: delta centrality saca logaritmo y contribución a centralidad de subsistema
 
-F, cents, breaks = delta_centralities(G, nodes_without_subsystem_s)
-
+# Las centralidades normales
 baseline centralities: (C_r1), (C_r2), (C_r3)
+
+# Las centralidades removiendo nodos fuera del subsistema
 perturbed centralities: C_r1_node_i_removed, C_r2_node_i_removed, C_r3_node_i_removed
+
+# Promedio de centralidades del 
 unperturbed: mean(C_r1, C_r2, C_r3)
+
+
 perturbed:   mean(C_r1_node_i_removed, C_r2_node_i_removed, C_r3_node_i_removed )
+
+
 node_i_contribution_to_S = np.log2(unperturbed/perturbed)
 
 otro horror:
 
-# TODO tabla: filas=nodos, columnas= ids, reaction formulas, flux, sensitivities, overall_centrality
+# DONE tabla: filas=nodos, columnas= ids, reaction formulas, flux, sensitivities, overall_centrality
 
 # TODO: contruir los grafos GHEPI
     # TODO: grfx bipartito
@@ -257,6 +297,4 @@ otro horror:
  1.- unipartito flujos.
  2.- unipartito sensibilidades.
  3.-unipartito centralidad total(overall)
-
-# TODO: INVESTIGACIÓN QUE TENGA ALGUN SENTIDO  
 """
