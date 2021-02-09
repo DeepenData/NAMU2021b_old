@@ -8,8 +8,8 @@ Output: CENTRALIDADES.tsv"""
 # %% --- Importa el modelo
 from cobra.io import load_json_model, save_json_model
 
-INPUT = '../data/toy_metabolism_AA.json'
-model = load_json_model(INPUT)
+INPUT_MODEL = '../data/toy_metabolism_AA.json'
+model = load_json_model(INPUT_MODEL)
 
 solution_fba = model.optimize() # Optimización del modelo para check
 solution_fba.fluxes # Check si los flujos funcionan
@@ -64,7 +64,6 @@ if not (nx.is_connected(G)):
     print ('Removed',len(G.nodes) - len(largest_component), 'nodes.')
     G = G.subgraph(largest_component)
 
-# TODO: funcionalizar esto?
 # %% --- Reasigna nombres a nodos
 
 from networkx import relabel_nodes
@@ -195,8 +194,8 @@ def delta_centralities(grafo, removed_nodes, prefix='',subfix=''):
 
 # Calcula centralidades delta para cada nodo del grafo
 # SUBSYSTEM
-removed_nodes = G.nodes
-delta_centralities, breaks = delta_centralities(G, removed_nodes) 
+INPUT_REMOVED_NODES = G.nodes
+delta_centralities, breaks = delta_centralities(G, INPUT_REMOVED_NODES) 
 
 # TODO: hacer algo con 'braks' ? Deberia ser una tabla de nodos y los desconectados
 
@@ -249,52 +248,33 @@ tabla_resultado = pd.DataFrame({
     "formula" :     [rx.reaction     for rx in model.reactions],
     "flux" :        [rx.flux         for rx in model.reactions],
     "sensitivity" : [rx.reduced_cost for rx in model.reactions],
-    "baseline_centrality": baseline,
-    "preturbed_centrality": perturbed,
+    "baseline_centrality":           baseline,
+    "preturbed_centrality":          perturbed,
     "log2_centrality_contribution" : log2_contribution
 })
 
 # Exporta esta tabla de datos intermedio
 # index=False porque id contiene lo mismo que el index. 
-tabla_resultado.to_csv('../results/reactions_delta_centrality.csv', index=False)
+OUTPUT_TABLE = '../results/reactions_delta_centrality.csv'
+tabla_resultado.to_csv( OUTPUT_TABLE , index=False )
 
-# %% 
-"""-- Celtralidades delta por subsistema
-subsystem_S =  [r1, r2, r3] <- removed
+# %% --- Empacando en un grafo de gephi
 
-# Basicamente los nodos que no son parte del subsistema
-nodes_without_subsystem_s = set(nodes) - set(subsystem_s)
+nx.set_node_attributes(G, node_dict( [rx.reaction     for rx in model.reactions] ), "reaction")
+nx.set_node_attributes(G, node_dict( [rx.flux         for rx in model.reactions] ), "flux")
+nx.set_node_attributes(G, node_dict( [rx.reduced_cost for rx in model.reactions] ), "sensitivity")
+nx.set_node_attributes(G, node_dict( baseline ),          "baseline_centrality")
+nx.set_node_attributes(G, node_dict( perturbed ),         "preturbed_centrality")
+nx.set_node_attributes(G, node_dict( log2_contribution ), "log2_centrality_contribution")
 
-# DONE calcular las centralidades por subsistema
-# DONE: delta centrality saca logaritmo y contribución a centralidad de subsistema
+from networkx import write_gexf
 
-# Las centralidades normales
-baseline centralities: (C_r1), (C_r2), (C_r3)
+OUTPUT_GRAPH =  "../results/reactions_delta_centrality.gexf"
+write_gexf( G , OUTPUT_GRAPH )
 
-# Las centralidades removiendo nodos fuera del subsistema
-perturbed centralities: C_r1_node_i_removed, C_r2_node_i_removed, C_r3_node_i_removed
-
-# Promedio de centralidades del 
-unperturbed: mean(C_r1, C_r2, C_r3)
-
-
-perturbed:   mean(C_r1_node_i_removed, C_r2_node_i_removed, C_r3_node_i_removed )
-
-
-node_i_contribution_to_S = np.log2(unperturbed/perturbed)
-
-otro horror:
-
-# DONE tabla: filas=nodos, columnas= ids, reaction formulas, flux, sensitivities, overall_centrality
-
-# TODO: contruir los grafos GHEPI
-    # TODO: grfx bipartito
-    # TODO: gefx [flujos, sensibilidades, centralidad total]
-
-3 gexfs: 
-1.- bipartito.
-2.-unipartito
+"""gexfs: 
+1.- bipartito // listo en otro archivo
+2.- unipartito // Listo aqui! 
  1.- unipartito flujos.
  2.- unipartito sensibilidades.
- 3.-unipartito centralidad total(overall)
-"""
+ 3.- unipartito centralidad total(overall)"""
