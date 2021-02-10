@@ -6,13 +6,18 @@ Output: CENTRALIDADES.tsv"""
 
 
 # %% --- Importa el modelo
+import time
+
 from cobra.io import load_json_model, save_json_model
 
 INPUT_MODEL = '../data/toy_metabolism_AA.json'
+t1 = time.time() 
 model = load_json_model(INPUT_MODEL)
 
 solution_fba = model.optimize() # Optimización del modelo para check
 solution_fba.fluxes # Check si los flujos funcionan
+
+t2 = time.time(); print('\n TIME Importando y optimizando modelo:', (t2-t1)*1000 ,'ms')
 
 # %% --- Proyección de la matrix estequimetrica unipartita de reacciones 
 """Usamos reacciones para así poder buscar genes. 
@@ -34,6 +39,8 @@ import networkx as nx
 from cobra.util.array import create_stoichiometric_matrix
 from sklearn.preprocessing import binarize
 
+t1 = time.time()
+
 S_matrix = create_stoichiometric_matrix(model) # Crea matriz de incidencia
 S_matrix = binarize(abs(S_matrix) ) # Binarización de la matriz de incidencia 
     # para eliminar pesos y dirección que no son necesarios en este resultado
@@ -52,9 +59,12 @@ np.fill_diagonal(projected_S_matrix, 0) # Elimina la conexion consigo mismo
 reaction_adjacency_matrix = (projected_S_matrix !=0).astype(int) # Re-binariza, 
     # para eliminar el peso al compartir más de un metabolito entre reacciones
 
+t2 = time.time(); print('\n TIME Matriz proyectada:', (t2-t1)*1000 ,'ms')
+
 # %% --- Crea el grafo a partir de la matriz de adyacencia
 
 from networkx.convert_matrix import from_numpy_matrix
+t1 = time.time()
 G = from_numpy_matrix( reaction_adjacency_matrix )
 
 if not (nx.is_connected(G)):
@@ -64,6 +74,7 @@ if not (nx.is_connected(G)):
     print ('Removed',len(G.nodes) - len(largest_component), 'nodes.')
     G = G.subgraph(largest_component)
 
+t2 = time.time(); print('\n TIME Grafo base generado:', (t2-t1)*1000 ,'ms')
 # %% --- Reasigna nombres a nodos
 
 from networkx import relabel_nodes
@@ -144,8 +155,12 @@ def assign_eight_centralities(grafo, centralities, prefix='',subfix=''):
     
     return grafo
 
+t1 = time.time()
+
 baseline_centralities = eight_centralities(G) # Calcula las centralidades
 #G = assign_eight_centralities(G, centralities) # Asigna centralidades a nodos
+
+t2 = time.time(); print('\n TIME Centralidades base calculadas:', (t2-t1)*1000 ,'ms')
 
 # %% --- Calcula centralidades para cada nodo del grafo
 
@@ -195,7 +210,9 @@ def delta_centralities(grafo, removed_nodes, prefix='',subfix=''):
 # Calcula centralidades delta para cada nodo del grafo
 # SUBSYSTEM
 INPUT_REMOVED_NODES = G.nodes
+t1 = time.time()
 delta_centralities, breaks = delta_centralities(G, INPUT_REMOVED_NODES) 
+t2 = time.time(); print('\n TIME Centralidades delta calculadas:', (t2-t1)*1000 ,'ms')
 
 # TODO: hacer algo con 'braks' ? Deberia ser una tabla de nodos y los desconectados
 
@@ -208,6 +225,8 @@ existe porque fue removido)"""
 
 import pandas as pd
 
+t1=time.time()
+
 perturbed_centralities = []
 
 for delta in delta_centralities:
@@ -215,7 +234,7 @@ for delta in delta_centralities:
     tmp = dict( tmp.mean( axis=0 ) ) # Calcula el promedio de centralidades
     perturbed_centralities.append( tmp ) # Al diccionario de centralidades perturbadas
 
-print("Nodes removed for iterative delta centralities calculation:", len(removed_nodes))
+print("Nodes removed for iterative delta centralities calculation:", len( INPUT_REMOVED_NODES ))
 print("Unconected graphs generated:", len(breaks) )
 
 perturbed_centralities = pd.DataFrame.from_dict( perturbed_centralities ) # Tabla por nodo
@@ -257,9 +276,9 @@ tabla_resultado = pd.DataFrame({
 # index=False porque id contiene lo mismo que el index. 
 OUTPUT_TABLE = '../results/reactions_delta_centrality.csv'
 tabla_resultado.to_csv( OUTPUT_TABLE , index=False )
-
+t2 = time.time(); print('\n TIME Tabla resumen generada:', (t2-t1)*1000 ,'ms') 
 # %% --- Empacando en un grafo de gephi
-
+t1 = time.time()
 nx.set_node_attributes(G, node_dict( [rx.reaction     for rx in model.reactions] ), "reaction")
 nx.set_node_attributes(G, node_dict( [rx.flux         for rx in model.reactions] ), "flux")
 nx.set_node_attributes(G, node_dict( [rx.reduced_cost for rx in model.reactions] ), "sensitivity")
@@ -271,10 +290,12 @@ from networkx import write_gexf
 
 OUTPUT_GRAPH =  "../results/reactions_delta_centrality.gexf"
 write_gexf( G , OUTPUT_GRAPH )
+t2 = time.time(); print('\n TIME Grafo generado:', (t2-t1)*1000 ,'ms')
 
-"""gexfs: 
-1.- bipartito // listo en otro archivo
-2.- unipartito // Listo aqui! 
- 1.- unipartito flujos.
- 2.- unipartito sensibilidades.
- 3.- unipartito centralidad total(overall)"""
+#"""gexfs: 
+#1.- bipartito // listo en otro archivo
+#2.- unipartito // Listo aqui! 
+# 1.- unipartito flujos.
+# 2.- unipartito sensibilidades.
+# 3.- unipartito centralidad total(overall)"""
+# %%
