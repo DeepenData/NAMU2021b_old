@@ -145,11 +145,10 @@ def assign_eight_centralities(grafo, centralities, prefix='',subfix=''):
     return grafo
 
 baseline_centralities = eight_centralities(G) # Calcula las centralidades
-#G = assign_eight_centralities(G, centralities) # Asigna centralidades a nodos
 
 # %% --- Calcula centralidades para cada nodo del grafo
 
-def delta_centralities(grafo, removed_nodes, prefix='',subfix=''):
+def delta_centralities(grafo, removed_nodes):
     """Toma un grafo y una lista de nodos y calcula la centralidad del grafo al
     remover cada uno de esos nodos.
 
@@ -160,10 +159,11 @@ def delta_centralities(grafo, removed_nodes, prefix='',subfix=''):
     ----------
     grafo : 
         Un grafo de NetworkX 
-    removed_nodes :
-        Una lista de nodos a remover. Puede ser grafo.nodes
-    prefix : str, default = ''
-    subfix : str, default = ''
+    removed_nodes : list
+        Una lista de nodos a remover. Puede ser grafo.nodes para ver remoción de
+        todos los nodos en una red. La función remueve cada nodo en la lista de
+        forma iterativa, no como un subseting. Si quieres eso mejor solo haz el
+        subseting con grafo.subgraph(NODOS_A_MANTENER)
 
     Return
     ------
@@ -180,15 +180,12 @@ def delta_centralities(grafo, removed_nodes, prefix='',subfix=''):
     for node in removed_nodes:
         print( 'Iterando en:', node )
         delta = deepcopy( grafo )
-        #removed = prefix + '_REMOVED_' + str(node) + subfix
         delta.remove_node( str(node) ) # Elimina el nodo de la iteración
         centrality = eight_centralities(delta)
         if (centrality[-1] == {}):
             print( str(node), 'breaks continuity!')
             breaks.append( str(node) )
         centralities.append( centrality )
-        # Asigna centralidades calculadas a los nodos
-        # grafo = assign_eight_centralities(grafo, centralities, subfix=removed)
 
     return centralities, breaks
 
@@ -196,8 +193,6 @@ def delta_centralities(grafo, removed_nodes, prefix='',subfix=''):
 # SUBSYSTEM
 INPUT_REMOVED_NODES = G.nodes
 delta_centralities, breaks = delta_centralities(G, INPUT_REMOVED_NODES) 
-
-# TODO: hacer algo con 'braks' ? Deberia ser una tabla de nodos y los desconectados
 
 # %% --- Comprimir deltas en objetos manejables
 """Genera un objeto dataframe de [nodos A] columnas y [nodos removidos B] filas. 
@@ -215,16 +210,21 @@ for delta in delta_centralities:
     tmp = dict( tmp.mean( axis=0 ) ) # Calcula el promedio de centralidades
     perturbed_centralities.append( tmp ) # Al diccionario de centralidades perturbadas
 
-print("Nodes removed for iterative delta centralities calculation:", len(removed_nodes))
+print("Nodes removed for iterative delta centralities calculation:", len(INPUT_REMOVED_NODES))
 print("Unconected graphs generated:", len(breaks) )
 
 perturbed_centralities = pd.DataFrame.from_dict( perturbed_centralities ) # Tabla por nodo
 
 cols = list(perturbed_centralities.columns); cols = [cols[-1]] + cols[:-1] # Reordena columnas
 perturbed_centralities = perturbed_centralities[cols] # Así la primera es la primera reacción 
-# TODO: exportar esta tabla? 
 
 perturbed = perturbed_centralities.mean( axis=0 ) # Promedio de perturbadas
+
+perturbed_centralities.insert(loc=0, column="Node_removed", value=INPUT_REMOVED_NODES)
+perturbed_centralities.set_index("Node_removed")
+
+# OUTPUT_TABLE_BY_NODE = '../results/perturbed_centralities_by_node.csv'
+# perturbed_centralities.to_csv( OUTPUT_TABLE , index=False )
 
 # Termina de comprimir las centralidades originales porque antes no cargo pandas
 
@@ -272,9 +272,4 @@ from networkx import write_gexf
 OUTPUT_GRAPH =  "../results/reactions_delta_centrality.gexf"
 write_gexf( G , OUTPUT_GRAPH )
 
-"""gexfs: 
-1.- bipartito // listo en otro archivo
-2.- unipartito // Listo aqui! 
- 1.- unipartito flujos.
- 2.- unipartito sensibilidades.
- 3.- unipartito centralidad total(overall)"""
+# %%

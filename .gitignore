@@ -19,3 +19,6 @@ tmp.*
 # IPython
 profile_default/
 ipython_config.py
+
+# Cosas de .vscode
+.vscode/
