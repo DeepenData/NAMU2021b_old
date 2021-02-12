@@ -101,10 +101,11 @@ def cobra2networkx(modelo, direccionado=True):
 
     from networkx.algorithms.bipartite.matrix import biadjacency_matrix      # Extrae matriz de adyacencia
     from networkx.algorithms.bipartite.matrix import from_biadjacency_matrix # Crea el grafo
-    from sklearn.preprocessing import binarize
     from scipy.sparse import csr_matrix
+    import numpy as np
 
-    tmp = binarize(abs(create_stoichiometric_matrix(model))) # Crea una matriz
+    tmp = abs(create_stoichiometric_matrix(model)) # Crea una matriz
+    tmp = (tmp > 0.0).astype(np.int_) # Binarización
     tmp = csr_matrix(tmp) # Convierte la matriz a una matriz dispersa
     tmp = from_biadjacency_matrix(tmp) # Usa la dispersa para un grafo bipartito
     # Eventualmente hacer gtrafos direccionoas y no-direccionados
@@ -194,7 +195,6 @@ def attr2partition(grafo, lista, nombre, asignar=0):
     return grafo
 
 # %% AA 15_ene_2021 --- Stoichiometric matrix to directed bipartite graph
-from sklearn.preprocessing import binarize
 from scipy.sparse import csr_matrix
 import networkx as nx
 from networkx.algorithms.bipartite.matrix import biadjacency_matrix      # Extrae matriz de adyacencia
@@ -285,7 +285,8 @@ nombres_cols.reverse()
 merged_directed_centralities_df = pd.DataFrame(merged_centralities, index= node_labels, columns= nombres_cols)
 
 # %% Undirected centralities 
-UNdirected_stoichiometric_matrix        =  binarize(abs(create_stoichiometric_matrix(model)))
+UNdirected_stoichiometric_matrix        = abs(create_stoichiometric_matrix(model))
+UNdirected_stoichiometric_matrix        = (UNdirected_stoichiometric_matrix > 0.0).astype(np.int_)
 
 sparse_undirected_stoichiometric_matrix = csr_matrix(UNdirected_stoichiometric_matrix)
 UNdirected_bipartite_graph              = from_biadjacency_matrix(sparse_undirected_stoichiometric_matrix) 

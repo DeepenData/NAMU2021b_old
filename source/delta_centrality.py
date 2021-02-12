@@ -117,10 +117,10 @@ t2 = time.time(); print('\n','TIME Importando y optimizando modelo:', (t2-t1)*10
 t1 = time.time() # Contador de esta sección
 
 from cobra.util.array import create_stoichiometric_matrix
-from sklearn.preprocessing import binarize # TODO: eliminar dependencia
 
 S_matrix = create_stoichiometric_matrix(model)
-S_matrix = binarize(abs(S_matrix) ) # TODO: Usar Numpy
+S_matrix = (abs(S_matrix) )
+S_matrix = (S_matrix > 0.0).astype(np.int_)
 
 projected_S_matrix = np.matmul(S_matrix.T, S_matrix)
 np.fill_diagonal(projected_S_matrix, 0)
