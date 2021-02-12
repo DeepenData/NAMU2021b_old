@@ -28,12 +28,13 @@ def cobra2networkx(modelo, direccionado=True):
     from cobra.util import create_stoichiometric_matrix
     from networkx import relabel_nodes, nodes
     from networkx.algorithms.bipartite.matrix import biadjacency_matrix, from_biadjacency_matrix
-    from sklearn.preprocessing import binarize
     from scipy.sparse import csr_matrix
+    import numpy as np
 
     assert str(type(modelo)) == "<class 'cobra.core.model.Model'>", "El objeto debe ser un modelo, no un optimizado (modelo.optimize())"
 
-    grafo = binarize(abs(create_stoichiometric_matrix(modelo))) # Crea una matriz
+    grafo = abs(create_stoichiometric_matrix(modelo)) # Crea una matriz
+    grafo = (grafo > 0.0).astype(np.int_) # Binarización
     grafo = csr_matrix(grafo) # Convierte la matriz a una matriz dispersa
     grafo = from_biadjacency_matrix(grafo) # Usa la dispersa para un grafo bipartito
     

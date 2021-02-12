@@ -10,15 +10,16 @@ from   networkx.algorithms.bipartite.matrix import biadjacency_matrix      # Ext
 
 import numpy as np # NumPy
 from scipy.sparse import csr_matrix # NetworkX necesita una matriz sparce
-from sklearn.preprocessing import binarize # Una función util de un paquete que no usaremos
+
 # %% --- Creando la matriz
-biadjacency_matrix =binarize(abs( \
+biadjacency_matrix = abs( \
  np.matrix('1 -1  0  0  0 -1  1  0; \
             0  1  1 -1 -1  0  0  0; \
             0  0  0  0  1  1 -1 -1; \
             0  0  0  0  0  1 -1  1; \
-            0  0  0  0  0 -1  1 -1') ) )
+            0  0  0  0  0 -1  1 -1') ) 
 # Por mientras la matriz está sin dirección
+biadjacency_matrix = (biadjacency_matrix > 0.0).astype(np.int_) # Binarización
 biadjacency_matrix # Observando la matriz como una array 2d
 # %% --- Crear el objeto de matriz sparce con SciPy
 # csr_matrix(biadjacency_matrix) # Para ver una salida
