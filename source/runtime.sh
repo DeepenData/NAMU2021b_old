@@ -6,7 +6,7 @@
 #SBATCH --tasks-per-node=1      # Una instancia Ray por nodo
 
 #SBATCH --cpus-per-task=2       # CPUs por nodo
-#SBATCH --mem-per-cpu=4GB       # RAM por CPU
+#SBATCH --mem-per-cpu=0.5GB     # RAM por CPU
 
 conda activate human-metnet     # El entorno de Conda con Ray
 
@@ -53,5 +53,4 @@ done
 
 # --- Invocando el Script Python
 
-cd source # La carpeta donde estan los codigos
-python -u delta_centrality.py
+time python -u source/delta_centrality.py './data/toy_metabolism_AA.json' 6

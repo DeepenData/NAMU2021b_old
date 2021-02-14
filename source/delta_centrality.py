@@ -94,7 +94,9 @@ def delta_centrality(G, removed_nodes):
 
 # --- Params
 
-INPUT_MODEL = '../data/toy_metabolism_AA.json'
+import sys
+
+INPUT_MODEL = sys.argv[1] # Modelo base
 
 # --- Sección que importa modulos
 
@@ -154,12 +156,14 @@ t2 = time.time(); print('\n','TIME Calculo de centralidades base:', (t2-t1)*1000
 t1 = time.time()
 
 INPUT_REMOVED_NODES = G.nodes # Todos los nodos
-N_WORKERS = 4 # Nucleos para procesamiento paralelo
+N_WORKERS = abs(int(sys.argv[2])) if sys.argv[2] else 1 # Nucleos para procesamiento paralelo
 
+G_ray = ray.put(G) # Pasa esto al object store antes que pasarlo multiples veces
 split_removed_nodes = np.array_split(INPUT_REMOVED_NODES, N_WORKERS)
 
 deltas = ray.get( 
-    [delta_centrality.remote(G, NODES) for NODES in split_removed_nodes] 
+    # SECCIÓN QUE ESTA CORRIENDO CODIGO PARALELO EN RAY
+    [delta_centrality.remote(G_ray, NODES) for NODES in split_removed_nodes] 
     )
 
 t2 = time.time(); print('\n','TIME Centralidades calculadas en paralelo:', (t2-t1)*1000 ,'ms')
@@ -168,12 +172,10 @@ t2 = time.time(); print('\n','TIME Centralidades calculadas en paralelo:', (t2-t
 
 t1 = time.time()
 # Como el resultado generado es un par de output parciales, necesito una función
-# que me permita pegarlos y ensamblar un output final. Por eso creo dos listas 
-# que seran el final, y luego .append() cada respupuesta parcial del par"""
-delta_centralities = []; breaks = []
-for delta in deltas:
-    delta_centralities.append( delta[0] )
-    breaks.append( delta[1] )
+# que me permita pegarlos y ensamblar un output final. Por eso creo dos list
+# comprehensions para separar la lista original. Es más rapido que un for loop. 
+delta_centralities = [ delta[0] for delta in deltas]
+breaks =             [ delta[1] for delta in deltas]
 
 t2 = time.time(); print('\n','TIME Merge de deltas:', (t2-t1)*1000 ,'ms')
 
