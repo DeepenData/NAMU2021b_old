@@ -6,7 +6,8 @@ Output: OUTPUT_NODE_DELTA, OUTPUT_RESUME_TABLE, OUTPUT_GRAPH"""
 
 import ray
 import time
-ray.init(address='auto', _redis_password='5241590000000000')
+# ray.init(address='10.0.17.66:6379', _redis_password='5241590000000000')
+ray.init()
 
 # --- Definición de funciones
 
