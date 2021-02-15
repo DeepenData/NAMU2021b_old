@@ -6,8 +6,10 @@ Output: OUTPUT_NODE_DELTA, OUTPUT_RESUME_TABLE, OUTPUT_GRAPH"""
 
 import ray
 import time
-# ray.init(address='10.0.17.66:6379', _redis_password='5241590000000000')
-ray.init()
+import os
+
+print("Launching from:", os.environ["ip_head"], "\n","Password:" , os.environ["redis_password"])
+ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
 
 # --- Definición de funciones
 
@@ -111,6 +113,7 @@ t1 = time.time()
 from cobra.io import load_json_model, save_json_model
 model = load_json_model(INPUT_MODEL)
 
+print("Iniciando optimización del modelo")
 solution_fba = model.optimize() # Optimización del modelo para check
 solution_fba.fluxes # Check si los flujos funcionan
 
@@ -138,7 +141,8 @@ if not (nx.is_connected(G)):
     
     largest_component = max(nx.connected_components(G), key=len)
     print ('Removed',len(G.nodes) - len(largest_component), 'nodes.')
-    
+    print ( len(G.nodes), "nodes remaining.")
+
     G = G.subgraph(largest_component)
 
 node_dict = lambda l : dict( zip( list(G.nodes), l ) )
