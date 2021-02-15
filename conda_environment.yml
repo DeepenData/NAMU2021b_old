@@ -12,8 +12,8 @@ dependencies:
   - backcall=0.2.0=pyhd3eb1b0_0
   - blas=1.0=mkl
   - bleach=3.3.0=pyhd3eb1b0_0
-  - ca-certificates=2021.1.19=h06a4308_0
-  - certifi=2020.12.5=py38h06a4308_0
+  - ca-certificates=2020.12.5=ha878542_0
+  - certifi=2020.12.5=py38h578d9bd_1
   - cffi=1.14.4=py38h261ae71_0
   - dbus=1.13.18=hb2f20db_0
   - decorator=4.4.2=pyhd3eb1b0_0
@@ -77,6 +77,7 @@ dependencies:
   - numpy-base=1.19.2=py38hfa32c7d_0
   - openssl=1.1.1i=h27cfd23_0
   - packaging=20.9=pyhd3eb1b0_0
+  - pandas=1.1.4=py38h0ef3d22_0
   - pandoc=2.11=hb0f4dca_0
   - pandocfilters=1.4.3=py38h06a4308_1
   - parso=0.8.1=pyhd3eb1b0_0
@@ -97,6 +98,7 @@ dependencies:
   - python=3.8.5=h7579374_1
   - python-dateutil=2.8.1=pyhd3eb1b0_0
   - python_abi=3.8=1_cp38
+  - pytz=2021.1=pyhd8ed1ab_0
   - pyzmq=20.0.0=py38h2531618_1
   - qt=5.9.7=h5867ecd_1
   - qtconsole=5.0.2=pyhd3eb1b0_0
@@ -144,7 +146,7 @@ dependencies:
     - filelock==3.0.12
     - future==0.18.2
     - google-api-core==1.26.0
-    - google-auth==1.25.0
+    - google-auth==1.26.1
     - googleapis-common-protos==1.52.0
     - gpustat==0.6.0
     - grpcio==1.35.0
@@ -161,7 +163,6 @@ dependencies:
     - opencensus==0.7.12
     - opencensus-context==0.1.2
     - optlang==1.4.4
-    - pandas==1.2.2
     - protobuf==3.14.0
     - psutil==5.8.0
     - py-spy==0.3.4
@@ -169,9 +170,8 @@ dependencies:
     - pyasn1-modules==0.2.8
     - pydantic==1.7.3
     - python-libsbml==5.19.0
-    - pytz==2021.1
     - pyyaml==5.4.1
-    - ray==1.1.0
+    - ray==1.2.0
     - redis==3.5.3
     - requests==2.25.1
     - rfc3986==1.4.0
@@ -185,4 +185,4 @@ dependencies:
     - typing-extensions==3.7.4.3
     - urllib3==1.26.3
     - yarl==1.6.3
-prefix: /home/manu/miniconda3/envs/human-metnet
+prefix: /home/centos/miniconda3/envs/human-metnet
