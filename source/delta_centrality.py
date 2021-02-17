@@ -8,7 +8,7 @@ import ray
 import time
 import os
 
-print("Launching from:", os.environ["ip_head"], "\n","Password:" , os.environ["redis_password"])
+# print("Launching from:", os.environ["ip_head"], "\n","Password:" , os.environ["redis_password"])
 ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
 
 # --- Definición de funciones
@@ -188,7 +188,15 @@ t2 = time.time(); print('\n','TIME Merge de deltas:', (t2-t1)*1000 ,'ms')
 
 t1 = time.time()
 
+import pickle
+
+outfile1 = open('baseline_centralities','wb'); pickle.dump(baseline_centralities,outfile1); outfile1.close()
+outfile2 = open('delta_centralities','wb'); pickle.dump(delta_centralities,outfile2); outfile2.close()
+outfile3 = open('breaks','wb'); pickle.dump(breaks,outfile3); outfile3.close()
+
+"""
 perturbed_centralities = []
+
 
 for delta in delta_centralities:
     tmp = pd.DataFrame.from_dict( delta ) # Selecciona un grupo de 8 centralidades
@@ -240,3 +248,4 @@ nx.set_node_attributes(G, node_dict( log2_contribution ), "log2_centrality_contr
 OUTPUT_GRAPH =  "tmp.reactions_delta_centrality.gexf"
 nx.write_gexf( G , OUTPUT_GRAPH )
 t2 = time.time(); print('\n','TIME Grafo generado:', (t2-t1)*1000 ,'ms')
+"""

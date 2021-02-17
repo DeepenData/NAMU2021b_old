@@ -1,11 +1,11 @@
 #!/bin/bash
 ### This script works for any number of nodes, Ray will find and manage all resources
-#SBATCH --nodes=10
+#SBATCH --nodes=5
 
 ### Give all resources to a single Ray task, ray can manage the resources internally
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-task=0
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=44
 
 # Load modules or your own conda environment here
 # module load pytorch/v1.4.0-gpu 
@@ -39,13 +39,14 @@ do
   sleep 5
 done
 
-#### call your code below
+#### SECCIÓN QUE SI EJECUTA CODIGO PYTHON Y DEMAS
+###  Helper que cuenta cuantos cores hay disponibles
+n_cores=$(sinfo -o "%C" -h | awk -F '/' '{print $2}')
+
 echo "Status del cluster Ray"
 ray status --address $ip_head --redis_password $redis_password
-echo "Status del cluster Slurm"
-sinfo --Node
 
-time python -u ./source/delta_centrality.py './data/stimulated_2021.json' 20
+time python -u ./source/delta_centrality.py './data/stimulated_2021.json' $n_cores
 
 exit
 
