@@ -8,7 +8,6 @@ import ray
 import time
 import os
 
-# print("Launching from:", os.environ["ip_head"], "\n","Password:" , os.environ["redis_password"])
 ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
 
 # --- Definición de funciones
@@ -190,9 +189,10 @@ t1 = time.time()
 
 import pickle
 
-outfile1 = open('baseline_centralities','wb'); pickle.dump(baseline_centralities,outfile1); outfile1.close()
-outfile2 = open('delta_centralities','wb'); pickle.dump(delta_centralities,outfile2); outfile2.close()
-outfile3 = open('breaks','wb'); pickle.dump(breaks,outfile3); outfile3.close()
+outfile1 = open('./tmp/baseline_centralities','wb'); pickle.dump(baseline_centralities,outfile1); outfile1.close()
+# TODO: mejorar el dump de este archivo y simplificar la salidad de datos
+outfile2 = open('./tmp/delta_centralities','wb'); pickle.dump(delta_centralities,outfile2); outfile2.close()
+outfile3 = open('./tmp/breaks','wb'); pickle.dump(breaks,outfile3); outfile3.close()
 
 """
 perturbed_centralities = []
