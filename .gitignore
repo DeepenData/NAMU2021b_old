@@ -1,5 +1,6 @@
 # Archivos temporales y scraps
 tmp.*
+tmp/
 
 # Cosas de proyectos RStudio
 .Rproj.user
