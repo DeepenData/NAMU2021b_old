@@ -7,7 +7,7 @@ Output: OUTPUT_NODE_DELTA, OUTPUT_RESUME_TABLE, OUTPUT_GRAPH"""
 import ray
 import time
 import os
-
+# Conectando a cluster de Ray inicializado con sbatch
 ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
 
 # --- Definición de funciones
@@ -39,7 +39,7 @@ def eight_centralities(grafo):
     """↓ Here be dragons ↓"""
     cc  = nx.closeness_centrality(grafo, distance=None, wf_improved=True)
     lc  = nx.load_centrality(grafo, cutoff=None, normalized=True, weight=None)
-    
+
     """ Requieren un grafo full conected """
     if not (nx.is_connected(grafo)) : 
         ic = {}; soc = {}
@@ -80,7 +80,7 @@ def delta_centrality(G, removed_nodes):
 
     import networkx as nx
     from copy import deepcopy
-    
+
     breaks = []; centralities = []
     for node in removed_nodes:
         print( 'Iterando en:', node )
@@ -113,8 +113,8 @@ from cobra.io import load_json_model, save_json_model
 model = load_json_model(INPUT_MODEL)
 
 print("Iniciando optimización del modelo")
-solution_fba = model.optimize() # Optimización del modelo para check
-solution_fba.fluxes # Check si los flujos funcionan
+#solution_fba = model.optimize() # Optimización del modelo para check
+#solution_fba.fluxes # Check si los flujos funcionan
 
 t2 = time.time(); print('\n','TIME Importando y optimizando modelo:', (t2-t1)*1000 ,'ms')
 
@@ -146,7 +146,7 @@ if not (nx.is_connected(G)):
 
 node_dict = lambda l : dict( zip( list(G.nodes), l ) )
 
-cursed_dict = node_dict( [reaction.id for reaction in model.reactions] )
+cursed_dict = node_dict( [reaction.id for reaction in model.reimporactions] )
 G = nx.relabel_nodes(G, cursed_dict, copy=True)
 
 t2 = time.time(); print('\n','TIME Conversión a grafo:', (t2-t1)*1000 ,'ms')
@@ -163,7 +163,9 @@ INPUT_REMOVED_NODES = G.nodes # Todos los nodos
 N_WORKERS = abs(int(sys.argv[2])) if sys.argv[2] else 1 # Nucleos para procesamiento paralelo
 
 G_ray = ray.put(G) # Pasa esto al object store antes que pasarlo multiples veces
-split_removed_nodes = np.array_split(INPUT_REMOVED_NODES, N_WORKERS)
+
+# Usa min(N_WORKERS, INPUT//2) para evitar sobre-paralelizar
+split_removed_nodes = np.array_split(INPUT_REMOVED_NODES, min(N_WORKERS, INPUT_REMOVED_NODES//2) )
 
 deltas = ray.get( 
     # SECCIÓN QUE ESTA CORRIENDO CODIGO PARALELO EN RAY
@@ -172,14 +174,14 @@ deltas = ray.get(
 
 t2 = time.time(); print('\n','TIME Centralidades calculadas en paralelo:', (t2-t1)*1000 ,'ms')
 
-## --- Centralidades delta (merge)
+## --- Centralidades perturbadas (merge)
 
 t1 = time.time()
 # Como el resultado generado es un par de output parciales, necesito una función
 # que me permita pegarlos y ensamblar un output final. Por eso creo dos list
-# comprehensions para separar la lista original. Es más rapido que un for loop. 
-delta_centralities = [ delta[0] for delta in deltas]
-breaks =             [ delta[1] for delta in deltas]
+# comprehensions para separar la lista original. Es más rapido que un for loop.
+perturbed_centralities = [ delta[0] for delta in deltas] 
+breaks =                 [ delta[1] for delta in deltas] 
 
 t2 = time.time(); print('\n','TIME Merge de deltas:', (t2-t1)*1000 ,'ms')
 
@@ -187,18 +189,39 @@ t2 = time.time(); print('\n','TIME Merge de deltas:', (t2-t1)*1000 ,'ms')
 
 t1 = time.time()
 
+import pandas as pd
+
+perturbed_centralities = [ i for ii in perturbed_centralities for i in ii ] # Squash N_WORKERS x NO/DO/S -> NODOS
+perturbed_centralities = [ pd.DataFrame.from_dict( node ) for node in perturbed_centralities ] # Dict a Dataframes
+
+centralities = [
+    'harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality', 
+    'closeness_centrality', 'load_centrality', 'information_centrality', 'second_order_centrality'
+]
+
+for node in perturbed_centralities: node.index = centralities # Indexa las centralidades
+
+perturbed_centralities = [ node.T for node in perturbed_centralities ] # Transposición de dataframes, cols=centralities
+perturbed_centralities = [ node.reindex( G.nodes ) for node in perturbed_centralities ] # Indexa con todos los nodos
+
+for node in perturbed_centralities: node.reindex( G.nodes ) # Indexa con los nombres de los nodos
+# En esta parte ya tenemos un set de dataframes de dimensiones (n, c) consistentes, incluyendo NaN
+
+# TODO: convertir [ dataframes... ] a Tensor Numpy
+# TODO: añadir los index al tensor u objeto creado
+
 import pickle
 
 outfile1 = open('./tmp/baseline_centralities','wb'); pickle.dump(baseline_centralities,outfile1); outfile1.close()
-# TODO: mejorar el dump de este archivo y simplificar la salidad de datos
-outfile2 = open('./tmp/delta_centralities','wb'); pickle.dump(delta_centralities,outfile2); outfile2.close()
+# TODO: tensorizar esto
+outfile2 = open('./tmp/perturbed_centralities','wb'); pickle.dump(perturbed_centralities,outfile2); outfile2.close()
 outfile3 = open('./tmp/breaks','wb'); pickle.dump(breaks,outfile3); outfile3.close()
 
 """
 perturbed_centralities = []
 
 
-for delta in delta_centralities:
+for delta in perturbed_centralities:
     tmp = pd.DataFrame.from_dict( delta ) # Selecciona un grupo de 8 centralidades
     tmp = dict( tmp.mean( axis=0 ) ) # Calcula el promedio de centralidades
     perturbed_centralities.append( tmp ) # Al diccionario de centralidades perturbadas
@@ -208,9 +231,9 @@ print("Unconected graphs generated:", len(breaks) )
 
 perturbed_centralities = pd.DataFrame.from_dict( perturbed_centralities ) # Tabla por nodo
 
-# TODO: resolver este re-ordenado del dataframe y exportarlo. 
+# TODO: resolver este re-ordenado del dataframe y exportarlo.
 #cols = list(perturbed_centralities.columns); cols = [cols[-1]] + cols[:-1] # Reordena columnas
-#perturbed_centralities = perturbed_centralities[cols] # Así la primera es la primera reacción 
+#perturbed_centralities = perturbed_centralities[cols] # Así la primera es la primera reacción
 
 perturbed = perturbed_centralities.mean( axis=0 ) # Promedio de perturbadas
 
