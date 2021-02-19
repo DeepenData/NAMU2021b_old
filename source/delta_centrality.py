@@ -2,7 +2,72 @@
 """Un programa que importa un modelo y genera una tabla de centralidades con un resumen de las reacciones, y el log2 
 entre la reacción sin modificar y modificada. Genera un grafo gephx con esta información codificada en los nodos. 
 Parametros: INPUT_MODEL, INPUT_REMOVED_NODES, [N_WORKERS]
-Output: OUTPUT_NODE_DELTA, OUTPUT_RESUME_TABLE, OUTPUT_GRAPH"""
+Output: OUTPUT_NODE_DELTA, OUTPUT_RESUME_TABLE, OUTPUT_GRAPH
+
+
+Matrix_rows_cols_width
+
+A_m_c: Centralidades (c = 1:8) de todos los nodos (m=1:1000). Dims = 1000 x 8. // Centralidades base
+tA_1_m_c: Centralidades base como tensor de alto 1. 
+
+B_n_m_c: Centralidades (c) de los nodos  (m=1, ... NA(en la posición de nodo n) ...,1000) removiendo el nodo n. Dims: 1000 x 999+(NaN) x 8
+
+D_m_c_n: Es lo mismo que B_n_m_c pero con las centralidades en la segunda dimensión.
+
+ms: Nodos que pertenecen al subsistema s. Dims = length({ nodos E s}) x 1.
+
+A_ms_c: Lo mismo que A_m_c pero indexado para ms.
+B_n_ms_c: Lo mismo que B_n_m_c pero indexado para ms. // B_m_c[ms, *, *]
+D_ms_c_n: Lo mismo que D_m_c_n pero indexado para ms.
+
+E_c: Promedio por centralidad de todos los nodes en ms. // mean(axis='c')
+F_c_n:Promedio por centralidad de todos los nodes en ms removiendo n. // E_c.mean(axis='n')
+
+## Operaciones:
+
+Para los nodos del conjunto ms1, tal que  ms1 pertenece el subsistema s1.
+
+l_ms1 = length(ms1) : el número de nodos en el subsistema s1. // len(ms1)
+
+- A_ms1_c (l_ms1 x 8) => calcular el promedio de cada columna ->  (1 x 8) -> transponer => E_c (8 x 1) // by_columns.means()
+- E_c = columns_means(A_ms1_c)
+   
+- D_ms1_c_n (l_ms1 x 8 x n, donde n = son los nodos removidos = 1000)  => calcular el promedio de cada columna (c = [1:8]) => 
+  G( 1 x 8 x n) => colapsar la primera dimensión  => matriz( 8 x n) = (c x n) => F_c_n // cosa = cosa[0] 
+  pseudocode : means_by_cols(D_ms1_c_n) = G( 1 x 8 x n) => esto es un arreglo de largo n de vectores fila de tamaño 1 x 8 
+              o un tensor aplanado.
+              G => cada vector fila (1 x 8) apendiarlo en una nueva matriz M tal que M tenga dims 8 x n = F_c_n.
+
+- F_c_n (8 x n) => extraer cada columna (n) por separado, formar una matriz diagonal (8 x 8) desde cada columna e invertir (elevar a -1).
+            Guardar todas las matrices diagonales en un tensor (o ndarray) => F_inv_c_c_n (8 x 8 x 1000).
+            pseudocode : F_inv_c_c_n = 
+                F_c_n.T.aslist() // lista len() = 1000 de arrays len() = 8 // 
+                for n in F_c_n : diagonalize(n)
+                F_c_n.asarray() // ahora vuelve a ser un array de 1000 x 8 x 8...
+                transpose(?) ... array 8 x 8 x 1000                 
+
+- F_inv_c_c_n => multiplicar cada capa (matrices diagonales 8 x 8) del tensor por el vector E_c (8 x 1) =>
+                cada unos de los vectores resultantes (8 x 1, estas son las razones) apendiarlos en una matrix. => (8 x n) => 
+                transponer => Ratios (n x 8).
+                pseudocode : F_inv_c_c_n(...,...,i) x E_c = r_i
+                    Ratios = transpose(matrix([r_1, r_2, ... r_i]))
+
+- Ratios => aplicar log2 a cada entrada de la matriz => FC (1000 x 8). pseudocode: FC_s1 = log2(Ratios).
+  ***FC_s1 (1000 x 8) : row = nodo removido, col= fold change de una medida de centralidad (para el subsistema s1).
+  *** interpretación de FC_s1: el efecto (contribución) de cada nodo sobre las distintas centralidades (c=[1:8]) del subsistema s1.
+
+- FC_s1 => repetir todo lo anterior pero con los nodos (ms2) del siguiente subsistema (s2) => FC_s2 => 
+  iterar s (número de subsistemas) veces =>
+  FC_s1, FC_s2, ..., FC_ss (j = 1,..., s)
+
+- Construir el tensor final (tFC) apendiando las capas: FC_s1, FC_s2, ..., FC_ss (j = 1,..., s) => tFC (1000 x 8 x s).
+  pseudocode: tFC = tensor(FC_s1, FC_s2, ..., FC_ss).
+
+git add source/delta_centrality.py
+git commit -m "Sync lacra"
+git pam
+
+"""
 
 import ray
 import time
@@ -109,7 +174,7 @@ import pandas as pd
 ## --- Modelo de Cobra
 t1 = time.time()
 
-from cobra.io import load_json_model, save_json_model
+from cobra.io import load_json_model
 model = load_json_model(INPUT_MODEL)
 
 print("Iniciando optimización del modelo")
@@ -188,7 +253,7 @@ t2 = time.time(); print('\n','TIME Merge de deltas:', (t2-t1)*1000 ,'ms')
 ## --- Creando las tablas de salida
 
 t1 = time.time()
-
+# TODO: ver que de esto puedo pasar a la ejecución paralelizada
 import pandas as pd
 
 perturbed_centralities = [ i for ii in perturbed_centralities for i in ii ] # Squash N_WORKERS x NO/DO/S -> NODOS
@@ -202,13 +267,24 @@ centralities = [
 for node in perturbed_centralities: node.index = centralities # Indexa las centralidades
 
 perturbed_centralities = [ node.T for node in perturbed_centralities ] # Transposición de dataframes, cols=centralities
-perturbed_centralities = [ node.reindex( G.nodes ) for node in perturbed_centralities ] # Indexa con todos los nodos
+perturbed_centralities = [ node.reindex( G.nodes ) for node in perturbed_centralities ] # Indexa por nodos
 
-for node in perturbed_centralities: node.reindex( G.nodes ) # Indexa con los nombres de los nodos
-# En esta parte ya tenemos un set de dataframes de dimensiones (n, c) consistentes, incluyendo NaN
+# En esta parte ya tenemos un set de dataframes de dimensiones (m=n, c) consistentes, incluyendo NaN
 
-# TODO: convertir [ dataframes... ] a Tensor Numpy
+
+"""
+n = nodos removidos por interación; m = resto de los nodos del grafo + 1 NaN; c = centralidades (8)
+nota que len(n) == len(m)
+
+A_m_c : Array 2D << Dataframe << [list {centralidades} ] # Un array de tamaño (m,c) 
+B_n_m_c : Array 3D << [list  A_m_c ] # un tensor de tamaño (n, m, c) 
+"""
+
+perturbed_centralities = [ node.to_numpy() for node in perturbed_centralities ] # Convierte a Numpy
+# TODO: vale la pena ahorrar memoria con .to_numpy( dtype='float32' ) ?
+perturbed_centralities = perturbed_centralities.as_array()
 # TODO: añadir los index al tensor u objeto creado
+# TODO: VS Code desde el Browser (Clarktech) 
 
 import pickle
 
