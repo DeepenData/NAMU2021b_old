@@ -174,7 +174,7 @@ if not (nx.is_connected(G)):
 
 node_dict = lambda l : dict( zip( list(G.nodes), l ) )
 
-cursed_dict = node_dict( [reaction.id for reaction in model.reimporactions] )
+cursed_dict = node_dict( [reaction.id for reaction in model.reactions] )
 G = nx.relabel_nodes(G, cursed_dict, copy=True)
 
 t2 = time.time(); print('\n','TIME Conversión a grafo:', (t2-t1)*1000 ,'ms')
@@ -184,7 +184,8 @@ t1 = time.time()
 
 INPUT_REMOVED_NODES = G.nodes # Todos los nodos
 N_WORKERS = abs(int(sys.argv[2])) if sys.argv[2] else 1 # Nucleos para procesamiento paralelo
-split_removed_nodes = np.array_split(INPUT_REMOVED_NODES, min(N_WORKERS, INPUT_REMOVED_NODES//2) ) # Usa min(N_WORKERS, INPUT//2) para evitar sobre-paralelizar
+# split_removed_nodes = np.array_split(INPUT_REMOVED_NODES, min(N_WORKERS, INPUT_REMOVED_NODES//2) ) # Usa min(N_WORKERS, INPUT//2) para evitar sobre-paralelizar
+split_removed_nodes = np.array_split(INPUT_REMOVED_NODES, min(N_WORKERS, len(INPUT_REMOVED_NODES)//2) ) # Usa min(N_WORKERS, INPUT//2) para evitar sobre-paralelizar
 
 G_ray = ray.put(G) # Pasa esto al object store antes que pasarlo multiples veces
 deltas = [delta_centrality.remote(G_ray, NODES) for NODES in split_removed_nodes] # SECCIÓN QUE MANDA CODIGO PARALELO EN RAY

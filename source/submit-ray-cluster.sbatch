@@ -46,7 +46,10 @@ n_cores=$(sinfo -o "%C" -h | awk -F '/' '{print $2}')
 echo "Status del cluster Ray"
 ray status --address $ip_head --redis_password $redis_password
 
-time python -u ./source/delta_centrality.py './data/stimulated_2021.json' $n_cores
+time python -u ./source/delta_centrality.py './data/stimulated_2021.json' 220
+
+### INFORMACIÓN FINAL QUE SALE AL OUTPUT DEL SISTEMA
+sstat  -j   $SLURM_JOB_ID.batch   --format=JobID,MaxVMSize
 
 exit
 
