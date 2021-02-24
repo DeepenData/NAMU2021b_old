@@ -8,111 +8,133 @@ import pickle # Importa los elementos generados por delta_centrality.py
 
 outfile1 = open('./tmp/baseline_centralities','rb'); baseline_centralities = pickle.load(outfile1); outfile1.close()   # Tensor n x m x c
 outfile2 = open('./tmp/perturbed_centralities','rb'); perturbed_centralities = pickle.load(outfile2); outfile2.close() # Tensor 1 x m x c
-outfile3 = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(outfile3); outfile3.close() # Indice de largo m == n (todos los nodos)
-outfile4 = open('./tmp/breaks','rb'); breaks = pickle.load(outfile4); outfile4.close() # Lista de exceptciones <n
 
+outfile3 = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(outfile3); outfile3.close() # Indice de largo m == n (todos los nodos)
 # Index de las centralidades calculadas
-ct = ['harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality', 
+index_centralities = ['harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality', 
       'closeness_centrality', 'load_centrality', 'information_centrality', 'second_order_centrality']
 
-import numpy as np
+# index_nodes : es la lista de las reacciones
+outfile4 = open('./tmp/breaks','rb'); breaks = pickle.load(outfile4); outfile4.close() # Lista de exceptciones <n
 
-def ncm(tensor): 
+import numpy as np
+import pandas as pd
+
+def rcn(tensor): 
     """Convierte un tensor de dimensiones `(n, m, c)` a uno `(n, c, m)`."""
     import numpy as np
     return  np.transpose( tensor, (0,2,1) )
 
-
-# N = Nodo removido [1:n]
-# M = Todos los nodos del modelo [1:m]. len(n) == len(m)
+# R = Nodo removido [1:r]
+# N = Todos los nodos del modelo [1:n]. len(R) == len(N)
 # C = centrality [1:c]. Son 8 en total
 
 # S = subsystem [1:s]. S.nodes = subset( N )
 
 # %% --- Cosas de tensores
 
-# tA_1_m_c: Centralidades base como tensor de alto 1. Dims = 1 x 1000 x 8
-tA_m_c = baseline_centralities
+# A_n_c: Centralidades (c = 1:8) de todos los nodos (m=1:1000). Dims = 1000 x 8. // Centralidades base
+A_n_c = baseline_centralities[0] # (m,c) 
 
-# A_m_c: Centralidades (c = 1:8) de todos los nodos (m=1:1000). Dims = 1000 x 8. // Centralidades base
-A_m_c = baseline_centralities[0]
+# A_1_n_c: Centralidades base como tensor de alto 1. Dims = 1 x 1000 x 8
+A_1_n_c = baseline_centralities # (1,m,c)
 
-# B_n_m_c: Centralidades (c) de los nodos  (m=1, ... NA(en la posición de nodo n) ...,1000) removiendo el nodo n. Dims: 1000 x 999+(NaN) x 8
-B_n_m_c = perturbed_centralities
+# B_r_n_c: Centralidades (c) de los nodos  (n=1, ... NA(en la posición de nodo r) ...,1000) removiendo el nodo r. 
+B_r_n_c = perturbed_centralities # Dims: (r, n, c) ~ 1000 x 999+(NaN) x 8
 
-# D_n_c_m: Es lo mismo que B_n_m_c pero con las centralidades en la segunda dimensión.
-D_n_c_m = ncm( B_n_m_c )
+# C_r_n_c se omite porque parece que C es de centralidades y es confuso y caotico 
 
-# TODO ms: Nodos que pertenecen al subsistema s. Dims = length({ nodos E s}) x 1.
+# D_r_c_n: Es lo mismo que B_r_n_c pero con las centralidades en la segunda dimensión.
+D_r_c_n = rcn( B_r_n_c )
 
-# A_ms_c: Lo mismo que A_m_c pero indexado para ms.
-A_ms_c = A_m_c[1:25,:]
+get_n( [] )
+get_c( [] )
+get_n( [] )
 
-# B_n_ms_c: Lo mismo que B_n_m_c pero indexado para ms. // B_m_c[ms, *, *]
-B_n_ms_c = B_n_m_c[:,1:25,:]
+# %%
+def subsystem_tensor( subsystem_nodes, tensor=perturbed_centralities, complete_index=index_nodes, axis_to_index=1):
+    """Genera un tensor con un subset de nodos basados en el subsistema pedido
 
-# D_n_c_ms: Lo mismo que D_n_c_ms pero indexado para ms.
-D_n_c_ms = ncm( B_n_ms_c )
-# TODO: abajo se contradice y dice que deberia ser shape=(ms,c,n)
-D_ms_c_n = np.transpose( B_n_ms_c, axes=(1,2,0) )
+    Parameters
+    ----------
+    subsystem_nodes : list
+        Lista de nodos por nombre para el subsistema. 
+        Eg. `['OxPhox','GluRxn1']`
+    tensor : numpy.ndarray, default perturbed_centralities
+        Un tensor de dimensiones `(r,n,c)`, by default perturbed_centralities
+    complete_index : list, default index_nodes
+        La lista con el indice por nombre de los nodos, tiene que ser del mismo
+        largo que la dimensión `n` del tensor 
+    axis_to_index : int, default 1
+        La dimensión en la que se aplica el indexado. Un tensor normal es de 
+        forma `(r,n,c)`, pero puede ser transpuesto de forma que n ya no este en
+        la posición 1 
 
+    Returns
+    -------
+    tensor : numpy.ndarray
+        Un tensor de dimensiones (r,ns,c), creado a partir de la lista de nodos
+        del subsistema. No es el mismo objeto que el tensor original, así que
+        puede ser un problema con la memoria. 
+    """
+    import numpy as np
+
+    # Index por posición a partir de una lista de reacciones
+    subsystem_index = [ complete_index.index(node) for node in subsystem_nodes ]
+
+    return tensor[:, subsystem_index ,:]
+
+import random   # DEMOSTRACIÓN DE SUBSISTEMAS RANDOM
+random.seed(23) # DE DISTINTO LAGRGO Y SIMILAR
+
+ns1 = [ index_nodes[n] for n in random.sample(range(0, 1055), 7)  ]
+ns1 = [ index_nodes[n] for n in random.sample(range(0, 1055), 11) ]
+
+# A_ns_c: Lo mismo que A_n_c pero indexado para ns.
+A_ns1_c = subsystem_tensor( ns1, A_1_n_c )[0]
+A_ns2_c = subsystem_tensor( ns2, A_1_n_c )[0]
+
+# B_r_ns_c: Lo mismo que B_r_n_c pero indexado para ns. // B_n_c[ns, *, *]
+B_r_ns1_c = subsystem_tensor( ns1, B_r_n_c )
+B_r_ns2_c = subsystem_tensor( ns2, B_r_n_c )
+
+# %%
 # E_c: Promedio por centralidad de todos los nodes en ms. 
-E_c = np.mean( A_ms_c.T, axis=1, keepdims=True ) # .shape = (c,1)
+E_s1_c = np.mean( A_ns1_c.T, axis=1, keepdims=True ) # .shape = (c,1)
+E_s2_c = np.mean( A_ns2_c.T, axis=1, keepdims=True ) # .shape = (c,1)
 
 #F_c_n:Promedio por centralidad de todos los nodes en ms removiendo n. // E_c.mean(axis='n')
-F_c_n = np.mean( B_n_ms_c , axis = 1) #, keepdims=True )
-F_c_n = F_c_n.T # Las dimensiones correctas (c,n)
+F_s1_c_n = np.mean( B_r_ns1_c , axis = 1).T #, keepdims=True )
+F_s2_c_n = np.mean( B_r_ns2_c , axis = 1).T #, keepdims=True )
+# Las dimensiones correctas (c,n)
 
-F_c_c_n = np.apply_along_axis( np.diag, 0, F_c_n.T) # Tensor con centralidades diagonales x nodos (c,c,n)
-F_inv_c_c_n = np.linalg.inv(F_c_c_n.T).T # Calcula el inverso de las n matrices (c,c).    shape = (c,c,n)
+F_s1_c_c_n = np.apply_along_axis( np.diag, 0, F_s1_c_n) # Tensor con centralidades diagonales x nodos (c,c,n)
+F_s1_inv_c_c_n = np.linalg.inv(F_s1_c_c_n.T).T # Calcula el inverso de las n matrices (c,c).  shape = (c,c,n)
 
-Ratios = F_inv_c_c_n * E_c # .shape = (c,c,n) * (1,c)
+F_s2_c_c_n = np.apply_along_axis( np.diag, 0, F_s2_c_n) # Tensor con centralidades diagonales x nodos (c,c,n)
+F_s2_inv_c_c_n = np.linalg.inv(F_s2_c_c_n.T).T # Calcula el inverso de las n matrices (c,c).  shape = (c,c,n)
 
-# %% --- Tensores extraños
-"""## Operaciones:
+#F_inv_c_c_n.shape
 
-Para los nodos del conjunto ms1, tal que  ms1 pertenece el subsistema s1.
+capa_i_s1 = lambda capa_i : np.matmul( capa_i , E_s1_c ) 
+capa_i_s2 = lambda capa_i : np.matmul( capa_i , E_s2_c ) 
 
-l_ms1 = length(ms1) : el número de nodos en el subsistema s1. // len(ms1)
+Ratios_s1 = np.apply_along_axis( capa_i, 0, F_s1_inv_c_c_n)
+Ratios_s2 = np.apply_along_axis( capa_i, 0, F_s2_inv_c_c_n)
 
-- A_ms1_c (l_ms1 x 8) => calcular el promedio de cada columna ->  (1 x 8) -> transponer => E_c (8 x 1) // by_columns.means()
+FC_s1  = np.log2(Ratios_s1[0].T)
+FC_s2  = np.log2(Ratios_s2[0].T)
 
-# TODO ?? D_ms1_c_n (l_ms1 x 8 x n, donde n = son los nodos removidos = 1000)  => calcular el promedio de cada columna (c = [1:8]) => 
+FC_final = np.asarray( [FC_s1, FC_s2] )      # Shape (s,n,c)
+FC_final = np.transpose( FC_final, (2,1,0) ) # Shape (n,c,s)
 
-  G( 1 x 8 x n) => colapsar la primera dimensión  => matriz( 8 x n) = (c x n) => F_c_n // cosa = cosa[0] 
-  # TODO: G es una matriz intermedia innecesaria
+subsystems = {
+    'name1' : [reaction1, reaction2, reaction3], 
+    'name2' : [reaction3, reaction5, reaction9]
+}
 
-  pseudocode : means_by_cols(D_ms1_c_n) = G( 1 x 8 x n) => esto es un arreglo de largo n de vectores fila de tamaño 1 x 8 
-              o un tensor aplanado.
-              G => cada vector fila (1 x 8) apendiarlo en una nueva matriz M tal que M tenga dims 8 x n = F_c_n.
-
-- F_c_n (8 x n) => extraer cada columna (n) por separado, formar una matriz diagonal (8 x 8) desde cada columna e invertir (elevar a -1).
-            Guardar todas las matrices diagonales en un tensor (o ndarray) => F_inv_c_c_n (8 x 8 x 1000).
-            pseudocode : F_inv_c_c_n = 
-                F_c_n.T.aslist() // lista len() = 1000 de arrays len() = 8 // 
-                for n in F_c_n : diagonalize(n)
-                F_c_n.asarray() // ahora vuelve a ser un array de 1000 x 8 x 8...
-                transpose(?) ... array 8 x 8 x 1000                 
-
-- F_inv_c_c_n => multiplicar cada capa (matrices diagonales 8 x 8) del tensor por el vector E_c (8 x 1) =>
-                cada unos de los vectores resultantes (8 x 1, estas son las razones) apendiarlos en una matrix. => (8 x n) => 
-                transponer => Ratios (n x 8).
-                pseudocode : F_inv_c_c_n(...,...,i) x E_c = r_i
-                    Ratios = transpose(matrix([r_1, r_2, ... r_i]))
-
-- Ratios => aplicar log2 a cada entrada de la matriz => FC (1000 x 8). pseudocode: FC_s1 = log2(Ratios).
-  ***FC_s1 (1000 x 8) : row = nodo removido, col= fold change de una medida de centralidad (para el subsistema s1).
-  *** interpretación de FC_s1: el efecto (contribución) de cada nodo sobre las distintas centralidades (c=[1:8]) del subsistema s1.
-
-- FC_s1 => repetir todo lo anterior pero con los nodos (ms2) del siguiente subsistema (s2) => FC_s2 => 
-  iterar s (número de subsistemas) veces =>
-  FC_s1, FC_s2, ..., FC_ss (j = 1,..., s)
-
-- Construir el tensor final (tFC) apendiando las capas: FC_s1, FC_s2, ..., FC_ss (j = 1,..., s) => tFC (1000 x 8 x s).
-  pseudocode: tFC = tensor(FC_s1, FC_s2, ..., FC_ss).
-
-"""
-# %%
-
-Ratios = baseline_centralities / perturbed_centralities
-Ratios = np.log2( Ratios )
+get_s(): 
+ Returs 
+    
+    dataframe 
+        nodenames, centralitnames
