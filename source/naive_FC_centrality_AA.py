@@ -10,7 +10,7 @@ warnings.filterwarnings("ignore")
 import networkx as nx
 
 stimulated = cobra.io.load_json_model(
-    "/home/alejandro/PostDoc/Metabolic_diseases_lab/proyecto-redes-metabolicas/data/stimulated_2021.json")
+    "/home/alejandro/PostDoc/human-metnet/data/stimulated_2021.json")
 
 
 S_matrix = create_stoichiometric_matrix(stimulated)
@@ -175,13 +175,16 @@ df_all_subsystems_baseline = reduce(lambda  left, right: left.append(right, igno
 # %%
 df_all_subsystems_baseline
 # %% Get fold changes
+
+#en el caso de que ninguno cambie todos son 0, por tanto el promedio aritmético también
+
 FC_UPP3S_Neuron =  np.log2(df_all_subsystems_baseline.baseline/df_perturbed_centralities.UPP3S_Neuron)
 FC_TYRTAm       = np.log2(df_all_subsystems_baseline.baseline/df_perturbed_centralities.TYRTAm)
 
 data  = {'FC_TYRTAm': FC_TYRTAm, 'FC_UPP3S_Neuron': FC_UPP3S_Neuron}
-final = pd.DataFrame(data)
+final_FC = pd.DataFrame(data)
 
-final # Tiene nombres de las columnas FC_{{rxn}}_{{cell}}
+final_FC # Tiene nombres de las columnas FC_{{rxn}}_{{cell}}
 # TODO: transponer esto en una matriz larga en lugar de matriz ancha
 # TODO: deberia coincidir con los valores que ya hemos procesado
 
@@ -192,3 +195,19 @@ final # Tiene nombres de las columnas FC_{{rxn}}_{{cell}}
 np.array(final.values).flatten() 
 # %>% histograma() 
 # %>% plot()
+# %% Calculating delta centralities
+#en el caso de que ninguno cambie todos son 0, por tanto el promedio aritmético también
+
+def get_delta_centrality(unperturbed, perturbed):
+    delta = (unperturbed-perturbed)/unperturbed
+    return delta
+
+delta_UPP3S_Neuron = get_delta_centrality(df_all_subsystems_baseline.baseline, df_perturbed_centralities.UPP3S_Neuron)
+delta_TYRTAm       = get_delta_centrality(df_all_subsystems_baseline.baseline, df_perturbed_centralities.TYRTAm)
+
+
+data  = {'delta_TYRTAm': delta_TYRTAm, 'delta_UPP3S_Neuron': delta_UPP3S_Neuron}
+final_delta = pd.DataFrame(data)
+final_delta
+
+
