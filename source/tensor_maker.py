@@ -55,6 +55,7 @@ def subsystem_tensor( subsystem_nodes, tensor, complete_index=index_nodes, axis_
 
     # Index por posición a partir de una lista de reacciones
     subsystem_index = [ complete_index.index(node) for node in subsystem_nodes ]
+    # TODO excepción en caso de que algo no exista en la lista, por la remoción y eso
 
     return tensor[:, subsystem_index ,:]
 
@@ -76,16 +77,14 @@ def contrib_to_centrality( ns ):
 
     return ns_ratios
 
-# %% --- Ejemplos de subsistemas
+# %% --- Importa subsistemas
 
-import random   # DEMOSTRACIÓN DE SUBSISTEMAS RANDOM
-random.seed(23) # DE DISTINTO LAGRGO Y SIMILAR
+# Los subsistemas son creados como un diccionario 'subsistema' : [nodo1, nodo2, ...] en otro
+# archivo, a partir de las definiciones del modelo que estamos usando. Un problema de los modelos
+# es que hay que realizar curaciones manuales, así que por eso es preferible que la lista de 
+# reacciones por ID este en otra parte
 
-# EJEMPLO DUMMY DE SUBSISTEMAS
-subsystems = {
-    'ns1' : [ index_nodes[n] for n in random.sample(range(0, 1055), 7)  ] ,
-    'ns2' : [ index_nodes[n] for n in random.sample(range(0, 1055), 11) ]
-}
+infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close()
 
 # %% --- Crea el tensor final de contribución a centralidad. 
 
@@ -94,7 +93,7 @@ FC_final = [ contrib_to_centrality( ns ) for ns in subsystems.values() ]
 FC_final = np.asarray( FC_final ) # A tensor. Dims = (s,c,n)
 FC_final = FC_final.T        # Transposición. Dims = (n,c,s)
 
-outfile1 = open('./tmp/subsystems_centrality','wb'); pickle.dump(FC_final,outfile1); outfile1.close()
+outfile1 = open('./tmp/node_controbution_to_subsystems','wb'); pickle.dump(FC_final,outfile1); outfile1.close()
 
 # %% --- Función que genera dataframes a pedido
 def fx(subsystem_name): 
@@ -111,3 +110,51 @@ def fx(subsystem_name):
     subsystem_frame.index   = index_nodes
 
     return subsystem_frame
+
+# %% --- 
+# tensor (1000,8,2) -> tensor_plano (1000,8*2)
+# %T% TMAGÍA: calculo de correlaciones (1000,8*2) -> (1000,1000)
+# Suma de absolutos por columna (1000,1) // Suma centralidades
+
+# TODO: Calculo de las correlaciones entre nodos y (centralidades * subsistema)
+"""
+# Import required libraries 
+from scipy.stats import kendalltau 
+
+# Taking values from the above example in Lists 
+X = [1, 2, 3, 4, 5, 6, 7] 
+Y = [1, 3, 6, 2, 7, 4, 5] 
+
+# Calculating Kendall Rank correlation 
+corr, _ = kendalltau(X, Y) 
+print('Kendall Rank correlation: %.5f' % corr) 
+
+# This code is contributed by Amiya Rout 
+"""
+# Dims: (n,(s*c))
+#               s1_harmonic_centrality s2_harmonic_centrality 
+# DM_10fthf5glu               0.000878               0.000878
+
+cumulative_centrality = np.sum( np.sum( abs(FC_final) , axis=1), axis=1) # Dims =  (1054) # elimina las otras dos dimensiones
+
+# %% --- TABLA DE SALIDA CON RESUMEN DE CENTRALIDAD AGREGADA
+# [reaction_name, reaction_formula ,flux, reduced_cost]) = final_results
+
+INPUT_MODEL = './data/stimulated_2021.json'
+import warnings; warnings.filterwarnings('ignore') # Ignora warnings
+from cobra.io import load_json_model
+model = load_json_model(INPUT_MODEL) # Genera infinitos warning
+model.optimize()
+
+tabla_resultado = pd.DataFrame({
+    "ids" :         [rx.id           for rx in model.reactions],
+    "formula" :     [rx.reaction     for rx in model.reactions],
+    "flux" :        [rx.flux         for rx in model.reactions],
+    "sensitivity" : [rx.reduced_cost for rx in model.reactions]
+    })
+
+tabla_resultado = tabla_resultado[tabla_resultado['ids'].isin( index_nodes )] # Elimina nodos no-conectados
+tabla_resultado['cumulative_centtrality'] = cumulative_centrality # Añade centralidad agregada
+
+OUTPUT_RESUME_TABLE = './tmp/cumulative_centrality_FBA_table.csv'
+tabla_resultado.to_csv( OUTPUT_RESUME_TABLE , index=False )
