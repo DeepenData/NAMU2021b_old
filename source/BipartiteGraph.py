@@ -3,7 +3,7 @@ las reacciones del metabolismo humano
 """
 
 # %% MM --- 2021-01-18 16:40 --- Funciones utilitarias
-def cobra2networkx(modelo, direccionado=True):
+def cobra_to_bipartite_graph(modelo, direccionado=True):
     """Toma un modelo de cobra y genera un grafo bipartito de NetworkX
 
     Parameters
@@ -175,50 +175,20 @@ def solution2attr(solucion, grafo, estandarizar=False, umbral=1e-7):
 
 
 # %% MM --- 2021-01-18 16:40 --- Importa el modelo JSON
-import cobra 
-import networkx as nx
-import pandas as pd
 
-# %% MM --- 2021-01-18 16:44 --- Empieza cosas interesantes (human)
+if __name__ == '__main__':
 
-human = cobra.io.load_json_model("GEM_Recon2_thermocurated_redHUMAN.json") # INPUT
+    import cobra 
+    import networkx as nx
+    import pandas as pd
+    
+    human = cobra.io.load_json_model("GEM_Recon2_thermocurated_redHUMAN.json") # INPUT
 
-grafo = cobra2networkx(human) # Función interesante 1
+    grafo = cobra_to_bipartite_graph(human) # Función interesante 1
 
-solucion = human.optimize()
+    solucion = human.optimize()
 
-grafo = solution2attr(solucion, grafo, estandarizar=True) # Función interesante 2
+    grafo = solution2attr(solucion, grafo, estandarizar=True) # Función interesante 2
 
-from networkx import write_gexf
-write_gexf(grafo, "human_thermo2.gexf")
-
-# %% AA --- 2021-01-19 16:47 --- Cosas interesantes con modelo de cerebro
-brain_nodes_attr_df = pd.read_csv("reaction_nodes_attributes.csv") #atributos de las reacciones
-brain               = cobra.io.load_json_model("stimulated.json") # modelo cobra
-
-grafo_brain0    = cobra2networkx(brain)
-solucion_brain  = brain.optimize()
-
-grafo_brain0    = solution2attr(solucion_brain, grafo_brain0, estandarizar=True)
-
-
-grafo_brain_rxns   =  [n for n, d in grafo_brain0.nodes(data=True) if d["bipartite"] == 1] # extracción de las reacciones
-
-print(set(list(grafo_brain_rxns)) - set(brain_nodes_attr_df.Name),set(brain_nodes_attr_df.Name) -set(list(grafo_brain_rxns))) #chequeo
-
-grafo_brain  = list2attr(grafo_brain0, nodos = brain_nodes_attr_df.Name , nombre = "type", atributos = brain_nodes_attr_df.Node)
-
-
-largest_component = max(nx.connected_components(grafo_brain), key=len) #selección del componente más grande
-grafo_brain =   grafo_brain.subgraph(largest_component) #grafo final conformado solo por el componente más grande
-#grafo_brain.nodes(data = True)
-
-write_gexf(grafo_brain, "grafo_brain.gexf")
-
-
-# %%
-
-
-
-
-grafo_brain.nodes
+    from networkx import write_gexf
+    write_gexf(grafo, "human_thermo2.gexf")
