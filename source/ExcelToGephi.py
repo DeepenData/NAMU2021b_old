@@ -5,7 +5,8 @@
 import pickle
 
 # Importa el dataset pandas de metabolitos
-infile = open('../tmp/excel_metabolitos','rb'); df_metabolitos = pickle.load(infile); infile.close()
+DATASET_METABOLITOS = '../tmp/excel_metabolitos'
+infile = open( DATASET_METABOLITOS ,'rb'); df_metabolitos = pickle.load(infile); infile.close()
 
 # %% --- Importando modulos varios
 
@@ -96,7 +97,9 @@ def cobra_to_bipartite_graph(modelo, direccionado=True):
 from cobra.io import load_json_model
 
 import warnings; warnings.filterwarnings('ignore') # Ignora warnings
-model = load_json_model('../data/stimulated_2021.json') # MODELO INPUT
+
+MODELO = '../data/GEM_Recon2_thermocurated_redHUMAN.json'
+model = load_json_model( MODELO ) # MODELO INPUT
 
 grafo = cobra_to_bipartite_graph(model) # Crea el bipartito
 
@@ -110,8 +113,9 @@ warnings.filterwarnings('ignore') # Reestablece warnings
 # )
 # 
 # met.sort_values(inplace = True) # Alfabetico para legibilidad
+# met_e = met[ met.index.str.endswith('_e', na=False) ] # Solo los _e
 # 
-# met[met.str.contains('carnitine', case=False)] # Busquedas
+# met_e[met.str.contains('carnitine', case=False)] # Busquedas
 
 # %% --- Diccionario de cosas para el grafo de cobra 
 
@@ -121,52 +125,50 @@ warnings.filterwarnings('ignore') # Reestablece warnings
 # para la asignación al grupo más cercano
 
 nodes_to_aply = {
-    'Phe' : ['phe-L[mA]', 'phe-L[mN]'],
-    'Met' : [],
-    'Val' : ['val-L[I]', 'val-L[cA]', 'val-L[cN]', 'val-L[e]', 'val-L[mA]', 'val-L[mN]'],
-    'Leu/Ile' : [ 'leu-L[I]', 'leu-L[cA]', 'leu-L[cN]', 'leu-L[e]', 'leu-L[mA]', 'leu-L[mN]', 
-    'ile-L[I]', 'ile-L[cA]', 'ile-L[cN]', 'ile-L[e]', 'ile-L[mA]', 'ile-L[mN]'],
-    'tir' : ['tyr-L[mA]', 'tyr-L[mN]'],
-    'Pro' : ['pro-L[I]', 'pro-L[cA]', 'pro-L[cN]', 'pro-L[e]', 'pro-L[mA]', 'pro-L[mN]'],
-    'Arg' : [ 'arg-L[I]', 'arg-L[cA]', 'arg-L[cN]', 'arg-L[e]', 'arg-L[mA]', 'arg-L[mN]'],
-    'Gly' : ['gly[I]', 'gly[cA]', 'gly[cN]', 'gly[e]', 'gly[mA]', 'gly[mN]'], 
-    'Ala' : ['ala-B[I]', 'ala-B[cA]', 'ala-B[cN]', 'ala-B[e]', 'ala-B[mA]', 'ala-B[mN]', 
-    'ala-L[I]', 'ala-L[cA]', 'ala-L[cN]', 'ala-L[e]', 'ala-L[mA]', 'ala-L[mN]'],
-    'Asp' : ['asp-L[cA]', 'asp-L[cN]', 'asp-L[mA]', 'asp-L[mN]'],
-    'Glt' : ['glu-L[I]', 'glu-L[cA]', 'glu-L[cN]', 'glu-L[e]', 'glu-L[mA]', 'glu-L[mN]'],
-    'Cit' : ['cit[cA]', 'cit[cN]', 'cit[mA]', 'cit[mN]'], 
-    'Orn' : ['orn[I]', 'orn[cA]', 'orn[cN]', 'orn[e]', 'orn[mA]', 'orn[mN]'],
-    'SA' : [],
-    'C0' : [ 'crn[I]', 'crn[cA]', 'crn[cN]', 'crn[e]', 'crn[mA]', 'crn[mN]'],
-    'C2' : ['acrn[cA]', 'acrn[cN]', 'acrn[mA]', 'acrn[mN]'],
-    'C3' : ['pcrn[mA]', 'pcrn[mN]'], 
-    'C4' : [], 
-    'C4OH/C3DC' : [], 
+    'Phe' : ['phe_L_e'], 
+    'Met' : ['met_L_e'],
+    'Val' : ['val_L_e'], 
+    'Leu/Ile' : ['leu_L_e', 'ile_L_e'], 
+    'tir' : ['tyr_L_e'], 
+    'Pro' : ['pro_L_e'], 
+    'Arg' : ['arg_L_e'], 
+    'Gly' : ['gly_L_e'], 
+    'Ala' : ['ala_L_e'], 
+    'Asp' : ['asp_L_e'], 
+    'Glt' : ['glu_L_e'], 
+    'Cit' : ['citr_L_e'], 
+    'Orn' : ['orn_e'], 
+    'SA' : [], 
+    'C0' : ['crn_e'], 
+    'C2' : [], 
+    'C3' : [], 
+    'C4' : ['c4crn_e'], 
+    'C4OH/C3DC' : ['3bcrn_e'], 
     'C5-OH/C4DC' : [], 
     'C5'    : [], 
-    'C5DC'  : [], 
-    'C5:1'  : [], 
-    'C6'    : [], 
+    'C5DC'  : ['c5dc_e'], 
+    'C5:1'  : ['c51crn_e'], 
+    'C6'    : ['c6crn_e'], 
     'C6DC'  : [], 
-    'C8'    : [], 
-    'C8:1'  : [], 
-    'C10'   : [], 
-    'C10:1' : [], 
-    'C10:2' : [], 
-    'C12'   : [], 
-    'C12:1' : [], 
+    'C8'    : ['c8crn_e'], 
+    'C8:1'  : ['c81crn_e'], 
+    'C10'   : ['c10crn_e'], 
+    'C10:1' : ['c101crn_e'], 
+    'C10:2' : ['decdicrn_e'], 
+    'C12'   : ['c12dc_e'], 
+    'C12:1' : ['dodecenoyl'], 
     'C14'   : [], 
-    'C14:1' : [], 
-    'C14:2' : [], 
-    'C14OH' : [], 
-    'C16'   : [], 
-    'C16OH' : [], 
-    'C16:1' : [], 
-    'C16:1OH' : [], 
+    'C14:1' : ['tetdece1crn_e'], 
+    'C14:2' : ['tetdec2crn_e'], 
+    'C14OH' : ['3tdcrn_e'], 
+    'C16'   : ['3hexdcrn_e'], 
+    'C16OH' : ['3hexdcrn_e'], 
+    'C16:1' : ['3hdececrn_e'], 
+    'C16:1OH' : ['3hdececrn_e '], 
     'C18'   : [], 
-    'C18OH' : [], 
+    'C18OH' : ['3octdeccrn_e'], 
     'C18:1' : [], 
-    'C18:1OH' : [], 
+    'C18:1OH' : ['3octdece1crn_e'], 
     'C18:2' : []
 }
 
@@ -188,7 +190,7 @@ for i in df_means.index:
 # %% --- Exporta a Gephhi
 
 from networkx import write_gexf
-write_gexf(grafo, "stimulatedasd.gexf")
+write_gexf(grafo, "recon2.gexf")
 print('done!')
 
 # %% --- Genera histogramas de distribución de promedios
