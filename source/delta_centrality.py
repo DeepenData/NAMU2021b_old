@@ -4,6 +4,8 @@ entre la reacción sin modificar y modificada. Genera un grafo gephx con esta in
 Parametros: INPUT_MODEL, INPUT_REMOVED_NODES, [N_WORKERS]
 Output: OUTPUT_TENSOR_BASELINES, OUTPUT_TENSOR_PERTURBATED"""
 
+import warnings; warnings.filterwarnings('ignore') # Ignora warnings
+
 import ray
 import time
 import os
@@ -38,6 +40,9 @@ def eight_centralities(grafo):
 
     import networkx as nx
 
+    largest_component  =  max(nx.connected_components(grafo), key=len)
+    grafo              =  grafo.subgraph(largest_component)
+
     hc  = nx.harmonic_centrality(grafo, nbunch=None, distance=None)
     ec  = nx.eigenvector_centrality(grafo, max_iter=1000, tol=1e-05, nstart=None, weight=None)
     dc  = nx.degree_centrality(grafo)
@@ -46,14 +51,16 @@ def eight_centralities(grafo):
     """↓ Here be dragons ↓"""
     cc  = nx.closeness_centrality(grafo, distance=None, wf_improved=True)
     lc  = nx.load_centrality(grafo, cutoff=None, normalized=True, weight=None)
+    ic  = nx.information_centrality(grafo)
+    soc = nx.second_order_centrality(grafo)
 
     """ Requieren un grafo full conected """
-    if not (nx.is_connected(grafo)) : 
-        ic = {}; soc = {}
-    else:
-        ic  = nx.information_centrality(grafo)
-        soc = nx.second_order_centrality(grafo)
-
+    #if not (nx.is_connected(grafo)) : 
+    #    ic = {}; soc = {}
+    #else:
+    #    ic  = nx.information_centrality(grafo)
+    #    soc = nx.second_order_centrality(grafo)
+    
     centralities = [hc, ec, dc, bc, cc, lc, ic, soc]
 
     return centralities
@@ -137,6 +144,7 @@ INPUT_MODEL = sys.argv[1] # Modelo base
 ## --- Modelo de Cobra
 t1 = time.time()
 
+import warnings; warnings.filterwarnings('ignore') # Ignora warnings
 from cobra.io import load_json_model
 model = load_json_model(INPUT_MODEL)
 
