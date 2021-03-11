@@ -40,28 +40,30 @@ def eight_centralities(grafo):
 
     import networkx as nx
 
-    largest_component  =  max(nx.connected_components(grafo), key=len)
-    grafo              =  grafo.subgraph(largest_component)
-
+    largest_component = max(nx.connected_components(grafo), key=len)
+    grafo             = grafo.subgraph(largest_component)
     hc  = nx.harmonic_centrality(grafo, nbunch=None, distance=None)
     ec  = nx.eigenvector_centrality(grafo, max_iter=1000, tol=1e-05, nstart=None, weight=None)
     dc  = nx.degree_centrality(grafo)
     bc  = nx.betweenness_centrality(grafo, normalized=True, weight=None, endpoints=False, seed=None)
-
     """↓ Here be dragons ↓"""
     cc  = nx.closeness_centrality(grafo, distance=None, wf_improved=True)
     lc  = nx.load_centrality(grafo, cutoff=None, normalized=True, weight=None)
-    ic  = nx.information_centrality(grafo)
-    soc = nx.second_order_centrality(grafo)
-
     """ Requieren un grafo full conected """
     #if not (nx.is_connected(grafo)) : 
     #    ic = {}; soc = {}
     #else:
-    #    ic  = nx.information_centrality(grafo)
-    #    soc = nx.second_order_centrality(grafo)
-    
-    centralities = [hc, ec, dc, bc, cc, lc, ic, soc]
+    #ic  = nx.information_centrality(grafo)
+    #soc = nx.second_order_centrality(grafo)
+    ic  = nx.information_centrality(grafo)
+    soc = nx.second_order_centrality(grafo)
+
+    cfcc    = nx.current_flow_closeness_centrality(grafo)    
+    cfbc    = nx.current_flow_betweenness_centrality(grafo)
+    acfbc   = nx.approximate_current_flow_betweenness_centrality(grafo)
+    cbc     = nx.communicability_betweenness_centrality(grafo)   
+
+    centralities = [hc, ec, dc, bc, cc, lc, ic, soc, cfcc, cfbc, acfbc, cbc]
 
     return centralities
 
