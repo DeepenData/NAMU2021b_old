@@ -23,3 +23,7 @@ ipython_config.py
 
 # Cosas de .vscode
 .vscode/
+
+# Salidas raras de Slurm y grabaciones
+slurm-*.out
+*.asciinema
