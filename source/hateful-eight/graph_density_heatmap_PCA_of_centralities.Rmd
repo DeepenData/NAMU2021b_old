@@ -1,0 +1,246 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r message=FALSE, warning=FALSE}
+library(readr)
+Results <- read_csv("Results.csv")
+Results
+```
+
+Density plot of centralities
+```{r fig.height=4, fig.width=4, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(hrbrthemes)
+library(dplyr)
+library(tidyr)
+library(viridis)
+
+centralities <-  Results[,!is.na(as.numeric(colnames(Results)))] %>% gather()
+
+Density_plot_of_centralities <-  centralities['value'] %>%  as.data.frame() %>% filter(abs(value) > 0.01) %>%
+  ggplot( aes(x=value)) +
+    geom_density(fill="deepskyblue4", color="azure4", alpha=.8)+
+       theme(legend.position="top") +
+    ylab("Density") +
+    xlab("Centrality") + geom_vline(xintercept=0, linetype="dashed", color = "red",  size=.4) 
+
+library(ggpubr)
+Density_plot_of_centralities.panel <- ggarrange( NULL,Density_plot_of_centralities, nrow = 2,  heights= c(1, .4), labels = c('a','b'),
+                                                 hjust = -0.1, vjust = .8)
+
+Density_plot_of_centralities.panel
+
+
+```
+
+
+Hierarchical clustering
+```{r}
+library(tidyverse)
+library(scales)
+data <- Results %>% filter(!str_detect(ID, regex('AA_|AA2', ignore_case = F)))  %>%
+         mutate(`Node type` = ifelse(str_detect(Formula, regex('\\[[a-z]A\\]',              ignore_case = T)), 'Astrocyte', NA)) %>% 
+         mutate(`Node type` = ifelse(str_detect(Formula, regex('\\[[a-z]N\\]',              ignore_case = T)), 'Neuron', `Node type`))    %>% 
+         mutate(`Node type` = ifelse( str_detect(Formula, regex('\\[[a-z]A\\]|\\[[a-z]N\\]',ignore_case = T), negate = T), 'Exchange', `Node type`)) %>%
+         mutate(`Node type` = ifelse(str_detect(Formula, regex('\\[[a-z]A\\]',ignore_case = T)) & 
+                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Astro', `Node type`))%>%
+         mutate(`Node type` = ifelse(str_detect(Formula, regex('\\[[a-z]N\\]',ignore_case = T)) & 
+                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Neuron', `Node type`))
+
+data %>% select(matches('^\\d+'))       -> centrality.matrix
+
+centrality.matrix %>% abs %>% rowSums()  -> total.abs.centrality #vector de centralidades totales
+
+pseudoLog10 <- function(x) { asinh(x/2)/log(10) }
+
+data$Fluxes   %>% abs %>% as.matrix()  %>% pseudoLog10  %>% rescale(c(0,1))  -> fluxes
+data$RedCosts  %>% abs %>% as.matrix()   %>% pseudoLog10  %>% rescale(c(0,1))-> sensitivities 
+
+fluxes + sensitivities  -> summaryzed.optimality
+```
+
+heatmap
+```{r fig.height=5.5, fig.width=9.5, message=FALSE, warning=FALSE}
+
+library(ComplexHeatmap)
+scale_rows <- function(x){t(scale(t(x)))}
+
+data %>% column_to_rownames('ID')   %>% select(matches("^\\d+")) %>% t %>% scale_rows  %>% cor(method = "kendall") -> my.corr.mat
+
+left_annotation <- rowAnnotation(`Nodes` = data$`Node type`, col = list( `Nodes` = c(
+                                    "Astrocyte"        = "deepskyblue3", 
+                                    'Exchange'   = 'darkgreen',
+                                    'Sink/Demand Astro'='darkgoldenrod',
+                                    "Neuron"           = "brown2",
+                                    'Sink/Demand Neuron'= 'blueviolet' )))
+pseudoLog10 <- function(x) { asinh(x/2)/log(10) }
+
+right_annotation <-   
+  rowAnnotation(gap = unit(12, "points"),Ce      = anno_barplot(bar_width = 0.01,width = unit(1.5, "cm"), border = T,total.abs.centrality, gp = gpar(col = 'azure4')),
+            Op        = anno_barplot(bar_width = 0.01,width = unit(1.5, "cm") ,border = T, summaryzed.optimality, gp = gpar(col = 'azure4')))
+
+
+ht <- Heatmap(my.corr.mat, name = "Correlation",  left_annotation =left_annotation,
+                                            right_annotation=right_annotation,
+                                 clustering_distance_columns  = function(m)   dist(m, method = 'euclidean'),
+                                 cluster_columns              = function(x) fastcluster::hclust(dist(x), "average"),
+              
+                                clustering_distance_rows   = function(m)   dist(m, method = 'euclidean'),
+                                 cluster_rows               = function(x) fastcluster::hclust(dist(x), "average"),
+                                row_km = 2,
+                                column_km = 2,
+                                # row_split = paste0("cluster ", pa$clustering),
+                                # column_split = paste0("cluster ", pa$clustering),
+                                 border = TRUE,
+                                 row_dend_width    = unit(3, "cm"),
+                                 row_gap = unit(2, "mm"),
+                                 column_gap = unit(2, "mm"),
+                                  width = unit(10, "cm"), 
+                                height = unit(10, "cm"),
+                                column_title = c("Astrocytic cluster", "Neuronal cluster"),
+                                column_title_gp = gpar(fontsize = 10),
+                                  row_title_rot  = 0,
+                                 show_column_names    = F,
+                                show_row_names    = F,
+                                 row_names_gp = gpar(fontsize = 8),
+                                  row_title = c("Astrocytic\n cluster", "Neuronal\n cluster"),
+                             
+                                 row_title_gp = gpar(fontsize = 10))
+my_heatmap = grid.grabExpr(draw(ht))
+
+ht
+```
+
+
+
+
+```{r fig.height=5.5, fig.width=14}
+ upper_panel <- ggarrange( Density_plot_of_centralities.panel,  my_heatmap, ncol = 2, widths = c(.4, 1), heights = c(1,.3), labels = c('','c'),
+                                                 hjust = -4, vjust = .8)
+
+upper_panel
+```
+
+Distribution of pairwise correlations
+```{r message=FALSE, warning=FALSE}
+row_order(ht)[[1]] -> astro_cluster
+row_order(ht)[[2]] -> neuron_cluster
+data$`Node type`   -> Nodes
+data$ID[neuron_cluster]     -> neuron_cluster_names
+data$ID[astro_cluster]      -> astro_cluster_names
+ht@matrix %>% as.data.frame -> heatmap_matrix
+
+heatmap_matrix[neuron_cluster_names,neuron_cluster_names] %>% as.matrix %>% c -> `Neuronal_cluster`
+heatmap_matrix[astro_cluster_names,astro_cluster_names] %>% as.matrix %>% c  ->`Astrocytic_cluster` 
+heatmap_matrix[astro_cluster_names,neuron_cluster_names] %>% as.matrix %>% c  -> `Neuron_vs_Astrocyte`
+
+data.frame(`Neuronal_cluster`) %>% gather  -> A
+data.frame(`Astrocytic_cluster`) %>% gather   -> B
+data.frame( `Neuron_vs_Astrocyte`) %>% gather -> C
+quads <- rbind(A,B,C)
+colnames(quads) <- c("Comparison","Node correlation")
+
+#quads$Comparison %>% unique()
+
+my_comparisons <- list( c("Neuronal_cluster", "Astrocytic_cluster"), 
+                        c("Neuronal_cluster", "Neuron_vs_Astrocyte"), 
+                        c("Astrocytic_cluster", "Neuron_vs_Astrocyte") )
+```
+```{r fig.height=6, fig.width=3}
+ggplot(quads, aes(x=Comparison, y=`Node correlation`, fill=Comparison)) + 
+    geom_violin(trim=F, colour = "azure4")+  
+    stat_compare_means( vjust= -1., hjust= 0, comparisons = my_comparisons, method = "wilcox.test", p.adjust.method = "bonferroni", label = "p.signif")+
+   scale_fill_manual(values = alpha(c("deepskyblue3", "blueviolet", "brown2"), .8)) + 
+   theme(plot.title = element_text(hjust = 0.5),legend.position="none",  axis.title.x=element_blank(),
+         axis.text.y = element_text(angle = 45, hjust = 1), axis.text.x = element_text(angle = 50, hjust = 1))  + 
+  #ggtitle("Neuronal self-correlations") + 
+  scale_y_continuous(limits=c(-0.7, 2)) + geom_hline(yintercept=0, linetype="dashed", color = "darkred",  size=1)-> corr_comparisons
+
+corr_comparisons
+```
+
+
+```{r}
+library(ProjectionBasedClustering)
+library(PCAtools)
+library(magrittr)
+
+p <- pca(my.corr.mat)
+
+cbind(p$rotated$PC1, p$rotated$PC2) %>% as.matrix %>% as.data.frame-> my_pca
+
+
+
+
+my_pca %>%  cbind( data$`Node type`) %>% set_colnames(c('PC1','PC2','node')) -> to.pca.scatter
+
+summaryzed.optimality -> Op
+total.abs.centrality -> Centrality
+Centrality -> Ce
+
+b <- ggplot(to.pca.scatter, aes(x = PC1, y = PC2)) 
+b +   scale_color_manual(labels = c("Astro", "Exch",'Neu','Si/De Ast', 'Si/De Neu'), values =  c("deepskyblue3",'darkgreen','brown2','darkgoldenrod','blueviolet')) + 
+  theme(legend.position="right", legend.box = "vertical")+ geom_point(aes(size = Op, color = node))-> pca_node_RedCosts
+
+
+
+
+b <- ggplot(to.pca.scatter, aes(x = PC1, y = PC2)) 
+b +   scale_color_manual(labels = c("Astro", "Exch",'Neu','Si/De Ast', 'Si/De Neu'), values =  c("deepskyblue3",'darkgreen','brown2','darkgoldenrod','blueviolet')) +
+  theme(legend.position="right", legend.box = "vertical")+ geom_point(aes( size =  Ce,color = node))-> pca_node_centrality
+```
+
+```{r}
+
+
+bottom_panel <- ggarrange( corr_comparisons,pca_node_centrality, pca_node_RedCosts  , ncol = 3, widths  = c(.4,1,1) , labels = c('d','e','f'),
+                                                 hjust = 0, vjust = 1)
+
+```
+
+```{r fig.height=9, fig.width=13}
+
+
+panel_without_graph <-  ggarrange(upper_panel, bottom_panel, nrow = 2, heights = c(1,0.5))
+
+
+```
+
+```{r}
+ggsave(file="panel_without_graph.png", plot=panel_without_graph, width=13, height=9, dpi = 320)
+```
+
+
+Node types for Networkx (python) attributes
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(magrittr)
+
+Results <- read_csv("Results.csv")
+
+data_Networkx <- Results%>% 
+         mutate(`Node_type` = ifelse(str_detect(Formula, regex('\\[[a-z]A\\]',              ignore_case = T)), 'Astrocyte', NA)) %>% 
+         mutate(`Node_type` = ifelse(str_detect(Formula, regex('\\[[a-z]N\\]',              ignore_case = T)), 'Neuron', `Node_type`))    %>% 
+         mutate(`Node_type` = ifelse( str_detect(Formula, regex('\\[[a-z]A\\]|\\[[a-z]N\\]',ignore_case = T), negate = T), 'Exchange', `Node_type`)) %>%
+         mutate(`Node_type` = ifelse(str_detect(Formula, regex('\\[[a-z]A\\]',ignore_case = T)) & 
+                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Astro', `Node_type`))%>%
+         mutate(`Node_type` = ifelse(str_detect(Formula, regex('\\[[a-z]N\\]',ignore_case = T)) & 
+                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Neuron', `Node_type`))
+
+
+data_Networkx %<>% select(c(ID, Node_type))
+
+write_csv(data_Networkx, 'data_Networkx.csv')
+
+```
+
+
+
+
+
+
+
