@@ -152,7 +152,7 @@ import warnings; warnings.filterwarnings('ignore') # Ignora warnings
 from cobra.io import load_json_model
 model = load_json_model(INPUT_MODEL)
 
-print("Iniciando optimización del modelo")
+print("Iniciando optimización del modelo", time.asctime( time.localtime(time.time()) ) )
 #solution_fba = model.optimize() # Optimización del modelo para check
 #solution_fba.fluxes # Check si los flujos funcionan
 
