@@ -19,6 +19,7 @@ dependencies:
   - decorator=4.4.2=pyhd3eb1b0_0
   - defusedxml=0.6.0=pyhd3eb1b0_0
   - entrypoints=0.3=py38_0
+  - et_xmlfile=1.0.1=py_1001
   - expat=2.2.10=he6710b0_2
   - fontconfig=2.13.1=h6c09931_0
   - freetype=2.10.4=h5ab3b9f_0
@@ -34,6 +35,7 @@ dependencies:
   - ipython_genutils=0.2.0=pyhd3eb1b0_1
   - ipywidgets=7.6.3=pyhd3eb1b0_1
   - isort=5.7.0=pyhd3eb1b0_0
+  - jdcal=1.4.1=py_0
   - jedi=0.17.0=py38_0
   - jinja2=2.11.3=pyhd3eb1b0_0
   - joblib=1.0.1=pyhd8ed1ab_0
@@ -66,6 +68,7 @@ dependencies:
   - mkl-service=2.3.0=py38he904b0f_0
   - mkl_fft=1.2.0=py38h23d657b_0
   - mkl_random=1.1.1=py38h0573a6f_0
+  - mpi=1.0=openmpi
   - nbclient=0.5.1=py_0
   - nbconvert=6.0.7=py38_0
   - nbformat=5.1.2=pyhd3eb1b0_1
@@ -75,7 +78,9 @@ dependencies:
   - notebook=6.2.0=py38h06a4308_0
   - numpy=1.19.2=py38h54aff64_0
   - numpy-base=1.19.2=py38hfa32c7d_0
-  - openssl=1.1.1i=h27cfd23_0
+  - openmpi=4.0.2=hb1b8bf9_1
+  - openpyxl=3.0.7=pyhd8ed1ab_0
+  - openssl=1.1.1j=h27cfd23_0
   - packaging=20.9=pyhd3eb1b0_0
   - pandas=1.1.4=py38h0ef3d22_0
   - pandoc=2.11=hb0f4dca_0
