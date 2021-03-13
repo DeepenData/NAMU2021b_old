@@ -61,6 +61,9 @@ ETC_astrocyte        = list(set(ETC) - set(ETC_neuron))
 
 # Separar subsistemas por astro/neurona
 
+# %% testing centralities 
+
+
 
 
 
@@ -72,27 +75,34 @@ def compute_centralities(graph):
     bc = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
     cc = nx.closeness_centrality(graph, distance=None, wf_improved=True)
     lc = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
-    # 
-#   cfcc    = current_flow_closeness_centrality(graph)
     ic      = nx.information_centrality(graph)
-#   cfbc    = current_flow_betweenness_centrality(graph)
-#   cbc     = communicability_betweenness_centrality(graph)
     soc     = nx.second_order_centrality(graph) 
-    #####-- make DFs --###################################################################3
+    # 
+    cfcc    = nx.current_flow_closeness_centrality(graph)    
+    cfbc    = nx.current_flow_betweenness_centrality(graph)
+    acfbc   = nx.approximate_current_flow_betweenness_centrality(graph)
+    cbc     = nx.communicability_betweenness_centrality(graph)   
+
+    #####-- make DFs --###################################################################
+
+    cfcc_df = pd.DataFrame.from_dict(cfcc, columns = ['cfcc'], orient='index')
+    cfbc_df = pd.DataFrame.from_dict(cfbc, columns = ['cfbc'], orient='index')
+    acfbc_df = pd.DataFrame.from_dict(acfbc, columns = ['acfbc'], orient='index')
+    cbc_df = pd.DataFrame.from_dict(cbc, columns = ['cbc'], orient='index')
+
+
+
     hc_df = pd.DataFrame.from_dict(hc, columns = ['hc'], orient='index')
     ec_df = pd.DataFrame.from_dict(ec, columns = ['ec'], orient='index')
     dc_df = pd.DataFrame.from_dict(dc, columns = ['dc'], orient='index')
     bc_df = pd.DataFrame.from_dict(bc, columns = ['bc'], orient='index')
     cc_df = pd.DataFrame.from_dict(cc, columns = ['cc'], orient='index')
     lc_df = pd.DataFrame.from_dict(lc, columns = ['lc'], orient='index')
-    # 5 new
-#   cfcc_df = pd.DataFrame.from_dict(cfcc, columns = ['cfcc'], orient='index')
     ic_df   = pd.DataFrame.from_dict(ic, columns = ['ic'], orient='index')
-#   cfbc_df = pd.DataFrame.from_dict(cfbc, columns = ['cfbc'], orient='index')
-#   cbc_df  = pd.DataFrame.from_dict(cbc, columns = ['cbc'], orient='index')
     soc_df  = pd.DataFrame.from_dict(soc, columns = ['soc'], orient='index')   
+
     from functools import reduce
-    dfs = [hc_df, ec_df, dc_df, bc_df, cc_df, lc_df, ic_df, soc_df]
+    dfs = [hc_df, ec_df, dc_df, bc_df, cc_df, lc_df, ic_df, soc_df, cfcc_df, cfbc_df, acfbc_df,cbc_df]
     df_all_centralities = reduce(lambda  left, right: left.join(right, how='outer'), dfs)
     # Lambda que reduce dataframes y hace un join
     return df_all_centralities
