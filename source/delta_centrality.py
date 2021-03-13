@@ -4,6 +4,8 @@ entre la reacción sin modificar y modificada. Genera un grafo gephx con esta in
 Parametros: INPUT_MODEL, INPUT_REMOVED_NODES, [N_WORKERS]
 Output: OUTPUT_TENSOR_BASELINES, OUTPUT_TENSOR_PERTURBATED"""
 
+import warnings; warnings.filterwarnings('ignore') # Ignora warnings
+
 import ray
 import time
 import os
@@ -127,7 +129,7 @@ def delta_centrality(G, removed_nodes):
 
     breaks = []; centralities = []
     for node in removed_nodes:
-        print( 'Iterando en:', node )
+        print( time.asctime( time.localtime(time.time()) ), 'Iterando en:', node )
         delta = deepcopy( G )
         delta.remove_node( str(node) ) # Elimina el nodo de la iteración
         centrality = eight_centralities(delta)
@@ -146,6 +148,7 @@ INPUT_MODEL = sys.argv[1] # Modelo base
 ## --- Modelo de Cobra
 t1 = time.time()
 
+import warnings; warnings.filterwarnings('ignore') # Ignora warnings
 from cobra.io import load_json_model
 model = load_json_model(INPUT_MODEL)
 
@@ -186,7 +189,7 @@ node_dict = lambda l : dict( zip( list(G.nodes), l ) )
 cursed_dict = node_dict( [reaction.id for reaction in model.reactions] )
 G = nx.relabel_nodes(G, cursed_dict, copy=True)
 
-t2 = time.time(); print('\n','TIME Conversión a grafo:', (t2-t1)*1000 ,'ms')
+t2 = time.time(); print('\n','TIME Conversión a grafo:', (t2-t1)*1000 ,'ms .', time.asctime( time.localtime(time.time()) ) )
 
 ## --- Centralidades delta (Sección paralelizada)
 t1 = time.time()
@@ -205,7 +208,7 @@ baseline_centralities = dict_list_to_numpy( baseline_centralities , G.nodes )
 
 deltas = ray.get( deltas ) # SECCIÓN QUE TOMA LAS RESPUESTAS DE VUELTA DEL CODIGO PARALELO
 
-t2 = time.time(); print('\n','TIME Centralidades calculadas en paralelo:', (t2-t1)*1000000 ,'s')
+t2 = time.time(); print('\n','TIME Centralidades calculadas en paralelo:', time.asctime( time.localtime(time.time()) ) )
 
 ## --- Tensor de centralidades perturbadas 
 
