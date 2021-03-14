@@ -40,7 +40,7 @@ import networkx as nx
 # %% --- Colapsando la tercera dimensión... (centralidades)
 # Esto calcula 4 promedios de las centralidades para los nodos
 
-from scipy import stats
+from numba import jit
 
 # Un helper porque estas funciones no pueden lidiar con NaNs porque son superiores a los NaN o algo así
 noNaN_perturbed_centralities = np.nan_to_num( perturbed_centralities , copy=True, nan=0.0, posinf=None, neginf=None)
@@ -50,22 +50,39 @@ aritmetic_perturbed = np.nanmean( noNaN_perturbed_centralities, axis= 1)
 aritmetic_baseline  = np.nanmean(        baseline_centralities, axis= 1)
 
 # Requiere definir un helper con un factor de correction NoCeros/ValoresTotales
-geometric_mean = lambda array :  stats.gmean( array[array != 0] ) * len(array[array != 0])/len(array)
+@jit(nopython=True)
+def geometric_mean(array):
+    array = array[~np.isnan(array)] # Filtra los NaN
+    fcorr = len(array[array > 0])/len(array) # Factor de corrección
+    array = array[array > 0] # Selecciona solo mayores a cero
+    try: gmean = ( np.prod( array )**(1 / len(array)) ) * fcorr # Geometrica por factor de corrección
+    except: return np.nan
+    else : return gmean
+
 geometric_perturbed = np.apply_along_axis( geometric_mean, 1, noNaN_perturbed_centralities)
 geometric_baseline  = np.apply_along_axis( geometric_mean, 1,        baseline_centralities)
 
 # Define una función helper para cuadraticos (Root Square Mean). No en scipy base
-quadratic_mean = lambda array : np.sqrt( np.nanmean( array*array ) )
+@jit(nopython=True)
+def quadratic_mean(array):
+    mean =  np.sqrt( np.nanmean( array*array ) )
+    return mean
+
 quadratic_perturbed = np.apply_along_axis( quadratic_mean, 1, noNaN_perturbed_centralities)
 quadratic_baseline  = np.apply_along_axis( quadratic_mean, 1,        baseline_centralities)
 
 # Requiere definir un helper con un factor de correction NoCeros/ValoresTotales
-# solo funciona para valores superiores a cero, por lo que decidimos ignorar los negativos
-harmonic_mean = lambda array : stats.hmean( array[array > 0] ) * len(array[array > 0])/len(array)
+@jit(nopython=True)
+def harmonic_mean(array):
+    array = array[~np.isnan(array)] # Filtra los NaN
+    fcorr = len(array[array > 0])/len(array) # Factor de corrección
+    array = array[array > 0] # Selecciona solo mayores a cero
+    try : hmean = len(array)/np.sum(1 / array ) * fcorr # Geometrica por factor de corrección
+    except: return np.nan
+    else : return hmean
+
 harmonic_perturbed  = np.apply_along_axis( harmonic_mean,  1, noNaN_perturbed_centralities)
 harmonic_baseline   = np.apply_along_axis( harmonic_mean,  1,        baseline_centralities)
-
-# TODO: probar un JIT para la velocidad de estas lacras
 
 # %% --- Divisiones! Calculando como un nodo afecta conectividad de otro
 # 
