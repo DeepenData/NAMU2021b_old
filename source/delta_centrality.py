@@ -10,7 +10,8 @@ import ray
 import time
 import os
 # Conectando a cluster de Ray inicializado con sbatch
-ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
+# ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
+ray.init() # Desactivar esto para correr en el cluster
 
 # --- Sección que importa modulos
 
@@ -20,6 +21,8 @@ import pandas as pd
 import sys
 
 # --- Definición de funciones
+
+import graph_tool as gt 
 
 def eight_centralities(grafo):
     """Calcula centralidades base de una red, usando ocho metodos de NetworkX. 
@@ -50,20 +53,13 @@ def eight_centralities(grafo):
     cc  = nx.closeness_centrality(grafo, distance=None, wf_improved=True)
     lc  = nx.load_centrality(grafo, cutoff=None, normalized=True, weight=None)
     """ Requieren un grafo full conected """
-    #if not (nx.is_connected(grafo)) : 
-    #    ic = {}; soc = {}
-    #else:
-    #ic  = nx.information_centrality(grafo)
-    #soc = nx.second_order_centrality(grafo)
     ic  = nx.information_centrality(grafo)
     soc = nx.second_order_centrality(grafo)
-
+    """ Son nefastos de computar """
     cfcc    = nx.current_flow_closeness_centrality(grafo)    
     cfbc    = nx.current_flow_betweenness_centrality(grafo)
     acfbc   = nx.approximate_current_flow_betweenness_centrality(grafo)
     cbc     = nx.communicability_betweenness_centrality(grafo)   
-
-
 
     centralities = [hc, ec, dc, bc, cc, lc, ic, soc, cfcc, cfbc, acfbc, cbc]
 
@@ -238,55 +234,3 @@ outfile1 = open('./tmp/baseline_centralities','wb'); pickle.dump(baseline_centra
 outfile2 = open('./tmp/perturbed_centralities','wb'); pickle.dump(perturbed_centralities,outfile2); outfile2.close()
 outfile3 = open('./tmp/index_nodes','wb'); pickle.dump(index_nodes,outfile3); outfile3.close()
 outfile4 = open('./tmp/breaks','wb'); pickle.dump(breaks,outfile4); outfile4.close()
-
-"""
-for delta in perturbed_centralities:
-    tmp = pd.DataFrame.from_dict( delta ) # Selecciona un grupo de 8 centralidades
-    tmp = dict( tmp.mean( axis=0 ) ) # Calcula el promedio de centralidades
-    perturbed_centralities.append( tmp ) # Al diccionario de centralidades perturbadas
-
-print("Nodes removed for iterative delta centralities calculation:", len( INPUT_REMOVED_NODES ))
-print("Unconected graphs generated:", len(breaks) )
-
-perturbed_centralities = pd.DataFrame.from_dict( perturbed_centralities ) # Tabla por nodo
-
-#cols = list(perturbed_centralities.columns); cols = [cols[-1]] + cols[:-1] # Reordena columnas
-#perturbed_centralities = perturbed_centralities[cols] # Así la primera es la primera reacción
-
-perturbed = perturbed_centralities.mean( axis=0 ) # Promedio de perturbadas
-
-# Termina de comprimir las centralidades originales porque antes no cargo pandas
-
-baseline = pd.DataFrame.from_dict( baseline_centralities )
-baseline = baseline.transpose() # Por algun motivo queda con la otra orientación ?
-baseline = baseline.mean( axis=1 )
-
-log2_contribution = np.log2( baseline / perturbed )
-
-tabla_resultado = pd.DataFrame({
-    "ids" :         [rx.id           for rx in model.reactions],
-    "formula" :     [rx.reaction     for rx in model.reactions],
-    "flux" :        [rx.flux         for rx in model.reactions],
-    "sensitivity" : [rx.reduced_cost for rx in model.reactions],
-    "baseline_centrality":           baseline,
-    "preturbed_centrality":          perturbed,
-    "log2_centrality_contribution" : log2_contribution
-})
-
-OUTPUT_RESUME_TABLE = 'tmp.reactions_delta_centrality.csv'
-tabla_resultado.to_csv( OUTPUT_RESUME_TABLE , index=False )
-t2 = time.time(); print('\n','TIME Tabla resumen generada:', (t2-t1)*1000 ,'ms') 
-
-# --- Empacando el grafo de gephi
-t1 = time.time()
-nx.set_node_attributes(G, node_dict( [rx.reaction     for rx in model.reactions] ), "reaction")
-nx.set_node_attributes(G, node_dict( [rx.flux         for rx in model.reactions] ), "flux")
-nx.set_node_attributes(G, node_dict( [rx.reduced_cost for rx in model.reactions] ), "sensitivity")
-nx.set_node_attributes(G, node_dict( baseline ),          "baseline_centrality")
-nx.set_node_attributes(G, node_dict( perturbed ),         "preturbed_centrality")
-nx.set_node_attributes(G, node_dict( log2_contribution ), "log2_centrality_contribution")
-
-OUTPUT_GRAPH =  "tmp.reactions_delta_centrality.gexf"
-nx.write_gexf( G , OUTPUT_GRAPH )
-t2 = time.time(); print('\n','TIME Grafo generado:', (t2-t1)*1000 ,'ms')
-"""
