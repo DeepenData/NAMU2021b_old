@@ -9,63 +9,63 @@ import warnings
 warnings.filterwarnings("ignore")
 import networkx as nx
 
+
+# creacion el grafo en networkx
+#
+#importar modelo cobra que està en formato json jason
 stimulated = cobra.io.load_json_model(
     "/home/alejandro/PostDoc/human-metnet/data/stimulated_2021.json")
-
-
+#extraer matriz estequiométrica
 S_matrix = create_stoichiometric_matrix(stimulated)
+#convertir todas las entradas valores positivos
 S_matrix = (abs(S_matrix) )
+# %%
+#binarizar
 S_matrix = (S_matrix > 0.0).astype(np.int_)
-
+#Multiplicacion por la derecha para proyectar en el espacio de las reacciones
 projected_S_matrix = np.matmul(S_matrix.T, S_matrix)
+print(projected_S_matrix.shape, np.count_nonzero(projected_S_matrix))
 np.fill_diagonal(projected_S_matrix, 0) 
+print(projected_S_matrix.shape, np.count_nonzero(projected_S_matrix))
 
-reaction_adjacency_matrix = (projected_S_matrix !=0).astype(int)
 
-G = nx.convert_matrix.from_numpy_matrix( reaction_adjacency_matrix )
-node_dict   = lambda l : dict( zip( list(G.nodes), l ) )
-cursed_dict = node_dict( [reaction.id for reaction in stimulated.reactions] )
-print(len(cursed_dict), len(G.nodes))
+
 
 # %%
+reaction_adjacency_matrix = (projected_S_matrix !=0).astype(int)
+#crear grafo networkx
+G = nx.convert_matrix.from_numpy_matrix( reaction_adjacency_matrix )
+#hacer diccionario con los nombres de las reacciones
+node_dict   = lambda l : dict( zip( list(G.nodes), l ) )
+cursed_dict = node_dict( [reaction.id for reaction in stimulated.reactions] )
+#chequear connectividad, los tamaños y que los nombres aun NO existen
+print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'PEPCK_neuron' in list(G.nodes) )
+
+# %%
+#Renombrar los nodos usando el diccionario
 G = nx.relabel_nodes(G, cursed_dict, copy=True) # Revisar que esto este antes de la remoción del grafo
 
 largest_component = max(nx.connected_components(G), key=len)
 G = G.subgraph(largest_component)
-print(len(cursed_dict), len(G.nodes))
 
-nx.is_connected(G) # Reemplazar por llamadas de función
-# %% --- Extrae subsistemas
-import re
-
-graph_subsystems = [stimulated.reactions.get_by_id(a_node_name).subsystem for a_node_name in list(G.nodes)]
-
-data = {'node_name': list(G.nodes), 'subsystem': graph_subsystems}
-df   = pd.DataFrame(data)
-
-Glycolysis = df[df['subsystem'].str.contains("Glycolysis")].node_name
-ETC        = df[df['subsystem'].str.contains("Oxidative")].node_name
+print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'PEPCK_neuron' in list(G.nodes) )
 
 
 # %% --- Extrae subsistemas con una lista
+import re
+
+#graph_subsystems = [stimulated.reactions.get_by_id(a_node_name).subsystem for a_node_name in list(G.nodes)]
+#data = {'node_name': list(G.nodes), 'subsystem': graph_subsystems}
+#df   = pd.DataFrame(data)
+#Glycolysis = df[df['subsystem'].str.contains("Glycolysis")].node_name
+#ETC        = df[df['subsystem'].str.contains("Oxidative")].node_name
+
 Glycolysis_astrocyte = ['PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m']
-
 Glycolysis_neuron = ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron',
- 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron', 'PEPCK_Neuron']
+ 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron']
 
-subs="Neuron"
-#Glycolysis_neuron = [x for x in Glycolysis if re.search(subs, x)] 
-ETC_neuron           = [x for x in ETC if re.search(subs, x)] 
-#Glycolysis_astrocyte = list(set(Glycolysis) - set(Glycolysis_neuron))
-ETC_astrocyte        = list(set(ETC) - set(ETC_neuron))
-
-# Separar subsistemas por astro/neurona
-
-# %% testing centralities 
-
-
-
-
+ETC_neuron    = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
+ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
 
 # %%
 def compute_centralities(graph):
@@ -218,6 +218,9 @@ delta_TYRTAm       = get_delta_centrality(df_all_subsystems_baseline.baseline, d
 
 data  = {'delta_TYRTAm': delta_TYRTAm, 'delta_UPP3S_Neuron': delta_UPP3S_Neuron}
 final_delta = pd.DataFrame(data)
-final_delta
+# %%
 
 
+
+
+# %%
