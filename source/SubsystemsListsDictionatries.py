@@ -42,7 +42,7 @@ glicolisis_neuron.to_csv( './tmp/glicolisis_neuron.csv' , index=False ) # Salida
 glicolisis_ids_astros  = list( glicolisis_astros['ids'] ) # Es necesario que queden absolutamente iguales
 glicolisis_ids_neuron = list( glicolisis_neuron['ids'] ) # same 
 
-# %% --- REACCIONES EXPLORATORIAS PARA GLICOLISIS
+# %% --- REACCIONES EXPLORATORIAS PARA FOSFORILACIÓN OXIDATIVA
 
 oxphox = tabla_primaria[tabla_primaria['subsystem'].str.contains('Oxidative Phosphorylation', case=False)==True] # Dataframe exploratorio
 
@@ -54,14 +54,21 @@ oxphox_ids = list( oxphox['ids'] ) # Es necesario que queden absolutamente igual
 oxphox_ids_astros = [ id for id in oxphox_ids if not id.endswith('_Neuron')]
 oxphox_ids_neuron = [ id for id in oxphox_ids if id.endswith('_Neuron')]
 
+# %% --- REACCIONES PARA TRANSPORTE DE ELECTRONES
+# Manualmente curados, posiblemente requiere algo más automatico
+
+# TODO: revisar esto
+etc_astros = ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
+etc_neuron = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
+
 # %% --- DICCIONARIO DE SUBSISTEMAS MANUALMENTE CURADOS
 # Este es para pasarlo a otros analisis, como un objeto Python
 
 subsystems_dict = {
     'glicolisis_astros' : glicolisis_ids_astros, 
-    'oxphox_astros'     : oxphox_ids,
+    'etc_astros'     : etc_astros,
     'glicolisis_neuron' : glicolisis_ids_neuron, 
-    'oxphox_neuron'     : oxphox_ids
+    'etc_neuron'     : etc_neuron
 }
 
 import pickle 
