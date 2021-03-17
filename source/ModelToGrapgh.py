@@ -23,15 +23,24 @@ import numpy    as np
 from cobra.util.array import create_stoichiometric_matrix
 
 S_matrix = create_stoichiometric_matrix(model)
-S_matrix = (abs(S_matrix) )
-S_matrix = (S_matrix > 0.0).astype(np.int_)
+S_matrix = (abs(S_matrix) ) # Convertir todas las entradas valores positivos
+S_matrix = S_matrix.astype(np.int) # Transformar a enteros
 
-projected_S_matrix = np.matmul(S_matrix.T, S_matrix)
-np.fill_diagonal(projected_S_matrix, 0)
+projected_S_matrix = np.matmul(S_matrix.T, S_matrix) # Multiplicacion por la derecha para proyectar en el espacio de las reacciones
+print('Dimensiones de la matriz:', projected_S_matrix.shape,    # Dimensiones, deberian ser cuadradas
+      'Valores no-cero:', np.count_nonzero(projected_S_matrix)) # Valores no-cero, deberian mantenerse
 
-reaction_adjacency_matrix = (projected_S_matrix !=0).astype(int)
+print('Removiendo la diagonal...')
+np.fill_diagonal(projected_S_matrix, 0) # Llena las diagonales de ceros. 
 
-G = nx.convert_matrix.from_numpy_matrix( reaction_adjacency_matrix )
+projected_S_matrix = (projected_S_matrix !=0).astype(int) # No require importar SKLearn
+#from sklearn.preprocessing import Binarizer
+#projected_S_matrix = Binarizer().fit_transform(projected_S_matrix) # Binarización
+print('Dimensiones de la matriz:', projected_S_matrix.shape,    # Dimensiones, deberian ser cuadradas
+      'Valores no-cero:', np.count_nonzero(projected_S_matrix), # Valores no-cero, deberian mantenerse
+      'Valores unicos:',  np.unique(projected_S_matrix))        # Deberian ser [0 1]
+
+G = nx.convert_matrix.from_numpy_matrix( projected_S_matrix ) # Convierte la matriz a numpy
 
 # %% --- AÑADE IDS DE LAS REACCIONES COMO NOMBRE DE LOS NODOS
 
