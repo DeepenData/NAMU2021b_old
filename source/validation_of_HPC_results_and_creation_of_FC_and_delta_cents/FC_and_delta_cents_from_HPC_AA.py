@@ -4,8 +4,8 @@
 "There's a lesson in that, too. What do such machines really do? They increase the number of things we can do without thinking. Things we do without thinking — there's the real danger."
     - God-Emperor Leto II 
 """
-
 # %% --- Importar resultados
+from networkx.algorithms.isomorphism.ismags import intersect
 import pandas   as pd
 import numpy    as np
 import networkx as nx
@@ -16,28 +16,104 @@ import pickle
 infile = open('./tmp/perturbed_centralities','rb'); perturbed_centralities = pickle.load(infile); infile.close()
 infile = open('./tmp/baseline_centralities' ,'rb'); baseline_centralities  = pickle.load(infile); infile.close()
 infile = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(infile); infile.close()
-infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close()
+infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close() 
+
 index_nodes = list(index_nodes)
+
+Glycolysis_astrocyte = ['PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m']
+Glycolysis_neuron = ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron',
+ 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron']
+ETC_neuron    = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
+ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
+# %% 
+def cobra_to_networkx_rxn_projection(modelo):
+    import networkx as nx
+    from   cobra.util.array import create_stoichiometric_matrix
+    import numpy as np
+    from sklearn.preprocessing import Binarizer
+    import warnings 
+    warnings.filterwarnings("ignore")
+
+    assert str(type(modelo)) == "<class 'cobra.core.model.Model'>", "El objeto debe ser un modelo, no un optimizado (modelo.optimize())"
+    #extraer matriz estequiométrica
+    S_matrix = create_stoichiometric_matrix(modelo)
+    #convertir todas las entradas valores positivos
+    S_matrix = (abs(S_matrix) )
+    #transformar a enteros 
+    S_matrix = S_matrix.astype(np.int)
+    #Multiplicacion por la derecha para proyectar en el espacio de las reacciones
+    projected_S_matrix = np.matmul(S_matrix.T, S_matrix)
+    #rellenar diagonal con ceros
+    np.fill_diagonal(projected_S_matrix, 0) 
+    #binarizar
+    projected_S_matrix = Binarizer().fit_transform(projected_S_matrix)
+    #crear grafo networkx
+    G = nx.convert_matrix.from_numpy_matrix( projected_S_matrix )
+    #hacer diccionario con los nombres de las reacciones
+    node_dict   = lambda l : dict( zip( list(G.nodes), l ) )
+    reaction_dict = node_dict( [reaction.id for reaction in modelo.reactions] )
+    #Renombrar los nodos usando el diccionario
+    G = nx.relabel_nodes(G, reaction_dict, copy=True) # Revisar que esto este antes de la remoción del grafo
+    return G
+
+
+def get_largest_component(grafo): 
+    import networkx as nx
+    largest_component = max(nx.connected_components(grafo), key=len)
+    G = grafo.subgraph(largest_component)
+    return G
+# %%  generar grafo
+import cobra  
+import warnings 
+warnings.filterwarnings("ignore")
+
+stimulated = cobra.io.load_json_model(
+    "/home/alejandro/PostDoc/human-metnet/data/stimulated_2021.json")
+    
+G0 = cobra_to_networkx_rxn_projection(stimulated)
+G  = get_largest_component(G0)
+
 # %% Encontrar todos los nodos que son 'bridges' del componente más grande del grafo
+#nx.has_bridges(G) 
+bridges = set(np.array(list(nx.bridges(G))).flatten())
+degrees =  dict(nx.degree(G))
+degrees_one = {key:value for (key, value) in degrees.items() if value == 1}
+degrees_one = set(list(degrees_one.keys()))
+disjoining_nodes =  list(set.difference(bridges, degrees_one))
+#check 
+G_with_a_removal = G.copy()
+G_with_a_removal.remove_node(disjoining_nodes[0])
+print(disjoining_nodes[0],nx.is_connected(G_with_a_removal))
+# %%
+#disjoining_nodes[0]
+L_LACt2r     =  [ index_nodes.index(node) for node in ['L-LACt2r'] ]
+
+perturbed_hpc_L_LACt2r_df  =  pd.DataFrame(perturbed_centralities[L_LACt2r,: ,:].reshape(1056,12))
+
+perturbed_hpc_L_LACt2r_df.to_csv(
+    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/perturbed_hpc_L_LACt2r_df.csv")
+
+
+baseline_Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
+baseline_Glycolysis_astrocyte_df  =  pd.DataFrame(baseline_centralities[ :,Glycolysis_astrocyte_idxs,:].reshape(14,12))
+baseline_Glycolysis_astrocyte_df.to_csv(
+    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/baseline_hpc_Glycolysis_astrocyte_df.csv")
+
+
+perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df = perturbed_hpc_L_LACt2r_df.loc[Glycolysis_astrocyte_idxs,:]
 
 
 
+# %% FC y delta cents
+def aritmetic_mean(df):
+    return np.nanmean( df, axis= 0)
 
-# %% Para la verificacion contra el código naive
-
-
-
-TYRTAm     =  [ index_nodes.index(node) for node in ['TYRTAm'] ]
-
-
-
-
-perturbed_hpc_TYRTAm_df  =  pd.DataFrame(perturbed_centralities[TYRTAm,: ,:].reshape(1056,12))
-
-perturbed_hpc_TYRTAm_df.to_csv("/home/alejandro/PostDoc/human-metnet/source/hateful-eight/perturbed_hpc_TYRTAm_df.csv")
+ratio_from_arit_mean_L_LACt2r  = aritmetic_mean(baseline_Glycolysis_astrocyte_df)/aritmetic_mean(perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df)
+FC_from__arit_mean_L_LACt2r = np.log2(ratio_from_arit_mean_L_LACt2r)
+delta_from_arit_mean_L_LACt2r  = (aritmetic_mean(baseline_Glycolysis_astrocyte_df) - aritmetic_mean(perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df))/aritmetic_mean(baseline_Glycolysis_astrocyte_df)
 
 
-# %% --- Importando librerias utiles
+# %%
 
 
 # %% --- Cosas de los subsistemas ???
@@ -48,23 +124,6 @@ def subsystem_tensor( subsystem_nodes, tensor):
     subsystem_index = [ index_nodes.index(node) for node in subsystem_nodes ]
     return tensor[:, subsystem_index ,:]
 
-# TODO: eliminar esto? 
-# Une dos subsistemas
-#subsystem = list( subsystems['glicolisis'] + subsystems['oxphox'])
-#perturbed_subsystem = subsystem_tensor( subsystem, perturbed_centralities )
-#baseline_subsystem  = subsystem_tensor( subsystem, baseline_centralities   )
-
-Glycolysis_astrocyte = ['PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m']
-
-Glycolysis_neuron = ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron',
- 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron']
-
-ETC_neuron = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
-
-ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
-
-
-Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
 
 perturbed_Glycolysis_astrocyte = subsystem_tensor( Glycolysis_astrocyte, perturbed_centralities )
 baseline_Glycolysis_astrocyte  = subsystem_tensor( Glycolysis_astrocyte, baseline_centralities   )
@@ -78,16 +137,7 @@ baseline_ETC_neuron  = subsystem_tensor( ETC_neuron, baseline_centralities   )
 perturbed_ETC_astrocyte= subsystem_tensor( ETC_astrocyte, perturbed_centralities )
 baseline_ETC_astrocyte  = subsystem_tensor( ETC_astrocyte, baseline_centralities   )
 
-#perturbed_Glycolysis_astrocyte
 
-noNaN_perturbed_subsystem = np.nan_to_num( perturbed_Glycolysis_astrocyte , copy=True, nan=0.0, posinf=None, neginf=None)
-
-    # Es el unico que no require lambdas raros :D
-aritmetic_perturbed = np.nanmean( noNaN_perturbed_subsystem, axis= 1)
-pd.DataFrame(
-aritmetic_perturbed[TYRTAm,]).T
-#perturbed_ETC_neuron
-#perturbed_Glycolysis_neuron
 
 #np.concatenate([perturbed_ETC_astrocyte, perturbed_Glycolysis_astrocyte], axis = 0).shape
 
@@ -204,7 +254,7 @@ def get_by_aggregation(srint_aggregation):
     def filter_cols_by_regex(df, patten):
         return df.loc[:, df.columns.str.contains(patten, regex=True)]
 
-    srint_aggregation = 'fold_change_aritmetic'
+    srint_aggregation 
     agg = aggregation[aggregation.index(srint_aggregation)]
 
     df =  pd.concat([
@@ -223,48 +273,13 @@ delta_aritmetic = get_by_aggregation('delta_aritmetic')
 delta_geometric = get_by_aggregation('delta_geometric')
 delta_quadratic = get_by_aggregation('delta_quadratic')
 delta_harmonic = get_by_aggregation('delta_harmonic')
+# %% Proof
+print(
+np.array(
+fold_change_aritmetic.filter(regex = r'aritmetic_Glycolysis_astrocyte', axis=1).loc['L-LACt2r',:]) \
+     == FC_from__arit_mean_L_LACt2r , \
 
-
-
+np.array(
+delta_aritmetic.filter(regex = r'aritmetic_Glycolysis_astrocyte', axis=1).loc['L-LACt2r',:]) \
+     == delta_from_arit_mean_L_LACt2r )
 ######   FIN  ######
-
-# %% 
-fold_change_aritmetic.loc['UPP3S_Neuron',]
-
-
-
-# %% --- Convierte a Dataframes
-
-
-'''
-def crear_dataframe( matriz ):
-    df = pd.DataFrame(
-        matriz,
-        index = index_nodes,
-        columns = index_centralities
-    )
-    return df
-'''
-# %% --- Exporta a R
-
-'''# TODO: eliminar este código estúpido que no deberia existir
-# me da asco verlo y solo existe por la capacidad multi-cursor de VS Code
-#   - Manu, 2021-03-13 23:04
-
-exportar = [ 
-    fold_change_aritmetic , fold_change_geometric , 
-    fold_change_quadratic , fold_change_harmonic , 
-    delta_aritmetic , delta_geometric , 
-    delta_quadratic , delta_harmonic ]
-
-exportar_como = [ 
-    'fold_change_aritmetic' , 'fold_change_geometric' , 
-    'fold_change_quadratic' , 'fold_change_harmonic' , 
-    'delta_aritmetic' , 'delta_geometric' , 
-    'delta_quadratic' , 'delta_harmonic' ]
-
-for i in range(len(exportar)):
-    filename = './results/' + exportar_como[i] + '.csv'
-    frame = crear_dataframe( exportar[i] )
-    frame.to_csv( filename )
-'''

@@ -8,8 +8,6 @@ from   cobra.util.array import create_stoichiometric_matrix
 import warnings 
 warnings.filterwarnings("ignore")
 import networkx as nx
-
-
 # creacion el grafo en networkx
 #
 #importar modelo cobra que està en formato json jason
@@ -30,10 +28,6 @@ from sklearn.preprocessing import Binarizer
 projected_S_matrix = Binarizer().fit_transform(projected_S_matrix)
 #chequear
 print(projected_S_matrix.shape, np.count_nonzero(projected_S_matrix), np.unique(projected_S_matrix))
-
-
-# %%
-
 #crear grafo networkx
 G = nx.convert_matrix.from_numpy_matrix( projected_S_matrix )
 #hacer diccionario con los nombres de las reacciones
@@ -41,30 +35,18 @@ node_dict   = lambda l : dict( zip( list(G.nodes), l ) )
 cursed_dict = node_dict( [reaction.id for reaction in stimulated.reactions] )
 #chequear connectividad, los tamaños y que los nombres aun NO existen
 print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'DPGM_Neuron' in list(G.nodes) )
-
-# %%
 #Renombrar los nodos usando el diccionario
 G = nx.relabel_nodes(G, cursed_dict, copy=True) # Revisar que esto este antes de la remoción del grafo
-
 largest_component = max(nx.connected_components(G), key=len)
 G = G.subgraph(largest_component)
-
 print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'DPGM_Neuron' in list(G.nodes) )
 
 
 # %% --- Extrae subsistemas con una lista
-import re
-
-#graph_subsystems = [stimulated.reactions.get_by_id(a_node_name).subsystem for a_node_name in list(G.nodes)]
-#data = {'node_name': list(G.nodes), 'subsystem': graph_subsystems}
-#df   = pd.DataFrame(data)
-#Glycolysis = df[df['subsystem'].str.contains("Glycolysis")].node_name
-#ETC        = df[df['subsystem'].str.contains("Oxidative")].node_name
 
 Glycolysis_astrocyte = ['PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m']
 Glycolysis_neuron = ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron',
  'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron']
-
 ETC_neuron    = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
 ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
 
@@ -154,8 +136,8 @@ def calc_centr_rmv(rxn_to_remove):
     return df_all_subsystems
 
 # %% --- Resultados naive con dos reacicones
-UPP3S_Neuron = calc_centr_rmv('UPP3S_Neuron')
-TYRTAm       = calc_centr_rmv('TYRTAm')
+L_LACt2r = calc_centr_rmv('L-LACt2r')
+
 # Dataframes distintas que se juntan y hacen cosas raras
 # %%
 
