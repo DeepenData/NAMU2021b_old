@@ -19,27 +19,28 @@ stimulated = cobra.io.load_json_model(
 S_matrix = create_stoichiometric_matrix(stimulated)
 #convertir todas las entradas valores positivos
 S_matrix = (abs(S_matrix) )
-# %%
-#binarizar
-S_matrix = (S_matrix > 0.0).astype(np.int_)
+#transformar a enteros 
+S_matrix = S_matrix.astype(np.int)
 #Multiplicacion por la derecha para proyectar en el espacio de las reacciones
 projected_S_matrix = np.matmul(S_matrix.T, S_matrix)
 print(projected_S_matrix.shape, np.count_nonzero(projected_S_matrix))
 np.fill_diagonal(projected_S_matrix, 0) 
-print(projected_S_matrix.shape, np.count_nonzero(projected_S_matrix))
-
-
+#binarizar
+from sklearn.preprocessing import Binarizer
+projected_S_matrix = Binarizer().fit_transform(projected_S_matrix)
+#chequear
+print(projected_S_matrix.shape, np.count_nonzero(projected_S_matrix), np.unique(projected_S_matrix))
 
 
 # %%
-reaction_adjacency_matrix = (projected_S_matrix !=0).astype(int)
+
 #crear grafo networkx
-G = nx.convert_matrix.from_numpy_matrix( reaction_adjacency_matrix )
+G = nx.convert_matrix.from_numpy_matrix( projected_S_matrix )
 #hacer diccionario con los nombres de las reacciones
 node_dict   = lambda l : dict( zip( list(G.nodes), l ) )
 cursed_dict = node_dict( [reaction.id for reaction in stimulated.reactions] )
 #chequear connectividad, los tamaños y que los nombres aun NO existen
-print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'PEPCK_neuron' in list(G.nodes) )
+print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'DPGM_Neuron' in list(G.nodes) )
 
 # %%
 #Renombrar los nodos usando el diccionario
@@ -48,7 +49,7 @@ G = nx.relabel_nodes(G, cursed_dict, copy=True) # Revisar que esto este antes de
 largest_component = max(nx.connected_components(G), key=len)
 G = G.subgraph(largest_component)
 
-print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'PEPCK_neuron' in list(G.nodes) )
+print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'DPGM_Neuron' in list(G.nodes) )
 
 
 # %% --- Extrae subsistemas con una lista
@@ -69,19 +70,26 @@ ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
 
 # %%
 def compute_centralities(graph):
-    hc = nx.harmonic_centrality(graph, nbunch=None, distance=None)
-    ec = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
-    dc = nx.degree_centrality(graph)
-    bc = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
-    cc = nx.closeness_centrality(graph, distance=None, wf_improved=True)
-    lc = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
-    ic      = nx.information_centrality(graph)
-    soc     = nx.second_order_centrality(graph) 
-    # 
-    cfcc    = nx.current_flow_closeness_centrality(graph)    
-    cfbc    = nx.current_flow_betweenness_centrality(graph)
-    acfbc   = nx.approximate_current_flow_betweenness_centrality(graph)
-    cbc     = nx.communicability_betweenness_centrality(graph)   
+    hc  = nx.harmonic_centrality(grafo, nbunch=None, distance=None)
+    ec  = nx.eigenvector_centrality(grafo, max_iter=1000, tol=1e-05, nstart=None, weight=None)
+    dc  = nx.degree_centrality(grafo)
+    bc  = nx.betweenness_centrality(grafo, normalized=True, weight=None, endpoints=False, seed=None)
+    """↓ Here be dragons ↓"""
+    cc  = nx.closeness_centrality(grafo, distance=None, wf_improved=True)
+    lc  = nx.load_centrality(grafo, cutoff=None, normalized=True, weight=None)
+    """ Requieren un grafo full conected """
+    #if not (nx.is_connected(grafo)) : 
+    #    ic = {}; soc = {}
+    #else:
+    #ic  = nx.information_centrality(grafo)
+    #soc = nx.second_order_centrality(grafo)
+    ic  = nx.information_centrality(grafo)
+    soc = nx.second_order_centrality(grafo)
+
+    cfcc    = nx.current_flow_closeness_centrality(grafo)    
+    cfbc    = nx.current_flow_betweenness_centrality(grafo)
+    acfbc   = nx.approximate_current_flow_betweenness_centrality(grafo)
+    cbc     = nx.communicability_betweenness_centrality(grafo)   
 
     #####-- make DFs --###################################################################
 
@@ -119,7 +127,7 @@ def calc_centr_rmv(rxn_to_remove):
     graph_largest_component   = G_with_a_removal.subgraph(largest_component)
     # Hacer una extracción del componente más grande; calcular centralidades con los otros dos que antes se ignoraban
     # Tirar lista que indica cuantos componentes tiene el grafo; idealmente [1079, 1]
-    nodes_in_small_components = list(set(G_with_a_removal.nodes) - set(graph_largest_component.nodes))
+    #nodes_in_small_components = list(set(G_with_a_removal.nodes) - set(graph_largest_component.nodes))
     
 
     ###### compute centralities ##########
@@ -150,7 +158,7 @@ UPP3S_Neuron = calc_centr_rmv('UPP3S_Neuron')
 TYRTAm       = calc_centr_rmv('TYRTAm')
 # Dataframes distintas que se juntan y hacen cosas raras
 # %%
-UPP3S_Neuron
+
 # Genera un dataframe de una columna/vector con nombre de columna de la reacción
 # Los rownames corresponden a la centralidad más el subsistema más la célula
 # más abajo estos dataframes/vectores se ensamblan en uno con una columna por reacción
@@ -181,6 +189,8 @@ df_4 = get_centrality_mean_by_subsys('Glycolysis_neuron')
 from functools import reduce
 dfs = [df_1, df_2, df_3, df_4]
 df_all_subsystems_baseline = reduce(lambda  left, right: left.append(right, ignore_index=False), dfs)
+
+df_all_subsystems_baseline
 # Esto genera un dataframe con 
 # %%
 df_all_subsystems_baseline
@@ -202,7 +212,7 @@ final_FC # Tiene nombres de las columnas FC_{{rxn}}_{{cell}}
 
 # TODO: hacer esto con distitnas tecnicas de promedio
 # TODO: extraer valores de los dataframe para hacer un histograma
-np.array(final.values).flatten() 
+#np.array(final.values).flatten() 
 # %>% histograma() 
 # %>% plot()
 # %% Calculating delta centralities
@@ -220,7 +230,7 @@ data  = {'delta_TYRTAm': delta_TYRTAm, 'delta_UPP3S_Neuron': delta_UPP3S_Neuron}
 final_delta = pd.DataFrame(data)
 # %%
 
-
+final_FC
 
 
 # %%

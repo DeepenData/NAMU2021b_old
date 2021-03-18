@@ -6,6 +6,8 @@
 """
 
 # %% --- Importar resultados
+
+
 import pickle 
 
 # Esto asume que está en 'human-metnet/'
@@ -16,11 +18,20 @@ infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); i
 
 # Un error facil de resolver
 index_nodes = list(index_nodes)
-
-# %% --- Importando librerias utiles
+# %% Para la verificacion con el código naive
 import pandas   as pd
 import numpy    as np
 import networkx as nx
+
+
+TYRTAm     =  [ index_nodes.index(node) for node in ['TYRTAm'] ]
+TYRTAm_df  =  pd.DataFrame(perturbed_centralities[TYRTAm,: ,:].reshape(1056,12))
+
+TYRTAm_df.to_csv("/home/alejandro/PostDoc/human-metnet/source/hateful-eight/TYRTAm_df.csv")
+
+
+# %% --- Importando librerias utiles
+
 
 # %% --- Cosas de los subsistemas ???
 
@@ -46,6 +57,8 @@ ETC_neuron = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_
 ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
 
 
+Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
+
 perturbed_Glycolysis_astrocyte = subsystem_tensor( Glycolysis_astrocyte, perturbed_centralities )
 baseline_Glycolysis_astrocyte  = subsystem_tensor( Glycolysis_astrocyte, baseline_centralities   )
 
@@ -58,6 +71,18 @@ baseline_ETC_neuron  = subsystem_tensor( ETC_neuron, baseline_centralities   )
 perturbed_ETC_astrocyte= subsystem_tensor( ETC_astrocyte, perturbed_centralities )
 baseline_ETC_astrocyte  = subsystem_tensor( ETC_astrocyte, baseline_centralities   )
 
+#perturbed_Glycolysis_astrocyte
+
+noNaN_perturbed_subsystem = np.nan_to_num( perturbed_Glycolysis_astrocyte , copy=True, nan=0.0, posinf=None, neginf=None)
+
+    # Es el unico que no require lambdas raros :D
+aritmetic_perturbed = np.nanmean( noNaN_perturbed_subsystem, axis= 1)
+pd.DataFrame(
+aritmetic_perturbed[TYRTAm,]).T
+#perturbed_ETC_neuron
+#perturbed_Glycolysis_neuron
+
+#np.concatenate([perturbed_ETC_astrocyte, perturbed_Glycolysis_astrocyte], axis = 0).shape
 
 # %% --- Colapsando la segunda dimensión... (nodos totales)
 # Esto calcula 4 promedios de las centralidades para los nodos
@@ -156,6 +181,10 @@ def get_df_8_aggregations_x_subsys(baseline, perturbed, name_string):
     return growing_df  
 
 
+ # %% 
+perturbed_ETC_astrocyte.shape
+
+  # %% 
 
 ETC_astrocyte_full        = get_df_8_aggregations_x_subsys(baseline_ETC_astrocyte, perturbed_ETC_astrocyte, 'ETC_astrocyte')
 ETC_neuron_full           = get_df_8_aggregations_x_subsys(baseline_ETC_neuron, perturbed_ETC_neuron, 'ETC_neuron')
@@ -189,7 +218,7 @@ delta_quadratic = get_by_aggregation('delta_quadratic')
 delta_harmonic = get_by_aggregation('delta_harmonic')
 
 
-delta_harmonic
+
 ######   FIN  ######
 
 # %% 
@@ -200,7 +229,7 @@ fold_change_aritmetic.loc['UPP3S_Neuron',]
 # %% --- Convierte a Dataframes
 
 
-
+'''
 def crear_dataframe( matriz ):
     df = pd.DataFrame(
         matriz,
@@ -208,10 +237,10 @@ def crear_dataframe( matriz ):
         columns = index_centralities
     )
     return df
-
+'''
 # %% --- Exporta a R
 
-# TODO: eliminar este código estúpido que no deberia existir
+'''# TODO: eliminar este código estúpido que no deberia existir
 # me da asco verlo y solo existe por la capacidad multi-cursor de VS Code
 #   - Manu, 2021-03-13 23:04
 
@@ -231,3 +260,4 @@ for i in range(len(exportar)):
     filename = './results/' + exportar_como[i] + '.csv'
     frame = crear_dataframe( exportar[i] )
     frame.to_csv( filename )
+'''
