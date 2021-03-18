@@ -6,28 +6,35 @@
 """
 
 # %% --- Importar resultados
-
-
+import pandas   as pd
+import numpy    as np
+import networkx as nx
 import pickle 
-
 # Esto asume que está en 'human-metnet/'
+#%cd ..
+#%cd ..
 infile = open('./tmp/perturbed_centralities','rb'); perturbed_centralities = pickle.load(infile); infile.close()
 infile = open('./tmp/baseline_centralities' ,'rb'); baseline_centralities  = pickle.load(infile); infile.close()
 infile = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(infile); infile.close()
 infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close()
-
-# Un error facil de resolver
 index_nodes = list(index_nodes)
-# %% Para la verificacion con el código naive
-import pandas   as pd
-import numpy    as np
-import networkx as nx
+# %% Encontrar todos los nodos que son 'bridges' del componente más grande del grafo
+
+
+
+
+# %% Para la verificacion contra el código naive
+
 
 
 TYRTAm     =  [ index_nodes.index(node) for node in ['TYRTAm'] ]
-TYRTAm_df  =  pd.DataFrame(perturbed_centralities[TYRTAm,: ,:].reshape(1056,12))
 
-TYRTAm_df.to_csv("/home/alejandro/PostDoc/human-metnet/source/hateful-eight/TYRTAm_df.csv")
+
+
+
+perturbed_hpc_TYRTAm_df  =  pd.DataFrame(perturbed_centralities[TYRTAm,: ,:].reshape(1056,12))
+
+perturbed_hpc_TYRTAm_df.to_csv("/home/alejandro/PostDoc/human-metnet/source/hateful-eight/perturbed_hpc_TYRTAm_df.csv")
 
 
 # %% --- Importando librerias utiles
