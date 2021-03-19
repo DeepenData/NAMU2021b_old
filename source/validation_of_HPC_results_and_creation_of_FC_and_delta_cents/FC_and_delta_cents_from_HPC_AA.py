@@ -91,22 +91,46 @@ L_LACt2r     =  [ index_nodes.index(node) for node in ['L-LACt2r'] ]
 perturbed_hpc_L_LACt2r_df  =  pd.DataFrame(perturbed_centralities[L_LACt2r,: ,:].reshape(1056,12))
 
 perturbed_hpc_L_LACt2r_df.to_csv(
-    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/perturbed_hpc_L_LACt2r_df.csv")
+    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_perturbed_L_LACt2r_df.csv")
+# %%
+# %%
 
+Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
 
 baseline_Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
 baseline_Glycolysis_astrocyte_df  =  pd.DataFrame(baseline_centralities[ :,Glycolysis_astrocyte_idxs,:].reshape(14,12))
 baseline_Glycolysis_astrocyte_df.to_csv(
-    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/baseline_hpc_Glycolysis_astrocyte_df.csv")
+    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_baseline_Glycolysis_astrocyte_df.csv")
 
 
 perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df = perturbed_hpc_L_LACt2r_df.loc[Glycolysis_astrocyte_idxs,:]
 
 
+perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df.to_csv(
+    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_perturbed_Glycolysis_astrocyte_L_LACt2r_df.csv")
+# %% 
 
-# %% FC y delta cents
 def aritmetic_mean(df):
     return np.nanmean( df, axis= 0)
+
+
+
+
+
+
+hpc_aritmetic_mean_perturbed_Glycolysis_astrocyte_L_LACt2r = pd.DataFrame(aritmetic_mean(perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df))
+hpc_aritmetic_mean_perturbed_Glycolysis_astrocyte_L_LACt2r.to_csv(
+    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_aritmetic_mean_perturbed_Glycolysis_astrocyte_L_LACt2r.csv")
+
+
+hpc_aritmetic_mean_baseline_Glycolysis_astrocyte = pd.DataFrame(aritmetic_mean(baseline_Glycolysis_astrocyte_df))
+hpc_aritmetic_mean_baseline_Glycolysis_astrocyte.to_csv(
+    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_aritmetic_mean_baseline_Glycolysis_astrocyte.csv")
+
+
+# %% FC y delta cents
+
+
 
 ratio_from_arit_mean_L_LACt2r  = aritmetic_mean(baseline_Glycolysis_astrocyte_df)/aritmetic_mean(perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df)
 FC_from__arit_mean_L_LACt2r = np.log2(ratio_from_arit_mean_L_LACt2r)

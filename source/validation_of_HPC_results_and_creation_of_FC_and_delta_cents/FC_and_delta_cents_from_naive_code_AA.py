@@ -29,16 +29,18 @@ projected_S_matrix = Binarizer().fit_transform(projected_S_matrix)
 #chequear
 print(projected_S_matrix.shape, np.count_nonzero(projected_S_matrix), np.unique(projected_S_matrix))
 #crear grafo networkx
-G = nx.convert_matrix.from_numpy_matrix( projected_S_matrix )
+G0 = nx.convert_matrix.from_numpy_matrix( projected_S_matrix )
 #hacer diccionario con los nombres de las reacciones
-node_dict   = lambda l : dict( zip( list(G.nodes), l ) )
+node_dict   = lambda l : dict( zip( list(G0.nodes), l ) )
 cursed_dict = node_dict( [reaction.id for reaction in stimulated.reactions] )
 #chequear connectividad, los tamaños y que los nombres aun NO existen
-print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'DPGM_Neuron' in list(G.nodes) )
+print(nx.is_connected(G0) , len(cursed_dict), len(G0.nodes), 'DPGM_Neuron' in list(G0.nodes) )
 #Renombrar los nodos usando el diccionario
-G = nx.relabel_nodes(G, cursed_dict, copy=True) # Revisar que esto este antes de la remoción del grafo
+G0 = nx.relabel_nodes(G, cursed_dict, copy=True) # Revisar que esto este antes de la remoción del grafo
 largest_component = max(nx.connected_components(G), key=len)
-G = G.subgraph(largest_component)
+
+
+G = G0.subgraph(largest_component)
 print(nx.is_connected(G) , len(cursed_dict), len(G.nodes), 'DPGM_Neuron' in list(G.nodes) )
 
 
@@ -51,7 +53,7 @@ ETC_neuron    = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u1
 ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
 
 # %%
-def compute_centralities(graph):
+def compute_centralities(grafo):
     hc  = nx.harmonic_centrality(grafo, nbunch=None, distance=None)
     ec  = nx.eigenvector_centrality(grafo, max_iter=1000, tol=1e-05, nstart=None, weight=None)
     dc  = nx.degree_centrality(grafo)
@@ -135,21 +137,85 @@ def calc_centr_rmv(rxn_to_remove):
     df_all_subsystems = reduce(lambda  left, right: left.append(right, ignore_index=False), dfs)
     return df_all_subsystems
 
+def get_largest_component(grafo): 
+    import networkx as nx
+    largest_component = max(nx.connected_components(grafo), key=len)
+    G = grafo.subgraph(largest_component)
+    return G
+
+import pickle 
+
+infile      = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(infile); infile.close()
+index_nodes = list(index_nodes)
+Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
+
 # %% --- Resultados naive con dos reacicones
-L_LACt2r = calc_centr_rmv('L-LACt2r')
 
-# Dataframes distintas que se juntan y hacen cosas raras
+G_with_a_removal = G.copy() # Sus
+G_with_a_removal.remove_node('L-LACt2r')
+G_with_a_removal = get_largest_component(G_with_a_removal)
+perturbed_naive_L_LACt2r = compute_centralities(G_with_a_removal)
+
 # %%
+#L_LACt2r     =  [ index_nodes.index(node) for node in ['L-LACt2r'] ]
+#perturbed_naive_L_LACt2r_df = \
+perturbed_naive__Glycolysis_astrocyte_L_LACt2r_df = \
+perturbed_naive_L_LACt2r.loc[Glycolysis_astrocyte]
+perturbed_naive__Glycolysis_astrocyte_L_LACt2r_df
+# %% FC y delta cents
+def aritmetic_mean(df):
+    return np.nanmean( df, axis= 0)
 
-# Genera un dataframe de una columna/vector con nombre de columna de la reacción
-# Los rownames corresponden a la centralidad más el subsistema más la célula
-# más abajo estos dataframes/vectores se ensamblan en uno con una columna por reacción
+aritmetic_mean_perturbed_naive__Glycolysis_astrocyte_L_LACt2r = \
+    aritmetic_mean(perturbed_naive__Glycolysis_astrocyte_L_LACt2r_df)
 
+# %% baseline
+
+G_unperturbed    = G.copy()
+df_all_baseline_centralities = compute_centralities(G_unperturbed)
+
+Glycolysis_df_all_baseline_centralities = \
+df_all_baseline_centralities.loc[Glycolysis_astrocyte]
+# %% 
+
+path = \
+'/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_perturbed_L_LACt2r_df.csv'
+
+left_nodes =  list(set(G.nodes) - set(G_with_a_removal.nodes))
+left_nodes_idxs =  [ index_nodes.index(node) for node in left_nodes ]
+hpc_perturbed_L_LACt2r_df = pd.read_csv(path, index_col=0)
+hpc_perturbed_L_LACt2r_df.drop(left_nodes_idxs, axis=0, inplace = True)
+
+100*(np.linalg.norm(perturbed_naive_L_LACt2r)/ \
+np.linalg.norm(hpc_perturbed_L_LACt2r_df))
+
+# %% 
+
+
+path = \
+'/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_perturbed_Glycolysis_astrocyte_L_LACt2r_df.csv'
+
+hpc_perturbed_Glycolysis_astrocyte_L_LACt2r_df = pd.read_csv(path, index_col=0)
+#hpc_perturbed_Glycolysis_astrocyte_L_LACt2r_df.drop(left_nodes_idxs, axis=0, inplace = True)
+
+100*(np.linalg.norm(perturbed_naive__Glycolysis_astrocyte_L_LACt2r_df)/ \
+np.linalg.norm(hpc_perturbed_Glycolysis_astrocyte_L_LACt2r_df))
+
+[index_nodes[index] for index in hpc_perturbed_Glycolysis_astrocyte_L_LACt2r_df.index]
+
+# %% 
+
+path = \
+'/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_baseline_Glycolysis_astrocyte_df.csv'
+
+hpc_baseline_Glycolysis_astrocyte_df = pd.read_csv(path, index_col=0)
+
+Glycolysis_df_all_baseline_centralities
+hpc_baseline_Glycolysis_astrocyte_df
 # %% 
 from functools import reduce
 df_perturbed_centralities  = reduce(lambda  left, right: left.join(right, how='outer'), [UPP3S_Neuron, TYRTAm])
-#df_perturbed_centralities
-# %% Get baseline centralities 
+#df_perturbed_centralities Get baseline centralities 
 
 # Desde aqui obtenemos las centralidades de linea base
 # esto hace ¿un dataframe... que hace?
