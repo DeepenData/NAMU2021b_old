@@ -36,8 +36,8 @@ cursed_dict = node_dict( [reaction.id for reaction in stimulated.reactions] )
 #chequear connectividad, los tamaños y que los nombres aun NO existen
 print(nx.is_connected(G0) , len(cursed_dict), len(G0.nodes), 'DPGM_Neuron' in list(G0.nodes) )
 #Renombrar los nodos usando el diccionario
-G0 = nx.relabel_nodes(G, cursed_dict, copy=True) # Revisar que esto este antes de la remoción del grafo
-largest_component = max(nx.connected_components(G), key=len)
+G0 = nx.relabel_nodes(G0, cursed_dict, copy=True) # Revisar que esto este antes de la remoción del grafo
+largest_component = max(nx.connected_components(G0), key=len)
 
 
 G = G0.subgraph(largest_component)
@@ -149,8 +149,21 @@ infile      = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(infile);
 index_nodes = list(index_nodes)
 Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
 
-# %% --- Resultados naive con dos reacicones
 
+
+# %% baseline
+
+G_unperturbed    = G.copy()
+df_all_baseline_centralities = compute_centralities(G_unperturbed)
+
+baseline_Glycolysis_astrocyte_df = df_all_baseline_centralities.loc[Glycolysis_astrocyte]
+
+
+# %% --- Resultados naive con dos reacicones
+baseline_Glycolysis_astrocyte_df.to_csv(
+    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/Naive_baseline_Glycolysis_astrocyte.csv")
+
+# %%
 G_with_a_removal = G.copy() # Sus
 G_with_a_removal.remove_node('L-LACt2r')
 G_with_a_removal = get_largest_component(G_with_a_removal)
@@ -169,13 +182,7 @@ def aritmetic_mean(df):
 aritmetic_mean_perturbed_naive__Glycolysis_astrocyte_L_LACt2r = \
     aritmetic_mean(perturbed_naive__Glycolysis_astrocyte_L_LACt2r_df)
 
-# %% baseline
 
-G_unperturbed    = G.copy()
-df_all_baseline_centralities = compute_centralities(G_unperturbed)
-
-Glycolysis_df_all_baseline_centralities = \
-df_all_baseline_centralities.loc[Glycolysis_astrocyte]
 # %% 
 
 path = \
