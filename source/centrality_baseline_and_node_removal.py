@@ -146,12 +146,12 @@ def removed_nodes_centrality(graph, node):
     """Helper que remueve un nodo y calcula la centralidad de este"""
     print('Iterando en nodo', node) # Sanity check de nodo iterado
     
-    G = deepcopy( graph ) # CREA UNA COPIA DE TRABAJO PARA EL GRAFO
+    G_removed = nx.Graph( graph ) # CREA UNA COPIA DE TRABAJO PARA EL GRAFO
 
-    G.delta.remove_node( str(node) )  # ELIMINA EL NODO A ITERAR
-    G = get_largest_component(G)      # ELIMINA NODOS DISCONEXOS
+    G_removed = G_removed.remove_node( str(node) )  # ELIMINA EL NODO A ITERAR
+    G_removed = get_largest_component(G)      # ELIMINA NODOS DISCONEXOS
 
-    removed_centrality = compute_centralities(G, lite=LITE) # CENTRALIDADES
+    removed_centrality = compute_centralities(G_removed, lite=LITE) # CENTRALIDADES
 
     removed_centrality.name = str( node ) # RENOMBRADO DEL DATAFRAME
 
@@ -172,7 +172,11 @@ print( baseline.info(verbose=True) ) # Sanity check para el formato de las salid
 
 # %% --- COMPUTA CENTRALIDADES REMOVIDAS
 
-removed
+NODE = 'FPGS3m' # Este nodo ademas causa una perdida de conetividad de la red
+removed = removed_nodes_centrality(G, NODE)
+
+CSV_FILE = 'removed_' + NODE + '.csv'
+removed.to_csv(CSV_FILE)
 
 # %% --- INDEXEA GLICOLISIS
 
