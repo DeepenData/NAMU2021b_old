@@ -152,13 +152,14 @@ def removed_nodes_centrality(graph, node, info=False):
     G_removed = get_largest_component(G_removed) # ELIMINA NODOS DISCONEXOS
 
     assert len(graph.nodes) != len(G_removed.nodes), "No hay remocion"
+    nodos_removidos = set(graph.nodes) - set(G_removed.nodes)
 
     if info:
         # INFORMACION EXTRA PARA LOS CALCULOS Y DEMAS
         print( 'Nodos originales:', len(graph.nodes) )
         print( 'Nodos post-remocion:', len(G_removed.nodes) )
         print( 'Nodos removidos:', len(graph.nodes) - len(G_removed.nodes) )
-        print( 'Removidos:', set(graph.nodes) - set(G_removed.nodes))
+        print( 'Removidos:', nodos_removidos )
 
     removed_centrality = compute_centralities(G_removed, lite=LITE) # CENTRALIDADES
 
@@ -166,6 +167,10 @@ def removed_nodes_centrality(graph, node, info=False):
 
     all_nodes = list( graph.nodes ) # REINDEXANDO PARA INCLUIR REMOVIDO
     removed_centrality = removed_centrality.reindex( all_nodes )
+
+    # SANITY CHECK PARA VER QUE EL DATAFRAME TENGA COMO NAN LOS REMOVIDOS
+    for removido in nodos_removidos:
+        assert np.isnan( removed_centrality.loc[ removido , 'harmonic_centrality']), 'Removido no-NaN. Falla!'
 
     return removed_centrality
 
@@ -184,7 +189,7 @@ baseline.to_csv('cluster_baseline.csv')
 # %% --- COMPUTA CENTRALIDADES REMOVIDAS
 
 NODE = 'FPGS3m' # Este nodo ademas causa una perdida de conetividad de la red
-removed = removed_nodes_centrality(G, NODE, info=True)
+removed = removed_nodes_centrality(G, NODE, info=LITE)
 
 CSV_FILE = 'removed_' + NODE + '.csv'
 removed.to_csv(CSV_FILE)
@@ -194,9 +199,3 @@ removed.to_csv(CSV_FILE)
 #baseline.loc[Glycolysis_astrocyte,]
 print( baseline.loc['FPGS3m',] )
 print(  removed.loc['FPGS3m',] )
-
-
-# %% --- 
-
-glic1 = pd.read_csv('glico_resultado_local.csv')
-glic2 = pd.read_csv('glic2.csv')
