@@ -189,7 +189,7 @@ baseline_Glycolysis_astrocyte_df.to_csv(
     "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/Naive_baseline_Glycolysis_astrocyte.csv")
 
 # %%
-G_with_a_removal = G.copy() # Sus
+G_with_a_removal = G.copy() 
 G_with_a_removal.remove_node('FPGS3m')
 G_with_a_removal = get_largest_component(G_with_a_removal)
 perturbed_naive_L_LACt2r = compute_centralities_short(G_with_a_removal)
@@ -200,6 +200,11 @@ perturbed_naive_FPGS3m_short = perturbed_naive_L_LACt2r
 
 
 perturbed_naive_FPGS3m_short.to_csv('perturbed_naive_FPGS3m_short.csv')
+# %%
+
+len(set(G.nodes) - set(G_with_a_removal.nodes))
+
+perturbed_naive_FPGS3m_short.shape
 # %%
 #L_LACt2r     =  [ index_nodes.index(node) for node in ['L-LACt2r'] ]
 #perturbed_naive_L_LACt2r_df = \
