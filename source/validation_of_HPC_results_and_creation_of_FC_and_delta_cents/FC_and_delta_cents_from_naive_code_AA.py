@@ -151,6 +151,31 @@ Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_as
 
 
 
+def compute_centralities_short(graph):
+    """Computa las centralidades rapidas y devuelve una DataFrame (no reindexado) con estas"""
+    # TODO: supuestamente estos se pueden poner internamente como 'float32', que es suficiente y consume menos memoria
+    hc    = nx.harmonic_centrality(graph, nbunch=None, distance=None)
+    ec    = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
+    dc    = nx.degree_centrality(graph)
+    cc    = nx.closeness_centrality(graph, distance=None, wf_improved=True)
+    ic    = nx.information_centrality(graph) # Requiere scipy
+
+    # CREA UN DICCIONARIO DE DICCIONARIOS PARA PASARLE EL OBJETO A PANDAS
+    centralities = {
+        'harmonic_centrality' : hc ,
+        'eigenvector_centrality' : ec ,
+        'degree_centrality' : dc ,
+        'closeness_centrality' : cc ,
+        'information_centrality' : ic
+    }
+
+    # CONVIERTE LAS CENTRALIDADES A UN DATAFRAME DE PANDAS
+    centralities = pd.DataFrame( centralities )
+
+    return centralities
+
+
+
 # %% baseline
 
 G_unperturbed    = G.copy()
@@ -165,10 +190,16 @@ baseline_Glycolysis_astrocyte_df.to_csv(
 
 # %%
 G_with_a_removal = G.copy() # Sus
-G_with_a_removal.remove_node('L-LACt2r')
+G_with_a_removal.remove_node('FPGS3m')
 G_with_a_removal = get_largest_component(G_with_a_removal)
-perturbed_naive_L_LACt2r = compute_centralities(G_with_a_removal)
+perturbed_naive_L_LACt2r = compute_centralities_short(G_with_a_removal)
+# %%
 
+
+perturbed_naive_FPGS3m_short = perturbed_naive_L_LACt2r
+
+
+perturbed_naive_FPGS3m_short.to_csv('perturbed_naive_FPGS3m_short.csv')
 # %%
 #L_LACt2r     =  [ index_nodes.index(node) for node in ['L-LACt2r'] ]
 #perturbed_naive_L_LACt2r_df = \
