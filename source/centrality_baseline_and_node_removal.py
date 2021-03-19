@@ -7,7 +7,7 @@
 
 import networkx as nx
 import numpy    as np
-import pandas   as pd
+import pandas   as pd  
 
 LITE=True # Variable para definir si los calculos deben ser complejos o no
 
@@ -130,19 +130,55 @@ def compute_centralities(graph, lite=False):
 
     return centralities
 
-# %% --- COMPUTA LAS BASELINE DEL SISTEMA
-
-baseline = compute_centralities(G, lite=LITE) # TIRA EL CALCULO DE CENTRALIDADES BASE
-print( baseline.info(verbose=True) ) # Sanity check para el formato de las salidas
-
 # %% --- ELIMINAR --- SUBSISTEMAS HARDCODED
+# TODO: usar importacion desde el diccionario de nodos
 Glycolysis_astrocyte = ['PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m']
 Glycolysis_neuron = ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron',
  'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron']
 ETC_neuron    = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
 ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
 
+# %% --- CALCULO DE CENTRALIDADES CON NODOS REMOVIDOS
+
+from copy import deepcopy
+
+def removed_nodes_centrality(graph, node):
+    """Helper que remueve un nodo y calcula la centralidad de este"""
+    print('Iterando en nodo', node) # Sanity check de nodo iterado
+    
+    G = deepcopy( graph ) # CREA UNA COPIA DE TRABAJO PARA EL GRAFO
+
+    G.delta.remove_node( str(node) )  # ELIMINA EL NODO A ITERAR
+    G = get_largest_component(G)      # ELIMINA NODOS DISCONEXOS
+
+    removed_centrality = compute_centralities(G, lite=LITE) # CENTRALIDADES
+
+    removed_centrality.name = str( node ) # RENOMBRADO DEL DATAFRAME
+
+    all_nodes = list( graph.nodes ) # REINDEXANDO PARA INCLUIR REMOVIDO
+    removed_centrality = removed_centrality.reindex( all_nodes )
+
+    return removed_centrality
+
+# %% --- CALCULO DE CENTRALIDADES CON (ITERATIVOS) NODOS REMOVIDOS
+# TODO: reescribir esto para Ray
+
+ 
+
+# %% --- COMPUTA LAS BASELINE DEL SISTEMA
+
+baseline = compute_centralities(G, lite=LITE) # TIRA EL CALCULO DE CENTRALIDADES BASE
+print( baseline.info(verbose=True) ) # Sanity check para el formato de las salidas
+
+# %% --- COMPUTA CENTRALIDADES REMOVIDAS
+
+removed
+
 # %% --- INDEXEA GLICOLISIS
 
 baseline.loc[Glycolysis_astrocyte,]
-# %%
+
+# %% --- 
+
+glic1 = pd.read_csv('glico_resultado_local.csv')
+glic2 = pd.read_csv('glic2.csv')
