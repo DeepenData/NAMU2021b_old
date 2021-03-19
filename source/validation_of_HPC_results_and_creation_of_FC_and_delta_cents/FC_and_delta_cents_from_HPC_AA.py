@@ -25,6 +25,11 @@ Glycolysis_neuron = ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron'
  'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron']
 ETC_neuron    = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
 ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
+
+index_centralities = ['harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality', 
+      'closeness_centrality', 'load_centrality', 'information_centrality', 'second_order_centrality',
+      'current_flow_closeness_centrality', 'current_flow_betweenness_centrality',
+       'approximate_current_flow_betweenness_centrality', 'communicability_betweenness_centrality']
 # %% 
 def cobra_to_networkx_rxn_projection(modelo):
     import networkx as nx
@@ -75,6 +80,7 @@ G  = get_largest_component(G0)
 
 # %% Encontrar todos los nodos que son 'bridges' del componente más grande del grafo
 #nx.has_bridges(G) 
+
 bridges = set(np.array(list(nx.bridges(G))).flatten())
 degrees =  dict(nx.degree(G))
 degrees_one = {key:value for (key, value) in degrees.items() if value == 1}
@@ -84,23 +90,32 @@ disjoining_nodes =  list(set.difference(bridges, degrees_one))
 G_with_a_removal = G.copy()
 G_with_a_removal.remove_node(disjoining_nodes[0])
 print(disjoining_nodes[0],nx.is_connected(G_with_a_removal))
+
+
+
+
+# %% Baseline
+
+Glycolysis_astrocyte_idxs          =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
+
+
+reshaped_tensor = baseline_centralities[ :,Glycolysis_astrocyte_idxs,:].reshape(14,12)
+
+baseline_Glycolysis_astrocyte_df = pd.DataFrame(reshaped_tensor, index= Glycolysis_astrocyte, columns= index_centralities)
+baseline_Glycolysis_astrocyte_df.to_csv(
+    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_baseline_Glycolysis_astrocyte_df.csv")
+
+baseline_Glycolysis_astrocyte_df
 # %%
-#disjoining_nodes[0]
+#perturbed_hpc_Glycolysis_astrocyte_L_LACt2r
+
+
 L_LACt2r     =  [ index_nodes.index(node) for node in ['L-LACt2r'] ]
 
 perturbed_hpc_L_LACt2r_df  =  pd.DataFrame(perturbed_centralities[L_LACt2r,: ,:].reshape(1056,12))
 
 perturbed_hpc_L_LACt2r_df.to_csv(
     "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_perturbed_L_LACt2r_df.csv")
-# %%
-# %%
-
-Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
-
-baseline_Glycolysis_astrocyte_idxs =  [ index_nodes.index(node) for node in Glycolysis_astrocyte ]
-baseline_Glycolysis_astrocyte_df  =  pd.DataFrame(baseline_centralities[ :,Glycolysis_astrocyte_idxs,:].reshape(14,12))
-baseline_Glycolysis_astrocyte_df.to_csv(
-    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_baseline_Glycolysis_astrocyte_df.csv")
 
 
 perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df = perturbed_hpc_L_LACt2r_df.loc[Glycolysis_astrocyte_idxs,:]
@@ -108,6 +123,13 @@ perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df = perturbed_hpc_L_LACt2r_df.loc[G
 
 perturbed_hpc_Glycolysis_astrocyte_L_LACt2r_df.to_csv(
     "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/hpc_perturbed_Glycolysis_astrocyte_L_LACt2r_df.csv")
+# %%
+# %%
+
+
+
+
+
 # %% 
 
 def aritmetic_mean(df):
@@ -231,10 +253,7 @@ def get_8_aggregations(baseline_subsystem, perturbed_subsystem):
 
 
 
-index_centralities = ['harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality', 
-      'closeness_centrality', 'load_centrality', 'information_centrality', 'second_order_centrality',
-      'current_flow_closeness_centrality', 'current_flow_betweenness_centrality',
-       'approximate_current_flow_betweenness_centrality', 'communicability_betweenness_centrality']
+
 
 aggregation = [ 
     'fold_change_aritmetic' , 'fold_change_geometric' , 
