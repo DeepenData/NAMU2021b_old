@@ -1,4 +1,4 @@
 {
     "jupyter.jupyterServerType": "local",
-    "python.pythonPath": "/home/alejandro/anaconda3/bin/python"
+    "python.pythonPath": "/home/centos/miniconda3/envs/human-metnet/bin/python"
 }

@@ -1,4 +1,4 @@
-#!/bin/pypy
+#!/bin/python
 """
 "L'impatience va éliminer l'irritabilité, la tension nerveuse et sa conséquence, le surmenage."
     - Ejemplo de uso de "surmenage", termino en frrancés para "fatiga mental"
@@ -140,16 +140,25 @@ ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
 
 # %% --- CALCULO DE CENTRALIDADES CON NODOS REMOVIDOS
 
-from copy import deepcopy
+# from copy import deepcopy
 
-def removed_nodes_centrality(graph, node):
+def removed_nodes_centrality(graph, node, info=False):
     """Helper que remueve un nodo y calcula la centralidad de este"""
     print('Iterando en nodo', node) # Sanity check de nodo iterado
     
-    G_removed = nx.Graph( graph ) # CREA UNA COPIA DE TRABAJO PARA EL GRAFO
+    G_removed = graph.copy() # CREA UNA COPIA DE TRABAJO PARA EL GRAFO
 
-    G_removed = G_removed.remove_node( str(node) )  # ELIMINA EL NODO A ITERAR
-    G_removed = get_largest_component(G)      # ELIMINA NODOS DISCONEXOS
+    G_removed.remove_node( node )  # ELIMINA EL NODO A ITERAR
+    G_removed = get_largest_component(G_removed) # ELIMINA NODOS DISCONEXOS
+
+    assert len(graph.nodes) != len(G_removed.nodes), "No hay remocion"
+
+    if info:
+        # INFORMACION EXTRA PARA LOS CALCULOS Y DEMAS
+        print( 'Nodos originales:', len(graph.nodes) )
+        print( 'Nodos post-remocion:', len(G_removed.nodes) )
+        print( 'Nodos removidos:', len(graph.nodes) - len(G_removed.nodes) )
+        print( 'Removidos:', set(graph.nodes) - set(G_removed.nodes))
 
     removed_centrality = compute_centralities(G_removed, lite=LITE) # CENTRALIDADES
 
@@ -170,17 +179,22 @@ def removed_nodes_centrality(graph, node):
 baseline = compute_centralities(G, lite=LITE) # TIRA EL CALCULO DE CENTRALIDADES BASE
 print( baseline.info(verbose=True) ) # Sanity check para el formato de las salidas
 
+baseline.to_csv('cluster_baseline.csv')
+
 # %% --- COMPUTA CENTRALIDADES REMOVIDAS
 
 NODE = 'FPGS3m' # Este nodo ademas causa una perdida de conetividad de la red
-removed = removed_nodes_centrality(G, NODE)
+removed = removed_nodes_centrality(G, NODE, info=True)
 
 CSV_FILE = 'removed_' + NODE + '.csv'
 removed.to_csv(CSV_FILE)
 
 # %% --- INDEXEA GLICOLISIS
 
-baseline.loc[Glycolysis_astrocyte,]
+#baseline.loc[Glycolysis_astrocyte,]
+print( baseline.loc['FPGS3m',] )
+print(  removed.loc['FPGS3m',] )
+
 
 # %% --- 
 
