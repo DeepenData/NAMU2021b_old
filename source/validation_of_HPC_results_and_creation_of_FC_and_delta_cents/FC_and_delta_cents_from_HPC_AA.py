@@ -86,10 +86,12 @@ degrees =  dict(nx.degree(G))
 degrees_one = {key:value for (key, value) in degrees.items() if value == 1}
 degrees_one = set(list(degrees_one.keys()))
 disjoining_nodes =  list(set.difference(bridges, degrees_one))
+disjoining_nodes
+# %%
 #check 
 G_with_a_removal = G.copy()
-G_with_a_removal.remove_node(disjoining_nodes[0])
-print(disjoining_nodes[0],nx.is_connected(G_with_a_removal))
+G_with_a_removal.remove_node('FPGS3m')
+print('FPGS3m',nx.is_connected(G_with_a_removal))
 
 
 
