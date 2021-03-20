@@ -23,6 +23,21 @@ import networkx as nx
 orden_reacciones = baseline_centralities['baseline'].index # Orden como la salida de los nodos
 perturbed_centralities = { index : perturbed_centralities[index] for index in orden_reacciones }
 
+# %% --- FULL TENSOR
+
+def full_tensor(diccionarios):
+    """Genera un tensor desde el diccionario"""
+    subsys = [ diccionarios[ KEY ].to_numpy() for KEY in list(diccionarios.keys()) ]
+    subsys = np.asarray( subsys )
+    return subsys
+
+baseline_centralities_tensor  = full_tensor(baseline_centralities)
+perturbed_centralities_tensor = full_tensor(perturbed_centralities)
+
+import pickle
+outfile = open('./tmp/baseline_tensor.pkl', 'wb'); pickle.dump( baseline_centralities_tensor ,outfile); outfile.close()
+outfile = open('./tmp/centralidades_perturbadas_tensor.pkl', 'wb'); pickle.dump( perturbed_centralities_tensor ,outfile); outfile.close()
+
 # %% --- Cosas de los subsistemas ???
 
 def subsystem_tensor( subsystem_nodes, diccionarios):
