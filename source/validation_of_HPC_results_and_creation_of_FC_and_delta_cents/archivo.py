@@ -9,30 +9,31 @@
 import pickle 
 
 # Esto asume que está en 'human-metnet/'
-infile = open('./tmp/perturbed_centralities','rb'); perturbed_centralities = pickle.load(infile); infile.close()
-infile = open('./tmp/baseline_centralities' ,'rb'); baseline_centralities  = pickle.load(infile); infile.close()
-infile = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(infile); infile.close()
+infile = open('./tmp/centralidades_perturbadas.pkl','rb'); perturbed_centralities = pickle.load(infile); infile.close()
+infile = open('./tmp/baseline.pkl' ,'rb'); baseline_centralities  = pickle.load(infile); infile.close()
 infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close()
-
-# Un error facil de resolver
-index_nodes = list(index_nodes)
 
 # %% --- Importando librerias utiles
 import pandas   as pd
 import numpy    as np
 import networkx as nx
 
+# %% --- SANITY CHECK Reordena el diccionario de centralidades perturbadas
+
+orden_reacciones = baseline_centralities['baseline'].index # Orden como la salida de los nodos
+perturbed_centralities = { index : perturbed_centralities[index] for index in orden_reacciones }
+
 # %% --- Cosas de los subsistemas ???
 
-# TODO: reemplazar esto por una importación desde Tensor Maker
-def subsystem_tensor( subsystem_nodes, tensor):
+def subsystem_tensor( subsystem_nodes, diccionarios):
     """Genera un tensor con un subset de nodos basados en el subsistema pedido"""
-    subsystem_index = [ index_nodes.index(node) for node in subsystem_nodes ]
-    return tensor[:, subsystem_index ,:]
+    subsys = [ diccionarios[ KEY ].loc[ subsystem_nodes ,].to_numpy() for KEY in list(diccionarios.keys()) ]
+    subsys = np.asarray( subsys )
+    return subsys
 
 # TODO: eliminar esto? 
 # Une dos subsistemas
-subsystem = list( subsystems['glicolisis'] + subsystems['oxphox'])
+subsystem = subsystems['glicolisis_astros']
 
 perturbed_subsystem = subsystem_tensor( subsystem, perturbed_centralities )
 baseline_subsystem  = subsystem_tensor( subsystem, baseline_centralities   )
@@ -107,7 +108,7 @@ index_centralities = ['harmonic_centrality', 'eigenvector_centrality', 'degree_c
 def crear_dataframe( matriz ):
     df = pd.DataFrame(
         matriz,
-        index = index_nodes,
+        index = baseline_centralities['baseline'].index,
         columns = index_centralities
     )
     return df
@@ -134,3 +135,5 @@ for i in range(len(exportar)):
     filename = './results/' + exportar_como[i] + '.csv'
     frame = crear_dataframe( exportar[i] )
     frame.to_csv( filename )
+
+# %% --- 
