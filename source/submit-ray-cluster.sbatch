@@ -1,7 +1,7 @@
 #!/bin/bash
 ### Este script funciona para cualquier numero de nodos; Ray se encarga de manejarlos
 ### puedes definir este parametro en la ejecución de la tarea como 'sbatch submit-ray... --nodes=5'
-#SBATCH --nodes=1
+#SBATCH --nodes=12
 
 ### Asigna todos los recursos de un nodo al proceso Ray, el cual los maneja internamente
 #SBATCH --ntasks-per-node=1
@@ -19,7 +19,7 @@
 #conda initrm 
 conda activate human-metnet
 
-echo "5555 INFO Empieza el setup: $(date)"
+echo "$(date) --- Empieza el setup"
 
 redis_password=$(uuidgen)
 export redis_password
@@ -34,7 +34,7 @@ ip_head=$ip:$port
 export ip_head
 echo "IP Head: $ip_head"
 
-echo "5555 INFO Empezando HEAD en $node_1"
+echo "$(date) --- Empezando HEAD en $node_1"
 srun --nodes=1 --ntasks=1 -w $node_1 ./source/sbatch-ray/start-head.sh $ip $redis_password &
 sleep 30
 
@@ -42,7 +42,7 @@ worker_num=$(($SLURM_JOB_NUM_NODES - 1)) #number of nodes other than the head no
 for ((  i=1; i<=$worker_num; i++ ))
 do
   node_i=${nodes_array[$i]}
-  echo "5555 INFO Empezando WORKER $i en $node_i"
+  echo "$(date) --- Empezando WORKER $i en $node_i"
   srun --nodes=1 --ntasks=1 -w $node_i ./source/sbatch-ray/start-worker.sh $ip_head $redis_password &
   sleep 5
 done
@@ -54,24 +54,24 @@ done
 
 #echo "INFO Corriendo en $n_cores nodos"
 
-echo "5555 INFO Status del cluster Ray"
+echo "$(date) --- Status del cluster Ray"
 ray status --address $ip_head --redis_password $redis_password
 
 #ray timeline --address $ip_head 
 
-echo "5555 INFO Empieza el proceso python paralelo: $(date)"
+echo "$(date) --- Empieza el proceso python paralelo"
 
-time python -u ./source/delta_centrality.py './data/stimulated_2021.json' 48
+time python -u source/centrality_baseline_and_node_removal.py
 
 ### INFORMACIÓN FINAL QUE SALE AL OUTPUT DEL SISTEMA
 # Esta parte está fallando, así que mejor imprimir algo como un grep o algo así porsiaca
 
-echo "5555 INFO Termina el proceso paralelo: $(date)"
+echo "$(date) --- Termina el proceso paralelo"
 
 sstat  -j   $SLURM_JOB_ID.batch   --format=JobID,MaxVMSize
 
 # SINCRONIZACIÓN CON AWS S3 DE RESULTADOS
-aws s3 sync tmp s3://pseudo-dropbox/MAGI_01/results-$SLURM_JOB_ID
+aws s3 sync tmp s3://pseudo-dropbox/MAGI_01/results-$SLURM_JOB_ID --exclude "*" --include "*.plk"
 
 exit
 

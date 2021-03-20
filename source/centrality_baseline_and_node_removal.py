@@ -130,19 +130,13 @@ def compute_centralities(graph, lite=False):
 
     return centralities
 
-# %% --- ELIMINAR --- SUBSISTEMAS HARDCODED
-# TODO: usar importacion desde el diccionario de nodos
-Glycolysis_astrocyte = ['PGM', 'ACYP', 'PGI', 'PGK' ]#,'PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m']
-Glycolysis_neuron = ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron',
- 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron']
-ETC_neuron    = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
-ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
-
 # %% --- CALCULO DE CENTRALIDADES CON NODOS REMOVIDOS
+
+import time
 
 def removed_nodes_centrality(graph, node, info=False):
     """Helper que remueve un nodo y calcula la centralidad de este"""
-    print('Iterando en nodo', node) # Sanity check de nodo iterado
+    print( time.localtime(time.time()), '--- Iterando en nodo', node) # Sanity check de nodo iterado
     
     G_removed = graph.copy() # CREA UNA COPIA DE TRABAJO PARA EL GRAFO
 
@@ -191,12 +185,13 @@ def hpc_reemoved_centrality( graph, nodes_to_remove ):
 if __name__ == '__main__':
 
     # INICIALIZA LA CONEXION AL SERVIDOR DE RAY
-    ray.init(address='auto', _redis_password='5241590000000000') # TODO: cambiar por formato SLURM
+    import os # Importa variables ambientales
+    ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
 
     G_ray = ray.put( G ) # Sube el grafo al object store
 
-    #nodos_remover = list( G.nodes )
-    nodos_remover = Glycolysis_astrocyte # TODO: Prueba a escala con solo glico_astrocitos
+    nodos_remover = list( G.nodes )
+    #nodos_remover = Glycolysis_astrocyte # TODO: Prueba a escala con solo glico_astrocitos
 
     # EVITAR EL SOBRE-PARALELISMO DE UN PROCESO POR NODO
     WORKERS = int( ray.cluster_resources()['CPU'] ) # CANTIDAD DE CPUS DEL CLUSTER
