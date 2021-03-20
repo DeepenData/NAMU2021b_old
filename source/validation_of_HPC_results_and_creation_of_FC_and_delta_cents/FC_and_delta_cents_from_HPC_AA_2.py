@@ -226,6 +226,24 @@ delta_aritmetic = get_by_aggregation('delta_aritmetic')
 delta_geometric = get_by_aggregation('delta_geometric')
 delta_quadratic = get_by_aggregation('delta_quadratic')
 delta_harmonic = get_by_aggregation('delta_harmonic')
+# %% --- EXPORTA ESTO EN UN EXCEL POR SHEETS
+
+dflist = [
+    fold_change_aritmetic, fold_change_geometric, fold_change_quadratic, fold_change_harmonic,
+    delta_aritmetic, delta_geometric, delta_quadratic, delta_harmonic 
+    ]
+
+# Define un creador del Excel
+SALIDA = './source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/delta_fc_centralidades.xlsx'
+Excelwriter = pd.ExcelWriter( SALIDA ,engine="xlsxwriter")
+
+#We now loop process the list of dataframes
+for i, df in enumerate (dflist):
+    df.to_excel(Excelwriter, sheet_name=str(i+1),index=False)
+#And finally save the file
+Excelwriter.save()
+
+
 # %% Proof
 
 
