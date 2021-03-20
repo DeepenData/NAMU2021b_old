@@ -9,7 +9,7 @@ import networkx as nx
 import numpy    as np
 import pandas   as pd  
 
-LITE=True # Variable para definir si los calculos deben ser complejos o no
+LITE=False # Variable para definir si los calculos deben ser complejos o no
 
 #G = nx.read_graphml("./tmp/graph.graphml") # Lee el modelo desde un grafo común
 
@@ -87,7 +87,7 @@ def compute_centralities_short(graph):
 
     return centralities
 
-def compute_centralities(graph, lite=False):
+def compute_centralities(graph, lite=LITE):
     """Computa las doce centralidades y devuelve una DataFrame (no reindexado) con estas"""
     if lite == False:
         # TODO: supuestamente estos se pueden poner internamente como 'float32', que es suficiente y consume menos memoria
@@ -136,7 +136,9 @@ import time
 
 def removed_nodes_centrality(graph, node, info=False):
     """Helper que remueve un nodo y calcula la centralidad de este"""
-    print( time.localtime(time.time()), '--- Iterando en nodo', node) # Sanity check de nodo iterado
+    print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()),
+        '--- Iterando en nodo', node, # Sanity check de nodo iterado
+        '--- Memoria en uso:', ( ray.available_resources()['memory'] - ray.cluster_resources()['memory'] )) # Uso de memoria
     
     G_removed = graph.copy() # CREA UNA COPIA DE TRABAJO PARA EL GRAFO
 
@@ -187,11 +189,12 @@ if __name__ == '__main__':
     # INICIALIZA LA CONEXION AL SERVIDOR DE RAY
     import os # Importa variables ambientales
     ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
+    #ray.init(address='auto', _redis_password='5241590000000000')
 
     G_ray = ray.put( G ) # Sube el grafo al object store
 
     nodos_remover = list( G.nodes )
-    #nodos_remover = Glycolysis_astrocyte # TODO: Prueba a escala con solo glico_astrocitos
+    #nodos_remover = ['PGM', 'ACYP']#, 'PGI', 'PGK' ,'PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m'] # Glicolisis astros
 
     # EVITAR EL SOBRE-PARALELISMO DE UN PROCESO POR NODO
     WORKERS = int( ray.cluster_resources()['CPU'] ) # CANTIDAD DE CPUS DEL CLUSTER
