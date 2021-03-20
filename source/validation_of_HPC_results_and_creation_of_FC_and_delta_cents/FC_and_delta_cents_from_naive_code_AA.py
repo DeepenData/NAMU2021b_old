@@ -99,50 +99,6 @@ def compute_centralities(grafo):
     # Lambda que reduce dataframes y hace un join
     return df_all_centralities
 
-
-def calc_centr_rmv(rxn_to_remove):
-    # Calculated Centralities Removed
-    G_with_a_removal = G.copy() # Sus
-    G_with_a_removal.remove_node(rxn_to_remove)
-
-    # Generate connected components and select the largest:
-    largest_component       = max(nx.connected_components(G_with_a_removal), key=len)
-    # Create a subgraph of G consisting only of this component:
-    graph_largest_component   = G_with_a_removal.subgraph(largest_component)
-    # Hacer una extracción del componente más grande; calcular centralidades con los otros dos que antes se ignoraban
-    # Tirar lista que indica cuantos componentes tiene el grafo; idealmente [1079, 1]
-    #nodes_in_small_components = list(set(G_with_a_removal.nodes) - set(graph_largest_component.nodes))
-    
-
-    ###### compute centralities ##########
-    graph  = graph_largest_component.copy()
-    df_all_perturbed_centralities = compute_centralities(graph)
-
-    # Función que extrae solo los subsistemas para hacer un mean más corto
-    def get_centrality_mean_by_subsys(a_subsystem):
-        # Linea importante que saca los promedios. 
-        # TODO: Usar otras formas de promedio. 
-        df = pd.DataFrame(df_all_perturbed_centralities.loc[eval(a_subsystem)].mean(axis=0), columns={rxn_to_remove})
-        new_row_names = [s + str('_'+a_subsystem) for s in list(df.index.values)]
-        df.index = new_row_names
-        return df
-
-    df_1 = get_centrality_mean_by_subsys('ETC_astrocyte')
-    df_2 = get_centrality_mean_by_subsys('Glycolysis_astrocyte')
-    df_3 = get_centrality_mean_by_subsys('ETC_neuron')
-    df_4 = get_centrality_mean_by_subsys('Glycolysis_neuron')
-
-    from functools import reduce
-    dfs = [df_1, df_2, df_3, df_4]
-    df_all_subsystems = reduce(lambda  left, right: left.append(right, ignore_index=False), dfs)
-    return df_all_subsystems
-
-def get_largest_component(grafo): 
-    import networkx as nx
-    largest_component = max(nx.connected_components(grafo), key=len)
-    G = grafo.subgraph(largest_component)
-    return G
-
 import pickle 
 
 infile      = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(infile); infile.close()
@@ -175,6 +131,11 @@ def compute_centralities_short(graph):
     return centralities
 
 
+def get_largest_component(grafo): 
+    import networkx as nx
+    largest_component = max(nx.connected_components(grafo), key=len)
+    G = grafo.subgraph(largest_component)
+    return G
 
 # %% baseline
 
@@ -182,35 +143,35 @@ G_unperturbed    = G.copy()
 df_all_baseline_centralities = compute_centralities(G_unperturbed)
 
 baseline_Glycolysis_astrocyte_df = df_all_baseline_centralities.loc[Glycolysis_astrocyte]
+#  --- Resultados naive 
 
 
-# %% --- Resultados naive con dos reacicones
-baseline_Glycolysis_astrocyte_df.to_csv(
-    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/Naive_baseline_Glycolysis_astrocyte.csv")
+#baseline_Glycolysis_astrocyte_df.to_csv(
+#    "/home/alejandro/PostDoc/human-metnet/source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/Naive_baseline_Glycolysis_astrocyte.csv")
 
-# %%
+#  perturbed
 G_with_a_removal = G.copy() 
 G_with_a_removal.remove_node('FPGS3m')
 G_with_a_removal = get_largest_component(G_with_a_removal)
-perturbed_naive_L_LACt2r = compute_centralities_short(G_with_a_removal)
+perturbed_naive_FPGS3m = compute_centralities(G_with_a_removal)
+# 
+perturbed_naive__Glycolysis_astrocyte_FPGS3m = \
+perturbed_naive_FPGS3m.loc[Glycolysis_astrocyte]
+#perturbed_naive_FPGS3m_short = perturbed_naive_FPGS3m
+#perturbed_naive_FPGS3m_short.to_csv('perturbed_naive_FPGS3m_short.csv')
 # %%
-
-
-perturbed_naive_FPGS3m_short = perturbed_naive_L_LACt2r
-
-
-perturbed_naive_FPGS3m_short.to_csv('perturbed_naive_FPGS3m_short.csv')
+print(
+len(set(G.nodes) - set(G_with_a_removal.nodes)),
+baseline_Glycolysis_astrocyte_df,
+perturbed_naive_FPGS3m,
+perturbed_naive__Glycolysis_astrocyte_FPGS3m)
+#perturbed_naive_FPGS3m_short.shape
 # %%
+baseline_Glycolysis_astrocyte_df
 
-len(set(G.nodes) - set(G_with_a_removal.nodes))
 
-perturbed_naive_FPGS3m_short.shape
-# %%
-#L_LACt2r     =  [ index_nodes.index(node) for node in ['L-LACt2r'] ]
-#perturbed_naive_L_LACt2r_df = \
-perturbed_naive__Glycolysis_astrocyte_L_LACt2r_df = \
-perturbed_naive_L_LACt2r.loc[Glycolysis_astrocyte]
-perturbed_naive__Glycolysis_astrocyte_L_LACt2r_df
+
+
 # %% FC y delta cents
 def aritmetic_mean(df):
     return np.nanmean( df, axis= 0)
