@@ -4,7 +4,7 @@ output: html_notebook
 ---
 
 
-
+read_excel(xlsx_example, sheet = "chickwts")
 ```{r message=FALSE, warning=FALSE}
 library(readr)
 Results <- read_csv("Results.csv")
