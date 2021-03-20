@@ -8,10 +8,9 @@ import pickle
 # Esto asume que está en 'human-metnet/'
 #%cd ..
 #%cd ..
-#infile = open('./tmp/perturbed_centralities','rb'); perturbed_centralities = pickle.load(infile); infile.close()
-#infile = open('./tmp/baseline_centralities' ,'rb'); baseline_centralities  = pickle.load(infile); infile.close()
-infile = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(infile); infile.close()
-infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close() 
+
+infile = open('./tmp/index_nodes','rb');     index_nodes = pickle.load(infile); infile.close()
+#infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close() 
 
 infile = open('./tmp/centralidades_perturbadas.pkl','rb'); centralidades_perturbadas = pickle.load(infile); infile.close()
 infile = open('./tmp/baseline.pkl' ,'rb'); baseline  = pickle.load(infile); infile.close()
@@ -41,19 +40,38 @@ def aritmetic_mean(df):
 
 
 
-baseline_Glycolysis_astrocyte_df = baseline['baseline'].loc[Glycolysis_astrocyte]
-
-
+baseline_Glycolysis_astrocyte_df             = baseline['baseline'].loc[Glycolysis_astrocyte]
 perturbed_hpc_Glycolysis_astrocyte_FPGS3m_df = centralidades_perturbadas['FPGS3m'].loc[Glycolysis_astrocyte]
 
 ratio_from_arit_mean_FPGS3m  = aritmetic_mean(baseline_Glycolysis_astrocyte_df)/aritmetic_mean(perturbed_hpc_Glycolysis_astrocyte_FPGS3m_df)
+
+
 FC_from__arit_mean_FPGS3m    = np.log2(ratio_from_arit_mean_FPGS3m)
 delta_from_arit_mean_FPGS3m  = (aritmetic_mean(baseline_Glycolysis_astrocyte_df) - aritmetic_mean(perturbed_hpc_Glycolysis_astrocyte_FPGS3m_df))/aritmetic_mean(baseline_Glycolysis_astrocyte_df)
 print(
 FC_from__arit_mean_FPGS3m,
 delta_from_arit_mean_FPGS3m)
 
-# %% --- Cosas de los subsistemas ???
+# %% --- Importar los tensores con los resultados HPC
+import pandas   as pd
+import numpy    as np
+import networkx as nx
+import pickle 
+
+
+infile = open('./tmp/centralidades_perturbadas_tensor.pkl','rb'); perturbed_centralities = pickle.load(infile); infile.close()
+infile = open('./tmp/baseline_tensor.pkl' ,'rb'); baseline_centralities  = pickle.load(infile); infile.close()
+
+
+#infile = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(infile); infile.close()
+
+
+
+#index_nodes = list(index_nodes)
+
+index_nodes = list( baseline['baseline'].index )
+
+# %% 
 
 # TODO: reemplazar esto por una importación desde Tensor Maker
 def subsystem_tensor( subsystem_nodes, tensor):
@@ -66,6 +84,7 @@ Glycolysis_neuron = ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron'
  'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron']
 ETC_neuron    = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
 ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
+
 perturbed_Glycolysis_astrocyte = subsystem_tensor( Glycolysis_astrocyte, perturbed_centralities )
 baseline_Glycolysis_astrocyte  = subsystem_tensor( Glycolysis_astrocyte, baseline_centralities   )
 
@@ -78,6 +97,10 @@ baseline_ETC_neuron  = subsystem_tensor( ETC_neuron, baseline_centralities   )
 perturbed_ETC_astrocyte= subsystem_tensor( ETC_astrocyte, perturbed_centralities )
 baseline_ETC_astrocyte  = subsystem_tensor( ETC_astrocyte, baseline_centralities   )
 
+index_centralities = ['harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality', 
+      'closeness_centrality', 'load_centrality', 'information_centrality', 'second_order_centrality',
+      'current_flow_closeness_centrality', 'current_flow_betweenness_centrality',
+       'approximate_current_flow_betweenness_centrality', 'communicability_betweenness_centrality']
 
 
 # %% --- Colapsando la segunda dimensión... (nodos totales)
@@ -204,13 +227,26 @@ delta_geometric = get_by_aggregation('delta_geometric')
 delta_quadratic = get_by_aggregation('delta_quadratic')
 delta_harmonic = get_by_aggregation('delta_harmonic')
 # %% Proof
-print(
-np.array(
-fold_change_aritmetic.filter(regex = r'aritmetic_Glycolysis_astrocyte', axis=1).loc['FPGS3m',:]) \
-     == FC_from__arit_mean_FPGS3m , \
 
-np.array(
-delta_aritmetic.filter(regex = r'aritmetic_Glycolysis_astrocyte', axis=1).loc['FPGS3m',:]) \
-     == delta_from_arit_mean_FPGS3m )
+
+FC_tensor = np.array(fold_change_aritmetic.filter(regex = r'aritmetic_Glycolysis_astrocyte', axis=1).loc['FPGS3m',:])
+FC_naive  =  FC_from__arit_mean_FPGS3m
+
+
+
+delta_tensor = np.array(delta_aritmetic.filter(regex = r'aritmetic_Glycolysis_astrocyte', axis=1).loc['FPGS3m',:])
+delta_naive  =  delta_from_arit_mean_FPGS3m
+
+
+print(
+np.around( FC_tensor, 5) == np.around(FC_naive , 5),
+np.around( delta_tensor, 5) == np.around(delta_naive , 5))
+
+
+
+
+
 ######   FIN  ######
 
+
+# %%

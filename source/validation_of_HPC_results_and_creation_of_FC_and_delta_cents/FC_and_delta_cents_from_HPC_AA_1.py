@@ -11,8 +11,8 @@ import numpy    as np
 import networkx as nx
 import pickle 
 # Esto asume que está en 'human-metnet/'
-#%cd ..
-#%cd ..
+%cd ..
+%cd ..
 infile = open('./tmp/perturbed_centralities','rb'); perturbed_centralities = pickle.load(infile); infile.close()
 infile = open('./tmp/baseline_centralities' ,'rb'); baseline_centralities  = pickle.load(infile); infile.close()
 infile = open('./tmp/index_nodes','rb'); index_nodes = pickle.load(infile); infile.close()
