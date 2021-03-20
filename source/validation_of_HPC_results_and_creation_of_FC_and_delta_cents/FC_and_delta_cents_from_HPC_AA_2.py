@@ -233,13 +233,18 @@ dflist = [
     delta_aritmetic, delta_geometric, delta_quadratic, delta_harmonic 
     ]
 
+dflist_names = [
+    'fold_change_aritmetic', 'fold_change_geometric', 'fold_change_quadratic', 'fold_change_harmonic',
+    'delta_aritmetic', 'delta_geometric', 'delta_quadratic', 'delta_harmonic'
+]
+
 # Define un creador del Excel
 SALIDA = './source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/delta_fc_centralidades.xlsx'
 Excelwriter = pd.ExcelWriter( SALIDA ,engine="xlsxwriter")
 
 #We now loop process the list of dataframes
 for i, df in enumerate (dflist):
-    df.to_excel(Excelwriter, sheet_name=str(i+1),index=False)
+    df.to_excel(Excelwriter, sheet_name=dflist_names[i] , index=True)
 #And finally save the file
 Excelwriter.save()
 

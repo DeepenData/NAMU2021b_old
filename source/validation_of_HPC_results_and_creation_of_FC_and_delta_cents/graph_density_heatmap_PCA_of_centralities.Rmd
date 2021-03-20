@@ -4,31 +4,53 @@ output: html_notebook
 ---
 
 
-read_excel(xlsx_example, sheet = "chickwts")
+
 ```{r message=FALSE, warning=FALSE}
 library(readr)
-Results <- read_csv("Results.csv")
-Results
-```
-
-Density plot of centralities
-```{r fig.height=4, fig.width=4, message=FALSE, warning=FALSE}
+library(readxl)
+library(tidyverse)
 library(ggplot2)
 library(hrbrthemes)
 library(dplyr)
 library(tidyr)
 library(viridis)
-
-centralities <-  Results[,!is.na(as.numeric(colnames(Results)))] %>% gather()
-
-Density_plot_of_centralities <-  centralities['value'] %>%  as.data.frame() %>% filter(abs(value) > 0.01) %>%
-  ggplot( aes(x=value)) +
-    geom_density(fill="deepskyblue4", color="azure4", alpha=.8)+
-       theme(legend.position="top") +
-    ylab("Density") +
-    xlab("Centrality") + geom_vline(xintercept=0, linetype="dashed", color = "red",  size=.4) 
-
 library(ggpubr)
+
+dflist_names = c('fold_change_aritmetic', 'fold_change_geometric', 'fold_change_quadratic', 'fold_change_harmonic',
+    'delta_aritmetic', 'delta_geometric', 'delta_quadratic', 'delta_harmonic')
+
+read_sheets <- function(a_sheet){df <- read_excel('delta_fc_centralidades.xlsx', sheet = a_sheet) %>% column_to_rownames("...1")
+                  return(df)}
+
+map(dflist_names, read_sheets) %>% purrr::set_names(dflist_names) -> list_of_cents
+names(list_of_cents)
+```
+
+Density plot of centralities
+```{r fig.height=4, fig.width=4, message=FALSE, warning=FALSE}
+
+
+plot_density <- function(df, titulo ){cut = 0.01
+                             df %>% gather() -> df_gathered
+                              df_gathered['value'] %>% filter(abs(value) > cut) %>%
+                              ggplot( aes(x=value)) +
+                                    geom_density(fill="deepskyblue4", color="azure4", alpha=.8)+
+                                       theme(legend.position="top") +
+                                    ylab("Density") + ggtitle(titulo) +
+                                    xlab("Centrality") + geom_vline(xintercept=0, linetype="dashed", color = "red",  size=.4) -> Density_plot_of_centralities
+                              return(Density_plot_of_centralities)}
+
+
+
+map2(list_of_cents, names(list_of_cents), plot_density)
+
+#calcular std, kurtonis y skewness.
+```
+
+
+```{r fig.height=4, fig.width=4, message=FALSE, warning=FALSE}
+#centralities <-  Results[,!is.na(as.numeric(colnames(Results)))] %>% gather()
+
 Density_plot_of_centralities.panel <- ggarrange( NULL,Density_plot_of_centralities, nrow = 2,  heights= c(1, .4), labels = c('a','b'),
                                                  hjust = -0.1, vjust = .8)
 
@@ -37,20 +59,52 @@ Density_plot_of_centralities.panel
 
 ```
 
+```{r}
+
+fba <-  read.csv('/home/alejandro/NAMU_in_progress/Figures_creation/Code/Results_Acevedo_et_al_2021/01_phpps_bipartite_fluxes_sensis_optimality/FBA_results.csv') %>% 
+        select(c('ID', 'Reaction', 'Flux', 'Sensitivity')) %>% column_to_rownames('ID')
+
+
+
+append_fba <- function(cent){
+                                hola <- rownames_to_column(fba)  %>% inner_join(rownames_to_column(cent)) %>% column_to_rownames('rowname')
+                                return(hola)
+}
+
+
+
+map(list_of_cents, append_fba) -> fba_list_of_cents
+
+
+```
 
 Hierarchical clustering
 ```{r}
 library(tidyverse)
 library(scales)
-data <- Results %>% filter(!str_detect(ID, regex('AA_|AA2', ignore_case = F)))  %>%
-         mutate(`Node type` = ifelse(str_detect(Formula, regex('\\[[a-z]A\\]',              ignore_case = T)), 'Astrocyte', NA)) %>% 
-         mutate(`Node type` = ifelse(str_detect(Formula, regex('\\[[a-z]N\\]',              ignore_case = T)), 'Neuron', `Node type`))    %>% 
-         mutate(`Node type` = ifelse( str_detect(Formula, regex('\\[[a-z]A\\]|\\[[a-z]N\\]',ignore_case = T), negate = T), 'Exchange', `Node type`)) %>%
-         mutate(`Node type` = ifelse(str_detect(Formula, regex('\\[[a-z]A\\]',ignore_case = T)) & 
-                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Astro', `Node type`))%>%
-         mutate(`Node type` = ifelse(str_detect(Formula, regex('\\[[a-z]N\\]',ignore_case = T)) & 
-                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Neuron', `Node type`))
 
+
+assign_node_type <- function(df){
+data <- df  %>% rownames_to_column('ID') %>% filter(!str_detect(ID, regex('AA_|AA2', ignore_case = F)))  %>%
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',              ignore_case = T)), 'Astrocyte', NA)) %>% 
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]N\\]',              ignore_case = T)), 'Neuron', `Node type`))    %>% 
+         mutate(`Node type` = ifelse( str_detect(Reaction, regex('\\[[a-z]A\\]|\\[[a-z]N\\]',ignore_case = T), negate = T), 'Exchange', `Node type`)) %>%
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',ignore_case = T)) & 
+                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Astro', `Node type`))%>%
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]N\\]',ignore_case = T)) & 
+                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Neuron', `Node type`))
+                                    return(data)}
+
+
+
+map(fba_list_of_cents, assign_node_type)
+
+
+
+```
+
+
+```{r}
 data %>% select(matches('^\\d+'))       -> centrality.matrix
 
 centrality.matrix %>% abs %>% rowSums()  -> total.abs.centrality #vector de centralidades totales
@@ -206,7 +260,7 @@ bottom_panel <- ggarrange( corr_comparisons,pca_node_centrality, pca_node_RedCos
 
 
 panel_without_graph <-  ggarrange(upper_panel, bottom_panel, nrow = 2, heights = c(1,0.5))
-
+panel_without_graph
 
 ```
 
