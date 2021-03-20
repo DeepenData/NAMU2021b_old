@@ -62,7 +62,7 @@ def get_largest_component(grafo):
 
 G = get_largest_component(G) # Elimina otras cosas
 
-# %% --- ELIMINAR --- DEFINICIONES DE FUNCIONES
+# %% --- DEFINICIONES DE FUNCIONES
 
 def compute_centralities_short(graph):
     """Computa las centralidades rapidas y devuelve una DataFrame (no reindexado) con estas"""
@@ -132,7 +132,7 @@ def compute_centralities(graph, lite=False):
 
 # %% --- ELIMINAR --- SUBSISTEMAS HARDCODED
 # TODO: usar importacion desde el diccionario de nodos
-Glycolysis_astrocyte = ['PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m']
+Glycolysis_astrocyte = ['PGM', 'ACYP', 'PGI', 'PGK' ]#,'PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m']
 Glycolysis_neuron = ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron',
  'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron']
 ETC_neuron    = ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron']
@@ -161,33 +161,24 @@ def removed_nodes_centrality(graph, node, info=False):
 
     removed_centrality = compute_centralities(G_removed, lite=LITE) # CENTRALIDADES
 
-    removed_centrality.name = str( node ) # RENOMBRADO DEL DATAFRAME
-
     all_nodes = list( graph.nodes ) # REINDEXANDO PARA INCLUIR REMOVIDO
     removed_centrality = removed_centrality.reindex( all_nodes )
+
+    removed_centrality.name = str( node ) # RENOMBRADO DEL DATAFRAME
 
     # SANITY CHECK PARA VER QUE EL DATAFRAME TENGA COMO NAN LOS REMOVIDOS
     for removido in nodos_removidos:
         assert np.isnan( removed_centrality.loc[ removido , 'harmonic_centrality']), 'Nodo removido tiene un valor no NaN. Error de DataFrame.'
 
-    return removed_centrality
+    return node, removed_centrality
 
 # %% --- CALCULO DE CENTRALIDADES CON (ITERATIVOS) NODOS REMOVIDOS
 
 import ray
-ray.init()
 
 @ray.remote
 def hpc_reemoved_centrality( graph, nodes_to_remove ):
-    """Calcula las centralidades para nodos removidos de forma distribuida en un cluster
-
-    Args:
-        graph (grafo): Un grafo de NetworkX para el calculo de centralidad. Usa ray.put()
-        nodes_to_remove (list): una lista de nodos a remover. Para calculos grandes es list(graph.nodes)
-
-    Returns:
-        centralities_removed [list]: Una lista de DataFrames que incluyen el computo de nodos removidos.
-    """
+    """Calcula las centralidades para nodos removidos de forma distribuida en un cluster"""
 
     assert type( nodes_to_remove ) == list, 'El input de remocion no es una lista. Usa list()'
 
@@ -197,21 +188,41 @@ def hpc_reemoved_centrality( graph, nodes_to_remove ):
 
 # %% --- COMPUTA LAS BASELINE DEL SISTEMA
 
-baseline = compute_centralities(G, lite=LITE) # TIRA EL CALCULO DE CENTRALIDADES BASE
-print( baseline.info(verbose=True) ) # Sanity check para el formato de las salidas
+if __name__ == '__main__':
 
-baseline.to_csv('cluster_baseline.csv')
+    # INICIALIZA LA CONEXION AL SERVIDOR DE RAY
+    ray.init(address='auto', _redis_password='5241590000000000') # TODO: cambiar por formato SLURM
 
-# %% --- COMPUTA CENTRALIDADES REMOVIDAS
+    G_ray = ray.put( G ) # Sube el grafo al object store
 
-NODE = 'FPGS3m' # Este nodo ademas causa una perdida de conetividad de la red
-removed = removed_nodes_centrality(G, NODE, info=LITE)
+    #nodos_remover = list( G.nodes )
+    nodos_remover = Glycolysis_astrocyte # TODO: Prueba a escala con solo glico_astrocitos
 
-CSV_FILE = 'removed_' + NODE + '.csv'
-removed.to_csv(CSV_FILE)
+    # EVITAR EL SOBRE-PARALELISMO DE UN PROCESO POR NODO
+    WORKERS = int( ray.cluster_resources()['CPU'] ) # CANTIDAD DE CPUS DEL CLUSTER
+    SPLITS = min(WORKERS, len(nodos_remover) ) # Numero de CPUs en el cluster, o nodos en la red
+    
+    print('Distribuyendo', len(nodos_remover), 'nodos en', SPLITS, 'procesos.') # Sanity check
+    
+    nodos_remover = np.array_split( nodos_remover , SPLITS )  # Lo separa en listas mas pequenas
+    nodos_remover = [ list(chunk) for chunk in nodos_remover ] # Convierte a lista de nuevo
 
-# %% --- INDEXEA GLICOLISIS
+    # CALCULO DE CENTRALIDADES PERTURBADAS (MANDA LA TAREA AL CLUSTER VIRTUAL)
+    centralidades_distribuidas = [ hpc_reemoved_centrality.remote( G_ray, chunk ) for chunk in nodos_remover ]
 
-#baseline.loc[Glycolysis_astrocyte,]
-print( baseline.loc['FPGS3m',] )
-print(  removed.loc['FPGS3m',] )
+    # INTERMEDIO EN QUE LOCALMENTE CALCULA LAS CENTRALIDADES BASE. MENOS DEMANDANTE QUE EL RESTO
+    baseline = compute_centralities(G, lite=LITE) # TIRA EL CALCULO DE CENTRALIDADES BASE
+    print( baseline.info(verbose=True) ) # Sanity check para el formato de las salidas
+
+    # VENGANZA DE LOS PROCESOS ENVIADOS AL CLUSTER (GET.REMOTES)
+    centralidades_perturbadas = ray.get( centralidades_distribuidas )
+    centralidades_perturbadas = [ii for i in centralidades_perturbadas for ii in i] # Aplasta la lista
+
+    centralidades_perturbadas = { cent[0] : cent[1] for cent in centralidades_perturbadas }
+
+    # GUARDANDO RESULTADOS
+    baseline = {'baseline' : baseline } # Para que queden igual
+    
+    import pickle
+    outfile = open('./tmp/baseline.pkl', 'wb'); pickle.dump( baseline ,outfile); outfile.close()
+    outfile = open('./tmp/centralidades_perturbadas.pkl', 'wb'); pickle.dump( centralidades_perturbadas ,outfile); outfile.close()
