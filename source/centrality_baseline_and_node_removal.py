@@ -140,8 +140,6 @@ ETC_astrocyte =  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
 
 # %% --- CALCULO DE CENTRALIDADES CON NODOS REMOVIDOS
 
-# from copy import deepcopy
-
 def removed_nodes_centrality(graph, node, info=False):
     """Helper que remueve un nodo y calcula la centralidad de este"""
     print('Iterando en nodo', node) # Sanity check de nodo iterado
@@ -151,7 +149,7 @@ def removed_nodes_centrality(graph, node, info=False):
     G_removed.remove_node( node )  # ELIMINA EL NODO A ITERAR
     G_removed = get_largest_component(G_removed) # ELIMINA NODOS DISCONEXOS
 
-    assert len(graph.nodes) != len(G_removed.nodes), "No hay remocion"
+    assert len(graph.nodes) != len(G_removed.nodes), "Ningun nodo removido."
     nodos_removidos = set(graph.nodes) - set(G_removed.nodes)
 
     if info:
@@ -170,14 +168,32 @@ def removed_nodes_centrality(graph, node, info=False):
 
     # SANITY CHECK PARA VER QUE EL DATAFRAME TENGA COMO NAN LOS REMOVIDOS
     for removido in nodos_removidos:
-        assert np.isnan( removed_centrality.loc[ removido , 'harmonic_centrality']), 'Removido no-NaN. Falla!'
+        assert np.isnan( removed_centrality.loc[ removido , 'harmonic_centrality']), 'Nodo removido tiene un valor no NaN. Error de DataFrame.'
 
     return removed_centrality
 
 # %% --- CALCULO DE CENTRALIDADES CON (ITERATIVOS) NODOS REMOVIDOS
-# TODO: reescribir esto para Ray
 
- 
+import ray
+ray.init()
+
+@ray.remote
+def hpc_reemoved_centrality( graph, nodes_to_remove ):
+    """Calcula las centralidades para nodos removidos de forma distribuida en un cluster
+
+    Args:
+        graph (grafo): Un grafo de NetworkX para el calculo de centralidad. Usa ray.put()
+        nodes_to_remove (list): una lista de nodos a remover. Para calculos grandes es list(graph.nodes)
+
+    Returns:
+        centralities_removed [list]: Una lista de DataFrames que incluyen el computo de nodos removidos.
+    """
+
+    assert type( nodes_to_remove ) == list, 'El input de remocion no es una lista. Usa list()'
+
+    centralities_removed = [ removed_nodes_centrality(graph, node) for node in nodes_to_remove ]
+
+    return centralities_removed
 
 # %% --- COMPUTA LAS BASELINE DEL SISTEMA
 
