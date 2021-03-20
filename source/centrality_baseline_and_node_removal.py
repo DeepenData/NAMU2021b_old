@@ -9,7 +9,7 @@ import networkx as nx
 import numpy    as np
 import pandas   as pd  
 
-LITE=True # Variable para definir si los calculos deben ser complejos o no
+LITE=False # Variable para definir si los calculos deben ser complejos o no
 
 #G = nx.read_graphml("./tmp/graph.graphml") # Lee el modelo desde un grafo común
 
