@@ -62,7 +62,7 @@ Density_plot_of_centralities.panel
 ```{r}
 
 fba <-  read.csv('/home/alejandro/NAMU_in_progress/Figures_creation/Code/Results_Acevedo_et_al_2021/01_phpps_bipartite_fluxes_sensis_optimality/FBA_results.csv') %>% 
-        select(c('ID', 'Reaction', 'Flux', 'Sensitivity')) %>% column_to_rownames('ID')
+        select(c('ID','Name', 'Reaction', 'Flux', 'Sensitivity')) %>% column_to_rownames('ID')
 
 
 
@@ -97,45 +97,92 @@ data <- df  %>% rownames_to_column('ID') %>% filter(!str_detect(ID, regex('AA_|A
 
 
 
-map(fba_list_of_cents, assign_node_type)
+map(fba_list_of_cents, assign_node_type) -> data
 
 
+clean_centralities <- function(df){ df %>% select(-c ("ID", "Name", "Reaction",  "Flux", "Sensitivity","Node type")  )}
 
+
+map(data, clean_centralities) -> only_centralities
 ```
 
 
 ```{r}
-data %>% select(matches('^\\d+'))       -> centrality.matrix
+ 
 
-centrality.matrix %>% abs %>% rowSums()  -> total.abs.centrality #vector de centralidades totales
+get_total_centralities <- function(df){df %>% abs %>% rowSums }
 
-pseudoLog10 <- function(x) { asinh(x/2)/log(10) }
 
-data$Fluxes   %>% abs %>% as.matrix()  %>% pseudoLog10  %>% rescale(c(0,1))  -> fluxes
-data$RedCosts  %>% abs %>% as.matrix()   %>% pseudoLog10  %>% rescale(c(0,1))-> sensitivities 
+map(only_centralities, get_total_centralities) -> total.abs.centrality 
 
-fluxes + sensitivities  -> summaryzed.optimality
+get_summaryzed.optimality <- function(df){ pseudoLog10 <- function(x) { asinh(x/2)/log(10) }
+                        
+                                      df$Flux   %>% abs %>% as.matrix()  %>% pseudoLog10  %>% rescale(c(0,1))  -> fluxes
+                                    df$Sensitivity  %>% abs %>% as.matrix()   %>% pseudoLog10  %>% rescale(c(0,1))-> sensitivities 
+                                    
+                                    fluxes + sensitivities  -> summaryzed.optimality
+                                    return(summaryzed.optimality)
+                                      
+}
+
+
+map( data,get_summaryzed.optimality) -> summaryzed.optimality
+
+
+
+
 ```
 
 heatmap
 ```{r fig.height=5.5, fig.width=9.5, message=FALSE, warning=FALSE}
-
 library(ComplexHeatmap)
-scale_rows <- function(x){t(scale(t(x)))}
 
-data %>% column_to_rownames('ID')   %>% select(matches("^\\d+")) %>% t %>% scale_rows  %>% cor(method = "kendall") -> my.corr.mat
+library(WGCNA)
 
-left_annotation <- rowAnnotation(`Nodes` = data$`Node type`, col = list( `Nodes` = c(
+
+get_correlation_matrices <-function(df){
+                                scale_rows <- function(x){t(scale(t(x)))}
+                                 df%>% transposeBigData %>% scale_rows  %>% cor(method = "kendall") -> hola
+                                 return(hola)}
+
+map(only_centralities, get_correlation_matrices)  -> my.corr.matrices
+
+
+
+#all.equal(data$fold_change_aritmetic$`Node type` , data$delta_quadratic$`Node type`)
+#all.equal(data$fold_change_harmonic$`Node type` , data$delta_geometric$`Node type`)
+
+node_types <- data$fold_change_aritmetic$`Node type`
+
+
+length(node_types)
+dim(my.corr.matrices$fold_change_aritmetic)
+
+
+
+
+
+```
+
+
+```{r fig.height=5.5, fig.width=9.5, message=FALSE, warning=FALSE}
+
+
+my.corr.matrices$delta_aritmetic -> my.corr.mat
+
+left_annotation <- rowAnnotation(`Nodes` = node_types, col = list( `Nodes` = c(
                                     "Astrocyte"        = "deepskyblue3", 
                                     'Exchange'   = 'darkgreen',
                                     'Sink/Demand Astro'='darkgoldenrod',
                                     "Neuron"           = "brown2",
                                     'Sink/Demand Neuron'= 'blueviolet' )))
-pseudoLog10 <- function(x) { asinh(x/2)/log(10) }
+
+total.abs.centrality$fold_change_aritmetic  -> a_total.abs.cent
+summaryzed.optimality$fold_change_aritmetic -> a_summaryzed.opti
 
 right_annotation <-   
-  rowAnnotation(gap = unit(12, "points"),Ce      = anno_barplot(bar_width = 0.01,width = unit(1.5, "cm"), border = T,total.abs.centrality, gp = gpar(col = 'azure4')),
-            Op        = anno_barplot(bar_width = 0.01,width = unit(1.5, "cm") ,border = T, summaryzed.optimality, gp = gpar(col = 'azure4')))
+  rowAnnotation(gap = unit(12, "points"),Ce      = anno_barplot(bar_width = 0.01,width = unit(1.5, "cm"), border = T,a_total.abs.cent, gp = gpar(col = 'azure4')),
+            Op        = anno_barplot(bar_width = 0.01,width = unit(1.5, "cm") ,border = T, a_summaryzed.opti, gp = gpar(col = 'azure4')))
 
 
 ht <- Heatmap(my.corr.mat, name = "Correlation",  left_annotation =left_annotation,
