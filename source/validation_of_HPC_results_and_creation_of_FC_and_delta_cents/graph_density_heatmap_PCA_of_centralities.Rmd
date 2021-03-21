@@ -108,6 +108,18 @@ map(data, clean_centralities) -> only_centralities
 
 
 ```{r}
+
+map(data, clean_centralities) -> only_centralities
+
+filter_centralities <- function(df){df %>% select( matches('^har|^info|^eigen|^load|^close|^bet'))}
+
+map(only_centralities, filter_centralities) -> only_centralities
+
+
+```
+
+
+```{r}
  
 
 get_total_centralities <- function(df){df %>% abs %>% rowSums }
@@ -141,8 +153,8 @@ library(WGCNA)
 
 
 get_correlation_matrices <-function(df){
-                                scale_rows <- function(x){t(scale(t(x)))}
-                                 df%>% transposeBigData %>% scale_rows  %>% cor(method = "kendall") -> hola
+                                 #scale_rows <- function(x){t(scale(t(x)))}
+                                 df %>% transposeBigData   %>% cor(method = "kendall") -> hola
                                  return(hola)}
 
 map(only_centralities, get_correlation_matrices)  -> my.corr.matrices
@@ -155,10 +167,6 @@ map(only_centralities, get_correlation_matrices)  -> my.corr.matrices
 node_types <- data$fold_change_aritmetic$`Node type`
 
 
-length(node_types)
-dim(my.corr.matrices$fold_change_aritmetic)
-
-
 
 
 
@@ -167,8 +175,9 @@ dim(my.corr.matrices$fold_change_aritmetic)
 
 ```{r fig.height=5.5, fig.width=9.5, message=FALSE, warning=FALSE}
 
+set.seed(1)
 
-my.corr.matrices$delta_aritmetic -> my.corr.mat
+my.corr.matrices$fold_change_geometric -> my.corr.mat
 
 left_annotation <- rowAnnotation(`Nodes` = node_types, col = list( `Nodes` = c(
                                     "Astrocyte"        = "deepskyblue3", 
@@ -188,10 +197,10 @@ right_annotation <-
 ht <- Heatmap(my.corr.mat, name = "Correlation",  left_annotation =left_annotation,
                                             right_annotation=right_annotation,
                                  clustering_distance_columns  = function(m)   dist(m, method = 'euclidean'),
-                                 cluster_columns              = function(x) fastcluster::hclust(dist(x), "average"),
+                                 cluster_columns              = function(x) fastcluster::hclust(dist(x), "median"),
               
                                 clustering_distance_rows   = function(m)   dist(m, method = 'euclidean'),
-                                 cluster_rows               = function(x) fastcluster::hclust(dist(x), "average"),
+                                 cluster_rows               = function(x) fastcluster::hclust(dist(x), "median"),
                                 row_km = 2,
                                 column_km = 2,
                                 # row_split = paste0("cluster ", pa$clustering),
