@@ -27,3 +27,4 @@ ipython_config.py
 # Salidas raras de Slurm y grabaciones
 slurm-*.out
 *.asciinema
+.vscode/settings.json

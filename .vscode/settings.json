@@ -1,4 +1,4 @@
 {
     "jupyter.jupyterServerType": "local",
-    "python.pythonPath": "/home/alejandro/anaconda3/bin/python"
+    "jupyter.notebookFileRoot": "${workspaceFolder}"
 }
