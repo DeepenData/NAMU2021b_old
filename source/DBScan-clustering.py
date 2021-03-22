@@ -17,7 +17,6 @@ infile = open('./tmp/excel_dataset.pandas.pkl',     'rb'); df = pickle.load(infi
 
 df = df.set_index('Muestra') # Define la columna muestra como indice
 
-# %% --- CREA UN SUBSET SOLO CON LAS MEDICIONES METABOLICAS
 # Esto es lo mismo que 'df_metabolitos' guardado como .pandas.pkl
 metabolites_columns = ['Phe', 'Met', 'Val', 'Leu/Ile', 'tir',
     'Pro', 'Arg', 'Gly', 'Ala', 'Asp', 'Glt', 'Cit', 'Orn', 'SA', 'C0',
@@ -26,8 +25,7 @@ metabolites_columns = ['Phe', 'Met', 'Val', 'Leu/Ile', 'tir',
     'C14:1', 'C14:2', 'C14OH', 'C16', 'C16OH', 'C16:1', 'C16:1OH', 'C18',
     'C18OH', 'C18:1', 'C18:1OH', 'C18:2']
 
-df_metabolitos = df[['Muestra'] + metabolites_columns]
-df_metabolitos.set_index('Muestra', inplace=True)
+df_metabolitos = df[metabolites_columns]
 
 # %% --- DBSCAN
 # DBSCAN - Density-Based Spatial Clustering of Applications with Noise. 
