@@ -34,10 +34,14 @@ df_metabolitos.set_index('Muestra', inplace=True)
 # Finds core samples of high density and expands clusters from them. 
 # Good for data which contains clusters of similar density.
 
-EPSILON = 3
+EPSILON = 0.5
 MIN_MUESTRAS = 2
 
-dataset = df_metabolitos.dropna().to_numpy() # Elimina filas con NaNs y pasa a Numpy
+dataset = df_metabolitos.dropna() # Elimina filas con NaNs
+
+dataset = (dataset-dataset.min())/(dataset.max()-dataset.min()) # Aplica MinMax
+
+dataset = dataset.to_numpy() # Pasa a NumPy
 
 dbscan = DBSCAN(eps= EPSILON, min_samples = MIN_MUESTRAS).fit( dataset )
 
@@ -51,7 +55,6 @@ import numpy as np
 
 from sklearn.cluster import DBSCAN
 from sklearn import metrics
-from sklearn.datasets import make_blobs
 from sklearn.preprocessing import StandardScaler
 
 # %% --- Compute DBSCAN
@@ -86,7 +89,7 @@ colors = [plt.cm.Spectral(each)
 for k, col in zip(unique_labels, colors):
     if k == -1:
         # Black used for noise.
-        col = [0, 0, 0, 1]
+        col = [0, 0, 0, 0] # Circulo vacio
 
     class_member_mask = (labels == k)
 
