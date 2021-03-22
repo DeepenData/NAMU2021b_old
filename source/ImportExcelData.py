@@ -68,7 +68,7 @@ df_metabolites.set_index('Muestra', inplace=True)
 
 import pickle 
 
-outfile = open('./tmp/excel_dataset', 'wb'); pickle.dump( df , outfile ); outfile.close()
-outfile = open('./tmp/excel_metabolitos', 'wb'); pickle.dump( df_metabolites , outfile ); outfile.close()
+outfile = open('./tmp/excel_dataset.pandas.pkl', 'wb'); pickle.dump( df , outfile ); outfile.close()
+outfile = open('./tmp/excel_metabolitos.pandas.pkl', 'wb'); pickle.dump( df_metabolites , outfile ); outfile.close()
 
 print("Excel a pickles terminado")

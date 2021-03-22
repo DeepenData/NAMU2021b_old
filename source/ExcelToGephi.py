@@ -5,7 +5,7 @@
 import pickle
 
 # Importa el dataset pandas de metabolitos
-DATASET_METABOLITOS = '../tmp/excel_metabolitos'
+DATASET_METABOLITOS = '../tmp/excel_metabolitos.pandas.pkl'
 infile = open( DATASET_METABOLITOS ,'rb'); df_metabolitos = pickle.load(infile); infile.close()
 
 # %% --- Importando modulos varios
