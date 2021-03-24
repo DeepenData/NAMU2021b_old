@@ -1,7 +1,9 @@
 # naive_FC_centrality
 # %%
 from   heapq import merge
-import cobra  
+import cobra
+from networkx.algorithms.centrality import betweenness, closeness, eigenvector, harmonic, katz
+from networkx.algorithms.communicability_alg import communicability  
 import numpy  as np
 import pandas as pd
 from   cobra.util.array import create_stoichiometric_matrix
@@ -287,11 +289,22 @@ final_delta = pd.DataFrame(data)'''
 '''
 # %% probando centralidades que no se incluyeron
 
-
 G_unperturbed  = G.copy()
-katz_np = nx.katz_centrality_numpy(G_unperturbed)
+katz_np  = nx.katz_centrality_numpy(G_unperturbed)
 pagerank = nx.pagerank(G_unperturbed)
 
 # %%
+"""
+sólo 9 cents:
 
+betweenness
+closeness
+communicability
+eigenvector
+harmonic
+information
+katz
+load
+pagerank
+"""
 # %%
