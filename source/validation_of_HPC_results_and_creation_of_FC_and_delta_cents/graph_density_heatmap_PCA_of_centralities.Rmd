@@ -51,10 +51,10 @@ map2(list_of_cents, names(list_of_cents), plot_density)
 ```{r fig.height=4, fig.width=4, message=FALSE, warning=FALSE}
 #centralities <-  Results[,!is.na(as.numeric(colnames(Results)))] %>% gather()
 
-Density_plot_of_centralities.panel <- ggarrange( NULL,Density_plot_of_centralities, nrow = 2,  heights= c(1, .4), labels = c('a','b'),
-                                                 hjust = -0.1, vjust = .8)
+#Density_plot_of_centralities.panel <- ggarrange( NULL,Density_plot_of_centralities, nrow = 2,  heights= c(1, .4), labels = c('a','b'),
+#                                                 hjust = -0.1, vjust = .8)
 
-Density_plot_of_centralities.panel
+#Density_plot_of_centralities.panel
 
 
 ```
@@ -108,10 +108,10 @@ map(data, clean_centralities) -> only_centralities
 
 
 ```{r}
-
 map(data, clean_centralities) -> only_centralities
 
-filter_centralities <- function(df){df %>% select( matches('^har|^info|^eigen|^load|^close|^bet'))}
+
+filter_centralities <- function(df){df %>% select( matches('^har|^info|^eigen|^load|^close|^bet|^communi'))}
 
 map(only_centralities, filter_centralities) -> only_centralities
 

@@ -285,4 +285,13 @@ final_delta = pd.DataFrame(data)'''
 '''final_FC
 
 '''
+# %% probando centralidades que no se incluyeron
+
+
+G_unperturbed  = G.copy()
+katz_np = nx.katz_centrality_numpy(G_unperturbed)
+pagerank = nx.pagerank(G_unperturbed)
+
+# %%
+
 # %%
