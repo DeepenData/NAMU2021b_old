@@ -1,6 +1,6 @@
 #!/bin/python
 """
-# TODO: "Una cita interesante"
+"https://xkcd.com/1838/"
 """
 # %% --- IMPORTANDO LIBRERIAS Y DATASETS
 import numpy as np
@@ -32,14 +32,18 @@ df_metabolitos = df[metabolites_columns]
 # Finds core samples of high density and expands clusters from them. 
 # Good for data which contains clusters of similar density.
 
-EPSILON = 0.5
+EPSILON      = 0.5
 MIN_MUESTRAS = 2
 
 dataset = df_metabolitos.dropna() # Elimina filas con NaNs
 
-dataset = (dataset-dataset.min())/(dataset.max()-dataset.min()) # Aplica MinMax
-
 dataset = dataset.to_numpy() # Pasa a NumPy
+
+from sklearn.preprocessing import StandardScaler, normalize, minmax_scale
+
+dataset = minmax_scale( dataset )
+
+dataset = normalize( dataset )
 
 dbscan = DBSCAN(eps= EPSILON, min_samples = MIN_MUESTRAS).fit( dataset )
 
@@ -48,14 +52,9 @@ uniq, frec = np.unique(dbscan.labels_, return_counts = True)
 print('Clusters:', uniq)
 print('Distribucion:', frec)
 
-# %% --- 
-import numpy as np
-
-from sklearn.cluster import DBSCAN
-from sklearn import metrics
-from sklearn.preprocessing import StandardScaler
-
 # %% --- Compute DBSCAN
+from sklearn import metrics
+
 db = DBSCAN(eps= EPSILON, min_samples = MIN_MUESTRAS).fit( dataset )
 core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
 core_samples_mask[db.core_sample_indices_] = True
@@ -65,20 +64,11 @@ labels = db.labels_
 n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
 n_noise_ = list(labels).count(-1)
 
-print('Estimated number of clusters: %d' % n_clusters_)
-print('Estimated number of noise points: %d' % n_noise_)
-# print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels))
-# print("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels))
-# print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels))
-# print("Adjusted Rand Index: %0.3f"
-#       % metrics.adjusted_rand_score(labels_true, labels))
-# print("Adjusted Mutual Information: %0.3f"
-#       % metrics.adjusted_mutual_info_score(labels_true, labels))
-# print("Silhouette Coefficient: %0.3f"
-#       % metrics.silhouette_score(X, labels))
 
 # %% --- Plot result
 import matplotlib.pyplot as plt
+
+X = dataset
 
 # Black removed and is used for noise instead.
 unique_labels = set(labels)

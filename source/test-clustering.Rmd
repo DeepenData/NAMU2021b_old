@@ -1,0 +1,320 @@
+# Análisis de clusters en estudio de expresión genética para la detección de cáncer
+
+```{r message=FALSE, warning=FALSE}
+library("tidyverse")
+library("dendextend")
+library("magrittr")
+```
+
+
+```{r}
+# install.packages("ISLR")  # Instala el paquete
+data("NCI60", package = "ISLR") # Carga la data
+```
+
+La base de datos NCI60 contiene 64 observaciones, correspondientes a pacientes con distintos tipos de cáncer. Cuenta con un número grande de variables, concretamente 6830, que representan un microarray de genes. Cada una de las 64 observaciones mide la denominada expresión genética para algún tipo de c´ ancer, se trata as´ı de identificar cuál gen se “expresa” para cada cáncer espec´ıfico.
+
+La base de datos se compone de dos partes que se pueden separar mediante:
+
+```{r}
+nci.labs <- NCI60$labs # Labels
+nci.data <- NCI60$data # Matiz de datos del Microarray
+
+NCI60 <- NULL # Ya no es necesario
+```
+
+En nci.labs se incluyen las etiquetas (“labels”) de los distintos tipos de cáncer y en nci.data se incluye una matriz de dimensión 64 × 6830 (es decir 64 observaciones y 6830 variables si lo interpretamos como un data.frame)
+
+## Estandarización de datos
+
+La matriz se compone de 64 lineas celulares, con labels similares segun tipo de cancer. Luego, cada columna corresponde a un gen. 
+
+```{r}
+# Estandarización de los datos
+nci.data <- nci.data %>%
+  scale(., scale = TRUE, center = TRUE)
+```
+
+
+## Observaciones por tipo de cáncer
+
+Las 64 lineas son varios tipos de cancer, pero se repiten modelos. 
+
+```{r}
+table(nci.labs) # Hacemos una tabla de frecuencia de los tipos
+
+barplot( # Hacemos un plot de la tabla
+  table(nci.labs),
+  ylab = "Frecuencia",
+  xlab = "Tipo de cáncer",
+  cex.names = 0.5
+)
+```
+
+Vemos que los más comunes son cancer renal y _NSCLC_, o Carcinoma pulmonar no microtico, con 9 lineas. Luego melanoma con 8 lineas, cáncer de mama y cólon con 7, cancer de ovario y leucemia 6, ---CNS 5, protstata 2, y entradas unicas para las lineas K562A-repro, K562B-repro, MCF7A-repro y MCF7D-repro. 
+
+Existe una muestra catalogada como "Unknown", que corresponde a
+
+## Matriz de distancia euclidiana entre datos estándarizados
+
+```{r}
+# Matriz de distancia euclidiana
+dist.matrix <- dist(nci.data, method = "euclidian", p = 2)
+```
+
+
+## Determianción de "linkage" y correlación 
+
+```{r}
+# Todos estos clusters son hechos con distancia euclidiana, al ser la opción
+# por defecto de dist()
+
+dend1 <- nci.data %>%
+  dist() %>%
+  hclust("complete") %>%
+  as.dendrogram()
+
+dend2 <- nci.data %>%
+  dist() %>%
+  hclust("single") %>%
+  as.dendrogram()
+
+dend3 <- nci.data %>%
+  dist() %>%
+  hclust("average") %>%
+  as.dendrogram()
+
+dend4 <- nci.data %>%
+  dist() %>%
+  hclust("centroid") %>%
+  as.dendrogram()
+```
+
+
+```{r}
+dend_list <- dendlist("Complete" = dend1, "Single" = dend2, "Average" = dend3, "Centroid" = dend4)
+
+# Matriz de correlación
+cors.matrix <- cor.dendlist(dend_list)
+```
+
+
+```{r}
+# Muestre la matriz mediante:
+round(cors.matrix, 2) # Imprime la matriz redondeada a dos decimales
+```
+## Dendograma y PCA
+
+Elija un método de “linkage” para continuar el análisis. Construya y visualice gráficamente el dendrograma. Identifique un número apropiado de clusters (por estimación y/o de acuerdo al problema tratado) y muéstrelos en el dendrograma. Visualice además los cluster en un diagrama 2D usando componentes principales.
+
+```{r}
+# El metodo completo ofrece la menor cantidad de grupos "sueltos"
+
+clusters <- 12
+colores <- hcl.colors(clusters, palette = "viridis")
+
+plot.dendograma <- dend1 %>%
+  set("labels_col", value = colores, k = clusters) %>% # Color de ramas
+  set("branches_k_color", value = colores, k = clusters) %>% # Color de labels
+  set("labels", nci.labs) %>%
+  plot(horiz = TRUE, axes = TRUE, xlab = "Distancia euclidiana")
+```
+
+### PCA
+
+```{r}
+pca <- prcomp(nci.data) # Principal Component de R Stats
+
+summary(pca) # Resultados de analisis de componente principal, para 64 lineas
+```
+
+```{r eval=FALSE, include=FALSE}
+dend5 <- pca$x %>%
+  dist() %>%
+  hclust("complete") %>%
+  as.dendrogram()
+
+plot.dendograma.pca <- dend5 %>%
+  set("labels_col", value = colores, k = clusters) %>% # Color de ramas
+  set("branches_k_color", value = colores, k = clusters) %>% # Color de labels
+  set("labels", nci.labs) %>%
+  plot(horiz = TRUE, axes = TRUE)
+# abline(v = 350, lty = 2)
+
+plot.dendograma.pca
+```
+
+```{r}
+dim(pca$x) # 64 observaciones de 64 variables (componentes)
+
+pca.x <- 1 # Selecciona un componente principal
+pca.y <- 2 # Selecciona un componente principal
+
+# Crea un dataframe valido para ggplot
+extract.pca <- as.data.frame(pca$x[, c(pca.x, pca.y)])
+extract.pca <- cbind(extract.pca, as.factor(nci.labs))
+colnames(extract.pca) <- c("x1", "y1", "Tipo")
+
+# Crea el plot de componentes principales
+plot.pca <- ggplot(data = extract.pca, aes(x = x1, y = y1, color = Tipo)) +
+  ylab(paste("Componente Principal", pca.x)) +
+  xlab(paste("Componente Principal", pca.y)) +
+  geom_point()
+
+# Guarda el plot
+ggsave(
+  plot = plot.pca,
+  filename = "./figuras/2_5_pca.png",
+  width = 6, height = 4
+)
+
+# Muestra el plot
+plot.pca
+```
+
+## Clusters y tipos de cáncer
+
+¿Existe algún cluster que contenga solo un tipo de cancer? y número de observaciones contenidos en cada cluster. ancer?. ¿Cuál es este cluster?.
+
+```{r}
+cluster.grupos <- data.frame(
+  "Tipo"    = as.factor(nci.labs),
+  "Cluster" = as.factor(cutree(dend1, clusters))
+)
+
+summary(cluster.grupos)
+
+# Visualizandolo como histograma aplicado
+ggplot(
+  cluster.grupos,
+  aes(x = Cluster, fill = Tipo)
+) +
+  xlab("Cluster") +
+  ylab("Conteo") +
+  geom_bar()
+```
+
+> En general todos los clusters incluyen más de un grupo de 
+
+## Cophenetic
+
+Calcule la correlación entre la matriz “cophenetic” y la matriz de distancias. Comente.
+
+```{r}
+cop.matriz <- pca$x %>%
+  dist(., method = "euclidian", p = 2) %>%
+  hclust("complete") %>%
+  cophenetic()
+
+cor(
+  dist(pca$x, method = "euclidian", p = 2),
+  cop.matriz
+)
+```
+
+```{r}
+cop.matriz <- datos[,c(5,7)] %>% # Selecciona ‘score’ y ‘tasa’
+  dist(., method = 'euclidian', p = 2) %>%
+  hclust("ward.D") %>% 
+  cophenetic()
+
+cor( # Correlación entre matrices cophenetic y distancia
+  dist(datos[,c(5,7)], method = 'euclidian', p = 2),
+  cop.matriz
+) # Es 0.6526193
+
+```
+
+
+## Otra Clusterización con K-Means
+
+Utilice otro método para construir los cluster, por ejemplo,“PAM”y/o “K-means” y compare la estructura obtenida con el análisis realizado mediante el método jerárquico.
+
+```{r}
+n <- nrow(pca$x)
+wss <- rep(0, 6)
+wss[1] <- (n - 1) * sum(sapply(pca$x, var))
+for (i in 2:63) {
+  wss[i] <- sum(kmeans(pca$x,
+    centers = i
+  )$withinss)
+}
+
+tmp <- data.frame(Clusters = c(1:length(wss)), SumVar = wss)
+
+ggplot(tmp ,aes(Clusters, SumVar) ) +
+  xlab('Numero de clusters') +
+  ylab('Suma de varianza dentro de clusters') +
+  geom_line()
+```
+
+```{r}
+# plot.pca
+cluster.kmeans <- kmeans(
+  pca$x,
+  centers = 10,
+  iter.max = 100,
+  nstart = 45
+)
+
+library(factoextra)
+fviz_cluster(cluster.kmeans, data = pca$x)
+```
+
+```{r}
+# Comparación de resultados de clustering
+test.resultado <- as.data.frame( table(cluster.kmeans$cluster, cutree(dend1, clusters)) )
+colnames(test.resultado) <- c('Dendo', 'Kmeans', 'Frecuencia')
+test.resultado <- subset(test.resultado, Frecuencia > 0)
+
+test.resultado$Dendo <- as.factor(test.resultado$Dendo)
+test.resultado$Kmeans <- as.factor(test.resultado$Kmeans)
+
+test.resultado
+```
+
+
+### Despues de descartar dimensionalidad
+
+```{r}
+# Descartando componentes del PCA
+pca.reducido <- pca$x[, c(1:2)]
+
+n <- nrow(pca$x)
+wss <- rep(0, 6)
+wss[1] <- (n - 1) * sum(sapply(pca.reducido, var))
+for (i in 2:63) {
+  wss[i] <- sum(kmeans(pca.reducido,
+    centers = i
+  )$withinss)
+}
+
+# Muestra el plot
+plot(c(1:length(wss)), wss, type = "b", xlab = 'Numero de clusters', ylab = 'Suma de varianza dentro de clusters')
+```
+
+```{r}
+cluster.kmeans.red <- kmeans(
+  pca.reducido,
+  centers = clusters,
+  nstart = 10
+)
+```
+
+```{r}
+fviz_cluster(cluster.kmeans.red, data = pca$x)
+```
+
+```{r}
+# Comparación de resultados de clustering
+test.resultado <- as.data.frame( table(cluster.kmeans.red$cluster, cutree(dend1, clusters)) )
+colnames(test.resultado) <- c('Dendo', 'K-means', 'Frecuencia')
+test.resultado <- subset(test.resultado, Frecuencia > 0)
+
+test.resultado
+```
+
+
+## Comenatrio
+
+> La data corresponde a un conjunto de lineas cancerosas usadas en investigación, cubrindo un espectro amplio de caracteristicas fenotipicas. Por ello, se observan variaciones significativas en la expresión de genes, 

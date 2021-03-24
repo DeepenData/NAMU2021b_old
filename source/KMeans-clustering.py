@@ -11,6 +11,8 @@ infile = open('./tmp/excel_dataset.pandas.pkl',     'rb'); df = pickle.load(infi
 #infile = open('./tmp/excel_metabolitos.pandas.pkl', 'rb'); df_metabolitos = pickle.load(infile); infile.close()
 
 df = df.set_index('Muestra') # Define la columna muestra como indice
+df = df.dropna()             # Elimina filas con NaNs
+
 
 # Esto es lo mismo que 'df_metabolitos' guardado como .pandas.pkl
 metabolites_columns = ['Phe', 'Met', 'Val', 'Leu/Ile', 'tir',
@@ -21,5 +23,29 @@ metabolites_columns = ['Phe', 'Met', 'Val', 'Leu/Ile', 'tir',
     'C18OH', 'C18:1', 'C18:1OH', 'C18:2']
 
 df_metabolitos = df[metabolites_columns]
+
+# %% --- ESTANDARIZACION Y ESCALADO 
+
+from sklearn.preprocessing import StandardScaler
+x = df_metabolitos.values
+x = StandardScaler().fit_transform(x) # normalizing the features
+
+
+# %% --- PCA
+
+from sklearn.decomposition import PCA
+pca_metabolitos = PCA(n_components=2)
+principalComponents = pca_metabolitos.fit_transform(x)
+
+# %% --- EMPAQUE EN UN DATAFRAME
+# tengo codigo R que hace esto, pero es una oportunidad de aprender Python
+
+PCA_dataframe = pd.DataFrame(data = principalComponents, columns = ['PC_1', 'PC_2' ]) #, 'PC_3', 'PC_4', 'PC_5'])
+
+PCA_dataframe
+
+# %% --- 
+
+print('Explained variation per principal component: {}'.format(pca_metabolitos.explained_variance_ratio_))
 
 # %% --- 
