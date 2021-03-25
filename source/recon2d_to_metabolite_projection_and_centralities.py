@@ -87,10 +87,12 @@ cents = compute_centralities_short(G)
 
 # %%
 
-cents.loc['atp_c']/cents.loc['mal_L_c']
+cents.loc['glu_L_c']/cents.loc['atp_c']
 
 
 # %%
 cents.to_csv('data/recon2_metabolite_centralities_metabolome_weights.csv')
 
+# %%
+cents
 # %%
