@@ -106,7 +106,7 @@ dataset_metabolitos = dataset_metabolitos.dropna() # Elimina filas con NaNs
 
 from sklearn.preprocessing import RobustScaler
 X = dataset_metabolitos.values
-X = RobustScaler(with_centering=False, with_scaling=False, quantile_range=(25.0, 75.0), copy=True, unit_variance=False).fit_transform(X)
+X = RobustScaler(with_centering=False, with_scaling=False, quantile_range=(25.0, 75.0), copy=True).fit_transform(X)
 
 dataset_metabolitos2 = pd.DataFrame( X, columns= dataset_metabolitos.columns, index= dataset_metabolitos.index )
 
@@ -118,7 +118,7 @@ dataset_metabolitos2 = dataset_metabolitos2[metabolitos]
 
 # %% TRUE MULTIPLICA
 
-dataset_metabolitos2.mul( dataset_centralidad , axis=1 )
+#dataset_metabolitos2.mul( dataset_centralidad , axis=1 )
 
 # %% --- REMOVEDOR DE OUTLIERS
 # remueve todos las filas que tengan un outlier en al menos una columna
@@ -145,7 +145,7 @@ print('Entradas despues de remocion de outliers:', no_outliers.shape )
 
 from sklearn.preprocessing import MinMaxScaler
 X = no_outliers.values
-X = MinMaxScaler(feature_range=(0, 10), copy=True, clip=False).fit_transform(X) 
+X = MinMaxScaler(feature_range=(0, 10), copy=True).fit_transform(X) 
 
 print('Data MinMax para procesamiento:', X.shape )
 
@@ -242,7 +242,7 @@ import seaborn as sns
 # %% --- PLOT TSNE
 plot_tsne = sns.scatterplot(data=data_plot, x="tSNE_Componente_1", y="tSNE_Componente_2", hue="k-labels")
 plot_tsne = plot_tsne.get_figure()
-plot_tsne.savefig("./doc/img/e_plot_tsne.png")
+plot_tsne.savefig("./doc/img/plot_tsne.png")
 # %% --- PLOT MDS
 # plot_mds = sns.scatterplot(data=data_plot, x="MDS_Componente_1", y="MDS_Componente_2", hue="k-labels")
 # plot_mds = plot_mds.get_figure()
@@ -250,7 +250,7 @@ plot_tsne.savefig("./doc/img/e_plot_tsne.png")
 # %% --- PLOT ISOMAP
 plot_isomap = sns.scatterplot(data=data_plot, x="isomap_Componente_1", y="isomap_Componente_2", hue="k-labels")
 plot_isomap = plot_isomap.get_figure()
-plot_isomap.savefig("./doc/img/e_plot_isomap.png")
+plot_isomap.savefig("./doc/img/plot_isomap.png")
 # %% --- KMEANS POST CLUSTERING
 
 Xpc = data_plot[['tSNE_Componente_1','tSNE_Componente_2']]
