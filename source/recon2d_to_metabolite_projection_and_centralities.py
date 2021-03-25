@@ -82,6 +82,10 @@ G = cobra_to_networkx_metabolite_projection(recon)
 
 G = get_largest_component(G)
 
+
+# %%
+import networkx as nx
+nx.write_gpickle(G, 'data/Recon2_metabolite_projection.gpickle')
 # %%
 cents = compute_centralities_short(G)
 
