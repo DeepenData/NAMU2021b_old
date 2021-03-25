@@ -1,7 +1,7 @@
 #!/bin/bash
 ### Este script funciona para cualquier numero de nodos; Ray se encarga de manejarlos
 ### puedes definir este parametro en la ejecución de la tarea como 'sbatch submit-ray... --nodes=5'
-#SBATCH --nodes=10
+#SBATCH --nodes=13
 
 ### Asigna todos los recursos de un nodo al proceso Ray, el cual los maneja internamente
 #SBATCH --ntasks-per-node=1
@@ -71,7 +71,7 @@ echo "$(date) --- Termina el proceso paralelo"
 sstat  -j   $SLURM_JOB_ID.batch   --format=JobID,MaxVMSize
 
 # SINCRONIZACIÓN CON AWS S3 DE RESULTADOS
-aws s3 sync tmp s3://pseudo-dropbox/MAGI_01/results-$SLURM_JOB_ID --exclude "*" --include "*.plk"
+aws s3 sync tmp s3://pseudo-dropbox/MAGI_01/results-$SLURM_JOB_ID --exclude "*" --include "*.pkl"
 
 exit
 
