@@ -106,7 +106,7 @@ dataset_metabolitos = dataset_metabolitos.dropna() # Elimina filas con NaNs
 
 from sklearn.preprocessing import RobustScaler
 X = dataset_metabolitos.values
-X = RobustScaler().fit_transform(X) # normalizing the features
+X = RobustScaler(with_centering=False, with_scaling=False, quantile_range=(25.0, 75.0), copy=True, unit_variance=False).fit_transform(X)
 
 dataset_metabolitos2 = pd.DataFrame( X, columns= dataset_metabolitos.columns, index= dataset_metabolitos.index )
 
@@ -128,19 +128,30 @@ import numpy as np
 from scipy import stats
 no_outliers = dataset_metabolitos2[(np.abs(stats.zscore(dataset_metabolitos2)) < 3).all(axis=1)]
 
+# centralidad_base_reduc = dataset_centralidad_base.loc[nodes_defined,]
+# no_outliers = centralidad_base_reduc[(np.abs(stats.zscore(centralidad_base_reduc)) < 3).all(axis=1)]
+
 print('Entradas despues de remocion de outliers:', no_outliers.shape )
 
 # %% --- ESTANDARIZACION Y ESCALADO 
 
-from sklearn.preprocessing import RobustScaler
-X = no_outliers.values
-X = RobustScaler().fit_transform(X) # normalizing the features
+# from sklearn.preprocessing import RobustScaler
+# X = no_outliers.values
+# X = RobustScaler().fit_transform(X) # normalizing the features
+# 
+# print('Data escalada para procesamiento:', X.shape )
 
-print('Data escalada para procesamiento:', X.shape )
+# %% --- MinMax Scaler
+
+from sklearn.preprocessing import MinMaxScaler
+X = no_outliers.values
+X = MinMaxScaler(feature_range=(0, 10), copy=True, clip=False).fit_transform(X) 
+
+print('Data MinMax para procesamiento:', X.shape )
 
 # %% --- PARAMETROS DE CLUSTERING
 
-CLUSTERS = 5
+CLUSTERS = 4
 DIMENSIONALIDAD = 2
 
 # %% --- Multi Dimensional Scalling
@@ -161,7 +172,6 @@ isomap = Isomap(n_components=DIMENSIONALIDAD,
     n_jobs=-1).fit_transform(X)
 
 isomap.shape
-
 
 # %% --- T-Sne
 
@@ -232,7 +242,7 @@ import seaborn as sns
 # %% --- PLOT TSNE
 plot_tsne = sns.scatterplot(data=data_plot, x="tSNE_Componente_1", y="tSNE_Componente_2", hue="k-labels")
 plot_tsne = plot_tsne.get_figure()
-plot_tsne.savefig("./doc/img/centralidades_eigenvector_plot_tsne.png")
+plot_tsne.savefig("./doc/img/eigen_MinMax4_plot_tsne.png")
 # %% --- PLOT MDS
 # plot_mds = sns.scatterplot(data=data_plot, x="MDS_Componente_1", y="MDS_Componente_2", hue="k-labels")
 # plot_mds = plot_mds.get_figure()
@@ -240,6 +250,13 @@ plot_tsne.savefig("./doc/img/centralidades_eigenvector_plot_tsne.png")
 # %% --- PLOT ISOMAP
 plot_isomap = sns.scatterplot(data=data_plot, x="isomap_Componente_1", y="isomap_Componente_2", hue="k-labels")
 plot_isomap = plot_isomap.get_figure()
-plot_isomap.savefig("./doc/img/centralidades_eigenvector_plot_isomap.png")
-# %% --- 
+plot_isomap.savefig("./doc/img/eigen_MinMax4_plot_isomap.png")
+# %% --- KMEANS POST CLUSTERING
 
+Xpc = data_plot[['tSNE_Componente_1','tSNE_Componente_2']]
+
+kmeans_tsne = MiniBatchKMeans(n_clusters= CLUSTERS, 
+    batch_size=100, 
+    random_state=0).fit(Xpc.values)
+
+kmeans_tsne.labels_
