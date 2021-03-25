@@ -242,7 +242,7 @@ import seaborn as sns
 # %% --- PLOT TSNE
 plot_tsne = sns.scatterplot(data=data_plot, x="tSNE_Componente_1", y="tSNE_Componente_2", hue="k-labels")
 plot_tsne = plot_tsne.get_figure()
-plot_tsne.savefig("./doc/img/eigen_MinMax4_plot_tsne.png")
+plot_tsne.savefig("./doc/img/e_plot_tsne.png")
 # %% --- PLOT MDS
 # plot_mds = sns.scatterplot(data=data_plot, x="MDS_Componente_1", y="MDS_Componente_2", hue="k-labels")
 # plot_mds = plot_mds.get_figure()
@@ -250,7 +250,7 @@ plot_tsne.savefig("./doc/img/eigen_MinMax4_plot_tsne.png")
 # %% --- PLOT ISOMAP
 plot_isomap = sns.scatterplot(data=data_plot, x="isomap_Componente_1", y="isomap_Componente_2", hue="k-labels")
 plot_isomap = plot_isomap.get_figure()
-plot_isomap.savefig("./doc/img/eigen_MinMax4_plot_isomap.png")
+plot_isomap.savefig("./doc/img/e_plot_isomap.png")
 # %% --- KMEANS POST CLUSTERING
 
 Xpc = data_plot[['tSNE_Componente_1','tSNE_Componente_2']]
@@ -260,3 +260,10 @@ kmeans_tsne = MiniBatchKMeans(n_clusters= CLUSTERS,
     random_state=0).fit(Xpc.values)
 
 kmeans_tsne.labels_
+
+# %% --- COSAS DE GEPHI Y ESO
+
+# './data/Recon2_metabolite_projection.gpickle'
+
+
+
