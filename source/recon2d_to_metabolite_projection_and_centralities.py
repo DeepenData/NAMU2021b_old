@@ -47,7 +47,7 @@ def compute_centralities_short(graph):
     dc    = nx.degree_centrality(graph)
     cc    = nx.closeness_centrality(graph, distance=None, wf_improved=True)
     ic    = nx.information_centrality(graph) # Requiere scipy
-    kz    = nx.katz_centrality_numpy(graph)
+    kz    = nx.katz_centrality_numpy(graph, alpha = 0.01)
     pr    = nx.pagerank(graph)
 #    bc    = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
 #    cbc   = nx.communicability_betweenness_centrality(graph) 
@@ -93,6 +93,55 @@ cents.loc['glu_L_c']/cents.loc['atp_c']
 # %%
 cents.to_csv('data/recon2_metabolite_centralities_metabolome_weights.csv')
 
+
+import pandas as pd 
+cents  =  pd.read_csv('data/recon2_metabolite_centralities_metabolome_weights.csv', index_col= 0 )
+
+
+def count_negatives_by_column(df):
+    A = [sum(df.iloc[:,i] < 0) for i in range(len(df.columns))]
+    B = pd.DataFrame(A).T
+    B.columns = df.columns
+    return B
+
+
+def get_largest_eigenvalue(Matrix):
+    Matrix = Matrix.astype('int')
+    from numpy import linalg 
+    import numpy as np
+    return np.real(max(linalg.eigvals(Matrix)))
+
+
+def get_alpha_paremeter(Matrix):
+    eigen_1 = get_largest_eigenvalue(Matrix)
+    alpha = .9*(1/eigen_1).astype('float16')
+    return alpha
+
+import networkx as nx 
+
+
+AdjMat =  nx.adjacency_matrix(G).toarray()
+alpha  =  get_alpha_paremeter(AdjMat)
 # %%
-cents
+import time
+t0        = time.perf_counter()
+
+kz = nx.katz_centrality_numpy(G, alpha = alpha)
+#count_negatives_by_column(pd.DataFrame({'katz': kz}))
+pr = nx.pagerank_numpy(G, alpha=alpha)
+#count_negatives_by_column(pd.DataFrame({'pagerank': pr}))
+
+t1 = time.perf_counter()
+
+print(f'Finished in {t1-t0} seconds')
+# %%
+t0        = time.perf_counter()
+
+kz = nx.katz_centrality(G, alpha = alpha)
+#count_negatives_by_column(pd.DataFrame({'katz': kz}))
+pr = nx.pagerank(G, alpha=alpha)
+
+t1 = time.perf_counter()
+
+print(f'Finished in {t1-t0} seconds')
 # %%
