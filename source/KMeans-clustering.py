@@ -141,9 +141,15 @@ data_plot.to_csv('./results/dataplot.csv')
 # %% --- 
 import seaborn as sns
 
-sns.scatterplot(data=data_plot, x="tSNE_Componente_1", y="tSNE_Componente_2", hue="k-labels")
+plot_tsne = sns.scatterplot(data=data_plot, x="tSNE_Componente_1", y="tSNE_Componente_2", hue="k-labels")
+plot_tsne = plot_tsne.get_figure()
+plot_tsne.savefig("./doc/img/plot_tsne.png")
 # %% --- 
-sns.scatterplot(data=data_plot, x="MDS_Componente_1", y="MDS_Componente_2", hue="k-labels")
+plot_mds = sns.scatterplot(data=data_plot, x="MDS_Componente_1", y="MDS_Componente_2", hue="k-labels")
+plot_mds = plot_mds.get_figure()
+plot_mds.savefig("./doc/img/plot_mds.png")
 # %% --- 
-sns.scatterplot(data=data_plot, x="isomap_Componente_1", y="isomap_Componente_2", hue="k-labels")
+plot_isomap = sns.scatterplot(data=data_plot, x="isomap_Componente_1", y="isomap_Componente_2", hue="k-labels")
+plot_isomap = plot_isomap.get_figure()
+plot_isomap.savefig("./doc/img/plot_isomap.png")
 # %% --- 
