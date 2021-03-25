@@ -27,6 +27,7 @@ df_metabolitos = df_metabolitos.dropna() # Elimina filas con NaNs
 # remueve todos las filas que tengan un outlier en al menos una columna
 # calculando el Z (intercuartil) absoluto, 
 
+import numpy as np
 from scipy import stats
 no_outliers = df_metabolitos[(np.abs(stats.zscore(df_metabolitos)) < 3).all(axis=1)]
 
