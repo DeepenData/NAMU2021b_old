@@ -71,16 +71,46 @@ def compute_centralities_short(graph):
 
     return centralities
 # %% --- 
-
 import cobra  
 import warnings 
 warnings.filterwarnings("ignore")
 recon = cobra.io.load_json_model("data/GEM_Recon2_thermocurated_redHUMAN.json")
+G = cobra_to_networkx_metabolite_projection(recon)
+G = get_largest_component(G)
 
 # %%
-G = cobra_to_networkx_metabolite_projection(recon)
+def count_negatives_by_column(df):
+    A = [sum(df.iloc[:,i] < 0) for i in range(len(df.columns))]
+    B = pd.DataFrame(A).T
+    B.columns = df.columns
+    return B
 
-G = get_largest_component(G)
+def get_largest_eigenvalue(Matrix):
+    Matrix = Matrix.astype('int')
+    from numpy import linalg 
+    import numpy as np
+    return np.real(max(linalg.eigvals(Matrix)))
+
+def get_alpha_paremeter(Matrix):
+    eigen_1 = get_largest_eigenvalue(Matrix)
+    alpha = .9*(1/eigen_1).astype('float16')
+    return alpha
+
+import networkx as nx 
+
+AdjMat =  nx.adjacency_matrix(G).toarray()
+alpha  =  get_alpha_paremeter(AdjMat)
+
+import time
+
+t0        = time.perf_counter()
+
+kz = nx.katz_centrality(G, alpha = alpha)
+pr = nx.pagerank(G, alpha=alpha)
+
+t1 = time.perf_counter()
+
+print(f'Finished in {t1-t0} seconds')
 
 
 # %%
@@ -102,30 +132,6 @@ import pandas as pd
 cents  =  pd.read_csv('data/recon2_metabolite_centralities_metabolome_weights.csv', index_col= 0 )
 
 
-def count_negatives_by_column(df):
-    A = [sum(df.iloc[:,i] < 0) for i in range(len(df.columns))]
-    B = pd.DataFrame(A).T
-    B.columns = df.columns
-    return B
-
-
-def get_largest_eigenvalue(Matrix):
-    Matrix = Matrix.astype('int')
-    from numpy import linalg 
-    import numpy as np
-    return np.real(max(linalg.eigvals(Matrix)))
-
-
-def get_alpha_paremeter(Matrix):
-    eigen_1 = get_largest_eigenvalue(Matrix)
-    alpha = .9*(1/eigen_1).astype('float16')
-    return alpha
-
-import networkx as nx 
-
-
-AdjMat =  nx.adjacency_matrix(G).toarray()
-alpha  =  get_alpha_paremeter(AdjMat)
 # %%
 import time
 t0        = time.perf_counter()
@@ -139,13 +145,5 @@ t1 = time.perf_counter()
 
 print(f'Finished in {t1-t0} seconds')
 # %%
-t0        = time.perf_counter()
 
-kz = nx.katz_centrality(G, alpha = alpha)
-#count_negatives_by_column(pd.DataFrame({'katz': kz}))
-pr = nx.pagerank(G, alpha=alpha)
-
-t1 = time.perf_counter()
-
-print(f'Finished in {t1-t0} seconds')
 # %%
