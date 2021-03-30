@@ -2,7 +2,7 @@
 
 # %% --- 
 def cobra_to_networkx_metabolite_projection(modelo):
-    import networkx as nx
+    import networkx as nx #fdefdffd
     from   cobra.util.array import create_stoichiometric_matrix
     import numpy as np
     from sklearn.preprocessing import Binarizer
