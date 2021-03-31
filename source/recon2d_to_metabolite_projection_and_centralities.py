@@ -86,21 +86,40 @@ def count_negatives_by_column(df):
     return B
 #para el programa delta
 
+# %% --- JITEADO DE FUNCIONES
+
+from numba import jit
+
+from numpy import linalg 
+import numpy as np
+
+# TODO: Jitear
 def get_largest_eigenvalue(Matrix):
-    Matrix = Matrix.astype('int')
-    from numpy import linalg 
-    import numpy as np
+    # Matrix = Matrix.astype('int')
     return np.real(max(linalg.eigvals(Matrix)))
 
+# TODO: Jitear
 def get_alpha_paremeter(Matrix):
     eigen_1 = get_largest_eigenvalue(Matrix)
-    alpha = .9*(1/eigen_1).astype('float16')
+    alpha = .9*(1/eigen_1) #.astype('float16')
     return alpha
+
+# %% --- JITEADO DE FUNCIONES
+
+# @jit(nopython=True)
+# def funcion_jiteada(Matrix):
+#     tmp = np.linalg.eigvals(Matrix)
+#     tmp = np.max(tmp)
+#     tmp = np.real(tmp)
+
+#     tmp = .9*(1/tmp)
+# 
+#     return tmp
 
 import networkx as nx 
 
 AdjMat =  nx.adjacency_matrix(G).toarray()
-alpha  =  get_alpha_paremeter(AdjMat)
+alpha  =  funcion_jiteada(AdjMat)
 
 import time
 
@@ -114,10 +133,10 @@ t1 = time.perf_counter()
 print(f'Finished in {t1-t0} seconds')
 
 
-# %%
+# %% --- PICKLE DEL GRAFICO PARA NO CALCULAR TODA LA PROYECCIÓN DE NUEVO
 import networkx as nx
 nx.write_gpickle(G, 'data/Recon2_metabolite_projection.gpickle')
-# %%
+# %% --- UNA PRUEBA DE COMPUTO DE CENTRALIDAD
 cents = compute_centralities_short(G)
 
 # %%

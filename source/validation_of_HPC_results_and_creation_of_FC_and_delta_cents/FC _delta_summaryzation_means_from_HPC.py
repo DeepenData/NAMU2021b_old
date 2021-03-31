@@ -77,10 +77,11 @@ def harmonic_mean(array):
 
 # %% --- Convierte a Dataframes
 
-index_centralities = ['harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality', 
-      'closeness_centrality', 'load_centrality', 'information_centrality', 'second_order_centrality',
-      'current_flow_closeness_centrality', 'current_flow_betweenness_centrality',
-       'approximate_current_flow_betweenness_centrality', 'communicability_betweenness_centrality']
+index_centralities = [
+    'degree_centrality', 'harmonic_centrality', 'eigenvector_centrality', 'betweenness_centrality', 
+    'closeness_centrality', 'load_centrality', 'information_centrality', 'communicability_betweenness_centrality', 
+    'katz_centrality', 'pagerank'
+]
 
 def crear_dataframe( matriz ):
     df = pd.DataFrame(
@@ -93,7 +94,18 @@ def crear_dataframe( matriz ):
 # %% --- INICIA EL LOOP ITERATIVO DE SUBSISTEMAS
 
 # Importando el diccionario de {subsistema : [nodos] }
-infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close()
+# infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close()
+
+subsystems = {
+    'Glycolysis_astrocyte' : ['PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m'] ,
+    'Glycolysis_neuron' : ['ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron', 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron'] ,
+    'ETC_neuron'    : ['ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron'] ,
+    'ETC_astrocyte' :  ['PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA']
+}
+
+subsystems
+
+# %% ---  CALCULOS TEDIOSOS
 
 for sub in subsystems: 
     subsystem = subsystems[sub]
@@ -160,7 +172,7 @@ for sub in subsystems:
     #    frame.to_csv( filename )
 
     # Define un creador del Excel
-    SALIDA = './results/' + str(sub) + '_centralies.xlsx' # Nombre del archivo, subsistema_centralities.xsls
+    SALIDA = './results/' + str(sub) + '_centralies_2021-03-31.xlsx' # Nombre del archivo, subsistema_centralities.xsls
     salida_Excel = pd.ExcelWriter( SALIDA , engine="xlsxwriter")   # Crea un onjeto para guardar el Excel
 
     exportar_dframes = [ crear_dataframe( cent ) for cent in exportar ] # Convierte todo a DataFrames (de nuevo)

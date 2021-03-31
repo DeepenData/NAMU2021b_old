@@ -86,7 +86,7 @@ def compute_centralities_short(graph):
 
     return centralities
 
-def compute_centralities(graph, lite=LITE, alpha=0.1):
+def compute_centralities(graph, lite=False, alpha=0.005):
     """Computa las doce centralidades y devuelve una DataFrame (no reindexado) con estas"""
     if lite == False:
         # TODO: supuestamente estos se pueden poner internamente como 'float32', que es suficiente y consume menos memoria
@@ -165,16 +165,18 @@ def removed_nodes_centrality(graph, node, info=False):
     G_alpha = get_alpha( G_removed )
     print( 'QWERTT', node, G_alpha, 'QWERTT' )
 
-    removed_centrality = compute_centralities(G_removed, lite=LITE, alpha = G_alpha) # CENTRALIDADES
+    removed_centrality = compute_centralities(G_removed, lite=False, alpha = G_alpha) # CENTRALIDADES
 
     all_nodes = list( graph.nodes ) # REINDEXANDO PARA INCLUIR REMOVIDO
     removed_centrality = removed_centrality.reindex( all_nodes )
+
+    print( 'QWERTT', node, removed_centrality.shape, 'QWERTT' )
 
     removed_centrality.name = str( node ) # RENOMBRADO DEL DATAFRAME
 
     # SANITY CHECK PARA VER QUE EL DATAFRAME TENGA COMO NAN LOS REMOVIDOS
     for removido in nodos_removidos:
-        assert np.isnan( removed_centrality.loc[ removido , 'harmonic_centrality']), 'Nodo removido tiene un valor no NaN. Error de DataFrame.'
+        assert np.isnan( removed_centrality.loc[ removido , 'degree_centrality']), 'Nodo removido tiene un valor no NaN. Error de DataFrame.'
 
     return node, removed_centrality
 
@@ -214,6 +216,8 @@ if __name__ == '__main__':
     
     nodos_remover = np.array_split( nodos_remover , SPLITS )  # Lo separa en listas mas pequenas
     nodos_remover = [ list(chunk) for chunk in nodos_remover ] # Convierte a lista de nuevo
+
+    nodos_remover = [] # Lista hardcoded
 
     # CALCULO DE CENTRALIDADES PERTURBADAS (MANDA LA TAREA AL CLUSTER VIRTUAL)
     centralidades_distribuidas = [ hpc_reemoved_centrality.remote( G_ray, chunk ) for chunk in nodos_remover ]

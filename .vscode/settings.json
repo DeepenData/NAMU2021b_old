@@ -1,5 +1,4 @@
 {
     "jupyter.jupyterServerType": "local",
-    "jupyter.notebookFileRoot": "${workspaceFolder}",
-    "python.pythonPath": "/home/alejandro/anaconda3/envs/human-metnet/bin/python"
+    "jupyter.notebookFileRoot": "${workspaceFolder}"
 }
