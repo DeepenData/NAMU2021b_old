@@ -84,6 +84,7 @@ def count_negatives_by_column(df):
     B = pd.DataFrame(A).T
     B.columns = df.columns
     return B
+#para el programa delta
 
 def get_largest_eigenvalue(Matrix):
     Matrix = Matrix.astype('int')
