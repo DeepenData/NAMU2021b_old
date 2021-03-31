@@ -1,7 +1,7 @@
 #!/bin/bash
 ### Este script funciona para cualquier numero de nodos; Ray se encarga de manejarlos
 ### puedes definir este parametro en la ejecución de la tarea como 'sbatch submit-ray... --nodes=5'
-#SBATCH --nodes=13
+#SBATCH --nodes=12
 
 ### Asigna todos los recursos de un nodo al proceso Ray, el cual los maneja internamente
 #SBATCH --ntasks-per-node=1

@@ -170,7 +170,7 @@ def removed_nodes_centrality(graph, node, info=False):
     all_nodes = list( graph.nodes ) # REINDEXANDO PARA INCLUIR REMOVIDO
     removed_centrality = removed_centrality.reindex( all_nodes )
 
-    print( 'QWERTT', node, removed_centrality.shape, 'QWERTT' )
+    print( 'QWERTT', node, 'Forma_cosa:', removed_centrality.shape, 'QWERTT' )
 
     removed_centrality.name = str( node ) # RENOMBRADO DEL DATAFRAME
 
@@ -205,7 +205,8 @@ if __name__ == '__main__':
 
     G_ray = ray.put( G ) # Sube el grafo al object store
 
-    nodos_remover = list( G.nodes )
+    # nodos_remover = list( G.nodes )
+    nodos_remover = ['DM_10fthf5glu', 'DM_10fthf6glu', 'DM_10fthf7glu', 'DM_5thf', 'DM_6dhf', 'DM_6thf', 'DM_7dhf', 'DM_7thf', 'DM_ahcys', 'DM_atp(c)', 'DM_fald', 'DM_for', 'DM_pheme(c)', 'DM_q10(m)', 'DM_thf(c)', 'EX_3aib(e)', 'EX_4abut(e)', 'EX_ac(e)', 'EX_acac(e)', 'EX_acald(e)', 'EX_ala-B(e)', 'EX_arg-L(e)', 'EX_asn-L(e)', 'EX_bhb(e)', 'EX_btn(e)', 'EX_co2(e)', 'EX_crn(e)', 'EX_cyan(e)', 'EX_cys-L(e)', 'EX_etoh(e)', 'EX_fe2(e)', 'EX_glc(e)', 'EX_gln-L(e)', 'EX_glu-L(e)', 'EX_gly(e)', 'EX_glyc(e)', 'EX_h(e)', 'EX_h2o(e)', 'EX_h2o2(e)'] # Lista hardcoded
     #nodos_remover = ['PGM', 'ACYP']#, 'PGI', 'PGK' ,'PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m'] # Glicolisis astros
 
     # EVITAR EL SOBRE-PARALELISMO DE UN PROCESO POR NODO
@@ -217,7 +218,6 @@ if __name__ == '__main__':
     nodos_remover = np.array_split( nodos_remover , SPLITS )  # Lo separa en listas mas pequenas
     nodos_remover = [ list(chunk) for chunk in nodos_remover ] # Convierte a lista de nuevo
 
-    nodos_remover = [] # Lista hardcoded
 
     # CALCULO DE CENTRALIDADES PERTURBADAS (MANDA LA TAREA AL CLUSTER VIRTUAL)
     centralidades_distribuidas = [ hpc_reemoved_centrality.remote( G_ray, chunk ) for chunk in nodos_remover ]
