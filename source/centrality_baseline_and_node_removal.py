@@ -69,7 +69,7 @@ def compute_centralities_short(graph):
     # TODO: supuestamente estos se pueden poner internamente como 'float32', que es suficiente y consume menos memoria
     hc    = nx.harmonic_centrality(graph, nbunch=None, distance=None)
     ec    = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
-    dc    = nx.degree_centrality(graph)
+    # dc    = nx.degree_centrality(graph)
     cc    = nx.closeness_centrality(graph, distance=None, wf_improved=True)
     ic    = nx.information_centrality(graph) # Requiere scipy
 
@@ -86,10 +86,11 @@ def compute_centralities_short(graph):
 
     return centralities
 
-def compute_centralities(graph, lite=LITE):
+def compute_centralities(graph, lite=LITE, alpha=0.1):
     """Computa las doce centralidades y devuelve una DataFrame (no reindexado) con estas"""
     if lite == False:
         # TODO: supuestamente estos se pueden poner internamente como 'float32', que es suficiente y consume menos memoria
+        dc    = nx.degree_centrality(graph) # SANITY CHECK: Deberia ser similar a todo lo demas
         hc    = nx.harmonic_centrality(graph, nbunch=None, distance=None)
         ec    = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
         bc    = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
@@ -97,12 +98,13 @@ def compute_centralities(graph, lite=LITE):
         lc    = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
         ic    = nx.information_centrality(graph) # Requiere scipy
         cbc   = nx.communicability_betweenness_centrality(graph) 
-        kz    = nx.katz_centrality_numpy(graph)
-        pr    = nx.pagerank(graph)
+        kz    = nx.katz_centrality(graph, alpha = alpha)
+        pr    = nx.pagerank(graph, alpha = alpha)
 
         #centralities = [hc, ec, dc, bc, cc, lc, ic, soc, cfcc, cfbc, acfbc, cbc]
         # CREA UN DICCIONARIO DE DICCIONARIOS PARA PASARLE EL OBJETO A PANDAS
         centralities = {
+            'degree_centrality' : dc ,
             'harmonic_centrality' : hc ,
             'eigenvector_centrality' : ec ,
             'betweenness_centrality' : bc ,
@@ -122,6 +124,18 @@ def compute_centralities(graph, lite=LITE):
         centralities = compute_centralities_short(graph)
 
     return centralities
+
+def get_alpha(G):
+    """"Calcula el parametro alpha para PageRank y Katz"""
+    tmp = nx.adjacency_matrix(G).toarray()
+
+    tmp = np.linalg.eigvals(tmp)
+    tmp = np.max(tmp)
+    tmp = np.real(tmp)    
+
+    tmp = .9*(1/tmp)
+
+    return tmp
 
 # %% --- CALCULO DE CENTRALIDADES CON NODOS REMOVIDOS
 
@@ -148,7 +162,10 @@ def removed_nodes_centrality(graph, node, info=False):
         print( 'Nodos removidos:', len(graph.nodes) - len(G_removed.nodes) )
         print( 'Removidos:', nodos_removidos )
 
-    removed_centrality = compute_centralities(G_removed, lite=LITE) # CENTRALIDADES
+    G_alpha = get_alpha( G_removed )
+    print( 'QWERTT', node, G_alpha, 'QWERTT' )
+
+    removed_centrality = compute_centralities(G_removed, lite=LITE, alpha = G_alpha) # CENTRALIDADES
 
     all_nodes = list( graph.nodes ) # REINDEXANDO PARA INCLUIR REMOVIDO
     removed_centrality = removed_centrality.reindex( all_nodes )
