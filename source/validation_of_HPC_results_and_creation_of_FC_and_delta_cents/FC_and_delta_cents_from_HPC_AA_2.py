@@ -9,20 +9,20 @@ import pickle
 #%cd ..
 #%cd ..
 
-infile = open('./tmp/index_nodes','rb');     index_nodes = pickle.load(infile); infile.close()
+#infile = open('./tmp/index_nodes','rb');     index_nodes = pickle.load(infile); infile.close()
 #infile = open('./tmp/subsystems_dict','rb'); subsystems = pickle.load(infile); infile.close() 
 
 infile = open('./tmp/centralidades_perturbadas.pkl','rb'); centralidades_perturbadas = pickle.load(infile); infile.close()
 infile = open('./tmp/baseline.pkl' ,'rb'); baseline  = pickle.load(infile); infile.close()
 
 
-index_nodes = list(index_nodes)
+index_nodes = baseline['baseline'].index
 
 Glycolysis_astrocyte = ['PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m']
-index_centralities = ['harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality', 
-      'closeness_centrality', 'load_centrality', 'information_centrality', 'second_order_centrality',
-      'current_flow_closeness_centrality', 'current_flow_betweenness_centrality',
-       'approximate_current_flow_betweenness_centrality', 'communicability_betweenness_centrality']
+index_centralities = [
+    'degree_centrality', 'harmonic_centrality', 'eigenvector_centrality', 'betweenness_centrality', 
+    'closeness_centrality', 'load_centrality', 'information_centrality', 'communicability_betweenness_centrality', 
+    'katz_centrality', 'pagerank']
 
 # %% Baseline
 
@@ -97,16 +97,16 @@ baseline_ETC_neuron  = subsystem_tensor( ETC_neuron, baseline_centralities   )
 perturbed_ETC_astrocyte= subsystem_tensor( ETC_astrocyte, perturbed_centralities )
 baseline_ETC_astrocyte  = subsystem_tensor( ETC_astrocyte, baseline_centralities   )
 
-index_centralities = ['harmonic_centrality', 'eigenvector_centrality', 'degree_centrality', 'betweenness_centrality', 
-      'closeness_centrality', 'load_centrality', 'information_centrality', 'second_order_centrality',
-      'current_flow_closeness_centrality', 'current_flow_betweenness_centrality',
-       'approximate_current_flow_betweenness_centrality', 'communicability_betweenness_centrality']
+index_centralities = [
+    'degree_centrality', 'harmonic_centrality', 'eigenvector_centrality', 'betweenness_centrality', 
+    'closeness_centrality', 'load_centrality', 'information_centrality', 'communicability_betweenness_centrality', 
+    'katz_centrality', 'pagerank']
 
 
 # %% --- Colapsando la segunda dimensión... (nodos totales)
 # Esto calcula 4 promedios de las centralidades para los nodos
 
-def get_8_aggregations(baseline_subsystem, perturbed_subsystem):
+def get_8_aggregations(baseline_subsystem, perturbed_subsystem): 
 
     from numba import jit
 
