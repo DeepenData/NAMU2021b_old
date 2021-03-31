@@ -91,13 +91,13 @@ def compute_centralities(graph, lite=False, alpha=0.005):
     if lite == False:
         # TODO: supuestamente estos se pueden poner internamente como 'float32', que es suficiente y consume menos memoria
         dc    = nx.degree_centrality(graph) # SANITY CHECK: Deberia ser similar a todo lo demas
-        hc    = nx.harmonic_centrality(graph, nbunch=None, distance=None)
-        ec    = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
-        bc    = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
-        cc    = nx.closeness_centrality(graph, distance=None, wf_improved=True)
-        lc    = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
-        ic    = nx.information_centrality(graph) # Requiere scipy
-        cbc   = nx.communicability_betweenness_centrality(graph) 
+        # hc    = nx.harmonic_centrality(graph, nbunch=None, distance=None)
+        # ec    = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
+        # bc    = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
+        # cc    = nx.closeness_centrality(graph, distance=None, wf_improved=True)
+        # lc    = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
+        # ic    = nx.information_centrality(graph) # Requiere scipy
+        # cbc   = nx.communicability_betweenness_centrality(graph) 
         kz    = nx.katz_centrality(graph, alpha = alpha)
         pr    = nx.pagerank(graph, alpha = alpha)
 
@@ -105,13 +105,13 @@ def compute_centralities(graph, lite=False, alpha=0.005):
         # CREA UN DICCIONARIO DE DICCIONARIOS PARA PASARLE EL OBJETO A PANDAS
         centralities = {
             'degree_centrality' : dc ,
-            'harmonic_centrality' : hc ,
-            'eigenvector_centrality' : ec ,
-            'betweenness_centrality' : bc ,
-            'closeness_centrality' : cc ,
-            'load_centrality' : lc ,
-            'information_centrality' : ic ,
-            'communicability_betweenness_centrality' : cbc ,
+           # 'harmonic_centrality' : hc ,
+           # 'eigenvector_centrality' : ec ,
+           # 'betweenness_centrality' : bc ,
+           # 'closeness_centrality' : cc ,
+           # 'load_centrality' : lc ,
+           # 'information_centrality' : ic ,
+           # 'communicability_betweenness_centrality' : cbc ,
             'katz_centrality_numpy' : kz ,
             'pagerank' : pr
         }
@@ -162,10 +162,10 @@ def removed_nodes_centrality(graph, node, info=False):
         print( 'Nodos removidos:', len(graph.nodes) - len(G_removed.nodes) )
         print( 'Removidos:', nodos_removidos )
 
-    G_alpha = get_alpha( G_removed )
-    print( 'QWERTT', node, G_alpha, 'QWERTT' )
+    # G_alpha = get_alpha( G_removed )
+    # print( 'QWERTT', node, G_alpha, 'QWERTT' )
 
-    removed_centrality = compute_centralities(G_removed, lite=False, alpha = G_alpha) # CENTRALIDADES
+    removed_centrality = compute_centralities(G_removed, lite=False, alpha = 0.001) # CENTRALIDADES
 
     all_nodes = list( graph.nodes ) # REINDEXANDO PARA INCLUIR REMOVIDO
     removed_centrality = removed_centrality.reindex( all_nodes )
@@ -205,8 +205,7 @@ if __name__ == '__main__':
 
     G_ray = ray.put( G ) # Sube el grafo al object store
 
-    # nodos_remover = list( G.nodes )
-    nodos_remover = ['DM_10fthf5glu', 'DM_10fthf6glu', 'DM_10fthf7glu', 'DM_5thf', 'DM_6dhf', 'DM_6thf', 'DM_7dhf', 'DM_7thf', 'DM_ahcys', 'DM_atp(c)', 'DM_fald', 'DM_for', 'DM_pheme(c)', 'DM_q10(m)', 'DM_thf(c)', 'EX_3aib(e)', 'EX_4abut(e)', 'EX_ac(e)', 'EX_acac(e)', 'EX_acald(e)', 'EX_ala-B(e)', 'EX_arg-L(e)', 'EX_asn-L(e)', 'EX_bhb(e)', 'EX_btn(e)', 'EX_co2(e)', 'EX_crn(e)', 'EX_cyan(e)', 'EX_cys-L(e)', 'EX_etoh(e)', 'EX_fe2(e)', 'EX_glc(e)', 'EX_gln-L(e)', 'EX_glu-L(e)', 'EX_gly(e)', 'EX_glyc(e)', 'EX_h(e)', 'EX_h2o(e)', 'EX_h2o2(e)'] # Lista hardcoded
+    nodos_remover = list( G.nodes )
     #nodos_remover = ['PGM', 'ACYP']#, 'PGI', 'PGK' ,'PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m'] # Glicolisis astros
 
     # EVITAR EL SOBRE-PARALELISMO DE UN PROCESO POR NODO
@@ -215,15 +214,16 @@ if __name__ == '__main__':
     
     print('Distribuyendo', len(nodos_remover), 'nodos en', SPLITS, 'procesos.') # Sanity check
     
+    import random; random.seed(42) ; nodos_remover = random.sample( nodos_remover , WORKERS ) # TODO: muestra de los nodos
+
     nodos_remover = np.array_split( nodos_remover , SPLITS )  # Lo separa en listas mas pequenas
     nodos_remover = [ list(chunk) for chunk in nodos_remover ] # Convierte a lista de nuevo
-
 
     # CALCULO DE CENTRALIDADES PERTURBADAS (MANDA LA TAREA AL CLUSTER VIRTUAL)
     centralidades_distribuidas = [ hpc_reemoved_centrality.remote( G_ray, chunk ) for chunk in nodos_remover ]
 
     # INTERMEDIO EN QUE LOCALMENTE CALCULA LAS CENTRALIDADES BASE. MENOS DEMANDANTE QUE EL RESTO
-    baseline = compute_centralities(G, lite=LITE) # TIRA EL CALCULO DE CENTRALIDADES BASE
+    baseline = compute_centralities(G, lite=LITE, alpha=0.001) # TIRA EL CALCULO DE CENTRALIDADES BASE
     print( baseline.info(verbose=True) ) # Sanity check para el formato de las salidas
 
     # VENGANZA DE LOS PROCESOS ENVIADOS AL CLUSTER (GET.REMOTES)
