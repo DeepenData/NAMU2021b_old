@@ -91,13 +91,13 @@ def compute_centralities(graph, lite=False, alpha=0.005):
     if lite == False:
         # TODO: supuestamente estos se pueden poner internamente como 'float32', que es suficiente y consume menos memoria
         dc    = nx.degree_centrality(graph) # SANITY CHECK: Deberia ser similar a todo lo demas
-        # hc    = nx.harmonic_centrality(graph, nbunch=None, distance=None)
-        # ec    = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
-        # bc    = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
-        # cc    = nx.closeness_centrality(graph, distance=None, wf_improved=True)
-        # lc    = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
-        # ic    = nx.information_centrality(graph) # Requiere scipy
-        # cbc   = nx.communicability_betweenness_centrality(graph) 
+        hc    = nx.harmonic_centrality(graph, nbunch=None, distance=None)
+        ec    = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
+        bc    = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
+        cc    = nx.closeness_centrality(graph, distance=None, wf_improved=True)
+        lc    = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
+        ic    = nx.information_centrality(graph) # Requiere scipy
+        cbc   = nx.communicability_betweenness_centrality(graph) 
         kz    = nx.katz_centrality(graph, alpha = alpha)
         pr    = nx.pagerank(graph, alpha = alpha)
 
@@ -105,13 +105,13 @@ def compute_centralities(graph, lite=False, alpha=0.005):
         # CREA UN DICCIONARIO DE DICCIONARIOS PARA PASARLE EL OBJETO A PANDAS
         centralities = {
             'degree_centrality' : dc ,
-           # 'harmonic_centrality' : hc ,
-           # 'eigenvector_centrality' : ec ,
-           # 'betweenness_centrality' : bc ,
-           # 'closeness_centrality' : cc ,
-           # 'load_centrality' : lc ,
-           # 'information_centrality' : ic ,
-           # 'communicability_betweenness_centrality' : cbc ,
+            'harmonic_centrality' : hc ,
+            'eigenvector_centrality' : ec ,
+            'betweenness_centrality' : bc ,
+            'closeness_centrality' : cc ,
+            'load_centrality' : lc ,
+            'information_centrality' : ic ,
+            'communicability_betweenness_centrality' : cbc ,
             'katz_centrality_numpy' : kz ,
             'pagerank' : pr
         }
@@ -162,15 +162,12 @@ def removed_nodes_centrality(graph, node, info=False):
         print( 'Nodos removidos:', len(graph.nodes) - len(G_removed.nodes) )
         print( 'Removidos:', nodos_removidos )
 
-    # G_alpha = get_alpha( G_removed )
-    # print( 'QWERTT', node, G_alpha, 'QWERTT' )
-
     removed_centrality = compute_centralities(G_removed, lite=False, alpha = 0.001) # CENTRALIDADES
 
     all_nodes = list( graph.nodes ) # REINDEXANDO PARA INCLUIR REMOVIDO
     removed_centrality = removed_centrality.reindex( all_nodes )
 
-    print( 'QWERTT', node, 'Forma_cosa:', removed_centrality.shape, 'QWERTT' )
+    print( 'SANITY_CHECK:', node, 'DIMENSIONES_DATAFRAME:', removed_centrality.shape )
 
     removed_centrality.name = str( node ) # RENOMBRADO DEL DATAFRAME
 

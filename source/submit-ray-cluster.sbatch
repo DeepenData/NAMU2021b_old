@@ -68,10 +68,15 @@ time python -u source/centrality_baseline_and_node_removal.py
 
 echo "$(date) --- Termina el proceso paralelo"
 
-sstat  -j   $SLURM_JOB_ID.batch   --format=JobID,MaxVMSize
+ray stop --verbose
+
+time python -u source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/FC_delta_summaryzation_means_from_HPC.py
+
+# sstat  -j   $SLURM_JOB_ID.batch   --format=JobID,MaxVMSize
 
 # SINCRONIZACIÓN CON AWS S3 DE RESULTADOS
 aws s3 sync tmp s3://pseudo-dropbox/MAGI_01/results-$SLURM_JOB_ID --exclude "*" --include "*.pkl"
+aws s3 mv slurm-$SLURM_JOB_ID.out s3://pseudo-dropbox/MAGI_01/results-$SLURM_JOB_ID
 
 exit
 
