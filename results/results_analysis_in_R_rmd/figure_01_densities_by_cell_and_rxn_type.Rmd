@@ -1,0 +1,62 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+library(readr)
+library(readxl)
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+setwd("~/PostDoc/human-metnet/results/results_analysis_in_R_rmd")
+dflist_names = c('fold_change_aritmetic', 'fold_change_geometric', 'fold_change_quadratic', 'fold_change_harmonic',
+    'delta_aritmetic', 'delta_geometric', 'delta_quadratic', 'delta_harmonic')
+
+read_sheets <- function(a_sheet){df <- read_excel('delta_fc_centralidades.xlsx', sheet = a_sheet) %>% column_to_rownames("...1")
+                  return(df)}
+
+map(dflist_names, read_sheets) %>% purrr::set_names(dflist_names) -> list_of_cents
+
+fba <-  read.csv('/home/alejandro/NAMU_in_progress/Figures_creation/Code/Results_Acevedo_et_al_2021/01_phpps_bipartite_fluxes_sensis_optimality/FBA_results.csv') %>% 
+        select(c('ID','Name', 'Reaction', 'Flux', 'Sensitivity')) %>% column_to_rownames('ID')
+
+
+
+append_fba <- function(cent){
+                                hola <- rownames_to_column(fba)  %>% inner_join(rownames_to_column(cent)) %>% column_to_rownames('rowname')
+                                return(hola)
+}
+
+
+
+map(list_of_cents, append_fba) -> fba_list_of_cents
+
+library(tidyverse)
+library(scales)
+
+
+assign_node_type <- function(df){
+data <- df  %>% rownames_to_column('ID') %>% filter(!str_detect(ID, regex('AA_|AA2', ignore_case = F)))  %>%
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',              ignore_case = T)), 'Astrocyte', NA)) %>% 
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]N\\]',              ignore_case = T)), 'Neuron', `Node type`))    %>% 
+         mutate(`Node type` = ifelse( str_detect(Reaction, regex('\\[[a-z]A\\]|\\[[a-z]N\\]',ignore_case = T), negate = T), 'Exchange', `Node type`)) %>%
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',ignore_case = T)) & 
+                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Astro', `Node type`))%>%
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]N\\]',ignore_case = T)) & 
+                                       str_detect(Name, regex('DM_|Demand|sink',ignore_case = T)), 'Sink/Demand Neuron', `Node type`))
+                                    return(data)}
+
+
+
+map(fba_list_of_cents, assign_node_type) -> data
+
+
+clean_centralities <- function(df){ df %>% select(-c ("ID", "Name", "Reaction",  "Flux", "Sensitivity","Node type")  )}
+
+
+map(data, clean_centralities) -> only_centralities
+```
+
