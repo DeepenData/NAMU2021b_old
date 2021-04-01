@@ -24,6 +24,8 @@ read_sheets <- function(a_sheet){df <- read_excel('delta_fc_centralidades.xlsx',
 
 map(dflist_names, read_sheets) %>% purrr::set_names(dflist_names) -> list_of_cents
 names(list_of_cents)
+
+list_of_cents$fold_change_aritmetic %>% names
 ```
 
 Density plot of centralities
@@ -111,7 +113,7 @@ map(data, clean_centralities) -> only_centralities
 map(data, clean_centralities) -> only_centralities
 
 
-filter_centralities <- function(df){df %>% select( matches('^har|^info|^eigen|^load|^close|^bet|^communi'))}
+filter_centralities <- function(df){df %>% select(matches('^info|^close|^bet|^communi|^katz|^page'))}# matches('^degr|^har|^info|^eigen|^load|^close|^bet|^communi|^page|^katz'))}
 
 map(only_centralities, filter_centralities) -> only_centralities
 
