@@ -57,12 +57,12 @@ neuron_nodes_vs_neuron_subsystem %>%plot_density(titulo = 'Neuronal nodes/Neuron
 astrocyte_nodes_vs_astrocyte_subsystem %>%plot_density(titulo = 'Astrocyte nodes/Astrocyte subsystem', fill = 'darkolivegreen4') -> AnAs
 astrocyte_nodes_vs_neuron_subsystem %>%plot_density(titulo = 'Astrocyte nodes/Neuron subsystem', fill = 'darkseagreen4') -> AnNs #map(centralities_for_densities, plot_density)
 
-bottom_panel   <- ggarrange(NnAs, NnNs, AnNs,  AnAs, ncol = 4,  labels = c('c','d','e','f'))
-
+bottom_panel   <- ggarrange(NnAs,AnNs, NnNs,  AnAs, ncol = 2, nrow = 2,  labels = c('c','d','e','f'))
+bottom_panel
 ```
 
-```{r fig.height=6, fig.width=10, message=FALSE, warning=FALSE}
-ggarrange(NA, bottom_panel, nrow = 2, heights = c(.65,.35))
+```{r fig.height=8, fig.width=8, message=FALSE, warning=FALSE}
+ggarrange(NA, bottom_panel, nrow = 2, heights = c(.55,.45))
 ```
 
 
