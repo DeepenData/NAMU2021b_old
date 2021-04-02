@@ -1,0 +1,1071 @@
+ID,Reaction,Node
+DM_10fthf5glu,10fthf5glu[cA] -->,Terminal
+DM_10fthf6glu,10fthf6glu[cA] -->,Terminal
+DM_10fthf7glu,10fthf7glu[cA] -->,Terminal
+DM_5thf,5thf[cA] -->,Terminal
+DM_6dhf,6dhf[cA] -->,Terminal
+DM_6thf,6thf[cA] -->,Terminal
+DM_7dhf,7dhf[cA] -->,Terminal
+DM_7thf,7thf[cA] -->,Terminal
+DM_ahcys,ahcys[cA] -->,Terminal
+DM_atp(c),atp[cA] + h2o[cA] --> adp[cA] + h[cA] + pi[cA],Terminal
+DM_fald,fald[cA] -->,Terminal
+DM_for,for[cA] -->,Terminal
+DM_pheme(c),pheme[cA] -->,Terminal
+DM_q10(m),q10[mA] -->,Terminal
+DM_thf(c),thf[cA] -->,Terminal
+EX_3aib(e),3aib[e] -->,Exchange
+EX_4abut(e),4abut[e] -->,Exchange
+EX_ac(e),ac[e] -->,Exchange
+EX_acac(e),acac[e] -->,Exchange
+EX_acald(e),acald[e] -->,Exchange
+EX_ala-B(e),ala-B[e] -->,Exchange
+EX_arg-L(e),arg-L[e] -->,Exchange
+EX_asn-L(e),asn-L[e] -->,Exchange
+EX_bhb(e),bhb[e] -->,Exchange
+EX_btn(e),btn[e] -->,Exchange
+EX_co2(e),co2[e] <=>,Exchange
+EX_crn(e),crn[e] -->,Exchange
+EX_cyan(e),cyan[e] <=>,Exchange
+EX_cys-L(e),cys-L[e] -->,Exchange
+EX_duri(e),duri[e] -->,Exchange
+EX_etoh(e),etoh[e] -->,Exchange
+EX_fe2(e),fe2[e] <=>,Exchange
+EX_glc(e),glc-D[e] <--,Exchange
+EX_gln-L(e),gln-L[e] -->,Exchange
+EX_glu-L(e),glu-L[e] -->,Exchange
+EX_gly(e),gly[e] -->,Exchange
+EX_glyc(e),glyc[e] -->,Exchange
+EX_h(e),h[e] <=>,Exchange
+EX_h2o(e),h2o[e] <=>,Exchange
+EX_h2o2(e),h2o2[e] -->,Exchange
+EX_hco3(e),hco3[e] <=>,Exchange
+EX_ile-L(e),ile-L[e] -->,Exchange
+EX_k(e),k[e] <=>,Exchange
+EX_lac-D(e),lac-D[e] -->,Exchange
+EX_lac-L(e),lac-L[e] -->,Exchange
+EX_leu-L(e),leu-L[e] -->,Exchange
+EX_lys-L(e),lys-L[e] -->,Exchange
+EX_na1(e),na1[e] <=>,Exchange
+EX_nh4(e),nh4[e] <--,Exchange
+EX_o2(e),o2[e] <--,Exchange
+EX_o2s(e),o2s[e] -->,Exchange
+EX_orn(e),orn[e] -->,Exchange
+EX_pe_hs(e),pe_hs[e] -->,Exchange
+EX_pi(e),pi[e] <=>,Exchange
+EX_ppa(e),ppa[e] -->,Exchange
+EX_pro-L(e),pro-L[e] -->,Exchange
+EX_ps_hs(e),ps_hs[e] -->,Exchange
+EX_pyr(e),pyr[e] -->,Exchange
+EX_sarcs(e),sarcs[e] -->,Exchange
+EX_ser-L(e),ser-L[e] -->,Exchange
+EX_so4(e),so4[e] <=>,Exchange
+EX_tcynt(e),tcynt[e] <=>,Exchange
+EX_thymd(e),thymd[e] -->,Exchange
+EX_urea(e),urea[e] <=>,Exchange
+EX_uri(e),uri[e] -->,Exchange
+EX_val-L(e),val-L[e] -->,Exchange
+sink_4hpro-LT(m),4hpro-LT[mA] -->,Terminal
+sink_amet,amet[cA] -->,Terminal
+sink_decdp,decdp[cA] -->,Terminal
+sink_dhf(c),dhf[cA] -->,Terminal
+sink_dmgly,dmgly[cA] -->,Terminal
+sink_tyr-L(m),tyr-L[mA] -->,Terminal
+10FTHF5GLUtm,10fthf5glu[mA] --> 10fthf5glu[cA],Astrocyte
+10FTHF6GLUtm,10fthf6glu[mA] --> 10fthf6glu[cA],Astrocyte
+10FTHF7GLUtm,10fthf7glu[mA] --> 10fthf7glu[cA],Astrocyte
+10FTHFtm,10fthf[cA] <=> 10fthf[mA],Astrocyte
+"1a,24,25VITD2Hm",2425dhvitd2[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a2425thvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+"1a,24,25VITD3Hm",2425dhvitd3[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a2425thvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+"1a,25VITD2Hm",1a25dhvitd2[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a2425thvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+"1a,25VITD3Hm",1a25dhvitd3[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a2425thvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+"24,25VITD2Hm",25hvitd2[mA] + h[mA] + nadph[mA] + o2[mA] --> 2425dhvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+"24,25VITD3Hm",25hvitd3[mA] + h[mA] + nadph[mA] + o2[mA] --> 2425dhvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+25HVITD2t,25hvitd2[cA] --> 25hvitd2[e],Astrocyte
+25HVITD2tin,25hvitd2[e] --> 25hvitd2[cA],Astrocyte
+25HVITD2tin_m,25hvitd2[cA] --> 25hvitd2[mA],Astrocyte
+25HVITD2tm,25hvitd2[mA] --> 25hvitd2[cA],Astrocyte
+25HVITD3t,25hvitd3[cA] --> 25hvitd3[e],Astrocyte
+25HVITD3tin,25hvitd3[e] --> 25hvitd3[cA],Astrocyte
+25HVITD3tin_m,25hvitd3[cA] --> 25hvitd3[mA],Astrocyte
+25HVITD3tm,25hvitd3[mA] --> 25hvitd3[cA],Astrocyte
+25VITD2Hm,25hvitd2[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a25dhvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+25VITD3Hm,25hvitd3[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a25dhvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+2AMADPTm,L2aadp[cA] + akg[mA] <=> L2aadp[mA] + akg[cA],Astrocyte
+2OXOADOXm,2oxoadp[mA] + coa[mA] + nad[mA] --> co2[mA] + glutcoa[mA] + nadh[mA],Astrocyte
+2OXOADPTm,2oxoadp[cA] + akg[mA] <=> 2oxoadp[mA] + akg[cA],Astrocyte
+34HPLFM,34hpp[mA] + h[mA] + nadh[mA] --> 34hpl[mA] + nad[mA],Astrocyte
+3AIBTm,2mop[mA] + glu-L[mA] <=> 3aib[mA] + akg[mA],Astrocyte
+3AIBt,3aib[cA] --> 3aib[e],Astrocyte
+3AIBtm,3aib[mA] --> 3aib[cA],Astrocyte
+3DPHBH1,3dphb[mA] + h[mA] + nadh[mA] + o2[mA] --> 3dpdhb[mA] + h2o[mA] + nad[mA],Astrocyte
+3DPHBH2,3dphb[mA] + h[mA] + nadph[mA] + o2[mA] --> 3dpdhb[mA] + h2o[mA] + nadp[mA],Astrocyte
+3HBCDm,b2coa[mA] + h2o[mA] <=> 3hbcoa-R[mA],Astrocyte
+3HBCOAHLm,3hibutcoa[mA] + h2o[mA] --> 3hmp[mA] + coa[mA] + h[mA],Astrocyte
+3SALAASPm,3sala[mA] + asp-L[cA] <=> 3sala[cA] + asp-L[mA],Astrocyte
+3SALATAim,3sala[mA] + akg[mA] + h[mA] --> 3snpyr[mA] + glu-L[mA],Astrocyte
+3SPYRSPm,3snpyr[mA] + h2o[mA] --> h[mA] + pyr[mA] + so3[mA],Astrocyte
+4ABUTtm,4abut[cA] <=> 4abut[mA],Astrocyte
+4HBZCOAFm,coa[mA] + coucoa[mA] + h2o[mA] + nad[mA] --> 4hbzcoa[mA] + accoa[mA] + h[mA] + nadh[mA],Astrocyte
+4HBZFm,4hbzcoa[mA] + h2o[mA] --> 4hbz[mA] + coa[mA] + h[mA],Astrocyte
+4HGLSDm,4hglusa[mA] + h2o[mA] + nad[mA] <=> e4hglu[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+5AOPtm,5aop[cA] <=> 5aop[mA],Astrocyte
+5HOXINDACTOXm,5hoxindact[mA] + h2o[mA] + nad[mA] --> 5hoxindoa[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+5THFtm,5thf[mA] --> 5thf[cA],Astrocyte
+6DHFtm,6dhf[mA] --> 6dhf[cA],Astrocyte
+6THFtm,6thf[mA] --> 6thf[cA],Astrocyte
+7DHFtm,7dhf[mA] --> 7dhf[cA],Astrocyte
+7THFtm,7thf[mA] --> 7thf[cA],Astrocyte
+AACOAT,acac[cA] + atp[cA] + coa[cA] <=> aacoa[cA] + amp[cA] + ppi[cA],Astrocyte
+AACTOOR,aact[cA] + h2o[cA] + o2[cA] --> h2o2[cA] + mthgxl[cA] + nh4[cA],Astrocyte
+AACTtm,aact[mA] --> aact[cA],Astrocyte
+AASAD3m,L2aadp6sa[mA] + h2o[mA] + nad[mA] --> L2aadp[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+AATAi,L2aadp[cA] + akg[cA] --> 2oxoadp[cA] + glu-L[cA],Astrocyte
+ABTArm,4abut[mA] + akg[mA] <=> glu-L[mA] + sucsal[mA],Astrocyte
+ABUTt2r,4abut[e] + h[e] <=> 4abut[cA] + h[cA],Astrocyte
+ACACT10m,2maacoa[mA] + coa[mA] <=> accoa[mA] + ppcoa[mA],Astrocyte
+ACACT1r,2.0 accoa[cA] <=> aacoa[cA] + coa[cA],Astrocyte
+ACACT1rm,2.0 accoa[mA] <=> aacoa[mA] + coa[mA],Astrocyte
+ACACt2,acac[e] + h[e] <=> acac[cA] + h[cA],Astrocyte
+ACACt2m,acac[cA] + h[cA] <=> acac[mA] + h[mA],Astrocyte
+ACALDt,acald[e] <=> acald[cA],Astrocyte
+ACALDtm,acald[mA] <=> acald[cA],Astrocyte
+ACCOALm,atp[mA] + coa[mA] + ppa[mA] --> amp[mA] + ppcoa[mA] + ppi[mA],Astrocyte
+ACOAD10m,2mbcoa[mA] + fad[mA] --> 2mb2coa[mA] + fadh2[mA],Astrocyte
+ACOAD1fm,btcoa[mA] + fad[mA] --> b2coa[mA] + fadh2[mA],Astrocyte
+ACOAD8m,fad[mA] + ivcoa[mA] --> 3mb2coa[mA] + fadh2[mA],Astrocyte
+ACOAD9m,fad[mA] + ibcoa[mA] --> 2mp2coa[mA] + fadh2[mA],Astrocyte
+ACONTm,cit[mA] <=> icit[mA],Astrocyte
+ACRNtm,acrn[cA] --> acrn[mA],Astrocyte
+ACSm,ac[mA] + atp[mA] + coa[mA] --> accoa[mA] + amp[mA] + ppi[mA],Astrocyte
+ACYP,13dpg[cA] + h2o[cA] --> 3pg[cA] + h[cA] + pi[cA],Astrocyte
+ACt2m,ac[cA] + h[cA] <=> ac[mA] + h[mA],Astrocyte
+ACt2r,ac[e] + h[e] <=> ac[cA] + h[cA],Astrocyte
+ADCim,acac[mA] + h[mA] --> acetone[mA] + co2[mA],Astrocyte
+ADK1,amp[cA] + atp[cA] <=> 2.0 adp[cA],Astrocyte
+ADK1m,amp[mA] + atp[mA] <=> 2.0 adp[mA],Astrocyte
+ADK3m,amp[mA] + gtp[mA] <=> adp[mA] + gdp[mA],Astrocyte
+ADPRDPm,adprib[mA] + h2o[mA] --> amp[mA] + 2.0 h[mA] + r5p[mA],Astrocyte
+AGMTm,agm[mA] + h2o[mA] --> ptrc[mA] + urea[mA],Astrocyte
+AGPRim,acg5p[mA] + h[mA] + nadph[mA] --> acg5sa[mA] + nadp[mA] + pi[mA],Astrocyte
+AGTim,ala-L[mA] + glx[mA] --> gly[mA] + pyr[mA],Astrocyte
+AKGDm,akg[mA] + coa[mA] + nad[mA] --> co2[mA] + nadh[mA] + succoa[mA],Astrocyte
+AKGMALtm,akg[mA] + mal-L[cA] <=> akg[cA] + mal-L[mA],Astrocyte
+ALASm,gly[mA] + h[mA] + succoa[mA] --> 5aop[mA] + co2[mA] + coa[mA],Astrocyte
+ALCD2if,etoh[cA] + nad[cA] --> acald[cA] + h[cA] + nadh[cA],Astrocyte
+ALCD2yf,etoh[cA] + nadp[cA] --> acald[cA] + h[cA] + nadph[cA],Astrocyte
+ALDD20xm,h2o[mA] + id3acald[mA] + nad[mA] --> 2.0 h[mA] + ind3ac[mA] + nadh[mA],Astrocyte
+ALDD2x,acald[cA] + h2o[cA] + nad[cA] --> ac[cA] + 2.0 h[cA] + nadh[cA],Astrocyte
+ALDD2xm,acald[mA] + h2o[mA] + nad[mA] --> ac[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+ALDD2y,acald[cA] + h2o[cA] + nadp[cA] --> ac[cA] + 2.0 h[cA] + nadph[cA],Astrocyte
+ALR,h2o[cA] + mthgxl[cA] + nadp[cA] --> 2.0 h[cA] + nadph[cA] + pyr[cA],Astrocyte
+AMETt2m,ahcys[mA] + amet[cA] <=> ahcys[cA] + amet[mA],Astrocyte
+AOBUTDsm,2aobut[mA] + h[mA] --> aact[mA] + co2[mA],Astrocyte
+APAT2rm,akg[mA] + ala-B[mA] <=> glu-L[mA] + msa[mA],Astrocyte
+APOC_LYS_BTNPm,apoC-Lys_btn[mA] + h2o[mA] --> apoC[mA] + biocyt[mA],Astrocyte
+APOCFm,apoC[mA] + lys-L[mA] --> apoC-Lys[mA] + h2o[mA] + h[mA],Astrocyte
+ARGDCm,arg-L[mA] + h[mA] --> agm[mA] + co2[mA],Astrocyte
+ARGLYSex,arg-L[e] + lys-L[cA] --> arg-L[cA] + lys-L[e],Astrocyte
+ARGtiDF,arg-L[e] --> arg-L[cA],Astrocyte
+ARGtm,arg-L[cA] + h[mA] <=> arg-L[mA] + h[cA],Astrocyte
+ASNNm,asn-L[mA] + h2o[mA] --> asp-L[mA] + nh4[mA],Astrocyte
+ASNt4,asn-L[e] + na1[e] --> asn-L[cA] + na1[cA],Astrocyte
+ASNtm,asn-L[cA] --> asn-L[mA],Astrocyte
+ASPGLUm,asp-L[mA] + glu-L[cA] + h[cA] --> asp-L[cA] + glu-L[mA] + h[mA],Astrocyte
+ASPTA,akg[cA] + asp-L[cA] <=> glu-L[cA] + oaa[cA],Astrocyte
+ASPTAm,akg[mA] + asp-L[mA] <=> glu-L[mA] + oaa[mA],Astrocyte
+ATPS4m,adp[mA] + 4.0 h[cA] + pi[mA] --> atp[mA] + h2o[mA] + 3.0 h[mA],Astrocyte
+ATPtm,adp[cA] + atp[mA] --> adp[mA] + atp[cA],Astrocyte
+BACCLm,atp[mA] + btn[mA] + h[mA] --> btamp[mA] + ppi[mA],Astrocyte
+BALAVECSEC,3.0 ala-B[cA] + atp[cA] + h2o[cA] --> adp[cA] + 3.0 ala-B[e] + h[cA] + pi[cA],Astrocyte
+BALAtmr,ala-B[cA] <=> ala-B[mA],Astrocyte
+BAMPPALDOXm,bamppald[mA] + h2o[mA] + nad[mA] --> ala-B[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+BDHm,bhb[mA] + nad[mA] <=> acac[mA] + h[mA] + nadh[mA],Astrocyte
+BETALDHxm,betald[mA] + h2o[mA] + nad[mA] --> glyb[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+BHBt,bhb[e] + h[e] <=> bhb[cA] + h[cA],Astrocyte
+BHBtm,bhb[cA] + h[cA] <=> bhb[mA] + h[mA],Astrocyte
+BTNDm,biocyt[mA] + h2o[mA] --> btn[mA] + lys-L[mA],Astrocyte
+BTNPLm,apoC-Lys[mA] + btamp[mA] --> amp[mA] + apoC-Lys_btn[mA] + h[mA],Astrocyte
+BTNt2,btn[e] + h[e] <=> btn[cA] + h[cA],Astrocyte
+BTNt2m,btn[cA] + h[cA] <=> btn[mA] + h[mA],Astrocyte
+BTNt4i,btn[e] + h[cA] --> btn[cA] + h[e],Astrocyte
+C160CPT2,coa[mA] + pmtcrn[mA] --> crn[mA] + pmtcoa[mA],Astrocyte
+C160CRNt,pmtcrn[cA] --> pmtcrn[mA],Astrocyte
+C204CPT2,arachdcrn[mA] + coa[mA] --> arachdcoa[mA] + crn[mA],Astrocyte
+C226CPT2,c226crn[mA] + coa[mA] --> c226coa[mA] + crn[mA],Astrocyte
+C2M26DCOAHLm,c2m26dcoa[mA] + h2o[mA] <=> 3h26dm5coa[mA],Astrocyte
+CATm,2.0 h2o2[mA] --> 2.0 h2o[mA] + o2[mA],Astrocyte
+CBL2tm,cbl2[cA] --> cbl2[mA],Astrocyte
+CBLATm,atp[mA] + cbl1[mA] + h[mA] <=> adocbl[mA] + pppi[mA],Astrocyte
+CDPDAGtm,cdpdag_hs[cA] <=> cdpdag_hs[mA],Astrocyte
+CDSm,ctp[mA] + h[mA] + pa_hs[mA] --> cdpdag_hs[mA] + ppi[mA],Astrocyte
+CHSTEROLt3,chsterol[cA] <=> chsterol[mA],Astrocyte
+CITRtm,citr-L[mA] <=> citr-L[cA],Astrocyte
+CITtam,cit[cA] + mal-L[mA] <=> cit[mA] + mal-L[cA],Astrocyte
+CITtbm,cit[cA] + pep[mA] <=> cit[mA] + pep[cA],Astrocyte
+CK,atp[mA] + creat[mA] <=> adp[mA] + pcreat[mA],Astrocyte
+CO2t,co2[e] <=> co2[cA],Astrocyte
+CO2tm,co2[cA] <=> co2[mA],Astrocyte
+COQ3m,2dpmhobq[mA] + amet[mA] --> ahcys[mA] + h[mA] + q10[mA],Astrocyte
+COQ5m,2dp6mobq[mA] + amet[mA] --> 2dp6mobq_me[mA] + ahcys[mA] + h[mA],Astrocyte
+COQ6m,2dp6mep[mA] + o2[mA] --> 2dp6mobq[mA] + h2o[mA],Astrocyte
+COQ7m,2dp6mobq_me[mA] + h[mA] + nadph[mA] + o2[mA] --> 2dpmhobq[mA] + h2o[mA] + nadp[mA],Astrocyte
+COUCOAFm,T4hcinnm[mA] + atp[mA] + coa[mA] --> amp[mA] + coucoa[mA] + ppi[mA],Astrocyte
+CPPPGO,cpppg3[cA] + 2.0 h[cA] + o2[cA] --> 2.0 co2[cA] + 2.0 h2o[cA] + pppg9[cA],Astrocyte
+CRNt,crn[e] <=> crn[cA],Astrocyte
+CRNtim,crn[mA] --> crn[cA],Astrocyte
+CSNAT2m,coa[mA] + pcrn[mA] <=> crn[mA] + ppcoa[mA],Astrocyte
+CSNATm,acrn[mA] + coa[mA] <=> accoa[mA] + crn[mA],Astrocyte
+CSm,accoa[mA] + h2o[mA] + oaa[mA] --> cit[mA] + coa[mA] + h[mA],Astrocyte
+CYANSTm,cyan[mA] + tsul[mA] --> h[mA] + so3[mA] + tcynt[mA],Astrocyte
+CYANt,cyan[e] <=> cyan[cA],Astrocyte
+CYANtm,cyan[cA] <=> cyan[mA],Astrocyte
+CYOOm2,4.0 focytC[mA] + 8.0 h[mA] + o2[mA] --> 4.0 ficytC[mA] + 2.0 h2o[mA] + 4.0 h[cA],Astrocyte
+CYOR-u10m,2.0 ficytC[mA] + 2.0 h[mA] + q10h2[mA] --> 2.0 focytC[mA] + 4.0 h[cA] + q10[mA],Astrocyte
+CYSGLUexR,cys-L[e] + gln-L[cA] --> cys-L[cA] + gln-L[e],Astrocyte
+CYSGLYex,cys-L[cA] + gly[e] --> cys-L[e] + gly[cA],Astrocyte
+CYSGLYexR,cys-L[cA] + gly[e] <=> cys-L[e] + gly[cA],Astrocyte
+CYSO,cys-L[cA] + o2[cA] --> 3sala[cA] + 2.0 h[cA],Astrocyte
+CYSTAm,akg[mA] + cys-L[mA] <=> glu-L[mA] + mercppyr[mA],Astrocyte
+CYStec,cys-L[e] <=> cys-L[cA],Astrocyte
+CYTK1m,atp[mA] + cmp[mA] <=> adp[mA] + cdp[mA],Astrocyte
+D-LACt2,h[e] + lac-D[e] <=> h[cA] + lac-D[cA],Astrocyte
+D-LACtm,h[cA] + lac-D[cA] <=> h[mA] + lac-D[mA],Astrocyte
+DDPGAm,4h2oglt[mA] <=> glx[mA] + pyr[mA],Astrocyte
+DECDPtm,decdp[cA] <=> decdp[mA],Astrocyte
+DGNSKm,atp[mA] + dgsn[mA] --> adp[mA] + dgmp[mA] + h[mA],Astrocyte
+DGSNt,dgsn[e] <=> dgsn[cA],Astrocyte
+DGSNtm,dgsn[cA] <=> dgsn[mA],Astrocyte
+DHDPBMTm,3dpdhb[mA] + amet[mA] --> 3dpdhb_me[mA] + ahcys[mA] + h[mA],Astrocyte
+DHFtm,dhf[cA] <=> dhf[mA],Astrocyte
+DMGDHm,dmgly[mA] + fad[mA] + h2o[mA] --> fadh2[mA] + fald[mA] + sarcs[mA],Astrocyte
+DMGtm,dmgly[cA] <=> dmgly[mA],Astrocyte
+DPGM,13dpg[cA] <=> 23dpg[cA] + h[cA],Astrocyte
+DPGase,23dpg[cA] + h2o[cA] --> 3pg[cA] + pi[cA],Astrocyte
+DPHMBDCm,3dpdhb_me[mA] + h[mA] --> 2dp6mep[mA] + co2[mA],Astrocyte
+DURIK1m,atp[mA] + duri[mA] --> adp[mA] + dump[mA] + h[mA],Astrocyte
+DURIt,duri[e] <=> duri[cA],Astrocyte
+DUTPDPm,dutp[mA] + h2o[mA] --> dump[mA] + h[mA] + ppi[mA],Astrocyte
+ECOAH12m,2mp2coa[mA] + h2o[mA] <=> 3hibutcoa[mA],Astrocyte
+ECOAH1m,3hbcoa[mA] <=> b2coa[mA] + h2o[mA],Astrocyte
+ECOAH9m,2mb2coa[mA] + h2o[mA] <=> 3hmbcoa[mA],Astrocyte
+EHGLAT2m,e4hglu[mA] + oaa[mA] --> 4h2oglt[mA] + asp-L[mA],Astrocyte
+EHGLATm,akg[mA] + e4hglu[mA] --> 4h2oglt[mA] + glu-L[mA],Astrocyte
+ENO,2pg[cA] <=> h2o[cA] + pep[cA],Astrocyte
+ETF,etfox[mA] + fadh2[mA] --> etfrd[mA] + fad[mA],Astrocyte
+ETFQO,etfrd[mA] + q10[mA] --> etfox[mA] + q10h2[mA],Astrocyte
+ETOHMO,etoh[cA] + h[cA] + nadph[cA] + o2[cA] --> acald[cA] + 2.0 h2o[cA] + nadp[cA],Astrocyte
+ETOHt,etoh[e] <=> etoh[cA],Astrocyte
+FALDtm,fald[mA] <=> fald[cA],Astrocyte
+FBA,fdp[cA] <=> dhap[cA] + g3p[cA],Astrocyte
+FCLTm,fe2[mA] + ppp9[mA] --> 2.0 h[mA] + pheme[mA],Astrocyte
+FE2t,fe2[e] --> fe2[cA],Astrocyte
+FE2tm,fe2[cA] + h[cA] --> fe2[mA] + h[mA],Astrocyte
+FORt2m,for[mA] <=> for[cA],Astrocyte
+FPGS2m,5thf[mA] + atp[mA] + glu-L[mA] --> 6thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS3m,6thf[mA] + atp[mA] + glu-L[mA] --> 7thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS4m,4.0 atp[mA] + dhf[mA] + 4.0 glu-L[mA] --> 5dhf[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FPGS5m,5dhf[mA] + atp[mA] + glu-L[mA] --> 6dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS6m,6dhf[mA] + atp[mA] + glu-L[mA] --> 7dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS7m,10fthf[mA] + 4.0 atp[mA] + 4.0 glu-L[mA] --> 10fthf5glu[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FPGS8m,10fthf5glu[mA] + atp[mA] + glu-L[mA] --> 10fthf6glu[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS9m,10fthf6glu[mA] + atp[mA] + glu-L[mA] --> 10fthf7glu[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGSm,4.0 atp[mA] + 4.0 glu-L[mA] + thf[mA] --> 5thf[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FTHFLm,atp[mA] + for[mA] + thf[mA] <=> 10fthf[mA] + adp[mA] + pi[mA],Astrocyte
+FUMSO3tm,fum[cA] + so3[mA] <=> fum[mA] + so3[cA],Astrocyte
+FUMSO4tm,fum[cA] + so4[mA] <=> fum[mA] + so4[cA],Astrocyte
+FUMTSULtm,fum[cA] + tsul[mA] <=> fum[mA] + tsul[cA],Astrocyte
+FUMm,fum[mA] + h2o[mA] <=> mal-L[mA],Astrocyte
+FUMtm,fum[cA] + pi[mA] <=> fum[mA] + pi[cA],Astrocyte
+G3PD2m,fad[mA] + glyc3p[cA] --> dhap[cA] + fadh2[mA],Astrocyte
+G5SDym,glu5p[mA] + h[mA] + nadph[mA] --> glu5sa[mA] + nadp[mA] + pi[mA],Astrocyte
+G6PDH2r,g6p[cA] + nadp[cA] <=> 6pgl[cA] + h[cA] + nadph[cA],Astrocyte
+GAPD,g3p[cA] + nad[cA] + pi[cA] <=> 13dpg[cA] + h[cA] + nadh[cA],Astrocyte
+GCALDDm,gcald[mA] + h2o[mA] + nad[mA] --> glyclt[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+GCC2am,gly[mA] + h[mA] + lpam[mA] <=> alpam[mA] + co2[mA],Astrocyte
+GCC2bim,alpam[mA] + thf[mA] --> dhlam[mA] + mlthf[mA] + nh4[mA],Astrocyte
+GCC2cm,dhlam[mA] + nad[mA] <=> h[mA] + lpam[mA] + nadh[mA],Astrocyte
+GCCam,gly[mA] + h[mA] + lpro[mA] <=> alpro[mA] + co2[mA],Astrocyte
+GCCbim,alpro[mA] + thf[mA] --> dhlpro[mA] + mlthf[mA] + nh4[mA],Astrocyte
+GCCcm,dhlpro[mA] + nad[mA] <=> h[mA] + lpro[mA] + nadh[mA],Astrocyte
+GHMT2rm,ser-L[mA] + thf[mA] <=> gly[mA] + h2o[mA] + mlthf[mA],Astrocyte
+GHMT3m,3htmelys[mA] + h[mA] --> 4tmeabut[mA] + gly[mA],Astrocyte
+GLACOm,glac[mA] + 2.0 h2o[mA] + nad[mA] --> glcr[mA] + 3.0 h[mA] + nadh[mA],Astrocyte
+GLCt1r,glc-D[e] --> glc-D[cA],Astrocyte
+GLCt2r,glc-D[e] + h[e] --> glc-D[cA] + h[cA],Astrocyte
+GLNS,atp[cA] + glu-L[cA] + nh4[cA] --> adp[cA] + gln-L[cA] + h[cA] + pi[cA],Astrocyte
+GLNtm,gln-L[cA] --> gln-L[mA],Astrocyte
+GLU5Km,atp[mA] + glu-L[mA] --> adp[mA] + glu5p[mA],Astrocyte
+GLUDxm,glu-L[mA] + h2o[mA] + nad[mA] <=> akg[mA] + h[mA] + nadh[mA] + nh4[mA],Astrocyte
+GLUDym,glu-L[mA] + h2o[mA] + nadp[mA] --> akg[mA] + h[mA] + nadph[mA] + nh4[mA],Astrocyte
+GLUNm,gln-L[mA] + h2o[mA] --> glu-L[mA] + nh4[mA],Astrocyte
+GLUTCOADHm,fad[mA] + glutcoa[mA] + h[mA] --> b2coa[mA] + co2[mA] + fadh2[mA],Astrocyte
+GLUVESSEC,atp[cA] + glu-L[cA] + h2o[cA] --> adp[cA] + glu-L[e] + h[cA] + pi[cA],Astrocyte
+GLUt2m,glu-L[cA] + h[cA] <=> glu-L[mA] + h[mA],Astrocyte
+GLUt6,glu-L[e] + h[e] + k[cA] + 3.0 na1[e] --> glu-L[cA] + h[cA] + k[e] + 3.0 na1[cA],Astrocyte
+GLYATm,accoa[mA] + gly[mA] <=> 2aobut[mA] + coa[mA],Astrocyte
+GLYCLTDym,glx[mA] + h[mA] + nadph[mA] --> glyclt[mA] + nadp[mA],Astrocyte
+GLYCt,glyc[cA] <=> glyc[e],Astrocyte
+GLYCtm,glyc[cA] <=> glyc[mA],Astrocyte
+GLYKm,atp[mA] + glyc[mA] --> adp[mA] + glyc3p[mA] + h[mA],Astrocyte
+GLYOXm,h2o[mA] + lgt-S[mA] --> gthrd[mA] + h[mA] + lac-D[mA],Astrocyte
+GLYt2r,gly[e] + h[e] <=> gly[cA] + h[cA],Astrocyte
+GLYtm,gly[cA] <=> gly[mA],Astrocyte
+GND,6pgc[cA] + nadp[cA] --> co2[cA] + nadph[cA] + ru5p-D[cA],Astrocyte
+GTHOm,gthox[mA] + h[mA] + nadph[mA] --> 2.0 gthrd[mA] + nadp[mA],Astrocyte
+GTHPm,2.0 gthrd[mA] + h2o2[mA] <=> gthox[mA] + 2.0 h2o[mA],Astrocyte
+H2CO3Dm,co2[mA] + h2o[mA] <=> h2co3[mA],Astrocyte
+H2O2t,h2o2[e] <=> h2o2[cA],Astrocyte
+H2O2tm,h2o2[cA] <=> h2o2[mA],Astrocyte
+H2Ot,h2o[e] <=> h2o[cA],Astrocyte
+H2Otm,h2o[cA] <=> h2o[mA],Astrocyte
+HACD1m,aacoa[mA] + h[mA] + nadh[mA] <=> 3hbcoa[mA] + nad[mA],Astrocyte
+HACD9m,3hmbcoa[mA] + nad[mA] <=> 2maacoa[mA] + h[mA] + nadh[mA],Astrocyte
+HBZOPT10m,4hbz[mA] + decdp[mA] --> 3dphb[mA] + ppi[mA],Astrocyte
+HCO3Em,co2[mA] + h2o[mA] <=> h[mA] + hco3[mA],Astrocyte
+HEX1,atp[cA] + glc-D[cA] --> adp[cA] + g6p[cA] + h[cA],Astrocyte
+HIBDm,3hmp[mA] + nad[mA] <=> 2mop[mA] + h[mA] + nadh[mA],Astrocyte
+HMBS,h2o[cA] + 4.0 ppbng[cA] --> hmbil[cA] + 4.0 nh4[cA],Astrocyte
+HMGCOASim,aacoa[mA] + accoa[mA] + h2o[mA] --> coa[mA] + h[mA] + hmgcoa[mA],Astrocyte
+HMGLm,hmgcoa[mA] --> acac[mA] + accoa[mA],Astrocyte
+HPROxm,4hpro-LT[mA] + nad[mA] --> 1p3h5c[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+Ht,h[cA] <=> h[e],Astrocyte
+Htm,h[cA] --> h[mA],Astrocyte
+ICDHxm,icit[mA] + nad[mA] --> akg[mA] + co2[mA] + nadh[mA],Astrocyte
+ICDHyrm,icit[mA] + nadp[mA] <=> akg[mA] + co2[mA] + nadph[mA],Astrocyte
+ILETA,akg[cA] + ile-L[cA] <=> 3mop[cA] + glu-L[cA],Astrocyte
+ILETAm,akg[mA] + ile-L[mA] <=> 3mop[mA] + glu-L[mA],Astrocyte
+ILEt5m,ile-L[cA] <=> ile-L[mA],Astrocyte
+ILEtec,ile-L[e] <=> ile-L[cA],Astrocyte
+IMACTD_m,h2o[mA] + im4act[mA] + nad[mA] --> 2.0 h[mA] + im4ac[mA] + nadh[mA],Astrocyte
+ITCOAL1m,coa[mA] + gtp[mA] + itacon[mA] <=> gdp[mA] + itaccoa[mA] + pi[mA],Astrocyte
+ITCOALm,atp[mA] + coa[mA] + itacon[mA] <=> adp[mA] + itaccoa[mA] + pi[mA],Astrocyte
+Kt1r,k[e] <=> k[cA],Astrocyte
+L-LACt2r,h[e] + lac-L[e] <=> h[cA] + lac-L[cA],Astrocyte
+L-LACtm,h[cA] + lac-L[cA] --> h[mA] + lac-L[mA],Astrocyte
+LCADi_Dm,h2o[mA] + lald-D[mA] + nad[mA] --> 2.0 h[mA] + lac-D[mA] + nadh[mA],Astrocyte
+LCADim,h2o[mA] + lald-L[mA] + nad[mA] --> 2.0 h[mA] + lac-L[mA] + nadh[mA],Astrocyte
+LCYSTATm,Lcyst[mA] + akg[mA] <=> 3spyr[mA] + glu-L[mA],Astrocyte
+LDH_L,lac-L[cA] + nad[cA] <-- h[cA] + nadh[cA] + pyr[cA],Astrocyte
+LDH_Lm,lac-L[mA] + nad[mA] <=> h[mA] + nadh[mA] + pyr[mA],Astrocyte
+LEUTA,akg[cA] + leu-L[cA] <=> 4mop[cA] + glu-L[cA],Astrocyte
+LEUTAm,akg[mA] + leu-L[mA] <=> 4mop[mA] + glu-L[mA],Astrocyte
+LEUt5m,leu-L[cA] <=> leu-L[mA],Astrocyte
+LEUtec,leu-L[e] <=> leu-L[cA],Astrocyte
+LSOProd,focytC[mA] + o2[mA] --> ficytC[mA] + o2s[mA],Astrocyte
+LYStiDF,lys-L[e] <=> lys-L[cA],Astrocyte
+LYStm,h[mA] + lys-L[cA] <=> h[cA] + lys-L[mA],Astrocyte
+MALSO3tm,mal-L[cA] + so3[mA] <=> mal-L[mA] + so3[cA],Astrocyte
+MALSO4tm,mal-L[cA] + so4[mA] <=> mal-L[mA] + so4[cA],Astrocyte
+MALTSULtm,mal-L[cA] + tsul[mA] <=> mal-L[mA] + tsul[cA],Astrocyte
+MALtm,mal-L[cA] + pi[mA] <=> mal-L[mA] + pi[cA],Astrocyte
+MCCCrm,3mb2coa[mA] + atp[mA] + hco3[mA] <=> 3mgcoa[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+MDH,mal-L[cA] + nad[cA] <=> h[cA] + nadh[cA] + oaa[cA],Astrocyte
+MDHm,mal-L[mA] + nad[mA] <=> h[mA] + nadh[mA] + oaa[mA],Astrocyte
+MECOALm,atp[mA] + coa[mA] + mescon[mA] <=> adp[mA] + mescoa[mA] + pi[mA],Astrocyte
+MECOAS1m,coa[mA] + gtp[mA] + mescon[mA] <=> gdp[mA] + mescoa[mA] + pi[mA],Astrocyte
+MGCHrm,3mgcoa[mA] + h2o[mA] <=> hmgcoa[mA],Astrocyte
+MMCDm,h[mA] + mmcoa-S[mA] --> co2[mA] + ppcoa[mA],Astrocyte
+MMEm,mmcoa-R[mA] <=> mmcoa-S[mA],Astrocyte
+MMMm,mmcoa-R[mA] <=> succoa[mA],Astrocyte
+MMSAD1m,2mop[mA] + coa[mA] + nad[mA] --> co2[mA] + nadh[mA] + ppcoa[mA],Astrocyte
+MMSAD3m,coa[mA] + msa[mA] + nad[mA] --> accoa[mA] + co2[mA] + nadh[mA],Astrocyte
+MTHFCm,h2o[mA] + methf[mA] <=> 10fthf[mA] + h[mA],Astrocyte
+MTHFDm,mlthf[mA] + nadp[mA] <=> methf[mA] + nadph[mA],Astrocyte
+NABTNOm,h2o[mA] + n4abutn[mA] + nad[mA] --> 4aabutn[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+NADH2-u10m,5.0 h[mA] + nadh[mA] + q10[mA] --> 4.0 h[cA] + nad[mA] + q10h2[mA],Astrocyte
+NDPK10m,atp[mA] + didp[mA] <=> adp[mA] + ditp[mA],Astrocyte
+NDPK1m,atp[mA] + gdp[mA] <=> adp[mA] + gtp[mA],Astrocyte
+NDPK2m,atp[mA] + udp[mA] <=> adp[mA] + utp[mA],Astrocyte
+NDPK3m,atp[mA] + cdp[mA] <=> adp[mA] + ctp[mA],Astrocyte
+NDPK4m,atp[mA] + dtdp[mA] <=> adp[mA] + dttp[mA],Astrocyte
+NDPK5m,atp[mA] + dgdp[mA] <=> adp[mA] + dgtp[mA],Astrocyte
+NDPK6m,atp[mA] + dudp[mA] <=> adp[mA] + dutp[mA],Astrocyte
+NDPK7m,atp[mA] + dcdp[mA] <=> adp[mA] + dctp[mA],Astrocyte
+NDPK8m,atp[mA] + dadp[mA] <=> adp[mA] + datp[mA],Astrocyte
+NDPK9m,atp[mA] + idp[mA] <=> adp[mA] + itp[mA],Astrocyte
+NH4t3r,h[e] + nh4[cA] <=> h[cA] + nh4[e],Astrocyte
+NMNATm,atp[mA] + h[mA] + nmn[mA] --> nad[mA] + ppi[mA],Astrocyte
+NNATm,atp[mA] + h[mA] + nicrnt[mA] --> dnad[mA] + ppi[mA],Astrocyte
+NTD1m,dump[mA] + h2o[mA] --> duri[mA] + pi[mA],Astrocyte
+NTD2m,h2o[mA] + ump[mA] --> pi[mA] + uri[mA],Astrocyte
+NTD5m,dtmp[mA] + h2o[mA] --> pi[mA] + thymd[mA],Astrocyte
+NaKt,atp[cA] + h2o[cA] + 2.0 k[e] + 3.0 na1[cA] --> adp[cA] + h[cA] + 2.0 k[cA] + 3.0 na1[e] + pi[cA],Astrocyte
+O2St,o2s[cA] <=> o2s[e],Astrocyte
+O2Stm,o2s[cA] <=> o2s[mA],Astrocyte
+O2t,o2[e] <=> o2[cA],Astrocyte
+O2tm,o2[cA] <=> o2[mA],Astrocyte
+OCOAT1m,acac[mA] + succoa[mA] <=> aacoa[mA] + succ[mA],Astrocyte
+OIVD1m,4mop[mA] + coa[mA] + nad[mA] --> co2[mA] + ivcoa[mA] + nadh[mA],Astrocyte
+OIVD2m,3mob[mA] + coa[mA] + nad[mA] --> co2[mA] + ibcoa[mA] + nadh[mA],Astrocyte
+OIVD3m,3mop[mA] + coa[mA] + nad[mA] --> 2mbcoa[mA] + co2[mA] + nadh[mA],Astrocyte
+ORNTArm,akg[mA] + orn[mA] <=> glu-L[mA] + glu5sa[mA],Astrocyte
+ORNt3m,h[cA] + orn[mA] <=> h[mA] + orn[cA],Astrocyte
+ORNt4m,citr-L[cA] + h[cA] + orn[mA] <=> citr-L[mA] + h[mA] + orn[cA],Astrocyte
+ORNtiDF,orn[e] --> orn[cA],Astrocyte
+P45011A1m,chsterol[mA] + h[mA] + nadph[mA] + 2.0 o2[mA] --> 4mptnl[mA] + 2.0 h2o[mA] + nadp[mA] + prgnlone[mA],Astrocyte
+P5CDm,1pyr5c[mA] + 2.0 h2o[mA] + nad[mA] --> glu-L[mA] + h[mA] + nadh[mA],Astrocyte
+PCFLOPm,atp[cA] + h2o[cA] + pchol_hs[mA] --> adp[cA] + h[cA] + pchol_hs[cA] + pi[cA],Astrocyte
+PCm,atp[mA] + hco3[mA] + pyr[mA] --> adp[mA] + h[mA] + oaa[mA] + pi[mA],Astrocyte
+PDHm,coa[mA] + nad[mA] + pyr[mA] --> accoa[mA] + co2[mA] + nadh[mA],Astrocyte
+PEFLIP,atp[cA] + h2o[cA] + pe_hs[e] --> adp[cA] + h[cA] + pe_hs[cA] + pi[cA],Astrocyte
+PEFLIPm,atp[cA] + h2o[cA] + pe_hs[cA] --> adp[cA] + h[cA] + pe_hs[mA] + pi[cA],Astrocyte
+PETOHMm_hs,3.0 amet[mA] + pe_hs[mA] --> 3.0 ahcys[mA] + 3.0 h[mA] + pchol_hs[mA],Astrocyte
+PFK,atp[cA] + f6p[cA] --> adp[cA] + fdp[cA] + h[cA],Astrocyte
+PGCD,3pg[cA] + nad[cA] --> 3php[cA] + h[cA] + nadh[cA],Astrocyte
+PGI,g6p[cA] <=> f6p[cA],Astrocyte
+PGK,3pg[cA] + atp[cA] <=> 13dpg[cA] + adp[cA],Astrocyte
+PGL,6pgl[cA] + h2o[cA] --> 6pgc[cA] + h[cA],Astrocyte
+PGM,2pg[cA] <=> 3pg[cA],Astrocyte
+PHCDm,1p3h5c[mA] + 2.0 h2o[mA] + nad[mA] --> e4hglu[mA] + h[mA] + nadh[mA],Astrocyte
+PHCHGSm,1p3h5c[mA] + h2o[mA] + h[mA] <=> 4hglusa[mA],Astrocyte
+PHEMEtm,pheme[mA] <=> pheme[cA],Astrocyte
+PHETA1m,akg[mA] + phe-L[mA] <=> glu-L[mA] + phpyr[mA],Astrocyte
+PIt2m,h[cA] + pi[cA] <=> h[mA] + pi[mA],Astrocyte
+PIt7,3.0 na1[e] + pi[e] <=> 3.0 na1[cA] + pi[cA],Astrocyte
+PNTKm,atp[mA] + pnto-R[mA] --> 4ppan[mA] + adp[mA] + h[mA],Astrocyte
+PPA,h2o[cA] + ppi[cA] --> h[cA] + 2.0 pi[cA],Astrocyte
+PPA2m,h2o[mA] + pppi[mA] --> h[mA] + pi[mA] + ppi[mA],Astrocyte
+PPAm,h2o[mA] + ppi[mA] --> h[mA] + 2.0 pi[mA],Astrocyte
+PPAt,ppa[e] --> ppa[cA],Astrocyte
+PPAtm,ppa[cA] --> ppa[mA],Astrocyte
+PPBNGS,2.0 5aop[cA] --> 2.0 h2o[cA] + h[cA] + ppbng[cA],Astrocyte
+PPCOACm,atp[mA] + hco3[mA] + ppcoa[mA] --> adp[mA] + h[mA] + mmcoa-S[mA] + pi[mA],Astrocyte
+PPCOAOm,fad[mA] + ppcoa[mA] --> fadh2[mA] + prpncoa[mA],Astrocyte
+PPPG9tm,pppg9[cA] <=> pppg9[mA],Astrocyte
+PPPGOm,3.0 o2[mA] + 2.0 pppg9[mA] --> 6.0 h2o[mA] + 2.0 ppp9[mA],Astrocyte
+PRGNLONEtm,prgnlone[cA] <=> prgnlone[mA],Astrocyte
+PRO1xm,nad[mA] + pro-L[mA] --> 1pyr5c[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+PROD2m,fad[mA] + pro-L[mA] --> 1pyr5c[mA] + fadh2[mA] + h[mA],Astrocyte
+PROt2r,h[e] + pro-L[e] <=> h[cA] + pro-L[cA],Astrocyte
+PROtm,pro-L[cA] <=> pro-L[mA],Astrocyte
+PRPNCOAHYDm,h2o[mA] + prpncoa[mA] --> 3hpcoa[mA],Astrocyte
+PSERT,3php[cA] + glu-L[cA] --> akg[cA] + pser-L[cA],Astrocyte
+PSFLIP,atp[cA] + h2o[cA] + ps_hs[e] --> adp[cA] + h[cA] + pi[cA] + ps_hs[cA],Astrocyte
+PSFLIPm,atp[cA] + h2o[cA] + ps_hs[cA] --> adp[cA] + h[cA] + pi[cA] + ps_hs[mA],Astrocyte
+PSP_L,h2o[cA] + pser-L[cA] --> pi[cA] + ser-L[cA],Astrocyte
+PYK,adp[cA] + h[cA] + pep[cA] --> atp[cA] + pyr[cA],Astrocyte
+PYLALDOXm,h2o[mA] + nad[mA] + pylald[mA] --> 2.0 h[mA] + nadh[mA] + peracd[mA],Astrocyte
+PYRt2m,h[cA] + pyr[cA] <=> h[mA] + pyr[mA],Astrocyte
+PYRt2r,h[e] + pyr[e] <=> h[cA] + pyr[cA],Astrocyte
+RPE,ru5p-D[cA] <=> xu5p-D[cA],Astrocyte
+RPI,r5p[cA] <=> ru5p-D[cA],Astrocyte
+SACCD3m,akg[mA] + h[mA] + lys-L[mA] + nadph[mA] --> h2o[mA] + nadp[mA] + saccrp-L[mA],Astrocyte
+SACCD4m,h2o[mA] + nadp[mA] + saccrp-L[mA] --> L2aadp6sa[mA] + glu-L[mA] + h[mA] + nadph[mA],Astrocyte
+SARCStex,sarcs[e] <=> sarcs[cA],Astrocyte
+SARCStm,sarcs[cA] --> sarcs[mA],Astrocyte
+SARDHm,fad[mA] + sarcs[mA] + thf[mA] --> fadh2[mA] + gly[mA] + mlthf[mA],Astrocyte
+SERGLNexR,gln-L[cA] + ser-L[e] --> gln-L[e] + ser-L[cA],Astrocyte
+SERGLYexR,gly[cA] + ser-L[e] <=> gly[e] + ser-L[cA],Astrocyte
+SERt4,na1[e] + ser-L[e] --> na1[cA] + ser-L[cA],Astrocyte
+SLDxm,nad[mA] + sl-L[mA] <=> 3spyr[mA] + h[mA] + nadh[mA],Astrocyte
+SO4HCOtex,2.0 hco3[cA] + so4[e] --> 2.0 hco3[e] + so4[cA],Astrocyte
+SPODMm,2.0 h[mA] + 2.0 o2s[mA] --> h2o2[mA] + o2[mA],Astrocyte
+SSALxm,h2o[mA] + nad[mA] + sucsal[mA] --> 2.0 h[mA] + nadh[mA] + succ[mA],Astrocyte
+SUCCt2m,pi[mA] + succ[cA] <=> pi[cA] + succ[mA],Astrocyte
+SUCD1m,fad[mA] + succ[mA] <=> fadh2[mA] + fum[mA],Astrocyte
+SUCOAS1m,coa[mA] + gtp[mA] + succ[mA] --> gdp[mA] + pi[mA] + succoa[mA],Astrocyte
+SUCOASm,atp[mA] + coa[mA] + succ[mA] <=> adp[mA] + pi[mA] + succoa[mA],Astrocyte
+SULFOX,2.0 ficytC[mA] + h2o[cA] + so3[cA] --> 2.0 focytC[mA] + 2.0 h[cA] + so4[cA],Astrocyte
+T2M26DCOAHLm,h2o[mA] + t2m26dcoa[mA] <=> 3h26dm5coa[mA],Astrocyte
+T4HCINNMFM,34hpl[mA] --> T4hcinnm[mA] + h2o[mA],Astrocyte
+TALA,g3p[cA] + s7p[cA] <=> e4p[cA] + f6p[cA],Astrocyte
+TCYNTt,tcynt[cA] --> tcynt[e],Astrocyte
+TCYNTtm,tcynt[mA] --> tcynt[cA],Astrocyte
+THD1m,h[cA] + nadh[mA] + nadp[mA] <=> h[mA] + nad[mA] + nadph[mA],Astrocyte
+THFtm,thf[cA] <=> thf[mA],Astrocyte
+THYMDt1,thymd[e] --> thymd[cA],Astrocyte
+TKT1,r5p[cA] + xu5p-D[cA] <=> g3p[cA] + s7p[cA],Astrocyte
+TKT2,e4p[cA] + xu5p-D[cA] <=> f6p[cA] + g3p[cA],Astrocyte
+TMDK1m,atp[mA] + thymd[mA] --> adp[mA] + dtmp[mA] + h[mA],Astrocyte
+TPI,dhap[cA] <=> g3p[cA],Astrocyte
+TRDRm,h[mA] + nadph[mA] + trdox[mA] --> nadp[mA] + trdrd[mA],Astrocyte
+TYRTAm,akg[mA] + tyr-L[mA] <=> 34hpp[mA] + glu-L[mA],Astrocyte
+UPP3S,hmbil[cA] --> h2o[cA] + uppg3[cA],Astrocyte
+UPPDC1,4.0 h[cA] + uppg3[cA] --> 4.0 co2[cA] + cpppg3[cA],Astrocyte
+URIt,uri[e] <=> uri[cA],Astrocyte
+VALTA,akg[cA] + val-L[cA] <=> 3mob[cA] + glu-L[cA],Astrocyte
+VALTAm,akg[mA] + val-L[mA] <=> 3mob[mA] + glu-L[mA],Astrocyte
+VALt5m,val-L[cA] <=> val-L[mA],Astrocyte
+VALtec,val-L[e] <=> val-L[cA],Astrocyte
+VITD2Hm,h[mA] + nadph[mA] + o2[mA] + vitd2[mA] --> 25hvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+VITD2tm,vitd2[mA] <=> vitd2[cA],Astrocyte
+VITD3Hm,h[mA] + nadph[mA] + o2[mA] + vitd3[mA] --> 25hvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+VITD3tm,vitd3[mA] --> vitd3[cA],Astrocyte
+VITD3tm3,vitd3[cA] --> vitd3[mA],Astrocyte
+MTDNAploym,9218.0 datp[mA] + 7350.0 dctp[mA] + 7350.0 dgtp[mA] + 9218.0 dttp[mA] + mtDNAn-1[mA] --> mtDNAn[mA] + 33136.0 ppi[mA],Astrocyte
+MTDNAdpolym,33136.0 h2o[mA] + mtDNAn[mA] --> 9218.0 damp[mA] + 7350.0 dcmp[mA] + 7350.0 dgmp[mA] + 9218.0 dtmp[mA] + 33136.0 h[mA] + mtDNAn-1[mA],Astrocyte
+DAKm,damp[mA] + gtp[mA] --> dadp[mA] + gdp[mA],Astrocyte
+DTKm,atp[mA] + dtmp[mA] --> adp[mA] + dtdp[mA],Astrocyte
+DCKm,atp[mA] + dcmp[mA] --> adp[mA] + dcdp[mA],Astrocyte
+DGKm,atp[mA] + dgmp[mA] --> adp[mA] + dgdp[mA],Astrocyte
+NH3tm,h[mA] + nh4[cA] <=> h[cA] + nh4[mA],Astrocyte
+NDPK1,atp[cA] + gdp[cA] <=> adp[cA] + gtp[cA],Astrocyte
+GGNG,Tyr-ggn[cA] + 8.0 udpg[cA] --> ggn[cA] + 8.0 h[cA] + 8.0 udp[cA],Astrocyte
+GLGNS1,ggn[cA] + 3.0 udpg[cA] --> glygn1[cA] + 3.0 h[cA] + 3.0 udp[cA],Astrocyte
+GLBRAN,glygn1[cA] --> glygn2[cA],Astrocyte
+GLPASE1,glygn2[cA] + 3.0 pi[cA] --> dxtrn[cA] + 3.0 g1p[cA],Astrocyte
+GLDBRAN,dxtrn[cA] + h2o[cA] --> glc-D[cA] + glygn3[cA],Astrocyte
+GLPASE2,glygn3[cA] + 7.0 h2o[cA] --> Tyr-ggn[cA] + 7.0 glc-D[cA],Astrocyte
+SERtm,ser-L[cA] <=> ser-L[mA],Astrocyte
+LacLtm,lac-L[cA] --> lac-L[mA],Astrocyte
+UREAt,urea[e] <=> urea[cA],Astrocyte
+UREAtm,urea[cA] <=> urea[mA],Astrocyte
+GLNtN1,gln-L[e] + h[cA] + na1[e] --> gln-L[cA] + h[e] + na1[cA],Astrocyte
+DM_4mptnl(m),4mptnl[mA] -->,Terminal
+DM_prgnlone(c),prgnlone[cA] -->,Terminal
+DM_nadph(c),nadph[cA] --> h[cA] + nadp[cA],Terminal
+DM_atp(m),atp[mA] + h2o[mA] --> adp[mA] + h[mA] + pi[mA],Terminal
+sink_chsterol,--> chsterol[cA],Terminal
+DM_1a2425thvitd3,1a2425thvitd3[mA] -->,Terminal
+DM_1a2425thvitd2,1a2425thvitd2[mA] -->,Terminal
+sink_vitd3,--> vitd3[cA],Terminal
+sink_vitd2,--> vitd2[cA],Terminal
+CKc,atp[cA] + creat[cA] <=> adp[cA] + pcreat[cA],Astrocyte
+CREATtmdiffir,creat[cA] --> creat[mA],Astrocyte
+PCREATtmdiffir,pcreat[mA] --> pcreat[cA],Astrocyte
+ALATA_L,akg[cA] + ala-L[cA] <=> glu-L[cA] + pyr[cA],Astrocyte
+ALATA_Lm,akg[mA] + ala-L[mA] <=> glu-L[mA] + pyr[mA],Astrocyte
+ALAtN1,ala-L[e] <=> ala-L[cA],Astrocyte
+DM_pchol_hs,pchol_hs[cA] -->,Terminal
+PSDm_hs,h[mA] + ps_hs[mA] --> co2[mA] + pe_hs[mA],Terminal
+25HVITD2t_Int,25hvitd2[cA] --> 25hvitd2[I],Astrocyte
+25HVITD2tin_Int,25hvitd2[I] --> 25hvitd2[cA],Astrocyte
+25HVITD3t_Int,25hvitd3[cA] --> 25hvitd3[I],Astrocyte
+25HVITD3tin_Int,25hvitd3[I] --> 25hvitd3[cA],Astrocyte
+3AIBt_Int,3aib[cA] --> 3aib[I],Astrocyte
+ABUTt2r_Int,4abut[I] + h[I] <=> 4abut[cA] + h[cA],Astrocyte
+ACACt2_Int,acac[I] + h[I] <=> acac[cA] + h[cA],Astrocyte
+ACALDt_Int,acald[I] <=> acald[cA],Astrocyte
+ACt2r_Int,ac[I] + h[I] <=> ac[cA] + h[cA],Astrocyte
+ARGLYSex_Int,arg-L[I] + lys-L[cA] --> arg-L[cA] + lys-L[I],Astrocyte
+ARGtiDF_Int,arg-L[I] --> arg-L[cA],Astrocyte
+ASNt4_Int,asn-L[I] + na1[I] --> asn-L[cA] + na1[cA],Astrocyte
+BALAVECSEC_Int,3.0 ala-B[cA] + atp[cA] + h2o[cA] --> adp[cA] + 3.0 ala-B[I] + h[cA] + pi[cA],Astrocyte
+BHBt_Int,bhb[I] + h[I] <=> bhb[cA] + h[cA],Astrocyte
+BTNt2_Int,btn[I] + h[I] <=> btn[cA] + h[cA],Astrocyte
+BTNt4i_Int,btn[I] + h[cA] --> btn[cA] + h[I],Astrocyte
+CO2t_Int,co2[I] <=> co2[cA],Astrocyte
+CRNt_Int,crn[I] <=> crn[cA],Astrocyte
+CYANt_Int,cyan[I] <=> cyan[cA],Astrocyte
+CYSGLUexR_Int,cys-L[I] + gln-L[cA] --> cys-L[cA] + gln-L[I],Astrocyte
+CYSGLYex_Int,cys-L[cA] + gly[I] --> cys-L[I] + gly[cA],Astrocyte
+CYStec_Int,cys-L[I] <=> cys-L[cA],Astrocyte
+D-LACt2_Int,h[I] + lac-D[I] <=> h[cA] + lac-D[cA],Astrocyte
+DGSNt_Int,dgsn[I] <=> dgsn[cA],Astrocyte
+DURIt_Int,duri[I] <=> duri[cA],Astrocyte
+ETOHt_Int,etoh[I] <=> etoh[cA],Astrocyte
+FE2t_Int,fe2[I] --> fe2[cA],Astrocyte
+GLCt2r_Int,glc-D[I] + h[I] --> glc-D[cA] + h[cA],Astrocyte
+GLUt6_Int,glu-L[I] + h[I] + k[cA] + 3.0 na1[I] --> glu-L[cA] + h[cA] + k[I] + 3.0 na1[cA],Astrocyte
+GLYCt_Int,glyc[cA] <=> glyc[I],Astrocyte
+GLYt2r_Int,gly[I] + h[I] <=> gly[cA] + h[cA],Astrocyte
+H2O2t_Int,h2o2[I] <=> h2o2[cA],Astrocyte
+H2Ot_Int,h2o[I] <=> h2o[cA],Astrocyte
+Ht_Int,h[cA] --> h[I],Astrocyte
+ILEtec_Int,ile-L[I] <=> ile-L[cA],Astrocyte
+Kt1r_Int,k[I] <=> k[cA],Astrocyte
+L-LACt2r_Int,h[I] + lac-L[I] <-- h[cA] + lac-L[cA],Astrocyte
+LEUtec_Int,leu-L[I] <=> leu-L[cA],Astrocyte
+LYStiDF_Int,lys-L[I] <=> lys-L[cA],Astrocyte
+NH4t3r_Int,h[I] + nh4[cA] <=> h[cA] + nh4[I],Astrocyte
+NaKt_Int,atp[cA] + h2o[cA] + 2.0 k[I] + 3.0 na1[cA] --> adp[cA] + h[cA] + 2.0 k[cA] + 3.0 na1[I] + pi[cA],Astrocyte
+O2St_Int,o2s[cA] <=> o2s[I],Astrocyte
+O2t_Int,o2[I] <=> o2[cA],Astrocyte
+ORNtiDF_Int,orn[I] --> orn[cA],Astrocyte
+PEFLIP_Int,atp[cA] + h2o[cA] + pe_hs[I] --> adp[cA] + h[cA] + pe_hs[cA] + pi[cA],Astrocyte
+PIt7_Int,3.0 na1[I] + pi[I] <=> 3.0 na1[cA] + pi[cA],Astrocyte
+PPAt_Int,ppa[I] --> ppa[cA],Astrocyte
+PROt2r_Int,h[I] + pro-L[I] <=> h[cA] + pro-L[cA],Astrocyte
+PSFLIP_Int,atp[cA] + h2o[cA] + ps_hs[I] --> adp[cA] + h[cA] + pi[cA] + ps_hs[cA],Astrocyte
+PYRt2r_Int,h[I] + pyr[I] --> h[cA] + pyr[cA],Astrocyte
+SARCStex_Int,sarcs[I] <=> sarcs[cA],Astrocyte
+SERGLNexR_Int,gln-L[cA] + ser-L[I] --> gln-L[I] + ser-L[cA],Astrocyte
+SERGLYexR_Int,gly[cA] + ser-L[I] <=> gly[I] + ser-L[cA],Astrocyte
+SERt4_Int,na1[I] + ser-L[I] --> na1[cA] + ser-L[cA],Astrocyte
+SO4HCOtex_Int,2.0 hco3[cA] + so4[I] --> 2.0 hco3[I] + so4[cA],Astrocyte
+TCYNTt_Int,tcynt[cA] --> tcynt[I],Astrocyte
+THYMDt1_Int,thymd[I] --> thymd[cA],Astrocyte
+URIt_Int,uri[I] <=> uri[cA],Astrocyte
+VALtec_Int,val-L[I] <=> val-L[cA],Astrocyte
+UREAt_Int,urea[I] <=> urea[cA],Astrocyte
+GLNtN1_Int,gln-L[I] + h[cA] + na1[I] <=> gln-L[cA] + h[I] + na1[cA],Astrocyte
+ALAtN1_Int,ala-L[I] --> ala-L[cA],Astrocyte
+EX_NACASPt_Int,Nacasp[I] -->,Exchange
+DM_10fthf5glu_Neuron,10fthf5glu[cN] -->,Terminal
+DM_10fthf6glu_Neuron,10fthf6glu[cN] -->,Terminal
+DM_10fthf7glu_Neuron,10fthf7glu[cN] -->,Terminal
+DM_5thf_Neuron,5thf[cN] -->,Terminal
+DM_6dhf_Neuron,6dhf[cN] -->,Terminal
+DM_6thf_Neuron,6thf[cN] -->,Terminal
+DM_7dhf_Neuron,7dhf[cN] -->,Terminal
+DM_7thf_Neuron,7thf[cN] -->,Terminal
+DM_ahcys_Neuron,ahcys[cN] -->,Terminal
+DM_atp(c)_Neuron,atp[cN] + h2o[cN] --> adp[cN] + h[cN] + pi[cN],Terminal
+DM_fald_Neuron,fald[cN] -->,Terminal
+DM_for_Neuron,for[cN] -->,Terminal
+DM_pheme(c)_Neuron,pheme[cN] -->,Terminal
+DM_q10(m)_Neuron,q10[mN] -->,Terminal
+DM_thf(c)_Neuron,thf[cN] -->,Terminal
+EX_pe_hs(e)_Neuron,pe_hs[I] -->,Exchange
+EX_ps_hs(e)_Neuron,ps_hs[I] -->,Exchange
+sink_4hpro-LT(m)_Neuron,4hpro-LT[mN] -->,Terminal
+sink_amet_Neuron,amet[cN] -->,Terminal
+sink_decdp_Neuron,decdp[cN] -->,Terminal
+sink_dhf(c)_Neuron,dhf[cN] -->,Terminal
+sink_dmgly_Neuron,dmgly[cN] -->,Terminal
+sink_tyr-L(m)_Neuron,tyr-L[mN] -->,Terminal
+10FTHF5GLUtm_Neuron,10fthf5glu[mN] --> 10fthf5glu[cN],Neuron
+10FTHF6GLUtm_Neuron,10fthf6glu[mN] --> 10fthf6glu[cN],Neuron
+10FTHF7GLUtm_Neuron,10fthf7glu[mN] --> 10fthf7glu[cN],Neuron
+10FTHFtm_Neuron,10fthf[cN] <=> 10fthf[mN],Neuron
+"1a,24,25VITD2Hm_Neuron",2425dhvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+"1a,24,25VITD3Hm_Neuron",2425dhvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+"1a,25VITD2Hm_Neuron",1a25dhvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+"1a,25VITD3Hm_Neuron",1a25dhvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+"24,25VITD2Hm_Neuron",25hvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 2425dhvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+"24,25VITD3Hm_Neuron",25hvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 2425dhvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+25HVITD2t_Neuron,25hvitd2[cN] --> 25hvitd2[I],Neuron
+25HVITD2tin_Neuron,25hvitd2[I] --> 25hvitd2[cN],Neuron
+25HVITD2tin_m_Neuron,25hvitd2[cN] --> 25hvitd2[mN],Neuron
+25HVITD2tm_Neuron,25hvitd2[mN] --> 25hvitd2[cN],Neuron
+25HVITD3t_Neuron,25hvitd3[cN] --> 25hvitd3[I],Neuron
+25HVITD3tin_Neuron,25hvitd3[I] --> 25hvitd3[cN],Neuron
+25HVITD3tin_m_Neuron,25hvitd3[cN] --> 25hvitd3[mN],Neuron
+25HVITD3tm_Neuron,25hvitd3[mN] --> 25hvitd3[cN],Neuron
+25VITD2Hm_Neuron,25hvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a25dhvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+25VITD3Hm_Neuron,25hvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a25dhvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+2AMADPTm_Neuron,L2aadp[cN] + akg[mN] <=> L2aadp[mN] + akg[cN],Neuron
+2OXOADOXm_Neuron,2oxoadp[mN] + coa[mN] + nad[mN] --> co2[mN] + glutcoa[mN] + nadh[mN],Neuron
+2OXOADPTm_Neuron,2oxoadp[cN] + akg[mN] <=> 2oxoadp[mN] + akg[cN],Neuron
+34HPLFM_Neuron,34hpp[mN] + h[mN] + nadh[mN] --> 34hpl[mN] + nad[mN],Neuron
+3AIBTm_Neuron,2mop[mN] + glu-L[mN] <=> 3aib[mN] + akg[mN],Neuron
+3AIBt_Neuron,3aib[cN] --> 3aib[I],Neuron
+3AIBtm_Neuron,3aib[mN] --> 3aib[cN],Neuron
+3DPHBH1_Neuron,3dphb[mN] + h[mN] + nadh[mN] + o2[mN] --> 3dpdhb[mN] + h2o[mN] + nad[mN],Neuron
+3DPHBH2_Neuron,3dphb[mN] + h[mN] + nadph[mN] + o2[mN] --> 3dpdhb[mN] + h2o[mN] + nadp[mN],Neuron
+3HBCDm_Neuron,b2coa[mN] + h2o[mN] <=> 3hbcoa-R[mN],Terminal
+3HBCOAHLm_Neuron,3hibutcoa[mN] + h2o[mN] --> 3hmp[mN] + coa[mN] + h[mN],Neuron
+3SALAASPm_Neuron,3sala[mN] + asp-L[cN] <=> 3sala[cN] + asp-L[mN],Neuron
+3SALATAim_Neuron,3sala[mN] + akg[mN] + h[mN] --> 3snpyr[mN] + glu-L[mN],Neuron
+3SPYRSPm_Neuron,3snpyr[mN] + h2o[mN] --> h[mN] + pyr[mN] + so3[mN],Neuron
+4ABUTtm_Neuron,4abut[cN] <=> 4abut[mN],Neuron
+4HBZCOAFm_Neuron,coa[mN] + coucoa[mN] + h2o[mN] + nad[mN] --> 4hbzcoa[mN] + accoa[mN] + h[mN] + nadh[mN],Neuron
+4HBZFm_Neuron,4hbzcoa[mN] + h2o[mN] --> 4hbz[mN] + coa[mN] + h[mN],Neuron
+4HGLSDm_Neuron,4hglusa[mN] + h2o[mN] + nad[mN] <=> e4hglu[mN] + 2.0 h[mN] + nadh[mN],Terminal
+5AOPtm_Neuron,5aop[cN] <=> 5aop[mN],Neuron
+5HOXINDACTOXm_Neuron,5hoxindact[mN] + h2o[mN] + nad[mN] --> 5hoxindoa[mN] + 2.0 h[mN] + nadh[mN],Neuron
+5THFtm_Neuron,5thf[mN] --> 5thf[cN],Neuron
+6DHFtm_Neuron,6dhf[mN] --> 6dhf[cN],Neuron
+6THFtm_Neuron,6thf[mN] --> 6thf[cN],Neuron
+7DHFtm_Neuron,7dhf[mN] --> 7dhf[cN],Neuron
+7THFtm_Neuron,7thf[mN] --> 7thf[cN],Neuron
+AACOAT_Neuron,acac[cN] + atp[cN] + coa[cN] --> aacoa[cN] + amp[cN] + ppi[cN],Neuron
+AACTOOR_Neuron,aact[cN] + h2o[cN] + o2[cN] --> h2o2[cN] + mthgxl[cN] + nh4[cN],Neuron
+AACTtm_Neuron,aact[mN] --> aact[cN],Neuron
+AASAD3m_Neuron,L2aadp6sa[mN] + h2o[mN] + nad[mN] --> L2aadp[mN] + 2.0 h[mN] + nadh[mN],Neuron
+AATAi_Neuron,L2aadp[cN] + akg[cN] --> 2oxoadp[cN] + glu-L[cN],Neuron
+ABTArm_Neuron,4abut[mN] + akg[mN] <=> glu-L[mN] + sucsal[mN],Neuron
+ABUTt2r_Neuron,4abut[I] + h[I] <=> 4abut[cN] + h[cN],Neuron
+ACACT10m_Neuron,2maacoa[mN] + coa[mN] <=> accoa[mN] + ppcoa[mN],Neuron
+ACACT1r_Neuron,2.0 accoa[cN] <=> aacoa[cN] + coa[cN],Neuron
+ACACT1rm_Neuron,2.0 accoa[mN] <=> aacoa[mN] + coa[mN],Neuron
+ACACt2_Neuron,acac[I] + h[I] --> acac[cN] + h[cN],Neuron
+ACACt2m_Neuron,acac[cN] + h[cN] <=> acac[mN] + h[mN],Neuron
+ACALDt_Neuron,acald[I] <=> acald[cN],Neuron
+ACALDtm_Neuron,acald[mN] <=> acald[cN],Neuron
+ACCOALm_Neuron,atp[mN] + coa[mN] + ppa[mN] --> amp[mN] + ppcoa[mN] + ppi[mN],Neuron
+ACOAD10m_Neuron,2mbcoa[mN] + fad[mN] --> 2mb2coa[mN] + fadh2[mN],Neuron
+ACOAD1fm_Neuron,btcoa[mN] + fad[mN] --> b2coa[mN] + fadh2[mN],Neuron
+ACOAD8m_Neuron,fad[mN] + ivcoa[mN] --> 3mb2coa[mN] + fadh2[mN],Neuron
+ACOAD9m_Neuron,fad[mN] + ibcoa[mN] --> 2mp2coa[mN] + fadh2[mN],Neuron
+ACONTm_Neuron,cit[mN] <=> icit[mN],Neuron
+ACRNtm_Neuron,acrn[cN] --> acrn[mN],Neuron
+ACSm_Neuron,ac[mN] + atp[mN] + coa[mN] --> accoa[mN] + amp[mN] + ppi[mN],Neuron
+ACYP_Neuron,13dpg[cN] + h2o[cN] --> 3pg[cN] + h[cN] + pi[cN],Neuron
+ACt2m_Neuron,ac[cN] + h[cN] <=> ac[mN] + h[mN],Neuron
+ADCim_Neuron,acac[mN] + h[mN] --> acetone[mN] + co2[mN],Neuron
+ADK1_Neuron,amp[cN] + atp[cN] --> 2.0 adp[cN],Neuron
+ADK1m_Neuron,amp[mN] + atp[mN] <=> 2.0 adp[mN],Neuron
+ADK3m_Neuron,amp[mN] + gtp[mN] <=> adp[mN] + gdp[mN],Neuron
+ADPRDPm_Neuron,adprib[mN] + h2o[mN] --> amp[mN] + 2.0 h[mN] + r5p[mN],Neuron
+AGMTm_Neuron,agm[mN] + h2o[mN] --> ptrc[mN] + urea[mN],Neuron
+AGPRim_Neuron,acg5p[mN] + h[mN] + nadph[mN] --> acg5sa[mN] + nadp[mN] + pi[mN],Neuron
+AGTim_Neuron,ala-L[mN] + glx[mN] --> gly[mN] + pyr[mN],Neuron
+AKGDm_Neuron,akg[mN] + coa[mN] + nad[mN] --> co2[mN] + nadh[mN] + succoa[mN],Terminal
+AKGMALtm_Neuron,akg[mN] + mal-L[cN] <=> akg[cN] + mal-L[mN],Neuron
+ALASm_Neuron,gly[mN] + h[mN] + succoa[mN] --> 5aop[mN] + co2[mN] + coa[mN],Neuron
+ALCD2if_Neuron,etoh[cN] + nad[cN] --> acald[cN] + h[cN] + nadh[cN],Neuron
+ALCD2yf_Neuron,etoh[cN] + nadp[cN] --> acald[cN] + h[cN] + nadph[cN],Neuron
+ALDD20xm_Neuron,h2o[mN] + id3acald[mN] + nad[mN] --> 2.0 h[mN] + ind3ac[mN] + nadh[mN],Neuron
+ALDD2x_Neuron,acald[cN] + h2o[cN] + nad[cN] --> ac[cN] + 2.0 h[cN] + nadh[cN],Neuron
+ALDD2xm_Neuron,acald[mN] + h2o[mN] + nad[mN] --> ac[mN] + 2.0 h[mN] + nadh[mN],Neuron
+ALDD2y_Neuron,acald[cN] + h2o[cN] + nadp[cN] --> ac[cN] + 2.0 h[cN] + nadph[cN],Neuron
+ALR_Neuron,h2o[cN] + mthgxl[cN] + nadp[cN] --> 2.0 h[cN] + nadph[cN] + pyr[cN],Neuron
+AMETt2m_Neuron,ahcys[mN] + amet[cN] <=> ahcys[cN] + amet[mN],Neuron
+AOBUTDsm_Neuron,2aobut[mN] + h[mN] --> aact[mN] + co2[mN],Neuron
+APAT2rm_Neuron,akg[mN] + ala-B[mN] <=> glu-L[mN] + msa[mN],Neuron
+APOC_LYS_BTNPm_Neuron,apoC-Lys_btn[mN] + h2o[mN] --> apoC[mN] + biocyt[mN],Neuron
+APOCFm_Neuron,apoC[mN] + lys-L[mN] --> apoC-Lys[mN] + h2o[mN] + h[mN],Neuron
+ARGDCm_Neuron,arg-L[mN] + h[mN] --> agm[mN] + co2[mN],Neuron
+ARGtiDF_Neuron,arg-L[I] --> arg-L[cN],Neuron
+ARGtm_Neuron,arg-L[cN] + h[mN] <=> arg-L[mN] + h[cN],Neuron
+ASNNm_Neuron,asn-L[mN] + h2o[mN] --> asp-L[mN] + nh4[mN],Neuron
+ASNt4_Neuron,asn-L[I] + na1[I] --> asn-L[cN] + na1[cN],Neuron
+ASNtm_Neuron,asn-L[cN] --> asn-L[mN],Neuron
+ASPGLUm_Neuron,asp-L[mN] + glu-L[cN] + h[cN] --> asp-L[cN] + glu-L[mN] + h[mN],Neuron
+ASPNATm_Neuron,accoa[mN] + asp-L[mN] --> Nacasp[mN] + coa[mN] + h[mN],Neuron
+ASPTA_Neuron,akg[cN] + asp-L[cN] <=> glu-L[cN] + oaa[cN],Neuron
+ASPTAm_Neuron,akg[mN] + asp-L[mN] <=> glu-L[mN] + oaa[mN],Neuron
+ATPS4m_Neuron,adp[mN] + 4.0 h[cN] + pi[mN] --> atp[mN] + h2o[mN] + 3.0 h[mN],Neuron
+ATPtm_Neuron,adp[cN] + atp[mN] --> adp[mN] + atp[cN],Neuron
+BACCLm_Neuron,atp[mN] + btn[mN] + h[mN] --> btamp[mN] + ppi[mN],Neuron
+BALAVECSEC_Neuron,3.0 ala-B[cN] + atp[cN] + h2o[cN] --> adp[cN] + 3.0 ala-B[I] + h[cN] + pi[cN],Neuron
+BALAtmr_Neuron,ala-B[cN] <=> ala-B[mN],Neuron
+BAMPPALDOXm_Neuron,bamppald[mN] + h2o[mN] + nad[mN] --> ala-B[mN] + 2.0 h[mN] + nadh[mN],Neuron
+BDHm_Neuron,bhb[mN] + nad[mN] <=> acac[mN] + h[mN] + nadh[mN],Neuron
+BETALDHxm_Neuron,betald[mN] + h2o[mN] + nad[mN] --> glyb[mN] + 2.0 h[mN] + nadh[mN],Neuron
+BHBt_Neuron,bhb[I] + h[I] --> bhb[cN] + h[cN],Neuron
+BHBtm_Neuron,bhb[cN] + h[cN] <=> bhb[mN] + h[mN],Neuron
+BTNDm_Neuron,biocyt[mN] + h2o[mN] --> btn[mN] + lys-L[mN],Terminal
+BTNPLm_Neuron,apoC-Lys[mN] + btamp[mN] --> amp[mN] + apoC-Lys_btn[mN] + h[mN],Neuron
+BTNt2_Neuron,btn[I] + h[I] <=> btn[cN] + h[cN],Neuron
+BTNt2m_Neuron,btn[cN] + h[cN] <=> btn[mN] + h[mN],Neuron
+BTNt4i_Neuron,btn[I] + h[cN] --> btn[cN] + h[I],Neuron
+C160CPT2_Neuron,coa[mN] + pmtcrn[mN] --> crn[mN] + pmtcoa[mN],Neuron
+C160CRNt_Neuron,pmtcrn[cN] --> pmtcrn[mN],Neuron
+C204CPT2_Neuron,arachdcrn[mN] + coa[mN] --> arachdcoa[mN] + crn[mN],Neuron
+C226CPT2_Neuron,c226crn[mN] + coa[mN] --> c226coa[mN] + crn[mN],Neuron
+C2M26DCOAHLm_Neuron,c2m26dcoa[mN] + h2o[mN] <=> 3h26dm5coa[mN],Neuron
+CATm_Neuron,2.0 h2o2[mN] --> 2.0 h2o[mN] + o2[mN],Neuron
+CBL2tm_Neuron,cbl2[cN] --> cbl2[mN],Neuron
+CBLATm_Neuron,atp[mN] + cbl1[mN] + h[mN] <=> adocbl[mN] + pppi[mN],Neuron
+CDPDAGtm_Neuron,cdpdag_hs[cN] <=> cdpdag_hs[mN],Neuron
+CDSm_Neuron,ctp[mN] + h[mN] + pa_hs[mN] --> cdpdag_hs[mN] + ppi[mN],Neuron
+CHSTEROLt3_Neuron,chsterol[cN] <=> chsterol[mN],Neuron
+CITRtm_Neuron,citr-L[mN] <=> citr-L[cN],Neuron
+CITtam_Neuron,cit[cN] + mal-L[mN] <=> cit[mN] + mal-L[cN],Neuron
+CITtbm_Neuron,cit[cN] + pep[mN] <=> cit[mN] + pep[cN],Neuron
+CK_Neuron,atp[mN] + creat[mN] <=> adp[mN] + pcreat[mN],Neuron
+CO2t_Neuron,co2[I] <=> co2[cN],Neuron
+CO2tm_Neuron,co2[cN] <=> co2[mN],Neuron
+COQ3m_Neuron,2dpmhobq[mN] + amet[mN] --> ahcys[mN] + h[mN] + q10[mN],Neuron
+COQ5m_Neuron,2dp6mobq[mN] + amet[mN] --> 2dp6mobq_me[mN] + ahcys[mN] + h[mN],Neuron
+COQ6m_Neuron,2dp6mep[mN] + o2[mN] --> 2dp6mobq[mN] + h2o[mN],Neuron
+COQ7m_Neuron,2dp6mobq_me[mN] + h[mN] + nadph[mN] + o2[mN] --> 2dpmhobq[mN] + h2o[mN] + nadp[mN],Neuron
+COUCOAFm_Neuron,T4hcinnm[mN] + atp[mN] + coa[mN] --> amp[mN] + coucoa[mN] + ppi[mN],Neuron
+CPPPGO_Neuron,cpppg3[cN] + 2.0 h[cN] + o2[cN] --> 2.0 co2[cN] + 2.0 h2o[cN] + pppg9[cN],Neuron
+CRNt_Neuron,crn[I] <=> crn[cN],Neuron
+CRNtim_Neuron,crn[mN] --> crn[cN],Neuron
+CSNAT2m_Neuron,coa[mN] + pcrn[mN] <=> crn[mN] + ppcoa[mN],Neuron
+CSNATm_Neuron,acrn[mN] + coa[mN] <=> accoa[mN] + crn[mN],Neuron
+CSm_Neuron,accoa[mN] + h2o[mN] + oaa[mN] --> cit[mN] + coa[mN] + h[mN],Neuron
+CYANSTm_Neuron,cyan[mN] + tsul[mN] --> h[mN] + so3[mN] + tcynt[mN],Neuron
+CYANt_Neuron,cyan[I] <=> cyan[cN],Neuron
+CYANtm_Neuron,cyan[cN] <=> cyan[mN],Neuron
+CYOOm2_Neuron,4.0 focytC[mN] + 8.0 h[mN] + o2[mN] --> 4.0 ficytC[mN] + 2.0 h2o[mN] + 4.0 h[cN],Neuron
+CYOR-u10m_Neuron,2.0 ficytC[mN] + 2.0 h[mN] + q10h2[mN] --> 2.0 focytC[mN] + 4.0 h[cN] + q10[mN],Neuron
+CYSGLUexR_Neuron,cys-L[I] + gln-L[cN] --> cys-L[cN] + gln-L[I],Neuron
+CYSGLYexR_Neuron,cys-L[cN] + gly[I] <=> cys-L[I] + gly[cN],Neuron
+CYSO_Neuron,cys-L[cN] + o2[cN] --> 3sala[cN] + 2.0 h[cN],Neuron
+CYSTAm_Neuron,akg[mN] + cys-L[mN] <=> glu-L[mN] + mercppyr[mN],Neuron
+CYStec_Neuron,cys-L[I] <=> cys-L[cN],Neuron
+CYTK1m_Neuron,atp[mN] + cmp[mN] <=> adp[mN] + cdp[mN],Neuron
+D-LACt2_Neuron,h[I] + lac-D[I] <=> h[cN] + lac-D[cN],Neuron
+D-LACtm_Neuron,h[cN] + lac-D[cN] <=> h[mN] + lac-D[mN],Neuron
+DDPGAm_Neuron,4h2oglt[mN] <=> glx[mN] + pyr[mN],Neuron
+DECDPtm_Neuron,decdp[cN] <=> decdp[mN],Neuron
+DGNSKm_Neuron,atp[mN] + dgsn[mN] --> adp[mN] + dgmp[mN] + h[mN],Neuron
+DGSNt_Neuron,dgsn[I] <=> dgsn[cN],Neuron
+DGSNtm_Neuron,dgsn[cN] <=> dgsn[mN],Neuron
+DHDPBMTm_Neuron,3dpdhb[mN] + amet[mN] --> 3dpdhb_me[mN] + ahcys[mN] + h[mN],Neuron
+DHFtm_Neuron,dhf[cN] <=> dhf[mN],Neuron
+DMGDHm_Neuron,dmgly[mN] + fad[mN] + h2o[mN] --> fadh2[mN] + fald[mN] + sarcs[mN],Neuron
+DMGtm_Neuron,dmgly[cN] <=> dmgly[mN],Neuron
+DPGM_Neuron,13dpg[cN] --> 23dpg[cN] + h[cN],Neuron
+DPGase_Neuron,23dpg[cN] + h2o[cN] --> 3pg[cN] + pi[cN],Neuron
+DPHMBDCm_Neuron,3dpdhb_me[mN] + h[mN] --> 2dp6mep[mN] + co2[mN],Neuron
+DURIK1m_Neuron,atp[mN] + duri[mN] --> adp[mN] + dump[mN] + h[mN],Neuron
+DURIt_Neuron,duri[I] <=> duri[cN],Neuron
+DUTPDPm_Neuron,dutp[mN] + h2o[mN] --> dump[mN] + h[mN] + ppi[mN],Neuron
+ECOAH12m_Neuron,2mp2coa[mN] + h2o[mN] <=> 3hibutcoa[mN],Neuron
+ECOAH1m_Neuron,3hbcoa[mN] <=> b2coa[mN] + h2o[mN],Neuron
+ECOAH9m_Neuron,2mb2coa[mN] + h2o[mN] <=> 3hmbcoa[mN],Neuron
+EHGLAT2m_Neuron,e4hglu[mN] + oaa[mN] --> 4h2oglt[mN] + asp-L[mN],Neuron
+EHGLATm_Neuron,akg[mN] + e4hglu[mN] --> 4h2oglt[mN] + glu-L[mN],Neuron
+ENO_Neuron,2pg[cN] <=> h2o[cN] + pep[cN],Neuron
+ETF_Neuron,etfox[mN] + fadh2[mN] --> etfrd[mN] + fad[mN],Neuron
+ETFQO_Neuron,etfrd[mN] + q10[mN] --> etfox[mN] + q10h2[mN],Neuron
+ETOHMO_Neuron,etoh[cN] + h[cN] + nadph[cN] + o2[cN] --> acald[cN] + 2.0 h2o[cN] + nadp[cN],Neuron
+ETOHt_Neuron,etoh[I] <=> etoh[cN],Neuron
+FALDtm_Neuron,fald[mN] <=> fald[cN],Neuron
+FBA_Neuron,fdp[cN] <=> dhap[cN] + g3p[cN],Neuron
+FCLTm_Neuron,fe2[mN] + ppp9[mN] --> 2.0 h[mN] + pheme[mN],Neuron
+FE2tm_Neuron,fe2[cN] + h[cN] --> fe2[mN] + h[mN],Neuron
+FORt2m_Neuron,for[mN] <=> for[cN],Neuron
+FPGS2m_Neuron,5thf[mN] + atp[mN] + glu-L[mN] --> 6thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS3m_Neuron,6thf[mN] + atp[mN] + glu-L[mN] --> 7thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS4m_Neuron,4.0 atp[mN] + dhf[mN] + 4.0 glu-L[mN] --> 5dhf[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FPGS5m_Neuron,5dhf[mN] + atp[mN] + glu-L[mN] --> 6dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS6m_Neuron,6dhf[mN] + atp[mN] + glu-L[mN] --> 7dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS7m_Neuron,10fthf[mN] + 4.0 atp[mN] + 4.0 glu-L[mN] --> 10fthf5glu[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FPGS8m_Neuron,10fthf5glu[mN] + atp[mN] + glu-L[mN] --> 10fthf6glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS9m_Neuron,10fthf6glu[mN] + atp[mN] + glu-L[mN] --> 10fthf7glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGSm_Neuron,4.0 atp[mN] + 4.0 glu-L[mN] + thf[mN] --> 5thf[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FTHFLm_Neuron,atp[mN] + for[mN] + thf[mN] <=> 10fthf[mN] + adp[mN] + pi[mN],Neuron
+FUMSO3tm_Neuron,fum[cN] + so3[mN] <=> fum[mN] + so3[cN],Neuron
+FUMSO4tm_Neuron,fum[cN] + so4[mN] <=> fum[mN] + so4[cN],Neuron
+FUMTSULtm_Neuron,fum[cN] + tsul[mN] <=> fum[mN] + tsul[cN],Neuron
+FUMm_Neuron,fum[mN] + h2o[mN] <=> mal-L[mN],Neuron
+FUMtm_Neuron,fum[cN] + pi[mN] <=> fum[mN] + pi[cN],Neuron
+G3PD2m_Neuron,fad[mN] + glyc3p[cN] --> dhap[cN] + fadh2[mN],Neuron
+G5SDym_Neuron,glu5p[mN] + h[mN] + nadph[mN] --> glu5sa[mN] + nadp[mN] + pi[mN],Neuron
+G6PDH2r_Neuron,g6p[cN] + nadp[cN] <=> 6pgl[cN] + h[cN] + nadph[cN],Neuron
+GAPD_Neuron,g3p[cN] + nad[cN] + pi[cN] <=> 13dpg[cN] + h[cN] + nadh[cN],Neuron
+GCALDDm_Neuron,gcald[mN] + h2o[mN] + nad[mN] --> glyclt[mN] + 2.0 h[mN] + nadh[mN],Terminal
+GCC2am_Neuron,gly[mN] + h[mN] + lpam[mN] <=> alpam[mN] + co2[mN],Neuron
+GCC2bim_Neuron,alpam[mN] + thf[mN] --> dhlam[mN] + mlthf[mN] + nh4[mN],Neuron
+GCC2cm_Neuron,dhlam[mN] + nad[mN] <=> h[mN] + lpam[mN] + nadh[mN],Neuron
+GCCam_Neuron,gly[mN] + h[mN] + lpro[mN] <=> alpro[mN] + co2[mN],Neuron
+GCCbim_Neuron,alpro[mN] + thf[mN] --> dhlpro[mN] + mlthf[mN] + nh4[mN],Neuron
+GCCcm_Neuron,dhlpro[mN] + nad[mN] <=> h[mN] + lpro[mN] + nadh[mN],Neuron
+GHMT2rm_Neuron,ser-L[mN] + thf[mN] <=> gly[mN] + h2o[mN] + mlthf[mN],Neuron
+GHMT3m_Neuron,3htmelys[mN] + h[mN] --> 4tmeabut[mN] + gly[mN],Neuron
+GLACOm_Neuron,glac[mN] + 2.0 h2o[mN] + nad[mN] --> glcr[mN] + 3.0 h[mN] + nadh[mN],Neuron
+GLNtm_Neuron,gln-L[cN] --> gln-L[mN],Neuron
+GLU5Km_Neuron,atp[mN] + glu-L[mN] --> adp[mN] + glu5p[mN],Neuron
+GLUDxm_Neuron,glu-L[mN] + h2o[mN] + nad[mN] <=> akg[mN] + h[mN] + nadh[mN] + nh4[mN],Neuron
+GLUDym_Neuron,glu-L[mN] + h2o[mN] + nadp[mN] --> akg[mN] + h[mN] + nadph[mN] + nh4[mN],Neuron
+GLUNm_Neuron,gln-L[mN] + h2o[mN] --> glu-L[mN] + nh4[mN],Neuron
+GLUTCOADHm_Neuron,fad[mN] + glutcoa[mN] + h[mN] --> b2coa[mN] + co2[mN] + fadh2[mN],Neuron
+GLUVESSEC_Neuron,atp[cN] + glu-L[cN] + h2o[cN] --> adp[cN] + glu-L[I] + h[cN] + pi[cN],Neuron
+GLUt2m_Neuron,glu-L[cN] + h[cN] <=> glu-L[mN] + h[mN],Neuron
+GLYATm_Neuron,accoa[mN] + gly[mN] <=> 2aobut[mN] + coa[mN],Neuron
+GLYCLTDym_Neuron,glx[mN] + h[mN] + nadph[mN] --> glyclt[mN] + nadp[mN],Neuron
+GLYCt_Neuron,glyc[cN] <=> glyc[I],Neuron
+GLYCtm_Neuron,glyc[cN] <=> glyc[mN],Neuron
+GLYKm_Neuron,atp[mN] + glyc[mN] --> adp[mN] + glyc3p[mN] + h[mN],Neuron
+GLYOXm_Neuron,h2o[mN] + lgt-S[mN] --> gthrd[mN] + h[mN] + lac-D[mN],Neuron
+GLYtm_Neuron,gly[cN] <=> gly[mN],Neuron
+GND_Neuron,6pgc[cN] + nadp[cN] --> co2[cN] + nadph[cN] + ru5p-D[cN],Neuron
+GTHOm_Neuron,gthox[mN] + h[mN] + nadph[mN] --> 2.0 gthrd[mN] + nadp[mN],Neuron
+GTHPm_Neuron,2.0 gthrd[mN] + h2o2[mN] <=> gthox[mN] + 2.0 h2o[mN],Neuron
+H2CO3Dm_Neuron,co2[mN] + h2o[mN] <=> h2co3[mN],Terminal
+H2O2t_Neuron,h2o2[I] <=> h2o2[cN],Neuron
+H2O2tm_Neuron,h2o2[cN] <=> h2o2[mN],Neuron
+H2Ot_Neuron,h2o[I] <=> h2o[cN],Neuron
+H2Otm_Neuron,h2o[cN] <=> h2o[mN],Neuron
+HACD1m_Neuron,aacoa[mN] + h[mN] + nadh[mN] <=> 3hbcoa[mN] + nad[mN],Neuron
+HACD9m_Neuron,3hmbcoa[mN] + nad[mN] <=> 2maacoa[mN] + h[mN] + nadh[mN],Neuron
+HBZOPT10m_Neuron,4hbz[mN] + decdp[mN] --> 3dphb[mN] + ppi[mN],Neuron
+HCO3Em_Neuron,co2[mN] + h2o[mN] <=> h[mN] + hco3[mN],Neuron
+HEX1_Neuron,atp[cN] + glc-D[cN] --> adp[cN] + g6p[cN] + h[cN],Neuron
+HIBDm_Neuron,3hmp[mN] + nad[mN] <=> 2mop[mN] + h[mN] + nadh[mN],Terminal
+HMBS_Neuron,h2o[cN] + 4.0 ppbng[cN] --> hmbil[cN] + 4.0 nh4[cN],Neuron
+HMGCOASim_Neuron,aacoa[mN] + accoa[mN] + h2o[mN] --> coa[mN] + h[mN] + hmgcoa[mN],Neuron
+HMGLm_Neuron,hmgcoa[mN] --> acac[mN] + accoa[mN],Neuron
+HPROxm_Neuron,4hpro-LT[mN] + nad[mN] --> 1p3h5c[mN] + 2.0 h[mN] + nadh[mN],Neuron
+Ht_Neuron,h[cN] --> h[I],Neuron
+Htm_Neuron,h[cN] --> h[mN],Neuron
+ICDHxm_Neuron,icit[mN] + nad[mN] --> akg[mN] + co2[mN] + nadh[mN],Neuron
+ICDHyrm_Neuron,icit[mN] + nadp[mN] <=> akg[mN] + co2[mN] + nadph[mN],Neuron
+ILETA_Neuron,akg[cN] + ile-L[cN] <=> 3mop[cN] + glu-L[cN],Neuron
+ILETAm_Neuron,akg[mN] + ile-L[mN] <=> 3mop[mN] + glu-L[mN],Neuron
+ILEt5m_Neuron,ile-L[cN] <=> ile-L[mN],Neuron
+ILEtec_Neuron,ile-L[I] <=> ile-L[cN],Neuron
+IMACTD_m_Neuron,h2o[mN] + im4act[mN] + nad[mN] --> 2.0 h[mN] + im4ac[mN] + nadh[mN],Neuron
+ITCOAL1m_Neuron,coa[mN] + gtp[mN] + itacon[mN] <=> gdp[mN] + itaccoa[mN] + pi[mN],Neuron
+ITCOALm_Neuron,atp[mN] + coa[mN] + itacon[mN] <=> adp[mN] + itaccoa[mN] + pi[mN],Neuron
+Kt1r_Neuron,k[I] <=> k[cN],Neuron
+L-LACt2r_Neuron,h[I] + lac-L[I] --> h[cN] + lac-L[cN],Neuron
+L-LACtm_Neuron,h[cN] + lac-L[cN] --> h[mN] + lac-L[mN],Neuron
+LCADi_Dm_Neuron,h2o[mN] + lald-D[mN] + nad[mN] --> 2.0 h[mN] + lac-D[mN] + nadh[mN],Terminal
+LCADim_Neuron,h2o[mN] + lald-L[mN] + nad[mN] --> 2.0 h[mN] + lac-L[mN] + nadh[mN],Neuron
+LCYSTATm_Neuron,Lcyst[mN] + akg[mN] <=> 3spyr[mN] + glu-L[mN],Neuron
+LDH_L_Neuron,lac-L[cN] + nad[cN] --> h[cN] + nadh[cN] + pyr[cN],Neuron
+LDH_Lm_Neuron,lac-L[mN] + nad[mN] --> h[mN] + nadh[mN] + pyr[mN],Neuron
+LEUTA_Neuron,akg[cN] + leu-L[cN] <=> 4mop[cN] + glu-L[cN],Neuron
+LEUTAm_Neuron,akg[mN] + leu-L[mN] <=> 4mop[mN] + glu-L[mN],Neuron
+LEUt5m_Neuron,leu-L[cN] <=> leu-L[mN],Neuron
+LEUtec_Neuron,leu-L[I] <=> leu-L[cN],Neuron
+LSOProd_Neuron,focytC[mN] + o2[mN] --> ficytC[mN] + o2s[mN],Neuron
+LYStiDF_Neuron,lys-L[I] <=> lys-L[cN],Neuron
+LYStm_Neuron,h[mN] + lys-L[cN] <=> h[cN] + lys-L[mN],Neuron
+MALSO3tm_Neuron,mal-L[cN] + so3[mN] <=> mal-L[mN] + so3[cN],Neuron
+MALSO4tm_Neuron,mal-L[cN] + so4[mN] <=> mal-L[mN] + so4[cN],Neuron
+MALTSULtm_Neuron,mal-L[cN] + tsul[mN] <=> mal-L[mN] + tsul[cN],Neuron
+MALtm_Neuron,mal-L[cN] + pi[mN] <=> mal-L[mN] + pi[cN],Neuron
+MCCCrm_Neuron,3mb2coa[mN] + atp[mN] + hco3[mN] <=> 3mgcoa[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+MDH_Neuron,mal-L[cN] + nad[cN] <=> h[cN] + nadh[cN] + oaa[cN],Neuron
+MDHm_Neuron,mal-L[mN] + nad[mN] <=> h[mN] + nadh[mN] + oaa[mN],Neuron
+ME2m_Neuron,mal-L[mN] + nadp[mN] --> co2[mN] + nadph[mN] + pyr[mN],Neuron
+MECOALm_Neuron,atp[mN] + coa[mN] + mescon[mN] <=> adp[mN] + mescoa[mN] + pi[mN],Neuron
+MECOAS1m_Neuron,coa[mN] + gtp[mN] + mescon[mN] <=> gdp[mN] + mescoa[mN] + pi[mN],Neuron
+MGCHrm_Neuron,3mgcoa[mN] + h2o[mN] <=> hmgcoa[mN],Neuron
+MMCDm_Neuron,h[mN] + mmcoa-S[mN] --> co2[mN] + ppcoa[mN],Terminal
+MMEm_Neuron,mmcoa-R[mN] <=> mmcoa-S[mN],Neuron
+MMMm_Neuron,mmcoa-R[mN] <=> succoa[mN],Neuron
+MMSAD1m_Neuron,2mop[mN] + coa[mN] + nad[mN] --> co2[mN] + nadh[mN] + ppcoa[mN],Neuron
+MMSAD3m_Neuron,coa[mN] + msa[mN] + nad[mN] --> accoa[mN] + co2[mN] + nadh[mN],Neuron
+MTHFCm_Neuron,h2o[mN] + methf[mN] <=> 10fthf[mN] + h[mN],Neuron
+MTHFDm_Neuron,mlthf[mN] + nadp[mN] <=> methf[mN] + nadph[mN],Terminal
+NABTNOm_Neuron,h2o[mN] + n4abutn[mN] + nad[mN] --> 4aabutn[mN] + 2.0 h[mN] + nadh[mN],Neuron
+NADH2-u10m_Neuron,5.0 h[mN] + nadh[mN] + q10[mN] --> 4.0 h[cN] + nad[mN] + q10h2[mN],Neuron
+NDPK10m_Neuron,atp[mN] + didp[mN] <=> adp[mN] + ditp[mN],Neuron
+NDPK1m_Neuron,atp[mN] + gdp[mN] <=> adp[mN] + gtp[mN],Neuron
+NDPK2m_Neuron,atp[mN] + udp[mN] <=> adp[mN] + utp[mN],Neuron
+NDPK3m_Neuron,atp[mN] + cdp[mN] <=> adp[mN] + ctp[mN],Neuron
+NDPK4m_Neuron,atp[mN] + dtdp[mN] <=> adp[mN] + dttp[mN],Neuron
+NDPK5m_Neuron,atp[mN] + dgdp[mN] <=> adp[mN] + dgtp[mN],Neuron
+NDPK6m_Neuron,atp[mN] + dudp[mN] <=> adp[mN] + dutp[mN],Neuron
+NDPK7m_Neuron,atp[mN] + dcdp[mN] <=> adp[mN] + dctp[mN],Neuron
+NDPK8m_Neuron,atp[mN] + dadp[mN] <=> adp[mN] + datp[mN],Neuron
+NDPK9m_Neuron,atp[mN] + idp[mN] <=> adp[mN] + itp[mN],Neuron
+NH4t3r_Neuron,h[I] + nh4[cN] <=> h[cN] + nh4[I],Neuron
+NMNATm_Neuron,atp[mN] + h[mN] + nmn[mN] --> nad[mN] + ppi[mN],Neuron
+NNATm_Neuron,atp[mN] + h[mN] + nicrnt[mN] --> dnad[mN] + ppi[mN],Neuron
+NTD1m_Neuron,dump[mN] + h2o[mN] --> duri[mN] + pi[mN],Neuron
+NTD2m_Neuron,h2o[mN] + ump[mN] --> pi[mN] + uri[mN],Neuron
+NTD5m_Neuron,dtmp[mN] + h2o[mN] --> pi[mN] + thymd[mN],Neuron
+NaKt_Neuron,atp[cN] + h2o[cN] + 2.0 k[I] + 3.0 na1[cN] --> adp[cN] + h[cN] + 2.0 k[cN] + 3.0 na1[I] + pi[cN],Neuron
+O2St_Neuron,o2s[cN] <=> o2s[I],Neuron
+O2Stm_Neuron,o2s[cN] <=> o2s[mN],Neuron
+O2t_Neuron,o2[I] <=> o2[cN],Neuron
+O2tm_Neuron,o2[cN] <=> o2[mN],Neuron
+OCOAT1m_Neuron,acac[mN] + succoa[mN] <=> aacoa[mN] + succ[mN],Neuron
+OIVD1m_Neuron,4mop[mN] + coa[mN] + nad[mN] --> co2[mN] + ivcoa[mN] + nadh[mN],Neuron
+OIVD2m_Neuron,3mob[mN] + coa[mN] + nad[mN] --> co2[mN] + ibcoa[mN] + nadh[mN],Neuron
+OIVD3m_Neuron,3mop[mN] + coa[mN] + nad[mN] --> 2mbcoa[mN] + co2[mN] + nadh[mN],Neuron
+ORNTArm_Neuron,akg[mN] + orn[mN] <=> glu-L[mN] + glu5sa[mN],Neuron
+ORNt3m_Neuron,h[cN] + orn[mN] <=> h[mN] + orn[cN],Neuron
+ORNt4m_Neuron,citr-L[cN] + h[cN] + orn[mN] <=> citr-L[mN] + h[mN] + orn[cN],Neuron
+ORNtiDF_Neuron,orn[I] --> orn[cN],Neuron
+P45011A1m_Neuron,chsterol[mN] + h[mN] + nadph[mN] + 2.0 o2[mN] --> 4mptnl[mN] + 2.0 h2o[mN] + nadp[mN] + prgnlone[mN],Neuron
+P5CDm_Neuron,1pyr5c[mN] + 2.0 h2o[mN] + nad[mN] --> glu-L[mN] + h[mN] + nadh[mN],Terminal
+PCFLOPm_Neuron,atp[cN] + h2o[cN] + pchol_hs[mN] --> adp[cN] + h[cN] + pchol_hs[cN] + pi[cN],Neuron
+PDHm_Neuron,coa[mN] + nad[mN] + pyr[mN] --> accoa[mN] + co2[mN] + nadh[mN],Neuron
+PEFLIP_Neuron,atp[cN] + h2o[cN] + pe_hs[I] --> adp[cN] + h[cN] + pe_hs[cN] + pi[cN],Neuron
+PEFLIPm_Neuron,atp[cN] + h2o[cN] + pe_hs[cN] --> adp[cN] + h[cN] + pe_hs[mN] + pi[cN],Neuron
+PETOHMm_hs_Neuron,3.0 amet[mN] + pe_hs[mN] --> 3.0 ahcys[mN] + 3.0 h[mN] + pchol_hs[mN],Neuron
+PFK_Neuron,atp[cN] + f6p[cN] --> adp[cN] + fdp[cN] + h[cN],Neuron
+PGI_Neuron,g6p[cN] <=> f6p[cN],Neuron
+PGK_Neuron,3pg[cN] + atp[cN] <=> 13dpg[cN] + adp[cN],Neuron
+PGL_Neuron,6pgl[cN] + h2o[cN] --> 6pgc[cN] + h[cN],Neuron
+PGM_Neuron,2pg[cN] <=> 3pg[cN],Neuron
+PHCDm_Neuron,1p3h5c[mN] + 2.0 h2o[mN] + nad[mN] --> e4hglu[mN] + h[mN] + nadh[mN],Terminal
+PHCHGSm_Neuron,1p3h5c[mN] + h2o[mN] + h[mN] <=> 4hglusa[mN],Neuron
+PHEMEtm_Neuron,pheme[mN] <=> pheme[cN],Neuron
+PHETA1m_Neuron,akg[mN] + phe-L[mN] <=> glu-L[mN] + phpyr[mN],Neuron
+PIt2m_Neuron,h[cN] + pi[cN] <=> h[mN] + pi[mN],Neuron
+PIt7_Neuron,3.0 na1[I] + pi[I] <=> 3.0 na1[cN] + pi[cN],Neuron
+PNTKm_Neuron,atp[mN] + pnto-R[mN] --> 4ppan[mN] + adp[mN] + h[mN],Neuron
+PPA_Neuron,h2o[cN] + ppi[cN] --> h[cN] + 2.0 pi[cN],Neuron
+PPA2m_Neuron,h2o[mN] + pppi[mN] --> h[mN] + pi[mN] + ppi[mN],Neuron
+PPAm_Neuron,h2o[mN] + ppi[mN] --> h[mN] + 2.0 pi[mN],Neuron
+PPAt_Neuron,ppa[I] --> ppa[cN],Neuron
+PPAtm_Neuron,ppa[cN] --> ppa[mN],Neuron
+PPBNGS_Neuron,2.0 5aop[cN] --> 2.0 h2o[cN] + h[cN] + ppbng[cN],Neuron
+PPCOACm_Neuron,atp[mN] + hco3[mN] + ppcoa[mN] --> adp[mN] + h[mN] + mmcoa-S[mN] + pi[mN],Neuron
+PPCOAOm_Neuron,fad[mN] + ppcoa[mN] --> fadh2[mN] + prpncoa[mN],Neuron
+PPPG9tm_Neuron,pppg9[cN] <=> pppg9[mN],Neuron
+PPPGOm_Neuron,3.0 o2[mN] + 2.0 pppg9[mN] --> 6.0 h2o[mN] + 2.0 ppp9[mN],Neuron
+PRGNLONEtm_Neuron,prgnlone[cN] <=> prgnlone[mN],Neuron
+PRO1xm_Neuron,nad[mN] + pro-L[mN] --> 1pyr5c[mN] + 2.0 h[mN] + nadh[mN],Neuron
+PROD2m_Neuron,fad[mN] + pro-L[mN] --> 1pyr5c[mN] + fadh2[mN] + h[mN],Neuron
+PROt2r_Neuron,h[I] + pro-L[I] <=> h[cN] + pro-L[cN],Neuron
+PROtm_Neuron,pro-L[cN] <=> pro-L[mN],Neuron
+PRPNCOAHYDm_Neuron,h2o[mN] + prpncoa[mN] --> 3hpcoa[mN],Terminal
+PSFLIP_Neuron,atp[cN] + h2o[cN] + ps_hs[I] --> adp[cN] + h[cN] + pi[cN] + ps_hs[cN],Neuron
+PSFLIPm_Neuron,atp[cN] + h2o[cN] + ps_hs[cN] --> adp[cN] + h[cN] + pi[cN] + ps_hs[mN],Neuron
+PYK_Neuron,adp[cN] + h[cN] + pep[cN] --> atp[cN] + pyr[cN],Neuron
+PYLALDOXm_Neuron,h2o[mN] + nad[mN] + pylald[mN] --> 2.0 h[mN] + nadh[mN] + peracd[mN],Neuron
+PYRt2m_Neuron,h[cN] + pyr[cN] <=> h[mN] + pyr[mN],Neuron
+PYRt2r_Neuron,h[I] + pyr[I] <=> h[cN] + pyr[cN],Neuron
+RPE_Neuron,ru5p-D[cN] <=> xu5p-D[cN],Neuron
+RPI_Neuron,r5p[cN] <=> ru5p-D[cN],Neuron
+SACCD3m_Neuron,akg[mN] + h[mN] + lys-L[mN] + nadph[mN] --> h2o[mN] + nadp[mN] + saccrp-L[mN],Neuron
+SACCD4m_Neuron,h2o[mN] + nadp[mN] + saccrp-L[mN] --> L2aadp6sa[mN] + glu-L[mN] + h[mN] + nadph[mN],Neuron
+SARCStm_Neuron,sarcs[cN] --> sarcs[mN],Neuron
+SARDHm_Neuron,fad[mN] + sarcs[mN] + thf[mN] --> fadh2[mN] + gly[mN] + mlthf[mN],Neuron
+SERGLNexR_Neuron,gln-L[cN] + ser-L[I] --> gln-L[I] + ser-L[cN],Neuron
+SERGLYexR_Neuron,gly[cN] + ser-L[I] <=> gly[I] + ser-L[cN],Neuron
+SERt4_Neuron,na1[I] + ser-L[I] --> na1[cN] + ser-L[cN],Neuron
+SLDxm_Neuron,nad[mN] + sl-L[mN] <=> 3spyr[mN] + h[mN] + nadh[mN],Neuron
+SPODMm_Neuron,2.0 h[mN] + 2.0 o2s[mN] --> h2o2[mN] + o2[mN],Neuron
+SSALxm_Neuron,h2o[mN] + nad[mN] + sucsal[mN] --> 2.0 h[mN] + nadh[mN] + succ[mN],Neuron
+SUCCt2m_Neuron,pi[mN] + succ[cN] <=> pi[cN] + succ[mN],Neuron
+SUCD1m_Neuron,fad[mN] + succ[mN] <=> fadh2[mN] + fum[mN],Neuron
+SUCOAS1m_Neuron,coa[mN] + gtp[mN] + succ[mN] --> gdp[mN] + pi[mN] + succoa[mN],Neuron
+SUCOASm_Neuron,atp[mN] + coa[mN] + succ[mN] --> adp[mN] + pi[mN] + succoa[mN],Neuron
+SULFOX_Neuron,2.0 ficytC[mN] + h2o[cN] + so3[cN] --> 2.0 focytC[mN] + 2.0 h[cN] + so4[cN],Neuron
+T2M26DCOAHLm_Neuron,h2o[mN] + t2m26dcoa[mN] <=> 3h26dm5coa[mN],Neuron
+T4HCINNMFM_Neuron,34hpl[mN] --> T4hcinnm[mN] + h2o[mN],Neuron
+TALA_Neuron,g3p[cN] + s7p[cN] <=> e4p[cN] + f6p[cN],Neuron
+TCYNTt_Neuron,tcynt[cN] --> tcynt[I],Neuron
+TCYNTtm_Neuron,tcynt[mN] --> tcynt[cN],Neuron
+THD1m_Neuron,h[cN] + nadh[mN] + nadp[mN] <=> h[mN] + nad[mN] + nadph[mN],Neuron
+THFtm_Neuron,thf[cN] <=> thf[mN],Neuron
+THYMDt1_Neuron,thymd[I] --> thymd[cN],Neuron
+TKT1_Neuron,r5p[cN] + xu5p-D[cN] <=> g3p[cN] + s7p[cN],Neuron
+TKT2_Neuron,e4p[cN] + xu5p-D[cN] <=> f6p[cN] + g3p[cN],Neuron
+TMDK1m_Neuron,atp[mN] + thymd[mN] --> adp[mN] + dtmp[mN] + h[mN],Neuron
+TPI_Neuron,dhap[cN] <=> g3p[cN],Neuron
+TRDRm_Neuron,h[mN] + nadph[mN] + trdox[mN] --> nadp[mN] + trdrd[mN],Neuron
+TYRTAm_Neuron,akg[mN] + tyr-L[mN] <=> 34hpp[mN] + glu-L[mN],Neuron
+UPP3S_Neuron,hmbil[cN] --> h2o[cN] + uppg3[cN],Neuron
+UPPDC1_Neuron,4.0 h[cN] + uppg3[cN] --> 4.0 co2[cN] + cpppg3[cN],Neuron
+URIt_Neuron,uri[I] <=> uri[cN],Neuron
+VALTA_Neuron,akg[cN] + val-L[cN] <=> 3mob[cN] + glu-L[cN],Neuron
+VALTAm_Neuron,akg[mN] + val-L[mN] <=> 3mob[mN] + glu-L[mN],Neuron
+VALt5m_Neuron,val-L[cN] <=> val-L[mN],Neuron
+VALtec_Neuron,val-L[I] <=> val-L[cN],Neuron
+VITD2Hm_Neuron,h[mN] + nadph[mN] + o2[mN] + vitd2[mN] --> 25hvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+VITD2tm_Neuron,vitd2[mN] <=> vitd2[cN],Neuron
+VITD3Hm_Neuron,h[mN] + nadph[mN] + o2[mN] + vitd3[mN] --> 25hvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+VITD3tm_Neuron,vitd3[mN] --> vitd3[cN],Neuron
+VITD3tm3_Neuron,vitd3[cN] --> vitd3[mN],Neuron
+MTDNAploym_Neuron,9218.0 datp[mN] + 7350.0 dctp[mN] + 7350.0 dgtp[mN] + 9218.0 dttp[mN] + mtDNAn-1[mN] --> mtDNAn[mN] + 33136.0 ppi[mN],Neuron
+MTDNAdpolym_Neuron,33136.0 h2o[mN] + mtDNAn[mN] --> 9218.0 damp[mN] + 7350.0 dcmp[mN] + 7350.0 dgmp[mN] + 9218.0 dtmp[mN] + 33136.0 h[mN] + mtDNAn-1[mN],Neuron
+DAKm_Neuron,damp[mN] + gtp[mN] --> dadp[mN] + gdp[mN],Neuron
+DTKm_Neuron,atp[mN] + dtmp[mN] --> adp[mN] + dtdp[mN],Neuron
+DCKm_Neuron,atp[mN] + dcmp[mN] --> adp[mN] + dcdp[mN],Neuron
+DGKm_Neuron,atp[mN] + dgmp[mN] --> adp[mN] + dgdp[mN],Neuron
+NH3tm_Neuron,h[mN] + nh4[cN] <=> h[cN] + nh4[mN],Neuron
+NDPK1_Neuron,atp[cN] + gdp[cN] --> adp[cN] + gtp[cN],Neuron
+NACASPtm_Neuron,Nacasp[mN] <=> Nacasp[cN],Neuron
+NACASPt_Neuron,Nacasp[cN] --> Nacasp[I],Neuron
+GGNG_Neuron,Tyr-ggn[cN] + 8.0 udpg[cN] --> ggn[cN] + 8.0 h[cN] + 8.0 udp[cN],Neuron
+GLGNS1_Neuron,ggn[cN] + 3.0 udpg[cN] --> glygn1[cN] + 3.0 h[cN] + 3.0 udp[cN],Neuron
+GLBRAN_Neuron,glygn1[cN] --> glygn2[cN],Neuron
+GLDBRAN_Neuron,dxtrn[cN] + h2o[cN] --> glc-D[cN] + glygn3[cN],Neuron
+SERtm_Neuron,ser-L[cN] <=> ser-L[mN],Neuron
+UREAt_Neuron,urea[I] <=> urea[cN],Neuron
+UREAtm_Neuron,urea[cN] <=> urea[mN],Neuron
+GLNtN1_Neuron,gln-L[I] + h[cN] + na1[I] <=> gln-L[cN] + h[I] + na1[cN],Neuron
+DM_4mptnl(m)_Neuron,4mptnl[mN] -->,Terminal
+DM_prgnlone(c)_Neuron,prgnlone[cN] -->,Terminal
+DM_nadph(c)_Neuron,nadph[cN] --> h[cN] + nadp[cN],Terminal
+DM_atp(m)_Neuron,atp[mN] + h2o[mN] --> adp[mN] + h[mN] + pi[mN],Terminal
+sink_chsterol_Neuron,--> chsterol[cN],Terminal
+DM_1a2425thvitd3_Neuron,1a2425thvitd3[mN] -->,Terminal
+DM_1a2425thvitd2_Neuron,1a2425thvitd2[mN] -->,Terminal
+sink_vitd3_Neuron,--> vitd3[cN],Terminal
+sink_vitd2_Neuron,--> vitd2[cN],Terminal
+CKc_Neuron,atp[cN] + creat[cN] --> adp[cN] + pcreat[cN],Neuron
+CREATtmdiffir_Neuron,creat[cN] --> creat[mN],Neuron
+PCREATtmdiffir_Neuron,pcreat[mN] --> pcreat[cN],Neuron
+ALATA_L_Neuron,akg[cN] + ala-L[cN] <=> glu-L[cN] + pyr[cN],Neuron
+ALATA_Lm_Neuron,akg[mN] + ala-L[mN] <=> glu-L[mN] + pyr[mN],Neuron
+ALAtN1_Neuron,ala-L[I] <=> ala-L[cN],Neuron
+DM_pchol_hs_Neuron,pchol_hs[cN] -->,Terminal
+PSDm_hs_Neuron,h[mN] + ps_hs[mN] --> co2[mN] + pe_hs[mN],Terminal
+Kt_Neuron,k[cN] --> k[I],Neuron
+HtrnsEX_Neuron,h[e] <=> h[cN],Neuron
+NaEX_Neuron,na1[e] <=> na1[cN],Neuron
+GLCt1r_Neuron,glc-D[e] --> glc-D[cN],Neuron
+Fe2t_Neuron,fe2[e] <=> fe2[cN],Neuron
+PEPCK_Neuron,gtp[cN] + oaa[cN] --> co2[cN] + gdp[cN] + pep[cN],Neuron
+AA_PIt7_neuron,3.0 na1[e] + pi[e] <=> 3.0 na1[cN] + pi[cN],Neuron
+AA_H2Ot_neuron,h2o[e] <=> h2o[cN],Neuron
+AA2,na1[e] <=> na1[I],Exchange
+ALDH1L1,10fthf[mA] + h2o[mA] + nadp[mA] --> co2[mA] + h[mA] + nadph[mA] + thf[mA],Astrocyte
