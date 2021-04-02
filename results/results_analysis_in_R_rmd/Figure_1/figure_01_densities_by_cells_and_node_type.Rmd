@@ -1,0 +1,86 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r message=FALSE, warning=FALSE}
+library(readr)
+library(readxl)
+library(tidyverse)
+library(ggplot2)
+library(hrbrthemes)
+library(dplyr)
+library(tidyr)
+library(viridis)
+library(ggpubr)
+all_data <- read_rds('all_data.rds')
+only_centralities <- read_rds('only_centralities.rds')
+```
+
+```{r fig.height=3, fig.width=11, message=FALSE, warning=FALSE}
+
+plot_density <- function(df, titulo='sin título', fill = "deepskyblue4"){cut = 0.005
+                             df %>% gather() -> df_gathered
+                              df_gathered['value'] %>% filter(abs(value) > cut) %>%
+                              ggplot( aes(x=value)) +
+                                    geom_density(fill=fill, color="azure4", alpha=.8)+
+                                       theme(legend.position="top" , plot.title = element_text(size=8.5)) +
+                                    ylab("Density") + ggtitle(titulo) +  #ylim(0, 60) +
+                                    xlab("Centrality") + geom_vline(xintercept=0, linetype="dashed", color = "black",  size=1) -> Density_plot_of_centralities
+                              return(Density_plot_of_centralities)
+                              }
+
+#map2(only_centralities, names(only_centralities), plot_density)
+
+all_data$fold_change_geometric -> FC_geometric_only_cents
+FC_geometric_only_cents %>% select(-c("ID","Name","Reaction","Flux", "Sensitivity" )) %>% filter(`Node type` == "Sink/Demand Astro")     -> SD_astro
+FC_geometric_only_cents %>% select(-c("ID","Name","Reaction","Flux", "Sensitivity" )) %>% filter(`Node type` == "Sink/Demand Neuron")    -> SD_neuron
+FC_geometric_only_cents %>% select(-c("ID","Name","Reaction","Flux", "Sensitivity" )) %>% filter(`Node type` == "Neuron")                -> Neuron
+FC_geometric_only_cents %>% select(-c("ID","Name","Reaction","Flux", "Sensitivity" )) %>% filter(`Node type` == "Astrocyte")             -> Astrocyte
+FC_geometric_only_cents %>% select(-c("ID","Name","Reaction","Flux", "Sensitivity" )) %>% filter(`Node type` == "Exchange")              -> Exchange
+
+
+
+filter_centralities <- function(df){df %>% select(matches('^info|^close|^bet|^communi|^katz|^page'))}
+
+
+select(Neuron, matches("astrocyte"))  %>% filter_centralities  -> neuron_nodes_vs_astrocyte_subsystem
+select(Neuron, matches("neuron"))   %>% filter_centralities     -> neuron_nodes_vs_neuron_subsystem
+select(Astrocyte, matches("astrocyte"))  %>% filter_centralities-> astrocyte_nodes_vs_astrocyte_subsystem
+select(Astrocyte, matches("neuron"))   %>% filter_centralities  -> astrocyte_nodes_vs_neuron_subsystem
+
+#centralities_for_densities <- list(neuron_nodes_vs_astrocyte_subsystem,  neuron_nodes_vs_neuron_subsystem,  astrocyte_nodes_vs_astrocyte_subsystem, astrocyte_nodes_vs_neuron_subsystem )
+
+neuron_nodes_vs_astrocyte_subsystem %>%plot_density(titulo = 'Neuronal nodes/Astrocyte subsystem', fill = 'brown4') -> NnAs
+neuron_nodes_vs_neuron_subsystem %>%plot_density(titulo = 'Neuronal nodes/Neuronal subsystem', fill = 'darkorange4') -> NnNs
+astrocyte_nodes_vs_astrocyte_subsystem %>%plot_density(titulo = 'Astrocyte nodes/Astrocyte subsystem', fill = 'darkolivegreen4') -> AnAs
+astrocyte_nodes_vs_neuron_subsystem %>%plot_density(titulo = 'Astrocyte nodes/Neuron subsystem', fill = 'darkseagreen4') -> AnNs #map(centralities_for_densities, plot_density)
+
+bottom_panel   <- ggarrange(NnAs, NnNs, AnNs,  AnAs, ncol = 4,  labels = c('c','d','e','f'))
+
+```
+
+```{r fig.height=6, fig.width=10, message=FALSE, warning=FALSE}
+ggarrange(NA, bottom_panel, nrow = 2, heights = c(.65,.35))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

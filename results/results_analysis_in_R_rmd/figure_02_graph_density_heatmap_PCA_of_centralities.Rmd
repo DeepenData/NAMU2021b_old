@@ -42,11 +42,7 @@ plot_density <- function(df, titulo ){cut = 0.01
                                     xlab("Centrality") + geom_vline(xintercept=0, linetype="dashed", color = "red",  size=.4) -> Density_plot_of_centralities
                               return(Density_plot_of_centralities)}
 
-
-
 map2(list_of_cents, names(list_of_cents), plot_density)
-
-#calcular std, kurtonis y skewness.
 ```
 
 
@@ -108,6 +104,11 @@ clean_centralities <- function(df){ df %>% select(-c ("ID", "Name", "Reaction", 
 map(data, clean_centralities) -> only_centralities
 ```
 
+```{r}
+
+
+glimpse(data)
+```
 
 ```{r}
 map(data, clean_centralities) -> only_centralities
