@@ -62,9 +62,14 @@ bottom_panel
 ```
 
 ```{r fig.height=8, fig.width=8, message=FALSE, warning=FALSE}
-ggarrange(NA, bottom_panel, nrow = 2, heights = c(.55,.45))
+upper_panel <-  ggarrange(NA,NA, ncol = 2, nrow = 1,  labels = c("a","b"))
+
+full_panel <- ggarrange(upper_panel, bottom_panel, nrow = 2, heights = c(.6,.4))
 ```
 
+```{r}
+ggsave(file="panel_without_graphs.png", plot=full_panel, width=8, height=8, dpi = 500)
+```
 
 
 

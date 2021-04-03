@@ -205,4 +205,5 @@ reaction_projected_stimnulated = get_largest_component(reaction_projected_stimnu
 
 nx.write_gpickle(reaction_projected_stimnulated, path + "/reaction_projected_stimnulated.gpickle")
 
+nx.write_gexf(reaction_projected_stimnulated,  path + "/reaction_projected_stimnulated.gexf")
 # %%
