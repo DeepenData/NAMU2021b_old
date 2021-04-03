@@ -160,8 +160,10 @@ import warnings
 import pandas as pd
 warnings.filterwarnings("ignore")
 
-stimulated    = cobra.io.load_json_model("stimulated_2021.json") 
-nodes_attr_df = pd.read_csv("node_attributes.csv")
+
+path          = '/home/alejandro/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_1'
+stimulated    = cobra.io.load_json_model(path + '/stimulated_2021.json') 
+nodes_attr_df = pd.read_csv(path + '/node_attributes.csv')
 fba_solution        = stimulated.optimize()
 # %%
 fba_solution        = stimulated.optimize()
@@ -176,4 +178,31 @@ stimulated_graph = get_largest_component(stimulated_graph)
 # %%
 import networkx as nx
 
-nx.write_gexf(stimulated_graph, "stimulated_bipartite_graph.gexf")
+#nx.write_gexf(stimulated_graph, "stimulated_bipartite_graph.gexf")
+
+
+# %%
+reaction_projected_stimnulated = cobra_to_networkx_rxn_projection(stimulated)
+
+#reaction_projected_stimnulated    = solution2attr(fba_solution, reaction_projected_stimnulated, estandarizar=True)
+#rxns   =  [n for n, d in reaction_projected_stimnulated.nodes(data=True) if d["bipartite"] == 1] 
+
+fluxes        = fba_solution.fluxes.to_frame()
+
+reduced_costs = fba_solution.reduced_costs.to_frame()
+
+reaction_projected_stimnulated  = list2attr(reaction_projected_stimnulated, nodos = fluxes.index , \
+                                  nombre = "fluxes", atributos = fluxes.fluxes)
+
+reaction_projected_stimnulated  = list2attr(reaction_projected_stimnulated, nodos = reduced_costs.index , \
+                                  nombre = "reduced_costs", atributos = reduced_costs.reduced_costs)
+
+reaction_projected_stimnulated  = list2attr(reaction_projected_stimnulated, nodos = nodes_attr_df.ID , \
+    nombre = "type", atributos = nodes_attr_df.Node)
+
+reaction_projected_stimnulated = get_largest_component(reaction_projected_stimnulated)
+
+
+nx.write_gpickle(reaction_projected_stimnulated, path + "/reaction_projected_stimnulated.gpickle")
+
+# %%
