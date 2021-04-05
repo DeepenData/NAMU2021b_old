@@ -97,23 +97,25 @@ ht
 
 
 
-```{r fig.height=7, fig.width=10}
-
-```
 
 Distribution of pairwise correlations
 ```{r message=FALSE, warning=FALSE}
-row_order(ht)[[1]] -> astro_cluster
-row_order(ht)[[2]] -> neuron_cluster
+row_order(ht)[[1]] -> neuron_cluster
+row_order(ht)[[2]] -> astro_cluster 
 node_types   -> Nodes
 fold_change_geometric -> data
 data$ID[neuron_cluster]     -> neuron_cluster_names
 data$ID[astro_cluster]      -> astro_cluster_names
 ht@matrix %>% as.data.frame -> heatmap_matrix
 
-heatmap_matrix[neuron_cluster_names,neuron_cluster_names] %>% as.matrix %>% c -> `Neuronal_cluster`
-heatmap_matrix[astro_cluster_names,astro_cluster_names] %>% as.matrix %>% c  ->`Astrocytic_cluster` 
-heatmap_matrix[astro_cluster_names,neuron_cluster_names] %>% as.matrix %>% c  -> `Neuron_vs_Astrocyte`
+
+heatmap_matrix[neuron_cluster_names,neuron_cluster_names] -> ht_Neuronal_cluster
+heatmap_matrix[astro_cluster_names,astro_cluster_names]   -> ht_Astrocytic_cluster
+heatmap_matrix[astro_cluster_names,neuron_cluster_names]  -> ht_Neuron_vs_Astrocyte
+
+ht_Neuronal_cluster %>% as.matrix %>% c -> `Neuronal_cluster`
+ht_Astrocytic_cluster%>% as.matrix %>% c  ->`Astrocytic_cluster` 
+ht_Neuron_vs_Astrocyte%>% as.matrix %>% c  -> `Neuron_vs_Astrocyte`
 
 data.frame(`Neuronal_cluster`) %>% gather  -> A
 data.frame(`Astrocytic_cluster`) %>% gather   -> B
@@ -126,6 +128,15 @@ colnames(quads) <- c("Comparison","Node correlation")
 my_comparisons <- list( c("Neuronal_cluster", "Astrocytic_cluster"), 
                         c("Neuronal_cluster", "Neuron_vs_Astrocyte"), 
                         c("Astrocytic_cluster", "Neuron_vs_Astrocyte") )
+
+
+
+
+ht_Neuronal_cluster    %>%  write_rds("/home/alejandro/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_4/ht_Neuronal_cluster.rds")
+ht_Astrocytic_cluster  %>%  write_rds("/home/alejandro/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_4/ht_Astrocytic_cluster.rds")
+ht_Neuron_vs_Astrocyte %>%  write_rds("/home/alejandro/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_4/ht_Neuron_vs_Astrocyte.rds")
+
+heatmap_matrix %>% write_rds("/home/alejandro/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_4/heatmap_matrix.rds")
 ```
 ```{r fig.height=6, fig.width=3}
 ggplot(quads, aes(x=Comparison, y=`Node correlation`, fill=Comparison)) + 
