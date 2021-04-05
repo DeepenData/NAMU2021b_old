@@ -51,7 +51,7 @@ hyperhubs %>% plot_sorted_nodes('Hubness' , x_lab, y_lab, leg_pos, mycolors, y_l
 
 ```{r fig.height=9, fig.width=13, message=FALSE, warning=FALSE, paged.print=FALSE}
 ggarrange(NA,  hyperhubs_plot, widths = c(1,1),
-                    labels = c("a", "b"),
+                    labels = c("a", "e"),
                     ncol = 2, nrow = 1) -> upper_panel
 
 ```
@@ -126,7 +126,7 @@ my_comparisons <- list(c('Astrocytic_cluster', 'Neuronal_cluster'),c("Astrocytic
 
 ggplot(quads, aes(x=Comparison, y=`Nodes correlations`, fill=Comparison)) + 
   geom_violin(trim=F, colour = "azure3")+  
-  geom_jitter(width=0.2, alpha=0.1, size =.6, stroke = .2, colour="black")+
+  geom_jitter(width=0.15, alpha=0.07, size =.6, stroke = .2, colour="black")+
   
   stat_compare_means( vjust= -1., hjust= 0, comparisons = my_comparisons, method = "wilcox.test", p.adjust.method = "bonferroni", label = "p.signif")+
   
