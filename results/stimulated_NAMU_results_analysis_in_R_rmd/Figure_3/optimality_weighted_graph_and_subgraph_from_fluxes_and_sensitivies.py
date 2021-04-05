@@ -88,12 +88,13 @@ optimality_values = pd.read_csv(path_figure_3 + '/optimality_values.csv')
 
 
 
-reaction_projected_stimnulated  = list2attr(reaction_projected_stimnulated, nodos = optimality_values.ID
- , \
-                                  nombre = "optimality", atributos = optimality_values.value)
+reaction_projected_stimnulated  = list2attr(reaction_projected_stimnulated, nodos = list(optimality_values.ID ), \
+                                  nombre = "optimality", atributos = optimality_values.total)
 
 
-nx.write_gexf(reaction_projected_stimnulated,  path_figure_3 + "/reaction_projected_optimalities.gexf")
+nx.write_gexf(reaction_projected_stimnulated,  path_figure_3 + "/reaction_projected_optimality_weighted.gexf")
+reaction_projected_stimnulated.nodes(data=True)
+
 
 # %%
 #  Extract optimal subgraph

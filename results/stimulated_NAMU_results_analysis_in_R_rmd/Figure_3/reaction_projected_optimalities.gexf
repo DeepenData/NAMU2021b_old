@@ -16,7 +16,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="59.31811320754673" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6981407960164098" />
         </attvalues>
       </node>
       <node id="DM_10fthf6glu" label="DM_10fthf6glu">
@@ -24,7 +24,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="31.76150943396202" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5914578653246297" />
         </attvalues>
       </node>
       <node id="DM_10fthf7glu" label="DM_10fthf7glu">
@@ -39,7 +39,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="63.52301886792404" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.7098445200998579" />
         </attvalues>
       </node>
       <node id="DM_6dhf" label="DM_6dhf">
@@ -47,7 +47,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-158.8075471698101" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.866475314959735" />
         </attvalues>
       </node>
       <node id="DM_6thf" label="DM_6thf">
@@ -55,7 +55,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="31.76150943396202" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5914578653246297" />
         </attvalues>
       </node>
       <node id="DM_7dhf" label="DM_7dhf">
@@ -63,7 +63,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-190.56905660377214" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.8976463810166139" />
         </attvalues>
       </node>
       <node id="DM_7thf" label="DM_7thf">
@@ -78,7 +78,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.25484276729567057" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0217278386732198" />
         </attvalues>
       </node>
       <node id="DM_atp(c)" label="DM_atp(c)">
@@ -86,7 +86,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.260000000000013" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1016262463976683" />
         </attvalues>
       </node>
       <node id="DM_fald" label="DM_fald">
@@ -101,7 +101,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.0581132075471498" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2070167249801733" />
         </attvalues>
       </node>
       <node id="DM_pheme(c)" label="DM_pheme(c)">
@@ -109,7 +109,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-311.110566037733" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.9814459617323242" />
         </attvalues>
       </node>
       <node id="DM_q10(m)" label="DM_q10(m)">
@@ -117,7 +117,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="2.293584905660353" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1678088996947698" />
         </attvalues>
       </node>
       <node id="DM_thf(c)" label="DM_thf(c)">
@@ -125,7 +125,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="190.5690566037721" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.8976463810166139" />
         </attvalues>
       </node>
       <node id="EX_3aib(e)" label="EX_3aib(e)">
@@ -133,7 +133,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-29.09018867924506" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5764691026112128" />
         </attvalues>
       </node>
       <node id="EX_4abut(e)" label="EX_4abut(e)">
@@ -141,7 +141,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-28.59018867924507" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5735118844228787" />
         </attvalues>
       </node>
       <node id="EX_ac(e)" label="EX_ac(e)">
@@ -149,7 +149,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-20.736981132075357" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5187903070258014" />
         </attvalues>
       </node>
       <node id="EX_acac(e)" label="EX_acac(e)">
@@ -157,7 +157,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-39.94490566037717" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6305919084457943" />
         </attvalues>
       </node>
       <node id="EX_acald(e)" label="EX_acald(e)">
@@ -165,7 +165,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-28.177358490565886" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5710311749817156" />
         </attvalues>
       </node>
       <node id="EX_ala-B(e)" label="EX_ala-B(e)">
@@ -173,7 +173,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-15.756855345911859" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4721204431420494" />
         </attvalues>
       </node>
       <node id="EX_arg-L(e)" label="EX_arg-L(e)">
@@ -195,7 +195,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-43.76754716981109" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6462000496953882" />
         </attvalues>
       </node>
       <node id="EX_btn(e)" label="EX_btn(e)">
@@ -203,7 +203,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="0.49999999999996725" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675243" />
         </attvalues>
       </node>
       <node id="EX_co2(e)" label="EX_co2(e)">
@@ -219,7 +219,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="64.46547169811286" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.7123613683567176" />
         </attvalues>
       </node>
       <node id="EX_cyan(e)" label="EX_cyan(e)">
@@ -234,7 +234,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-16.09018867924518" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4756718342222552" />
         </attvalues>
       </node>
       <node id="EX_etoh(e)" label="EX_etoh(e)">
@@ -242,7 +242,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-35.617735849056416" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6110154674983029" />
         </attvalues>
       </node>
       <node id="EX_fe2(e)" label="EX_fe2(e)">
@@ -322,7 +322,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-53.0901886792449" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6791874359907907" />
         </attvalues>
       </node>
       <node id="EX_k(e)" label="EX_k(e)">
@@ -337,7 +337,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="4.999999999999962" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2816417527133566" />
         </attvalues>
       </node>
       <node id="EX_lac-L(e)" label="EX_lac-L(e)">
@@ -345,7 +345,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-31.999999999999808" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5927344046472" />
         </attvalues>
       </node>
       <node id="EX_leu-L(e)" label="EX_leu-L(e)">
@@ -353,7 +353,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-58.70094339622612" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6963535691975361" />
         </attvalues>
       </node>
       <node id="EX_lys-L(e)" label="EX_lys-L(e)">
@@ -361,7 +361,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-38.180377358490375" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6228772908105258" />
         </attvalues>
       </node>
       <node id="EX_na1(e)" label="EX_na1(e)">
@@ -376,7 +376,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="13.409811320754597" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.444801894356584" />
         </attvalues>
       </node>
       <node id="EX_o2(e)" label="EX_o2(e)">
@@ -392,7 +392,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.4999999999999896" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675261" />
         </attvalues>
       </node>
       <node id="EX_orn(e)" label="EX_orn(e)">
@@ -400,7 +400,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-25.99698113207529" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.557298301938828" />
         </attvalues>
       </node>
       <node id="EX_pe_hs(e)" label="EX_pe_hs(e)">
@@ -408,7 +408,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="2.9022641509434237" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1995916731610817" />
         </attvalues>
       </node>
       <node id="EX_pi(e)" label="EX_pi(e)">
@@ -423,7 +423,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-30.893773584905404" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5867312899602047" />
         </attvalues>
       </node>
       <node id="EX_pro-L(e)" label="EX_pro-L(e)">
@@ -431,7 +431,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-38.590188679245024" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6247002506112946" />
         </attvalues>
       </node>
       <node id="EX_ps_hs(e)" label="EX_ps_hs(e)">
@@ -446,7 +446,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-24.55962264150928" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5476039258877619" />
         </attvalues>
       </node>
       <node id="EX_sarcs(e)" label="EX_sarcs(e)">
@@ -454,7 +454,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-12.193396226415011" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4287387231595196" />
         </attvalues>
       </node>
       <node id="EX_ser-L(e)" label="EX_ser-L(e)">
@@ -462,7 +462,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-8.409811320754649" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.366450083729596" />
         </attvalues>
       </node>
       <node id="EX_so4(e)" label="EX_so4(e)">
@@ -491,7 +491,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-42.09018867924499" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6395257899722554" />
         </attvalues>
       </node>
       <node id="sink_4hpro-LT(m)" label="sink_4hpro-LT(m)">
@@ -499,7 +499,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-32.204905660377115" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.59382363189706" />
         </attvalues>
       </node>
       <node id="sink_amet" label="sink_amet">
@@ -528,7 +528,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-15.976981132075391" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4744738909210171" />
         </attvalues>
       </node>
       <node id="sink_tyr-L(m)" label="sink_tyr-L(m)">
@@ -536,7 +536,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-75.61528301886754" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.7396261700628295" />
         </attvalues>
       </node>
       <node id="10FTHF5GLUtm" label="10FTHF5GLUtm">
@@ -572,7 +572,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.20490566037733" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2545083847575639" />
         </attvalues>
       </node>
       <node id="1a,24,25VITD3Hm" label="1a,24,25VITD3Hm">
@@ -580,7 +580,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.20490566037733" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2545083847575639" />
         </attvalues>
       </node>
       <node id="1a,25VITD2Hm" label="1a,25VITD2Hm">
@@ -588,7 +588,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.20490566037733" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2545083847575639" />
         </attvalues>
       </node>
       <node id="1a,25VITD3Hm" label="1a,25VITD3Hm">
@@ -596,7 +596,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.20490566037733" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2545083847575639" />
         </attvalues>
       </node>
       <node id="24,25VITD2Hm" label="24,25VITD2Hm">
@@ -604,7 +604,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-9.704905660377298" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3903591103623061" />
         </attvalues>
       </node>
       <node id="24,25VITD3Hm" label="24,25VITD3Hm">
@@ -612,7 +612,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-9.704905660377298" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3903591103623061" />
         </attvalues>
       </node>
       <node id="25HVITD2t" label="25HVITD2t">
@@ -676,7 +676,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-9.704905660377298" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3903591103623061" />
         </attvalues>
       </node>
       <node id="25VITD3Hm" label="25VITD3Hm">
@@ -684,7 +684,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-9.704905660377298" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3903591103623061" />
         </attvalues>
       </node>
       <node id="2AMADPTm" label="2AMADPTm">
@@ -734,7 +734,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.5711320754716844" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1233369056014479" />
         </attvalues>
       </node>
       <node id="3DPHBH1" label="3DPHBH1">
@@ -742,7 +742,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-62.58257861635166" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.70729558371078" />
         </attvalues>
       </node>
       <node id="3DPHBH2" label="3DPHBH2">
@@ -750,7 +750,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-62.96484276729507" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.708336244735217" />
         </attvalues>
       </node>
       <node id="3HBCDm" label="3HBCDm">
@@ -891,7 +891,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.6292452830188597" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0529436941153205" />
         </attvalues>
       </node>
       <node id="AATAi" label="AATAi">
@@ -1025,7 +1025,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.2600000000000127" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1016262463976682" />
         </attvalues>
       </node>
       <node id="ACt2m" label="ACt2m">
@@ -1075,7 +1075,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.7645283018867832" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0638637076795015" />
         </attvalues>
       </node>
       <node id="AGMTm" label="AGMTm">
@@ -1104,7 +1104,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.5741509433962406" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.229820721053501" />
         </attvalues>
       </node>
       <node id="AKGMALtm" label="AKGMALtm">
@@ -1133,7 +1133,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-7.4403773584905295" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3461492786152284" />
         </attvalues>
       </node>
       <node id="ALDD20xm" label="ALDD20xm">
@@ -1155,7 +1155,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.617735849056605" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2316318208042136" />
         </attvalues>
       </node>
       <node id="ALDD2y" label="ALDD2y">
@@ -1163,7 +1163,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-7.440377358490528" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3461492786152284" />
         </attvalues>
       </node>
       <node id="ALR" label="ALR">
@@ -1171,7 +1171,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-9.204905660377255" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3815111982957977" />
         </attvalues>
       </node>
       <node id="AMETt2m" label="AMETt2m">
@@ -1249,7 +1249,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.5116981132075394" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0432810747301482" />
         </attvalues>
       </node>
       <node id="ASNtm" label="ASNtm">
@@ -1264,7 +1264,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.000000000000011" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2468311908770477" />
         </attvalues>
       </node>
       <node id="ASPTA" label="ASPTA">
@@ -1293,7 +1293,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.2690566037735569" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0229326790573455" />
         </attvalues>
       </node>
       <node id="BACCLm" label="BACCLm">
@@ -1526,7 +1526,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-6.625911949685404" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3270868227758046" />
         </attvalues>
       </node>
       <node id="COUCOAFm" label="COUCOAFm">
@@ -1618,7 +1618,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-17.700377358490474" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4918656722394495" />
         </attvalues>
       </node>
       <node id="CYSGLYex" label="CYSGLYex">
@@ -1640,7 +1640,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.735471698113198" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2730459438691784" />
         </attvalues>
       </node>
       <node id="CYSTAm" label="CYSTAm">
@@ -1697,7 +1697,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-6.249433962264185" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3175359391462746" />
         </attvalues>
       </node>
       <node id="DGSNt" label="DGSNt">
@@ -1754,7 +1754,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.2600000000000127" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1016262463976682" />
         </attvalues>
       </node>
       <node id="DPHMBDCm" label="DPHMBDCm">
@@ -1769,7 +1769,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.52905660377357" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1204938365801788" />
         </attvalues>
       </node>
       <node id="DUTPDPm" label="DUTPDPm">
@@ -1827,7 +1827,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.490000000000026" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1178287990266147" />
         </attvalues>
       </node>
       <node id="ETFQO" label="ETFQO">
@@ -1842,7 +1842,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-7.440377358490533" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3461492786152285" />
         </attvalues>
       </node>
       <node id="ETOHt" label="ETOHt">
@@ -1942,7 +1942,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.204905660377307" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2545083847575631" />
         </attvalues>
       </node>
       <node id="FPGS9m" label="FPGS9m">
@@ -2027,7 +2027,7 @@
           <attvalue for="0" value="7.038" />
           <attvalue for="1" value="1.1102230246251561e-15" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.3369869303271446" />
+          <attvalue for="3" value="0.3369869303271447" />
         </attvalues>
       </node>
       <node id="GCALDDm" label="GCALDDm">
@@ -2049,7 +2049,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.1773584905660126" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0955931384595266" />
         </attvalues>
       </node>
       <node id="GCC2cm" label="GCC2cm">
@@ -2071,7 +2071,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.1773584905660126" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0955931384595266" />
         </attvalues>
       </node>
       <node id="GCCcm" label="GCCcm">
@@ -2107,7 +2107,7 @@
           <attvalue for="0" value="3.519" />
           <attvalue for="1" value="66.51999999999956" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.2275047612364218" />
+          <attvalue for="3" value="0.945227732153085" />
         </attvalues>
       </node>
       <node id="GLCt2r" label="GLCt2r">
@@ -2115,7 +2115,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="66.51999999999956" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.7177229709166631" />
         </attvalues>
       </node>
       <node id="GLNS" label="GLNS">
@@ -2123,7 +2123,7 @@
           <attvalue for="0" value="4.222799999999955" />
           <attvalue for="1" value="1.3322676295501878e-15" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.2551643238024872" />
+          <attvalue for="3" value="0.2551643238024873" />
         </attvalues>
       </node>
       <node id="GLNtm" label="GLNtm">
@@ -2152,7 +2152,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="0.3822641509434078" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0324837796033563" />
         </attvalues>
       </node>
       <node id="GLUNm" label="GLUNm">
@@ -2160,7 +2160,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.260000000000014" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1016262463976683" />
         </attvalues>
       </node>
       <node id="GLUTCOADHm" label="GLUTCOADHm">
@@ -2175,7 +2175,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-31.11018867924507" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5879223687504413" />
         </attvalues>
       </node>
       <node id="GLUt2m" label="GLUt2m">
@@ -2190,7 +2190,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="28.590188679245042" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5735118844228786" />
         </attvalues>
       </node>
       <node id="GLYATm" label="GLYATm">
@@ -2233,7 +2233,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.999999999999972" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2816417527133569" />
         </attvalues>
       </node>
       <node id="GLYt2r" label="GLYt2r">
@@ -2255,7 +2255,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-11.086666666666595" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4127056666134207" />
         </attvalues>
       </node>
       <node id="GTHOm" label="GTHOm">
@@ -2263,7 +2263,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.204905660377351" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2545083847575647" />
         </attvalues>
       </node>
       <node id="GTHPm" label="GTHPm">
@@ -2342,7 +2342,7 @@
           <attvalue for="0" value="3.519" />
           <attvalue for="1" value="-1.9984014443252818e-15" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.2275047612364218" />
+          <attvalue for="3" value="0.2275047612364219" />
         </attvalues>
       </node>
       <node id="HIBDm" label="HIBDm">
@@ -2371,7 +2371,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.5290566037735687" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1204938365801787" />
         </attvalues>
       </node>
       <node id="HPROxm" label="HPROxm">
@@ -2393,7 +2393,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.3822641509433925" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.032483779603355" />
         </attvalues>
       </node>
       <node id="ICDHxm" label="ICDHxm">
@@ -2401,7 +2401,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.3822641509433993" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0324837796033556" />
         </attvalues>
       </node>
       <node id="ICDHyrm" label="ICDHyrm">
@@ -2479,7 +2479,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.6177358490566083" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2316318208042137" />
         </attvalues>
       </node>
       <node id="LCADi_Dm" label="LCADi_Dm">
@@ -2487,7 +2487,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.1773584905660373" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0955931384595284" />
         </attvalues>
       </node>
       <node id="LCADim" label="LCADim">
@@ -2552,7 +2552,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.2645283018867945" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0225489561540166" />
         </attvalues>
       </node>
       <node id="LYStiDF" label="LYStiDF">
@@ -2644,7 +2644,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.5290566037735682" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1204938365801787" />
         </attvalues>
       </node>
       <node id="MMEm" label="MMEm">
@@ -2666,7 +2666,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-5.914339622641492" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3085852034991958" />
         </attvalues>
       </node>
       <node id="MMSAD3m" label="MMSAD3m">
@@ -2674,7 +2674,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.364402515723242" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0309827304188549" />
         </attvalues>
       </node>
       <node id="MTHFCm" label="MTHFCm">
@@ -2815,7 +2815,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.5290566037735698" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1204938365801788" />
         </attvalues>
       </node>
       <node id="NaKt" label="NaKt">
@@ -2915,7 +2915,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.204905660377332" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.254508384757564" />
         </attvalues>
       </node>
       <node id="P5CDm" label="P5CDm">
@@ -2937,7 +2937,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.1833962264151556" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2127960709118143" />
         </attvalues>
       </node>
       <node id="PDHm" label="PDHm">
@@ -2973,7 +2973,7 @@
           <attvalue for="0" value="3.519" />
           <attvalue for="1" value="-1.9984014443252818e-15" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.2275047612364218" />
+          <attvalue for="3" value="0.2275047612364219" />
         </attvalues>
       </node>
       <node id="PGCD" label="PGCD">
@@ -3082,7 +3082,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.05811320754714" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2070167249801728" />
         </attvalues>
       </node>
       <node id="PPAt" label="PPAt">
@@ -3146,7 +3146,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.094716981132122" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0894501068167864" />
         </attvalues>
       </node>
       <node id="PROD2m" label="PROD2m">
@@ -3154,7 +3154,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.1337735849056663" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0923669016813931" />
         </attvalues>
       </node>
       <node id="PROt2r" label="PROt2r">
@@ -3190,7 +3190,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.260000000000013" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1016262463976683" />
         </attvalues>
       </node>
       <node id="PSFLIPm" label="PSFLIPm">
@@ -3198,7 +3198,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.260000000000013" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1016262463976683" />
         </attvalues>
       </node>
       <node id="PSP_L" label="PSP_L">
@@ -3213,7 +3213,7 @@
           <attvalue for="0" value="7.03799999999998" />
           <attvalue for="1" value="2.1538326677728037e-14" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.3369869303271441" />
+          <attvalue for="3" value="0.3369869303271459" />
         </attvalues>
       </node>
       <node id="PYLALDOXm" label="PYLALDOXm">
@@ -3291,7 +3291,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-17.700377358490474" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4918656722394495" />
         </attvalues>
       </node>
       <node id="SERGLYexR" label="SERGLYexR">
@@ -3306,7 +3306,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.42000000000000437" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0356467646820834" />
         </attvalues>
       </node>
       <node id="SLDxm" label="SLDxm">
@@ -3328,7 +3328,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.23547169811317503" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0200841255931579" />
         </attvalues>
       </node>
       <node id="SSALxm" label="SSALxm">
@@ -3336,7 +3336,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.8432075471698264" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2407409575736789" />
         </attvalues>
       </node>
       <node id="SUCCt2m" label="SUCCt2m">
@@ -3611,7 +3611,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-174.61499999999884" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.8826984114934228" />
         </attvalues>
       </node>
       <node id="GLBRAN" label="GLBRAN">
@@ -3654,7 +3654,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.2354716981132157" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2151506028648214" />
         </attvalues>
       </node>
       <node id="UREAt" label="UREAt">
@@ -3676,7 +3676,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="17.28037735849047" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4877863136962159" />
         </attvalues>
       </node>
       <node id="DM_4mptnl(m)" label="DM_4mptnl(m)">
@@ -3705,7 +3705,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.52905660377357" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1204938365801788" />
         </attvalues>
       </node>
       <node id="sink_chsterol" label="sink_chsterol">
@@ -3734,7 +3734,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="1.2950943396226429" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1041546292700513" />
         </attvalues>
       </node>
       <node id="sink_vitd2" label="sink_vitd2">
@@ -3742,7 +3742,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="1.2950943396226429" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1041546292700513" />
         </attvalues>
       </node>
       <node id="CKc" label="CKc">
@@ -3764,7 +3764,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.2690566037735569" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0229326790573455" />
         </attvalues>
       </node>
       <node id="ALATA_L" label="ALATA_L">
@@ -3793,7 +3793,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.260000000000013" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1016262463976683" />
         </attvalues>
       </node>
       <node id="PSDm_hs" label="PSDm_hs">
@@ -3885,7 +3885,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.5116981132075394" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0432810747301482" />
         </attvalues>
       </node>
       <node id="BALAVECSEC_Int" label="BALAVECSEC_Int">
@@ -3945,7 +3945,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.520000000000003" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1801817876079312" />
         </attvalues>
       </node>
       <node id="CYSGLYex_Int" label="CYSGLYex_Int">
@@ -3995,7 +3995,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="66.51999999999956" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.7177229709166631" />
         </attvalues>
       </node>
       <node id="GLUt6_Int" label="GLUt6_Int">
@@ -4106,7 +4106,7 @@
           <attvalue for="0" value="-32.407799999999924" />
           <attvalue for="1" value="-4.218847493575595e-15" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.5948953862997173" />
+          <attvalue for="3" value="0.5948953862997176" />
         </attvalues>
       </node>
       <node id="ORNtiDF_Int" label="ORNtiDF_Int">
@@ -4114,7 +4114,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.683396226415116" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.130781570170842" />
         </attvalues>
       </node>
       <node id="PEFLIP_Int" label="PEFLIP_Int">
@@ -4122,7 +4122,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.9022641509434237" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1995916731610817" />
         </attvalues>
       </node>
       <node id="PIt7_Int" label="PIt7_Int">
@@ -4151,7 +4151,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.260000000000013" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1016262463976683" />
         </attvalues>
       </node>
       <node id="PYRt2r_Int" label="PYRt2r_Int">
@@ -4159,7 +4159,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="1.0596226415094598" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.086808665873481" />
         </attvalues>
       </node>
       <node id="SARCStex_Int" label="SARCStex_Int">
@@ -4174,7 +4174,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.520000000000005" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1801817876079312" />
         </attvalues>
       </node>
       <node id="SERGLYexR_Int" label="SERGLYexR_Int">
@@ -4189,7 +4189,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.4200000000000045" />
           <attvalue for="2" value="Astrocyte" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0356467646820834" />
         </attvalues>
       </node>
       <node id="SO4HCOtex_Int" label="SO4HCOtex_Int">
@@ -4240,7 +4240,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-35.090188679244996" />
           <attvalue for="2" value="Exchange" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6084681687916371" />
         </attvalues>
       </node>
       <node id="DM_10fthf5glu_Neuron" label="DM_10fthf5glu_Neuron">
@@ -4248,7 +4248,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-124.86075471698014" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.8253601184133872" />
         </attvalues>
       </node>
       <node id="DM_10fthf6glu_Neuron" label="DM_10fthf6glu_Neuron">
@@ -4256,7 +4256,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-155.95094339622517" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.8633720283068888" />
         </attvalues>
       </node>
       <node id="DM_10fthf7glu_Neuron" label="DM_10fthf7glu_Neuron">
@@ -4264,7 +4264,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-187.04113207547022" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.8944516349892881" />
         </attvalues>
       </node>
       <node id="DM_5thf_Neuron" label="DM_5thf_Neuron">
@@ -4272,7 +4272,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-121.95094339622543" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.8213289154971173" />
         </attvalues>
       </node>
       <node id="DM_6dhf_Neuron" label="DM_6dhf_Neuron">
@@ -4280,7 +4280,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="31.090188679245063" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5878126418006673" />
         </attvalues>
       </node>
       <node id="DM_6thf_Neuron" label="DM_6thf_Neuron">
@@ -4288,7 +4288,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-153.04113207547047" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.860151950077783" />
         </attvalues>
       </node>
       <node id="DM_7dhf_Neuron" label="DM_7dhf_Neuron">
@@ -4303,7 +4303,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-184.13132075471552" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.8917709532359083" />
         </attvalues>
       </node>
       <node id="DM_ahcys_Neuron" label="DM_ahcys_Neuron">
@@ -4311,7 +4311,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.3333333333333268" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0283661758241425" />
         </attvalues>
       </node>
       <node id="DM_atp(c)_Neuron" label="DM_atp(c)_Neuron">
@@ -4319,7 +4319,7 @@
           <attvalue for="0" value="33.78" />
           <attvalue for="1" value="-1.9999999999999831" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.6019729206845044" />
+          <attvalue for="3" value="0.7526691981257754" />
         </attvalues>
       </node>
       <node id="DM_fald_Neuron" label="DM_fald_Neuron">
@@ -4334,7 +4334,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.4098113207546927" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1122785556052178" />
         </attvalues>
       </node>
       <node id="DM_pheme(c)_Neuron" label="DM_pheme(c)_Neuron">
@@ -4342,7 +4342,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-311.13924528301646" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.9814617221041976" />
         </attvalues>
       </node>
       <node id="DM_q10(m)_Neuron" label="DM_q10(m)_Neuron">
@@ -4350,7 +4350,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="2.9999999999999774" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2042792885112087" />
         </attvalues>
       </node>
       <node id="DM_thf(c)_Neuron" label="DM_thf(c)_Neuron">
@@ -4358,7 +4358,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="2.40981132075472" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1742462753843846" />
         </attvalues>
       </node>
       <node id="EX_pe_hs(e)_Neuron" label="EX_pe_hs(e)_Neuron">
@@ -4380,7 +4380,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-33.499999999999766" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6005522911693192" />
         </attvalues>
       </node>
       <node id="sink_amet_Neuron" label="sink_amet_Neuron">
@@ -4402,7 +4402,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="186.54113207547022" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.8939939869465993" />
         </attvalues>
       </node>
       <node id="sink_dmgly_Neuron" label="sink_dmgly_Neuron">
@@ -4410,7 +4410,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-14.409811320754631" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4569737160686775" />
         </attvalues>
       </node>
       <node id="sink_tyr-L(m)_Neuron" label="sink_tyr-L(m)_Neuron">
@@ -4418,7 +4418,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.9235220125785784" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.076385003931868" />
         </attvalues>
       </node>
       <node id="10FTHF5GLUtm_Neuron" label="10FTHF5GLUtm_Neuron">
@@ -4622,7 +4622,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.49999999999999767" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675268" />
         </attvalues>
       </node>
       <node id="3HBCDm_Neuron" label="3HBCDm_Neuron">
@@ -4742,7 +4742,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-38.99999999999969" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.6265040045668269" />
         </attvalues>
       </node>
       <node id="AACTOOR_Neuron" label="AACTOOR_Neuron">
@@ -4813,7 +4813,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.9449056603774437" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2016499406551919" />
         </attvalues>
       </node>
       <node id="ACACt2m_Neuron" label="ACACt2m_Neuron">
@@ -4856,7 +4856,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.4999999999999969" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675267" />
         </attvalues>
       </node>
       <node id="ACOAD8m_Neuron" label="ACOAD8m_Neuron">
@@ -4864,7 +4864,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-5.610754716981235" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3000741007317247" />
         </attvalues>
       </node>
       <node id="ACOAD9m_Neuron" label="ACOAD9m_Neuron">
@@ -4894,7 +4894,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-8.677358490566" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3716638157312585" />
         </attvalues>
       </node>
       <node id="ACYP_Neuron" label="ACYP_Neuron">
@@ -4902,7 +4902,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999845" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1506962774412711" />
         </attvalues>
       </node>
       <node id="ACt2m_Neuron" label="ACt2m_Neuron">
@@ -4924,7 +4924,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.999999999999981" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1506962774412709" />
         </attvalues>
       </node>
       <node id="ADK1m_Neuron" label="ADK1m_Neuron">
@@ -4946,7 +4946,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.9999999999999822" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2468311908770466" />
         </attvalues>
       </node>
       <node id="AGMTm_Neuron" label="AGMTm_Neuron">
@@ -4998,7 +4998,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.9403773584905415" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2014323321775647" />
         </attvalues>
       </node>
       <node id="ALCD2yf_Neuron" label="ALCD2yf_Neuron">
@@ -5006,7 +5006,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.440377358490538" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1759088483639199" />
         </attvalues>
       </node>
       <node id="ALDD20xm_Neuron" label="ALDD20xm_Neuron">
@@ -5021,7 +5021,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.5000000000000042" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675274" />
         </attvalues>
       </node>
       <node id="ALDD2xm_Neuron" label="ALDD2xm_Neuron">
@@ -5043,7 +5043,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.9098113207546605" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1999574601762108" />
         </attvalues>
       </node>
       <node id="AMETt2m_Neuron" label="AMETt2m_Neuron">
@@ -5079,7 +5079,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.9999999999999702" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2468311908770461" />
         </attvalues>
       </node>
       <node id="ARGDCm_Neuron" label="ARGDCm_Neuron">
@@ -5115,7 +5115,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="2.1803773584905763" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.16135807451028" />
         </attvalues>
       </node>
       <node id="ASNtm_Neuron" label="ASNtm_Neuron">
@@ -5130,7 +5130,7 @@
           <attvalue for="0" value="10.802599999999805" />
           <attvalue for="1" value="2.1094237467877974e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.408339993541037" />
+          <attvalue for="3" value="0.4083399935410371" />
         </attvalues>
       </node>
       <node id="ASPNATm_Neuron" label="ASPNATm_Neuron">
@@ -5219,7 +5219,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.767547169811408" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1362286582990551" />
         </attvalues>
       </node>
       <node id="BHBtm_Neuron" label="BHBtm_Neuron">
@@ -5269,7 +5269,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-18.965471698113213" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5035992905001541" />
         </attvalues>
       </node>
       <node id="C160CRNt_Neuron" label="C160CRNt_Neuron">
@@ -5284,7 +5284,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-18.965471698113213" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5035992905001541" />
         </attvalues>
       </node>
       <node id="C226CPT2_Neuron" label="C226CPT2_Neuron">
@@ -5292,7 +5292,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-18.965471698113213" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.5035992905001541" />
         </attvalues>
       </node>
       <node id="C2M26DCOAHLm_Neuron" label="C2M26DCOAHLm_Neuron">
@@ -5386,7 +5386,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-8.3333333333333" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.3649308603518458" />
         </attvalues>
       </node>
       <node id="COQ5m_Neuron" label="COQ5m_Neuron">
@@ -5457,7 +5457,7 @@
           <attvalue for="0" value="10.802599999999964" />
           <attvalue for="1" value="-1.1657341758564144e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.4083399935410395" />
+          <attvalue for="3" value="0.4083399935410396" />
         </attvalues>
       </node>
       <node id="CYANSTm_Neuron" label="CYANSTm_Neuron">
@@ -5486,7 +5486,7 @@
           <attvalue for="0" value="32.40779999999987" />
           <attvalue for="1" value="-4.884981308350689e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.5948953862997168" />
+          <attvalue for="3" value="0.5948953862997173" />
         </attvalues>
       </node>
       <node id="CYOR-u10m_Neuron" label="CYOR-u10m_Neuron">
@@ -5494,7 +5494,7 @@
           <attvalue for="0" value="64.81559999999978" />
           <attvalue for="1" value="-1.7763568394002505e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.7132870423130447" />
+          <attvalue for="3" value="0.7132870423130449" />
         </attvalues>
       </node>
       <node id="CYSGLUexR_Neuron" label="CYSGLUexR_Neuron">
@@ -5621,7 +5621,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999551" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1506962774412693" />
         </attvalues>
       </node>
       <node id="DPGase_Neuron" label="DPGase_Neuron">
@@ -5643,7 +5643,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999831" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.150696277441271" />
         </attvalues>
       </node>
       <node id="DUTPDPm_Neuron" label="DUTPDPm_Neuron">
@@ -5651,7 +5651,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999853" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1506962774412712" />
         </attvalues>
       </node>
       <node id="ECOAH12m_Neuron" label="ECOAH12m_Neuron">
@@ -5694,7 +5694,7 @@
           <attvalue for="0" value="3.7645999999999997" />
           <attvalue for="1" value="8.881784197001252e-16" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.2376135449784046" />
+          <attvalue for="3" value="0.2376135449784047" />
         </attvalues>
       </node>
       <node id="ETF_Neuron" label="ETF_Neuron">
@@ -5718,7 +5718,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-12.440377358490533" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4321230137492204" />
         </attvalues>
       </node>
       <node id="ETOHt_Neuron" label="ETOHt_Neuron">
@@ -5860,7 +5860,7 @@
           <attvalue for="0" value="10.802599999999964" />
           <attvalue for="1" value="-8.881784197001252e-16" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.4083399935410395" />
+          <attvalue for="3" value="0.4083399935410396" />
         </attvalues>
       </node>
       <node id="FUMtm_Neuron" label="FUMtm_Neuron">
@@ -5896,7 +5896,7 @@
           <attvalue for="0" value="3.7645999999999997" />
           <attvalue for="1" value="-1.0547118733938987e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.2376135449784046" />
+          <attvalue for="3" value="0.2376135449784047" />
         </attvalues>
       </node>
       <node id="GCALDDm_Neuron" label="GCALDDm_Neuron">
@@ -5996,7 +5996,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="0.49999999999999234" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675264" />
         </attvalues>
       </node>
       <node id="GLUNm_Neuron" label="GLUNm_Neuron">
@@ -6027,7 +6027,7 @@
           <attvalue for="0" value="-4.222799999999776" />
           <attvalue for="1" value="3.3306690738754696e-16" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.2551643238024806" />
+          <attvalue for="3" value="0.2551643238024807" />
         </attvalues>
       </node>
       <node id="GLYATm_Neuron" label="GLYATm_Neuron">
@@ -6042,7 +6042,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-14.409811320754594" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.456973716068677" />
         </attvalues>
       </node>
       <node id="GLYCt_Neuron" label="GLYCt_Neuron">
@@ -6064,7 +6064,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.4999999999999636" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1791162903049743" />
         </attvalues>
       </node>
       <node id="GLYOXm_Neuron" label="GLYOXm_Neuron">
@@ -6072,7 +6072,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.999999999999965" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2816417527133567" />
         </attvalues>
       </node>
       <node id="GLYtm_Neuron" label="GLYtm_Neuron">
@@ -6094,7 +6094,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-5.4999999999999645" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.296866814184105" />
         </attvalues>
       </node>
       <node id="GTHPm_Neuron" label="GTHPm_Neuron">
@@ -6173,7 +6173,7 @@
           <attvalue for="0" value="1.8823" />
           <attvalue for="1" value="1.7763568394002505e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.1434756113863896" />
+          <attvalue for="3" value="0.1434756113863898" />
         </attvalues>
       </node>
       <node id="HIBDm_Neuron" label="HIBDm_Neuron">
@@ -6195,7 +6195,7 @@
           <attvalue for="0" value="10.802599999999964" />
           <attvalue for="1" value="2.3869795029440866e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.4083399935410395" />
+          <attvalue for="3" value="0.4083399935410398" />
         </attvalues>
       </node>
       <node id="HMGLm_Neuron" label="HMGLm_Neuron">
@@ -6225,7 +6225,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.4999999999999958" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675267" />
         </attvalues>
       </node>
       <node id="ICDHxm_Neuron" label="ICDHxm_Neuron">
@@ -6233,7 +6233,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.4999999999999929" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675264" />
         </attvalues>
       </node>
       <node id="ICDHyrm_Neuron" label="ICDHyrm_Neuron">
@@ -6241,7 +6241,7 @@
           <attvalue for="0" value="10.802599999999964" />
           <attvalue for="1" value="8.881784197001252e-16" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.4083399935410395" />
+          <attvalue for="3" value="0.4083399935410396" />
         </attvalues>
       </node>
       <node id="ILETA_Neuron" label="ILETA_Neuron">
@@ -6314,7 +6314,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="0.4999999999999687" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675244" />
         </attvalues>
       </node>
       <node id="LCADi_Dm_Neuron" label="LCADi_Dm_Neuron">
@@ -6386,7 +6386,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-0.4999999999999966" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.0423115408675267" />
         </attvalues>
       </node>
       <node id="LYStiDF_Neuron" label="LYStiDF_Neuron">
@@ -6443,7 +6443,7 @@
           <attvalue for="0" value="-10.802599999999805" />
           <attvalue for="1" value="1.0047518372857667e-14" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.408339993541037" />
+          <attvalue for="3" value="0.4083399935410378" />
         </attvalues>
       </node>
       <node id="MDHm_Neuron" label="MDHm_Neuron">
@@ -6487,7 +6487,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.999999999999996" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1506962774412718" />
         </attvalues>
       </node>
       <node id="MMEm_Neuron" label="MMEm_Neuron">
@@ -6509,7 +6509,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.5" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1791162903049763" />
         </attvalues>
       </node>
       <node id="MMSAD3m_Neuron" label="MMSAD3m_Neuron">
@@ -6623,7 +6623,7 @@
           <attvalue for="0" value="4.22280000000013" />
           <attvalue for="1" value="1.776356839400251e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.2551643238024936" />
+          <attvalue for="3" value="0.2551643238024937" />
         </attvalues>
       </node>
       <node id="NMNATm_Neuron" label="NMNATm_Neuron">
@@ -6631,7 +6631,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-5.499999999999927" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.296866814184104" />
         </attvalues>
       </node>
       <node id="NNATm_Neuron" label="NNATm_Neuron">
@@ -6762,7 +6762,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-5.499999999999975" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2968668141841054" />
         </attvalues>
       </node>
       <node id="P5CDm_Neuron" label="P5CDm_Neuron">
@@ -6777,7 +6777,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999831" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.150696277441271" />
         </attvalues>
       </node>
       <node id="PDHm_Neuron" label="PDHm_Neuron">
@@ -6793,7 +6793,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999831" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.150696277441271" />
         </attvalues>
       </node>
       <node id="PEFLIPm_Neuron" label="PEFLIPm_Neuron">
@@ -6801,7 +6801,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.4999999999999596" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1791162903049741" />
         </attvalues>
       </node>
       <node id="PETOHMm_hs_Neuron" label="PETOHMm_hs_Neuron">
@@ -6816,7 +6816,7 @@
           <attvalue for="0" value="1.8822999999999999" />
           <attvalue for="1" value="1.7763568394002505e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.1434756113863896" />
+          <attvalue for="3" value="0.1434756113863897" />
         </attvalues>
       </node>
       <node id="PGI_Neuron" label="PGI_Neuron">
@@ -6824,7 +6824,7 @@
           <attvalue for="0" value="1.8823" />
           <attvalue for="1" value="-2.842170943040401e-14" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.1434756113863896" />
+          <attvalue for="3" value="0.1434756113863921" />
         </attvalues>
       </node>
       <node id="PGK_Neuron" label="PGK_Neuron">
@@ -6898,7 +6898,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-2.4999999999999636" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1791162903049743" />
         </attvalues>
       </node>
       <node id="PPA_Neuron" label="PPA_Neuron">
@@ -6927,7 +6927,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.3937735849056345" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2613192597124655" />
         </attvalues>
       </node>
       <node id="PPAtm_Neuron" label="PPAtm_Neuron">
@@ -6991,7 +6991,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999982" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.150696277441272" />
         </attvalues>
       </node>
       <node id="PROt2r_Neuron" label="PROt2r_Neuron">
@@ -7020,7 +7020,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999831" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.150696277441271" />
         </attvalues>
       </node>
       <node id="PSFLIPm_Neuron" label="PSFLIPm_Neuron">
@@ -7028,7 +7028,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999831" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.150696277441271" />
         </attvalues>
       </node>
       <node id="PYK_Neuron" label="PYK_Neuron">
@@ -7051,7 +7051,7 @@
           <attvalue for="0" value="10.802599999999964" />
           <attvalue for="1" value="3.3306690738754696e-16" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.4083399935410395" />
+          <attvalue for="3" value="0.4083399935410396" />
         </attvalues>
       </node>
       <node id="PYRt2r_Neuron" label="PYRt2r_Neuron">
@@ -7157,7 +7157,7 @@
           <attvalue for="0" value="10.802599999999964" />
           <attvalue for="1" value="-6.661338147750939e-16" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.4083399935410395" />
+          <attvalue for="3" value="0.4083399935410396" />
         </attvalues>
       </node>
       <node id="SUCOAS1m_Neuron" label="SUCOAS1m_Neuron">
@@ -7165,7 +7165,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999858" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1506962774412712" />
         </attvalues>
       </node>
       <node id="SUCOASm_Neuron" label="SUCOASm_Neuron">
@@ -7173,7 +7173,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999858" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1506962774412712" />
         </attvalues>
       </node>
       <node id="SULFOX_Neuron" label="SULFOX_Neuron">
@@ -7223,7 +7223,7 @@
           <attvalue for="0" value="-10.802599999999963" />
           <attvalue for="1" value="-5.551115123125783e-16" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.4083399935410394" />
+          <attvalue for="3" value="0.4083399935410395" />
         </attvalues>
       </node>
       <node id="THFtm_Neuron" label="THFtm_Neuron">
@@ -7252,7 +7252,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999831" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.150696277441271" />
         </attvalues>
       </node>
       <node id="TPI_Neuron" label="TPI_Neuron">
@@ -7373,7 +7373,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.999999999999962" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2468311908770458" />
         </attvalues>
       </node>
       <node id="DTKm_Neuron" label="DTKm_Neuron">
@@ -7381,7 +7381,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.9999999999999694" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.246831190877046" />
         </attvalues>
       </node>
       <node id="DCKm_Neuron" label="DCKm_Neuron">
@@ -7389,7 +7389,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.999999999999962" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2468311908770458" />
         </attvalues>
       </node>
       <node id="DGKm_Neuron" label="DGKm_Neuron">
@@ -7397,7 +7397,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-3.999999999999962" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2468311908770458" />
         </attvalues>
       </node>
       <node id="NH3tm_Neuron" label="NH3tm_Neuron">
@@ -7413,7 +7413,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.4999999999999774" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1185135354265836" />
         </attvalues>
       </node>
       <node id="NACASPtm_Neuron" label="NACASPtm_Neuron">
@@ -7484,7 +7484,7 @@
           <attvalue for="0" value="4.222799999999955" />
           <attvalue for="1" value="-2.664535259100376e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.2551643238024872" />
+          <attvalue for="3" value="0.2551643238024874" />
         </attvalues>
       </node>
       <node id="DM_4mptnl(m)_Neuron" label="DM_4mptnl(m)_Neuron">
@@ -7506,7 +7506,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-4.9999999999999645" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.2816417527133567" />
         </attvalues>
       </node>
       <node id="DM_atp(m)_Neuron" label="DM_atp(m)_Neuron">
@@ -7514,7 +7514,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.9999999999999831" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.150696277441271" />
         </attvalues>
       </node>
       <node id="sink_chsterol_Neuron" label="sink_chsterol_Neuron">
@@ -7529,7 +7529,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-16.499999999999893" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4799400351772684" />
         </attvalues>
       </node>
       <node id="DM_1a2425thvitd2_Neuron" label="DM_1a2425thvitd2_Neuron">
@@ -7537,7 +7537,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-16.499999999999893" />
           <attvalue for="2" value="Terminal" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.4799400351772684" />
         </attvalues>
       </node>
       <node id="sink_vitd3_Neuron" label="sink_vitd3_Neuron">
@@ -7559,7 +7559,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.999999999999981" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1506962774412709" />
         </attvalues>
       </node>
       <node id="CREATtmdiffir_Neuron" label="CREATtmdiffir_Neuron">
@@ -7567,7 +7567,7 @@
           <attvalue for="0" value="0.0" />
           <attvalue for="1" value="-1.999999999999981" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.0" />
+          <attvalue for="3" value="0.1506962774412709" />
         </attvalues>
       </node>
       <node id="PCREATtmdiffir_Neuron" label="PCREATtmdiffir_Neuron">
@@ -7631,7 +7631,7 @@
           <attvalue for="0" value="346.77179999999834" />
           <attvalue for="1" value="2.812564995717063e-15" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="1.0" />
+          <attvalue for="3" value="1.0000000000000002" />
         </attvalues>
       </node>
       <node id="GLCt1r_Neuron" label="GLCt1r_Neuron">
@@ -7639,7 +7639,7 @@
           <attvalue for="0" value="1.8823" />
           <attvalue for="1" value="59.99999999999963" />
           <attvalue for="2" value="Neuron" />
-          <attvalue for="3" value="0.1434756113863896" />
+          <attvalue for="3" value="0.8435695736090508" />
         </attvalues>
       </node>
       <node id="Fe2t_Neuron" label="Fe2t_Neuron">

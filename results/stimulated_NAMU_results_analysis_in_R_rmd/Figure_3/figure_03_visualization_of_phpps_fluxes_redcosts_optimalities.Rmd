@@ -162,8 +162,7 @@ data2att %>% select(ID, Reaction, Node) %>% write_csv('node_attributes.csv')
 
 ```{r}
 
-
-optimality_values %>% write_csv('optimality_values.csv')
+data.log.rescaled_total2%>% select(c('total', 'ID')) %>% write_csv('optimality_values.csv')
 ```
 
 
