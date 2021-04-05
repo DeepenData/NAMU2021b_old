@@ -20,13 +20,13 @@ only_centralities <- read_rds('only_centralities.rds')
 
 ```{r fig.height=3, fig.width=11, message=FALSE, warning=FALSE}
 
-plot_density <- function(df, titulo='sin título', fill = "deepskyblue4" , xlab = "Centrality", xlim = c(-0.04, 0.04)){cut = 0.005
+plot_density <- function(df, titulo='sin título', fill = "deepskyblue4" , xlab = "Centrality", ylab = "# nodes", xlim = c(-0.04, 0.04)){cut = 0.005
                              df %>% gather() -> df_gathered
                               df_gathered['value'] %>% filter(abs(value) > cut) %>%
                               ggplot( aes(x=value)) +
                                     geom_density(fill=fill, color="azure4", alpha=.8)+
                                        theme(legend.position="top" , plot.title = element_text(size=8.5)) +
-                                    ylab("Density") + ggtitle(titulo) +  xlim(xlim) +
+                                    ylab(ylab) + ggtitle(titulo) +  xlim(xlim) +
                                     xlab(xlab) + geom_vline(xintercept=0, linetype="dashed", color = "black",  size=1) -> Density_plot_of_centralities
                               return(Density_plot_of_centralities)
                               }
@@ -52,19 +52,20 @@ select(Astrocyte, matches("neuron"))   %>% filter_centralities  -> astrocyte_nod
 
 #centralities_for_densities <- list(neuron_nodes_vs_astrocyte_subsystem,  neuron_nodes_vs_neuron_subsystem,  astrocyte_nodes_vs_astrocyte_subsystem, astrocyte_nodes_vs_neuron_subsystem )
 
-neuron_nodes_vs_astrocyte_subsystem %>%plot_density(titulo = 'Astrocytic energy metabolism', fill = 'brown4', xlab = "Neuronal nodal contribution", xlim = c(-0.072, 0.07)) -> NnAs
-neuron_nodes_vs_neuron_subsystem %>%plot_density(titulo = 'Neuronal energy metabolism', fill = 'darkorange4', xlab = "Neuronal nodal contribution", xlim = c(-0.072, 0.07)) -> NnNs
-astrocyte_nodes_vs_astrocyte_subsystem %>%plot_density(titulo = 'Astrocytic energy metabolism', fill = 'darkolivegreen4', xlab = "Astrocytic nodal contribution", xlim = c(-0.099, 0.14)) -> AnAs
-astrocyte_nodes_vs_neuron_subsystem %>%plot_density(titulo = 'Neuronal energy metabolism', fill = 'darkseagreen4', xlab = "Astrocytic nodal contribution", xlim = c(-0.099, 0.14)) -> AnNs #map(centralities_for_densities, plot_density)
+neuron_nodes_vs_astrocyte_subsystem %>%plot_density(titulo = 'Astrocytic energy metabolism', fill = 'brown4', xlab = NULL, xlim = c(-0.072, 0.07))                                        -> NnAs
+neuron_nodes_vs_neuron_subsystem %>%plot_density(titulo = 'Neuronal energy metabolism', fill = 'darkorange4', xlab ="Neuronal nodal contribution" , xlim = c(-0.072, 0.07))               -> NnNs
+astrocyte_nodes_vs_astrocyte_subsystem %>%plot_density(titulo = 'Astrocytic energy metabolism', fill = 'darkolivegreen4', xlab = "Astrocytic nodal contribution", xlim = c(-0.099, 0.14), ylab = NULL) -> AnAs
+astrocyte_nodes_vs_neuron_subsystem %>%plot_density(titulo = 'Neuronal energy metabolism', fill = 'darkseagreen4', xlab = NULL, xlim = c(-0.099, 0.14), ylab = NULL)                                   -> AnNs #
 
-bottom_panel   <- ggarrange(NnAs,AnNs, NnNs,  AnAs, ncol = 2, nrow = 2,  labels = c('c','d','e','f'))
+bottom_panel   <- ggarrange(NnAs,AnNs, NnNs,  AnAs, ncol = 2, nrow = 2,  labels = c('c','e','d','f'), widths = c(1.07,1), heights = c(1,1.2))
 bottom_panel
 ```
 
-```{r fig.height=8, fig.width=8, message=FALSE, warning=FALSE}
+```{r fig.height=7.7, fig.width=8, message=FALSE, warning=FALSE}
 upper_panel <-  ggarrange(NA,NA, ncol = 2, nrow = 1,  labels = c("a","b"))
 
-full_panel <- ggarrange(upper_panel, bottom_panel, nrow = 2, heights = c(.6,.4))
+full_panel <- ggarrange(upper_panel, bottom_panel, nrow = 2, heights = c(.7,.3))
+full_panel
 ```
 
 ```{r}

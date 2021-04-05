@@ -80,13 +80,13 @@ ht <- Heatmap(my.corr.mat, name = "Correlation",  left_annotation =left_annotati
                                  column_gap = unit(2, "mm"),
                                   width = unit(8, "cm"), 
                                 height = unit(8, "cm"),
-                                column_title = c("Astrocytic cluster", "Neuronal cluster"),
+                                column_title = c( "Neuronal cluster" , "Astrocytic cluster"),
                                 column_title_gp = gpar(fontsize = 10),
                                   row_title_rot  = 0,
                                  show_column_names    = F,
                                 show_row_names    = F,
                                  row_names_gp = gpar(fontsize = 8),
-                                  row_title = c("Astrocytic\n cluster", "Neuronal\n cluster"),
+                                  row_title = c("Neuronal\n cluster", "Astrocytic\n cluster"),
                              
                                  row_title_gp = gpar(fontsize = 10))
 my_heatmap = grid.grabExpr(draw(ht))
@@ -100,8 +100,8 @@ ht
 
 Distribution of pairwise correlations
 ```{r message=FALSE, warning=FALSE}
-row_order(ht)[[1]] -> neuron_cluster
-row_order(ht)[[2]] -> astro_cluster 
+row_order(ht)[[2]] -> neuron_cluster
+row_order(ht)[[1]] -> astro_cluster 
 node_types   -> Nodes
 fold_change_geometric -> data
 data$ID[neuron_cluster]     -> neuron_cluster_names
@@ -190,7 +190,7 @@ b +   scale_color_manual(labels = c("Astro", "Exch",'Neu','Si/De Ast', 'Si/De Ne
 ```{r fig.height=8, fig.width=9}
 
 
-bottom_panel <- ggarrange( corr_comparisons,pca_node_centrality , NA, ncol = 3, widths  = c(.16,.45,.33) , labels = c('b','c',"d"),
+bottom_panel <- ggarrange( corr_comparisons,pca_node_centrality , NA, ncol = 3, widths  = c(.16,.55,.33) , labels = c('b','c',"d"),
                                                  hjust = 0, vjust = 1)
 panel_without_graph <-  ggarrange(upper_panel, bottom_panel, nrow = 2, heights = c(.6,.4))
 panel_without_graph
