@@ -1,5 +1,8 @@
 """
 Ese comic de SMBC
+
+
+Esto genera los Gephi con el escalado de nodos para la centralidad equivalente de estos. 
 """
 
 """
