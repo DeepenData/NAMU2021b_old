@@ -14,14 +14,11 @@
 
 El proyecto no es aun publico, por lo que no se incluye una documentación aparte de los `README.md` y _docstrings_ presentes en el código. Eventualmente incluir una documentación via Github Pages. 
 
-## Ramas
+### Flow del proyecto
 
-- **main** incluye el código base, para ejecución en un entorno local. 
-- **parallelism** es split del codigo base, para incluir modificaciones que permitan paralelización en clusters HPC. Funcionalidades probadas que no afecten ejecución local deben unirse a la rama principal. 
+![](./doc/img/flow_codigo.drawio.svg)
 
-Más ramas pueden crearse en necesidad, o para probar distintos ambientes HPC. 
-
-## .gitignore
+### .gitignore
 
 Los achivos marcados como `tmp.*` son excluidos, en base a que sean archivos borrador. 
 Incluye omisión de proyectos de RStudio (`.RData`. `.Rhistory`, ...); y finalmente archivos de claves `.pem` como precaución. 

@@ -1,0 +1,7 @@
+# Los HTML exportados de RMD son binarios, con un muy largo cofigo en base63
+*.nb.html binary
+
+# Los pickle, csv y xlsx tambien son binarios. Algunos son mas legibles que otros
+*.pkl binary
+*.csv binary
+*.xlsx binary

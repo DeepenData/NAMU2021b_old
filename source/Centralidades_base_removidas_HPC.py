@@ -2,6 +2,8 @@
 """
 "L'impatience va éliminer l'irritabilité, la tension nerveuse et sa conséquence, le surmenage."
     - Ejemplo de uso de "surmenage", termino en frrancés para "fatiga mental"
+
+Este es codigo para ejecutar en el cluster virtual Ray dentro del HPC. No intentes ejecutar esto en casa. 
 """
 # %% --- IMPORTA EL GRAFO GENERADO
 
