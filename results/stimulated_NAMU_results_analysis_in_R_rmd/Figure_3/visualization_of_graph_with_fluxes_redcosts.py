@@ -199,4 +199,4 @@ largest_component = max(nx.connected_components(stimulated_graph), key=len) #
 stimulated_graph =   stimulated_graph.subgraph(largest_component)                #
 #stimulated_graph.nodes(data = True)
 
-nx.write_gexf(stimulated_graph, "stimulated_graph.gexf")
+nx.write_gexf(stimulated_graph, "bipartite_fluxes_sensi_weighted_graph.gexf")

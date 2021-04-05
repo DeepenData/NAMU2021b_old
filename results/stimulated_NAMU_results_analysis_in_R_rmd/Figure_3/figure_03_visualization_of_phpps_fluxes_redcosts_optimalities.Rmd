@@ -1,0 +1,191 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r message=FALSE, warning=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(metR)
+library(ggpubr)
+library(Cairo)
+library(magrittr)
+glucose_uptake.flatten    <- read_csv("glucose_uptake.csv", col_names = FALSE) %>% reduce(c)  
+oxygen_uptake.flatten     <- read_csv("oxygen_uptake.csv", col_names = FALSE) %>% reduce(c)  
+objective.flatten         <- read_csv("objective.csv", col_names = FALSE) %>% reduce(c)  
+GLUVESSEC_Neuron.flatten  <- read_csv("GLUVESSEC_Neuron.csv", col_names = FALSE) %>% reduce(c)  
+L_LACt2r_Int.flatten      <- read_csv("L_LACt2r_Int.csv", col_names = FALSE) %>% reduce(c)  
+NaEX_Neuron.flatten       <- read_csv("NaEX_Neuron.csv", col_names = FALSE) %>% reduce(c)  
+Y_o2_glc.flatten          <- read_csv("Y_o2_glc.csv", col_names = FALSE) %>% reduce(c)
+Y_ATP_glc.flatten          <- read_csv('Y_ATP_glc.csv', col_names = FALSE) %>% reduce(c)
+
+#arc_nadh.flatten          <- read_csv('arc_nadh.csv', col_names = FALSE) %>% reduce(c)
+
+
+phpp_axes                 <- cbind(glucose_uptake.flatten, oxygen_uptake.flatten)
+phpp_axes                 <- cbind(glucose_uptake.flatten, oxygen_uptake.flatten)
+data.frame(phpp_axes, objective.flatten)  -> phpp_namu_objective.flatten
+data.frame(phpp_axes, GLUVESSEC_Neuron.flatten)  -> phpp_GLUVESSEC_Neuron.flatten
+data.frame(phpp_axes, L_LACt2r_Int.flatten)  -> phpp_L_LACt2r_Int.flatten
+data.frame(phpp_axes, NaEX_Neuron.flatten)  -> phpp_NaEX_Neuron.flatten
+data.frame(phpp_axes, Y_o2_glc.flatten)  -> phpp_Y_o2_glc.flatten
+data.frame(phpp_axes, Y_ATP_glc.flatten)  -> phpp_Y_ATP_glc.flatten
+
+#data.frame(phpp_axes, arc_nadh.flatten)  -> phpp_arc_nadh.flatten
+```
+
+```{r}
+get_phpp_contours <- function(df, inter_colors, breaks_lines, label_placement_fraction, nudge_y){
+                                df %>% 
+                               signif(digits = 10) %>% unique %>% set_names(c('x','y','z'))  -> df2
+  
+                                 df2 %>%ggplot(aes(x=x, y=y, z=z)) +
+                                   #labs(inherit.aes = T, colour="Tff")+
+                                   geom_contour_fill(inherit.aes = T,  breaks =  seq(0,max(df2['z']), inter_colors),  colour = "white", size = 0, alpha = 1) +
+                                geom_contour(inherit.aes = T, colour = "white",  breaks = breaks_lines, size = 1 )+
+                                geom_text_contour(breaks = breaks_lines , inherit.aes = T,  colour = "white" , skip = 0,nudge_x = 0,nudge_y = nudge_y,
+                                                   label.placement = label_placement_fraction(frac = label_placement_fraction)) +
+                                scale_fill_continuous(type = "viridis")+
+                                scale_x_continuous(expand = c(0,0))+
+                                scale_y_continuous(expand = c(0,-nudge_y)) +
+                                theme(legend.text =  element_text(angle = 60, size = 6), legend.title = element_text(size = 8) ,  legend.key.width = unit(.5, "cm"), legend.key.height=unit(2, "mm") ,   legend.position="bottom",        legend.box="horizontal",  axis.title.y=element_blank(), axis.title.x=element_blank()) +
+                                   
+                                geom_point(aes(x=3.519, y=32.407), size = 3, colour = "red") +
+                                geom_segment(aes(x= 3.519, xend=3.519 , y= 13, yend=32.407 ), colour="black", lwd=.5, linetype = 'dotted')+
+                                geom_segment(aes(x= 1, xend=3.519 , y= 32.407, yend=32.407 ), colour="black", lwd=.5, linetype = 'dotted')
+}
+```
+
+```{r}
+phpp_NaEX_Neuron.flatten %>% get_phpp_contours(inter_colors=.10, breaks_lines=c(346.771), label_placement_fraction=.3, nudge_y=2.2 )  +guides(fill = guide_colorbar(title ="NaEX"))         ->phpp_NaEX_Neuron
+phpp_Y_o2_glc.flatten  %>% get_phpp_contours(inter_colors=.04, breaks_lines=c(6.0), label_placement_fraction= 0.3 , nudge_y=2.2 ) +guides(fill = guide_colorbar(title = expression(Y['O'['2']*'/Glc']*'') ))             ->phpp_Y_o2_glc
+
+phpp_L_LACt2r_Int.flatten  %>% get_phpp_contours(inter_colors=.05, breaks_lines=c(7.037), label_placement_fraction= 0.3 , nudge_y=2.9 )+guides(fill = guide_colorbar(title ="Lact"))        ->phpp_L_LACt2r_Int
+phpp_GLUVESSEC_Neuron.flatten  %>% get_phpp_contours(inter_colors=.05, breaks_lines=c(4.222), label_placement_fraction= 0.3 , nudge_y=2.9 )+guides(fill = guide_colorbar(title ="GluVE"))    ->phpp_GLUVESSEC_Neuron
+phpp_namu_objective.flatten  %>% get_phpp_contours(inter_colors=.4, breaks_lines=c(139.731), label_placement_fraction= 0.2 , nudge_y=2.9 )+guides(fill = guide_colorbar(title ="Obj"))       ->phpp_namu_objective
+
+phpp_Y_ATP_glc.flatten  %>% get_phpp_contours(inter_colors=.1, breaks_lines=c(28.696), label_placement_fraction= 0.6 , nudge_y=-3 ) +guides(fill = guide_colorbar(title = expression('Y'['ATP/Glc']*'')  )) +   scale_y_continuous(expand = c(0,-3)) ->phpp_Y_ATP_glc
+
+right_panel <-  ggarrange(phpp_NaEX_Neuron, phpp_Y_o2_glc,phpp_Y_ATP_glc, phpp_L_LACt2r_Int, phpp_GLUVESSEC_Neuron, phpp_namu_objective, ncol = 1,  labels = c('a','b','c','d','e','f') )
+right_panel %<>% annotate_figure(left = text_grob("Glucose uptake rate (\U003BCM/s)", rot = 90), bottom = text_grob("Oxygen uptake rate(\U003BCM/s)", rot = 0))
+```
+
+
+
+```{r message=FALSE, warning=FALSE}
+library(magrittr)
+data <- read_csv("FBA_results.csv")%>% filter(!str_detect(ID, regex('AA_|AA2', ignore_case = F))) 
+
+data %<>% mutate(Node = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',              ignore_case = T)), 'Astrocyte', NA)) %>% 
+         mutate(Node = ifelse(str_detect(Reaction, regex('\\[[a-z]N\\]',              ignore_case = T)), 'Neuron', Node))    %>% 
+         mutate(Node = ifelse( str_detect(Reaction, regex('\\[[a-z]A\\]|\\[[a-z]N\\]',ignore_case = T), negate = T), 'Exchange', Node)) %>%
+         mutate(Node = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',ignore_case = T)) & 
+                                       str_detect(ID, regex('DM_|Demand|sink',ignore_case = T)), 'Terminal', Node))%>%
+         mutate(Node = ifelse(str_detect(Reaction, regex('\\[[a-z]N\\]',ignore_case = T)) & 
+                                       str_detect(ID, regex('DM_|Demand|sink',ignore_case = T)), 'Terminal', Node))
+
+
+
+```
+
+
+```{r}
+library(scales)
+library(reshape2)
+
+pseudoLog10 <- function(x) { asinh(x/2)/log(10) }
+data %>% filter( abs(Sensitivity) > 1e-8	| abs(Flux) > 1e-8 ) %>% select(c("ID", "Sensitivity", 'Flux'))   %>% column_to_rownames('ID') %>% abs %>% as.matrix() %>% pseudoLog10  -> data.log
+data.log %>% rescale(to = c(0,1))%>% as.data.frame %>% set_rownames(rownames(data.log))-> data.log.rescaled
+merge(data.log.rescaled %>% rownames_to_column('ID') ,  data[, c('ID','Node')] ) -> data.log.rescaled
+
+
+data.log.rescaled %>% mutate(total = Sensitivity+Flux) -> data.log.rescaled_total
+data.log.rescaled_total %>% arrange(desc(total))   -> data.log.rescaled_total2
+#data.log.rescaled_total2 %<>% filter(total > 0.001)
+data.log.rescaled_total2 %>% select(-c( "total")) %>% melt -> optimality_values
+
+```
+
+```{r fig.height=15, fig.width=10}
+
+library(ggplot2)
+library(plotly)
+
+ggplot(optimality_values, aes(x= reorder(ID, value),  y= value, fill = variable)) + 
+  geom_bar(stat='identity') + 
+  #facet_wrap(~Node, dir = "v") + 
+   facet_grid(. ~ Node) +
+  theme(strip.text.x = element_text(size = 7), axis.text.x=element_text(angle=90,hjust=1,vjust=0.5,size=5),legend.title = element_blank(),
+                                    axis.title.x=element_blank(),axis.title.y=element_blank(),legend.position="top",axis.text.y=element_text(angle=0,hjust=1,vjust=.1,size=3.7),
+                                    axis.ticks = element_blank()) +   # Centre plot title
+                              scale_fill_brewer(palette = "Dark2") + coord_flip()  -> optimality #
+
+
+
+left_panel <-  ggarrange(optimality, ncol = 1, nrow = 1,  labels = c('g') )
+left_panel %<>% annotate_figure(left = text_grob("Reactions", rot = 90), bottom = text_grob("Optimality", rot = 0))
+```
+
+```{r fig.height=13, fig.width=10}
+#ggsave(file="Scatter.svg", plot=ScatterPlotImage, width=10, height=10)
+
+graphs_panel <- ggarrange(NULL, NULL, NULL, ncol = 1, nrow = 3, labels = c("h","i","j") )
+
+left_right_panel <- ggarrange(right_panel, left_panel, graphs_panel, ncol = 3,  widths= c(.4,.6,1))
+
+```
+
+
+```{r fig.height=13, fig.width=10}
+ggsave(file="left_right_panel.png", plot=left_right_panel, width=10, height=13, dpi = 470)
+
+```
+
+Generate nodes attributes to export to python and visualize in GEPHI
+```{r}
+
+data2att <- read_csv("FBA_results.csv")
+
+data2att %<>% mutate(Node = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',              ignore_case = T)), 'Astrocyte', NA)) %>% 
+         mutate(Node = ifelse(str_detect(Reaction, regex('\\[[a-z]N\\]',              ignore_case = T)), 'Neuron', Node))    %>% 
+         mutate(Node = ifelse( str_detect(Reaction, regex('\\[[a-z]A\\]|\\[[a-z]N\\]',ignore_case = T), negate = T), 'Exchange', Node)) %>%
+         mutate(Node = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',ignore_case = T)) & 
+                                       str_detect(ID, regex('DM_|Demand|sink',ignore_case = T)), 'Terminal', Node))%>%
+         mutate(Node = ifelse(str_detect(Reaction, regex('\\[[a-z]N\\]',ignore_case = T)) & 
+                                       str_detect(ID, regex('DM_|Demand|sink',ignore_case = T)), 'Terminal', Node))
+
+
+data2att %>% select(ID, Reaction, Node) %>% write_csv('node_attributes.csv')
+
+```
+
+```{r}
+
+data.log.rescaled_total2%>% select(c('total', 'ID')) %>% write_csv('optimality_values.csv')
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

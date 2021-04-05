@@ -1,0 +1,198 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ggpubr)
+path_figure_1 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_1/"
+path_figure_2 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_2/"
+path_figure_3 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_3/"
+id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% select(c("ID", "Name" ))
+Centrality      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(Centrality > 0.5) 
+Optimality      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
+Node_attributes <- read_csv(paste0(path_figure_3, "node_attributes.csv"))
+Optimality <- inner_join(Node_attributes, Optimality)
+Centrality <- inner_join(Node_attributes, Centrality)
+Optimality <- inner_join(id_name, Optimality)
+Centrality <- inner_join(id_name, Centrality)
+inner_join(Optimality, Centrality) -> hyperhubs
+nrow(hyperhubs) /nrow(Centrality)
+nrow(hyperhubs) /nrow(Optimality)
+hyperhubs %>% filter(Node == 'Astrocyte' | Node == 'Neuron') -> hyperhubs
+colnames(hyperhubs) <- c("ID"  , "Name",        "Reaction" ,  "Node"   ,    "Optimal"   ,  "Central")
+```
+```{r fig.height=9, fig.width=6, message=FALSE, warning=FALSE, paged.print=FALSE}
+library(scales)
+library(magrittr)
+library(ggplot2)
+hyperhubs %<>%mutate(Optimal = rescale(Optimal, to = c(0, 1)), Central = rescale(Central, to = c(0, 1))) 
+hyperhubs %<>% mutate(Hubness = Optimal + Central)
+hyperhubs %>% select(ID,Name,Optimal,Node) ->hyperhubs_Optimal
+hyperhubs %>% select(ID,Name,Central,Node) ->hyperhubs_Central
+plot_sorted_nodes <- function(df, varname_values, x_lab, y_lab, leg_pos, mycolors, y_labels ="ID"){df %>% 
+  ggplot(aes(y= reorder(.data[[y_labels]],  .data[[varname_values]]),x= .data[[varname_values]], fill = Node)) + 
+  geom_col()+  scale_fill_manual(values=mycolors) +
+    theme(axis.ticks.y=element_blank(), 
+          axis.text.y= element_text(NA, angle = 0, size=6),
+        panel.border = element_rect(linetype = "solid", fill = NA),
+        legend.position = leg_pos)+ 
+        labs(x = x_lab, y = y_lab)}
+c("deepskyblue3", "brown2") -> mycolors
+"Score"                -> x_lab
+'Hyper-hubs'-> y_lab
+'right'                       -> leg_pos
+hyperhubs %>% plot_sorted_nodes('Hubness' , x_lab, y_lab, leg_pos, mycolors, y_labels = "Name") -> hyperhubs_plot
+```
+
+
+```{r fig.height=9, fig.width=13, message=FALSE, warning=FALSE, paged.print=FALSE}
+ggarrange(NA,  hyperhubs_plot, widths = c(1,1),
+                    labels = c("a", "b"),
+                    ncol = 2, nrow = 1) -> upper_panel
+
+```
+
+```{r}
+get_ht_quadrans <- function(file, null_diagonal = T){
+                                   A <- read_rds(file)
+                                   if(null_diagonal)  {diag(A) <- NA}
+                                   return(A)}
+heatmap_matrix <- get_ht_quadrans("heatmap_matrix.rds")
+#ht_Neuronal_cluster <- get_ht_quadrans("ht_Neuronal_cluster.rds")
+#ht_Astrocytic_cluster <- get_ht_quadrans("ht_Astrocytic_cluster.rds")
+#ht_Neuron_vs_Astrocyte <- get_ht_quadrans("ht_Neuron_vs_Astrocyte.rds", null_diagonal = F)
+```
+
+
+```{r fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
+only_neuronal_hyper_hubs <- str_extract(hyperhubs$ID, ".*_Neuron") %>% na.exclude() %>% as.character()
+only_astrocyte_hyper_hubs <- setdiff(hyperhubs$ID, only_neuronal_hyper_hubs)
+
+heatmap_matrix[only_neuronal_hyper_hubs,only_neuronal_hyper_hubs] %>% as.matrix %>% .[upper.tri(.)] %>% c-> Neuronal_cluster
+heatmap_matrix[only_astrocyte_hyper_hubs,only_astrocyte_hyper_hubs]%>% as.matrix %>% .[upper.tri(.)] %>% c-> Astrocytic_cluster
+heatmap_matrix[only_neuronal_hyper_hubs,only_astrocyte_hyper_hubs]%>% as.matrix %>% .[upper.tri(.)] %>% c-> Neuron_vs_Astro
+
+
+data.frame(Neuronal_cluster) %>% gather -> A
+data.frame(Astrocytic_cluster) %>% gather -> B
+data.frame(Neuron_vs_Astro) %>% gather -> C
+
+
+quads <- rbind(A,B,C) %>% na.omit()
+
+colnames(quads) <- c("Comparison","Nodes correlations")
+
+my_comparisons <- list(c('Astrocytic_cluster', 'Neuronal_cluster'),c("Astrocytic_cluster", "Neuron_vs_Astro"), c("Neuronal_cluster", "Neuron_vs_Astro"))
+ggplot(quads, aes(x=Comparison, y=`Nodes correlations`, fill=Comparison)) + 
+  geom_violin(trim=F, colour = "azure3")+  
+  geom_jitter(width=0.2, alpha=0.25, size =.6, stroke = .2, colour="black")+
+  stat_compare_means( vjust= -1., hjust= 0, comparisons = my_comparisons, method = "wilcox.test", p.adjust.method = "bonferroni", label = "p.signif")+
+  scale_fill_manual(values = alpha(c("darkorange1", "darkorange1", "darkorange1"), .8)) + 
+   theme(plot.title = element_text(hjust = 0.5),legend.position="none", axis.text.y = element_blank(), axis.title.y = element_blank())  + coord_flip()+ ggtitle("Hyper-hubs") + 
+  scale_y_continuous(limits=c(-0.1, 1.6), breaks = c(0.0, .5 , 1)) + geom_hline(yintercept=0, linetype="dashed", color = "darkred",  size=1)-> hyperhubs_corr
+
+
+
+```
+
+```{r fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
+setdiff(Centrality$ID, hyperhubs$ID) -> only_central_nodes
+
+
+only_neuronal_ <- str_extract(only_central_nodes, ".*_Neuron") %>% na.exclude() %>% as.character()
+only_astrocyte_ <- setdiff(only_central_nodes, only_neuronal_)
+
+
+heatmap_matrix[only_neuronal_,only_neuronal_] %>% as.matrix %>% .[upper.tri(.)] %>% c-> Neuronal_cluster
+heatmap_matrix[only_astrocyte_,only_astrocyte_]%>% as.matrix %>% .[upper.tri(.)] %>% c-> Astrocytic_cluster
+heatmap_matrix[only_neuronal_,only_astrocyte_]%>% as.matrix %>% .[upper.tri(.)] %>% c-> Neuron_vs_Astro
+
+
+data.frame(Neuronal_cluster) %>% gather -> A
+data.frame(Astrocytic_cluster) %>% gather -> B
+data.frame(Neuron_vs_Astro) %>% gather -> C
+
+
+
+quads <- rbind(A,B,C) %>% na.omit()
+
+colnames(quads) <- c("Comparison","Nodes correlations")
+
+my_comparisons <- list(c('Astrocytic_cluster', 'Neuronal_cluster'),c("Astrocytic_cluster", "Neuron_vs_Astro"), c("Neuronal_cluster", "Neuron_vs_Astro"))
+
+ggplot(quads, aes(x=Comparison, y=`Nodes correlations`, fill=Comparison)) + 
+  geom_violin(trim=F, colour = "azure3")+  
+  geom_jitter(width=0.2, alpha=0.1, size =.6, stroke = .2, colour="black")+
+  
+  stat_compare_means( vjust= -1., hjust= 0, comparisons = my_comparisons, method = "wilcox.test", p.adjust.method = "bonferroni", label = "p.signif")+
+  
+  scale_fill_manual(values = alpha(c("chartreuse3", "chartreuse3", "chartreuse3"), .8)) + 
+   theme(plot.title = element_text(hjust = 0.5),legend.position="none", axis.text.y = element_text(angle = 45, hjust = 1))  + coord_flip()+ ggtitle("Central-hubs") + 
+  scale_y_continuous(limits=c(-0.1, 1.6), breaks = c(0.0, .5 , 1)) + geom_hline(yintercept=0, linetype="dashed", color = "darkred",  size=1)-> centralhubs_corr
+
+
+
+```
+
+```{r fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
+setdiff(Optimality$ID, hyperhubs$ID) -> only_Optimalityl_nodes
+
+
+only_neuronal_ <- str_extract(only_Optimalityl_nodes, ".*_Neuron") %>% na.exclude() %>% as.character()
+only_astrocyte_ <- setdiff(only_Optimalityl_nodes, only_neuronal_)
+
+
+heatmap_matrix[only_neuronal_,only_neuronal_] %>% as.matrix %>% .[upper.tri(.)] %>% c-> Neuronal_cluster
+heatmap_matrix[only_astrocyte_,only_astrocyte_]%>% as.matrix %>% .[upper.tri(.)] %>% c-> Astrocytic_cluster
+heatmap_matrix[only_neuronal_,only_astrocyte_]%>% as.matrix %>% .[upper.tri(.)] %>% c-> Neuron_vs_Astro
+
+
+data.frame(Neuronal_cluster) %>% gather -> A
+data.frame(Astrocytic_cluster) %>% gather -> B
+data.frame(Neuron_vs_Astro) %>% gather -> C
+
+
+
+quads <- rbind(A,B,C) %>% na.omit()
+
+colnames(quads) <- c("Comparison","Nodes correlations")
+
+my_comparisons <- list(c('Astrocytic_cluster', 'Neuronal_cluster'),c("Astrocytic_cluster", "Neuron_vs_Astro"), c("Neuronal_cluster", "Neuron_vs_Astro"))
+
+ggplot(quads, aes(x=Comparison, y=`Nodes correlations`, fill=Comparison)) + 
+  geom_violin(trim=F, colour = "azure3")+  
+  geom_jitter(width=0.2, alpha=0.15, size =.6, stroke = .2, colour="black")+
+  stat_compare_means( vjust= -1, hjust= 0, comparisons = my_comparisons, method = "wilcox.test", p.adjust.method = "bonferroni", label = "p.signif")+
+  scale_fill_manual(values = alpha(c("darkorchid3", "darkorchid3", "darkorchid3"), .8)) + 
+   theme(plot.title = element_text(hjust = 0.5),legend.position="none", axis.text.y = element_blank(), axis.title.y = element_blank())  + coord_flip()+ ggtitle("Optimal-hubs") + 
+  scale_y_continuous(limits=c(-0.1, 1.5), breaks = c(0.0, .5 , 1)) + geom_hline(yintercept=0, linetype="dashed", color = "darkred",  size=1)-> optimalhubs_corr
+
+
+```
+
+```{r fig.height=4, fig.width=12, message=FALSE, warning=FALSE}
+ggarrange(centralhubs_corr,optimalhubs_corr,hyperhubs_corr, widths = c(1.25,1,1),
+                    labels = c("b", "c", "d"),
+                    ncol = 3, nrow = 1) -> lower_panel
+
+
+```
+```{r fig.height=10, fig.width=13}
+
+
+ggarrange(upper_panel, lower_panel,  heights = c(2.7,1),
+                                        ncol = 1, nrow = 2)
+
+
+```
+
+
+
+
+
+
+
