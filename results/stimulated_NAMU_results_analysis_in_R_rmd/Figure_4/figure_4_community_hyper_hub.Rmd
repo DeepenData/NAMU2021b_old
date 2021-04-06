@@ -23,12 +23,60 @@ inner_join(Optimality, Centrality) -> hyperhubs
 nrow(hyperhubs) /nrow(Centrality)
 nrow(hyperhubs) /nrow(Optimality)
 hyperhubs %>% filter(Node == 'Astrocyte' | Node == 'Neuron') -> hyperhubs
-colnames(hyperhubs) <- c("ID"  , "Name",        "Reaction" ,  "Node"   ,    "Optimal"   ,  "Central")
+
+
+library(scales)
+library(magrittr)
+library(ggplot2)
+
+setdiff(Optimality$ID, hyperhubs$ID) -> only_optimal
+setdiff(Centrality$ID, hyperhubs$ID) -> only_central
+Optimality %<>% column_to_rownames("ID")
+Centrality %<>% column_to_rownames("ID")
+hyperhubs %>% filter(Node == 'Astrocyte' | Node == 'Neuron')  %>% mutate(Module = 'Hyper')-> Hyperhubs
+Optimality[only_optimal,] %>% filter(Node == 'Astrocyte' | Node == 'Neuron') %>% mutate(Module = 'Optimal')-> Optimal_hubs
+Centrality[only_central,]%>% filter(Node == 'Astrocyte' | Node == 'Neuron')%>% mutate(Module = 'Central')  -> Central_hubs
+get_node_and_module <- function(df){ df %>% select(Node,Module)}
+list(Hyperhubs,
+Optimal_hubs,
+Central_hubs) %>% map(get_node_and_module) %>% reduce(rbind) %>% set_colnames(c("Cell","Module")) -> Cell_Module
+Cell_Module %>% count(Cell) %>% filter(Cell == "Astrocyte") %>% .[[2]] -> astro_total
+Cell_Module %>% count(Cell) %>% filter(Cell == "Neuron")    %>% .[[2]] -> neuron_total
+
+Cell_Module %>% count(Cell,Module) %>% filter(Cell == "Astrocyte") %>% .[["n"]] -> modules_astro
+Cell_Module %>% count(Cell,Module) %>% filter(Cell == "Neuron") %>% .[["n"]]    -> modules_neuron
+Cell_Module %>% count(Cell,Module) %>% mutate("Percentage %" =  100* c(modules_astro/astro_total,modules_neuron/neuron_total) %>% round(4)  ) -> my_counts
+
+
+
+
+
+ggplot(my_counts, aes(fill=Module, x=Cell, y=`Percentage %`,  label = `Percentage %`)) + 
+     geom_bar(stat = "identity") + scale_fill_manual(values = alpha(c("chartreuse3", "darkorange1", "darkorchid3"), 1)) + theme(axis.title.x =  element_blank(), legend.position = 'right', axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  geom_text(angle = 90,size = 4, position = position_stack(vjust = 0.5)) -> plot.my_counts_stacked
+
 ```
+
+
+
 ```{r fig.height=9, fig.width=6, message=FALSE, warning=FALSE, paged.print=FALSE}
 library(scales)
 library(magrittr)
 library(ggplot2)
+id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% select(c("ID", "Name" ))
+Centrality      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(Centrality > 0.5) 
+Optimality      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
+Node_attributes <- read_csv(paste0(path_figure_3, "node_attributes.csv"))
+Optimality <- inner_join(Node_attributes, Optimality)
+Centrality <- inner_join(Node_attributes, Centrality)
+Optimality <- inner_join(id_name, Optimality)
+Centrality <- inner_join(id_name, Centrality)
+inner_join(Optimality, Centrality) -> hyperhubs
+nrow(hyperhubs) /nrow(Centrality)
+nrow(hyperhubs) /nrow(Optimality)
+hyperhubs %>% filter(Node == 'Astrocyte' | Node == 'Neuron') -> hyperhubs
+
+colnames(hyperhubs) <- c("ID"  , "Name",        "Reaction" ,  "Node"   ,    "Optimal"   ,  "Central")
 hyperhubs %<>%mutate(Optimal = rescale(Optimal, to = c(0, 1)), Central = rescale(Central, to = c(0, 1))) 
 hyperhubs %<>% mutate(Hubness = Optimal + Central)
 hyperhubs %>% select(ID,Name,Optimal,Node) ->hyperhubs_Optimal
@@ -50,9 +98,9 @@ hyperhubs %>% plot_sorted_nodes('Hubness' , x_lab, y_lab, leg_pos, mycolors, y_l
 
 
 ```{r fig.height=9, fig.width=13, message=FALSE, warning=FALSE, paged.print=FALSE}
-ggarrange(NA,  hyperhubs_plot, widths = c(1,1),
-                    labels = c("a", "e"),
-                    ncol = 2, nrow = 1) -> upper_panel
+ggarrange(NA, plot.my_counts_stacked,  hyperhubs_plot, widths = c(1,.37,1),
+                    labels = c("a","", "e"),
+                    ncol = 3, nrow = 1) -> upper_panel
 
 ```
 
@@ -174,21 +222,42 @@ ggplot(quads, aes(x=Comparison, y=`Nodes correlations`, fill=Comparison)) +
 
 ```
 
-```{r fig.height=4, fig.width=12, message=FALSE, warning=FALSE}
+```{r fig.height=10, fig.width=13}
 ggarrange(centralhubs_corr,optimalhubs_corr,hyperhubs_corr, widths = c(1.25,1,1),
                     labels = c("b", "c", "d"),
                     ncol = 3, nrow = 1) -> lower_panel
 
-
-```
-```{r fig.height=10, fig.width=13}
-
-
 ggarrange(upper_panel, lower_panel,  heights = c(2.7,1),
-                                        ncol = 1, nrow = 2)
+                                        ncol = 1, nrow = 2) -> panel_without_graph
 
+panel_without_graph
+```
+
+
+
+```{r}
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
