@@ -12,8 +12,21 @@ path_figure_1 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis
 path_figure_2 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_2/"
 path_figure_3 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_3/"
 id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% select(c("ID", "Name" ))
-Centrality      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(Centrality > 0.5) 
-Optimality      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
+Centrality0      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(Centrality > 0.5) 
+Optimality0      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
+
+c('PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m' ,
+'ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron', 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron' ,
+'ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron' ,
+'PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA') -> subsystems
+
+Optimality0[!(Optimality0$ID %in% subsystems),] -> Optimality
+Centrality0[!(Centrality0$ID %in% subsystems),] -> Centrality
+
+```
+
+
+```{r message=FALSE, warning=FALSE}
 Node_attributes <- read_csv(paste0(path_figure_3, "node_attributes.csv"))
 Optimality <- inner_join(Node_attributes, Optimality)
 Centrality <- inner_join(Node_attributes, Centrality)
@@ -31,9 +44,12 @@ library(ggplot2)
 
 setdiff(Optimality$ID, hyperhubs$ID) -> only_optimal
 setdiff(Centrality$ID, hyperhubs$ID) -> only_central
+
+hyperhubs %>% filter(Node == 'Astrocyte' | Node == 'Neuron')  %>% mutate(Module = 'Hyper')-> Hyperhubs
+
 Optimality %<>% column_to_rownames("ID")
 Centrality %<>% column_to_rownames("ID")
-hyperhubs %>% filter(Node == 'Astrocyte' | Node == 'Neuron')  %>% mutate(Module = 'Hyper')-> Hyperhubs
+
 Optimality[only_optimal,] %>% filter(Node == 'Astrocyte' | Node == 'Neuron') %>% mutate(Module = 'Optimal')-> Optimal_hubs
 Centrality[only_central,]%>% filter(Node == 'Astrocyte' | Node == 'Neuron')%>% mutate(Module = 'Central')  -> Central_hubs
 get_node_and_module <- function(df){ df %>% select(Node,Module)}
@@ -48,13 +64,11 @@ Cell_Module %>% count(Cell,Module) %>% filter(Cell == "Neuron") %>% .[["n"]]    
 Cell_Module %>% count(Cell,Module) %>% mutate("Percentage %" =  100* c(modules_astro/astro_total,modules_neuron/neuron_total) %>% round(4)  ) -> my_counts
 
 
-
-
-
 ggplot(my_counts, aes(fill=Module, x=Cell, y=`Percentage %`,  label = `Percentage %`)) + 
      geom_bar(stat = "identity") + scale_fill_manual(values = alpha(c("chartreuse3", "darkorange1", "darkorchid3"), 1)) + theme(axis.title.x =  element_blank(), legend.position = 'right', axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
   geom_text(angle = 90,size = 4, position = position_stack(vjust = 0.5)) -> plot.my_counts_stacked
 
+plot.my_counts_stacked
 ```
 
 
@@ -64,9 +78,33 @@ library(scales)
 library(magrittr)
 library(ggplot2)
 id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% select(c("ID", "Name" ))
-Centrality      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(Centrality > 0.5) 
-Optimality      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
+
+Centrality0      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(Centrality > 0.5) 
+Optimality0      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
+
+c('PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m' ,
+'ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron', 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron' ,
+'ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron' ,
+'PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA') -> subsystems
+
+Optimality0[!(Optimality0$ID %in% subsystems),] -> Optimality
+Centrality0[!(Centrality0$ID %in% subsystems),] -> Centrality
+
+
+
+
+
+
+
+
+
+
 Node_attributes <- read_csv(paste0(path_figure_3, "node_attributes.csv"))
+
+
+
+
+
 Optimality <- inner_join(Node_attributes, Optimality)
 Centrality <- inner_join(Node_attributes, Centrality)
 Optimality <- inner_join(id_name, Optimality)
@@ -85,7 +123,7 @@ plot_sorted_nodes <- function(df, varname_values, x_lab, y_lab, leg_pos, mycolor
   ggplot(aes(y= reorder(.data[[y_labels]],  .data[[varname_values]]),x= .data[[varname_values]], fill = Node)) + 
   geom_col()+  scale_fill_manual(values=mycolors) +
     theme(axis.ticks.y=element_blank(), 
-          axis.text.y= element_text(NA, angle = 0, size=6),
+          axis.text.y= element_text(NA, angle = 0, size=7),
         panel.border = element_rect(linetype = "solid", fill = NA),
         legend.position = leg_pos)+ 
         labs(x = x_lab, y = y_lab)}
@@ -93,12 +131,13 @@ c("deepskyblue3", "brown2") -> mycolors
 "Score"                -> x_lab
 'Hyper-hubs'-> y_lab
 'right'                       -> leg_pos
+
 hyperhubs %>% plot_sorted_nodes('Hubness' , x_lab, y_lab, leg_pos, mycolors, y_labels = "Name") -> hyperhubs_plot
 ```
 
 
 ```{r fig.height=9, fig.width=13, message=FALSE, warning=FALSE, paged.print=FALSE}
-ggarrange(NA, plot.my_counts_stacked,  hyperhubs_plot, widths = c(1,.37,1),
+ggarrange(NA, plot.my_counts_stacked,  hyperhubs_plot, widths = c(.9,.35,1),
                     labels = c("a","", "e"),
                     ncol = 3, nrow = 1) -> upper_panel
 
@@ -222,7 +261,7 @@ ggplot(quads, aes(x=Comparison, y=`Nodes correlations`, fill=Comparison)) +
 
 ```
 
-```{r fig.height=10, fig.width=13}
+```{r fig.height=8, fig.width=13}
 ggarrange(centralhubs_corr,optimalhubs_corr,hyperhubs_corr, widths = c(1.25,1,1),
                     labels = c("b", "c", "d"),
                     ncol = 3, nrow = 1) -> lower_panel
@@ -236,10 +275,26 @@ panel_without_graph
 
 
 ```{r}
+ggsave(file="panel_without_graph.png", plot=panel_without_graph, height=8, width=13, dpi = 400)
 
 ```
 
 
+```{r}
+Hyperhubs %>% select(c("ID", "Module"))   -> graph_hyper
+Optimal_hubs %>% rownames_to_column("ID") %>% select(c("ID", "Module"))-> graph_optimal
+Central_hubs %>% rownames_to_column("ID")%>% select(c("ID", "Module")) -> graph_central
+
+sum(graph_hyper$ID %in% graph_optimal$ID)
+sum(graph_hyper$ID %in% graph_central$ID)
+sum(graph_optimal$ID %in% graph_central$ID)
+
+
+rbind(graph_hyper, graph_optimal, graph_central) -> modules_for_graph
+
+write_csv(modules_for_graph, "modules_for_graph.csv")
+
+```
 
 
 
