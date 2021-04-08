@@ -4,67 +4,52 @@ un formato apto para NetworkX y Graph-tool"""
 
 # %% --- IMPORTA EL MODELO
 
-INPUT_MODEL='./data/stimulated_2021.json' # TODO: hacer esto una variable ambiental
+INPUT_MODEL='./data/GEM_Recon2_thermocurated_redHUMAN.json' # TODO: hacer esto una variable ambiental
 
 import warnings; warnings.filterwarnings('ignore') # Ignora warnings
 from cobra.io import load_json_model
 model = load_json_model(INPUT_MODEL)
 
-# %% --- OPTIMIZA EL MODELO, PARA FLUJOS Y ESO
+def cobra_to_networkx_rxn_projection(modelo):
+    import networkx as nx
+    from   cobra.util.array import create_stoichiometric_matrix
+    import numpy as np
+    from sklearn.preprocessing import Binarizer
+    import warnings 
+    warnings.filterwarnings("ignore")
 
-# print("Iniciando optimización del modelo", time.asctime( time.localtime(time.time()) ) )
-# solution_fba = model.optimize() # Optimización del modelo para check
-# solution_fba.fluxes # Check si los flujos funcionan
+    assert str(type(modelo)) == "<class 'cobra.core.model.Model'>", "El objeto debe ser un modelo, no un optimizado (modelo.optimize())"
+    #extraer matriz estequiométrica
+    S_matrix = create_stoichiometric_matrix(modelo)
+    #convertir todas las entradas valores positivos
+    S_matrix = (abs(S_matrix) )
+    #transformar a enteros 
+    S_matrix = S_matrix.astype(np.int)
+    #Multiplicacion por la derecha para proyectar en el espacio de las reacciones
+    projected_S_matrix = np.matmul(S_matrix.T, S_matrix)
+    #rellenar diagonal con ceros
+    np.fill_diagonal(projected_S_matrix, 0) 
+    #binarizar
+    projected_S_matrix = Binarizer().fit_transform(projected_S_matrix)
+    #crear grafo networkx
+    G = nx.convert_matrix.from_numpy_matrix( projected_S_matrix )
+    #hacer diccionario con los nombres de las reacciones
+    node_dict   = lambda l : dict( zip( list(G.nodes), l ) )
+    reaction_dict = node_dict( [reaction.id for reaction in modelo.reactions] )
+    #Renombrar los nodos usando el diccionario
+    G = nx.relabel_nodes(G, reaction_dict, copy=True) # Revisar que esto este antes de la remoción del grafo
+    return G
 
-# %% --- CONVIERTE EL MODELO A UN GRAFO
+G = cobra_to_networkx_rxn_projection(model)
 
-import networkx as nx
-import numpy    as np
-from cobra.util.array import create_stoichiometric_matrix
+def get_largest_component(grafo): 
+    import networkx as nx
+    largest_component = max(nx.connected_components(grafo), key=len)
+    G = grafo.subgraph(largest_component)
+    return G
 
-S_matrix = create_stoichiometric_matrix(model)
-S_matrix = (abs(S_matrix) ) # Convertir todas las entradas valores positivos
-S_matrix = S_matrix.astype(np.int) # Transformar a enteros
+G = get_largest_component(G) # Elimina otras cosas
 
-projected_S_matrix = np.matmul(S_matrix.T, S_matrix) # Multiplicacion por la derecha para proyectar en el espacio de las reacciones
-print('Dimensiones de la matriz:', projected_S_matrix.shape,    # Dimensiones, deberian ser cuadradas
-      'Valores no-cero:', np.count_nonzero(projected_S_matrix)) # Valores no-cero, deberian mantenerse
+# %% --- EXPORTA EL MODELO COMO UN PICKLE ESPECIAL DE NETWORKX
 
-print('Removiendo la diagonal...')
-np.fill_diagonal(projected_S_matrix, 0) # Llena las diagonales de ceros. 
-
-projected_S_matrix = (projected_S_matrix !=0).astype(int) # No require importar SKLearn
-#from sklearn.preprocessing import Binarizer
-#projected_S_matrix = Binarizer().fit_transform(projected_S_matrix) # Binarización
-print('Dimensiones de la matriz:', projected_S_matrix.shape,    # Dimensiones, deberian ser cuadradas
-      'Valores no-cero:', np.count_nonzero(projected_S_matrix), # Valores no-cero, deberian mantenerse
-      'Valores unicos:',  np.unique(projected_S_matrix))        # Deberian ser [0 1]
-
-G = nx.convert_matrix.from_numpy_matrix( projected_S_matrix ) # Convierte la matriz a numpy
-
-# %% --- AÑADE IDS DE LAS REACCIONES COMO NOMBRE DE LOS NODOS
-
-node_dict = lambda l : dict( zip( list(G.nodes), l ) )
-cursed_dict = node_dict( [reaction.id for reaction in model.reactions] )
-
-G_nx = nx.relabel_nodes(G, cursed_dict, copy=True)
-
-# %% --- CREA UN GRAFO TOTALMENTE CONEXO ELIMINANDO NODOS HUERFANOS
-# Simplifica algunas centralidades, y los huerfanos usualmente son sinks del
-# modelo para que este fluya correctamente. 
-
-if not (nx.is_connected(G)):
-    # Check si este grafo tiene nodos huerfanos
-    print("Modelo no completamente conexo. Eligiendo componente más grande.")
-    
-    largest_component = max(nx.connected_components(G), key=len)
-    
-    print( len(G.nodes) - len(largest_component), 'nodos removidos.')
-    print( len(G.nodes), "nodes finales.")
-
-    G = G.subgraph(largest_component)
-
-
-# %% --- EXPORTA EL MODELO A UN FORMATO COMÚN
-
-nx.write_graphml(G, "./tmp/graph.graphml", named_key_ids=True)  
+nx.write_gpickle(G, './data/Recon2_rxn_proyected.gpickle' )

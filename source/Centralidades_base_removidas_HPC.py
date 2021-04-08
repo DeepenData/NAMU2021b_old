@@ -13,56 +13,7 @@ import pandas   as pd
 
 LITE=False # Variable para definir si los calculos deben ser complejos o no
 
-#G = nx.read_graphml("./tmp/graph.graphml") # Lee el modelo desde un grafo común
-
-# %% --- ELIMINAR --- DEFINICIONES DE FUNCIONES
-# TODO: resolver esto y el error de ModelToGrapgh.py
-
-INPUT_MODEL='./data/stimulated_2021.json' # TODO: hacer esto una variable ambiental
-
-import warnings; warnings.filterwarnings('ignore') # Ignora warnings
-from cobra.io import load_json_model
-model = load_json_model(INPUT_MODEL)
-
-def cobra_to_networkx_rxn_projection(modelo):
-    import networkx as nx
-    from   cobra.util.array import create_stoichiometric_matrix
-    import numpy as np
-    from sklearn.preprocessing import Binarizer
-    import warnings 
-    warnings.filterwarnings("ignore")
-
-    assert str(type(modelo)) == "<class 'cobra.core.model.Model'>", "El objeto debe ser un modelo, no un optimizado (modelo.optimize())"
-    #extraer matriz estequiométrica
-    S_matrix = create_stoichiometric_matrix(modelo)
-    #convertir todas las entradas valores positivos
-    S_matrix = (abs(S_matrix) )
-    #transformar a enteros 
-    S_matrix = S_matrix.astype(np.int)
-    #Multiplicacion por la derecha para proyectar en el espacio de las reacciones
-    projected_S_matrix = np.matmul(S_matrix.T, S_matrix)
-    #rellenar diagonal con ceros
-    np.fill_diagonal(projected_S_matrix, 0) 
-    #binarizar
-    projected_S_matrix = Binarizer().fit_transform(projected_S_matrix)
-    #crear grafo networkx
-    G = nx.convert_matrix.from_numpy_matrix( projected_S_matrix )
-    #hacer diccionario con los nombres de las reacciones
-    node_dict   = lambda l : dict( zip( list(G.nodes), l ) )
-    reaction_dict = node_dict( [reaction.id for reaction in modelo.reactions] )
-    #Renombrar los nodos usando el diccionario
-    G = nx.relabel_nodes(G, reaction_dict, copy=True) # Revisar que esto este antes de la remoción del grafo
-    return G
-
-G = cobra_to_networkx_rxn_projection(model)
-
-def get_largest_component(grafo): 
-    import networkx as nx
-    largest_component = max(nx.connected_components(grafo), key=len)
-    G = grafo.subgraph(largest_component)
-    return G
-
-G = get_largest_component(G) # Elimina otras cosas
+G = nx.read_gpickle('./data/Recon2_rxn_proyected.gpickle')
 
 # %% --- DEFINICIONES DE FUNCIONES
 
@@ -204,8 +155,10 @@ if __name__ == '__main__':
 
     G_ray = ray.put( G ) # Sube el grafo al object store
 
-    nodos_remover = list( G.nodes )
-    #nodos_remover = ['PGM', 'ACYP']#, 'PGI', 'PGK' ,'PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m'] # Glicolisis astros
+    # Importa la lista de subsistemas de un archivo externo
+    infile = open('./tmp/subsystems_dict.pkl', 'rb'); subsystems_dict = pickle.load(infile); infile.close()
+
+    nodos_remover = subsystems_dict['Phenylalanine metabolism'] + ['r0399']
 
     # EVITAR EL SOBRE-PARALELISMO DE UN PROCESO POR NODO
     WORKERS = int( ray.cluster_resources()['CPU'] ) # CANTIDAD DE CPUS DEL CLUSTER
