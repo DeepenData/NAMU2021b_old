@@ -1,7 +1,7 @@
 #!/bin/bash
 ### Este script funciona para cualquier numero de nodos; Ray se encarga de manejarlos
 ### puedes definir este parametro en la ejecución de la tarea como 'sbatch submit-ray... --nodes=5'
-#SBATCH --nodes=12
+#SBATCH --nodes=1
 
 ### Asigna todos los recursos de un nodo al proceso Ray, el cual los maneja internamente
 #SBATCH --ntasks-per-node=1
@@ -59,9 +59,13 @@ ray status --address $ip_head --redis_password $redis_password
 
 #ray timeline --address $ip_head 
 
+time python -u source/SubsystemsListsDictionatries.py
+
+time python -u source/ModelToGrapgh.py
+
 echo "$(date) --- Empieza el proceso python paralelo"
 
-time python -u source/centrality_baseline_and_node_removal.py
+time python -u source/Centralidades_base_removidas_HPC.py
 
 ### INFORMACIÓN FINAL QUE SALE AL OUTPUT DEL SISTEMA
 # Esta parte está fallando, así que mejor imprimir algo como un grep o algo así porsiaca
@@ -70,13 +74,13 @@ echo "$(date) --- Termina el proceso paralelo"
 
 ray stop --verbose
 
-time python -u source/validation_of_HPC_results_and_creation_of_FC_and_delta_cents/FC_delta_summaryzation_means_from_HPC.py
+time python -u source/FC_deltas_centralidades.py
 
 # sstat  -j   $SLURM_JOB_ID.batch   --format=JobID,MaxVMSize
 
 # SINCRONIZACIÓN CON AWS S3 DE RESULTADOS
 aws s3 sync tmp s3://pseudo-dropbox/MAGI_01/results-$SLURM_JOB_ID --exclude "*" --include "*.pkl"
-aws s3 mv slurm-$SLURM_JOB_ID.out s3://pseudo-dropbox/MAGI_01/results-$SLURM_JOB_ID
+aws s3 cp slurm-$SLURM_JOB_ID.out s3://pseudo-dropbox/MAGI_01/results-$SLURM_JOB_ID
 
 exit
 

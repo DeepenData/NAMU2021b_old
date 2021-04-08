@@ -52,4 +52,6 @@ G = get_largest_component(G) # Elimina otras cosas
 
 # %% --- EXPORTA EL MODELO COMO UN PICKLE ESPECIAL DE NETWORKX
 
+import networkx as nx
+
 nx.write_gpickle(G, './data/Recon2_rxn_proyected.gpickle' )

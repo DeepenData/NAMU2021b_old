@@ -11,11 +11,19 @@ import networkx as nx
 import numpy    as np
 import pandas   as pd  
 
+import pickle
+
 LITE=False # Variable para definir si los calculos deben ser complejos o no
 
 G = nx.read_gpickle('./data/Recon2_rxn_proyected.gpickle')
 
 # %% --- DEFINICIONES DE FUNCIONES
+
+def get_largest_component(grafo): 
+    import networkx as nx
+    largest_component = max(nx.connected_components(grafo), key=len)
+    G = grafo.subgraph(largest_component)
+    return G
 
 def compute_centralities_short(graph):
     """Computa las centralidades rapidas y devuelve una DataFrame (no reindexado) con estas"""
@@ -166,8 +174,6 @@ if __name__ == '__main__':
     
     print('Distribuyendo', len(nodos_remover), 'nodos en', SPLITS, 'procesos.') # Sanity check
     
-    import random; random.seed(42) ; nodos_remover = random.sample( nodos_remover , WORKERS ) # TODO: muestra de los nodos
-
     nodos_remover = np.array_split( nodos_remover , SPLITS )  # Lo separa en listas mas pequenas
     nodos_remover = [ list(chunk) for chunk in nodos_remover ] # Convierte a lista de nuevo
 
@@ -175,7 +181,7 @@ if __name__ == '__main__':
     centralidades_distribuidas = [ hpc_reemoved_centrality.remote( G_ray, chunk ) for chunk in nodos_remover ]
 
     # INTERMEDIO EN QUE LOCALMENTE CALCULA LAS CENTRALIDADES BASE. MENOS DEMANDANTE QUE EL RESTO
-    baseline = compute_centralities(G, lite=LITE, alpha=0.001) # TIRA EL CALCULO DE CENTRALIDADES BASE
+    baseline = compute_centralities(G, lite=LITE, alpha=0.0003) # TIRA EL CALCULO DE CENTRALIDADES BASE
     print( baseline.info(verbose=True) ) # Sanity check para el formato de las salidas
 
     # VENGANZA DE LOS PROCESOS ENVIADOS AL CLUSTER (GET.REMOTES)
