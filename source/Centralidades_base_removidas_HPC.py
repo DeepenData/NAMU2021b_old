@@ -39,7 +39,7 @@ def compute_centralities_short(graph):
 
     return centralities
 
-def compute_centralities(graph, lite=False, alpha=0.005):
+def compute_centralities(graph, lite=False, alpha=0.0003):
     """Computa las doce centralidades y devuelve una DataFrame (no reindexado) con estas"""
     if lite == False:
         # TODO: supuestamente estos se pueden poner internamente como 'float32', que es suficiente y consume menos memoria
@@ -86,7 +86,7 @@ def get_alpha(G):
     tmp = np.max(tmp)
     tmp = np.real(tmp)    
 
-    tmp = .9*(1/tmp)
+    tmp = .5*(1/tmp)
 
     return tmp
 
