@@ -1,18 +1,21 @@
-# Human Metabolic Network
+# Human Brain Metabolic Network
 
-**Scope:** This proyect aims to bla bla bla
+**Scope:** This repository contains all the necessary code to generate the centrality and optimality analysis of the neuron-astrocyte metabolic network. The network was derived from Lewis
 
-## Estructura de este proyecto
+## Proyect structure
 
-### Carpetas
+### Directories
 
-- **source** incluye todos los archivos ejecutables, y codigos a utilizar en el proyecto. Eg. `.py`, `.r`, `.rmd`. Incluye ademas `runtime.sh`, con las instrucciones _SBATCH_ para ejecución en el cluster. 
-- **data** incluye todos los modelos `.json` y tablas con valores de metabolitos y reacciones para los analisis. 
-- **results** incluye todos los modelos de redes `.gephx` para analisis, tablas `.tsv`, y objetos `.pickle` y `.rds` intermedios. 
-- **doc** incluye los `.md` (y posiblemente) `.rmd` usados para la publicación. 
-    - **img** incluye las figuras generadas. `.png`, `.svg` o demás, que se incluyan en la publicación. 
+- **source** includes main source code for this proyect. Eg. `.py`, `.r`, `.rmd`. Includes also the `.sbatch` and `.sh` files used for cluster excecution in SLURM. 
+- **data** includes `.json` COBRA models. 
+- **results** includes network models `.gephx`, output tables `.csv` and `.xsls`. 
+- **doc** includes the source code for the paper. It's mostly `.rmd` files rendered with RMarkdown. 
+    - **img** includes generated figures `.png`, `.svg`, etc. 
 
-El proyecto no es aun publico, por lo que no se incluye una documentación aparte de los `README.md` y _docstrings_ presentes en el código. Eventualmente incluir una documentación via Github Pages. 
+### Branches
+
+- `main` contains the main development branch, reused 
+- `brain-astrocyte` contains development and specific code related to the 
 
 ### Flow del proyecto
 
@@ -20,12 +23,12 @@ El proyecto no es aun publico, por lo que no se incluye una documentación apart
 
 ### .gitignore
 
-Los achivos marcados como `tmp.*` son excluidos, en base a que sean archivos borrador. 
-Incluye omisión de proyectos de RStudio (`.RData`. `.Rhistory`, ...); y finalmente archivos de claves `.pem` como precaución. 
+Excludes the `tmp.*` files, and `tmp/` folder, which contains large datasets available in AWS S3. 
+ALso excludes RStudio files (`.RData`. `.Rhistory`, ...), and `.pem` key files. 
 
 -----
 
 ## References
 
-De Martino, Daniele, Anna MC Andersson, Tobias Bergmiller, Călin C. Guet, y Gašper Tkačik. 2018. «Statistical Mechanics for Metabolic Networks during Steady State Growth». *Nature Communications* 9 (1): 2988. https://doi.org/10.1038/s41467-018-05417-9.
+
 
