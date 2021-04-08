@@ -38,8 +38,6 @@ nodes_centrality = pd.read_csv(path + "total_centrality_by_node.csv")
 
 
 
-
-
 # %% 
 reaction_projected_stimnulated = nx.read_gpickle(path  + "reaction_projected_stimnulated.gpickle")
 
