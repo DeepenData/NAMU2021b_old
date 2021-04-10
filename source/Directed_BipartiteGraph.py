@@ -45,7 +45,7 @@ warnings.filterwarnings("ignore")
 path          = '/home/alejandro/PostDoc/human-metnet/data/'
 model    = cobra.io.load_json_model(path + 'GEM_Recon2_thermocurated_redHUMAN.json') 
 di_graph = cobra_to_bipartite(model)
-di_graph = get_largest_component(di_graph)
+#di_graph = get_largest_component(di_graph)
 import networkx as nx
 nx.write_graphml_lxml (di_graph, path + 'recon2_directed_bipartite_graph.graphml')
 
@@ -65,9 +65,22 @@ grc   = nx.global_reaching_centrality(graph)
 
 
 # %%
+from networkx.algorithms.bipartite.centrality  import betweenness_centrality as bi_bet_cen
+import networkx as nx
+path          = '/home/alejandro/PostDoc/human-metnet/data/'
 
-
+hola = nx.read_graphml(path + 'recon2_directed_bipartite_graph.graphml')
+graph = hola.copy()
+mets = [n for n, d in graph.nodes(data=True) if d["bipartite"] == 0] 
+rxns = [n for n, d in graph.nodes(data=True) if d["bipartite"] == 1] 
+bi_bet = bi_bet_cen(graph, nodes = rxns)
 #not for directed
 #ic    = nx.information_centrality(graph) # Requiere scipy
 #cbc   = nx.communicability_betweenness_centrality(graph) 
+# %%
+import numpy as np
 
+
+sum(bi_bet.values())
+
+# %%
