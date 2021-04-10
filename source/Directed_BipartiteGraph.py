@@ -48,10 +48,6 @@ di_graph = cobra_to_bipartite(model)
 di_graph = get_largest_component(di_graph)
 import networkx as nx
 nx.write_graphml_lxml (di_graph, path + 'recon2_directed_bipartite_graph.graphml')
-# %% 
-
-
-# %%
 
 # %%
 hola = nx.read_graphml(path + 'recon2_directed_bipartite_graph.graphml')
