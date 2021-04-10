@@ -2,6 +2,13 @@
 """
 
 # %% MM --- 2021-01-18 16:40 --- Funciones utilitarias
+def get_largest_component(grafo): 
+    import networkx as nx
+    undirected_graph = grafo.to_undirected()
+    largest_component = max(nx.connected_components(undirected_graph), key=len)
+    G = grafo.subgraph(largest_component)
+    return G
+
 def cobra_to_bipartite(model):
     import networkx as nx
     from   cobra.util.array import create_stoichiometric_matrix
@@ -38,6 +45,33 @@ warnings.filterwarnings("ignore")
 path          = '/home/alejandro/PostDoc/human-metnet/data/'
 model    = cobra.io.load_json_model(path + 'GEM_Recon2_thermocurated_redHUMAN.json') 
 di_graph = cobra_to_bipartite(model)
+di_graph = get_largest_component(di_graph)
 import networkx as nx
-nx.write_gpickle(di_graph, path + 'recon2_directed_bipartite_graph.gpickle')
+nx.write_graphml_lxml (di_graph, path + 'recon2_directed_bipartite_graph.graphml')
+# %% 
+
+
 # %%
+
+# %%
+hola = nx.read_graphml(path + 'recon2_directed_bipartite_graph.graphml')
+
+graph = hola.copy()
+dc    = nx.degree_centrality(graph) # SANITY CHECK: Deberia ser similar a todo lo demas
+hc    = nx.harmonic_centrality(graph, nbunch=None, distance=None)
+ec    = nx.eigenvector_centrality(graph, max_iter=2000, tol=1e-05, nstart=None, weight=None)
+bc    = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
+cc    = nx.closeness_centrality(graph, distance=None, wf_improved=True)
+lc    = nx.load_centrality(graph, cutoff=None, normalized=True, weight=None)
+kz    = nx.katz_centrality(graph, alpha = 0.00001)
+pr    = nx.pagerank(graph, alpha = 0.00001)
+grc   = nx.global_reaching_centrality(graph)
+
+
+# %%
+
+
+#not for directed
+#ic    = nx.information_centrality(graph) # Requiere scipy
+#cbc   = nx.communicability_betweenness_centrality(graph) 
+
