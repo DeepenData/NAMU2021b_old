@@ -128,10 +128,10 @@ nx.is_directed(alien_2))
 
 # %%
 
+g2 = nx.betweenness_centrality(alien)
 print(
-nx.is_bipartite(alien),
-nx.is_multigraphical(alien),
-nx.is_directed(alien))
+sum(g2.values()),
+pd.Series(g2).max(), pd.Series(g2).min())
 
 
 # %%
