@@ -12,8 +12,6 @@ warnings.filterwarnings("ignore")
 path          = '/home/alejandro/PostDoc/human-metnet/data/'
 model    = cobra.io.load_json_model(path + 'GEM_Recon2_thermocurated_redHUMAN.json') 
 
-
-
 #s = sample(model, n = 100, method='optgp',   seed=23, processes=16, thinning=100)
 
 
