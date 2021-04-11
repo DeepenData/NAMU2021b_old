@@ -79,8 +79,70 @@ bi_bet = bi_bet_cen(graph, nodes = rxns)
 #cbc   = nx.communicability_betweenness_centrality(graph) 
 # %%
 import numpy as np
+import networkx as nx
+from networkx.algorithms.bipartite.generators import configuration_model as bipartite_config_model
 
 
-sum(bi_bet.values())
+
+
+#sum(bi_bet.values())
+# %%
+
+
+hola_deg = hola.degree
+dic_mets = { key : hola_deg[key] for key in mets }
+dic_rxns = { key : hola_deg[key] for key in rxns }
+
+
+
+
+alien = bipartite_config_model(aseq = list(dic_rxns.values()), bseq = list(dic_mets.values()), create_using=nx.Graph)
+alien = alien.to_directed()
+alien = nx.DiGraph(alien)
+
+mets_alien = [n for n, d in alien.nodes(data=True) if d["bipartite"] == 0] 
+rxns_alien = [n for n, d in alien.nodes(data=True) if d["bipartite"] == 1] 
+
+from networkx.algorithms.bipartite.matrix import biadjacency_matrix
+
+alien_biad = biadjacency_matrix(alien,row_order= mets_alien).toarray()
+np.unique(alien_biad)
+
+from networkx.algorithms.bipartite.matrix import from_biadjacency_matrix
+from scipy.sparse import csr_matrix
+
+alien_biad[alien_biad < 0] 
+alien_biad[alien_biad == 0] 
+alien_biad[alien_biad > 0] = np.random.choice([-1,1], len(alien_biad[alien_biad > 0]), p=[.5,.5])
+
+
+
+
+alien_2 = from_biadjacency_matrix(csr_matrix(alien_biad), create_using=nx.DiGraph)
+
+
+print(np.unique(alien_biad),
+nx.is_bipartite(alien_2),
+nx.is_multigraphical(alien_2),
+nx.is_directed(alien_2))
 
 # %%
+
+print(
+nx.is_bipartite(alien),
+nx.is_multigraphical(alien),
+nx.is_directed(alien))
+
+
+# %%
+g1 = bi_bet_cen(alien, nodes = rxns)
+print(
+sum(g1.values()),
+pd.Series(g1).max(), pd.Series(g1).min()) 
+
+# %%
+import pandas as pd
+g2 = nx.betweenness_centrality(alien)
+print(
+sum(g2.values()),
+pd.Series(g2).max(), pd.Series(g2).min()) 
