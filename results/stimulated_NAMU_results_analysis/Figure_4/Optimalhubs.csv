@@ -1,0 +1,121 @@
+ID,Name,Reaction,Node,total,Module
+3AIBtm,"3-amino-isobutyrate transport, mitochondrial Astrocyte",3aib[mA] --> 3aib[cA],Astrocyte,0.12333690560144794,Optimal
+AKGDm,2-oxoglutarate dehydrogenase Astrocyte,akg[mA] + coa[mA] + nad[mA] --> co2[mA] + nadh[mA] + succoa[mA],Astrocyte,0.22982072105350101,Optimal
+ALCD2yf,"alcohol dehydrogenase (ethanol, NADP), forward reaction Astrocyte",etoh[cA] + nadp[cA] --> acald[cA] + h[cA] + nadph[cA],Astrocyte,0.3461492786152284,Optimal
+ALDD2y,"aldehyde dehydrogenase (acetaldehyde, NADP) Astrocyte",acald[cA] + h2o[cA] + nadp[cA] --> ac[cA] + 2.0 h[cA] + nadph[cA],Astrocyte,0.3461492786152284,Optimal
+ALR,Aldose reductase Astrocyte,h2o[cA] + mthgxl[cA] + nadp[cA] --> 2.0 h[cA] + nadph[cA] + pyr[cA],Astrocyte,0.3815111982957977,Optimal
+ASNt4,L-asparagine transport in via sodium symport Astrocyte,asn-L[e] + na1[e] --> asn-L[cA] + na1[cA],Astrocyte,0.043281074730148215,Optimal
+ATPtm,"ADP/ATP transporter, mitochondrial Astrocyte",adp[cA] + atp[mA] --> adp[mA] + atp[cA],Astrocyte,0.022932679057345556,Optimal
+CO2t,CO2 transporter via diffusion Astrocyte,co2[e] <=> co2[cA],Astrocyte,0.5948953862997168,Optimal
+CYSGLUexR,L-cysteine/L-glutamine reversible exchanger Astrocyte,cys-L[e] + gln-L[cA] --> cys-L[cA] + gln-L[e],Astrocyte,0.49186567223944955,Optimal
+CYSO,cysteine oxidase Astrocyte,cys-L[cA] + o2[cA] --> 3sala[cA] + 2.0 h[cA],Astrocyte,0.2730459438691784,Optimal
+ETF,electron transfer flavoprotein Astrocyte,etfox[mA] + fadh2[mA] --> etfrd[mA] + fad[mA],Astrocyte,0.11782879902661475,Optimal
+ETOHMO,ethanol monooxygenase Astrocyte,etoh[cA] + h[cA] + nadph[cA] + o2[cA] --> acald[cA] + 2.0 h2o[cA] + nadp[cA],Astrocyte,0.3461492786152285,Optimal
+GCC2bim,"glycine-cleavage system (lipoamide) irreversible, mitochondrial Astrocyte",alpam[mA] + thf[mA] --> dhlam[mA] + mlthf[mA] + nh4[mA],Astrocyte,0.0955931384595266,Optimal
+GCCbim,"glycine-cleavage complex (lipoylprotein) irreversible, mitochondrial Astrocyte",alpro[mA] + thf[mA] --> dhlpro[mA] + mlthf[mA] + nh4[mA],Astrocyte,0.0955931384595266,Optimal
+GLCt1r,glucose transport (uniport) Astrocyte,glc-D[e] --> glc-D[cA],Astrocyte,0.945227732153085,Optimal
+GLCt2r,D-glucose transport in via proton symport Astrocyte,glc-D[e] + h[e] --> glc-D[cA] + h[cA],Astrocyte,0.71772297091666315,Optimal
+GLNS,glutamine synthetase Astrocyte,atp[cA] + glu-L[cA] + nh4[cA] --> adp[cA] + gln-L[cA] + h[cA] + pi[cA],Astrocyte,0.2551643238024873,Optimal
+GLUNm,glutaminase (mitochondrial) Astrocyte,gln-L[mA] + h2o[mA] --> glu-L[mA] + nh4[mA],Astrocyte,0.10162624639766837,Optimal
+GLUVESSEC,L-glutamate secretion via secretory vesicle (ATP driven) Astrocyte,atp[cA] + glu-L[cA] + h2o[cA] --> adp[cA] + glu-L[e] + h[cA] + pi[cA],Astrocyte,0.5879223687504413,Optimal
+GLUt6,"Glutamate transport via Na, H symport and K antiport Astrocyte",glu-L[e] + h[e] + k[cA] + 3.0 na1[e] --> glu-L[cA] + h[cA] + k[e] + 3.0 na1[cA],Astrocyte,0.5735118844228786,Optimal
+GND,phosphogluconate dehydrogenase Astrocyte,6pgc[cA] + nadp[cA] --> co2[cA] + nadph[cA] + ru5p-D[cA],Astrocyte,0.4127056666134207,Optimal
+H2Ot,H2O transport via diffusion Astrocyte,h2o[e] <=> h2o[cA],Astrocyte,0.25516432380249776,Optimal
+HMGLm,hydroxymethylglutaryl-CoA lyase Astrocyte,hmgcoa[mA] --> acac[mA] + accoa[mA],Astrocyte,0.12049383658017876,Optimal
+ICDHxm,Isocitrate dehydrogenase (NAD+) Astrocyte,icit[mA] + nad[mA] --> akg[mA] + co2[mA] + nadh[mA],Astrocyte,0.03248377960335564,Optimal
+LDH_L,L-lactate dehydrogenase Astrocyte,lac-L[cA] + nad[cA] <-- h[cA] + nadh[cA] + pyr[cA],Astrocyte,0.33698693032714,Optimal
+LSOProd,Lumped superoxide production Astrocyte,focytC[mA] + o2[mA] --> ficytC[mA] + o2s[mA],Astrocyte,0.02254895615401662,Optimal
+MMSAD1m,methylmalonate-semialdehyde dehydrogenase Astrocyte,2mop[mA] + coa[mA] + nad[mA] --> co2[mA] + nadh[mA] + ppcoa[mA],Astrocyte,0.3085852034991958,Optimal
+MMSAD3m,"methylmalonate-semialdehyde dehydrogenase (malonic semialdehyde), mitochondrial Astrocyte",coa[mA] + msa[mA] + nad[mA] --> accoa[mA] + co2[mA] + nadh[mA],Astrocyte,0.030982730418854926,Optimal
+NTD5m,"5'-nucleotidase (dTMP), mitochondrial Astrocyte",dtmp[mA] + h2o[mA] --> pi[mA] + thymd[mA],Astrocyte,0.12049383658017883,Optimal
+O2t,o2 transport (diffusion) Astrocyte,o2[e] <=> o2[cA],Astrocyte,0.594895386299717,Optimal
+PSFLIP,phosphatidylserine flippase Astrocyte,atp[cA] + h2o[cA] + ps_hs[e] --> adp[cA] + h[cA] + pi[cA] + ps_hs[cA],Astrocyte,0.1016262463976683,Optimal
+PSFLIPm,phosphatidylserine flippase Astrocyte,atp[cA] + h2o[cA] + ps_hs[cA] --> adp[cA] + h[cA] + pi[cA] + ps_hs[mA],Astrocyte,0.1016262463976683,Optimal
+SERGLNexR,L-Serine/Glutamine reversible exchange Astrocyte,gln-L[cA] + ser-L[e] --> gln-L[e] + ser-L[cA],Astrocyte,0.49186567223944955,Optimal
+SERt4,L-serine via sodium symport Astrocyte,na1[e] + ser-L[e] --> na1[cA] + ser-L[cA],Astrocyte,0.03564676468208341,Optimal
+GLGNS1,glycogen synthase Astrocyte,ggn[cA] + 3.0 udpg[cA] --> glygn1[cA] + 3.0 h[cA] + 3.0 udp[cA],Astrocyte,0.8826984114934228,Optimal
+LacLtm,L-lactate mito transporter thorugh AQP9 Astrocyte,lac-L[cA] --> lac-L[mA],Astrocyte,0.2151506028648214,Optimal
+GLNtN1,Glutamine transporter Astrocyte,gln-L[e] + h[cA] + na1[e] --> gln-L[cA] + h[e] + na1[cA],Astrocyte,0.4877863136962159,Optimal
+PCREATtmdiffir,Phosphocreatine transport to/from mitochondria via diffusion Astrocyte,pcreat[mA] --> pcreat[cA],Astrocyte,0.022932679057345556,Optimal
+ASNt4_Int,L-asparagine transport in via sodium symport Interstitial And Synapse,asn-L[I] + na1[I] --> asn-L[cA] + na1[cA],Astrocyte,0.043281074730148215,Optimal
+BTNt2_Int,Biotin reversible transport via proton symport Interstitial And Synapse,btn[I] + h[I] <=> btn[cA] + h[cA],Astrocyte,0.15733754037239156,Optimal
+BTNt4i_Int,Biotin uptake (antiport) Interstitial And Synapse,btn[I] + h[cA] --> btn[cA] + h[I],Astrocyte,0.15733754037239156,Optimal
+CO2t_Int,CO2 transporter via diffusion Interstitial And Synapse,co2[I] <=> co2[cA],Astrocyte,0.5948953862997168,Optimal
+CYSGLUexR_Int,L-cysteine/L-glutamine reversible exchanger Interstitial And Synapse,cys-L[I] + gln-L[cA] --> cys-L[cA] + gln-L[I],Astrocyte,0.1801817876079312,Optimal
+GLCt2r_Int,D-glucose transport in via proton symport Interstitial And Synapse,glc-D[I] + h[I] --> glc-D[cA] + h[cA],Astrocyte,0.71772297091666315,Optimal
+GLUt6_Int,"Glutamate transport via Na, H symport and K antiport Interstitial And Synapse",glu-L[I] + h[I] + k[cA] + 3.0 na1[I] --> glu-L[cA] + h[cA] + k[I] + 3.0 na1[cA],Astrocyte,0.2551643238024872,Optimal
+Kt1r_Int,potassium transport via uniport (facilitated diffusion) Interstitial And Synapse,k[I] <=> k[cA],Astrocyte,0.11212400096301249,Optimal
+L-LACt2r_Int,L-lactate reversible transport via proton symport Interstitial And Synapse,h[I] + lac-L[I] <-- h[cA] + lac-L[cA],Astrocyte,0.33698693032714,Optimal
+NH4t3r_Int,ammonia transport via proton antiport Interstitial And Synapse,h[I] + nh4[cA] <=> h[cA] + nh4[I],Astrocyte,0.2551643238024936,Optimal
+NaKt_Int,Na+/K+ exchanging ATPase Interstitial And Synapse,atp[cA] + h2o[cA] + 2.0 k[I] + 3.0 na1[cA] --> adp[cA] + h[cA] + 2.0 k[cA] + 3.0 na1[I] + pi[cA],Astrocyte,0.19532483578669002,Optimal
+O2t_Int,o2 transport (diffusion) Interstitial And Synapse,o2[I] <=> o2[cA],Astrocyte,0.5948953862997176,Optimal
+ORNtiDF_Int,ornithine transport via diffusion (extracellular to cytosol) Interstitial And Synapse,orn[I] --> orn[cA],Astrocyte,0.13078157017084208,Optimal
+PEFLIP_Int,phosphatidylethanolamine flippase Interstitial And Synapse,atp[cA] + h2o[cA] + pe_hs[I] --> adp[cA] + h[cA] + pe_hs[cA] + pi[cA],Astrocyte,0.1995916731610817,Optimal
+PSFLIP_Int,phosphatidylserine flippase Interstitial And Synapse,atp[cA] + h2o[cA] + ps_hs[I] --> adp[cA] + h[cA] + pi[cA] + ps_hs[cA],Astrocyte,0.1016262463976683,Optimal
+PYRt2r_Int,pyruvate reversible transport via proton symport Interstitial And Synapse,h[I] + pyr[I] --> h[cA] + pyr[cA],Astrocyte,0.08680866587348109,Optimal
+SERGLNexR_Int,L-Serine/Glutamine reversible exchange Interstitial And Synapse,gln-L[cA] + ser-L[I] --> gln-L[I] + ser-L[cA],Astrocyte,0.18018178760793127,Optimal
+SERt4_Int,L-serine via sodium symport Interstitial And Synapse,na1[I] + ser-L[I] --> na1[cA] + ser-L[cA],Astrocyte,0.03564676468208343,Optimal
+GLNtN1_Int,Glutamine transporter Interstitial And Synapse,gln-L[I] + h[cA] + na1[I] <=> gln-L[cA] + h[I] + na1[cA],Astrocyte,0.25516432380248727,Optimal
+AACOAT_Neuron,Acetoacetyl-CoA:acetate CoA-transferase Neuron,acac[cN] + atp[cN] + coa[cN] --> aacoa[cN] + amp[cN] + ppi[cN],Neuron,0.6265040045668269,Optimal
+ACACt2_Neuron,acetoacetate transport via proton symport Neuron,acac[I] + h[I] --> acac[cN] + h[cN],Neuron,0.20164994065519193,Optimal
+ACOAD1fm_Neuron,"acyl-CoA dehydrogenase (butanoyl-CoA), mitochondrial Neuron",btcoa[mN] + fad[mN] --> b2coa[mN] + fadh2[mN],Neuron,0.04231154086752679,Optimal
+ACOAD8m_Neuron,"acyl-CoA dehydrogenase (isovaleryl-CoA), mitochondrial Neuron",fad[mN] + ivcoa[mN] --> 3mb2coa[mN] + fadh2[mN],Neuron,0.30007410073172475,Optimal
+ACONTm_Neuron,Aconitate hydratase Neuron,cit[mN] <=> icit[mN],Neuron,0.40833999354103956,Optimal
+ACSm_Neuron,acetyl-CoA synthetase Neuron,ac[mN] + atp[mN] + coa[mN] --> accoa[mN] + amp[mN] + ppi[mN],Neuron,0.37166381573125856,Optimal
+ADK1_Neuron,adenylate kinase Neuron,amp[cN] + atp[cN] --> 2.0 adp[cN],Neuron,0.15069627744127093,Optimal
+AKGMALtm_Neuron,alpha-ketoglutarate/malate transporter Neuron,akg[mN] + mal-L[cN] <=> akg[cN] + mal-L[mN],Neuron,0.4083399935410399,Optimal
+ALCD2if_Neuron,"alcohol dehydrogenase, forward rxn (ethanol -> acetaldehyde) Neuron",etoh[cN] + nad[cN] --> acald[cN] + h[cN] + nadh[cN],Neuron,0.20143233217756473,Optimal
+ALCD2yf_Neuron,"alcohol dehydrogenase (ethanol, NADP), forward reaction Neuron",etoh[cN] + nadp[cN] --> acald[cN] + h[cN] + nadph[cN],Neuron,0.1759088483639199,Optimal
+ALDD2x_Neuron,"aldehyde dehydrogenase (acetaldehyde, NAD) Neuron",acald[cN] + h2o[cN] + nad[cN] --> ac[cN] + 2.0 h[cN] + nadh[cN],Neuron,0.0423115408675274,Optimal
+ALR_Neuron,Aldose reductase Neuron,h2o[cN] + mthgxl[cN] + nadp[cN] --> 2.0 h[cN] + nadph[cN] + pyr[cN],Neuron,0.1999574601762108,Optimal
+ASNt4_Neuron,L-asparagine transport in via sodium symport Neuron,asn-L[I] + na1[I] --> asn-L[cN] + na1[cN],Neuron,0.16135807451028003,Optimal
+ASPTA_Neuron,aspartate transaminase Neuron,akg[cN] + asp-L[cN] <=> glu-L[cN] + oaa[cN],Neuron,0.408339993541037,Optimal
+ASPTAm_Neuron,aspartate transaminase Neuron,akg[mN] + asp-L[mN] <=> glu-L[mN] + oaa[mN],Neuron,0.408339993541037,Optimal
+ATPtm_Neuron,"ADP/ATP transporter, mitochondrial Neuron",adp[cN] + atp[mN] --> adp[mN] + atp[cN],Neuron,0.8581238802303921,Optimal
+BHBt_Neuron,(R)-3-Hydroxybutanoate transport via H+ symport Neuron,bhb[I] + h[I] --> bhb[cN] + h[cN],Neuron,0.13622865829905517,Optimal
+C160CPT2_Neuron,C160 transport into the mitochondria Neuron,coa[mN] + pmtcrn[mN] --> crn[mN] + pmtcoa[mN],Neuron,0.5035992905001541,Optimal
+C204CPT2_Neuron,arachidonic acid transport into the mitochondria Neuron,arachdcrn[mN] + coa[mN] --> arachdcoa[mN] + crn[mN],Neuron,0.5035992905001541,Optimal
+C226CPT2_Neuron,C226 transport into the mitochondria Neuron,c226crn[mN] + coa[mN] --> c226coa[mN] + crn[mN],Neuron,0.5035992905001541,Optimal
+CO2t_Neuron,CO2 transporter via diffusion Neuron,co2[I] <=> co2[cN],Neuron,0.5948953862997168,Optimal
+CO2tm_Neuron,"CO2 transport (diffusion), mitochondrial Neuron",co2[cN] <=> co2[mN],Neuron,0.5948953862997168,Optimal
+ETF_Neuron,electron transfer flavoprotein Neuron,etfox[mN] + fadh2[mN] --> etfrd[mN] + fad[mN],Neuron,0.40833999354103956,Optimal
+ETFQO_Neuron,Electron transfer flavoprotein-ubiquinone oxidoreductase Neuron,etfrd[mN] + q10[mN] --> etfox[mN] + q10h2[mN],Neuron,0.40833999354103956,Optimal
+ETOHMO_Neuron,ethanol monooxygenase Neuron,etoh[cN] + h[cN] + nadph[cN] + o2[cN] --> acald[cN] + 2.0 h2o[cN] + nadp[cN],Neuron,0.43212301374922046,Optimal
+FUMm_Neuron,"fumarase, mitochondrial Neuron",fum[mN] + h2o[mN] <=> mal-L[mN],Neuron,0.4083399935410396,Optimal
+GLNtm_Neuron,L-glutamine transport via electroneutral transporter Neuron,gln-L[cN] --> gln-L[mN],Neuron,0.2551643238024872,Optimal
+GLUNm_Neuron,glutaminase (mitochondrial) Neuron,gln-L[mN] + h2o[mN] --> glu-L[mN] + nh4[mN],Neuron,0.25516432380248727,Optimal
+GLUVESSEC_Neuron,L-glutamate secretion via secretory vesicle (ATP driven) Neuron,atp[cN] + glu-L[cN] + h2o[cN] --> adp[cN] + glu-L[I] + h[cN] + pi[cN],Neuron,0.2551643238024872,Optimal
+HMGLm_Neuron,hydroxymethylglutaryl-CoA lyase Neuron,hmgcoa[mN] --> acac[mN] + accoa[mN],Neuron,0.40833999354103956,Optimal
+ICDHxm_Neuron,Isocitrate dehydrogenase (NAD+) Neuron,icit[mN] + nad[mN] --> akg[mN] + co2[mN] + nadh[mN],Neuron,0.04231154086752646,Optimal
+ICDHyrm_Neuron,Isocitrate dehydrogenase (NADP+) Neuron,icit[mN] + nadp[mN] <=> akg[mN] + co2[mN] + nadph[mN],Neuron,0.4083399935410396,Optimal
+Kt1r_Neuron,potassium transport via uniport (facilitated diffusion) Neuron,k[I] <=> k[cN],Neuron,0.9327452401202376,Optimal
+L-LACt2r_Neuron,L-lactate reversible transport via proton symport Neuron,h[I] + lac-L[I] --> h[cN] + lac-L[cN],Neuron,0.33698693032714,Optimal
+LDH_L_Neuron,L-lactate dehydrogenase Neuron,lac-L[cN] + nad[cN] --> h[cN] + nadh[cN] + pyr[cN],Neuron,0.33698693032714006,Optimal
+LSOProd_Neuron,Lumped superoxide production Neuron,focytC[mN] + o2[mN] --> ficytC[mN] + o2s[mN],Neuron,0.04231154086752677,Optimal
+MDH_Neuron,malate dehydrogenase Neuron,mal-L[cN] + nad[cN] <=> h[cN] + nadh[cN] + oaa[cN],Neuron,0.40833999354103784,Optimal
+MMSAD1m_Neuron,methylmalonate-semialdehyde dehydrogenase Neuron,2mop[mN] + coa[mN] + nad[mN] --> co2[mN] + nadh[mN] + ppcoa[mN],Neuron,0.1791162903049763,Optimal
+NH4t3r_Neuron,ammonia transport via proton antiport Neuron,h[I] + nh4[cN] <=> h[cN] + nh4[I],Neuron,0.25516432380249376,Optimal
+NaKt_Neuron,Na+/K+ exchanging ATPase Neuron,atp[cN] + h2o[cN] + 2.0 k[I] + 3.0 na1[cN] --> adp[cN] + h[cN] + 2.0 k[cN] + 3.0 na1[I] + pi[cN],Neuron,0.8142410713786293,Optimal
+O2t_Neuron,o2 transport (diffusion) Neuron,o2[I] <=> o2[cN],Neuron,0.5948953862997173,Optimal
+O2tm_Neuron,O2 transport (diffusion) Neuron,o2[cN] <=> o2[mN],Neuron,0.5948953862997173,Optimal
+OCOAT1m_Neuron,3-oxoacid CoA-transferase Neuron,acac[mN] + succoa[mN] <=> aacoa[mN] + succ[mN],Neuron,0.40833999354103956,Optimal
+PCFLOPm_Neuron,phosphatidylcholine flippase Neuron,atp[cN] + h2o[cN] + pchol_hs[mN] --> adp[cN] + h[cN] + pchol_hs[cN] + pi[cN],Neuron,0.15069627744127106,Optimal
+PDHm_Neuron,pyruvate dehydrogenase Neuron,coa[mN] + nad[mN] + pyr[mN] --> accoa[mN] + co2[mN] + nadh[mN],Neuron,0.40833999354103956,Optimal
+PEFLIP_Neuron,phosphatidylethanolamine flippase Neuron,atp[cN] + h2o[cN] + pe_hs[I] --> adp[cN] + h[cN] + pe_hs[cN] + pi[cN],Neuron,0.15069627744127106,Optimal
+PEFLIPm_Neuron,phosphatidylethanolamine flippase Neuron,atp[cN] + h2o[cN] + pe_hs[cN] --> adp[cN] + h[cN] + pe_hs[mN] + pi[cN],Neuron,0.17911629030497414,Optimal
+PPAt_Neuron,"Propionate transport, diffusion Neuron",ppa[I] --> ppa[cN],Neuron,0.2613192597124655,Optimal
+PSFLIP_Neuron,phosphatidylserine flippase Neuron,atp[cN] + h2o[cN] + ps_hs[I] --> adp[cN] + h[cN] + pi[cN] + ps_hs[cN],Neuron,0.15069627744127106,Optimal
+PSFLIPm_Neuron,phosphatidylserine flippase Neuron,atp[cN] + h2o[cN] + ps_hs[cN] --> adp[cN] + h[cN] + pi[cN] + ps_hs[mN],Neuron,0.15069627744127106,Optimal
+SUCD1m_Neuron,succinate dehydrogenase Neuron,fad[mN] + succ[mN] <=> fadh2[mN] + fum[mN],Neuron,0.4083399935410396,Optimal
+SUCOAS1m_Neuron,Succinate--CoA ligase (GDP-forming) Neuron,coa[mN] + gtp[mN] + succ[mN] --> gdp[mN] + pi[mN] + succoa[mN],Neuron,0.15069627744127123,Optimal
+SUCOASm_Neuron,Succinate--CoA ligase (ADP-forming) Neuron,atp[mN] + coa[mN] + succ[mN] --> adp[mN] + pi[mN] + succoa[mN],Neuron,0.15069627744127123,Optimal
+DAKm_Neuron,adentylate kinase (GTP) / GTP-AMP Phosphotransferase Neuron,damp[mN] + gtp[mN] --> dadp[mN] + gdp[mN],Neuron,0.2468311908770458,Optimal
+DTKm_Neuron,deoxythymidylate kinase (ATP) Neuron,atp[mN] + dtmp[mN] --> adp[mN] + dtdp[mN],Neuron,0.24683119087704608,Optimal
+DCKm_Neuron,deoxycytidylate kinase (ATP) Neuron,atp[mN] + dcmp[mN] --> adp[mN] + dcdp[mN],Neuron,0.2468311908770458,Optimal
+DGKm_Neuron,deoxyguanylate kinase (ATP) Neuron,atp[mN] + dgmp[mN] --> adp[mN] + dgdp[mN],Neuron,0.2468311908770458,Optimal
+NDPK1_Neuron,GTP-ADP Phosphotransferase Neuron,atp[cN] + gdp[cN] --> adp[cN] + gtp[cN],Neuron,0.1185135354265836,Optimal
+GLNtN1_Neuron,Glutamine transporter Neuron,gln-L[I] + h[cN] + na1[I] <=> gln-L[cN] + h[I] + na1[cN],Neuron,0.25516432380248744,Optimal
+CKc_Neuron,ATP Creatine kinase Neuron,atp[cN] + creat[cN] --> adp[cN] + pcreat[cN],Neuron,0.15069627744127093,Optimal
+CREATtmdiffir_Neuron,Creatine transport to/from mitochondria via diffusion Neuron,creat[cN] --> creat[mN],Neuron,0.15069627744127093,Optimal
+NaEX_Neuron,Sodium transport (added for simulation),na1[e] <=> na1[cN],Neuron,1.0000000000000002,Optimal
+GLCt1r_Neuron,Glucose transporter_Neuron,glc-D[e] --> glc-D[cN],Neuron,0.8435695736090508,Optimal

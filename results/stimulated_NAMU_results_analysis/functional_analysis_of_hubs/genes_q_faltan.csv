@@ -1,0 +1,97 @@
+ID,Name.x,Reaction.x,VMH_gene_IDs,KEGG_genes
+3AIBtm,"3-amino-isobutyrate transport, mitochondrial Astrocyte",3aib[mA] --> 3aib[cA],,"18.1, 18.2 "
+ALR,Aldose reductase Astrocyte,h2o[cA] + mthgxl[cA] + nadp[cA] --> 2.0 h[cA] + nadph[cA] + pyr[cA],,"10327.2, 8574.1, 10327.1, 231.1"
+CO2t,CO2 transporter via diffusion Astrocyte,co2[e] <=> co2[cA],,NA
+GCCbim,"glycine-cleavage complex (lipoylprotein) irreversible, mitochondrial Astrocyte",alpro[mA] + thf[mA] --> dhlpro[mA] + mlthf[mA] + nh4[mA],,"275.1, 1738.1, 2731.1, 2653.1"
+GLCt2r,D-glucose transport in via proton symport Astrocyte,glc-D[e] + h[e] --> glc-D[cA] + h[cA],,NA
+GND,phosphogluconate dehydrogenase Astrocyte,6pgc[cA] + nadp[cA] --> co2[cA] + nadph[cA] + ru5p-D[cA],,5226.1
+LSOProd,Lumped superoxide production Astrocyte,focytC[mA] + o2[mA] --> ficytC[mA] + o2s[mA],,NA
+O2t,o2 transport (diffusion) Astrocyte,o2[e] <=> o2[cA],,NA
+SERt4,L-serine via sodium symport Astrocyte,na1[e] + ser-L[e] --> na1[cA] + ser-L[cA],,"81539.1, 11254.1, 54407.1, 55089.1, 340024.1, 57393.1, 340024.1, 59272.1"
+PCREATtmdiffir,Phosphocreatine transport to/from mitochondria via diffusion Astrocyte,pcreat[mA] --> pcreat[cA],,NA
+BTNt4i_Int,Biotin uptake (antiport) Interstitial And Synapse,btn[I] + h[cA] --> btn[cA] + h[I],,80704.1
+CO2t_Int,CO2 transporter via diffusion Interstitial And Synapse,co2[I] <=> co2[cA],,NA
+GLCt2r_Int,D-glucose transport in via proton symport Interstitial And Synapse,glc-D[I] + h[I] --> glc-D[cA] + h[cA],,NA
+Kt1r_Int,potassium transport via uniport (facilitated diffusion) Interstitial And Synapse,k[I] <=> k[cA],,NA
+NH4t3r_Int,ammonia transport via proton antiport Interstitial And Synapse,h[I] + nh4[cA] <=> h[cA] + nh4[I],,NA
+O2t_Int,o2 transport (diffusion) Interstitial And Synapse,o2[I] <=> o2[cA],,NA
+AACOAT_Neuron,Acetoacetyl-CoA:acetate CoA-transferase Neuron,acac[cN] + atp[cN] + coa[cN] --> aacoa[cN] + amp[cN] + ppi[cN],,65985.1
+ACOAD1fm_Neuron,"acyl-CoA dehydrogenase (butanoyl-CoA), mitochondrial Neuron",btcoa[mN] + fad[mN] --> b2coa[mN] + fadh2[mN],,"80724.1, 36.1, 35.1, 34.1, 84129.1, 27034.1, 28976.1"
+ACSm_Neuron,acetyl-CoA synthetase Neuron,ac[mN] + atp[mN] + coa[mN] --> accoa[mN] + amp[mN] + ppi[mN],,84532.1
+C160CPT2_Neuron,C160 transport into the mitochondria Neuron,coa[mN] + pmtcrn[mN] --> crn[mN] + pmtcoa[mN],,"1376.1, 1374.1"
+C204CPT2_Neuron,arachidonic acid transport into the mitochondria Neuron,arachdcrn[mN] + coa[mN] --> arachdcoa[mN] + crn[mN],,1376.1
+C226CPT2_Neuron,C226 transport into the mitochondria Neuron,c226crn[mN] + coa[mN] --> c226coa[mN] + crn[mN],,1376.1
+CO2t_Neuron,CO2 transporter via diffusion Neuron,co2[I] <=> co2[cN],,NA
+CO2tm_Neuron,"CO2 transport (diffusion), mitochondrial Neuron",co2[cN] <=> co2[mN],,NA
+GLNtm_Neuron,L-glutamine transport via electroneutral transporter Neuron,gln-L[cN] --> gln-L[mN],,NA
+Kt1r_Neuron,potassium transport via uniport (facilitated diffusion) Neuron,k[I] <=> k[cN],,NA
+LSOProd_Neuron,Lumped superoxide production Neuron,focytC[mN] + o2[mN] --> ficytC[mN] + o2s[mN],,NA
+MMSAD1m_Neuron,methylmalonate-semialdehyde dehydrogenase Neuron,2mop[mN] + coa[mN] + nad[mN] --> co2[mN] + nadh[mN] + ppcoa[mN],,4329.1
+NH4t3r_Neuron,ammonia transport via proton antiport Neuron,h[I] + nh4[cN] <=> h[cN] + nh4[I],,NA
+O2t_Neuron,o2 transport (diffusion) Neuron,o2[I] <=> o2[cN],,NA
+O2tm_Neuron,O2 transport (diffusion) Neuron,o2[cN] <=> o2[mN],,NA
+PPAt_Neuron,"Propionate transport, diffusion Neuron",ppa[I] --> ppa[cN],,NA
+DGKm_Neuron,deoxyguanylate kinase (ATP) Neuron,atp[mN] + dgmp[mN] --> adp[mN] + dgdp[mN],,2987.1
+NaEX_Neuron,Sodium transport (added for simulation),na1[e] <=> na1[cN],,NA
+34HPLFM,3-(4-hydroxyphenyl-)lactate formation Astrocyte,34hpp[mA] + h[mA] + nadh[mA] --> 34hpl[mA] + nad[mA],,NA
+ADCim,"Acetoacetate decarboxylation (irreversible), mitochondrial Astrocyte",acac[mA] + h[mA] --> acetone[mA] + co2[mA],,NA
+AGMTm,agmatinase (m) Astrocyte,agm[mA] + h2o[mA] --> ptrc[mA] + urea[mA],,79814.1
+AOBUTDsm,"L-2-amino-3-oxobutanoate decarboxylation, mitochondrial  (spontaneous) Astrocyte",2aobut[mA] + h[mA] --> aact[mA] + co2[mA],,NA
+CITtbm,"citrate transport, mitochondrial Astrocyte",cit[cA] + pep[mA] <=> cit[mA] + pep[cA],,6576.1
+COQ5m,Ubiquinone biosynthesis methyltransferase COQ5 Astrocyte,2dp6mobq[mA] + amet[mA] --> 2dp6mobq_me[mA] + ahcys[mA] + h[mA],,NA
+DMGDHm,"dimethylglycine dehydrogenase, mitochondrial Astrocyte",dmgly[mA] + fad[mA] + h2o[mA] --> fadh2[mA] + fald[mA] + sarcs[mA],,29958.1
+DPHMBDCm,3-Decaprenyl-4-hydroxy-5-methoxybenzoate  decarboxylation Astrocyte,3dpdhb_me[mA] + h[mA] --> 2dp6mep[mA] + co2[mA],,NA
+GLYCLTDym,"Glycolate dehydrogenase (NADP), mitochondrial Astrocyte",glx[mA] + h[mA] + nadph[mA] --> glyclt[mA] + nadp[mA],,9380
+H2Otm,"H2O transport, mitochondrial Astrocyte",h2o[cA] <=> h2o[mA],,343.1
+HPROxm,"L-hydroxyproline dehydrogenase (NAD), mitochondrial Astrocyte",4hpro-LT[mA] + nad[mA] --> 1p3h5c[mA] + 2.0 h[mA] + nadh[mA],,NA
+TKT2,transketolase Astrocyte,e4p[cA] + xu5p-D[cA] <=> f6p[cA] + g3p[cA],,"7086.1, 84076.1, 8277.1"
+NH3tm,mitochondrial ammonium transport Astrocyte,h[mA] + nh4[cA] <=> h[cA] + nh4[mA],,NA
+34HPLFM_Neuron,3-(4-hydroxyphenyl-)lactate formation Neuron,34hpp[mN] + h[mN] + nadh[mN] --> 34hpl[mN] + nad[mN],,NA
+3DPHBH1_Neuron,Hydroxylation of 3-Decaprenyl-4-hydroxybenzoate (NADH) Neuron,3dphb[mN] + h[mN] + nadh[mN] + o2[mN] --> 3dpdhb[mN] + h2o[mN] + nad[mN],,NA
+3HBCOAHLm_Neuron,"3-hydroxyisobutyryl-CoA hydrolase, mitochondrial Neuron",3hibutcoa[mN] + h2o[mN] --> 3hmp[mN] + coa[mN] + h[mN],,26275
+3SALATAim_Neuron,"3-sulfino-alanine transaminase (irreversible), mitochondrial Neuron",3sala[mN] + akg[mN] + h[mN] --> 3snpyr[mN] + glu-L[mN],,2806.1
+3SPYRSPm_Neuron,"3-sulfinopyruvate hydrolase (spotaneous reaction), mitochondrial Neuron",3snpyr[mN] + h2o[mN] --> h[mN] + pyr[mN] + so3[mN],,NA
+4HBZCOAFm_Neuron,4-hydroxybenzoyl-CoA formation Neuron,coa[mN] + coucoa[mN] + h2o[mN] + nad[mN] --> 4hbzcoa[mN] + accoa[mN] + h[mN] + nadh[mN],,NA
+4HBZFm_Neuron,4-hydroxybenzoate formation Neuron,4hbzcoa[mN] + h2o[mN] --> 4hbz[mN] + coa[mN] + h[mN],,NA
+AASAD3m_Neuron,"L-aminoadipate-semialdehyde dehydrogenase (NADH), mitochondrial Neuron",L2aadp6sa[mN] + h2o[mN] + nad[mN] --> L2aadp[mN] + 2.0 h[mN] + nadh[mN],,501
+ACt2m_Neuron,acetate mitochondrial transport via proton symport Neuron,ac[cN] + h[cN] <=> ac[mN] + h[mN],,NA
+ADCim_Neuron,"Acetoacetate decarboxylation (irreversible), mitochondrial Neuron",acac[mN] + h[mN] --> acetone[mN] + co2[mN],,NA
+AGMTm_Neuron,agmatinase (m) Neuron,agm[mN] + h2o[mN] --> ptrc[mN] + urea[mN],,79814.1
+AGPRim_Neuron,"N-acetyl-g-glutamyl-phosphate reductase, irreversible, mitochondrial Neuron",acg5p[mN] + h[mN] + nadph[mN] --> acg5sa[mN] + nadp[mN] + pi[mN],,5832.1
+AOBUTDsm_Neuron,"L-2-amino-3-oxobutanoate decarboxylation, mitochondrial  (spontaneous) Neuron",2aobut[mN] + h[mN] --> aact[mN] + co2[mN],,NA
+ARGDCm_Neuron,arginine decarboxylase (m) Neuron,arg-L[mN] + h[mN] --> agm[mN] + co2[mN],,113451.1
+ASPNATm_Neuron,"aspartate N-acetyltransferase, mitochondrial Neuron",accoa[mN] + asp-L[mN] --> Nacasp[mN] + coa[mN] + h[mN],,339983
+BDHm_Neuron,(R)-3-Hydroxybutanoate:NAD+ oxidoreductase Neuron,bhb[mN] + nad[mN] <=> acac[mN] + h[mN] + nadh[mN],,"622.2, 622.3, 622.1"
+BETALDHxm_Neuron,"betaine-aldehyde dehydrogenase, mitochondrial Neuron",betald[mN] + h2o[mN] + nad[mN] --> glyb[mN] + 2.0 h[mN] + nadh[mN],,501
+BHBtm_Neuron,(R)-3-Hydroxybutanoate mitochondrial transport via H+ symport Neuron,bhb[cN] + h[cN] <=> bhb[mN] + h[mN],,NA
+BTNPLm_Neuron,"holocarboxylase synthestase (biotin protein ligase), mitochondrial Neuron",apoC-Lys[mN] + btamp[mN] --> amp[mN] + apoC-Lys_btn[mN] + h[mN],,3141.1
+CBLATm_Neuron,"cob(I)alamin adenosyltransferase, mitochondrial Neuron",atp[mN] + cbl1[mN] + h[mN] <=> adocbl[mN] + pppi[mN],,166785.1
+CDSm_Neuron,phosphatidate cytidylyltransferase Neuron,ctp[mN] + h[mN] + pa_hs[mN] --> cdpdag_hs[mN] + ppi[mN],,"1040.1, 8760.1"
+CYANSTm_Neuron,"Cyanide sulfurtransferase, mitochondrial Neuron",cyan[mN] + tsul[mN] --> h[mN] + so3[mN] + tcynt[mN],,NA
+DHDPBMTm_Neuron,dihydroxydecaprenylbenzoate methyltransferase Neuron,3dpdhb[mN] + amet[mN] --> 3dpdhb_me[mN] + ahcys[mN] + h[mN],,51805.1
+DMGDHm_Neuron,"dimethylglycine dehydrogenase, mitochondrial Neuron",dmgly[mN] + fad[mN] + h2o[mN] --> fadh2[mN] + fald[mN] + sarcs[mN],,29958.1
+DPHMBDCm_Neuron,3-Decaprenyl-4-hydroxy-5-methoxybenzoate  decarboxylation Neuron,3dpdhb_me[mN] + h[mN] --> 2dp6mep[mN] + co2[mN],,NA
+FE2tm_Neuron,iron (II) transport Neuron,fe2[cN] + h[cN] --> fe2[mN] + h[mN],,NA
+G5SDym_Neuron,glutamate-5-semialdehyde dehydrogenase (m) Neuron,glu5p[mN] + h[mN] + nadph[mN] --> glu5sa[mN] + nadp[mN] + pi[mN],,5832.1
+GCC2am_Neuron,"glycine-cleavage complex (lipoamide), mitochondrial Neuron",gly[mN] + h[mN] + lpam[mN] <=> alpam[mN] + co2[mN],,"275.1, 1738.1, 2731.1, 2653.1"
+GCC2cm_Neuron,"glycine-cleavage complex (lipoamide), mitochondrial Neuron",dhlam[mN] + nad[mN] <=> h[mN] + lpam[mN] + nadh[mN],,"275.1, 1738.1, 2731.1, 2653.1"
+GCCam_Neuron,"glycine-cleavage complex (lipoylprotein), mitochondrial Neuron",gly[mN] + h[mN] + lpro[mN] <=> alpro[mN] + co2[mN],,"275.1, 1738.1, 2731.1, 2653.1"
+GCCcm_Neuron,"glycine-cleavage complex (lipoylprotein), mitochondrial Neuron",dhlpro[mN] + nad[mN] <=> h[mN] + lpro[mN] + nadh[mN],,"275.1, 1738.1, 2731.1, 2653.1"
+GHMT3m_Neuron,"glycine hydroxymethyltransferase, mitochondrial Neuron",3htmelys[mN] + h[mN] --> 4tmeabut[mN] + gly[mN],,6472.1
+HACD1m_Neuron,3-hydroxyacyl-CoA dehydrogenase (acetoacetyl-CoA) (mitochondria) Neuron,aacoa[mN] + h[mN] + nadh[mN] <=> 3hbcoa[mN] + nad[mN],,"3028.1, 3033.1, 3030.1, 3032.1"
+HACD9m_Neuron,"3-hydroxyacyl-CoA dehydrogenase (2-Methylacetoacetyl-CoA), mitochondrial Neuron",3hmbcoa[mN] + nad[mN] <=> 2maacoa[mN] + h[mN] + nadh[mN],,"3028.1, 1962.1, 3033.1"
+HCO3Em_Neuron,HCO3 equilibration reaction Neuron,co2[mN] + h2o[mN] <=> h[mN] + hco3[mN],,NA
+HPROxm_Neuron,"L-hydroxyproline dehydrogenase (NAD), mitochondrial Neuron",4hpro-LT[mN] + nad[mN] --> 1p3h5c[mN] + 2.0 h[mN] + nadh[mN],,NA
+LDH_Lm_Neuron,L-lactate dehydrogenase Neuron,lac-L[mN] + nad[mN] --> h[mN] + nadh[mN] + pyr[mN],,"3939.1, 3945.1, 197257.1"
+MCCCrm_Neuron,"methylcrotonoyl-CoA carboxylase, mitochondrial Neuron",3mb2coa[mN] + atp[mN] + hco3[mN] <=> 3mgcoa[mN] + adp[mN] + h[mN] + pi[mN],,"56922.1, 64087.1"
+NNATm_Neuron,"nicotinate-nucleotide adenylyltransferase, mitochondrial Neuron",atp[mN] + h[mN] + nicrnt[mN] --> dnad[mN] + ppi[mN],,349565.1
+PHCHGSm_Neuron,"L-1-Pyrroline-3-hydroxy-5-carboxylate spontaneous conversion to L-4-Hydroxyglutamate semialdehyde, mitochondrial Neuron",1p3h5c[mN] + h2o[mN] + h[mN] <=> 4hglusa[mN],,NA
+PPA2m_Neuron,"inorganic triphosphatase, mitochondrial Neuron",h2o[mN] + pppi[mN] --> h[mN] + pi[mN] + ppi[mN],,"27068, 5464, 64077
+"
+PRO1xm_Neuron,"proline oxidase (NAD), mitochondrial Neuron",nad[mN] + pro-L[mN] --> 1pyr5c[mN] + 2.0 h[mN] + nadh[mN],,5625.1
+SLDxm_Neuron,"L-sulfolactate dehydrogenase (NAD+), mitochondrial Neuron",nad[mN] + sl-L[mN] <=> 3spyr[mN] + h[mN] + nadh[mN],,4191.1
+SPODMm_Neuron,superoxide dismutase Neuron,2.0 h[mN] + 2.0 o2s[mN] --> h2o2[mN] + o2[mN],,6648.1
+SSALxm_Neuron,succinate-semialdehyde dehydrogenase (NAD) reversible (mitochondrial) Neuron,h2o[mN] + nad[mN] + sucsal[mN] --> 2.0 h[mN] + nadh[mN] + succ[mN],,7915
+TKT2_Neuron,transketolase Neuron,e4p[cN] + xu5p-D[cN] <=> f6p[cN] + g3p[cN],,"7086.1, 84076.1, 8277.1"
+TRDRm_Neuron,thioredoxin reductase (NADPH) Neuron,h[mN] + nadph[mN] + trdox[mN] --> nadp[mN] + trdrd[mN],,"114112.1, 10587.1, 10587.3, 10587.2"
+MTDNAdpolym_Neuron,depolymerization of mtDNA for repair Neuron,33136.0 h2o[mN] + mtDNAn[mN] --> 9218.0 damp[mN] + 7350.0 dcmp[mN] + 7350.0 dgmp[mN] + 9218.0 dtmp[mN] + 33136.0 h[mN] + mtDNAn-1[mN],,NA

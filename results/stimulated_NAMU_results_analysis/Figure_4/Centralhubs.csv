@@ -1,0 +1,199 @@
+ID,Name,Reaction,Node,Centrality,Module
+34HPLFM,3-(4-hydroxyphenyl-)lactate formation Astrocyte,34hpp[mA] + h[mA] + nadh[mA] --> 34hpl[mA] + nad[mA],Astrocyte,1.1831380375740752,Central
+3HBCOAHLm,"3-hydroxyisobutyryl-CoA hydrolase, mitochondrial Astrocyte",3hibutcoa[mA] + h2o[mA] --> 3hmp[mA] + coa[mA] + h[mA],Astrocyte,1.5319075372650033,Central
+3SALATAim,"3-sulfino-alanine transaminase (irreversible), mitochondrial Astrocyte",3sala[mA] + akg[mA] + h[mA] --> 3snpyr[mA] + glu-L[mA],Astrocyte,1.1843132581967488,Central
+3SPYRSPm,"3-sulfinopyruvate hydrolase (spotaneous reaction), mitochondrial Astrocyte",3snpyr[mA] + h2o[mA] --> h[mA] + pyr[mA] + so3[mA],Astrocyte,1.3830571750131693,Central
+4HBZCOAFm,4-hydroxybenzoyl-CoA formation Astrocyte,coa[mA] + coucoa[mA] + h2o[mA] + nad[mA] --> 4hbzcoa[mA] + accoa[mA] + h[mA] + nadh[mA],Astrocyte,1.533986409916349,Central
+4HBZFm,4-hydroxybenzoate formation Astrocyte,4hbzcoa[mA] + h2o[mA] --> 4hbz[mA] + coa[mA] + h[mA],Astrocyte,1.555379441398113,Central
+4HGLSDm,"L-4-hydroxyglutamate semialdehyde dehydrogenase, mitochondrial Astrocyte",4hglusa[mA] + h2o[mA] + nad[mA] <=> e4hglu[mA] + 2.0 h[mA] + nadh[mA],Astrocyte,1.4499793251905215,Central
+5HOXINDACTOXm,5-Hydroxyindoleacetaldehyde:NAD+ oxidoreductase (mito) Astrocyte,5hoxindact[mA] + h2o[mA] + nad[mA] --> 5hoxindoa[mA] + 2.0 h[mA] + nadh[mA],Astrocyte,1.457410058901467,Central
+ACACt2m,Acetoacetate mitochondrial transport via H+ symport Astrocyte,acac[cA] + h[cA] <=> acac[mA] + h[mA],Astrocyte,1.7638078573035003,Central
+ACt2m,acetate mitochondrial transport via proton symport Astrocyte,ac[cA] + h[cA] <=> ac[mA] + h[mA],Astrocyte,1.7150996219217816,Central
+ADCim,"Acetoacetate decarboxylation (irreversible), mitochondrial Astrocyte",acac[mA] + h[mA] --> acetone[mA] + co2[mA],Astrocyte,1.197384697993654,Central
+AGMTm,agmatinase (m) Astrocyte,agm[mA] + h2o[mA] --> ptrc[mA] + urea[mA],Astrocyte,0.6670017724629255,Central
+AGPRim,"N-acetyl-g-glutamyl-phosphate reductase, irreversible, mitochondrial Astrocyte",acg5p[mA] + h[mA] + nadph[mA] --> acg5sa[mA] + nadp[mA] + pi[mA],Astrocyte,1.2011583224299913,Central
+ALASm,5-aminolevulinate synthase Astrocyte,gly[mA] + h[mA] + succoa[mA] --> 5aop[mA] + co2[mA] + coa[mA],Astrocyte,1.3031258340698513,Central
+ALDD20xm,"aldehyde dehydrogenase (indole-3-acetaldehyde, NAD), mitochondrial Astrocyte",h2o[mA] + id3acald[mA] + nad[mA] --> 2.0 h[mA] + ind3ac[mA] + nadh[mA],Astrocyte,1.457410058914363,Central
+AOBUTDsm,"L-2-amino-3-oxobutanoate decarboxylation, mitochondrial  (spontaneous) Astrocyte",2aobut[mA] + h[mA] --> aact[mA] + co2[mA],Astrocyte,1.2158266267855828,Central
+APOCFm,"Apocarboxylase formation, mitochondrial Astrocyte",apoC[mA] + lys-L[mA] --> apoC-Lys[mA] + h2o[mA] + h[mA],Astrocyte,1.3709904446825878,Central
+ARGDCm,arginine decarboxylase (m) Astrocyte,arg-L[mA] + h[mA] --> agm[mA] + co2[mA],Astrocyte,1.2090984458269127,Central
+ARGtm,arginine mitochondrial transport via ornithine carrier Astrocyte,arg-L[cA] + h[mA] <=> arg-L[mA] + h[cA],Astrocyte,1.7254432931196375,Central
+BACCLm,"biotin-[acetyl-CoA-carboxylase] ligase, mitochondrial Astrocyte",atp[mA] + btn[mA] + h[mA] --> btamp[mA] + ppi[mA],Astrocyte,1.2638880167969322,Central
+BAMPPALDOXm,beta-Aminopropion aldehyde:NAD+ oxidoreductase (m) Astrocyte,bamppald[mA] + h2o[mA] + nad[mA] --> ala-B[mA] + 2.0 h[mA] + nadh[mA],Astrocyte,1.4507436632092763,Central
+BDHm,(R)-3-Hydroxybutanoate:NAD+ oxidoreductase Astrocyte,bhb[mA] + nad[mA] <=> acac[mA] + h[mA] + nadh[mA],Astrocyte,1.1827517560947762,Central
+BETALDHxm,"betaine-aldehyde dehydrogenase, mitochondrial Astrocyte",betald[mA] + h2o[mA] + nad[mA] --> glyb[mA] + 2.0 h[mA] + nadh[mA],Astrocyte,1.4574100589161987,Central
+BHBtm,(R)-3-Hydroxybutanoate mitochondrial transport via H+ symport Astrocyte,bhb[cA] + h[cA] <=> bhb[mA] + h[mA],Astrocyte,1.6960896729216457,Central
+BTNPLm,"holocarboxylase synthestase (biotin protein ligase), mitochondrial Astrocyte",apoC-Lys[mA] + btamp[mA] --> amp[mA] + apoC-Lys_btn[mA] + h[mA],Astrocyte,1.137467893692588,Central
+BTNt2m,"Biotin reversible transport via proton symport, mitochondria Astrocyte",btn[cA] + h[cA] <=> btn[mA] + h[mA],Astrocyte,1.7185813983860139,Central
+CBLATm,"cob(I)alamin adenosyltransferase, mitochondrial Astrocyte",atp[mA] + cbl1[mA] + h[mA] <=> adocbl[mA] + pppi[mA],Astrocyte,1.2183746979488221,Central
+CDSm,phosphatidate cytidylyltransferase Astrocyte,ctp[mA] + h[mA] + pa_hs[mA] --> cdpdag_hs[mA] + ppi[mA],Astrocyte,1.2073840902370927,Central
+CITtbm,"citrate transport, mitochondrial Astrocyte",cit[cA] + pep[mA] <=> cit[mA] + pep[cA],Astrocyte,0.5553289786570206,Central
+COQ3m,methyltransferase COQ3 Astrocyte,2dpmhobq[mA] + amet[mA] --> ahcys[mA] + h[mA] + q10[mA],Astrocyte,1.1385176736320255,Central
+COQ5m,Ubiquinone biosynthesis methyltransferase COQ5 Astrocyte,2dp6mobq[mA] + amet[mA] --> 2dp6mobq_me[mA] + ahcys[mA] + h[mA],Astrocyte,1.1177144017151406,Central
+CSm,citrate synthase Astrocyte,accoa[mA] + h2o[mA] + oaa[mA] --> cit[mA] + coa[mA] + h[mA],Astrocyte,1.6460074915715932,Central
+CYANSTm,"Cyanide sulfurtransferase, mitochondrial Astrocyte",cyan[mA] + tsul[mA] --> h[mA] + so3[mA] + tcynt[mA],Astrocyte,1.661037242001354,Central
+D-LACtm,"D-lactate transport, mitochondrial Astrocyte",h[cA] + lac-D[cA] <=> h[mA] + lac-D[mA],Astrocyte,1.6960896729364752,Central
+DHDPBMTm,dihydroxydecaprenylbenzoate methyltransferase Astrocyte,3dpdhb[mA] + amet[mA] --> 3dpdhb_me[mA] + ahcys[mA] + h[mA],Astrocyte,1.1194344412330242,Central
+DMGDHm,"dimethylglycine dehydrogenase, mitochondrial Astrocyte",dmgly[mA] + fad[mA] + h2o[mA] --> fadh2[mA] + fald[mA] + sarcs[mA],Astrocyte,0.6493894002890003,Central
+DPHMBDCm,3-Decaprenyl-4-hydroxy-5-methoxybenzoate  decarboxylation Astrocyte,3dpdhb_me[mA] + h[mA] --> 2dp6mep[mA] + co2[mA],Astrocyte,1.2098254154607397,Central
+DUTPDPm,dUTP diphosphatase Astrocyte,dutp[mA] + h2o[mA] --> dump[mA] + h[mA] + ppi[mA],Astrocyte,1.4361717013637236,Central
+FCLTm,"Ferrochelatase, mitochondrial Astrocyte",fe2[mA] + ppp9[mA] --> 2.0 h[mA] + pheme[mA],Astrocyte,1.2295380018202797,Central
+FE2tm,iron (II) transport Astrocyte,fe2[cA] + h[cA] --> fe2[mA] + h[mA],Astrocyte,1.8173102767059082,Central
+FPGS2m,"folylpolyglutamate synthetase, mitochondrial Astrocyte",5thf[mA] + atp[mA] + glu-L[mA] --> 6thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte,1.3827047028527129,Central
+FPGS3m,"folylpolyglutamate synthetase, mitochondrial Astrocyte",6thf[mA] + atp[mA] + glu-L[mA] --> 7thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte,1.4418625222079606,Central
+FPGS4m,"folylpolyglutamate synthetase (DHF), mitochondrial Astrocyte",4.0 atp[mA] + dhf[mA] + 4.0 glu-L[mA] --> 5dhf[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte,1.4593684406345788,Central
+FPGS5m,"folylpolyglutamate  synthetase (DHF), mitochondrial Astrocyte",5dhf[mA] + atp[mA] + glu-L[mA] --> 6dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte,1.3645802360205812,Central
+FPGS6m,"folylpolyglutamate synthetase (DHF), mitochondrial Astrocyte",6dhf[mA] + atp[mA] + glu-L[mA] --> 7dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte,1.441862232487125,Central
+FPGS7m,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf[mA] + 4.0 atp[mA] + 4.0 glu-L[mA] --> 10fthf5glu[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte,1.3668215053196175,Central
+FPGS9m,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf6glu[mA] + atp[mA] + glu-L[mA] --> 10fthf7glu[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte,1.4418625218801484,Central
+FPGSm,"folylpolyglutamate synthetase, mitochondrial Astrocyte",4.0 atp[mA] + 4.0 glu-L[mA] + thf[mA] --> 5thf[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte,1.3768056302174903,Central
+G5SDym,glutamate-5-semialdehyde dehydrogenase (m) Astrocyte,glu5p[mA] + h[mA] + nadph[mA] --> glu5sa[mA] + nadp[mA] + pi[mA],Astrocyte,1.2153216110828058,Central
+GCALDDm,"Glycolaldehyde dehydrogenase, mitochondrial Astrocyte",gcald[mA] + h2o[mA] + nad[mA] --> glyclt[mA] + 2.0 h[mA] + nadh[mA],Astrocyte,1.457410058917522,Central
+GCC2am,"glycine-cleavage complex (lipoamide), mitochondrial Astrocyte",gly[mA] + h[mA] + lpam[mA] <=> alpam[mA] + co2[mA],Astrocyte,1.205143853518943,Central
+GCC2cm,"glycine-cleavage complex (lipoamide), mitochondrial Astrocyte",dhlam[mA] + nad[mA] <=> h[mA] + lpam[mA] + nadh[mA],Astrocyte,1.181253929819742,Central
+GCCam,"glycine-cleavage complex (lipoylprotein), mitochondrial Astrocyte",gly[mA] + h[mA] + lpro[mA] <=> alpro[mA] + co2[mA],Astrocyte,1.2051438535184433,Central
+GCCcm,"glycine-cleavage complex (lipoylprotein), mitochondrial Astrocyte",dhlpro[mA] + nad[mA] <=> h[mA] + lpro[mA] + nadh[mA],Astrocyte,1.1812539298180746,Central
+GHMT3m,"glycine hydroxymethyltransferase, mitochondrial Astrocyte",3htmelys[mA] + h[mA] --> 4tmeabut[mA] + gly[mA],Astrocyte,1.1222973272750951,Central
+GLACOm,"D-Glucuronolactone:NAD+ oxidoreductase, mitochondrial Astrocyte",glac[mA] + 2.0 h2o[mA] + nad[mA] --> glcr[mA] + 3.0 h[mA] + nadh[mA],Astrocyte,1.4574100589184846,Central
+GLUDxm,glutamate dehydrogenase (NAD) (mitochondrial) Astrocyte,glu-L[mA] + h2o[mA] + nad[mA] <=> akg[mA] + h[mA] + nadh[mA] + nh4[mA],Astrocyte,1.5265530611133276,Central
+GLUTCOADHm,glutaryl-CoA dehydrogenase (mitochondria) Astrocyte,fad[mA] + glutcoa[mA] + h[mA] --> b2coa[mA] + co2[mA] + fadh2[mA],Astrocyte,1.377606255549563,Central
+GLUt2m,"L-glutamate reversible transport via proton symport, mitochondrial Astrocyte",glu-L[cA] + h[cA] <=> glu-L[mA] + h[mA],Astrocyte,1.7711867744883654,Central
+GLYCLTDym,"Glycolate dehydrogenase (NADP), mitochondrial Astrocyte",glx[mA] + h[mA] + nadph[mA] --> glyclt[mA] + nadp[mA],Astrocyte,1.1157104805087625,Central
+GLYKm,glycerol kinase Astrocyte,atp[mA] + glyc[mA] --> adp[mA] + glyc3p[mA] + h[mA],Astrocyte,1.498538701107202,Central
+H2Otm,"H2O transport, mitochondrial Astrocyte",h2o[cA] <=> h2o[mA],Astrocyte,0.6440917146192479,Central
+HACD1m,3-hydroxyacyl-CoA dehydrogenase (acetoacetyl-CoA) (mitochondria) Astrocyte,aacoa[mA] + h[mA] + nadh[mA] <=> 3hbcoa[mA] + nad[mA],Astrocyte,1.1830958050841036,Central
+HACD9m,"3-hydroxyacyl-CoA dehydrogenase (2-Methylacetoacetyl-CoA), mitochondrial Astrocyte",3hmbcoa[mA] + nad[mA] <=> 2maacoa[mA] + h[mA] + nadh[mA],Astrocyte,1.1815762771758025,Central
+HCO3Em,HCO3 equilibration reaction Astrocyte,co2[mA] + h2o[mA] <=> h[mA] + hco3[mA],Astrocyte,1.4583058288132484,Central
+HIBDm,"3-hydroxyisobutyrate dehydrogenase, mitochondrial Astrocyte",3hmp[mA] + nad[mA] <=> 2mop[mA] + h[mA] + nadh[mA],Astrocyte,1.1842584382980632,Central
+HMGCOASim,Hydroxymethylglutaryl CoA synthase (ir) Astrocyte,aacoa[mA] + accoa[mA] + h2o[mA] --> coa[mA] + h[mA] + hmgcoa[mA],Astrocyte,1.5362752119448717,Central
+HPROxm,"L-hydroxyproline dehydrogenase (NAD), mitochondrial Astrocyte",4hpro-LT[mA] + nad[mA] --> 1p3h5c[mA] + 2.0 h[mA] + nadh[mA],Astrocyte,1.2286626226559663,Central
+IMACTD_m,Imidazole acetaldeyde dehydrogenase (mito) Astrocyte,h2o[mA] + im4act[mA] + nad[mA] --> 2.0 h[mA] + im4ac[mA] + nadh[mA],Astrocyte,1.4574100589052124,Central
+LCADim,"lactaldehyde dehydrogenase, mitochondrial Astrocyte",h2o[mA] + lald-L[mA] + nad[mA] --> 2.0 h[mA] + lac-L[mA] + nadh[mA],Astrocyte,1.459271332868185,Central
+LDH_Lm,L-lactate dehydrogenase Astrocyte,lac-L[mA] + nad[mA] <=> h[mA] + nadh[mA] + pyr[mA],Astrocyte,1.1890246814394778,Central
+LYStm,Lysine mitochondrial transport via ornithine carrier Astrocyte,h[mA] + lys-L[cA] <=> h[cA] + lys-L[mA],Astrocyte,1.7481728451310614,Central
+MCCCrm,"methylcrotonoyl-CoA carboxylase, mitochondrial Astrocyte",3mb2coa[mA] + atp[mA] + hco3[mA] <=> 3mgcoa[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte,1.3013490138667902,Central
+MDHm,"malate dehydrogenase, mitochondrial Astrocyte",mal-L[mA] + nad[mA] <=> h[mA] + nadh[mA] + oaa[mA],Astrocyte,1.1970602012660894,Central
+MTHFCm,"methenyltetrahydrifikate cyclohydrolase, mitochondrial Astrocyte",h2o[mA] + methf[mA] <=> 10fthf[mA] + h[mA],Astrocyte,1.3891008836793701,Central
+NABTNOm,N4-Acetylaminobutanal:NAD+ oxidoreductase (m) Astrocyte,h2o[mA] + n4abutn[mA] + nad[mA] --> 4aabutn[mA] + 2.0 h[mA] + nadh[mA],Astrocyte,1.4574100589183585,Central
+NMNATm,"nicotinamide-nucleotide adenylyltransferase, mitochondrial Astrocyte",atp[mA] + h[mA] + nmn[mA] --> nad[mA] + ppi[mA],Astrocyte,1.321761098871225,Central
+NNATm,"nicotinate-nucleotide adenylyltransferase, mitochondrial Astrocyte",atp[mA] + h[mA] + nicrnt[mA] --> dnad[mA] + ppi[mA],Astrocyte,1.2473758049466084,Central
+ORNt3m,ornithine mitochondrial transport via proton antiport Astrocyte,h[cA] + orn[mA] <=> h[mA] + orn[cA],Astrocyte,1.7158202439864976,Central
+ORNt4m,ornithine mitochondrial transport exchange with citruline Astrocyte,citr-L[cA] + h[cA] + orn[mA] <=> citr-L[mA] + h[mA] + orn[cA],Astrocyte,1.7378609820082025,Central
+P5CDm,"1-pyrroline-5-carboxylate dehydrogenase, mitochondrial Astrocyte",1pyr5c[mA] + 2.0 h2o[mA] + nad[mA] --> glu-L[mA] + h[mA] + nadh[mA],Astrocyte,1.5041853762024389,Central
+PETOHMm_hs,phosphatidylethanolamine N-methyltransferase Astrocyte,3.0 amet[mA] + pe_hs[mA] --> 3.0 ahcys[mA] + 3.0 h[mA] + pchol_hs[mA],Astrocyte,1.1281451111385852,Central
+PHCDm,L-1-pyrroline-3-hydroxy-5-carboxylate dehydrogenase Astrocyte,1p3h5c[mA] + 2.0 h2o[mA] + nad[mA] --> e4hglu[mA] + h[mA] + nadh[mA],Astrocyte,1.4499793251958224,Central
+PHCHGSm,"L-1-Pyrroline-3-hydroxy-5-carboxylate spontaneous conversion to L-4-Hydroxyglutamate semialdehyde, mitochondrial Astrocyte",1p3h5c[mA] + h2o[mA] + h[mA] <=> 4hglusa[mA],Astrocyte,1.3709904446584822,Central
+PIt2m,"phosphate transporter, mitochondrial Astrocyte",h[cA] + pi[cA] <=> h[mA] + pi[mA],Astrocyte,2.0076236959668488,Central
+PNTKm,pantothenate kinase (mitochondrial) Astrocyte,atp[mA] + pnto-R[mA] --> 4ppan[mA] + adp[mA] + h[mA],Astrocyte,1.2244661753033368,Central
+PPA2m,"inorganic triphosphatase, mitochondrial Astrocyte",h2o[mA] + pppi[mA] --> h[mA] + pi[mA] + ppi[mA],Astrocyte,1.513110955486501,Central
+PPCOACm,"Propionyl-CoA carboxylase, mitochondrial Astrocyte",atp[mA] + hco3[mA] + ppcoa[mA] --> adp[mA] + h[mA] + mmcoa-S[mA] + pi[mA],Astrocyte,1.3096394514939251,Central
+PYLALDOXm,Perillyl aldehyde:NAD+ oxidoreductase (m) Astrocyte,h2o[mA] + nad[mA] + pylald[mA] --> 2.0 h[mA] + nadh[mA] + peracd[mA],Astrocyte,1.4574100589400858,Central
+PYRt2m,pyruvate mitochondrial transport via proton symport Astrocyte,h[cA] + pyr[cA] <=> h[mA] + pyr[mA],Astrocyte,1.7260222513517698,Central
+SACCD3m,"saccharopine dehydrogenase (NADP, L-lysine forming), mitochondrial Astrocyte",akg[mA] + h[mA] + lys-L[mA] + nadph[mA] --> h2o[mA] + nadp[mA] + saccrp-L[mA],Astrocyte,1.4565675955434745,Central
+SACCD4m,"saccharopine dehydrogenase (NAD, L-glutamate forming), mitochondrial Astrocyte",h2o[mA] + nadp[mA] + saccrp-L[mA] --> L2aadp6sa[mA] + glu-L[mA] + h[mA] + nadph[mA],Astrocyte,1.4299067520710012,Central
+SLDxm,"L-sulfolactate dehydrogenase (NAD+), mitochondrial Astrocyte",nad[mA] + sl-L[mA] <=> 3spyr[mA] + h[mA] + nadh[mA],Astrocyte,1.1841742146123533,Central
+THD1m,NAD(P) transhydrogenase Astrocyte,h[cA] + nadh[mA] + nadp[mA] <=> h[mA] + nad[mA] + nadph[mA],Astrocyte,1.9321223266383771,Central
+TKT2,transketolase Astrocyte,e4p[cA] + xu5p-D[cA] <=> f6p[cA] + g3p[cA],Astrocyte,0.5015126878122728,Central
+TMDK1m,thymidine kinase (ATP:thymidine) Astrocyte,atp[mA] + thymd[mA] --> adp[mA] + dtmp[mA] + h[mA],Astrocyte,1.2442579468766695,Central
+TRDRm,thioredoxin reductase (NADPH) Astrocyte,h[mA] + nadph[mA] + trdox[mA] --> nadp[mA] + trdrd[mA],Astrocyte,1.1125508258242325,Central
+VITD2Hm,Vitamin D-25-hydroxylase (D2) Astrocyte,h[mA] + nadph[mA] + o2[mA] + vitd2[mA] --> 25hvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte,1.4909676959319196,Central
+VITD3Hm,Vitamin D-25-hydroxylase (D3) Astrocyte,h[mA] + nadph[mA] + o2[mA] + vitd3[mA] --> 25hvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte,1.5085312652023803,Central
+MTDNAdpolym,depolymerization of mtDNA for repair Astrocyte,33136.0 h2o[mA] + mtDNAn[mA] --> 9218.0 damp[mA] + 7350.0 dcmp[mA] + 7350.0 dgmp[mA] + 9218.0 dtmp[mA] + 33136.0 h[mA] + mtDNAn-1[mA],Astrocyte,1.398762950035645,Central
+NH3tm,mitochondrial ammonium transport Astrocyte,h[mA] + nh4[cA] <=> h[cA] + nh4[mA],Astrocyte,1.7833881368562314,Central
+"1a,24,25VITD2Hm_Neuron","1-alpha-Vitamin D-24,25-hydroxylase (D2) Neuron",2425dhvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd2[mN] + h2o[mN] + nadp[mN],Neuron,1.0105860590914513,Central
+"1a,24,25VITD3Hm_Neuron","1-alpha-Vitamin D-24,25-hydroxylase (D3) Neuron",2425dhvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd3[mN] + h2o[mN] + nadp[mN],Neuron,1.0105860590872788,Central
+"1a,25VITD2Hm_Neuron","1-alpha,24R,25-Vitamin D-hydroxylase (D2) Neuron",1a25dhvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd2[mN] + h2o[mN] + nadp[mN],Neuron,1.0105860590924338,Central
+"1a,25VITD3Hm_Neuron","1-alpha,24R,25-Vitamin D-hydroxylase (D3) Neuron",1a25dhvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd3[mN] + h2o[mN] + nadp[mN],Neuron,1.0105860590918911,Central
+"24,25VITD2Hm_Neuron",24R-Vitamin D-25-hydroxylase (D2) Neuron,25hvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 2425dhvitd2[mN] + h2o[mN] + nadp[mN],Neuron,1.0067656638978497,Central
+"24,25VITD3Hm_Neuron",24R-Vitamin D-25-hydroxylase (D3) Neuron,25hvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 2425dhvitd3[mN] + h2o[mN] + nadp[mN],Neuron,1.0067663839698884,Central
+25VITD2Hm_Neuron,1-alpha-Vitamin D-25-hydroxylase (D2) Neuron,25hvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a25dhvitd2[mN] + h2o[mN] + nadp[mN],Neuron,1.0067656638978701,Central
+25VITD3Hm_Neuron,1-alpha-Vitamin D-25-hydroxylase (D3) Neuron,25hvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a25dhvitd3[mN] + h2o[mN] + nadp[mN],Neuron,1.0067663840030998,Central
+34HPLFM_Neuron,3-(4-hydroxyphenyl-)lactate formation Neuron,34hpp[mN] + h[mN] + nadh[mN] --> 34hpl[mN] + nad[mN],Neuron,0.9130839188892683,Central
+3DPHBH1_Neuron,Hydroxylation of 3-Decaprenyl-4-hydroxybenzoate (NADH) Neuron,3dphb[mN] + h[mN] + nadh[mN] + o2[mN] --> 3dpdhb[mN] + h2o[mN] + nad[mN],Neuron,1.0588316779496763,Central
+3HBCOAHLm_Neuron,"3-hydroxyisobutyryl-CoA hydrolase, mitochondrial Neuron",3hibutcoa[mN] + h2o[mN] --> 3hmp[mN] + coa[mN] + h[mN],Neuron,1.0735913917833138,Central
+3SALATAim_Neuron,"3-sulfino-alanine transaminase (irreversible), mitochondrial Neuron",3sala[mN] + akg[mN] + h[mN] --> 3snpyr[mN] + glu-L[mN],Neuron,0.9137097228681469,Central
+3SPYRSPm_Neuron,"3-sulfinopyruvate hydrolase (spotaneous reaction), mitochondrial Neuron",3snpyr[mN] + h2o[mN] --> h[mN] + pyr[mN] + so3[mN],Neuron,1.0034984010484722,Central
+4HBZCOAFm_Neuron,4-hydroxybenzoyl-CoA formation Neuron,coa[mN] + coucoa[mN] + h2o[mN] + nad[mN] --> 4hbzcoa[mN] + accoa[mN] + h[mN] + nadh[mN],Neuron,1.083565591544553,Central
+4HBZFm_Neuron,4-hydroxybenzoate formation Neuron,4hbzcoa[mN] + h2o[mN] --> 4hbz[mN] + coa[mN] + h[mN],Neuron,1.0959092117929838,Central
+5HOXINDACTOXm_Neuron,5-Hydroxyindoleacetaldehyde:NAD+ oxidoreductase (mito) Neuron,5hoxindact[mN] + h2o[mN] + nad[mN] --> 5hoxindoa[mN] + 2.0 h[mN] + nadh[mN],Neuron,1.0300456246168048,Central
+AASAD3m_Neuron,"L-aminoadipate-semialdehyde dehydrogenase (NADH), mitochondrial Neuron",L2aadp6sa[mN] + h2o[mN] + nad[mN] --> L2aadp[mN] + 2.0 h[mN] + nadh[mN],Neuron,1.0313632869612335,Central
+ACACt2m_Neuron,Acetoacetate mitochondrial transport via H+ symport Neuron,acac[cN] + h[cN] <=> acac[mN] + h[mN],Neuron,1.2689310927204767,Central
+ACt2m_Neuron,acetate mitochondrial transport via proton symport Neuron,ac[cN] + h[cN] <=> ac[mN] + h[mN],Neuron,1.205310039285463,Central
+ADCim_Neuron,"Acetoacetate decarboxylation (irreversible), mitochondrial Neuron",acac[mN] + h[mN] --> acetone[mN] + co2[mN],Neuron,0.8988422701162797,Central
+AGMTm_Neuron,agmatinase (m) Neuron,agm[mN] + h2o[mN] --> ptrc[mN] + urea[mN],Neuron,0.5064273141169072,Central
+AGPRim_Neuron,"N-acetyl-g-glutamyl-phosphate reductase, irreversible, mitochondrial Neuron",acg5p[mN] + h[mN] + nadph[mN] --> acg5sa[mN] + nadp[mN] + pi[mN],Neuron,0.929548261321155,Central
+ALASm_Neuron,5-aminolevulinate synthase Neuron,gly[mN] + h[mN] + succoa[mN] --> 5aop[mN] + co2[mN] + coa[mN],Neuron,0.9768750798276893,Central
+ALDD20xm_Neuron,"aldehyde dehydrogenase (indole-3-acetaldehyde, NAD), mitochondrial Neuron",h2o[mN] + id3acald[mN] + nad[mN] --> 2.0 h[mN] + ind3ac[mN] + nadh[mN],Neuron,1.0300456246381382,Central
+ALDD2xm_Neuron,"aldehyde dehydrogenase (acetylaldehyde, NAD), mitochondrial Neuron",acald[mN] + h2o[mN] + nad[mN] --> ac[mN] + 2.0 h[mN] + nadh[mN],Neuron,1.0434457303713143,Central
+AOBUTDsm_Neuron,"L-2-amino-3-oxobutanoate decarboxylation, mitochondrial  (spontaneous) Neuron",2aobut[mN] + h[mN] --> aact[mN] + co2[mN],Neuron,0.9172656962116131,Central
+ARGDCm_Neuron,arginine decarboxylase (m) Neuron,arg-L[mN] + h[mN] --> agm[mN] + co2[mN],Neuron,0.9061546622344223,Central
+ARGtm_Neuron,arginine mitochondrial transport via ornithine carrier Neuron,arg-L[cN] + h[mN] <=> arg-L[mN] + h[cN],Neuron,1.2067011014839615,Central
+ASPNATm_Neuron,"aspartate N-acetyltransferase, mitochondrial Neuron",accoa[mN] + asp-L[mN] --> Nacasp[mN] + coa[mN] + h[mN],Neuron,1.1541266794064426,Central
+BACCLm_Neuron,"biotin-[acetyl-CoA-carboxylase] ligase, mitochondrial Neuron",atp[mN] + btn[mN] + h[mN] --> btamp[mN] + ppi[mN],Neuron,0.9525451223703005,Central
+BAMPPALDOXm_Neuron,beta-Aminopropion aldehyde:NAD+ oxidoreductase (m) Neuron,bamppald[mN] + h2o[mN] + nad[mN] --> ala-B[mN] + 2.0 h[mN] + nadh[mN],Neuron,1.0377556189036825,Central
+BDHm_Neuron,(R)-3-Hydroxybutanoate:NAD+ oxidoreductase Neuron,bhb[mN] + nad[mN] <=> acac[mN] + h[mN] + nadh[mN],Neuron,0.90238466672176465,Central
+BETALDHxm_Neuron,"betaine-aldehyde dehydrogenase, mitochondrial Neuron",betald[mN] + h2o[mN] + nad[mN] --> glyb[mN] + 2.0 h[mN] + nadh[mN],Neuron,1.0300456246500962,Central
+BHBtm_Neuron,(R)-3-Hydroxybutanoate mitochondrial transport via H+ symport Neuron,bhb[cN] + h[cN] <=> bhb[mN] + h[mN],Neuron,1.1920284129892442,Central
+BTNPLm_Neuron,"holocarboxylase synthestase (biotin protein ligase), mitochondrial Neuron",apoC-Lys[mN] + btamp[mN] --> amp[mN] + apoC-Lys_btn[mN] + h[mN],Neuron,0.8900226901093473,Central
+BTNt2m_Neuron,"Biotin reversible transport via proton symport, mitochondria Neuron",btn[cN] + h[cN] <=> btn[mN] + h[mN],Neuron,1.2056400249011214,Central
+CBLATm_Neuron,"cob(I)alamin adenosyltransferase, mitochondrial Neuron",atp[mN] + cbl1[mN] + h[mN] <=> adocbl[mN] + pppi[mN],Neuron,0.9141256034726056,Central
+CDSm_Neuron,phosphatidate cytidylyltransferase Neuron,ctp[mN] + h[mN] + pa_hs[mN] --> cdpdag_hs[mN] + ppi[mN],Neuron,0.9496280075370881,Central
+COQ5m_Neuron,Ubiquinone biosynthesis methyltransferase COQ5 Neuron,2dp6mobq[mN] + amet[mN] --> 2dp6mobq_me[mN] + ahcys[mN] + h[mN],Neuron,0.8673354115121736,Central
+COQ7m_Neuron,Ubiquinone biosynthesis COQ7 Neuron,2dp6mobq_me[mN] + h[mN] + nadph[mN] + o2[mN] --> 2dpmhobq[mN] + h2o[mN] + nadp[mN],Neuron,1.0022514814188062,Central
+CYANSTm_Neuron,"Cyanide sulfurtransferase, mitochondrial Neuron",cyan[mN] + tsul[mN] --> h[mN] + so3[mN] + tcynt[mN],Neuron,1.1831355115665798,Central
+D-LACtm_Neuron,"D-lactate transport, mitochondrial Neuron",h[cN] + lac-D[cN] <=> h[mN] + lac-D[mN],Neuron,1.1920284129924272,Central
+DGNSKm_Neuron,deoxyguanosine kinase Neuron,atp[mN] + dgsn[mN] --> adp[mN] + dgmp[mN] + h[mN],Neuron,1.0698925000767716,Central
+DHDPBMTm_Neuron,dihydroxydecaprenylbenzoate methyltransferase Neuron,3dpdhb[mN] + amet[mN] --> 3dpdhb_me[mN] + ahcys[mN] + h[mN],Neuron,0.8573704891748894,Central
+DMGDHm_Neuron,"dimethylglycine dehydrogenase, mitochondrial Neuron",dmgly[mN] + fad[mN] + h2o[mN] --> fadh2[mN] + fald[mN] + sarcs[mN],Neuron,0.6748743233452034,Central
+DPHMBDCm_Neuron,3-Decaprenyl-4-hydroxy-5-methoxybenzoate  decarboxylation Neuron,3dpdhb_me[mN] + h[mN] --> 2dp6mep[mN] + co2[mN],Neuron,0.9066590000202663,Central
+FCLTm_Neuron,"Ferrochelatase, mitochondrial Neuron",fe2[mN] + ppp9[mN] --> 2.0 h[mN] + pheme[mN],Neuron,0.9822371539696616,Central
+FE2tm_Neuron,iron (II) transport Neuron,fe2[cN] + h[cN] --> fe2[mN] + h[mN],Neuron,1.2396928660599813,Central
+FPGS2m_Neuron,"folylpolyglutamate synthetase, mitochondrial Neuron",5thf[mN] + atp[mN] + glu-L[mN] --> 6thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron,1.0218770566140898,Central
+FPGS3m_Neuron,"folylpolyglutamate synthetase, mitochondrial Neuron",6thf[mN] + atp[mN] + glu-L[mN] --> 7thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron,1.0833126075905044,Central
+FPGS4m_Neuron,"folylpolyglutamate synthetase (DHF), mitochondrial Neuron",4.0 atp[mN] + dhf[mN] + 4.0 glu-L[mN] --> 5dhf[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron,1.1009530703738626,Central
+FPGS5m_Neuron,"folylpolyglutamate  synthetase (DHF), mitochondrial Neuron",5dhf[mN] + atp[mN] + glu-L[mN] --> 6dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron,1.0038840231609603,Central
+FPGS6m_Neuron,"folylpolyglutamate synthetase (DHF), mitochondrial Neuron",6dhf[mN] + atp[mN] + glu-L[mN] --> 7dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron,1.083312325180144,Central
+FPGS7m_Neuron,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf[mN] + 4.0 atp[mN] + 4.0 glu-L[mN] --> 10fthf5glu[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron,1.007194042920548,Central
+FPGS8m_Neuron,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf5glu[mN] + atp[mN] + glu-L[mN] --> 10fthf6glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron,1.02184753823745,Central
+FPGS9m_Neuron,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf6glu[mN] + atp[mN] + glu-L[mN] --> 10fthf7glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron,1.0833126073058423,Central
+FPGSm_Neuron,"folylpolyglutamate synthetase, mitochondrial Neuron",4.0 atp[mN] + 4.0 glu-L[mN] + thf[mN] --> 5thf[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron,1.0285886243785842,Central
+G5SDym_Neuron,glutamate-5-semialdehyde dehydrogenase (m) Neuron,glu5p[mN] + h[mN] + nadph[mN] --> glu5sa[mN] + nadp[mN] + pi[mN],Neuron,0.909087619190053,Central
+GCC2am_Neuron,"glycine-cleavage complex (lipoamide), mitochondrial Neuron",gly[mN] + h[mN] + lpam[mN] <=> alpam[mN] + co2[mN],Neuron,0.9149048922280091,Central
+GCC2cm_Neuron,"glycine-cleavage complex (lipoamide), mitochondrial Neuron",dhlam[mN] + nad[mN] <=> h[mN] + lpam[mN] + nadh[mN],Neuron,0.9010866773415009,Central
+GCCam_Neuron,"glycine-cleavage complex (lipoylprotein), mitochondrial Neuron",gly[mN] + h[mN] + lpro[mN] <=> alpro[mN] + co2[mN],Neuron,0.9149048922203875,Central
+GCCcm_Neuron,"glycine-cleavage complex (lipoylprotein), mitochondrial Neuron",dhlpro[mN] + nad[mN] <=> h[mN] + lpro[mN] + nadh[mN],Neuron,0.9010866773396997,Central
+GHMT3m_Neuron,"glycine hydroxymethyltransferase, mitochondrial Neuron",3htmelys[mN] + h[mN] --> 4tmeabut[mN] + gly[mN],Neuron,0.8697961998978099,Central
+GLACOm_Neuron,"D-Glucuronolactone:NAD+ oxidoreductase, mitochondrial Neuron",glac[mN] + 2.0 h2o[mN] + nad[mN] --> glcr[mN] + 3.0 h[mN] + nadh[mN],Neuron,1.030045624604689,Central
+GLUDxm_Neuron,glutamate dehydrogenase (NAD) (mitochondrial) Neuron,glu-L[mN] + h2o[mN] + nad[mN] <=> akg[mN] + h[mN] + nadh[mN] + nh4[mN],Neuron,1.0666925229434538,Central
+GLUTCOADHm_Neuron,glutaryl-CoA dehydrogenase (mitochondria) Neuron,fad[mN] + glutcoa[mN] + h[mN] --> b2coa[mN] + co2[mN] + fadh2[mN],Neuron,1.1166514748519565,Central
+HACD1m_Neuron,3-hydroxyacyl-CoA dehydrogenase (acetoacetyl-CoA) (mitochondria) Neuron,aacoa[mN] + h[mN] + nadh[mN] <=> 3hbcoa[mN] + nad[mN],Neuron,0.9132285238906638,Central
+HACD9m_Neuron,"3-hydroxyacyl-CoA dehydrogenase (2-Methylacetoacetyl-CoA), mitochondrial Neuron",3hmbcoa[mN] + nad[mN] <=> 2maacoa[mN] + h[mN] + nadh[mN],Neuron,0.9122325868842236,Central
+HCO3Em_Neuron,HCO3 equilibration reaction Neuron,co2[mN] + h2o[mN] <=> h[mN] + hco3[mN],Neuron,1.0463930427133916,Central
+HPROxm_Neuron,"L-hydroxyproline dehydrogenase (NAD), mitochondrial Neuron",4hpro-LT[mN] + nad[mN] --> 1p3h5c[mN] + 2.0 h[mN] + nadh[mN],Neuron,0.9506501492538151,Central
+IMACTD_m_Neuron,Imidazole acetaldeyde dehydrogenase (mito) Neuron,h2o[mN] + im4act[mN] + nad[mN] --> 2.0 h[mN] + im4ac[mN] + nadh[mN],Neuron,1.0300456246084686,Central
+LCADim_Neuron,"lactaldehyde dehydrogenase, mitochondrial Neuron",h2o[mN] + lald-L[mN] + nad[mN] --> 2.0 h[mN] + lac-L[mN] + nadh[mN],Neuron,1.030045624596188,Central
+LDH_Lm_Neuron,L-lactate dehydrogenase Neuron,lac-L[mN] + nad[mN] --> h[mN] + nadh[mN] + pyr[mN],Neuron,0.9115702276871126,Central
+LYStm_Neuron,Lysine mitochondrial transport via ornithine carrier Neuron,h[mN] + lys-L[cN] <=> h[cN] + lys-L[mN],Neuron,1.2205161799333064,Central
+MCCCrm_Neuron,"methylcrotonoyl-CoA carboxylase, mitochondrial Neuron",3mb2coa[mN] + atp[mN] + hco3[mN] <=> 3mgcoa[mN] + adp[mN] + h[mN] + pi[mN],Neuron,0.9688437778573004,Central
+MTHFCm_Neuron,"methenyltetrahydrifikate cyclohydrolase, mitochondrial Neuron",h2o[mN] + methf[mN] <=> 10fthf[mN] + h[mN],Neuron,1.0253353086505042,Central
+NABTNOm_Neuron,N4-Acetylaminobutanal:NAD+ oxidoreductase (m) Neuron,h2o[mN] + n4abutn[mN] + nad[mN] --> 4aabutn[mN] + 2.0 h[mN] + nadh[mN],Neuron,1.0300456245985596,Central
+NNATm_Neuron,"nicotinate-nucleotide adenylyltransferase, mitochondrial Neuron",atp[mN] + h[mN] + nicrnt[mN] --> dnad[mN] + ppi[mN],Neuron,0.941915854938778,Central
+ORNt3m_Neuron,ornithine mitochondrial transport via proton antiport Neuron,h[cN] + orn[mN] <=> h[mN] + orn[cN],Neuron,1.2005103665297179,Central
+ORNt4m_Neuron,ornithine mitochondrial transport exchange with citruline Neuron,citr-L[cN] + h[cN] + orn[mN] <=> citr-L[mN] + h[mN] + orn[cN],Neuron,1.2377004482703187,Central
+PETOHMm_hs_Neuron,phosphatidylethanolamine N-methyltransferase Neuron,3.0 amet[mN] + pe_hs[mN] --> 3.0 ahcys[mN] + 3.0 h[mN] + pchol_hs[mN],Neuron,0.8761124292929451,Central
+PHCHGSm_Neuron,"L-1-Pyrroline-3-hydroxy-5-carboxylate spontaneous conversion to L-4-Hydroxyglutamate semialdehyde, mitochondrial Neuron",1p3h5c[mN] + h2o[mN] + h[mN] <=> 4hglusa[mN],Neuron,1.0104407477163735,Central
+PPA2m_Neuron,"inorganic triphosphatase, mitochondrial Neuron",h2o[mN] + pppi[mN] --> h[mN] + pi[mN] + ppi[mN],Neuron,1.0939794201724047,Central
+PPCOACm_Neuron,"Propionyl-CoA carboxylase, mitochondrial Neuron",atp[mN] + hco3[mN] + ppcoa[mN] --> adp[mN] + h[mN] + mmcoa-S[mN] + pi[mN],Neuron,0.9757869489368495,Central
+PRO1xm_Neuron,"proline oxidase (NAD), mitochondrial Neuron",nad[mN] + pro-L[mN] --> 1pyr5c[mN] + 2.0 h[mN] + nadh[mN],Neuron,0.9025310214062029,Central
+PYLALDOXm_Neuron,Perillyl aldehyde:NAD+ oxidoreductase (m) Neuron,h2o[mN] + nad[mN] + pylald[mN] --> 2.0 h[mN] + nadh[mN] + peracd[mN],Neuron,1.0300456246219944,Central
+SACCD3m_Neuron,"saccharopine dehydrogenase (NADP, L-lysine forming), mitochondrial Neuron",akg[mN] + h[mN] + lys-L[mN] + nadph[mN] --> h2o[mN] + nadp[mN] + saccrp-L[mN],Neuron,1.0358518949635447,Central
+SACCD4m_Neuron,"saccharopine dehydrogenase (NAD, L-glutamate forming), mitochondrial Neuron",h2o[mN] + nadp[mN] + saccrp-L[mN] --> L2aadp6sa[mN] + glu-L[mN] + h[mN] + nadph[mN],Neuron,1.0501310679759588,Central
+SLDxm_Neuron,"L-sulfolactate dehydrogenase (NAD+), mitochondrial Neuron",nad[mN] + sl-L[mN] <=> 3spyr[mN] + h[mN] + nadh[mN],Neuron,0.9031694535629987,Central
+SPODMm_Neuron,superoxide dismutase Neuron,2.0 h[mN] + 2.0 o2s[mN] --> h2o2[mN] + o2[mN],Neuron,0.9181878915012239,Central
+SSALxm_Neuron,succinate-semialdehyde dehydrogenase (NAD) reversible (mitochondrial) Neuron,h2o[mN] + nad[mN] + sucsal[mN] --> 2.0 h[mN] + nadh[mN] + succ[mN],Neuron,1.0555960204888435,Central
+TKT2_Neuron,transketolase Neuron,e4p[cN] + xu5p-D[cN] <=> f6p[cN] + g3p[cN],Neuron,0.530436901268433,Central
+TRDRm_Neuron,thioredoxin reductase (NADPH) Neuron,h[mN] + nadph[mN] + trdox[mN] --> nadp[mN] + trdrd[mN],Neuron,0.8686134646651222,Central
+VITD2Hm_Neuron,Vitamin D-25-hydroxylase (D2) Neuron,h[mN] + nadph[mN] + o2[mN] + vitd2[mN] --> 25hvitd2[mN] + h2o[mN] + nadp[mN],Neuron,1.1150949277127677,Central
+VITD3Hm_Neuron,Vitamin D-25-hydroxylase (D3) Neuron,h[mN] + nadph[mN] + o2[mN] + vitd3[mN] --> 25hvitd3[mN] + h2o[mN] + nadp[mN],Neuron,1.1336440365748262,Central
+MTDNAdpolym_Neuron,depolymerization of mtDNA for repair Neuron,33136.0 h2o[mN] + mtDNAn[mN] --> 9218.0 damp[mN] + 7350.0 dcmp[mN] + 7350.0 dgmp[mN] + 9218.0 dtmp[mN] + 33136.0 h[mN] + mtDNAn-1[mN],Neuron,1.0434468462160569,Central
+ALDH1L1,ALDH1L1,10fthf[mA] + h2o[mA] + nadp[mA] --> co2[mA] + h[mA] + nadph[mA] + thf[mA],Astrocyte,1.4893167495795283,Central
