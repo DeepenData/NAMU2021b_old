@@ -18,6 +18,21 @@ met_ids      = [model.metabolites[i].id       for i in range(len(model.metabolit
 met_names    = [model.metabolites[i].name     for i in range(len(model.metabolites))]
 met_formulas = [model.metabolites[i].formula  for i in range(len(model.metabolites))]
 
+gene_ids = [model.genes[i].id  for i in range(len(model.genes))]
+
+genes_rxns = []
+for i in range(len(model.genes)):
+    rxn_set    = list(model.genes[i].reactions)
+    gene_rxns = [rxn_set[j].id for j in range(len(rxn_set))]
+    genes_rxns.append(gene_rxns)
+
+
+genes_and_rxns = pd.DataFrame({
+    'Gene_ID' : gene_ids,
+    'Reactions' : genes_rxns
+})
+
+
 df_rxns = pd.DataFrame({
     'rxn_ids' : rxn_ids,
     'rxn_names' : rxn_names,
@@ -25,7 +40,9 @@ df_rxns = pd.DataFrame({
     'rxn_bounds':rxn_bounds
 })
 
-df_rxns
+genes_and_rxns.to_csv("./data/recon2_genes_to_rxns.csv")
+df_rxns.to_csv("./data/recon2_rxn_info.csv")
+
 # %%
 import re
 import numpy as np
