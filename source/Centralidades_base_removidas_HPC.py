@@ -141,10 +141,11 @@ G_ray = ray.put(G) # BASE GRAPH TO OBJECT STORE
 
 # %% --- CREATING THE GRAPHS WITH REMOVED NODES
 
-infile = open('./tmp/subsystems_dict.pkl', 'rb'); subsystems_dict = pickle.load(infile); infile.close()
+#infile = open('./tmp/subsystems_dict.pkl', 'rb'); subsystems_dict = pickle.load(infile); infile.close()
+pku_set = pd.read_csv('pku_noise.csv', index_col=0) # Fataframe whith a list of nodes
 
 # List of nodes to remove
-NODES_REMOVED = subsystems_dict['Phenylalanine metabolism'] + ['r0399']
+NODES_REMOVED = list(pku_set.index)
 
 # This launches Ray actors to generate graphs whitout one node from the list
 graph_removed = [ remove_node.remote( G_ray , node ) for node in NODES_REMOVED ]
