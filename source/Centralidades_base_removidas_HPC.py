@@ -54,7 +54,7 @@ def remove_node(graph, node):
 # to group them in a single process for the distribuited computing step. 
 @ray.remote
 def fast_centralities(graph, node, alpha=0.0001):
-    """Eigenvector, Pagerank, Katz, Global reaching, and closeness centrality
+    """Eigenvector, Pagerank, Katz, y Global reaching
     
     [0] Pass and return removed node as sanity check  
     [1] Dataframe whith results  
@@ -66,15 +66,13 @@ def fast_centralities(graph, node, alpha=0.0001):
     ec  = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
     pr  = nx.pagerank(graph, alpha = alpha)
     kz  = nx.katz_centrality(graph, alpha = alpha)
-    grc = nx.global_reaching_centrality(graph)
-    cc  = nx.closeness_centrality(graph, distance=None, wf_improved=True) # Takes forever
+    grc = nx.global_reaching_centrality(graph) # Takes foreer
 
     fast_centralities_df = pd.DataFrame({
         "eigenvector_centrality" : ec ,
         "pagerank" : pr ,
         "katz_centrality" : kz ,
-        "global_reaching_centrality" : grc ,
-        "closeness_centrality" : cc
+        "global_reaching_centrality" : grc 
     })
 
     toc = time.time()
@@ -84,6 +82,16 @@ def fast_centralities(graph, node, alpha=0.0001):
 # And these take forever, so we distribuite these in individual workers
 
 @ray.remote
+def closeness_centrality(graph, node):
+    tic = time.time()
+    out = nx.closeness_centrality(graph, distance=None, wf_improved=True) # Takes forever
+    df_closeness_centrality = pd.DataFrame({
+        "closeness_centrality" : out
+    })
+    toc = time.time()
+    return node , df_closeness_centrality,  (toc - tic)
+
+@ray.remote
 def harmonic_centrality(graph, node):
     tic = time.time()
     out = nx.harmonic_centrality(graph, nbunch=None, distance=None)
@@ -91,7 +99,7 @@ def harmonic_centrality(graph, node):
         "harmonic_centrality" : out
     })
     toc = time.time()
-    return out , df_harmonic_centrality,  (toc - tic)
+    return node , df_harmonic_centrality,  (toc - tic)
 
 @ray.remote
 def information_centrality(graph, node):
@@ -101,7 +109,7 @@ def information_centrality(graph, node):
         "information_centrality" : out
     })
     toc = time.time()
-    return out , df_information_centrality, (toc - tic)
+    return node , df_information_centrality, (toc - tic)
 
 @ray.remote
 def load_centrality(graph, node):
@@ -111,7 +119,7 @@ def load_centrality(graph, node):
         "load_centrality" : out
     })
     toc = time.time()
-    return out , df_load_centrality , (toc - tic)
+    return node , df_load_centrality , (toc - tic)
 
 @ray.remote
 def betweenness_centrality(graph, node):
@@ -123,7 +131,7 @@ def betweenness_centrality(graph, node):
         "betweenness_centrality" : out
     })
     toc = time.time()
-    return out , df_betweenness_centrality , (toc - tic)
+    return node , df_betweenness_centrality , (toc - tic)
 
 # %% --- IMPORTING BASE GRAPH
 
@@ -157,6 +165,8 @@ harc = [ harmonic_centrality.remote( graph_rm_ray[node] , node )    for node in 
 info = [ information_centrality.remote( graph_rm_ray[node] , node ) for node in graph_rm_ray] 
 load = [ load_centrality.remote( graph_rm_ray[node] , node )        for node in graph_rm_ray] 
 btwn = [ betweenness_centrality.remote( graph_rm_ray[node] , node ) for node in graph_rm_ray] 
+clos = [ closeness_centrality.remote( graph_rm_ray[node] , node )   for node in graph_rm_ray] 
+
 
 # %% --- RETURNING THE CENTRALITIES
 # Lists of [[node, dataframe, time], ...] for NODES_REMOVED
@@ -165,6 +175,7 @@ harc = ray.get( harc )
 info = ray.get( info ) 
 load = ray.get( load ) 
 btwn = ray.get( btwn ) 
+clos = ray.get( clos )
 
 # %% --- CENTRALITIES TO DATAFRAMES
 # Dictionaries to track node and dataframe
@@ -173,6 +184,7 @@ harc_df = { node[0] : node[1] for node in harc }
 info_df = { node[0] : node[1] for node in info }
 load_df = { node[0] : node[1] for node in load }
 btwn_df = { node[0] : node[1] for node in btwn }
+clos_df = { node[0] : node[1] for node in clos }
 
 # Joining dataframes onto single dataframe for each removed node
 def join_centrality_dataframes( node ):
@@ -181,6 +193,7 @@ def join_centrality_dataframes( node ):
     tmp = tmp.join( info_df[node] , how="inner") # joins the information_centrality
     tmp = tmp.join( load_df[node] , how="inner") # joins the load_centrality
     tmp = tmp.join( btwn_df[node] , how="inner") # joins the betweenness_centrality
+    tmp = tmp.join( clos_df[node] , how="inner") # joins the closeness_centrality
 
     return tmp
 
@@ -196,14 +209,18 @@ harc_time = { node[0] : node[2] for node in harc }
 info_time = { node[0] : node[2] for node in info }
 load_time = { node[0] : node[2] for node in load }
 btwn_time = { node[0] : node[2] for node in btwn }
+clos_time = { node[0] : node[2] for node in clos }
 
 df_times = pd.DataFrame({
     "fast_and_closeness_centralities" : fast_time ,
     "harmonic_centrality" : harc_time ,
     "information_centrality" : info_time ,
     "load_centrality" : load_time ,
-    "betweenness_centrality" : btwn_time
+    "betweenness_centrality" : btwn_time ,
+    "closeness_centrality" : clos_time 
 })
+
+print( df_times ) # Info para la terminal
 
 df_times.to_csv("tmp.time_removed_nodes.csv")
 
