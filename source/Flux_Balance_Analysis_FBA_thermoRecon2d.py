@@ -8,15 +8,15 @@ model    = cobra.io.load_json_model(path + 'GEM_Recon2_thermocurated_redHUMAN.js
 #biomassi
 import pandas as pd 
 
-rxn_ids      = [model.reactions[i].id for i in range(len(model.reactions))]
-rxn_names    = [model.reactions[i].name  for i in range(len(model.reactions))]
-reactions    = [model.reactions[i].reaction for i in range(len(model.reactions))]
-rxn_bounds   = [model.reactions[i].bounds for i in range(len(model.reactions))]
+rxn_ids        = [model.reactions[i].id for i in range(len(model.reactions))]
+rxn_names      = [model.reactions[i].name  for i in range(len(model.reactions))]
+reactions      = [model.reactions[i].reaction for i in range(len(model.reactions))]
+rxn_bounds     = [model.reactions[i].bounds for i in range(len(model.reactions))]
+rxn_subsystems = [model.reactions[i].subsystem for i in range(len(model.reactions))]
 
 met_ids      = [model.metabolites[i].id       for i in range(len(model.metabolites))]
 met_names    = [model.metabolites[i].name     for i in range(len(model.metabolites))]
 met_formulas = [model.metabolites[i].formula  for i in range(len(model.metabolites))]
-
 gene_ids     = [model.genes[i].id  for i in range(len(model.genes))]
 
 genes_rxns   = []
@@ -36,7 +36,8 @@ df_rxns = pd.DataFrame({
     'rxn_ids' : rxn_ids,
     'rxn_names' : rxn_names,
     'reactions'  : reactions,
-    'rxn_bounds':rxn_bounds
+    'rxn_bounds':rxn_bounds,
+    'rxn_subsystems': rxn_subsystems
 })
 
 genes_and_rxns.to_csv("./data/recon2_genes_to_rxns.csv")
