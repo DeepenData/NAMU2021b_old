@@ -18,12 +18,13 @@ import pickle
 # %% --- USING THE RAY LIBRARY FOR DISTRIBUITED COMPUTING
 import ray
 
-ray.init( dashboard_host = '0.0.0.0' , num_cpus= 16 )
-# ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
+#ray.init(address='auto', _redis_password='5241590000000000') # Use this for local
+ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
+print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Connected to Ray Cluster' )
 
 # %% --- WARPER FUNCTIONS FOR RAY
 
-@ray.remote
+
 def remove_node(graph, node):
     """Generates a new graph whitout the selected node
 
@@ -36,7 +37,7 @@ def remove_node(graph, node):
         graph_node_removed (graph): the largest component of the graph without the node
     """
 
-    assert node in list( graph.nodes ), "The selected node is not part of the graph"
+    #assert node in list( graph.nodes ), "The selected node is not part of the graph"
 
     G_removed = graph.copy() # CREA UNA COPIA DE TRABAJO PARA EL GRAFO
     G_removed.remove_node( node )  # ELIMINA EL NODO A ITERAR
@@ -48,13 +49,13 @@ def remove_node(graph, node):
 
     assert nx.is_connected(graph_node_removed), "The graph is not fully conected"
 
-    return node, graph_node_removed
+    return graph_node_removed
 
 # As these don't take forever (except closeness centrality), is more efficient
 # to group them in a single process for the distribuited computing step. 
 @ray.remote
 def fast_centralities(graph, node, alpha=0.0001):
-    """Eigenvector, Pagerank, Katz, Global reaching, and closeness centrality
+    """Eigenvector, Pagerank, Katz, y Global reaching
     
     [0] Pass and return removed node as sanity check  
     [1] Dataframe whith results  
@@ -66,15 +67,13 @@ def fast_centralities(graph, node, alpha=0.0001):
     ec  = nx.eigenvector_centrality(graph, max_iter=1000, tol=1e-05, nstart=None, weight=None)
     pr  = nx.pagerank(graph, alpha = alpha)
     kz  = nx.katz_centrality(graph, alpha = alpha)
-    grc = nx.global_reaching_centrality(graph)
-    cc  = nx.closeness_centrality(graph, distance=None, wf_improved=True) # Takes forever
+    grc = nx.global_reaching_centrality(graph) # Takes foreer
 
     fast_centralities_df = pd.DataFrame({
         "eigenvector_centrality" : ec ,
         "pagerank" : pr ,
         "katz_centrality" : kz ,
-        "global_reaching_centrality" : grc ,
-        "closeness_centrality" : cc
+        "global_reaching_centrality" : grc 
     })
 
     toc = time.time()
@@ -82,6 +81,16 @@ def fast_centralities(graph, node, alpha=0.0001):
     return node, fast_centralities_df , (toc - tic)
 
 # And these take forever, so we distribuite these in individual workers
+
+@ray.remote
+def closeness_centrality(graph, node):
+    tic = time.time()
+    out = nx.closeness_centrality(graph, distance=None, wf_improved=True) # Takes forever
+    df_closeness_centrality = pd.DataFrame({
+        "closeness_centrality" : out
+    })
+    toc = time.time()
+    return node , df_closeness_centrality,  (toc - tic)
 
 @ray.remote
 def harmonic_centrality(graph, node):
@@ -128,32 +137,30 @@ def betweenness_centrality(graph, node):
 # %% --- IMPORTING BASE GRAPH
 
 G = nx.read_gpickle('./data/Recon2_rxn_proyected.gpickle')
+print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Reading gpickle graph' )
 
 G_ray = ray.put(G) # BASE GRAPH TO OBJECT STORE
 
 # %% --- CREATING THE GRAPHS WITH REMOVED NODES
 
-# infile = open('./tmp/subsystems_dict.pkl', 'rb'); subsystems_dict = pickle.load(infile); infile.close()
+#infile = open('./tmp/subsystems_dict.pkl', 'rb'); subsystems_dict = pickle.load(infile); infile.close()
+pku_set = pd.read_csv('pku_noise.csv', index_col=0) # Fataframe whith a list of nodes
+print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Reading list to remove' )
 
 # List of nodes to remove
-NODES_REMOVED = ['r0399']
-
-# This launches Ray actors to generate graphs whitout one node from the list
-graph_removed = [ remove_node.remote( G_ray , node ) for node in NODES_REMOVED ]
-graph_removed = ray.get( graph_removed )
-
-# This sets the returned list of lists in a dictionay { node : graph_node_removed }
-graph_removed = { rm[0] : rm[1] for rm in graph_removed }
+NODES_REMOVED = list(pku_set.index)
 
 print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Done node removal' )
 
 # %% --- LAUNCHING THE CENTRALITY CALCULATIONS
 # This launches to the distribuited process in the Ray cluster
-fast = [ fast_centralities.remote( graph_removed[node] , node )      for node in graph_removed] 
-harc = [ harmonic_centrality.remote( graph_removed[node] , node )    for node in graph_removed] 
-info = [ information_centrality.remote( graph_removed[node] , node ) for node in graph_removed] 
-load = [ load_centrality.remote( graph_removed[node] , node )        for node in graph_removed] 
-btwn = [ betweenness_centrality.remote( graph_removed[node] , node ) for node in graph_removed] 
+fast = [ fast_centralities.remote( remove_node(G, node) , node )      for node in NODES_REMOVED] 
+harc = [ harmonic_centrality.remote( remove_node(G, node) , node )    for node in NODES_REMOVED] 
+info = [ information_centrality.remote( remove_node(G, node) , node ) for node in NODES_REMOVED] 
+load = [ load_centrality.remote( remove_node(G, node) , node )        for node in NODES_REMOVED] 
+btwn = [ betweenness_centrality.remote( remove_node(G, node) , node ) for node in NODES_REMOVED] 
+clos = [ closeness_centrality.remote( remove_node(G, node) , node )   for node in NODES_REMOVED] 
+
 
 # %% --- RETURNING THE CENTRALITIES
 # Lists of [[node, dataframe, time], ...] for NODES_REMOVED
@@ -162,17 +169,16 @@ harc = ray.get( harc )
 info = ray.get( info ) 
 load = ray.get( load ) 
 btwn = ray.get( btwn ) 
+clos = ray.get( clos )
 
 # %% --- CENTRALITIES TO DATAFRAMES
 # Dictionaries to track node and dataframe
-
-dict_df = lambda list_df : dict( zip( [ node[0] for node in list_df ],[ node[1] for node in list_df ]) )
-
-fast_df = dict_df( fast )
-harc_df = dict_df( harc )
-info_df = dict_df( info )
-load_df = dict_df( load )
-btwn_df = dict_df( btwn )
+fast_df = { node[0] : node[1] for node in fast }
+harc_df = { node[0] : node[1] for node in harc }
+info_df = { node[0] : node[1] for node in info }
+load_df = { node[0] : node[1] for node in load }
+btwn_df = { node[0] : node[1] for node in btwn }
+clos_df = { node[0] : node[1] for node in clos }
 
 # Joining dataframes onto single dataframe for each removed node
 def join_centrality_dataframes( node ):
@@ -181,6 +187,7 @@ def join_centrality_dataframes( node ):
     tmp = tmp.join( info_df[node] , how="inner") # joins the information_centrality
     tmp = tmp.join( load_df[node] , how="inner") # joins the load_centrality
     tmp = tmp.join( btwn_df[node] , how="inner") # joins the betweenness_centrality
+    tmp = tmp.join( clos_df[node] , how="inner") # joins the closeness_centrality
 
     return tmp
 
@@ -191,21 +198,23 @@ outfile = open('./tmp/centralidades_perturbadas.pkl', 'wb'); pickle.dump( centra
 print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Done centrality for removed nodes' )
 
 # %% --- TIMING OF THE CALCULATIONS
-dict_time = lambda list_df : dict( zip( [ node[0] for node in list_df ],[ node[2] for node in list_df ]) )
-
-fast_time = dict_time( fast )
-harc_time = dict_time( harc )
-info_time = dict_time( info )
-load_time = dict_time( load )
-btwn_time = dict_time( btwn )
+fast_time = { node[0] : node[2] for node in fast }
+harc_time = { node[0] : node[2] for node in harc }
+info_time = { node[0] : node[2] for node in info }
+load_time = { node[0] : node[2] for node in load }
+btwn_time = { node[0] : node[2] for node in btwn }
+clos_time = { node[0] : node[2] for node in clos }
 
 df_times = pd.DataFrame({
     "fast_and_closeness_centralities" : fast_time ,
     "harmonic_centrality" : harc_time ,
     "information_centrality" : info_time ,
     "load_centrality" : load_time ,
-    "betweenness_centrality" : btwn_time
+    "betweenness_centrality" : btwn_time ,
+    "closeness_centrality" : clos_time 
 })
+
+print( df_times ) # Info para la terminal
 
 df_times.to_csv("tmp.time_removed_nodes.csv")
 
