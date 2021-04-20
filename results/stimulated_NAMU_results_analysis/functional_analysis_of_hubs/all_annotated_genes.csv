@@ -1,0 +1,386 @@
+ID,VMH_gene_IDs,KEGG_genes.x,KEGG_genes.y,Name.x,Reaction.x,genes
+"1a,24,25VITD2Hm",NA,NA,NA,NA,NA,NA
+"1a,24,25VITD3Hm",NA,NA,NA,NA,NA,NA
+"1a,25VITD2Hm",NA,1591,NA,NA,NA,NA
+"1a,25VITD3Hm",NA,1591,NA,NA,NA,NA
+"24,25VITD2Hm",NA,NA,NA,NA,NA,NA
+"24,25VITD3Hm",NA,NA,NA,NA,NA,NA
+25VITD2Hm,NA,NA,NA,NA,NA,NA
+25VITD3Hm,NA,NA,NA,NA,NA,NA
+3DPHBH1,NA,NA,NA,NA,NA,NA
+3HBCOAHLm,NA,26275,NA,NA,NA,NA
+3SALATAim,2806,NA,NA,NA,NA,NA
+3SPYRSPm,NA,NA,NA,NA,NA,NA
+4HBZCOAFm,NA,NA,NA,NA,NA,NA
+4HBZFm,NA,NA,NA,NA,NA,NA
+4HGLSDm,"8659, 8659",8659,NA,NA,NA,NA
+5HOXINDACTOXm,"8659, 8659, 219, 217",NA,NA,NA,NA,NA
+ACACt2m,6566,NA,NA,NA,NA,NA
+ACt2m,NA,NA,NA,NA,NA,NA
+ADPRDPm,"53343, 53343, 53343","11164, 53343, 56985, 7226",NA,NA,NA,NA
+AGPRim,5832,NA,NA,NA,NA,NA
+ALASm,"212, 23464, 211, 211","211, 212",NA,NA,NA,NA
+ALDD20xm,"8659, 8659, 219, 217","217, 219, 223, 224, 501",NA,NA,NA,NA
+APOCFm,NA,NA,NA,NA,NA,NA
+ARGDCm,113451,NA,NA,NA,NA,NA
+ARGtm,"83884, 10166",NA,NA,NA,NA,NA
+BACCLm,3141,NA,NA,NA,NA,NA
+BAMPPALDOXm,"8659, 8659, 219, 217",NA,NA,NA,NA,NA
+BDHm,"622, 622, 622",NA,NA,NA,NA,NA
+BETALDHxm,NA,501,NA,NA,NA,NA
+BHBtm,NA,NA,NA,NA,NA,NA
+BTNPLm,3141,NA,NA,NA,NA,NA
+BTNt2m,6566,NA,NA,NA,NA,NA
+CBLATm,166785,NA,NA,NA,NA,NA
+CDSm,"1040, 8760",NA,NA,NA,NA,NA
+COQ3m,51805,NA,NA,NA,NA,NA
+COQ7m,10229,10229,NA,NA,NA,NA
+CSm,"1431, 1431",1431,NA,NA,NA,NA
+CYANSTm,7263,"4357, 7263",NA,NA,NA,NA
+D-LACtm,6566,NA,NA,NA,NA,NA
+DGNSKm,"1716, 1716, 1716, 1716, 1716",1716,NA,NA,NA,NA
+DHDPBMTm,51805,NA,NA,NA,NA,NA
+DUTPDPm,"1854, 3704",1854,NA,NA,NA,NA
+FCLTm,"2235, 2235",NA,NA,NA,NA,NA
+FE2tm,NA,NA,NA,NA,NA,NA
+FPGS2m,2356,2356,NA,NA,NA,NA
+FPGS3m,2356,2356,NA,NA,NA,NA
+FPGS4m,2356,2356,NA,NA,NA,NA
+FPGS5m,2356,2356,NA,NA,NA,NA
+FPGS6m,2356,2356,NA,NA,NA,NA
+FPGS7m,2356,2356,NA,NA,NA,NA
+FPGS8m,2356,2356,NA,NA,NA,NA
+FPGS9m,2356,2356,NA,NA,NA,NA
+FPGSm,2356,2356,NA,NA,NA,NA
+G5SDym,5832,NA,NA,NA,NA,NA
+GCALDDm,"8659, 8659, 219, 217, 5832, 4329, 7915, 7915",NA,NA,NA,NA,NA
+GCC2am,"275, 1738, 2731, 2653",NA,NA,NA,NA,NA
+GCC2cm,"275, 1738, 2731, 2653",NA,NA,NA,NA,NA
+GCCam,"275, 1738, 2731, 2653",NA,NA,NA,NA,NA
+GCCcm,"275, 1738, 2731, 2653",NA,NA,NA,NA,NA
+GHMT3m,6472,NA,NA,NA,NA,NA
+GLACOm,"8659, 8659, 219, 217",NA,NA,NA,NA,NA
+GLUDxm,"2747, 2746","2746, 2747",NA,NA,NA,NA
+GLUTCOADHm,"2639, 2639",2639,NA,NA,NA,NA
+GLUt2m,"10165, 8604, 83733, 79751",NA,NA,NA,NA,NA
+GLYKm,"2710, 2712, 2710, 2713","256356, 2710, 2712",NA,NA,NA,NA
+HACD1m,"3028, 3033, 3030, 3032",NA,NA,NA,NA,NA
+HACD9m,"3028, 1962, 3033",NA,NA,NA,NA,NA
+HCO3Em,NA,NA,NA,NA,NA,NA
+HIBDm,11112,NA,NA,NA,NA,NA
+HMGCOASim,3158,"3157, 3158",NA,NA,NA,NA
+IMACTD_m,"8659, 8659, 219, 217",NA,NA,NA,NA,NA
+LCADi_Dm,"8659, 8659, 219, 217, 5832, 4329, 7915, 7915","217, 219, 223, 224, 501",NA,NA,NA,NA
+LCADim,"8659, 8659, 219, 217, 5832, 4329, 7915, 7915","217, 219, 223, 224, 501",NA,NA,NA,NA
+LDH_Lm,"3939, 3945, 197257",NA,NA,NA,NA,NA
+LYStm,"83884, 10166",NA,NA,NA,NA,NA
+MCCCrm,"56922, 64087","56922, 64087",NA,NA,NA,NA
+MDHm,"4191, 4190",NA,NA,NA,NA,NA
+MTHFCm,25902,"10797, 441024, 4522",NA,NA,NA,NA
+NABTNOm,"8659, 219, 217",NA,NA,NA,NA,NA
+NMNATm,349565,"23057, 349565, 64802",NA,NA,NA,NA
+NNATm,349565,NA,NA,NA,NA,NA
+ORNt3m,"83884, 10166",NA,NA,NA,NA,NA
+ORNt4m,"83884, 10166",NA,NA,NA,NA,NA
+P5CDm,"8659, 8659",8659,NA,NA,NA,NA
+PHCDm,"8659, 8659",8659,NA,NA,NA,NA
+PHCHGSm,NA,NA,NA,NA,NA,NA
+PIt2m,"5250, 5250, 5250, 5250",NA,NA,NA,NA,NA
+PNTKm,80025,NA,NA,NA,NA,NA
+PPA2m,NA,"27068, 5464, 64077",NA,NA,NA,NA
+PPCOACm,"5096, 5095","5095, 5096",NA,NA,NA,NA
+PYLALDOXm,"8659, 8659, 219, 217",NA,NA,NA,NA,NA
+PYRt2m,6566,NA,NA,NA,NA,NA
+SACCD3m,10157,10157,NA,NA,NA,NA
+SACCD4m,10157,10157,NA,NA,NA,NA
+SLDxm,4191,NA,NA,NA,NA,NA
+THD1m,"23530, 23530",23530,NA,NA,NA,NA
+TMDK1m,7084,NA,NA,NA,NA,NA
+TRDRm,"114112, 10587, 10587, 10587",NA,NA,NA,NA,NA
+VITD2Hm,1593,120227,NA,NA,NA,NA
+VITD3Hm,1593,120227,NA,NA,NA,NA
+MTDNAdpolym,"5810, 5883, 11219, 11277","11219, 11277, 5810, 5883",NA,NA,NA,NA
+5HOXINDACTOXm_Neuron,"8659, 219, 8659, 217",NA,NA,NA,NA,NA
+ACACt2m_Neuron,6566,NA,NA,NA,NA,NA
+ALASm_Neuron,"212, 23464, 211, 211",NA,NA,NA,NA,NA
+ALDD20xm_Neuron,"219, 8659, 217, 8659",NA,NA,NA,NA,NA
+ARGtm_Neuron,"83884, 10166",NA,NA,NA,NA,NA
+BAMPPALDOXm_Neuron,"8659, 217, 8659, 219",NA,NA,NA,NA,NA
+BTNt2m_Neuron,6566,NA,NA,NA,NA,NA
+D-LACtm_Neuron,6566,NA,NA,NA,NA,NA
+DUTPDPm_Neuron,"1854, 3704",NA,NA,NA,NA,NA
+FCLTm_Neuron,"2235, 2235",NA,NA,NA,NA,NA
+FPGS2m_Neuron,2356,NA,NA,NA,NA,NA
+FPGS3m_Neuron,2356,NA,NA,NA,NA,NA
+FPGS4m_Neuron,2356,NA,NA,NA,NA,NA
+FPGS5m_Neuron,2356,NA,NA,NA,NA,NA
+FPGS6m_Neuron,2356,NA,NA,NA,NA,NA
+FPGS7m_Neuron,2356,NA,NA,NA,NA,NA
+FPGS8m_Neuron,2356,NA,NA,NA,NA,NA
+FPGS9m_Neuron,2356,NA,NA,NA,NA,NA
+FPGSm_Neuron,2356,NA,NA,NA,NA,NA
+GLACOm_Neuron,"8659, 217, 8659, 219",NA,NA,NA,NA,NA
+GLUDxm_Neuron,"2747, 2746",NA,NA,NA,NA,NA
+GLUTCOADHm_Neuron,"2639, 2639",NA,NA,NA,NA,NA
+IMACTD_m_Neuron,"219, 8659, 217, 8659",NA,NA,NA,NA,NA
+LCADim_Neuron,"4329, 7915, 8659, 5832, 217, 7915, 219, 8659",NA,NA,NA,NA,NA
+LYStm_Neuron,"83884, 10166",NA,NA,NA,NA,NA
+MTHFCm_Neuron,"25902, 10797",NA,NA,NA,NA,NA
+NABTNOm_Neuron,"217, 8659, 219",NA,NA,NA,NA,NA
+NMNATm_Neuron,349565,NA,NA,NA,NA,NA
+ORNt3m_Neuron,"83884, 10166",NA,NA,NA,NA,NA
+ORNt4m_Neuron,"10166, 83884",NA,NA,NA,NA,NA
+PYLALDOXm_Neuron,"8659, 217, 8659, 219",NA,NA,NA,NA,NA
+SACCD4m_Neuron,10157,NA,NA,NA,NA,NA
+ALDH1L1,10840,NA,NA,NA,NA,NA
+ACYP,"112611, 98, 97, 97",NA,NA,NA,NA,NA
+AKGDm,"4967, 1738, 8050, 1743, 4967",4967,NA,NA,NA,NA
+ALCD2yf,"10327, 10327",10327,NA,NA,NA,NA
+ALDD2y,"218, 222, 221, 219, 223, 8854, 8854, 224, 8854","218, 221, 222",NA,NA,NA,NA
+ASNt4,"54407, 11254, 81539, 55089, 340024, 57393, 59272",NA,NA,NA,NA,NA
+ATPtm,"291, 293, 292",NA,NA,NA,NA,NA
+CYSGLUexR,"56301, 6520, 8140",NA,NA,NA,NA,NA
+CYSO,1036,1036,NA,NA,NA,NA
+ETF,"2109, 2108, 2109",2110,NA,NA,NA,NA
+ETOHMO,1571,NA,NA,NA,NA,NA
+GCC2bim,"275, 1738, 2731, 2653",NA,NA,NA,NA,NA
+GLCt1r,"66035, 6517, 56606, 154091, 6513, 11182, 29988, 6514, 155184, 56606, 144195, 6515, 81031",NA,NA,NA,NA,NA
+GLNS,"2752, 51557",NA,NA,NA,NA,NA
+GLUNm,"2744, 27165, 27165",NA,NA,NA,NA,NA
+GLUVESSEC,"57084, 246213, 57030",NA,NA,NA,NA,NA
+GLUt6,"6511, 6505, 6507, 6506, 6512",NA,NA,NA,NA,NA
+H2Ot,"358, 361, 4284, 359, 362, 343",NA,NA,NA,NA,NA
+HMGLm,"3155, 54511","3155, 54511",NA,NA,NA,NA
+ICDHxm,"3421, 3420, 3419, 3420, 3421, 3419, 3420, 3421, 3419, 3420, 3421, 3419, 3421, 3419, 3420, 3421, 3419, 3420",NA,NA,NA,NA,NA
+LDH_L,"3945,  3939, 160287,  3948, 3939, 3948, 55293, 3945, 92483",NA,NA,NA,NA,NA
+MMSAD1m,4329,4329,NA,NA,NA,NA
+MMSAD3m,4329,NA,NA,NA,NA,NA
+NTD5m,56953,"100526794, 115024, 22978, 30833, 4907, 51251, 55, 56953, 84618, 93034",NA,NA,NA,NA
+PCFLOPm,57194,NA,NA,NA,NA,NA
+PEFLIP,"10396, 57194, 5244",NA,NA,NA,NA,NA
+PEFLIPm,"57194, 10396",NA,NA,NA,NA,NA
+PSFLIP,"10396, 57194",NA,NA,NA,NA,NA
+PSFLIPm,"10396, 57194",NA,NA,NA,NA,NA
+SERGLNexR,"56301, 6520",NA,NA,NA,NA,NA
+GLGNS1,"8908, 2998, 2992, 2997",NA,NA,NA,NA,NA
+LacLtm,366,NA,NA,NA,NA,NA
+GLNtN1,"92745, 10991",NA,NA,NA,NA,NA
+ASNt4_Int,"54407, 11254, 81539, 55089, 340024, 57393, 59272",NA,NA,NA,NA,NA
+BTNt2_Int,6566,NA,NA,NA,NA,NA
+CYSGLUexR_Int,"56301, 6520, 8140",NA,NA,NA,NA,NA
+GLUt6_Int,"6511, 6505, 6507, 6506, 6512",NA,NA,NA,NA,NA
+L-LACt2r_Int,"9194, 23539, 6566, 9123, 682",NA,NA,NA,NA,NA
+NaKt_Int,"481, 478, 477, 23439, 483, 476, 481, 480, 482, 478, 482, 476, 482, 477, 481, 476, 23439, 476, 480, 23439, 481, 477",NA,NA,NA,NA,NA
+ORNtiDF_Int,"6542, 6541, 84889",NA,NA,NA,NA,NA
+PEFLIP_Int,"10396, 57194, 5244",NA,NA,NA,NA,NA
+PSFLIP_Int,"10396, 57194",NA,NA,NA,NA,NA
+PYRt2r_Int,"9123, 9194, 6566",NA,NA,NA,NA,NA
+SERGLNexR_Int,"56301, 6520",NA,NA,NA,NA,NA
+SERt4_Int,"81539, 11254, 54407, 55089, 340024, 57393, 340024, 59272",NA,NA,NA,NA,NA
+GLNtN1_Int,"92745, 10991",NA,NA,NA,NA,NA
+ACACt2_Neuron,"9194, 6566",NA,NA,NA,NA,NA
+ACOAD8m_Neuron,3712,3712,NA,NA,NA,NA
+ACONTm_Neuron,"50, 48",NA,NA,NA,NA,NA
+ACYP_Neuron,"112611, 98, 97, 97","97, 98",NA,NA,NA,NA
+ADK1_Neuron,"122481, 203, 26289, 26289, 204","102157402, 122481, 158067, 203, 204, 205, 221264, 26289",NA,NA,NA,NA
+AKGMALtm_Neuron,"8402, 1468",NA,NA,NA,NA,NA
+ALCD2if_Neuron,"130, 127, 125, 124, 131, 126, 128, 137872, 284273, 284273","124, 125, 126, 127, 128, 130, 131",NA,NA,NA,NA
+ALCD2yf_Neuron,"10327, 10327",10327,NA,NA,NA,NA
+ALDD2x_Neuron,"218, 222, 220, 221, 219, 223, 216, 8854, 501, 8854, 224, 8854","218, 221, 222",NA,NA,NA,NA
+ALDD2y_Neuron,"218, 222, 221, 219, 223, 8854, 8854, 224, 8854","218, 221, 222",NA,NA,NA,NA
+ALR_Neuron,NA,120227,NA,NA,NA,NA
+ASNt4_Neuron,"54407, 11254, 81539, 55089, 340024, 57393, 59272",NA,NA,NA,NA,NA
+ASPTA_Neuron,2805,NA,NA,NA,NA,NA
+ASPTAm_Neuron,2806,NA,NA,NA,NA,NA
+ATPtm_Neuron,"291, 293, 292",NA,NA,NA,NA,NA
+BACCLm_Neuron,3141,NA,NA,NA,NA,NA
+BHBt_Neuron,NA,NA,NA,NA,NA,NA
+COQ5m_Neuron,NA,51805,NA,NA,NA,NA
+DURIK1m_Neuron,7084,"7083, 7084",NA,NA,NA,NA
+ETF_Neuron,"2109, 2108, 2109, 2108",NA,NA,NA,NA,NA
+ETFQO_Neuron,2110,NA,NA,NA,NA,NA
+ETOHMO_Neuron,1571,NA,NA,NA,NA,NA
+FUMm_Neuron,2271,NA,NA,NA,NA,NA
+GLUNm_Neuron,"2744, 27165, 27165",NA,NA,NA,NA,NA
+GLUVESSEC_Neuron,"57084, 246213, 57030",NA,NA,NA,NA,NA
+GLYCLTDym_Neuron,NA,9380,NA,NA,NA,NA
+GTHOm_Neuron,2936,2936,NA,NA,NA,NA
+HMGLm_Neuron,"3155, 54511",NA,NA,NA,NA,NA
+ICDHxm_Neuron,"3421, 3420, 3419, 3420, 3421, 3419, 3420, 3421, 3419, 3420, 3421, 3419, 3421, 3419, 3420, 3421, 3419, 3420",NA,NA,NA,NA,NA
+ICDHyrm_Neuron,3418,NA,NA,NA,NA,NA
+L-LACt2r_Neuron,"9194, 23539, 6566, 9123, 682",NA,NA,NA,NA,NA
+LDH_L_Neuron,"3945, 3939, 160287, 3948, 3939, 3948, 55293, 3945, 92483",NA,NA,NA,NA,NA
+MDH_Neuron,"130752, 4190",NA,NA,NA,NA,NA
+MDHm_Neuron,"4191, 4190",NA,NA,NA,NA,NA
+ME2m_Neuron,"4200, 10873",NA,NA,NA,NA,NA
+NaKt_Neuron,"481, 478, 477, 23439, 483, 476, 481, 480, 482, 478, 482, 476, 482, 477, 481, 476, 23439, 476, 480, 23439, 481, 477",NA,NA,NA,NA,NA
+OCOAT1m_Neuron,"5019, 64064",NA,NA,NA,NA,NA
+PCFLOPm_Neuron,57194,NA,NA,NA,NA,NA
+PDHm_Neuron,"1738, 8050, 5161, 5162, 1737, 1738, 8050, 5160, 5162, 1737",NA,NA,NA,NA,NA
+PEFLIP_Neuron,"57194, 5244, 10396",NA,NA,NA,NA,NA
+PEFLIPm_Neuron,"57194, 10396",NA,NA,NA,NA,NA
+PETOHMm_hs_Neuron,"10400, 10400, 10400",10400,NA,NA,NA,NA
+PNTKm_Neuron,80025,"53354, 79646, 80025",NA,NA,NA,NA
+PROD2m_Neuron,5625,5625,NA,NA,NA,NA
+PSFLIP_Neuron,"57194, 10396",NA,NA,NA,NA,NA
+PSFLIPm_Neuron,"57194, 10396",NA,NA,NA,NA,NA
+SUCD1m_Neuron,"6389, 6392, 6391, 6390",NA,NA,NA,NA,NA
+SUCOAS1m_Neuron,"8802, 8801","8801, 8802, 8803",NA,NA,NA,NA
+SUCOASm_Neuron,"8802, 8803","8801, 8802, 8803",NA,NA,NA,NA
+TMDK1m_Neuron,7084,"7083, 7084",NA,NA,NA,NA
+DAKm_Neuron,NA,NA,NA,NA,NA,NA
+DTKm_Neuron,1841,NA,NA,NA,NA,NA
+DCKm_Neuron,51727,NA,NA,NA,NA,NA
+NDPK1_Neuron,"4832, 10201, 4831, 4830, 29922, 4830, 29922",NA,NA,NA,NA,NA
+GLNtN1_Neuron,"92745, 10991",NA,NA,NA,NA,NA
+CKc_Neuron,1152,NA,NA,NA,NA,NA
+CREATtmdiffir_Neuron,NA,NA,NA,NA,NA,NA
+GLCt1r_Neuron,"66035, 6517, 56606, 154091, 6513, 11182, 29988, 6514, 155184, 56606, 144195, 6515, 81031",NA,NA,NA,NA,NA
+3DPHBH2,NA,NA,NA,NA,NA,NA
+ALDD2xm,"219, 217","218, 221, 222",NA,NA,NA,NA
+ASPGLUm,"10165, 8604",NA,NA,NA,NA,NA
+DURIK1m,7084,"7083, 7084",NA,NA,NA,NA
+GLUDym,"2747, 2746","2746, 2747",NA,NA,NA,NA
+GLYOXm,3029,3029,NA,NA,NA,NA
+GTHOm,2936,2936,NA,NA,NA,NA
+Htm,"9016, 7352, 7352, 7351, 9016, 7350, 9481",NA,NA,NA,NA,NA
+L-LACtm,6566,NA,NA,NA,NA,NA
+MMCDm,23417,23417,NA,NA,NA,NA
+P45011A1m,1583,NA,NA,NA,NA,NA
+PCm,"5091, 5091",5091,NA,NA,NA,NA
+PETOHMm_hs,"10400, 10400, 10400",10400,NA,NA,NA,NA
+PRO1xm,5625,NA,NA,NA,NA,NA
+PROD2m,5625,NA,NA,NA,NA,NA
+SSALxm,7915,7915,NA,NA,NA,NA
+"1a,24,25VITD2Hm_Neuron",NA,NA,NA,NA,NA,NA
+"1a,24,25VITD3Hm_Neuron",NA,NA,NA,NA,NA,NA
+"1a,25VITD2Hm_Neuron",NA,1591,NA,NA,NA,NA
+"1a,25VITD3Hm_Neuron",NA,1591,NA,NA,NA,NA
+"24,25VITD2Hm_Neuron",NA,NA,NA,NA,NA,NA
+"24,25VITD3Hm_Neuron",NA,NA,NA,NA,NA,NA
+25VITD2Hm_Neuron,NA,NA,NA,NA,NA,NA
+25VITD3Hm_Neuron,NA,NA,NA,NA,NA,NA
+ADPRDPm_Neuron,"53343, 53343, 53343","11164, 53343, 56985, 7226",NA,NA,NA,NA
+ALDD2xm_Neuron,217,"218, 221, 222",NA,NA,NA,NA
+APOCFm_Neuron,NA,NA,NA,NA,NA,NA
+ASPGLUm_Neuron,"10165, 8604",NA,NA,NA,NA,NA
+COQ7m_Neuron,10229,10229,NA,NA,NA,NA
+CSm_Neuron,"1431, 1431",NA,NA,NA,NA,NA
+DGNSKm_Neuron,"1716, 1716, 1716, 1716, 1716",1716,NA,NA,NA,NA
+GLUDym_Neuron,"2747, 2746",NA,NA,NA,NA,NA
+GLUt2m_Neuron,"10165, 8604, 83733, 79751",NA,NA,NA,NA,NA
+GLYKm_Neuron,"2710, 2712, 2710, 2713","256356, 2710, 2712",NA,NA,NA,NA
+GLYOXm_Neuron,3029,3029,NA,NA,NA,NA
+HMGCOASim_Neuron,3158,NA,NA,NA,NA,NA
+L-LACtm_Neuron,6566,NA,NA,NA,NA,NA
+P45011A1m_Neuron,1583,NA,NA,NA,NA,NA
+PIt2m_Neuron,"5250, 5250, 5250, 5250",NA,NA,NA,NA,NA
+PPCOACm_Neuron,"5096, 5095","5095, 5096",NA,NA,NA,NA
+PYRt2m_Neuron,6566,NA,NA,NA,NA,NA
+SACCD3m_Neuron,10157,NA,NA,NA,NA,NA
+THD1m_Neuron,"23530, 23530",23530,NA,NA,NA,NA
+VITD2Hm_Neuron,1593,NA,NA,NA,NA,NA
+VITD3Hm_Neuron,1593,NA,NA,NA,NA,NA
+3DPHBH2_Neuron,NA,NA,NA,NA,NA,NA
+NH3tm_Neuron,NA,NA,NA,NA,NA,NA
+AASAD3m,NA,NA,501,NA,NA,NA
+SPODMm,NA,NA,6648,NA,NA,NA
+COQ3m_Neuron,NA,NA,51805,NA,NA,NA
+H2Otm_Neuron,NA,NA,343,NA,NA,NA
+Htm_Neuron,NA,NA,"9481, 7352, 7351, 7350",NA,NA,NA
+3AIBtm,NA,NA,NA,"3-amino-isobutyrate transport, mitochondrial Astrocyte",3aib[mA] --> 3aib[cA],18.1 or 18.2
+ALR,NA,NA,NA,Aldose reductase Astrocyte,h2o[cA] + mthgxl[cA] + nadp[cA] --> 2.0 h[cA] + nadph[cA] + pyr[cA],10327.2 or 8574.1 or 10327.1 or 231.1
+CO2t,NA,NA,NA,CO2 transporter via diffusion Astrocyte,co2[e] <=> co2[cA],NA
+GCCbim,NA,NA,NA,"glycine-cleavage complex (lipoylprotein) irreversible, mitochondrial Astrocyte",alpro[mA] + thf[mA] --> dhlpro[mA] + mlthf[mA] + nh4[mA],275.1 and 1738.1 and 2731.1 and 2653.1
+GLCt2r,NA,NA,NA,D-glucose transport in via proton symport Astrocyte,glc-D[e] + h[e] --> glc-D[cA] + h[cA],NA
+GND,NA,NA,NA,phosphogluconate dehydrogenase Astrocyte,6pgc[cA] + nadp[cA] --> co2[cA] + nadph[cA] + ru5p-D[cA],5226.1
+LSOProd,NA,NA,NA,Lumped superoxide production Astrocyte,focytC[mA] + o2[mA] --> ficytC[mA] + o2s[mA],NA
+O2t,NA,NA,NA,o2 transport (diffusion) Astrocyte,o2[e] <=> o2[cA],NA
+SERt4,NA,NA,NA,L-serine via sodium symport Astrocyte,na1[e] + ser-L[e] --> na1[cA] + ser-L[cA],81539.1 or 11254.1 or 54407.1 or 55089.1 or (340024.1 and 57393.1) or (340024.1 and 59272.1)
+PCREATtmdiffir,NA,NA,NA,Phosphocreatine transport to/from mitochondria via diffusion Astrocyte,pcreat[mA] --> pcreat[cA],NA
+BTNt4i_Int,NA,NA,NA,Biotin uptake (antiport) Interstitial And Synapse,btn[I] + h[cA] --> btn[cA] + h[I],80704.1
+CO2t_Int,NA,NA,NA,CO2 transporter via diffusion Interstitial And Synapse,co2[I] <=> co2[cA],NA
+GLCt2r_Int,NA,NA,NA,D-glucose transport in via proton symport Interstitial And Synapse,glc-D[I] + h[I] --> glc-D[cA] + h[cA],NA
+Kt1r_Int,NA,NA,NA,potassium transport via uniport (facilitated diffusion) Interstitial And Synapse,k[I] <=> k[cA],NA
+NH4t3r_Int,NA,NA,NA,ammonia transport via proton antiport Interstitial And Synapse,h[I] + nh4[cA] <=> h[cA] + nh4[I],NA
+O2t_Int,NA,NA,NA,o2 transport (diffusion) Interstitial And Synapse,o2[I] <=> o2[cA],NA
+AACOAT_Neuron,NA,NA,NA,Acetoacetyl-CoA:acetate CoA-transferase Neuron,acac[cN] + atp[cN] + coa[cN] --> aacoa[cN] + amp[cN] + ppi[cN],65985.1
+ACOAD1fm_Neuron,NA,NA,NA,"acyl-CoA dehydrogenase (butanoyl-CoA), mitochondrial Neuron",btcoa[mN] + fad[mN] --> b2coa[mN] + fadh2[mN],80724.1 or 36.1 or 35.1 or 34.1 or 84129.1 or 27034.1 or 28976.1
+ACSm_Neuron,NA,NA,NA,acetyl-CoA synthetase Neuron,ac[mN] + atp[mN] + coa[mN] --> accoa[mN] + amp[mN] + ppi[mN],84532.1
+C160CPT2_Neuron,NA,NA,NA,C160 transport into the mitochondria Neuron,coa[mN] + pmtcrn[mN] --> crn[mN] + pmtcoa[mN],1376.1 or 1374.1
+C204CPT2_Neuron,NA,NA,NA,arachidonic acid transport into the mitochondria Neuron,arachdcrn[mN] + coa[mN] --> arachdcoa[mN] + crn[mN],1376.1
+C226CPT2_Neuron,NA,NA,NA,C226 transport into the mitochondria Neuron,c226crn[mN] + coa[mN] --> c226coa[mN] + crn[mN],1376.1
+CO2t_Neuron,NA,NA,NA,CO2 transporter via diffusion Neuron,co2[I] <=> co2[cN],NA
+CO2tm_Neuron,NA,NA,NA,"CO2 transport (diffusion), mitochondrial Neuron",co2[cN] <=> co2[mN],NA
+GLNtm_Neuron,NA,NA,NA,L-glutamine transport via electroneutral transporter Neuron,gln-L[cN] --> gln-L[mN],NA
+Kt1r_Neuron,NA,NA,NA,potassium transport via uniport (facilitated diffusion) Neuron,k[I] <=> k[cN],NA
+LSOProd_Neuron,NA,NA,NA,Lumped superoxide production Neuron,focytC[mN] + o2[mN] --> ficytC[mN] + o2s[mN],NA
+MMSAD1m_Neuron,NA,NA,NA,methylmalonate-semialdehyde dehydrogenase Neuron,2mop[mN] + coa[mN] + nad[mN] --> co2[mN] + nadh[mN] + ppcoa[mN],4329.1
+NH4t3r_Neuron,NA,NA,NA,ammonia transport via proton antiport Neuron,h[I] + nh4[cN] <=> h[cN] + nh4[I],NA
+O2t_Neuron,NA,NA,NA,o2 transport (diffusion) Neuron,o2[I] <=> o2[cN],NA
+O2tm_Neuron,NA,NA,NA,O2 transport (diffusion) Neuron,o2[cN] <=> o2[mN],NA
+PPAt_Neuron,NA,NA,NA,"Propionate transport, diffusion Neuron",ppa[I] --> ppa[cN],NA
+DGKm_Neuron,NA,NA,NA,deoxyguanylate kinase (ATP) Neuron,atp[mN] + dgmp[mN] --> adp[mN] + dgdp[mN],2987.1
+NaEX_Neuron,NA,NA,NA,Sodium transport (added for simulation),na1[e] <=> na1[cN],NA
+34HPLFM,NA,NA,NA,3-(4-hydroxyphenyl-)lactate formation Astrocyte,34hpp[mA] + h[mA] + nadh[mA] --> 34hpl[mA] + nad[mA],NA
+ADCim,NA,NA,NA,"Acetoacetate decarboxylation (irreversible), mitochondrial Astrocyte",acac[mA] + h[mA] --> acetone[mA] + co2[mA],NA
+AGMTm,NA,NA,NA,agmatinase (m) Astrocyte,agm[mA] + h2o[mA] --> ptrc[mA] + urea[mA],79814.1
+AOBUTDsm,NA,NA,NA,"L-2-amino-3-oxobutanoate decarboxylation, mitochondrial  (spontaneous) Astrocyte",2aobut[mA] + h[mA] --> aact[mA] + co2[mA],NA
+CITtbm,NA,NA,NA,"citrate transport, mitochondrial Astrocyte",cit[cA] + pep[mA] <=> cit[mA] + pep[cA],6576.1
+COQ5m,NA,NA,NA,Ubiquinone biosynthesis methyltransferase COQ5 Astrocyte,2dp6mobq[mA] + amet[mA] --> 2dp6mobq_me[mA] + ahcys[mA] + h[mA],NA
+DMGDHm,NA,NA,NA,"dimethylglycine dehydrogenase, mitochondrial Astrocyte",dmgly[mA] + fad[mA] + h2o[mA] --> fadh2[mA] + fald[mA] + sarcs[mA],29958.1
+DPHMBDCm,NA,NA,NA,3-Decaprenyl-4-hydroxy-5-methoxybenzoate  decarboxylation Astrocyte,3dpdhb_me[mA] + h[mA] --> 2dp6mep[mA] + co2[mA],NA
+GLYCLTDym,NA,NA,NA,"Glycolate dehydrogenase (NADP), mitochondrial Astrocyte",glx[mA] + h[mA] + nadph[mA] --> glyclt[mA] + nadp[mA],9380
+H2Otm,NA,NA,NA,"H2O transport, mitochondrial Astrocyte",h2o[cA] <=> h2o[mA],343.1
+HPROxm,NA,NA,NA,"L-hydroxyproline dehydrogenase (NAD), mitochondrial Astrocyte",4hpro-LT[mA] + nad[mA] --> 1p3h5c[mA] + 2.0 h[mA] + nadh[mA],NA
+TKT2,NA,NA,NA,transketolase Astrocyte,e4p[cA] + xu5p-D[cA] <=> f6p[cA] + g3p[cA],7086.1 or 84076.1 or 8277.1
+NH3tm,NA,NA,NA,mitochondrial ammonium transport Astrocyte,h[mA] + nh4[cA] <=> h[cA] + nh4[mA],NA
+34HPLFM_Neuron,NA,NA,NA,3-(4-hydroxyphenyl-)lactate formation Neuron,34hpp[mN] + h[mN] + nadh[mN] --> 34hpl[mN] + nad[mN],NA
+3DPHBH1_Neuron,NA,NA,NA,Hydroxylation of 3-Decaprenyl-4-hydroxybenzoate (NADH) Neuron,3dphb[mN] + h[mN] + nadh[mN] + o2[mN] --> 3dpdhb[mN] + h2o[mN] + nad[mN],NA
+3HBCOAHLm_Neuron,NA,NA,NA,"3-hydroxyisobutyryl-CoA hydrolase, mitochondrial Neuron",3hibutcoa[mN] + h2o[mN] --> 3hmp[mN] + coa[mN] + h[mN],26275
+3SALATAim_Neuron,NA,NA,NA,"3-sulfino-alanine transaminase (irreversible), mitochondrial Neuron",3sala[mN] + akg[mN] + h[mN] --> 3snpyr[mN] + glu-L[mN],2806.1
+3SPYRSPm_Neuron,NA,NA,NA,"3-sulfinopyruvate hydrolase (spotaneous reaction), mitochondrial Neuron",3snpyr[mN] + h2o[mN] --> h[mN] + pyr[mN] + so3[mN],NA
+4HBZCOAFm_Neuron,NA,NA,NA,4-hydroxybenzoyl-CoA formation Neuron,coa[mN] + coucoa[mN] + h2o[mN] + nad[mN] --> 4hbzcoa[mN] + accoa[mN] + h[mN] + nadh[mN],NA
+4HBZFm_Neuron,NA,NA,NA,4-hydroxybenzoate formation Neuron,4hbzcoa[mN] + h2o[mN] --> 4hbz[mN] + coa[mN] + h[mN],NA
+AASAD3m_Neuron,NA,NA,NA,"L-aminoadipate-semialdehyde dehydrogenase (NADH), mitochondrial Neuron",L2aadp6sa[mN] + h2o[mN] + nad[mN] --> L2aadp[mN] + 2.0 h[mN] + nadh[mN],501
+ACt2m_Neuron,NA,NA,NA,acetate mitochondrial transport via proton symport Neuron,ac[cN] + h[cN] <=> ac[mN] + h[mN],NA
+ADCim_Neuron,NA,NA,NA,"Acetoacetate decarboxylation (irreversible), mitochondrial Neuron",acac[mN] + h[mN] --> acetone[mN] + co2[mN],NA
+AGMTm_Neuron,NA,NA,NA,agmatinase (m) Neuron,agm[mN] + h2o[mN] --> ptrc[mN] + urea[mN],79814.1
+AGPRim_Neuron,NA,NA,NA,"N-acetyl-g-glutamyl-phosphate reductase, irreversible, mitochondrial Neuron",acg5p[mN] + h[mN] + nadph[mN] --> acg5sa[mN] + nadp[mN] + pi[mN],5832.1
+AOBUTDsm_Neuron,NA,NA,NA,"L-2-amino-3-oxobutanoate decarboxylation, mitochondrial  (spontaneous) Neuron",2aobut[mN] + h[mN] --> aact[mN] + co2[mN],NA
+ARGDCm_Neuron,NA,NA,NA,arginine decarboxylase (m) Neuron,arg-L[mN] + h[mN] --> agm[mN] + co2[mN],113451.1
+ASPNATm_Neuron,NA,NA,NA,"aspartate N-acetyltransferase, mitochondrial Neuron",accoa[mN] + asp-L[mN] --> Nacasp[mN] + coa[mN] + h[mN],339983
+BDHm_Neuron,NA,NA,NA,(R)-3-Hydroxybutanoate:NAD+ oxidoreductase Neuron,bhb[mN] + nad[mN] <=> acac[mN] + h[mN] + nadh[mN],622.2 or 622.3 or 622.1
+BETALDHxm_Neuron,NA,NA,NA,"betaine-aldehyde dehydrogenase, mitochondrial Neuron",betald[mN] + h2o[mN] + nad[mN] --> glyb[mN] + 2.0 h[mN] + nadh[mN],501
+BHBtm_Neuron,NA,NA,NA,(R)-3-Hydroxybutanoate mitochondrial transport via H+ symport Neuron,bhb[cN] + h[cN] <=> bhb[mN] + h[mN],NA
+BTNPLm_Neuron,NA,NA,NA,"holocarboxylase synthestase (biotin protein ligase), mitochondrial Neuron",apoC-Lys[mN] + btamp[mN] --> amp[mN] + apoC-Lys_btn[mN] + h[mN],3141.1
+CBLATm_Neuron,NA,NA,NA,"cob(I)alamin adenosyltransferase, mitochondrial Neuron",atp[mN] + cbl1[mN] + h[mN] <=> adocbl[mN] + pppi[mN],166785.1
+CDSm_Neuron,NA,NA,NA,phosphatidate cytidylyltransferase Neuron,ctp[mN] + h[mN] + pa_hs[mN] --> cdpdag_hs[mN] + ppi[mN],1040.1 or 8760.1
+CYANSTm_Neuron,NA,NA,NA,"Cyanide sulfurtransferase, mitochondrial Neuron",cyan[mN] + tsul[mN] --> h[mN] + so3[mN] + tcynt[mN],NA
+DHDPBMTm_Neuron,NA,NA,NA,dihydroxydecaprenylbenzoate methyltransferase Neuron,3dpdhb[mN] + amet[mN] --> 3dpdhb_me[mN] + ahcys[mN] + h[mN],51805.1
+DMGDHm_Neuron,NA,NA,NA,"dimethylglycine dehydrogenase, mitochondrial Neuron",dmgly[mN] + fad[mN] + h2o[mN] --> fadh2[mN] + fald[mN] + sarcs[mN],29958.1
+DPHMBDCm_Neuron,NA,NA,NA,3-Decaprenyl-4-hydroxy-5-methoxybenzoate  decarboxylation Neuron,3dpdhb_me[mN] + h[mN] --> 2dp6mep[mN] + co2[mN],NA
+FE2tm_Neuron,NA,NA,NA,iron (II) transport Neuron,fe2[cN] + h[cN] --> fe2[mN] + h[mN],NA
+G5SDym_Neuron,NA,NA,NA,glutamate-5-semialdehyde dehydrogenase (m) Neuron,glu5p[mN] + h[mN] + nadph[mN] --> glu5sa[mN] + nadp[mN] + pi[mN],5832.1
+GCC2am_Neuron,NA,NA,NA,"glycine-cleavage complex (lipoamide), mitochondrial Neuron",gly[mN] + h[mN] + lpam[mN] <=> alpam[mN] + co2[mN],275.1 and 1738.1 and 2731.1 and 2653.1
+GCC2cm_Neuron,NA,NA,NA,"glycine-cleavage complex (lipoamide), mitochondrial Neuron",dhlam[mN] + nad[mN] <=> h[mN] + lpam[mN] + nadh[mN],275.1 and 1738.1 and 2731.1 and 2653.1
+GCCam_Neuron,NA,NA,NA,"glycine-cleavage complex (lipoylprotein), mitochondrial Neuron",gly[mN] + h[mN] + lpro[mN] <=> alpro[mN] + co2[mN],275.1 and 1738.1 and 2731.1 and 2653.1
+GCCcm_Neuron,NA,NA,NA,"glycine-cleavage complex (lipoylprotein), mitochondrial Neuron",dhlpro[mN] + nad[mN] <=> h[mN] + lpro[mN] + nadh[mN],275.1 and 1738.1 and 2731.1 and 2653.1
+GHMT3m_Neuron,NA,NA,NA,"glycine hydroxymethyltransferase, mitochondrial Neuron",3htmelys[mN] + h[mN] --> 4tmeabut[mN] + gly[mN],6472.1
+HACD1m_Neuron,NA,NA,NA,3-hydroxyacyl-CoA dehydrogenase (acetoacetyl-CoA) (mitochondria) Neuron,aacoa[mN] + h[mN] + nadh[mN] <=> 3hbcoa[mN] + nad[mN],(3028.1) or (3033.1) or (3030.1 and 3032.1)
+HACD9m_Neuron,NA,NA,NA,"3-hydroxyacyl-CoA dehydrogenase (2-Methylacetoacetyl-CoA), mitochondrial Neuron",3hmbcoa[mN] + nad[mN] <=> 2maacoa[mN] + h[mN] + nadh[mN],3028.1 or 1962.1 or 3033.1
+HCO3Em_Neuron,NA,NA,NA,HCO3 equilibration reaction Neuron,co2[mN] + h2o[mN] <=> h[mN] + hco3[mN],NA
+HPROxm_Neuron,NA,NA,NA,"L-hydroxyproline dehydrogenase (NAD), mitochondrial Neuron",4hpro-LT[mN] + nad[mN] --> 1p3h5c[mN] + 2.0 h[mN] + nadh[mN],NA
+LDH_Lm_Neuron,NA,NA,NA,L-lactate dehydrogenase Neuron,lac-L[mN] + nad[mN] --> h[mN] + nadh[mN] + pyr[mN],3939.1 or 3945.1 or 197257.1
+MCCCrm_Neuron,NA,NA,NA,"methylcrotonoyl-CoA carboxylase, mitochondrial Neuron",3mb2coa[mN] + atp[mN] + hco3[mN] <=> 3mgcoa[mN] + adp[mN] + h[mN] + pi[mN],56922.1 and 64087.1
+NNATm_Neuron,NA,NA,NA,"nicotinate-nucleotide adenylyltransferase, mitochondrial Neuron",atp[mN] + h[mN] + nicrnt[mN] --> dnad[mN] + ppi[mN],349565.1
+PHCHGSm_Neuron,NA,NA,NA,"L-1-Pyrroline-3-hydroxy-5-carboxylate spontaneous conversion to L-4-Hydroxyglutamate semialdehyde, mitochondrial Neuron",1p3h5c[mN] + h2o[mN] + h[mN] <=> 4hglusa[mN],NA
+PPA2m_Neuron,NA,NA,NA,"inorganic triphosphatase, mitochondrial Neuron",h2o[mN] + pppi[mN] --> h[mN] + pi[mN] + ppi[mN],"27068, 5464, 64077
+"
+PRO1xm_Neuron,NA,NA,NA,"proline oxidase (NAD), mitochondrial Neuron",nad[mN] + pro-L[mN] --> 1pyr5c[mN] + 2.0 h[mN] + nadh[mN],5625.1
+SLDxm_Neuron,NA,NA,NA,"L-sulfolactate dehydrogenase (NAD+), mitochondrial Neuron",nad[mN] + sl-L[mN] <=> 3spyr[mN] + h[mN] + nadh[mN],4191.1
+SPODMm_Neuron,NA,NA,NA,superoxide dismutase Neuron,2.0 h[mN] + 2.0 o2s[mN] --> h2o2[mN] + o2[mN],6648.1
+SSALxm_Neuron,NA,NA,NA,succinate-semialdehyde dehydrogenase (NAD) reversible (mitochondrial) Neuron,h2o[mN] + nad[mN] + sucsal[mN] --> 2.0 h[mN] + nadh[mN] + succ[mN],7915
+TKT2_Neuron,NA,NA,NA,transketolase Neuron,e4p[cN] + xu5p-D[cN] <=> f6p[cN] + g3p[cN],7086.1 or 84076.1 or 8277.1
+TRDRm_Neuron,NA,NA,NA,thioredoxin reductase (NADPH) Neuron,h[mN] + nadph[mN] + trdox[mN] --> nadp[mN] + trdrd[mN],114112.1 or 10587.1 or 10587.3 or 10587.2
+MTDNAdpolym_Neuron,NA,NA,NA,depolymerization of mtDNA for repair Neuron,33136.0 h2o[mN] + mtDNAn[mN] --> 9218.0 damp[mN] + 7350.0 dcmp[mN] + 7350.0 dgmp[mN] + 9218.0 dtmp[mN] + 33136.0 h[mN] + mtDNAn-1[mN],NA

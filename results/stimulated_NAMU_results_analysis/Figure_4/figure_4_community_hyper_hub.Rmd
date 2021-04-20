@@ -8,9 +8,9 @@ output: html_notebook
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(ggpubr)
-path_figure_1 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_1/"
-path_figure_2 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_2/"
-path_figure_3 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_3/"
+path_figure_1 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_1/"
+path_figure_2 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_2/"
+path_figure_3 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_3/"
 id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% select(c("ID", "Name" ))
 Centrality0      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(Centrality > 0.5) 
 Optimality0      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
@@ -55,13 +55,15 @@ Centrality[only_central,]%>% filter(Node == 'Astrocyte' | Node == 'Neuron')%>% m
 get_node_and_module <- function(df){ df %>% select(Node,Module)}
 list(Hyperhubs,
 Optimal_hubs,
-Central_hubs) %>% map(get_node_and_module) %>% reduce(rbind) %>% set_colnames(c("Cell","Module")) -> Cell_Module
-Cell_Module %>% count(Cell) %>% filter(Cell == "Astrocyte") %>% .[[2]] -> astro_total
-Cell_Module %>% count(Cell) %>% filter(Cell == "Neuron")    %>% .[[2]] -> neuron_total
+Central_hubs) %>% map(get_node_and_module) %>% purrr::reduce(rbind) %>% set_colnames(c("Cell","Module")) -> Cell_Module
 
-Cell_Module %>% count(Cell,Module) %>% filter(Cell == "Astrocyte") %>% .[["n"]] -> modules_astro
-Cell_Module %>% count(Cell,Module) %>% filter(Cell == "Neuron") %>% .[["n"]]    -> modules_neuron
-Cell_Module %>% count(Cell,Module) %>% mutate("Percentage %" =  100* c(modules_astro/astro_total,modules_neuron/neuron_total) %>% round(4)  ) -> my_counts
+
+Cell_Module %>% dplyr::count(Cell) %>% filter(Cell == "Astrocyte") %>% .[[2]] -> astro_total
+Cell_Module %>% dplyr::count(Cell) %>% filter(Cell == "Neuron")    %>% .[[2]] -> neuron_total
+
+Cell_Module %>% dplyr::count(Cell,Module) %>% filter(Cell == "Astrocyte") %>% .[["n"]] -> modules_astro
+Cell_Module %>% dplyr::count(Cell,Module) %>% filter(Cell == "Neuron") %>% .[["n"]]    -> modules_neuron
+Cell_Module %>% dplyr::count(Cell,Module) %>% mutate("Percentage %" =  100* c(modules_astro/astro_total,modules_neuron/neuron_total) %>% round(4)  ) -> my_counts
 
 
 ggplot(my_counts, aes(fill=Module, x=Cell, y=`Percentage %`,  label = `Percentage %`)) + 
@@ -90,21 +92,7 @@ c('PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAP
 Optimality0[!(Optimality0$ID %in% subsystems),] -> Optimality
 Centrality0[!(Centrality0$ID %in% subsystems),] -> Centrality
 
-
-
-
-
-
-
-
-
-
 Node_attributes <- read_csv(paste0(path_figure_3, "node_attributes.csv"))
-
-
-
-
-
 Optimality <- inner_join(Node_attributes, Optimality)
 Centrality <- inner_join(Node_attributes, Centrality)
 Optimality <- inner_join(id_name, Optimality)
@@ -131,6 +119,8 @@ c("deepskyblue3", "brown2") -> mycolors
 "Score"                -> x_lab
 'Hyper-hubs'-> y_lab
 'right'                       -> leg_pos
+
+hyperhubs %>% as.data.frame() %>% write_csv("hyperhubs.csv")
 
 hyperhubs %>% plot_sorted_nodes('Hubness' , x_lab, y_lab, leg_pos, mycolors, y_labels = "Name") -> hyperhubs_plot
 ```
@@ -291,6 +281,11 @@ sum(graph_optimal$ID %in% graph_central$ID)
 
 
 rbind(graph_hyper, graph_optimal, graph_central) -> modules_for_graph
+
+
+write_csv(Hyperhubs, "Hyperhubs.csv")
+write_csv(Optimal_hubs %>% rownames_to_column("ID"),"Optimalhubs.csv" )
+write_csv(Central_hubs  %>%rownames_to_column("ID"), "Centralhubs.csv")
 
 write_csv(modules_for_graph, "modules_for_graph.csv")
 

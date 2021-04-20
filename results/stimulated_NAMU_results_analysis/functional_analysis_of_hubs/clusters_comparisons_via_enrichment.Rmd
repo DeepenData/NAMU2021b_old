@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
+library(clusterProfiler)
+library(DOSE)
+library(ReactomePA)
+library(tidyverse)
+library(readxl)
+ optimalhubs.xlsx <- read_excel('optimalhubs.xlsx')
+ centralhubs.xlsx <- read_excel('centralhubs.xlsx')
+ hyperhubs.xlsx   <- read_excel('hyperhubs.xlsx')
+ 
+get_genes_from_module <- function(hubs){     hubs %>% 
+                                             select(matches('gene')) %>% purrr::reduce(c) %>% na.exclude() %>% str_c(collapse = ", ") %>% 
+                                            str_split(pattern=",") %>%str_extract_all('\\d+') %>% unlist() %>% str_trim %>% unique()}
+
+hubs <- list(optimalhubs.xlsx, centralhubs.xlsx, hyperhubs.xlsx) %>% map(get_genes_from_module) %>% purrr::set_names(c("Optimal", "Central", "Hyper"))
+
+compareCluster(hubs, fun='enrichPathway', pvalueCutoff=0.0001) -> clusters_plot
+clusters_plot %>% dotplot
+```
+
+
+
