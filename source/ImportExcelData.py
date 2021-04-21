@@ -68,6 +68,7 @@ df_metabolites.set_index('Muestra', inplace=True)
 
 import pickle 
 
+import os; os.makedirs("./tmp", exist_ok=True) # crea .tmp si no existe
 outfile = open('./tmp/excel_dataset', 'wb'); pickle.dump( df , outfile ); outfile.close()
 outfile = open('./tmp/excel_metabolitos', 'wb'); pickle.dump( df_metabolites , outfile ); outfile.close()
 

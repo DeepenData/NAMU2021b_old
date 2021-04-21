@@ -169,6 +169,7 @@ centralities = {
 # CONVIERTE LAS CENTRALIDADES A UN DATAFRAME DE PANDAS
 centralities = pd.DataFrame( centralities )
 
+import os; os.makedirs("./tmp", exist_ok=True) # crea .tmp si no existe
 centralities.to_csv('./tmp/proyección.csv')
 
 # %% --- PLOTLY PARA TIEMPOS

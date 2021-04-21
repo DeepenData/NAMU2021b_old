@@ -39,6 +39,7 @@ unique_subsystems = pd.unique( tabla_primaria['subsystem'] )
 subsystems_dict = { sub : list(df_subsystem( sub )['ids']) for sub in unique_subsystems }
 
 import pickle 
+import os; os.makedirs("./tmp", exist_ok=True) # crea .tmp si no existe
 outfile = open('./tmp/subsystems_dict.pkl', 'wb'); pickle.dump( subsystems_dict , outfile ); outfile.close()
 
 

@@ -34,6 +34,7 @@ baseline_centralities_tensor  = full_tensor(baseline_centralities)
 perturbed_centralities_tensor = full_tensor(perturbed_centralities)
 
 import pickle
+import os; os.makedirs("./tmp", exist_ok=True) # crea .tmp si no existe
 outfile = open('./tmp/baseline_tensor.pkl', 'wb'); pickle.dump( baseline_centralities_tensor ,outfile); outfile.close()
 outfile = open('./tmp/centralidades_perturbadas_tensor.pkl', 'wb'); pickle.dump( perturbed_centralities_tensor ,outfile); outfile.close()
 

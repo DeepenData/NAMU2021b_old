@@ -203,6 +203,7 @@ def join_centrality_dataframes( node ):
 
 centralities_final_dict = { node : join_centrality_dataframes( node ) for node in NODES_REMOVED } 
 
+import os; os.makedirs("./tmp", exist_ok=True) # crea .tmp si no existe
 outfile = open('./tmp/centralidades_perturbadas.pkl', 'wb'); pickle.dump( centralities_final_dict , outfile); outfile.close()
 
 print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Done centrality for removed nodes' )
