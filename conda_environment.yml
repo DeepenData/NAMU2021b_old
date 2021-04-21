@@ -1,6 +1,7 @@
 name: human-metnet
 channels:
   - conda-forge
+  - r
   - defaults
 dependencies:
   - _libgcc_mutex=0.1=main
