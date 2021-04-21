@@ -15,14 +15,79 @@ library(readxl)
  hyperhubs.xlsx   <- read_excel('hyperhubs.xlsx')
  
 get_genes_from_module <- function(hubs){     hubs %>% 
-                                             select(matches('gene')) %>% purrr::reduce(c) %>% na.exclude() %>% str_c(collapse = ", ") %>% 
+                                             dplyr::select(matches('gene')) %>% purrr::reduce(c) %>% na.exclude() %>% str_c(collapse = ", ") %>% 
                                             str_split(pattern=",") %>%str_extract_all('\\d+') %>% unlist() %>% str_trim %>% unique()}
 
 hubs <- list(optimalhubs.xlsx, centralhubs.xlsx, hyperhubs.xlsx) %>% map(get_genes_from_module) %>% purrr::set_names(c("Optimal", "Central", "Hyper"))
 
-compareCluster(hubs, fun='enrichPathway', pvalueCutoff=0.0001) -> clusters_plot
+ #setdiff(c(1,2,3,4),c(2,3,8))
+
+c(setdiff(hubs$Optimal, hubs$Central))-> optimal_genes
+c(setdiff(hubs$Central, hubs$Optimal))-> central_genes
+unique(c(intersect(hubs$Optimal, hubs$Central),hubs$Hyper)) -> hyper_genes
+intersect(central_genes, optimal_genes)
+intersect(hyper_genes, optimal_genes)
+intersect(hyper_genes, central_genes)    -> get_rid_from_hyper
+setdiff(hyper_genes, get_rid_from_hyper) -> hyper_genes
+
+rbind(
+ optimalhubs.xlsx %>% dplyr::select(c('ID','Name','Reaction',"Node"),matches('gene')),
+ centralhubs.xlsx  %>% dplyr::select(c('ID','Name','Reaction',"Node"),matches('gene')),
+ hyperhubs.xlsx   %>% dplyr::select(c('ID','Name','Reaction',"Node"),matches('gene'))) -> all_hubs_info
+
+```
+```{r}
+##Discard all subsystems-related nodes
+##Presence of ketone bodies, glutamate and gluthanione pathways.
+
+
+
+
+```
+
+
+
+```{r}
+
+get_rxns_from_genes <- function(a_gene){all_hubs_info %>% filter(str_detect(VMH_gene_IDs,a_gene) | str_detect(KEGG_genes,a_gene))%>%
+                                         dplyr::select(c('ID','Name','Reaction',"Node"))  %>% mutate(Gene = a_gene)}
+
+map_df(hyper_genes,get_rxns_from_genes) -> hyper_genes_rxns_df
+map_df(central_genes,get_rxns_from_genes) -> central_genes_rxns_df
+map_df(optimal_genes,get_rxns_from_genes) -> optimal_genes_rxns_df
+
+hyper_genes_rxns_df   %>% write_csv("hyper_genes_rxns_df.csv")
+central_genes_rxns_df%>%write_csv("central_genes_rxns_df.csv")
+optimal_genes_rxns_df%>%write_csv("optimal_genes_rxns_df.csv")
+
+```
+
+
+```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
+
+
+hubs <- list(optimal_genes, central_genes, hyper_genes) %>% purrr::set_names(c("Optimal", "Central", "Hyper"))
+
+compareCluster(hubs, fun='enrichPathway', pvalueCutoff=1e-4) -> clusters_plot
+clusters_plot %>% dotplot
+```
+```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
+
+compareCluster(hubs, fun='enrichKEGG', pvalueCutoff=1e-7) -> clusters_plot
 clusters_plot %>% dotplot
 ```
 
+```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
+
+compareCluster(hubs, fun='enrichDGN', pvalueCutoff=0.01) -> clusters_plot
+clusters_plot %>% dotplot
+```
+
+```{r}
+interest <- clusters_plot@compareClusterResult %>% filter(Cluster=="Hyper")  %>% .[["geneID"]] %>% str_split(pattern="/") %>% unlist()
+
+map_df(interest,get_rxns_from_genes)
+
+```
 
 
