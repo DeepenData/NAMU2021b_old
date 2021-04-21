@@ -10,10 +10,23 @@ library(DOSE)
 library(ReactomePA)
 library(tidyverse)
 library(readxl)
- optimalhubs.xlsx <- read_excel('optimalhubs.xlsx')
- centralhubs.xlsx <- read_excel('centralhubs.xlsx')
- hyperhubs.xlsx   <- read_excel('hyperhubs.xlsx')
- 
+
+c('PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m' ,
+'ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron', 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron' ,
+'ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron' ,
+'PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA', 'GLCt1r', 'GLCt1r_Neuron', 'GLCt2r') -> subsystems
+
+
+filter_out_subsystems <- function(df){df[!(df$ID %in% subsystems),]}
+
+
+ optimalhubs.xlsx <- read_excel('optimalhubs.xlsx') %>% filter(total > .5) %>% filter_out_subsystems
+ centralhubs.xlsx <- read_excel('centralhubs.xlsx') %>% filter(Centrality > 1.10)%>% filter_out_subsystems
+ hyperhubs.xlsx   <- read_excel('hyperhubs.xlsx')%>% filter(total > .5 | Centrality > 1.10)%>% filter_out_subsystems
+```
+
+
+```{r fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
 get_genes_from_module <- function(hubs){     hubs %>% 
                                              dplyr::select(matches('gene')) %>% purrr::reduce(c) %>% na.exclude() %>% str_c(collapse = ", ") %>% 
                                             str_split(pattern=",") %>%str_extract_all('\\d+') %>% unlist() %>% str_trim %>% unique()}
@@ -35,53 +48,92 @@ rbind(
  centralhubs.xlsx  %>% dplyr::select(c('ID','Name','Reaction',"Node"),matches('gene')),
  hyperhubs.xlsx   %>% dplyr::select(c('ID','Name','Reaction',"Node"),matches('gene'))) -> all_hubs_info
 
+
+
 ```
+
+ketone bodies:
+BDHm    (R)-3-Hydroxybutanoate:NAD+ Oxidoreductase bhb[m] + nad[m] <=> acac[m] + h[m] + nadh[m]
+  genes: 56898(BDH2) 622(BDH1)
+
+OCOAT1m 3-Oxoacid Coa-Transferase acac[m] + succoa[m] -> aacoa[m] + succ[m]
+ genes: 5019(OXCT1) 64064(OXCT2)
+
+
+AACOAT  Acetoacetyl Coenzyme A:Acetate Coa-Transferase acac[c] + atp[c] + coa[c] -> aacoa[c] + amp[c] + ppi[c]:
+ genes: 65985(AACS)
+
+
+HMGLm   Hydroxymethylglutaryl Coenzyme A Lyase hmgcoa[m] -> acac[m] + accoa[m]
+  genes: 	3155(HMGCL) 54511(HMGCLL1)
+
+ACACT1rm Acetyl Coenzyme A C-Acetyltransferase, Mitochondrial 2.0 accoa[m] -> aacoa[m] + coa[m]
+
+HMGCOASim Hydroxymethylglutaryl Coenzyme A Synthase (Ir) aacoa[m] + accoa[m] + h2o[m] -> coa[m] + h[m] + hmgcoa[m]
+  genes: 3157(HMGCS1) 3158(HMGCS2)
+
+CSm Citrate Synthase accoa[m] + h2o[m] + oaa[m] -> cit[m] + coa[m] + h[m]
+ genes: 	1431(CS)
+
+ACSm Acetyl Coenzyme A Synthetase ac[m] + atp[m] + coa[m] -> accoa[m] + amp[m] + ppi[m]
+	genes: 23181(DIP2A) 55902(ACSS2) 84532(ACSS1)
+
+glutamate - akg:
+GLUDxm Glutamate Dehydrogenase (NAD), Mitochondrial glu_L[m] + h2o[m] + nad[m] <=> akg[m] + h[m] + nadh[m] + nh4[m]
+  genes: 	2746(GLUD1) 2747(GLUD2)
+AKGDm	2-oxoglutarate dehydrogenase Astrocyte  akg[mA] + coa[mA] + nad[mA] --> co2[mA] + nadh[mA] + succoa[mA]
+  genes: (4967.2 and 1738.1 and 8050.1 and 1743.1) or (4967.1 and 1738.1 and 8050.1 and 1743.1)
+
+gluthatione:
+GLYOXm Hydroxyacylglutathione Hydrolase, Mitochondrial h2o[m] + lgt_S[m] -> gthrd[m] + h[m] + lac_D[m]
+  genes: 	3029(HAGH)
+GTHO Glutathione Oxidoreductase gthox[c] + h[c] + nadph[c] -> 2.0 gthrd[c] + nadp[c]
+  genes: 2936(GSR)
+
+
 ```{r}
-##Discard all subsystems-related nodes
-##Presence of ketone bodies, glutamate and gluthanione pathways.
-
-
-
-
+interesting_genes <- "BDHm|OCOAT1m|AACOAT|HMGLm|ACACT1rm|HMGCOASim|CSm|ACSm|GLUDxm|AKGDm|GLYOXm|GTHO"
+all_hubs_info  %>% filter(str_detect(ID, regex(interesting_genes,ignore_case = T)))
 ```
-
-
-
-```{r}
-
-get_rxns_from_genes <- function(a_gene){all_hubs_info %>% filter(str_detect(VMH_gene_IDs,a_gene) | str_detect(KEGG_genes,a_gene))%>%
-                                         dplyr::select(c('ID','Name','Reaction',"Node"))  %>% mutate(Gene = a_gene)}
-
-map_df(hyper_genes,get_rxns_from_genes) -> hyper_genes_rxns_df
-map_df(central_genes,get_rxns_from_genes) -> central_genes_rxns_df
-map_df(optimal_genes,get_rxns_from_genes) -> optimal_genes_rxns_df
-
-hyper_genes_rxns_df   %>% write_csv("hyper_genes_rxns_df.csv")
-central_genes_rxns_df%>%write_csv("central_genes_rxns_df.csv")
-optimal_genes_rxns_df%>%write_csv("optimal_genes_rxns_df.csv")
-
-```
-
 
 ```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
 
 
 hubs <- list(optimal_genes, central_genes, hyper_genes) %>% purrr::set_names(c("Optimal", "Central", "Hyper"))
 
-compareCluster(hubs, fun='enrichPathway', pvalueCutoff=1e-4) -> clusters_plot
+compareCluster(hubs, fun='enrichPathway', pvalueCutoff=1e-3) -> clusters_plot
 clusters_plot %>% dotplot
 ```
 ```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
 
-compareCluster(hubs, fun='enrichKEGG', pvalueCutoff=1e-7) -> clusters_plot
+compareCluster(hubs, fun='enrichKEGG', pvalueCutoff=1e-2) -> clusters_plot
 clusters_plot %>% dotplot
 ```
 
 ```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
 
-compareCluster(hubs, fun='enrichDGN', pvalueCutoff=0.01) -> clusters_plot
+compareCluster(hubs, fun='enrichGO', pvalueCutoff=0.001, OrgDb= org.Hs.eg.db )  -> clusters_plot
 clusters_plot %>% dotplot
 ```
+
+```{r}
+
+get_rxns_from_genes <- function(a_gene){all_hubs_info %>% filter(str_detect(VMH_gene_IDs,a_gene) | str_detect(KEGG_genes,a_gene))%>%
+                                         dplyr::select(c('ID','Name','Reaction',"Node"))  %>% mutate(Gene = a_gene)}
+
+map_df(hubs$Hyper,get_rxns_from_genes)  %>% write_csv("hyper_genes_rxns_df.csv")
+map_df(hubs$Central,get_rxns_from_genes) %>%write_csv("central_genes_rxns_df.csv")
+map_df(hubs$Optimal,get_rxns_from_genes) %>%write_csv("optimal_genes_rxns_df.csv")
+
+
+```
+
+```{r}
+intersect(hubs$Hyper,hubs$Central)
+intersect(hubs$Hyper,hubs$Optimal)
+intersect(hubs$Optimal,hubs$Central)
+```
+
 
 ```{r}
 interest <- clusters_plot@compareClusterResult %>% filter(Cluster=="Hyper")  %>% .[["geneID"]] %>% str_split(pattern="/") %>% unlist()
