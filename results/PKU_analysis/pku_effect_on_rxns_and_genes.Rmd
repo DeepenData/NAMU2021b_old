@@ -9,9 +9,11 @@ library(tidyverse)
 library(clusterProfiler)
 library(DOSE)
 library(ReactomePA)
-path = "~/PostDoc/human-metnet/"
-
 library(readr)
+
+path = "~/AA_PostDoc/human-metnet/"
+
+
 rxns  <- read_csv(paste0(path,"data/recon2_rxn_info.csv")) %>% column_to_rownames("X1")
 genes <- read_csv(paste0(path,"data/recon2_genes_to_rxns.csv")) %>% column_to_rownames("X1")
 negative_fold_change  <- read_csv(paste0(path,"results/PKU_recon2rxn_top_negative_fold_change.csv")) %>% column_to_rownames("X1")
@@ -31,6 +33,16 @@ get_genes_by_centrality(negative_fold_change) -> genes_negative_fold_change
 
 get_genes_by_centrality(positive_fold_change) -> genes_positive_fold_change
 ```
+
+```{r fig.height=4, fig.width=20, message=FALSE, warning=FALSE}
+compareCluster(genes_positive_fold_change, fun='enrichDGN', pvalueCutoff=0.01) -> clusters_plot
+clusters_plot %>% dotplot
+```
+
+
+
+###########################################################
+
 ```{r fig.height=4, fig.width=25, message=FALSE, warning=FALSE}
 
 compareCluster(genes_positive_fold_change, fun='enrichPathway', pvalueCutoff=0.001) -> clusters_plot
@@ -41,10 +53,7 @@ clusters_plot %>% dotplot
 compareCluster(genes_negative_fold_change, fun='enrichPathway', pvalueCutoff=0.001) -> clusters_plot
 clusters_plot %>% dotplot
 ```
-```{r fig.height=4, fig.width=20, message=FALSE, warning=FALSE}
-compareCluster(genes_positive_fold_change, fun='enrichDGN', pvalueCutoff=0.01) -> clusters_plot
-clusters_plot %>% dotplot
-```
+
 
 ```{r fig.height=3, fig.width=20, message=FALSE, warning=FALSE}
 compareCluster(genes_negative_fold_change, fun='enrichDGN', pvalueCutoff=0.01) -> clusters_plot
