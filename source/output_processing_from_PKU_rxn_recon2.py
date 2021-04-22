@@ -1,7 +1,3 @@
-"""Esto es codigo test que calcula los delta y FC, y los mete en un modelo de grafo
-Esta conectado a las salidas CSV de centralidades base y perturbadas de Recon2. 
-Guarda el resultado del fold-change en el grafo de Recon2 y exporta a Gephi y Graphml"""
-
 # %% --- Importando modulos varios
 
 import networkx as nx
@@ -34,6 +30,7 @@ print(len(baselines), len(perturbado))
 
 baselines         = baselines.reindex( columns = perturbado.columns.sort_values() )
 perturbado        = perturbado.reindex( columns = perturbado.columns.sort_values(), index = baselines.index  )
+
 print(
 all(baselines.columns == perturbado.columns),
 all(baselines.index == perturbado.index))
@@ -55,8 +52,8 @@ fold_change.to_csv("./results/fold_change_pku.csv")
 for col in fold_change.columns:
     nx.set_node_attributes( G , dict( fold_change[col] ) , str(col) ) 
 
-nx.write_gexf(   G, "./results/graph_files/recon2_FC.gexf")
-nx.write_graphml(G, "./results/graph_files/recon2_FC.graphml")
+nx.write_gexf(   G, "./results/graph_files/tmp.recon2_FC.gexf")
+nx.write_graphml(G, "./results/graph_files/tmp.recon2_FC.graphml")
 
 # %% RANKING DE COSAS MODIFICADAS
 
