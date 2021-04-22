@@ -39,6 +39,14 @@ compareCluster(genes_positive_fold_change, fun='enrichDGN', pvalueCutoff=0.01) -
 clusters_plot %>% dotplot
 ```
 
+```{r}
+
+_fold_change  <- read_csv(paste0(path,"results/PKU_recon2rxn_top_negative_fold_change.csv")) 
+
+
+
+
+```
 
 
 ###########################################################
