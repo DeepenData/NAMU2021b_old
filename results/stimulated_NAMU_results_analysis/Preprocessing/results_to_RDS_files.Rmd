@@ -11,7 +11,7 @@ library(readxl)
 library(tidyverse)
 library(dplyr)
 library(tidyr)
-setwd("~/PostDoc/human-metnet/results/results_analysis_in_R_rmd")
+setwd("~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Preprocessing")
 dflist_names = c('fold_change_aritmetic', 'fold_change_geometric', 'fold_change_quadratic', 'fold_change_harmonic',
     'delta_aritmetic', 'delta_geometric', 'delta_quadratic', 'delta_harmonic')
 
@@ -20,11 +20,14 @@ read_sheets <- function(a_sheet){df <- read_excel('delta_fc_centralidades.xlsx',
 
 map(dflist_names, read_sheets) %>% purrr::set_names(dflist_names) -> list_of_cents
 
-fba <-  read.csv('/home/alejandro/NAMU_in_progress/Figures_creation/Code/Results_Acevedo_et_al_2021/01_phpps_bipartite_fluxes_sensis_optimality/FBA_results.csv') %>% 
+fba <-  read.csv('~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_3/FBA_results.csv') %>% 
         select(c('ID','Name', 'Reaction', 'Flux', 'Sensitivity')) %>% column_to_rownames('ID')
 
+fba
+```
 
 
+```{r message=FALSE, warning=FALSE}
 append_fba <- function(cent){
                                 hola <- rownames_to_column(fba)  %>% inner_join(rownames_to_column(cent)) %>% column_to_rownames('rowname')
                                 return(hola)

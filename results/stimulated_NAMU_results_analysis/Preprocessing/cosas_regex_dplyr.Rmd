@@ -1,0 +1,18 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(tidyverse)
+library(magrittr)
+fba <-  read.csv('~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_3/FBA_results.csv')
+
+fba   %<>% select(c('ID', matches('flux'), contains('Reac'),matches('*ame.*|sen'))) %>% filter(!str_detect(ID, regex('DM|sink', ignore_case = T)))  %>%
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',              ignore_case = T)), 'Astrocyte', NA)) %>% 
+         mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]N\\]',              ignore_case = T)), 'Neuron', `Node type`))  %>% 
+         filter(Flux > 0.1 & abs(Sensitivity) >  0)  %>% column_to_rownames("ID")
+fba
+```
+

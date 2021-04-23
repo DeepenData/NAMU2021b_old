@@ -27,46 +27,51 @@ get_genes_by_centrality <- function(FC){
                                      centrality_names %>%  map(centrality_to_genes) %>% purrr::set_names(centrality_names) -> genes_by_centrality
                                      return(genes_by_centrality)}
 
-
-
-get_genes_by_centrality(negative_fold_change) -> genes_negative_fold_change
-
-get_genes_by_centrality(positive_fold_change) -> genes_positive_fold_change
 ```
+
+
+
+
+
+
+
+
+log2(ce_ko/ce_wt)
+
 
 ```{r fig.height=4, fig.width=20, message=FALSE, warning=FALSE}
-compareCluster(genes_positive_fold_change, fun='enrichDGN', pvalueCutoff=0.01) -> clusters_plot
-clusters_plot %>% dotplot
+read_csv(paste0(path,"results/PKU_recon2rxn_top_positive_fold_change.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality  %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/LOG_top_PHETHPTOX2.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality  %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
 ```
-
 ```{r}
-
-_fold_change  <- read_csv(paste0(path,"results/PKU_recon2rxn_top_negative_fold_change.csv")) 
-
-
-
-
+read_csv(paste0(path, "results/tmp.reacciones_pku_controles.csv"))
 ```
 
 
+```{r fig.height=4, fig.width=20, message=FALSE, warning=FALSE}
+
+read_csv(paste0(path,"results/FC_top_ASCBOX.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality  %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_PEAMNO.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality  %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_D3AIBTm.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality  %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_DPMVDc.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_ENGASEly.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_PACCOAL.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_PPOR.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_r0545.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_r0547.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_RN0027C.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_PHACCOAGLNAC.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_PHETA1m.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_PHETA1.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+read_csv(paste0(path,"results/FC_top_PHYCBOXL.csv")) %>% column_to_rownames("X1") %>% get_genes_by_centrality %>% compareCluster(fun='enrichDGN', pvalueCutoff=0.01)  %>% dotplot
+
+ 
+
+
+```
 ###########################################################
 
-```{r fig.height=4, fig.width=25, message=FALSE, warning=FALSE}
 
-compareCluster(genes_positive_fold_change, fun='enrichPathway', pvalueCutoff=0.001) -> clusters_plot
-clusters_plot %>% dotplot
-```
-
-```{r fig.height=3, fig.width=20, message=FALSE, warning=FALSE}
-compareCluster(genes_negative_fold_change, fun='enrichPathway', pvalueCutoff=0.001) -> clusters_plot
-clusters_plot %>% dotplot
-```
-
-
-```{r fig.height=3, fig.width=20, message=FALSE, warning=FALSE}
-compareCluster(genes_negative_fold_change, fun='enrichDGN', pvalueCutoff=0.01) -> clusters_plot
-clusters_plot %>% dotplot
-```
 
 
 
