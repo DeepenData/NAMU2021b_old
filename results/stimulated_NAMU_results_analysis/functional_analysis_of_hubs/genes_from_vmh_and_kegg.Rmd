@@ -5,6 +5,23 @@ output: html_notebook
 
 Automatic annotations
 ```{r}
+path = "~/AA_PostDoc/human-metnet/"
+#rxns  <- read_csv(paste0(path,"data/recon2_rxn_info.csv")) %>% column_to_rownames("X1")
+genes <- read_csv(paste0(path,"data/recon2_genes_to_rxns.csv")) %>% column_to_rownames("X1") %>% set_rownames(NULL)
+
+get_genes <- function(a_rxn){return(genes %>% filter(str_detect(Reactions, regex(a_rxn, ignore_case = T))) %>%
+                            .[["Gene_ID"]] %>% str_trim %>% str_extract_all("^\\d+") %>% unlist())}
+
+
+
+get_genes_by_centrality <- function(FC){
+                                      centrality_to_genes <- function(centrality_names){FC[[centrality_names]]  %>% map(get_genes) %>% unlist %>% unique %>% return}
+                                      FC %>% colnames() -> centrality_names
+                                     centrality_names %>%  map(centrality_to_genes) %>% purrr::set_names(centrality_names) -> genes_by_centrality
+                                     return(genes_by_centrality)}
+
+
+genes$Reactions[2] %>% get_genes_by_centrality 
 
 ```
 
