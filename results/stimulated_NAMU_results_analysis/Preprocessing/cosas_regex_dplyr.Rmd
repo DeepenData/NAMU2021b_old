@@ -7,7 +7,8 @@ output: html_notebook
 ```{r}
 library(tidyverse)
 library(magrittr)
-fba <-  read.csv('~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_3/FBA_results.csv')
+fba <-  read.csv('clase_3_datos.csv')
+#fba <-  read_csv('~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_3/FBA_results.csv')
 
 fba   %<>% select(c('ID', matches('flux'), contains('Reac'),matches('*ame.*|sen'))) %>% filter(!str_detect(ID, regex('DM|sink', ignore_case = T)))  %>%
          mutate(`Node type` = ifelse(str_detect(Reaction, regex('\\[[a-z]A\\]',              ignore_case = T)), 'Astrocyte', NA)) %>% 

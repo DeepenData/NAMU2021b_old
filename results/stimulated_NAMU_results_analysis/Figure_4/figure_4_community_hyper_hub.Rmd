@@ -8,11 +8,12 @@ output: html_notebook
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(ggpubr)
-path_figure_1 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_1/"
-path_figure_2 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_2/"
-path_figure_3 = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_3/"
+setwd("~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4")
+path_figure_1 = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_1/"
+path_figure_2 = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_2/"
+path_figure_3 = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_3/"
 id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% select(c("ID", "Name" ))
-Centrality0      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(Centrality > 0.5) 
+Centrality0      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(total.abs.centrality > 0) 
 Optimality0      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
 
 c('PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m' ,
@@ -81,7 +82,7 @@ library(magrittr)
 library(ggplot2)
 id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% select(c("ID", "Name" ))
 
-Centrality0      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(Centrality > 0.5) 
+Centrality0      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(total.abs.centrality > 0.5) 
 Optimality0      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
 
 c('PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m' ,

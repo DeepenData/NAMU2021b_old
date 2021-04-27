@@ -19,10 +19,15 @@ c('PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAP
 
 filter_out_subsystems <- function(df){df[!(df$ID %in% subsystems),]}
 
+#cut_off_optimality <-.5
+#cut_off_centrality <- 1.10  
 
- optimalhubs.xlsx <- read_excel('optimalhubs.xlsx') %>% filter(total > .5) %>% filter_out_subsystems
- centralhubs.xlsx <- read_excel('centralhubs.xlsx') %>% filter(Centrality > 1.10)%>% filter_out_subsystems
- hyperhubs.xlsx   <- read_excel('hyperhubs.xlsx')%>% filter(total > .5 | Centrality > 1.10)%>% filter_out_subsystems
+cut_off_optimality <-.425
+cut_off_centrality <- 0.5 
+
+ optimalhubs.xlsx <- read_excel('optimalhubs.xlsx') %>% filter(total > cut_off_optimality) %>% filter_out_subsystems
+ centralhubs.xlsx <- read_excel('centralhubs.xlsx') %>% filter(total.abs.centrality > cut_off_centrality)%>% filter_out_subsystems
+ hyperhubs.xlsx   <- read_excel('hyperhubs.xlsx')%>% filter(total > cut_off_optimality | total.abs.centrality > cut_off_centrality)%>% filter_out_subsystems
 ```
 
 
@@ -106,7 +111,7 @@ clusters_plot %>% dotplot
 ```
 ```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
 
-compareCluster(hubs, fun='enrichKEGG', pvalueCutoff=1e-2) -> clusters_plot
+compareCluster(hubs, fun='enrichKEGG', pvalueCutoff=5e-2) -> clusters_plot
 clusters_plot %>% dotplot
 ```
 

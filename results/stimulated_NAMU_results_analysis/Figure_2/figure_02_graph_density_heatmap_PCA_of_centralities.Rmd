@@ -20,18 +20,21 @@ only_centralities <- read_rds('only_centralities.rds')
 
 fold_change_geometric <- all_data$fold_change_geometric
 only_centralities_FCA <- only_centralities$fold_change_geometric
-filter_centralities <- function(df){df %>% select(matches('^info|^close|^bet|^communi|^katz|^page'))}
-get_total_centralities    <- function(df){df %>% abs %>% rowSums }
+filter_centralities <- function(df){df %>% select(matches('^info|^close|^bet|^communi|^katz|^eigen'))}
+get_total_centralities    <- function(df){df %>% filter_centralities %>% abs %>% rowSums }
 get_summaryzed.optimality <- function(df){ pseudoLog10 <- function(x) { asinh(x/2)/log(10) }
                                       df$Flux   %>% abs %>% as.matrix()  %>% pseudoLog10  %>% rescale(c(0,1))  -> fluxes
                                     df$Sensitivity  %>% abs %>% as.matrix()   %>% pseudoLog10  %>% rescale(c(0,1))-> sensitivities 
                                     fluxes + sensitivities  -> summaryzed.optimality
                                     return(summaryzed.optimality)}
-only_centralities_FCA %>%get_total_centralities  -> total.abs.centrality 
+only_centralities_FCA  %>%get_total_centralities  -> total.abs.centrality 
+
+
 get_correlation_matrices <-function(df){
                                  #scale_rows <- function(x){t(scale(t(x)))}
                                  df %>% transposeBigData   %>% cor(method = "kendall") -> hola
                                  return(hola)}
+
 get_correlation_matrices(only_centralities_FCA %>% filter_centralities) -> my.corr.matrix
 node_types <- fold_change_geometric$`Node type`
 
@@ -54,11 +57,11 @@ left_annotation <- rowAnnotation(`Nodes` = node_types, col = list( `Nodes` = c(
                                     "Neuron"           = "brown2",
                                     'Sink/Demand Neuron'= 'blueviolet' )))
 
-total.abs.centrality  -> a_total.abs.cent
+#total.abs.centrality  -> a_total.abs.cent
 #summaryzed.optimality$fold_change_aritmetic -> a_summaryzed.opti
 
 right_annotation <-   
-  rowAnnotation(gap = unit(12, "points"),Ce      = anno_barplot(bar_width = 0.01,width = unit(1.5, "cm"), border = T,a_total.abs.cent, gp = gpar(col = 'azure4')))
+  rowAnnotation(gap = unit(12, "points"),Ce      = anno_barplot(bar_width = 0.01,width = unit(1.5, "cm"), border = T,total.abs.centrality, gp = gpar(col = 'azure4')))
            # Op        = anno_barplot(bar_width = 0.01,width = unit(1.5, "cm") ,border = T)) #, a_summaryzed.opti, gp = gpar(col = 'azure4')))
 
 
@@ -132,11 +135,11 @@ my_comparisons <- list( c("Neuronal_cluster", "Astrocytic_cluster"),
 
 
 
-ht_Neuronal_cluster    %>%  write_rds("/home/alejandro/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_4/ht_Neuronal_cluster.rds")
-ht_Astrocytic_cluster  %>%  write_rds("/home/alejandro/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_4/ht_Astrocytic_cluster.rds")
-ht_Neuron_vs_Astrocyte %>%  write_rds("/home/alejandro/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_4/ht_Neuron_vs_Astrocyte.rds")
+ht_Neuronal_cluster    %>%  write_rds("/home/alejandro/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/ht_Neuronal_cluster.rds")
+ht_Astrocytic_cluster  %>%  write_rds("/home/alejandro/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/ht_Astrocytic_cluster.rds")
+ht_Neuron_vs_Astrocyte %>%  write_rds("/home/alejandro/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/ht_Neuron_vs_Astrocyte.rds")
 
-heatmap_matrix %>% write_rds("/home/alejandro/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis_in_R_rmd/Figure_4/heatmap_matrix.rds")
+heatmap_matrix %>% write_rds("/home/alejandro/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/heatmap_matrix.rds")
 ```
 ```{r fig.height=6, fig.width=3}
 ggplot(quads, aes(x=Comparison, y=`Node correlation`, fill=Comparison)) + 
@@ -172,8 +175,8 @@ cbind(p$rotated$PC1, p$rotated$PC2) %>% as.matrix %>% as.data.frame-> my_pca
 my_pca %>%  cbind( data$`Node type`) %>% set_colnames(c('PC1','PC2','node')) -> to.pca.scatter
 
 #summaryzed.optimality -> Op
-total.abs.centrality -> Centrality
-Centrality -> Ce
+total.abs.centrality -> Ce
+#Centrality -> Ce
 
 #b <- ggplot(to.pca.scatter, aes(x = PC1, y = PC2)) 
 #b +   scale_color_manual(labels = c("Astro", "Exch",'Neu','Si/De Ast', 'Si/De Neu'), values =  c("deepskyblue3",'darkgreen','brown2','darkgoldenrod','blueviolet')) + 
@@ -204,7 +207,7 @@ ggsave(file="panel_without_graph.png", plot=panel_without_graph, width=9, height
 
 Node types for Networkx (python) attributes
 ```{r message=FALSE, warning=FALSE}
-data.frame(ID =fold_change_geometric$ID,Centrality ) -> total_centrality_by_node
+data.frame(ID =fold_change_geometric$ID,total.abs.centrality ) -> total_centrality_by_node
 
 write_csv(total_centrality_by_node, "total_centrality_by_node.csv")
 

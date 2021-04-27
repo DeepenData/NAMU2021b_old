@@ -3,8 +3,14 @@ title: "R Notebook"
 output: html_notebook
 ---
 
+Automatic annotations
+```{r}
+
+```
+
 
 ```{r message=FALSE, warning=FALSE}
+setwd("~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/functional_analysis_of_hubs")
 library(tidyverse)
 
 extra_genes = data.frame(ID = c("3DPHBH2_Neuron", "NH3tm_Neuron", 'AASAD3m', "SPODMm", "COQ3m_Neuron", "H2Otm_Neuron", "Htm_Neuron") ,
@@ -12,11 +18,11 @@ extra_genes = data.frame(ID = c("3DPHBH2_Neuron", "NH3tm_Neuron", 'AASAD3m', "SP
                          VMH_gene_IDs = NA)
 mas_genes <- read_csv("genes_q_faltan.csv")  %>%  select(c("ID","VMH_gene_IDs","KEGG_genes"))
 genes <- read_csv('table_of_genes_from_VMH_KEGG.csv') %>% select(c("ID","VMH_gene_IDs","KEGG_genes")) %>% rbind(extra_genes) %>% rbind(mas_genes) 
-genes[1:8,"KEGG_genes"] = rep('1591', 8)
+#genes[1:8,"KEGG_genes"] = rep('1591', 8)
 
-path_Hyperhubs.csv = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/Hyperhubs.csv"
-path_Optimalhubs.csv = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/Optimalhubs.csv"
-path_Centralhubs.csv = "~/PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/Centralhubs.csv"
+path_Hyperhubs.csv = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/Hyperhubs.csv"
+path_Optimalhubs.csv = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/Optimalhubs.csv"
+path_Centralhubs.csv = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_4/Centralhubs.csv"
 optimalhubs <- read_csv(path_Optimalhubs.csv)
 centralhubs <- read_csv(path_Centralhubs.csv)
 hyperhubs <- read_csv(path_Hyperhubs.csv)
