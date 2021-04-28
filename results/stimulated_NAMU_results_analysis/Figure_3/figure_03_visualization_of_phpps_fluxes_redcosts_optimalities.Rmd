@@ -95,7 +95,7 @@ library(scales)
 library(reshape2)
 
 pseudoLog10 <- function(x) { asinh(x/2)/log(10) }
-data %>% filter( abs(Sensitivity) > 1e-8	| abs(Flux) > 1e-8 ) %>% select(c("ID", "Sensitivity", 'Flux'))   %>% column_to_rownames('ID') %>% abs %>% as.matrix() %>% pseudoLog10  -> data.log
+data %>% select(c("ID", "Sensitivity", 'Flux'))   %>% column_to_rownames('ID') %>% abs %>% as.matrix() %>% pseudoLog10  -> data.log
 data.log %>% rescale(to = c(0,1))%>% as.data.frame %>% set_rownames(rownames(data.log))-> data.log.rescaled
 merge(data.log.rescaled %>% rownames_to_column('ID') ,  data[, c('ID','Node')] ) -> data.log.rescaled
 

@@ -4,57 +4,177 @@ output: html_notebook
 ---
 
 
-```{r fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
+```{r fig.height=3, fig.width=14, message=FALSE, warning=FALSE}
 library(clusterProfiler)
 library(DOSE)
 library(ReactomePA)
 library(tidyverse)
 library(readxl)
+setwd("~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/functional_analysis_of_hubs")
 
 c('PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m' ,
 'ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron', 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron' ,
 'ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron' ,
 'PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA', 'GLCt1r', 'GLCt1r_Neuron', 'GLCt2r') -> subsystems
-
-
 filter_out_subsystems <- function(df){df[!(df$ID %in% subsystems),]}
-
-#cut_off_optimality <-.5
-#cut_off_centrality <- 1.10  
-
-cut_off_optimality <-.425
-cut_off_centrality <- 0.5 
-
- optimalhubs.xlsx <- read_excel('optimalhubs.xlsx') %>% filter(total > cut_off_optimality) %>% filter_out_subsystems
- centralhubs.xlsx <- read_excel('centralhubs.xlsx') %>% filter(total.abs.centrality > cut_off_centrality)%>% filter_out_subsystems
- hyperhubs.xlsx   <- read_excel('hyperhubs.xlsx')%>% filter(total > cut_off_optimality | total.abs.centrality > cut_off_centrality)%>% filter_out_subsystems
-```
-
-
-```{r fig.height=3, fig.width=10, message=FALSE, warning=FALSE}
 get_genes_from_module <- function(hubs){     hubs %>% 
                                              dplyr::select(matches('gene')) %>% purrr::reduce(c) %>% na.exclude() %>% str_c(collapse = ", ") %>% 
                                             str_split(pattern=",") %>%str_extract_all('\\d+') %>% unlist() %>% str_trim %>% unique()}
+```
 
-hubs <- list(optimalhubs.xlsx, centralhubs.xlsx, hyperhubs.xlsx) %>% map(get_genes_from_module) %>% purrr::set_names(c("Optimal", "Central", "Hyper"))
+### NEURON
+```{r fig.height=3, fig.width=14, message=FALSE, warning=FALSE}
+cut_off_optimality <-0.01  # 0.01
+cut_off_centrality <- 0.01 # 0.01
+central_hubs <- readxl::read_excel('Neuron_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Optimality")%>%filter(Centrality > cut_off_centrality)%>% filter_out_subsystems
+optimal_hubs <- readxl::read_excel('Neuron_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Centrality")%>%filter(Optimality > cut_off_optimality)%>% filter_out_subsystems
+central_hubs %<>%  get_genes_from_module 
+optimal_hubs %<>%  get_genes_from_module 
+intersect(central_hubs, optimal_hubs) -> hyper_hubs
+setdiff(central_hubs,hyper_hubs) -> central_hubs
+setdiff(optimal_hubs,hyper_hubs) -> optimal_hubs
+list(optimal_hubs, central_hubs, hyper_hubs)  %>% purrr::set_names(c("Optimal", "Central", "Hyper"))  -> hubs
+intersect(central_hubs, optimal_hubs)
+intersect(central_hubs, hyper_hubs)
+intersect(optimal_hubs, hyper_hubs)   
+hubs %>% glimpse()
+compareCluster(hubs, fun='enrichPathway', pvalueCutoff=1e-3) -> clusters_plot; clusters_plot %>% dotplot
+compareCluster(hubs, fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
 
- #setdiff(c(1,2,3,4),c(2,3,8))
-
-c(setdiff(hubs$Optimal, hubs$Central))-> optimal_genes
-c(setdiff(hubs$Central, hubs$Optimal))-> central_genes
-unique(c(intersect(hubs$Optimal, hubs$Central),hubs$Hyper)) -> hyper_genes
-intersect(central_genes, optimal_genes)
-intersect(hyper_genes, optimal_genes)
-intersect(hyper_genes, central_genes)    -> get_rid_from_hyper
-setdiff(hyper_genes, get_rid_from_hyper) -> hyper_genes
-
-rbind(
- optimalhubs.xlsx %>% dplyr::select(c('ID','Name','Reaction',"Node"),matches('gene')),
- centralhubs.xlsx  %>% dplyr::select(c('ID','Name','Reaction',"Node"),matches('gene')),
- hyperhubs.xlsx   %>% dplyr::select(c('ID','Name','Reaction',"Node"),matches('gene'))) -> all_hubs_info
+```
+## ASTROCYTE
+```{r fig.height=3, fig.width=14, message=FALSE, warning=FALSE}
+cut_off_optimality <-0.01  # 0.01
+cut_off_centrality <- 0.01 # 0.01
+central_hubs <- readxl::read_excel('Astrocyte_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Optimality")%>%filter(Centrality > cut_off_centrality)%>% filter_out_subsystems
+optimal_hubs <- readxl::read_excel('Astrocyte_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Centrality")%>%filter(Optimality > cut_off_optimality)%>% filter_out_subsystems
 
 
+central_hubs %<>%  get_genes_from_module 
+optimal_hubs %<>%  get_genes_from_module 
+intersect(central_hubs, optimal_hubs) -> hyper_hubs
+setdiff(central_hubs,hyper_hubs) -> central_hubs
+setdiff(optimal_hubs,hyper_hubs) -> optimal_hubs
+list(optimal_hubs, central_hubs, hyper_hubs)  %>% purrr::set_names(c("Optimal", "Central", "Hyper"))  -> hubs
+intersect(central_hubs, optimal_hubs)
+intersect(central_hubs, hyper_hubs)
+intersect(optimal_hubs, hyper_hubs)   
+hubs %>% glimpse()
+compareCluster(hubs, fun='enrichPathway', pvalueCutoff=1e-3) -> clusters_plot; clusters_plot %>% dotplot
+compareCluster(hubs, fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
 
+```
+
+
+#NEURON BY rxns
+```{r fig.height=3, fig.width=14, message=FALSE, warning=FALSE}
+cut_off_optimality <-0.01  # 0.01
+cut_off_centrality <- 0.01 # 0.01
+central_hubs <- readxl::read_excel('Neuron_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Optimality")%>%filter(Centrality > cut_off_centrality)%>% filter_out_subsystems
+optimal_hubs <- readxl::read_excel('Neuron_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Centrality")%>%filter(Optimality > cut_off_optimality)%>% filter_out_subsystems
+
+central_optimal_hubs <-  readxl::read_excel('Neuron_IDs_centrality_optimality.xlsx')%>% filter_out_subsystems
+
+intersect(central_hubs$ID, optimal_hubs$ID) -> hyper_IDs
+setdiff(central_hubs$ID,hyper_IDs)          -> central_IDs
+ setdiff(optimal_hubs$ID,hyper_IDs)         -> optimal_IDs
+ 
+central_hubs         %>% filter(ID %in% central_IDs) %>%  get_genes_from_module -> central_genes
+optimal_hubs         %>% filter(ID %in% optimal_IDs) %>%  get_genes_from_module -> optimal_genes
+central_optimal_hubs %>% filter(ID %in% hyper_IDs) %>% get_genes_from_module -> hyper_genes
+
+
+
+intersect(central_genes,optimal_genes) -> super
+
+intersect(super,hyper_genes)   ->  super_and_hyper
+
+intersect(optimal_genes,hyper_genes)  %>% setdiff(super_and_hyper)-> optimal_and_hyper
+intersect(central_genes,hyper_genes)  %>% setdiff(super_and_hyper)-> central_and_hyper
+
+vector_to_substract <-  c(hyper_genes, super,super_and_hyper, optimal_and_hyper,central_and_hyper ) %>% unique()
+
+setdiff(central_genes,vector_to_substract) -> pure_central
+setdiff(optimal_genes,vector_to_substract) -> pure_optimal
+
+
+hubs_rxn_based <- list(pure_optimal, pure_central, super, hyper_genes, super_and_hyper, optimal_and_hyper, central_and_hyper )  %>% 
+               purrr::set_names(c("pure_optimal", "pure_central", "super", "hyper", "super_and_hyper",  'optimal_and_hyper', 'central_and_hyper'))  
+hubs_rxn_based %>% glimpse()
+
+compareCluster(hubs_rxn_based, fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
+compareCluster(hubs_rxn_based, fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
+
+
+
+```
+
+ASTROCYTE BY rxns
+```{r fig.height=3, fig.width=14, message=FALSE, warning=FALSE}
+cut_off_optimality <-0.01  # 0.01
+cut_off_centrality <- 0.01 # 0.01
+central_hubs <- readxl::read_excel('Astrocyte_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Optimality")%>%filter(Centrality > cut_off_centrality)%>% filter_out_subsystems
+optimal_hubs <- readxl::read_excel('Astrocyte_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Centrality")%>%filter(Optimality > cut_off_optimality)%>% filter_out_subsystems
+
+central_optimal_hubs <-  readxl::read_excel('Astrocyte_IDs_centrality_optimality.xlsx')%>% filter_out_subsystems
+
+intersect(central_hubs$ID, optimal_hubs$ID) -> hyper_IDs
+setdiff(central_hubs$ID,hyper_IDs)          -> central_IDs
+ setdiff(optimal_hubs$ID,hyper_IDs)         -> optimal_IDs
+ 
+central_hubs         %>% filter(ID %in% central_IDs) %>%  get_genes_from_module -> central_genes
+optimal_hubs         %>% filter(ID %in% optimal_IDs) %>%  get_genes_from_module -> optimal_genes
+central_optimal_hubs %>% filter(ID %in% hyper_IDs) %>% get_genes_from_module -> hyper_genes
+
+
+
+intersect(central_genes,optimal_genes) -> super
+
+intersect(super,hyper_genes)   ->  super_and_hyper
+
+intersect(optimal_genes,hyper_genes)  %>% setdiff(super_and_hyper)-> optimal_and_hyper
+intersect(central_genes,hyper_genes)  %>% setdiff(super_and_hyper)-> central_and_hyper
+
+vector_to_substract <-  c(hyper_genes, super,super_and_hyper, optimal_and_hyper,central_and_hyper ) %>% unique()
+
+setdiff(central_genes,vector_to_substract) -> pure_central
+setdiff(optimal_genes,vector_to_substract) -> pure_optimal
+
+
+hubs_rxn_based <- list(pure_optimal, pure_central, super, hyper_genes, super_and_hyper, optimal_and_hyper, central_and_hyper )  %>% 
+               purrr::set_names(c("pure_optimal", "pure_central", "super", "hyper", "super_and_hyper",  'optimal_and_hyper', 'central_and_hyper'))  
+hubs_rxn_based %>% glimpse()
+
+compareCluster(hubs_rxn_based, fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
+compareCluster(hubs_rxn_based, fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
+
+
+
+```
+
+
+
+```{r}
+path_figure_2 = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_2/"
+readRDS(paste0(path_figure_2, "all_data.rds")) %>% .[["delta_geometric"]] %>% dplyr::select(c(ID,Name, Reaction,`Node type`)) -> all_data
+readxl::read_excel('IDs_centrality_optimality.xlsx')  %>% inner_join(all_data) -> IDs_centrality_optimality.xlsx
+
+split_genes <- function(a_string){  if (is.na(a_string)){return("")}
+                                  a_string %>% str_split(pattern=",")%>%unlist() %>% str_trim}
+
+
+split_into_strings <- function(df,column){df[[column]] <- map(df[[column]] , split_genes) %>% paste0 
+                                           return(df)}
+
+IDs_centrality_optimality.xlsx %<>% split_into_strings('recon3_genes' ) %>% split_into_strings('Lewis2010_genes' ) %>% split_into_strings('VMH_gene_IDs' )  %>% split_into_strings('KEGG_genes' ) 
+get_rxns_from_genes <- function(a_gene){   a_gene1 <- paste0('\"', a_gene ,'\"',collapse = '')
+                                           IDs_centrality_optimality.xlsx %>% filter(str_detect(recon3_genes,a_gene1) | str_detect(Lewis2010_genes,a_gene1)| str_detect(VMH_gene_IDs,a_gene1)| str_detect(KEGG_genes,a_gene1)) }#%>%
+                                          # dplyr::select(c('ID','Name','Reaction',"Node type"))  %>% mutate(Gene = a_gene)}
+
+map_dfr(hubs$Hyper,get_rxns_from_genes) %>% unique() -> H
+map_dfr(hubs$Central,get_rxns_from_genes) %>% unique()->C
+map_dfr(hubs$Optimal,get_rxns_from_genes) %>% unique()->O
+rbind(H,C,O) -> all_hubs_info
 ```
 
 ketone bodies:
@@ -98,53 +218,64 @@ GTHO Glutathione Oxidoreductase gthox[c] + h[c] + nadph[c] -> 2.0 gthrd[c] + nad
 
 ```{r}
 interesting_genes <- "BDHm|OCOAT1m|AACOAT|HMGLm|ACACT1rm|HMGCOASim|CSm|ACSm|GLUDxm|AKGDm|GLYOXm|GTHO"
-all_hubs_info  %>% filter(str_detect(ID, regex(interesting_genes,ignore_case = T)))
+H  %>% filter(str_detect(ID, regex(interesting_genes,ignore_case = T))) 
+C %>% filter(str_detect(ID, regex(interesting_genes,ignore_case = T))) 
+O %>% filter(str_detect(ID, regex(interesting_genes,ignore_case = T))) 
 ```
 
-```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
 
-
-hubs <- list(optimal_genes, central_genes, hyper_genes) %>% purrr::set_names(c("Optimal", "Central", "Hyper"))
-
-compareCluster(hubs, fun='enrichPathway', pvalueCutoff=1e-3) -> clusters_plot
-clusters_plot %>% dotplot
-```
-```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
-
-compareCluster(hubs, fun='enrichKEGG', pvalueCutoff=5e-2) -> clusters_plot
-clusters_plot %>% dotplot
-```
-
-```{r fig.height=4, fig.width=14, message=FALSE, warning=FALSE}
-
-compareCluster(hubs, fun='enrichGO', pvalueCutoff=0.001, OrgDb= org.Hs.eg.db )  -> clusters_plot
-clusters_plot %>% dotplot
-```
 
 ```{r}
 
-get_rxns_from_genes <- function(a_gene){all_hubs_info %>% filter(str_detect(VMH_gene_IDs,a_gene) | str_detect(KEGG_genes,a_gene))%>%
-                                         dplyr::select(c('ID','Name','Reaction',"Node"))  %>% mutate(Gene = a_gene)}
-
-map_df(hubs$Hyper,get_rxns_from_genes)  %>% write_csv("hyper_genes_rxns_df.csv")
-map_df(hubs$Central,get_rxns_from_genes) %>%write_csv("central_genes_rxns_df.csv")
-map_df(hubs$Optimal,get_rxns_from_genes) %>%write_csv("optimal_genes_rxns_df.csv")
-
+H %>% writexl::write_xlsx("hyper_genes_rxns_df_aa.xlsx")
+C %>%writexl::write_xlsx("central_genes_rxns_df_aa.xlsx")
+O %>%writexl::write_xlsx("optimal_genes_rxns_df_aa.xlsx")
 
 ```
 
-```{r}
-intersect(hubs$Hyper,hubs$Central)
-intersect(hubs$Hyper,hubs$Optimal)
-intersect(hubs$Optimal,hubs$Central)
-```
 
 
 ```{r}
-interest <- clusters_plot@compareClusterResult %>% filter(Cluster=="Hyper")  %>% .[["geneID"]] %>% str_split(pattern="/") %>% unlist()
 
-map_df(interest,get_rxns_from_genes)
 
+H %>% dplyr::select(matches('gene')) %>% c %>% unlist %>% paste0%>% str_extract("\\d+") %>% na.omit() %>% as.character() -> H_only_genes
+C%>% dplyr::select(matches('gene')) %>% c %>% unlist %>% paste0%>% str_extract("\\d+") %>% na.omit() %>% as.character() -> C_only_genes
+O%>% dplyr::select(matches('gene')) %>% c %>% unlist %>% paste0%>% str_extract("\\d+") %>% na.omit() %>% as.character() -> O_only_genes
+
+
+intersect(H_only_genes,C_only_genes )
+intersect(H_only_genes,O_only_genes )
+intersect(C_only_genes,O_only_genes )
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
