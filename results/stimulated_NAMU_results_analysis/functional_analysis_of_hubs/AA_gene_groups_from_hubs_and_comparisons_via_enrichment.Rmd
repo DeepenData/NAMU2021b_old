@@ -1,0 +1,164 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Setup
+```{r message=FALSE, warning=FALSE}
+library(clusterProfiler)
+library(ReactomePA)
+library(tidyverse)
+library(readxl)
+setwd("~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/functional_analysis_of_hubs")
+
+c('PGM', 'ACYP', 'PGI', 'PGK','PYK', 'HEX1', 'DPGase', 'TPI', 'PFK', 'ENO', 'GAPD', 'DPGM', 'FBA', 'G3PD2m' ,
+'ACYP_Neuron', 'DPGM_Neuron', 'DPGase_Neuron', 'ENO_Neuron', 'FBA_Neuron', 'G3PD2m_Neuron', 'GAPD_Neuron', 'HEX1_Neuron', 'PFK_Neuron', 'PGI_Neuron', 'PGK_Neuron', 'PGM_Neuron', 'PYK_Neuron', 'TPI_Neuron' ,
+'ATPS4m_Neuron', 'CYOOm2_Neuron', 'CYOR-u10m_Neuron', 'NADH2-u10m_Neuron', 'PPA_Neuron', 'PPAm_Neuron' ,
+'PPAm', 'ATPS4m', 'CYOOm2', 'CYOR-u10m', 'NADH2-u10m', 'PPA', 'GLCt1r', 'GLCt1r_Neuron', 'GLCt2r') -> subsystems
+filter_out_subsystems <- function(df){df[!(df$ID %in% subsystems),]}
+get_genes_from_module <- function(hubs){     hubs %>% 
+                                             dplyr::select(matches('gene')) %>% purrr::reduce(c) %>% na.exclude() %>% str_c(collapse = ", ") %>% 
+                                            str_split(pattern=",") %>%str_extract_all('\\d+') %>% unlist() %>% str_trim %>% unique()}
+#Functions
+get_genes_from_each_hub <- function(file, cut_off_optimality = 0.01 , cut_off_centrality =  0.01){
+
+central_hubs <- readxl::read_excel(file)%>% dplyr::select(-"Optimality")%>%filter(Centrality > cut_off_centrality)%>% filter_out_subsystems
+optimal_hubs <- readxl::read_excel(file)%>% dplyr::select(-"Centrality")%>%filter(Optimality > cut_off_optimality)%>% filter_out_subsystems
+
+central_optimal_hubs <-  readxl::read_excel(file)%>% filter_out_subsystems
+
+intersect(central_hubs$ID, optimal_hubs$ID) -> hyper_IDs
+setdiff(central_hubs$ID,hyper_IDs)          -> central_IDs
+ setdiff(optimal_hubs$ID,hyper_IDs)         -> optimal_IDs
+ 
+central_hubs         %>% filter(ID %in% central_IDs) %>%  get_genes_from_module -> central_hub_genes
+optimal_hubs         %>% filter(ID %in% optimal_IDs) %>%  get_genes_from_module -> optimal_hub_genes
+central_optimal_hubs %>% filter(ID %in% hyper_IDs) %>% get_genes_from_module -> hyper_hub_genes
+
+list_of_genes_by_hubs <- list(optimal_hub_genes,central_hub_genes,hyper_hub_genes) %>% set_names(c('optimal_hub_genes','central_hub_genes','hyper_hub_genes'))
+
+return(list_of_genes_by_hubs)
+
+}
+
+
+get_pure_gene_groups <- function(list_of_genes_by_hubs){
+
+  list_of_genes_by_hubs$optimal_hub_genes -> optimal_hub_genes
+  list_of_genes_by_hubs$central_hub_genes ->central_hub_genes
+  list_of_genes_by_hubs$hyper_hub_genes ->hyper_hub_genes
+
+    
+Type_5                <- Reduce(intersect, list(central_hub_genes,optimal_hub_genes,  hyper_hub_genes))
+Type_4_hyper_optimal  <- setdiff( Reduce(intersect, list(optimal_hub_genes,  hyper_hub_genes)), Type_5)
+Typer_4_hyper_central <- setdiff( Reduce(intersect, list(central_hub_genes,  hyper_hub_genes)), Type_5)
+
+Type_3                <- setdiff(hyper_hub_genes, c(Type_5, Type_4_hyper_optimal, Typer_4_hyper_central) )
+
+
+Type_2                <-  setdiff(Reduce(intersect, list(central_hub_genes,optimal_hub_genes)), c(Type_5, Type_4_hyper_optimal, Typer_4_hyper_central, Type_3) )
+Type_1_optimal        <-  setdiff(optimal_hub_genes, c(Type_2, Type_3, Typer_4_hyper_central, Type_4_hyper_optimal, Type_5) )
+Type_1_central        <-  setdiff(central_hub_genes, c(Type_2, Type_3, Typer_4_hyper_central, Type_4_hyper_optimal, Type_5) )
+
+list(Type_1_optimal, Type_1_central, Type_2, Type_3, Type_4_hyper_optimal, Typer_4_hyper_central, Type_5) %>% 
+  purrr::set_names('Type_1_optimal', 'Type_1_central', 'Type_2', 'Type_3', 'Type_4_hyper_optimal', 'Typer_4_hyper_central', 'Type_5') -> my_list
+# sanity check
+
+c(optimal_hub_genes, central_hub_genes, hyper_hub_genes) %>% unique() -> all_genes
+all((Reduce(c, my_list) %in% all_genes) & (all_genes %in% Reduce(c, my_list)) ) -> sanity_check
+
+if (sanity_check){message('all classified')}
+
+return(my_list)
+}
+```
+
+#Non-overlapping gene groups:
+
+Type 1: Genes that are involved only in central or optimal hubs.
+           -Type 1 optimal.
+           -Type 1 central.
+Type 2: Genes that participate  both in central and optimal hubs, but not in hyper hubs.
+Type 3: Genes that associate only with hyper hubs.
+Type 4: Genes that participate both in hyper hubs and in one of the other hubs (central or optimal),
+           -Type 4 hyper-optimal.
+           -Type 4 hyper-central.
+Type 5: Genes that are in optimal, central and hyper hubs. 
+
+
+#NEURON ranked by pure genes
+```{r fig.height=3, fig.width=14, message=F, warning=FALSE}
+get_genes_from_each_hub('Neuron_IDs_centrality_optimality.xlsx') -> list_of_genes_by_hubs
+get_pure_gene_groups(list_of_genes_by_hubs) -> gene_groups
+gene_groups %>% tibble( group = names(gene_groups), genes=.) %>% unnest -> neuron_genes
+gene_groups %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
+gene_groups %>%compareCluster(fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
+```
+#ASTROCYTE ranked by pure genes
+```{r fig.height=3, fig.width=14, message=F, warning=FALSE}
+get_genes_from_each_hub('Astrocyte_IDs_centrality_optimality.xlsx') -> list_of_genes_by_hubs
+get_pure_gene_groups(list_of_genes_by_hubs) -> gene_groups
+gene_groups %>% tibble( group = names(gene_groups), genes=.) %>% unnest -> astrocyte_genes
+gene_groups %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
+gene_groups %>%compareCluster(fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
+```
+
+#Astrocyte-neuron common genes
+
+```{r fig.height=3, fig.width=14, message=F, warning=FALSE}
+
+
+get_genes_from_each_hub('Astrocyte_IDs_centrality_optimality.xlsx') -> Astrocyte_genes_by_hubs
+get_genes_from_each_hub('Neuron_IDs_centrality_optimality.xlsx') -> Neuron_genes_by_hubs
+
+purrr::compose(unlist,flatten) -> condensed
+intersect(condensed(Astrocyte_genes_by_hubs),condensed(Neuron_genes_by_hubs)) -> commom_neu_astro
+setdiff(condensed(Astrocyte_genes_by_hubs),condensed(Neuron_genes_by_hubs)) -> exclusive_astrocyte
+setdiff(condensed(Neuron_genes_by_hubs),condensed(Astrocyte_genes_by_hubs)) -> exclusive_neuron
+
+map2(Neuron_genes_by_hubs, Astrocyte_genes_by_hubs, union)-> the_union
+
+lapply(the_union, function(a_list_entry) {setdiff(a_list_entry , exclusive_astrocyte) }) -> the_union_minus_astro
+lapply(the_union_minus_astro, function(a_list_entry) {setdiff(a_list_entry , exclusive_neuron) }) -> only_commom
+
+condensed(only_commom) %in% commom_neu_astro %>% all
+commom_neu_astro   %in% condensed(only_commom)  %>% all
+
+only_commom %>% get_pure_gene_groups -> gene_groups
+gene_groups %>% tibble( group = names(gene_groups), genes=.) %>% unnest -> neuron_astrocyte_genes
+gene_groups %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
+gene_groups %>%compareCluster(fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
+```
+```{r}
+neuron_genes$genes %>% duplicated() %>% all
+astrocyte_genes$genes %>% duplicated() %>% all
+neuron_astrocyte_genes$genes %>% duplicated() %>% all
+```
+
+```{r}
+neuron_genes %>% writexl::write_xlsx(paste0('AA_neuron_genes','.xlsx'))
+astrocyte_genes %>%writexl::write_xlsx(paste0('AA_astrocyte_genes','.xlsx'))
+neuron_astrocyte_genes %>% writexl::write_xlsx(paste0('AA_neuron_astrocyte_genes','.xlsx'))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

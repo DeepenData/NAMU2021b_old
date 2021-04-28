@@ -64,92 +64,83 @@ compareCluster(hubs, fun='enrichPathway', pvalueCutoff=1e-3) -> clusters_plot; c
 compareCluster(hubs, fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
 
 ```
+Functions
+```{r}
+get_genes_from_each_hub <- function(file, cut_off_optimality = 0.01 , cut_off_centrality =  0.01){
 
+central_hubs <- readxl::read_excel(file)%>% dplyr::select(-"Optimality")%>%filter(Centrality > cut_off_centrality)%>% filter_out_subsystems
+optimal_hubs <- readxl::read_excel(file)%>% dplyr::select(-"Centrality")%>%filter(Optimality > cut_off_optimality)%>% filter_out_subsystems
 
-#NEURON BY rxns
-```{r fig.height=3, fig.width=14, message=FALSE, warning=FALSE}
-cut_off_optimality <-0.01  # 0.01
-cut_off_centrality <- 0.01 # 0.01
-central_hubs <- readxl::read_excel('Neuron_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Optimality")%>%filter(Centrality > cut_off_centrality)%>% filter_out_subsystems
-optimal_hubs <- readxl::read_excel('Neuron_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Centrality")%>%filter(Optimality > cut_off_optimality)%>% filter_out_subsystems
-
-central_optimal_hubs <-  readxl::read_excel('Neuron_IDs_centrality_optimality.xlsx')%>% filter_out_subsystems
+central_optimal_hubs <-  readxl::read_excel(file)%>% filter_out_subsystems
 
 intersect(central_hubs$ID, optimal_hubs$ID) -> hyper_IDs
 setdiff(central_hubs$ID,hyper_IDs)          -> central_IDs
  setdiff(optimal_hubs$ID,hyper_IDs)         -> optimal_IDs
  
-central_hubs         %>% filter(ID %in% central_IDs) %>%  get_genes_from_module -> central_genes
-optimal_hubs         %>% filter(ID %in% optimal_IDs) %>%  get_genes_from_module -> optimal_genes
-central_optimal_hubs %>% filter(ID %in% hyper_IDs) %>% get_genes_from_module -> hyper_genes
+central_hubs         %>% filter(ID %in% central_IDs) %>%  get_genes_from_module -> central_hub_genes
+optimal_hubs         %>% filter(ID %in% optimal_IDs) %>%  get_genes_from_module -> optimal_hub_genes
+central_optimal_hubs %>% filter(ID %in% hyper_IDs) %>% get_genes_from_module -> hyper_hub_genes
+
+list_of_genes_by_hubs <- list(optimal_hub_genes,central_hub_genes,hyper_hub_genes) %>% set_names(c('optimal_hub_genes','central_hub_genes','hyper_hub_genes'))
+
+return(list_of_genes_by_hubs)
+
+}
 
 
+get_pure_gene_groups <- function(list_of_genes_by_hubs){
 
-intersect(central_genes,optimal_genes) -> super
+  list_of_genes_by_hubs$optimal_hub_genes -> optimal_hub_genes
+  list_of_genes_by_hubs$central_hub_genes ->central_hub_genes
+  list_of_genes_by_hubs$hyper_hub_genes ->hyper_hub_genes
 
-intersect(super,hyper_genes)   ->  super_and_hyper
+    
+Type_5                <- Reduce(intersect, list(central_hub_genes,optimal_hub_genes,  hyper_hub_genes))
+Type_4_hyper_optimal  <-  Reduce(intersect, list(optimal_hub_genes,  hyper_hub_genes))
+Typer_4_hyper_central <- Reduce(intersect, list(central_hub_genes,  hyper_hub_genes))
+Type_3                <- setdiff(hyper_hub_genes, c(Type_5, Type_4_hyper_optimal, Typer_4_hyper_central) )
+Type_2                <-  Reduce(intersect, list(central_hub_genes,optimal_hub_genes))
+Type_1_optimal        <-  setdiff(optimal_hub_genes, c(Type_2, Type_3, Typer_4_hyper_central, Type_4_hyper_optimal, Type_5) )
+Type_1_central        <-  setdiff(central_hub_genes, c(Type_2, Type_3, Typer_4_hyper_central, Type_4_hyper_optimal, Type_5) )
 
-intersect(optimal_genes,hyper_genes)  %>% setdiff(super_and_hyper)-> optimal_and_hyper
-intersect(central_genes,hyper_genes)  %>% setdiff(super_and_hyper)-> central_and_hyper
+list(Type_1_optimal, Type_1_central, Type_2, Type_3, Type_4_hyper_optimal, Typer_4_hyper_central, Type_5) %>% 
+  set_names('Type_1_optimal', 'Type_1_central', 'Type_2', 'Type_3', 'Type_4_hyper_optimal', 'Typer_4_hyper_central', 'Type_5') -> my_list
+# sanity check
+c(optimal_hub_genes, central_hub_genes, hyper_hub_genes) %>% unique() -> all_genes
+all((Reduce(c, gene_groups) %in% all_genes) & (all_genes %in% Reduce(c, gene_groups)) ) -> sanity_check
 
-vector_to_substract <-  c(hyper_genes, super,super_and_hyper, optimal_and_hyper,central_and_hyper ) %>% unique()
+if (sanity_check){message('all classified')}
 
-setdiff(central_genes,vector_to_substract) -> pure_central
-setdiff(optimal_genes,vector_to_substract) -> pure_optimal
-
-
-hubs_rxn_based <- list(pure_optimal, pure_central, super, hyper_genes, super_and_hyper, optimal_and_hyper, central_and_hyper )  %>% 
-               purrr::set_names(c("pure_optimal", "pure_central", "super", "hyper", "super_and_hyper",  'optimal_and_hyper', 'central_and_hyper'))  
-hubs_rxn_based %>% glimpse()
-
-compareCluster(hubs_rxn_based, fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
-compareCluster(hubs_rxn_based, fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
-
-
-
+return(my_list)
+}
 ```
 
-ASTROCYTE BY rxns
-```{r fig.height=3, fig.width=14, message=FALSE, warning=FALSE}
-cut_off_optimality <-0.01  # 0.01
-cut_off_centrality <- 0.01 # 0.01
-central_hubs <- readxl::read_excel('Astrocyte_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Optimality")%>%filter(Centrality > cut_off_centrality)%>% filter_out_subsystems
-optimal_hubs <- readxl::read_excel('Astrocyte_IDs_centrality_optimality.xlsx')%>% dplyr::select(-"Centrality")%>%filter(Optimality > cut_off_optimality)%>% filter_out_subsystems
+#Non-overlapping gene groups:
 
-central_optimal_hubs <-  readxl::read_excel('Astrocyte_IDs_centrality_optimality.xlsx')%>% filter_out_subsystems
-
-intersect(central_hubs$ID, optimal_hubs$ID) -> hyper_IDs
-setdiff(central_hubs$ID,hyper_IDs)          -> central_IDs
- setdiff(optimal_hubs$ID,hyper_IDs)         -> optimal_IDs
- 
-central_hubs         %>% filter(ID %in% central_IDs) %>%  get_genes_from_module -> central_genes
-optimal_hubs         %>% filter(ID %in% optimal_IDs) %>%  get_genes_from_module -> optimal_genes
-central_optimal_hubs %>% filter(ID %in% hyper_IDs) %>% get_genes_from_module -> hyper_genes
+Type 1: Genes that are involved only in central or optimal hubs.
+           -Type 1 optimal.
+           -Type 1 central.
+Type 2: Genes that participate  both in central and optimal hubs, but not in hyper hubs.
+Type 3: Genes that associate only with hyper hubs.
+Type 4: Genes that participate both in hyper hubs and in one of the other hubs (central or optimal),
+           -Type 4 hyper-optimal.
+           -Type 4 hyper-central.
+Type 5: Genes that are in optimal, central and hyper hubs. 
 
 
-
-intersect(central_genes,optimal_genes) -> super
-
-intersect(super,hyper_genes)   ->  super_and_hyper
-
-intersect(optimal_genes,hyper_genes)  %>% setdiff(super_and_hyper)-> optimal_and_hyper
-intersect(central_genes,hyper_genes)  %>% setdiff(super_and_hyper)-> central_and_hyper
-
-vector_to_substract <-  c(hyper_genes, super,super_and_hyper, optimal_and_hyper,central_and_hyper ) %>% unique()
-
-setdiff(central_genes,vector_to_substract) -> pure_central
-setdiff(optimal_genes,vector_to_substract) -> pure_optimal
-
-
-hubs_rxn_based <- list(pure_optimal, pure_central, super, hyper_genes, super_and_hyper, optimal_and_hyper, central_and_hyper )  %>% 
-               purrr::set_names(c("pure_optimal", "pure_central", "super", "hyper", "super_and_hyper",  'optimal_and_hyper', 'central_and_hyper'))  
-hubs_rxn_based %>% glimpse()
-
-compareCluster(hubs_rxn_based, fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
-compareCluster(hubs_rxn_based, fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
-
-
-
+#NEURON ranked by pure genes
+```{r fig.height=3, fig.width=14, message=F, warning=FALSE}
+get_genes_from_each_hub('Neuron_IDs_centrality_optimality.xlsx') -> list_of_genes_by_hubs
+get_pure_gene_groups(list_of_genes_by_hubs) -> gene_groups
+gene_groups %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
+gene_groups %>%compareCluster(fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
+```
+ASTROCYTE #NEURON ranked by pure genes
+```{r fig.height=3, fig.width=14, message=F, warning=FALSE}
+get_genes_from_each_hub('Astrocyte_IDs_centrality_optimality.xlsx') -> list_of_genes_by_hubs
+get_pure_gene_groups(list_of_genes_by_hubs) -> gene_groups
+gene_groups %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
+gene_groups %>%compareCluster(fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
 ```
 
 

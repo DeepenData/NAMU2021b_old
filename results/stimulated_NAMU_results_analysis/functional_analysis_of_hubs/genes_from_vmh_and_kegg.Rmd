@@ -34,7 +34,7 @@ recon3_IDs_genes$ID  %<>%str_replace_all(',|_','')
 #find_recon3_annot <- function(a_rxn_pattern, ){str_detect(genes$ID, regex(a_rxn_pattern, ignore_case = T)) %>% which}
 auto_anno_recon3 <- data.frame()
 for(i in 1:nrow(recon3_IDs_genes)){
- str_detect(NAMU_IDs_genes$ID, regex(paste0('^',recon3_IDs_genes[[i,'ID']], collapse = ''), ignore_case = T)) %>% which -> idxs
+ str_detect(NAMU_IDs_genes$ID, regex(paste0('^',recon3_IDs_genes[[i,'ID']],'.*', collapse = ''), ignore_case = T)) %>% which -> idxs
 data.frame(row.names =  NAMU_IDs_genes$ID[idxs]) %>% mutate(auto_anno_recon3 = recon3_IDs_genes[[i,'auto_anno_genes']]) %>%
   rownames_to_column('ID')-> hola
 rbind(auto_anno_recon3, hola) -> auto_anno_recon3
@@ -93,6 +93,9 @@ full_join(Centrality,Optimality) -> all
 all$Centrality %<>% rescale(to = c(0,1))
 all$Optimality %<>% rescale(to = c(0,1))
 
+all$ID%<>% str_replace_all(',|_','') 
+
+
 
 inner_join(all, NAMU_all_genes)-> IDs_centrality_optimality # %>% writexl::write_xlsx('IDs_centrality_optimality.xlsx')
 ```
@@ -102,7 +105,7 @@ setwd("~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/functi
 
 path_figure_2 = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_2/"
 readRDS(paste0(path_figure_2, "all_data.rds")) %>% .[["delta_geometric"]] %>% dplyr::select(c(ID,Name, Reaction,`Node type`)) -> all_data
-
+all_data$ID%<>% str_replace_all(',|_','') 
 
 inner_join(IDs_centrality_optimality, all_data) %>% filter(`Node type` == "Astrocyte") -> Astrocyte_IDs_centrality_optimality
 inner_join(IDs_centrality_optimality, all_data) %>% filter(`Node type` == "Neuron")  -> Neuron_IDs_centrality_optimality
