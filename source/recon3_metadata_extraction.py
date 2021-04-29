@@ -20,10 +20,23 @@ reactions      = [model.reactions[i].reaction for i in range(len(model.reactions
 rxn_bounds     = [model.reactions[i].bounds for i in range(len(model.reactions))]
 rxn_subsystems = [model.reactions[i].subsystem for i in range(len(model.reactions))]
 
-met_ids      = [model.metabolites[i].id       for i in range(len(model.metabolites))]
-met_names    = [model.metabolites[i].name     for i in range(len(model.metabolites))]
-met_formulas = [model.metabolites[i].formula  for i in range(len(model.metabolites))]
+met_ids         = [i.id          for i in model.metabolites]
+met_names       = [i.name        for i in model.metabolites]
+met_formulas    = [i.formula     for i in model.metabolites]
+met_compartment = [i.compartment for i in model.metabolites]
+met_charge      = [i.charge      for i in model.metabolites]
+
 gene_ids     = [model.genes[i].id  for i in range(len(model.genes))]
+
+
+mets_df = pd.DataFrame({
+    'ID' : met_ids,
+    'Name' : met_names,
+    'Formula' : met_formulas,
+    'Compartment' : met_compartment,
+    'Charge' : met_charge
+})
+
 
 genes_rxns   = []
 for i in range(len(model.genes)):
@@ -46,6 +59,7 @@ df_rxns = pd.DataFrame({
     'rxn_subsystems': rxn_subsystems
 })
 
+mets_df.to_csv("./data/recon3_metabolite_metadata.csv")
 genes_and_rxns.to_csv("./data/recon3_genes_to_reactionIDs.csv")
 df_rxns.to_csv("./data/recon3_reactions_metadata.csv")
 
