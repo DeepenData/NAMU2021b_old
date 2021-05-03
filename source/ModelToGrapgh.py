@@ -4,7 +4,7 @@ un formato apto para NetworkX y Graph-tool"""
 
 # %% --- IMPORTA EL MODELO
 
-INPUT_MODEL='./data/GEM_Recon2_thermocurated_redHUMAN.json' # TODO: hacer esto una variable ambiental
+INPUT_MODEL='./data/stimulated_2021.json' # TODO: hacer esto una variable ambiental
 
 import warnings; warnings.filterwarnings('ignore') # Ignora warnings
 from cobra.io import load_json_model
@@ -54,4 +54,4 @@ G = get_largest_component(G) # Elimina otras cosas
 
 import networkx as nx
 
-nx.write_gpickle(G, './data/Recon2_rxn_proyected.gpickle' )
+nx.write_gpickle(G, './data/stimulated_2021.gpickle' )

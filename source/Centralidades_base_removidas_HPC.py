@@ -18,8 +18,12 @@ import pickle
 # %% --- USING THE RAY LIBRARY FOR DISTRIBUITED COMPUTING
 import ray
 
-ray.init( dashboard_host = '0.0.0.0' , num_cpus= 16 ) # Use this for local
-#ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
+try:
+    ray.init(address='auto', _node_ip_address=os.environ["ip_head"].split(":")[0], _redis_password=os.environ["redis_password"])
+except:
+    print("No SLURM Cluster detected. Trying a local cluster with default config.")
+    ray.init(address='auto',  dashboard_host = '0.0.0.0', _redis_password='5241590000000000')
+
 print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Connected to Ray Cluster' )
 
 # %% --- WARPER FUNCTIONS FOR RAY
@@ -136,7 +140,7 @@ def betweenness_centrality(graph, node):
 
 # %% --- IMPORTING BASE GRAPH
 
-G = nx.read_gpickle('./data/Recon2_rxn_proyected.gpickle')
+G = nx.read_gpickle('./data/stimulated_2021.gpickle')
 print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Reading gpickle graph' )
 
 G_ray = ray.put(G) # BASE GRAPH TO OBJECT STORE
@@ -144,11 +148,11 @@ G_ray = ray.put(G) # BASE GRAPH TO OBJECT STORE
 # %% --- CREATING THE GRAPHS WITH REMOVED NODES
 
 #infile = open('./tmp/subsystems_dict.pkl', 'rb'); subsystems_dict = pickle.load(infile); infile.close()
-pku_set = pd.read_csv('pku_noise.csv', index_col=0) # Fataframe whith a list of nodes
+#pku_set = pd.read_csv('pku_noise.csv', index_col=0) # Fataframe whith a list of nodes
 print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Reading list to remove' )
 
 # List of nodes to remove
-NODES_REMOVED = list(pku_set.index)
+NODES_REMOVED = list( G.nodes )
 
 # This launches Ray actors to generate graphs whitout one node from the list
 graph_removed = [ remove_node.remote( G_ray , node ) for node in NODES_REMOVED ]
