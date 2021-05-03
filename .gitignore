@@ -28,3 +28,9 @@ ipython_config.py
 slurm-*.out
 *.asciinema
 .vscode/settings.json
+
+# Cosas muy pesadas que es mejor ignorar
+.tar
+.graphml
+.csv
+.xlsx

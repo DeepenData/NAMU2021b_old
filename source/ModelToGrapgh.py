@@ -55,3 +55,4 @@ G = get_largest_component(G) # Elimina otras cosas
 import networkx as nx
 
 nx.write_gpickle(G, './data/stimulated_2021.gpickle' )
+nx.write_graphml(G, './data/stimulated_2021.graphml' )

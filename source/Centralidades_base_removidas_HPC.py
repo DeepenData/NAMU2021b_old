@@ -140,7 +140,11 @@ def betweenness_centrality(graph, node):
 
 # %% --- IMPORTING BASE GRAPH
 
-G = nx.read_gpickle('./data/stimulated_2021.gpickle')
+try: 
+    G = nx.read_gpickle('./data/stimulated_2021.gpickle')
+except:
+    G = nx.read_graphml('./data/stimulated_2021.graphml')
+
 print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Reading gpickle graph' )
 
 G_ray = ray.put(G) # BASE GRAPH TO OBJECT STORE
