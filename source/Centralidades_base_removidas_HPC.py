@@ -82,6 +82,8 @@ def fast_centralities(graph, node, alpha=0.0001):
 
     toc = time.time()
 
+    print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), 'fast_global_centralities', node )
+
     return node, fast_centralities_df , (toc - tic)
 
 # And these take forever, so we distribuite these in individual workers
@@ -94,6 +96,9 @@ def closeness_centrality(graph, node):
         "closeness_centrality" : out
     })
     toc = time.time()
+
+    print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), 'closeness_centrality', node )
+
     return node , df_closeness_centrality,  (toc - tic)
 
 @ray.remote
@@ -104,6 +109,9 @@ def harmonic_centrality(graph, node):
         "harmonic_centrality" : out
     })
     toc = time.time()
+
+    print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), 'harmonic_centrality', node )
+
     return node , df_harmonic_centrality,  (toc - tic)
 
 @ray.remote
@@ -114,6 +122,9 @@ def information_centrality(graph, node):
         "information_centrality" : out
     })
     toc = time.time()
+
+    print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), 'information_centrality', node )
+
     return node , df_information_centrality, (toc - tic)
 
 @ray.remote
@@ -124,18 +135,22 @@ def load_centrality(graph, node):
         "load_centrality" : out
     })
     toc = time.time()
+
+    print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), 'load_centrality', node )
+
     return node , df_load_centrality , (toc - tic)
 
 @ray.remote
 def betweenness_centrality(graph, node):
     tic = time.time()
     out = nx.betweenness_centrality(graph, normalized=True, weight=None, endpoints=False, seed=None)
-    print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()),
-            '--- Resolved', node) # This is the slowest, so every other should be done 
     df_betweenness_centrality = pd.DataFrame({
         "betweenness_centrality" : out
     })
     toc = time.time()
+
+    print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), 'betweenness_centrality', node )
+
     return node , df_betweenness_centrality , (toc - tic)
 
 # %% --- IMPORTING BASE GRAPH
@@ -165,7 +180,7 @@ graph_removed = ray.get( graph_removed )
 # This sets the returned list of lists in a dictionay { node : graph_node_removed }
 graph_removed = { rm[0] : rm[1] for rm in graph_removed }
 
-print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Done node removal' )
+print( time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--- Done node removal. Launching parallel jobs...' )
 
 # %% --- LAUNCHING THE CENTRALITY CALCULATIONS
 # This launches to the distribuited process in the Ray cluster
