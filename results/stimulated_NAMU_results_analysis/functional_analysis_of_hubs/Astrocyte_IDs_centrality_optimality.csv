@@ -1,0 +1,601 @@
+ID,Centrality,Optimality,recon3_genes,Lewis2010_genes,VMH_gene_IDs,KEGG_genes,Name,Reaction,Node type
+10FTHF5GLUtm,0.029943024198451646,0,,,NA,NA,"5-glutamyl-10FTHF transport, mitochondrial Astrocyte",10fthf5glu[mA] --> 10fthf5glu[cA],Astrocyte
+10FTHF6GLUtm,0.029942834175851085,0,,,NA,NA,"6-glutamyl-10FTHF transport, mitochondrial Astrocyte",10fthf6glu[mA] --> 10fthf6glu[cA],Astrocyte
+10FTHF7GLUtm,0.039344896715871464,0,,,NA,NA,"7-glutamyl-10FTHF transport, mitochondrial Astrocyte",10fthf7glu[mA] --> 10fthf7glu[cA],Astrocyte
+10FTHFtm,0.005784951481743322,0,,,NA,NA,10-Formyltetrahydrofolate mitochondrial transport via diffusion Astrocyte,10fthf[cA] <=> 10fthf[mA],Astrocyte
+1a2425VITD2Hm,0.7242756702738036,0.2545083847575639,,1594,NA,NA,"1-alpha-Vitamin D-24,25-hydroxylase (D2) Astrocyte",2425dhvitd2[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a2425thvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+1a2425VITD3Hm,0.724275670274329,0.2545083847575639,NA,1594,NA,NA,"1-alpha-Vitamin D-24,25-hydroxylase (D3) Astrocyte",2425dhvitd3[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a2425thvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+1a25VITD2Hm,0.7242756702753971,0.2545083847575639,,1591,NA,NA,"1-alpha,24R,25-Vitamin D-hydroxylase (D2) Astrocyte",1a25dhvitd2[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a2425thvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+1a25VITD3Hm,0.7242756702730215,0.2545083847575639,NA,1591,NA,NA,"1-alpha,24R,25-Vitamin D-hydroxylase (D3) Astrocyte",1a25dhvitd3[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a2425thvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+2425VITD2Hm,0.7233015290811406,0.39035911036230603,1591,"1594, 1591",NA,NA,24R-Vitamin D-25-hydroxylase (D2) Astrocyte,25hvitd2[mA] + h[mA] + nadph[mA] + o2[mA] --> 2425dhvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+2425VITD3Hm,0.7233015768465058,0.39035911036230603,1591,"1594, 1591",NA,NA,24R-Vitamin D-25-hydroxylase (D3) Astrocyte,25hvitd3[mA] + h[mA] + nadph[mA] + o2[mA] --> 2425dhvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+25HVITD2t,0.00653166705374239,2.2778964026779857e-16,,,NA,NA,25-hydroxyvitamin D2 transport from cytoplasm Astrocyte,25hvitd2[cA] --> 25hvitd2[e],Astrocyte
+25HVITD2tin,0.006531667053935406,1.1389482013389929e-16,,,NA,NA,25-hydroxyvitamin D2 transport in cytoplasm Astrocyte,25hvitd2[e] --> 25hvitd2[cA],Astrocyte
+25HVITD2tinm,0.008787579034871916,2.2778964026779857e-16,,,NA,NA,25-hydroxyvitamin D2 transport in mitochondria Astrocyte,25hvitd2[cA] --> 25hvitd2[mA],Astrocyte
+25HVITD2tinm,0.008787579034871916,2.2778964026779857e-16,,,NA,NA,25-hydroxyvitamin D2 transport in mitochondria Astrocyte,25hvitd2[cA] --> 25hvitd2[mA],Astrocyte
+25HVITD2tm,0.008787579034783877,1.1389482013389929e-16,,,NA,NA,25-hydroxyvitamin D2 transport from mitochondria Astrocyte,25hvitd2[mA] --> 25hvitd2[cA],Astrocyte
+25HVITD3t,0.006531656279981613,2.2778964026779857e-16,,,NA,NA,25-hydroxyvitamin D3 transport from cytoplasm Astrocyte,25hvitd3[cA] --> 25hvitd3[e],Astrocyte
+25HVITD3tin,0.006531656279741564,1.1389482013389929e-16,,,NA,NA,25-hydroxyvitamin D3 transport in cytoplasm Astrocyte,25hvitd3[e] --> 25hvitd3[cA],Astrocyte
+25HVITD3tinm,0.008787904655763644,2.2778964026779857e-16,,,NA,NA,25-hydroxyvitamin D3 transport in mitochondria Astrocyte,25hvitd3[cA] --> 25hvitd3[mA],Astrocyte
+25HVITD3tinm,0.008787904655763644,2.2778964026779857e-16,,,NA,NA,25-hydroxyvitamin D3 transport in mitochondria Astrocyte,25hvitd3[cA] --> 25hvitd3[mA],Astrocyte
+25HVITD3tm,0.008787904655526018,1.1389482013389929e-16,,,NA,NA,25-hydroxyvitamin D3 transport from mitochondria Astrocyte,25hvitd3[mA] --> 25hvitd3[cA],Astrocyte
+25VITD2Hm,0.7233015290846315,0.39035911036230603,"1591, 1594","1594, 1591",NA,NA,1-alpha-Vitamin D-25-hydroxylase (D2) Astrocyte,25hvitd2[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a25dhvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+25VITD3Hm,0.7233015768483442,0.39035911036230603,"1591, 1594","1594, 1591",NA,NA,1-alpha-Vitamin D-25-hydroxylase (D3) Astrocyte,25hvitd3[mA] + h[mA] + nadph[mA] + o2[mA] --> 1a25dhvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+2AMADPTm,0.00741538657331354,0,89874,89874,NA,NA,L-2-aminoadipate shuttle (cytosol/mitochondria) Astrocyte,L2aadp[cA] + akg[mA] <=> L2aadp[mA] + akg[cA],Astrocyte
+2OXOADOXm,0.10499797063101651,3.0371952035706474e-16,"4967, 1738, 4967, 1743, 8050","8050, 1738, 4967, 1743",NA,NA,2-Oxoadipate:lipoamde 2-oxidoreductase(decarboxylating and acceptor-succinylating) (mitochondria) Astrocyte,2oxoadp[mA] + coa[mA] + nad[mA] --> co2[mA] + glutcoa[mA] + nadh[mA],Astrocyte
+2OXOADPTm,0.006928390235177454,0,89874,89874,NA,NA,2-oxoadipate shuttle (cytosol/mitochondria) Astrocyte,2oxoadp[cA] + akg[mA] <=> 2oxoadp[mA] + akg[cA],Astrocyte
+2OXOADPTm,0.006928390235177454,0,89874,89874,NA,NA,2-oxoadipate shuttle (cytosol/mitochondria) Astrocyte,2oxoadp[cA] + akg[mA] <=> 2oxoadp[mA] + akg[cA],Astrocyte
+34HPLFM,0.6139818198428123,6.169302757252878e-17,,,NA,NA,3-(4-hydroxyphenyl-)lactate formation Astrocyte,34hpp[mA] + h[mA] + nadh[mA] --> 34hpl[mA] + nad[mA],Astrocyte
+3AIBTm,0.14573807587695473,1.0039196743396377e-29,"18, 18, 64902",18,NA,NA,"L-3-aminoisobutyrate transaminase, mitochondrial Astrocyte",2mop[mA] + glu-L[mA] <=> 3aib[mA] + akg[mA],Astrocyte
+3AIBt,0.048151161561232496,0,NA,18,NA,NA,3-amino-isobutyrate transport Astrocyte,3aib[cA] --> 3aib[e],Astrocyte
+3AIBtm,0.09746167915515584,0.12333690560144792,"18, 18, 64902",18,NA,"18.1, 18.2","3-amino-isobutyrate transport, mitochondrial Astrocyte",3aib[mA] --> 3aib[cA],Astrocyte
+3DPHBH1,0.764925256673655,0.7072955837107799,,,NA,NA,Hydroxylation of 3-Decaprenyl-4-hydroxybenzoate (NADH) Astrocyte,3dphb[mA] + h[mA] + nadh[mA] + o2[mA] --> 3dpdhb[mA] + h2o[mA] + nad[mA],Astrocyte
+3DPHBH2,0.7270947231335553,0.7083362447352168,,,NA,NA,Hydroxylation of 3-Decaprenyl-4-hydroxybenzoate (NADPH) Astrocyte,3dphb[mA] + h[mA] + nadph[mA] + o2[mA] --> 3dpdhb[mA] + h2o[mA] + nadp[mA],Astrocyte
+3HBCDm,0.14658062131140942,7.592988008926619e-17,55268,55268,NA,NA,"3-hydroxybutyryl-CoA dehydratase, mitochondrial Astrocyte",b2coa[mA] + h2o[mA] <=> 3hbcoa-R[mA],Astrocyte
+3HBCOAHLm,0.7986986365397388,2.4202649278454607e-16,,26275,NA,26275,"3-hydroxyisobutyryl-CoA hydrolase, mitochondrial Astrocyte",3hibutcoa[mA] + h2o[mA] --> 3hmp[mA] + coa[mA] + h[mA],Astrocyte
+3SALAASPm,0.004795817037708194,0,"10165, 8604","10165, 8604",NA,NA,cysteinesulfinate-aspartate mitochondrial shuttle Astrocyte,3sala[mA] + asp-L[cA] <=> 3sala[cA] + asp-L[mA],Astrocyte
+3SALATAim,0.6145987233967217,1.423685251673741e-17,"2805, 2806",2806,2806,NA,"3-sulfino-alanine transaminase (irreversible), mitochondrial Astrocyte",3sala[mA] + akg[mA] + h[mA] --> 3snpyr[mA] + glu-L[mA],Astrocyte
+3SALATAim,0.6145987233967217,1.423685251673741e-17,2806,2806,2806,NA,"3-sulfino-alanine transaminase (irreversible), mitochondrial Astrocyte",3sala[mA] + akg[mA] + h[mA] --> 3snpyr[mA] + glu-L[mA],Astrocyte
+3SPYRSPm,0.7204977794871695,9.0166732606003594e-17,,,NA,NA,"3-sulfinopyruvate hydrolase (spotaneous reaction), mitochondrial Astrocyte",3snpyr[mA] + h2o[mA] --> h[mA] + pyr[mA] + so3[mA],Astrocyte
+3SPYRSPm,0.7204977794871695,9.0166732606003594e-17,,,NA,NA,"3-sulfinopyruvate hydrolase (spotaneous reaction), mitochondrial Astrocyte",3snpyr[mA] + h2o[mA] --> h[mA] + pyr[mA] + so3[mA],Astrocyte
+4ABUTtm,0.00454365557732489,0,,,NA,NA,4-aminobutanoate mitochondrial transport via diffusion Astrocyte,4abut[cA] <=> 4abut[mA],Astrocyte
+4HBZCOAFm,0.7997946381523275,3.654125479295935e-16,,,NA,NA,4-hydroxybenzoyl-CoA formation Astrocyte,coa[mA] + coucoa[mA] + h2o[mA] + nad[mA] --> 4hbzcoa[mA] + accoa[mA] + h[mA] + nadh[mA],Astrocyte
+4HBZFm,0.8060245240985275,2.42026492784536e-16,,,NA,NA,4-hydroxybenzoate formation Astrocyte,4hbzcoa[mA] + h2o[mA] --> 4hbz[mA] + coa[mA] + h[mA],Astrocyte
+4HGLSDm,0.756458153014876,2.847370503347482e-17,"8659, 8659",8659,"8659, 8659",8659,"L-4-hydroxyglutamate semialdehyde dehydrogenase, mitochondrial Astrocyte",4hglusa[mA] + h2o[mA] + nad[mA] <=> e4hglu[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+5AOPtm,0.007738137139125688,0,,,NA,NA,5-Aminolevulinate mitochondrial transport Astrocyte,5aop[cA] <=> 5aop[mA],Astrocyte
+5AOPtm,0.007738137139125688,0,,,NA,NA,5-Aminolevulinate mitochondrial transport Astrocyte,5aop[cA] <=> 5aop[mA],Astrocyte
+5HOXINDACTOXm,0.7604480529242202,9.491235011158273e-18,NA,"8659, 219, 217","8659, 8659, 219, 217",NA,5-Hydroxyindoleacetaldehyde:NAD+ oxidoreductase (mito) Astrocyte,5hoxindact[mA] + h2o[mA] + nad[mA] --> 5hoxindoa[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+5THFtm,0.02989263545761466,0,,,NA,NA,"5-glutamyl-THF transport,m mitochondrial Astrocyte",5thf[mA] --> 5thf[cA],Astrocyte
+6DHFtm,0.02994294780319267,0,,,NA,NA,"6-glutamyl-DHF transport,m mitochondrial Astrocyte",6dhf[mA] --> 6dhf[cA],Astrocyte
+6THFtm,0.02994283409991973,0,,,NA,NA,"6-glutamyl-THF transport,m mitochondrial Astrocyte",6thf[mA] --> 6thf[cA],Astrocyte
+7DHFtm,0.039344896709350784,0,,,NA,NA,"7-glutamyl-DHF transport,m mitochondrial Astrocyte",7dhf[mA] --> 7dhf[cA],Astrocyte
+7THFtm,0.03934489670935718,0,,,NA,NA,"7-glutamyl-THF transport,m mitochondrial Astrocyte",7thf[mA] --> 7thf[cA],Astrocyte
+AACOAT,0.04054656906763119,0,65985,65985,NA,NA,Acetoacetyl-CoA:acetate CoA-transferase Astrocyte,acac[cA] + atp[cA] + coa[cA] <=> aacoa[cA] + amp[cA] + ppi[cA],Astrocyte
+AACTOOR,0.06447304230017226,7.711628446566099e-17,8639,8639,NA,NA,Aminoacetone:oxygen oxidoreductase(deaminating)(flavin-containing) Astrocyte,aact[cA] + h2o[cA] + o2[cA] --> h2o2[cA] + mthgxl[cA] + nh4[cA],Astrocyte
+AACTtm,0.006198806164356153,0,,,NA,NA,Aminoacetone transport (mitochondrial) Astrocyte,aact[mA] --> aact[cA],Astrocyte
+AASAD3m,0.7615864525980203,0.05294369411532057,,60496,NA,501,"L-aminoadipate-semialdehyde dehydrogenase (NADH), mitochondrial Astrocyte",L2aadp6sa[mA] + h2o[mA] + nad[mA] --> L2aadp[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+AATAi,0.0040710463511241714,3.0371952035706474e-16,"51166, 51166",51166,NA,NA,"2-aminoadipate transaminase, irreversible Astrocyte",L2aadp[cA] + akg[cA] --> 2oxoadp[cA] + glu-L[cA],Astrocyte
+ABTArm,0.01780072794088648,0,"18, 18",18,NA,NA,"4-aminobutyrate transaminase, reversible (mitochondrial) Astrocyte",4abut[mA] + akg[mA] <=> glu-L[mA] + sucsal[mA],Astrocyte
+ABUTt2r,0.0922026620630862,2.845094663209406e-32,206358,206358,NA,NA,4-aminobutyrate reversible transport in via proton symport Astrocyte,4abut[e] + h[e] <=> 4abut[cA] + h[cA],Astrocyte
+ACACT10m,0.005714287274764883,2.8416077817186307e-30,"38, 10449, 3032",38,NA,NA,"acetyl-CoA C-acetyltransferase, mitochondrial Astrocyte",2maacoa[mA] + coa[mA] <=> accoa[mA] + ppcoa[mA],Astrocyte
+ACACT1r,0.01942378696565357,0,"38, 3032, 3030, 39","38, 39, 3030, 3032",NA,NA,acetyl-CoA C-acetyltransferase Astrocyte,2.0 accoa[cA] <=> aacoa[cA] + coa[cA],Astrocyte
+ACACT1rm,0.008243208326639223,0,"38, 3032, 3030","38, 3030, 3032",NA,NA,"acetyl-CoA C-acetyltransferase, mitochondrial Astrocyte",2.0 accoa[mA] <=> aacoa[mA] + coa[mA],Astrocyte
+ACACT1rm,0.008243208326639223,0,"38, 3032, 3030, 39","38, 3030, 3032",NA,NA,"acetyl-CoA C-acetyltransferase, mitochondrial Astrocyte",2.0 accoa[mA] <=> aacoa[mA] + coa[mA],Astrocyte
+ACACt2,0.09386427413463375,2.845094663209406e-32,"9194, 6566","6566, 9194",NA,NA,acetoacetate transport via proton symport Astrocyte,acac[e] + h[e] <=> acac[cA] + h[cA],Astrocyte
+ACACt2m,0.8934342089789646,1.423685251673738e-17,6566,6566,6566,NA,Acetoacetate mitochondrial transport via H+ symport Astrocyte,acac[cA] + h[cA] <=> acac[mA] + h[mA],Astrocyte
+ACACt2m,0.8934342089789646,1.423685251673738e-17,"9194, 6566",6566,6566,NA,Acetoacetate mitochondrial transport via H+ symport Astrocyte,acac[cA] + h[cA] <=> acac[mA] + h[mA],Astrocyte
+ACALDt,0.02125746309296438,0,,,NA,NA,acetaldehyde reversible transport Astrocyte,acald[e] <=> acald[cA],Astrocyte
+ACALDtm,0.00424108151211897,0,,,NA,NA,acetaldehyde mitochondrial diffusion Astrocyte,acald[mA] <=> acald[cA],Astrocyte
+ACALDtm,0.00424108151211897,0,,,NA,NA,acetaldehyde mitochondrial diffusion Astrocyte,acald[mA] <=> acald[cA],Astrocyte
+ACCOALm,0.21791537010471831,6.074390407141295e-16,"84532, 79611",84532,NA,NA,acetate-CoA ligase (AMP-forming) Astrocyte,atp[mA] + coa[mA] + ppa[mA] --> amp[mA] + ppcoa[mA] + ppi[mA],Astrocyte
+ACCOALm,0.21791537010471831,6.074390407141295e-16,"84532, 79611, 55902, 55902",84532,NA,NA,acetate-CoA ligase (AMP-forming) Astrocyte,atp[mA] + coa[mA] + ppa[mA] --> amp[mA] + ppcoa[mA] + ppi[mA],Astrocyte
+ACOAD10m,0.012364797368350684,3.796494004463338e-16,"34, 36","34, 36",NA,NA,"acyl-CoA dehydrogenase (2-methylbutanoyl-CoA), mitochondrial Astrocyte",2mbcoa[mA] + fad[mA] --> 2mb2coa[mA] + fadh2[mA],Astrocyte
+ACOAD1fm,0.012839064505208749,0,"34, 36, 35, 80724, 27034, 84129, 28976","34, 36, 28976, 80724, 27034",NA,NA,"acyl-CoA dehydrogenase (butanoyl-CoA), mitochondrial Astrocyte",btcoa[mA] + fad[mA] --> b2coa[mA] + fadh2[mA],Astrocyte
+ACOAD8m,0.012216716635140217,0,3712,3712,NA,NA,"acyl-CoA dehydrogenase (isovaleryl-CoA), mitochondrial Astrocyte",fad[mA] + ivcoa[mA] --> 3mb2coa[mA] + fadh2[mA],Astrocyte
+ACOAD9m,0.012362870719299484,3.796494004464313e-17,"34, 27034","34, 27034",NA,NA,"acyl-CoA dehydrogenase (isobutyryl-CoA), mitochondrial Astrocyte",fad[mA] + ibcoa[mA] --> 2mp2coa[mA] + fadh2[mA],Astrocyte
+ACONTm,0.008110827891163618,1.4856208279730537e-16,"50, 48",50,NA,NA,Aconitate hydratase Astrocyte,cit[mA] <=> icit[mA],Astrocyte
+ACONTm,0.008110827891163618,1.4856208279730537e-16,"50, 48, 3658",50,NA,NA,Aconitate hydratase Astrocyte,cit[mA] <=> icit[mA],Astrocyte
+ACRNtm,0.01288182586423553,0,788,788,NA,NA,O-acetylcarnintine transport into mitochondria via diffusion Astrocyte,acrn[cA] --> acrn[mA],Astrocyte
+ACSm,0.06779474544272841,0,"84532, 160728",84532,NA,NA,acetyl-CoA synthetase Astrocyte,ac[mA] + atp[mA] + coa[mA] --> accoa[mA] + amp[mA] + ppi[mA],Astrocyte
+ACSm,0.06779474544272841,0,"6818, 84532, 65985, 55902, 55902, 438, 160728",84532,NA,NA,acetyl-CoA synthetase Astrocyte,ac[mA] + atp[mA] + coa[mA] --> accoa[mA] + amp[mA] + ppi[mA],Astrocyte
+ACt2m,0.8816335140467841,1.423685251673738e-17,6566,6566,NA,NA,acetate mitochondrial transport via proton symport Astrocyte,ac[cA] + h[cA] <=> ac[mA] + h[mA],Astrocyte
+ACt2r,0.093557577373566,2.845094663209406e-32,"9123, 9194, 6566, 23539, 682","6566, 9194, 9123",NA,NA,acetate reversible transport via proton symport Astrocyte,ac[e] + h[e] <=> ac[cA] + h[cA],Astrocyte
+ADCim,0.6215380215883535,1.423685251673741e-17,,,NA,NA,"Acetoacetate decarboxylation (irreversible), mitochondrial Astrocyte",acac[mA] + h[mA] --> acetone[mA] + co2[mA],Astrocyte
+ADK1,0.01226339524250508,0,"204, 205, 205, 204, 205, 204, 26289, 26289, 122481, 203","203, 26289, 205, 204",NA,NA,adenylate kinase Astrocyte,amp[cA] + atp[cA] <=> 2.0 adp[cA],Astrocyte
+ADK1m,0.0255243613289401,2.329234218932588e-15,"204, 205, 205, 204, 205, 204","205, 204",NA,NA,"adenylate kinase, mitochondrial Astrocyte",amp[mA] + atp[mA] <=> 2.0 adp[mA],Astrocyte
+ADK1m,0.0255243613289401,2.329234218932588e-15,"204, 205, 205, 204, 205, 204, 26289, 26289, 122481, 203","205, 204",NA,NA,"adenylate kinase, mitochondrial Astrocyte",amp[mA] + atp[mA] <=> 2.0 adp[mA],Astrocyte
+ADK3m,0.016522821142436524,0,"26289, 26289, 50808","205, 50808",NA,NA,adentylate kinase (GTP) Astrocyte,amp[mA] + gtp[mA] <=> adp[mA] + gdp[mA],Astrocyte
+ADK3m,0.016522821142436524,0,50808,"205, 50808",NA,NA,adentylate kinase (GTP) Astrocyte,amp[mA] + gtp[mA] <=> adp[mA] + gdp[mA],Astrocyte
+ADPRDPm,0.7327053327990722,0.06386370767950152,11164,53343,"53343, 53343, 53343","11164, 53343, 56985, 7226",ADPribose diphosphatase (mitochondrial) Astrocyte,adprib[mA] + h2o[mA] --> amp[mA] + 2.0 h[mA] + r5p[mA],Astrocyte
+AGMTm,0.3034147568547527,0,79814,79814,NA,79814.1,agmatinase (m) Astrocyte,agm[mA] + h2o[mA] --> ptrc[mA] + urea[mA],Astrocyte
+AGPRim,0.6235612241210652,1.423685251673741e-17,NA,5832,5832,NA,"N-acetyl-g-glutamyl-phosphate reductase, irreversible, mitochondrial Astrocyte",acg5p[mA] + h[mA] + nadph[mA] --> acg5sa[mA] + nadp[mA] + pi[mA],Astrocyte
+AGTim,0.00859251159085838,7.873456389951942e-16,"64902, 64850",64850,NA,NA,"alanine-glyoxylate transaminase (irreversible), mitochondrial Astrocyte",ala-L[mA] + glx[mA] --> gly[mA] + pyr[mA],Astrocyte
+AKGDm,0.11524559263984738,0.22982072105350096,"4967, 1738, 4967, 1743, 8050","8050, 1738, 4967, 1743","4967, 1738, 8050, 1743, 4967",4967,2-oxoglutarate dehydrogenase Astrocyte,akg[mA] + coa[mA] + nad[mA] --> co2[mA] + nadh[mA] + succoa[mA],Astrocyte
+AKGMALtm,0.008969826757481742,1.3667378416067913e-15,"1468, 8402",8402,NA,NA,alpha-ketoglutarate/malate transporter Astrocyte,akg[mA] + mal-L[cA] <=> akg[cA] + mal-L[mA],Astrocyte
+ALASm,0.6752525287756115,2.8948266784032735e-16,"212, 23464, 211, 211","23464, 211","212, 23464, 211, 211","211, 212",5-aminolevulinate synthase Astrocyte,gly[mA] + h[mA] + succoa[mA] --> 5aop[mA] + co2[mA] + coa[mA],Astrocyte
+ALCD2if,0.08631850736610178,2.845094663209406e-32,"124, 126, 130, 127, 131, 128, 137872, 125, 284273, 284273","126, 124, 128, 284273, 137872",NA,NA,"alcohol dehydrogenase, forward rxn (ethanol -> acetaldehyde) Astrocyte",etoh[cA] + nad[cA] --> acald[cA] + h[cA] + nadh[cA],Astrocyte
+ALCD2yf,0.08666290610504329,0.3461492786152283,"10327, 10327",10327,"10327, 10327",10327,"alcohol dehydrogenase (ethanol, NADP), forward reaction Astrocyte",etoh[cA] + nadp[cA] --> acald[cA] + h[cA] + nadph[cA],Astrocyte
+ALDD20xm,0.7604480529311123,9.491235011158273e-18,"8659, 8659, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217","8659, 219, 217","8659, 8659, 219, 217","217, 219, 223, 224, 501","aldehyde dehydrogenase (indole-3-acetaldehyde, NAD), mitochondrial Astrocyte",h2o[mA] + id3acald[mA] + nad[mA] --> 2.0 h[mA] + ind3ac[mA] + nadh[mA],Astrocyte
+ALDD20xm,0.7604480529311123,9.491235011158273e-18,"8659, 8659, 219, 217","8659, 219, 217","8659, 8659, 219, 217","217, 219, 223, 224, 501","aldehyde dehydrogenase (indole-3-acetaldehyde, NAD), mitochondrial Astrocyte",h2o[mA] + id3acald[mA] + nad[mA] --> 2.0 h[mA] + ind3ac[mA] + nadh[mA],Astrocyte
+ALDD2x,0.09310546116192471,7.474347571287135e-17,"221, 220, 218, 222, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217","219, 217, 223, 224, 501, 8854, 220, 216",NA,NA,"aldehyde dehydrogenase (acetaldehyde, NAD) Astrocyte",acald[cA] + h2o[cA] + nad[cA] --> ac[cA] + 2.0 h[cA] + nadh[cA],Astrocyte
+ALDD2xm,0.760299986275235,0.23163182080421357,"219, 217","219, 217","219, 217","218, 221, 222","aldehyde dehydrogenase (acetylaldehyde, NAD), mitochondrial Astrocyte",acald[mA] + h2o[mA] + nad[mA] --> ac[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+ALDD2xm,0.760299986275235,0.23163182080421357,"221, 220, 218, 222, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217","219, 217","219, 217","218, 221, 222","aldehyde dehydrogenase (acetylaldehyde, NAD), mitochondrial Astrocyte",acald[mA] + h2o[mA] + nad[mA] --> ac[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+ALDD2y,0.09341669152921249,0.3461492786152283,"221, 218, 222, 8854, 8854, 224, 223, 8854, 219","223, 224, 8854","218, 222, 221, 219, 223, 8854, 8854, 224, 8854","218, 221, 222","aldehyde dehydrogenase (acetaldehyde, NADP) Astrocyte",acald[cA] + h2o[cA] + nadp[cA] --> ac[cA] + 2.0 h[cA] + nadph[cA],Astrocyte
+ALR,0.09331240632885975,0.3815111982957976,NA,231,NA,"10327.2, 8574.1, 10327.1, 231.1",Aldose reductase Astrocyte,h2o[cA] + mthgxl[cA] + nadp[cA] --> 2.0 h[cA] + nadph[cA] + pyr[cA],Astrocyte
+AMETt2m,0.04568786737384557,0,"115286, 115286, 115286",115286,NA,NA,"S-Adenosyl-L-methionine reversible transport, mitochondrial Astrocyte",ahcys[mA] + amet[cA] <=> ahcys[cA] + amet[mA],Astrocyte
+AMETt2m,0.04568786737384557,0,"115286, 115286, 115286",115286,NA,NA,"S-Adenosyl-L-methionine reversible transport, mitochondrial Astrocyte",ahcys[mA] + amet[cA] <=> ahcys[cA] + amet[mA],Astrocyte
+AOBUTDsm,0.6284539865552743,1.423685251673741e-17,,,NA,NA,"L-2-amino-3-oxobutanoate decarboxylation, mitochondrial  (spontaneous) Astrocyte",2aobut[mA] + h[mA] --> aact[mA] + co2[mA],Astrocyte
+APAT2rm,0.017324424608107476,0,"18, 18",18,NA,NA,3-Aminopropanoate:2-oxoglutarate aminotransferase (m) Astrocyte,akg[mA] + ala-B[mA] <=> glu-L[mA] + msa[mA],Astrocyte
+APOCLYSBTNPm,0.14646908347019785,7.592988008926619e-17,,,NA,NA,"proteolysis of apoC-Lys-btn, mitochondrial Astrocyte",apoC-Lys_btn[mA] + h2o[mA] --> apoC[mA] + biocyt[mA],Astrocyte
+APOCLYSBTNPm,0.14646908347019785,7.592988008926619e-17,,,NA,NA,"proteolysis of apoC-Lys-btn, mitochondrial Astrocyte",apoC-Lys_btn[mA] + h2o[mA] --> apoC[mA] + biocyt[mA],Astrocyte
+APOCFm,0.7142990972498603,9.0166732606003594e-17,,,NA,NA,"Apocarboxylase formation, mitochondrial Astrocyte",apoC[mA] + lys-L[mA] --> apoC-Lys[mA] + h2o[mA] + h[mA],Astrocyte
+APOCFm,0.7142990972498603,9.0166732606003594e-17,,,NA,NA,"Apocarboxylase formation, mitochondrial Astrocyte",apoC[mA] + lys-L[mA] --> apoC-Lys[mA] + h2o[mA] + h[mA],Astrocyte
+ARGDCm,0.6278868008143211,1.9694312648153418e-16,113451,113451,113451,NA,arginine decarboxylase (m) Astrocyte,arg-L[mA] + h[mA] --> agm[mA] + co2[mA],Astrocyte
+ARGLYSex,0.019150762419989455,0,"6520, 9057","9057, 6520",NA,NA,Arginine/Lysine exchanger (Arg in) Astrocyte,arg-L[e] + lys-L[cA] --> arg-L[cA] + lys-L[e],Astrocyte
+ARGtiDF,0.006271582404641983,2.3728087527895682e-17,NA,"6541, 84889",NA,NA,L-arginine transport via diffusion (extracellular to cytosol) Astrocyte,arg-L[e] --> arg-L[cA],Astrocyte
+ARGtm,0.8867274115536896,4.033774879742269e-17,"83884, 10166",83884,"83884, 10166",NA,arginine mitochondrial transport via ornithine carrier Astrocyte,arg-L[cA] + h[mA] <=> arg-L[mA] + h[cA],Astrocyte
+ASNNm,0.14739680181596118,1.5185976017853237e-15,80150,80150,NA,NA,L-asparaginase (mitochondrial) Astrocyte,asn-L[mA] + h2o[mA] --> asp-L[mA] + nh4[mA],Astrocyte
+ASNt4,0.01602425243191196,0.04328107473014821,"11254, 57393, 59272, 54407, 340024, 81539, 55089","11254, 81539, 54407","54407, 11254, 81539, 55089, 340024, 57393, 59272",NA,L-asparagine transport in via sodium symport Astrocyte,asn-L[e] + na1[e] --> asn-L[cA] + na1[cA],Astrocyte
+ASNtm,0.00502413016431078,0,,,NA,NA,"L-asparagine transport, mitochondrial Astrocyte",asn-L[cA] --> asn-L[mA],Astrocyte
+ASPGLUm,0.9273366440904658,0.24683119087704763,"10165, 8604","10165, 8604","10165, 8604",NA,aspartate-glutamate mitochondrial shuttle Astrocyte,asp-L[mA] + glu-L[cA] + h[cA] --> asp-L[cA] + glu-L[mA] + h[mA],Astrocyte
+ASPTA,0.0040579484726283,3.0371952035706474e-16,"2805, 2806","2806, 2805",NA,NA,aspartate transaminase Astrocyte,akg[cA] + asp-L[cA] <=> glu-L[cA] + oaa[cA],Astrocyte
+ASPTAm,0.022172867650868212,0,2806,2806,NA,NA,aspartate transaminase Astrocyte,akg[mA] + asp-L[mA] <=> glu-L[mA] + oaa[mA],Astrocyte
+ASPTAm,0.022172867650868212,0,"2805, 2806",2806,NA,NA,aspartate transaminase Astrocyte,akg[mA] + asp-L[mA] <=> glu-L[mA] + oaa[mA],Astrocyte
+ATPtm,0.05731984217754105,0.022932679057345553,"292, 291, 293","292, 291, 293","291, 293, 292",NA,"ADP/ATP transporter, mitochondrial Astrocyte",adp[cA] + atp[mA] --> adp[mA] + atp[cA],Astrocyte
+BACCLm,0.6511244616502481,1.423685251673741e-17,3141,3141,3141,NA,"biotin-[acetyl-CoA-carboxylase] ligase, mitochondrial Astrocyte",atp[mA] + btn[mA] + h[mA] --> btamp[mA] + ppi[mA],Astrocyte
+BACCLm,0.6511244616502481,1.423685251673741e-17,3141,3141,3141,NA,"biotin-[acetyl-CoA-carboxylase] ligase, mitochondrial Astrocyte",atp[mA] + btn[mA] + h[mA] --> btamp[mA] + ppi[mA],Astrocyte
+BALAVECSEC,0.13192061454045564,2.6575458031243166e-16,140679,140679,NA,NA,B-alanine secretion via secretory vesicle (ATP driven) Astrocyte,3.0 ala-B[cA] + atp[cA] + h2o[cA] --> adp[cA] + 3.0 ala-B[e] + h[cA] + pi[cA],Astrocyte
+BALAtmr,0.005121497275175646,0,,,NA,NA,Beta-alanine reversible mitochondrial transport (diffusion) Astrocyte,ala-B[cA] <=> ala-B[mA],Astrocyte
+BAMPPALDOXm,0.7563145443013151,2.847370503347482e-17,"8854, 8854, 501, 224, 223, 8854, 216","8659, 219, 217","8659, 8659, 219, 217",NA,beta-Aminopropion aldehyde:NAD+ oxidoreductase (m) Astrocyte,bamppald[mA] + h2o[mA] + nad[mA] --> ala-B[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+BDHm,0.6137622143481082,6.169302757252878e-17,"622, 622, 622",622,"622, 622, 622",NA,(R)-3-Hydroxybutanoate:NAD+ oxidoreductase Astrocyte,bhb[mA] + nad[mA] <=> acac[mA] + h[mA] + nadh[mA],Astrocyte
+BETALDHxm,0.7604480529320933,9.491235011158273e-18,,,NA,501,"betaine-aldehyde dehydrogenase, mitochondrial Astrocyte",betald[mA] + h2o[mA] + nad[mA] --> glyb[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+BHBt,0.09355757736434255,2.845094663209406e-32,,,NA,NA,(R)-3-Hydroxybutanoate transport via H+ symport Astrocyte,bhb[e] + h[e] <=> bhb[cA] + h[cA],Astrocyte
+BHBtm,0.8729056923010299,1.423685251673738e-17,,,NA,NA,(R)-3-Hydroxybutanoate mitochondrial transport via H+ symport Astrocyte,bhb[cA] + h[cA] <=> bhb[mA] + h[mA],Astrocyte
+BHBtm,0.8729056923010299,1.423685251673738e-17,,,NA,NA,(R)-3-Hydroxybutanoate mitochondrial transport via H+ symport Astrocyte,bhb[cA] + h[cA] <=> bhb[mA] + h[mA],Astrocyte
+BTNDm,0.14917626040636067,7.592988008926619e-17,686,686,NA,NA,"biotinidase (biotin), mitochondrial Astrocyte",biocyt[mA] + h2o[mA] --> btn[mA] + lys-L[mA],Astrocyte
+BTNPLm,0.5898303775421385,2.847370503347482e-17,3141,3141,3141,NA,"holocarboxylase synthestase (biotin protein ligase), mitochondrial Astrocyte",apoC-Lys[mA] + btamp[mA] --> amp[mA] + apoC-Lys_btn[mA] + h[mA],Astrocyte
+BTNPLm,0.5898303775421385,2.847370503347482e-17,3141,3141,3141,NA,"holocarboxylase synthestase (biotin protein ligase), mitochondrial Astrocyte",apoC-Lys[mA] + btamp[mA] --> amp[mA] + apoC-Lys_btn[mA] + h[mA],Astrocyte
+BTNt2,0.08297942012383727,7.213338608480288e-15,6566,6566,NA,NA,Biotin reversible transport via proton symport Astrocyte,btn[e] + h[e] <=> btn[cA] + h[cA],Astrocyte
+BTNt2m,0.8843481374721237,2.845094663209406e-32,6566,6566,6566,NA,"Biotin reversible transport via proton symport, mitochondria Astrocyte",btn[cA] + h[cA] <=> btn[mA] + h[mA],Astrocyte
+BTNt2m,0.8843481374721237,2.845094663209406e-32,6566,6566,6566,NA,"Biotin reversible transport via proton symport, mitochondria Astrocyte",btn[cA] + h[cA] <=> btn[mA] + h[mA],Astrocyte
+BTNt4i,0.08297942012513224,7.213338608480288e-15,80704,80704,NA,NA,Biotin uptake (antiport) Astrocyte,btn[e] + h[cA] --> btn[cA] + h[e],Astrocyte
+C160CPT2,0.025652646104141977,0,"1374, 1376",1376,NA,NA,C160 transport into the mitochondria Astrocyte,coa[mA] + pmtcrn[mA] --> crn[mA] + pmtcoa[mA],Astrocyte
+C160CRNt,0.012898818125968776,0,788,788,NA,NA,C160 transport into the mitochondria Astrocyte,pmtcrn[cA] --> pmtcrn[mA],Astrocyte
+C204CPT2,0.009770516473376461,0,1376,1376,NA,NA,arachidonic acid transport into the mitochondria Astrocyte,arachdcrn[mA] + coa[mA] --> arachdcoa[mA] + crn[mA],Astrocyte
+C226CPT2,0.009770516473515947,0,1376,1376,NA,NA,C226 transport into the mitochondria Astrocyte,c226crn[mA] + coa[mA] --> c226coa[mA] + crn[mA],Astrocyte
+C2M26DCOAHLm,0.13987429863268147,0,NA,"3030, 3032, 549",NA,NA,"cis-2-Methyl-5-isopropylhexa-2,5-dienoyl-CoA hydro-lyase (m) Astrocyte",c2m26dcoa[mA] + h2o[mA] <=> 3h26dm5coa[mA],Astrocyte
+CATm,0.14856976358249657,1.7890977996033345e-15,847,847,NA,NA,catalase Astrocyte,2.0 h2o2[mA] --> 2.0 h2o[mA] + o2[mA],Astrocyte
+CBLATm,0.6327705110249432,1.423685251673741e-17,NA,166785,166785,NA,"cob(I)alamin adenosyltransferase, mitochondrial Astrocyte",atp[mA] + cbl1[mA] + h[mA] <=> adocbl[mA] + pppi[mA],Astrocyte
+CDPDAGtm,0.012315026427414485,0,,,NA,NA,intracellular transport Astrocyte,cdpdag_hs[cA] <=> cdpdag_hs[mA],Astrocyte
+CDSm,0.6129237142612196,1.423685251673741e-17,"8760, 1040",8760,"1040, 8760",NA,phosphatidate cytidylyltransferase Astrocyte,ctp[mA] + h[mA] + pa_hs[mA] --> cdpdag_hs[mA] + ppi[mA],Astrocyte
+CDSm,0.6129237142612196,1.423685251673741e-17,"8760, 1040",8760,"1040, 8760",NA,phosphatidate cytidylyltransferase Astrocyte,ctp[mA] + h[mA] + pa_hs[mA] --> cdpdag_hs[mA] + ppi[mA],Astrocyte
+CHSTEROLt3,0.038924675305478856,0,,,NA,NA,cholesterol intracellular transport Astrocyte,chsterol[cA] <=> chsterol[mA],Astrocyte
+CHSTEROLt3,0.038924675305478856,0,"10948, 19, 64241, 64240",,NA,NA,cholesterol intracellular transport Astrocyte,chsterol[cA] <=> chsterol[mA],Astrocyte
+CITRtm,0.012235365355422228,0,"83884, 10166",83884,NA,NA,citrulline mitochondrial transport via proton antiport Astrocyte,citr-L[mA] <=> citr-L[cA],Astrocyte
+CITtam,0.004757718503913381,0,6576,6576,NA,NA,"citrate transport, mitochondrial Astrocyte",cit[cA] + mal-L[mA] <=> cit[mA] + mal-L[cA],Astrocyte
+CITtbm,0.1443912872809909,3.0371952035706474e-16,6576,6576,NA,6576.1,"citrate transport, mitochondrial Astrocyte",cit[cA] + pep[mA] <=> cit[mA] + pep[cA],Astrocyte
+CK,0.03642166440097201,0,"1160, 548596, 1159, 1152, 1158, 1633, 57419, 25769, 123041, 123041, 123041, 9187, 5105, 5106","1160, 1159, 1152, 1158, 5105",NA,NA,ATP Creatine kinase Astrocyte,atp[mA] + creat[mA] <=> adp[mA] + pcreat[mA],Astrocyte
+CO2t,0.023837351589521116,0.5948953862997167,,,NA,NA,CO2 transporter via diffusion Astrocyte,co2[e] <=> co2[cA],Astrocyte
+CO2tm,0.021680706700162238,1.4591101111809762e-15,,,NA,NA,"CO2 transport (diffusion), mitochondrial Astrocyte",co2[cA] <=> co2[mA],Astrocyte
+CO2tm,0.021680706700162238,1.4591101111809762e-15,,,NA,NA,"CO2 transport (diffusion), mitochondrial Astrocyte",co2[cA] <=> co2[mA],Astrocyte
+COQ3m,0.5857092434828337,0,51805,51805,51805,NA,methyltransferase COQ3 Astrocyte,2dpmhobq[mA] + amet[mA] --> ahcys[mA] + h[mA] + q10[mA],Astrocyte
+COQ5m,0.5789866830705268,0,,84274,NA,NA,Ubiquinone biosynthesis methyltransferase COQ5 Astrocyte,2dp6mobq[mA] + amet[mA] --> 2dp6mobq_me[mA] + ahcys[mA] + h[mA],Astrocyte
+COQ6m,0.15052892235226772,0,"51004, 51004",51004,NA,NA,Ubiquinone biosynthesis monooxgenase COQ6 Astrocyte,2dp6mep[mA] + o2[mA] --> 2dp6mobq[mA] + h2o[mA],Astrocyte
+COQ7m,0.7197401084788662,0.3270868227758046,10229,10229,10229,10229,Ubiquinone biosynthesis COQ7 Astrocyte,2dp6mobq_me[mA] + h[mA] + nadph[mA] + o2[mA] --> 2dpmhobq[mA] + h2o[mA] + nadp[mA],Astrocyte
+COUCOAFm,0.06129758002874127,0,,,NA,NA,p-coumaroyl-CoA formation Astrocyte,T4hcinnm[mA] + atp[mA] + coa[mA] --> amp[mA] + coucoa[mA] + ppi[mA],Astrocyte
+CPPPGO,0.10601247479035061,1.4948695142574277e-16,1371,1371,NA,NA,coproporphyrinogen oxidase (O2 required) Astrocyte,cpppg3[cA] + 2.0 h[cA] + o2[cA] --> 2.0 co2[cA] + 2.0 h2o[cA] + pppg9[cA],Astrocyte
+CRNt,0.03681787826426622,0,"788, 6510, 6584, 6583","788, 6584",NA,NA,L-carnitine reversible transport Astrocyte,crn[e] <=> crn[cA],Astrocyte
+CRNtim,0.09727400476369663,0,"788, 6510, 6584, 6583",788,NA,NA,L-carnitine transport out of mitochondria via diffusion Astrocyte,crn[mA] --> crn[cA],Astrocyte
+CRNtim,0.09727400476369663,0,788,788,NA,NA,L-carnitine transport out of mitochondria via diffusion Astrocyte,crn[mA] --> crn[cA],Astrocyte
+CSNAT2m,0.009326869464884962,0,1384,1384,NA,NA,"carnitine O-aceyltransferase, mitochondrial Astrocyte",coa[mA] + pcrn[mA] <=> crn[mA] + ppcoa[mA],Astrocyte
+CSNATm,0.025519180470535165,0,1384,1384,NA,NA,"carnitine O-aceyltransferase, mitochondrial Astrocyte",acrn[mA] + coa[mA] <=> accoa[mA] + crn[mA],Astrocyte
+CSm,0.8301712615802297,5.457460131416008e-16,"84532, 1431, 1431, 160728, 1576, 1558, 1565, 1577, 5446","84532, 1431","1431, 1431",1431,citrate synthase Astrocyte,accoa[mA] + h2o[mA] + oaa[mA] --> cit[mA] + coa[mA] + h[mA],Astrocyte
+CYANSTm,0.8461547041714732,1.1626762888668886e-16,NA,7263,7263,"4357, 7263","Cyanide sulfurtransferase, mitochondrial Astrocyte",cyan[mA] + tsul[mA] --> h[mA] + so3[mA] + tcynt[mA],Astrocyte
+CYANt,0.0454126750791055,0,,,NA,NA,Cyanide transport via diffusion (extracellular to cytosol) Astrocyte,cyan[e] <=> cyan[cA],Astrocyte
+CYANtm,0.10111692290820908,1.1389482013389929e-16,,,NA,NA,Cyanide transport via diffusion (mitochondrial) Astrocyte,cyan[cA] <=> cyan[mA],Astrocyte
+CYANtm,0.10111692290820908,1.1389482013389929e-16,,,NA,NA,Cyanide transport via diffusion (mitochondrial) Astrocyte,cyan[cA] <=> cyan[mA],Astrocyte
+CYSGLUexR,0.005720534596608146,0.49186567223944944,"6520, 56301, 8140","6520, 56301","56301, 6520, 8140",NA,L-cysteine/L-glutamine reversible exchanger Astrocyte,cys-L[e] + gln-L[cA] --> cys-L[cA] + gln-L[e],Astrocyte
+CYSGLYex,0.002534081098742237,0,NA,"6520, 56301, 23428",NA,NA,L-cysteine/glycine exchanger Astrocyte,cys-L[cA] + gly[e] --> cys-L[e] + gly[cA],Astrocyte
+CYSGLYexR,0.002534081098742237,0,"6520, 56301, 23428, 23428","6520, 56301",NA,NA,L-cysteine/glycine reversible exchanger Astrocyte,cys-L[cA] + gly[e] <=> cys-L[e] + gly[cA],Astrocyte
+CYSO,0.08900933012228462,0.27304594386917835,1036,1036,1036,1036,cysteine oxidase Astrocyte,cys-L[cA] + o2[cA] --> 3sala[cA] + 2.0 h[cA],Astrocyte
+CYSTAm,0.014181500082222902,0,"2805, 11136, 6519",2806,NA,NA,cysteine transaminase (mitochondrial) Astrocyte,akg[mA] + cys-L[mA] <=> glu-L[mA] + mercppyr[mA],Astrocyte
+CYStec,0.0016141772933652085,0,124935,124935,NA,NA,L-cysteine transport via diffusion (extracellular to cytosol) Astrocyte,cys-L[e] <=> cys-L[cA],Astrocyte
+CYTK1m,0.019910086162843427,0,129607,51727,NA,NA,"cytidylate kinase (CMP),mitochondrial Astrocyte",atp[mA] + cmp[mA] <=> adp[mA] + cdp[mA],Astrocyte
+CYTK1m,0.019910086162843427,0,"51727, 129607",51727,NA,NA,"cytidylate kinase (CMP),mitochondrial Astrocyte",atp[mA] + cmp[mA] <=> adp[mA] + cdp[mA],Astrocyte
+D-LACt2,0.09355757736471973,0,NA,"6566, 9194, 9123",NA,NA,D-lactate transport via proton symport Astrocyte,h[e] + lac-D[e] <=> h[cA] + lac-D[cA],Astrocyte
+D-LACtm,0.8729056923089553,1.423685251673738e-17,NA,6566,6566,NA,"D-lactate transport, mitochondrial Astrocyte",h[cA] + lac-D[cA] <=> h[mA] + lac-D[mA],Astrocyte
+DDPGAm,0.00576091220950785,1.5185976017853237e-16,,,NA,NA,"2-dehydro-3-deoxy-phosphogluconate aldolase, mitochondrial Astrocyte",4h2oglt[mA] <=> glx[mA] + pyr[mA],Astrocyte
+DECDPtm,0.08227593154048865,0,,,NA,NA,"lipid, flip-flop intracellular transport Astrocyte",decdp[cA] <=> decdp[mA],Astrocyte
+DGNSKm,0.7405848303497873,0.3175359391462746,"1716, 1716, 1716, 1716, 1716",1716,"1716, 1716, 1716, 1716, 1716",1716,deoxyguanosine kinase Astrocyte,atp[mA] + dgsn[mA] --> adp[mA] + dgmp[mA] + h[mA],Astrocyte
+DGSNt,0.014302001947990455,0,3177,,NA,NA,deoyguanosine transport via diffusion Astrocyte,dgsn[e] <=> dgsn[cA],Astrocyte
+DGSNtm,0.06882382207378862,0,3177,,NA,NA,deoyguanosine transport in mitochondria Astrocyte,dgsn[cA] <=> dgsn[mA],Astrocyte
+DGSNtm,0.06882382207378862,0,,,NA,NA,deoyguanosine transport in mitochondria Astrocyte,dgsn[cA] <=> dgsn[mA],Astrocyte
+DHDPBMTm,0.5798757837164764,0,51805,51805,51805,NA,dihydroxydecaprenylbenzoate methyltransferase Astrocyte,3dpdhb[mA] + amet[mA] --> 3dpdhb_me[mA] + ahcys[mA] + h[mA],Astrocyte
+DHFtm,0.03934516148688695,0,,,NA,NA,dihydrofolate reversible mitochondrial transport Astrocyte,dhf[cA] <=> dhf[mA],Astrocyte
+DMGDHm,0.25564888142370756,3.7964940044633093e-17,29958,29958,NA,29958.1,"dimethylglycine dehydrogenase, mitochondrial Astrocyte",dmgly[mA] + fad[mA] + h2o[mA] --> fadh2[mA] + fald[mA] + sarcs[mA],Astrocyte
+DMGtm,0.04676859768116604,0,,,NA,NA,dimethylglycine transport via diffusion (cytosol to mitochondria) Astrocyte,dmgly[cA] <=> dmgly[mA],Astrocyte
+DPHMBDCm,0.6282029154460292,0,,,NA,NA,3-Decaprenyl-4-hydroxy-5-methoxybenzoate  decarboxylation Astrocyte,3dpdhb_me[mA] + h[mA] --> 2dp6mep[mA] + co2[mA],Astrocyte
+DURIK1m,0.6465614093104077,0.1204938365801788,"7083, 7084",7084,7084,"7083, 7084","deoxyuridine kinase (ATP:Deoxyuridine), mitochondrial Astrocyte",atp[mA] + duri[mA] --> adp[mA] + dump[mA] + h[mA],Astrocyte
+DURIK1m,0.6465614093104077,0.1204938365801788,7084,7084,7084,"7083, 7084","deoxyuridine kinase (ATP:Deoxyuridine), mitochondrial Astrocyte",atp[mA] + duri[mA] --> adp[mA] + dump[mA] + h[mA],Astrocyte
+DUTPDPm,0.7404276860709694,1.423685251673741e-17,"3704, 1854",1854,"1854, 3704",1854,dUTP diphosphatase Astrocyte,dutp[mA] + h2o[mA] --> dump[mA] + h[mA] + ppi[mA],Astrocyte
+DUTPDPm,0.7404276860709694,1.423685251673741e-17,"3704, 1854",1854,"1854, 3704",1854,dUTP diphosphatase Astrocyte,dutp[mA] + h2o[mA] --> dump[mA] + h[mA] + ppi[mA],Astrocyte
+ECOAH12m,0.13978187655440255,7.592988008927622e-17,"3032, 3030, 1892","3030, 3032, 1892",NA,NA,3-hydroxyacyl-CoA dehydratase (3-hydroxyisobutyryl-CoA) (mitochondria) Astrocyte,2mp2coa[mA] + h2o[mA] <=> 3hibutcoa[mA],Astrocyte
+ECOAH1m,0.153411145491295,7.592988008926619e-17,"3032, 3030, 1892, 549","3030, 3032, 549, 1892",NA,NA,3-hydroxyacyl-CoA dehydratase (3-hydroxybutanoyl-CoA) (mitochondria) Astrocyte,3hbcoa[mA] <=> b2coa[mA] + h2o[mA],Astrocyte
+ECOAH9m,0.14650608342245447,2.8416077817186307e-30,"3032, 3030, 1892","3030, 3032, 1892",NA,NA,"2-Methylprop-2-enoyl-CoA (2-Methylbut-2-enoyl-CoA), mitochondrial Astrocyte",2mb2coa[mA] + h2o[mA] <=> 3hmbcoa[mA],Astrocyte
+EHGLAT2m,0.006343086696486885,0,2806,2806,NA,NA,"L-erythro-4-Hydroxyglutamate:2-oxoglutarate aminotransferase 2, mitochondrial Astrocyte",e4hglu[mA] + oaa[mA] --> 4h2oglt[mA] + asp-L[mA],Astrocyte
+EHGLATm,0.018780233491096556,0,2806,2806,NA,NA,"L-erythro-4-Hydroxyglutamate:2-oxoglutarate aminotransferase, mitochondrial Astrocyte",akg[mA] + e4hglu[mA] --> 4h2oglt[mA] + glu-L[mA],Astrocyte
+ETF,0.012353336010800221,0.11782879902661472,"2109, 2109, 2108, 2110, 2168","2109, 2108, 2110","2109, 2108, 2109",2110,electron transfer flavoprotein Astrocyte,etfox[mA] + fadh2[mA] --> etfrd[mA] + fad[mA],Astrocyte
+ETFQO,0.020117899970958166,3.037195203570575e-16,"2109, 2109, 2108, 2110, 2168",2110,NA,NA,Electron transfer flavoprotein-ubiquinone oxidoreductase Astrocyte,etfrd[mA] + q10[mA] --> etfox[mA] + q10h2[mA],Astrocyte
+ETFQO,0.020117899970958166,3.037195203570575e-16,2110,2110,NA,NA,Electron transfer flavoprotein-ubiquinone oxidoreductase Astrocyte,etfrd[mA] + q10[mA] --> etfox[mA] + q10h2[mA],Astrocyte
+ETOHMO,0.09939426283160982,0.34614927861522843,1571,1571,1571,NA,ethanol monooxygenase Astrocyte,etoh[cA] + h[cA] + nadph[cA] + o2[cA] --> acald[cA] + 2.0 h2o[cA] + nadp[cA],Astrocyte
+ETOHt,0.023360021292342832,0,,,NA,NA,ethanol reversible transport Astrocyte,etoh[e] <=> etoh[cA],Astrocyte
+FALDtm,0.046768597677991255,0,,,NA,NA,formaldehyde transport via diffusion (mitochondrial) Astrocyte,fald[mA] <=> fald[cA],Astrocyte
+FCLTm,0.6205420864719869,8.68448003520982e-16,"2235, 2235",2235,"2235, 2235",NA,"Ferrochelatase, mitochondrial Astrocyte",fe2[mA] + ppp9[mA] --> 2.0 h[mA] + pheme[mA],Astrocyte
+FE2t,0.021147473882987468,0,,4891,NA,NA,iron (II) transport Astrocyte,fe2[e] --> fe2[cA],Astrocyte
+FE2tm,0.9327613295290041,2.845094663209406e-32,,,NA,NA,iron (II) transport Astrocyte,fe2[cA] + h[cA] --> fe2[mA] + h[mA],Astrocyte
+FE2tm,0.9327613295290041,2.845094663209406e-32,,,NA,NA,iron (II) transport Astrocyte,fe2[cA] + h[cA] --> fe2[mA] + h[mA],Astrocyte
+FORt2m,0.04155953488187007,1.7163932639142855e-16,,,NA,NA,formate mitochondrial transport Astrocyte,for[mA] <=> for[cA],Astrocyte
+FPGS2m,0.7198893629712224,1.3762290766179498e-16,2356,2356,2356,2356,"folylpolyglutamate synthetase, mitochondrial Astrocyte",5thf[mA] + atp[mA] + glu-L[mA] --> 6thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS2m,0.7198893629712224,1.3762290766179498e-16,2356,2356,2356,2356,"folylpolyglutamate synthetase, mitochondrial Astrocyte",5thf[mA] + atp[mA] + glu-L[mA] --> 6thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS2m,0.7198893629712224,1.3762290766179498e-16,2356,2356,2356,2356,"folylpolyglutamate synthetase, mitochondrial Astrocyte",5thf[mA] + atp[mA] + glu-L[mA] --> 6thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS3m,0.7342161825793763,1.423685251673741e-17,2356,2356,2356,2356,"folylpolyglutamate synthetase, mitochondrial Astrocyte",6thf[mA] + atp[mA] + glu-L[mA] --> 7thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS3m,0.7342161825793763,1.423685251673741e-17,2356,2356,2356,2356,"folylpolyglutamate synthetase, mitochondrial Astrocyte",6thf[mA] + atp[mA] + glu-L[mA] --> 7thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS3m,0.7342161825793763,1.423685251673741e-17,2356,2356,2356,2356,"folylpolyglutamate synthetase, mitochondrial Astrocyte",6thf[mA] + atp[mA] + glu-L[mA] --> 7thf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS4m,0.7435718665404528,5.504916306471799e-16,2356,2356,2356,2356,"folylpolyglutamate synthetase (DHF), mitochondrial Astrocyte",4.0 atp[mA] + dhf[mA] + 4.0 glu-L[mA] --> 5dhf[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FPGS4m,0.7435718665404528,5.504916306471799e-16,2356,2356,2356,2356,"folylpolyglutamate synthetase (DHF), mitochondrial Astrocyte",4.0 atp[mA] + dhf[mA] + 4.0 glu-L[mA] --> 5dhf[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FPGS4m,0.7435718665404528,5.504916306471799e-16,2356,2356,2356,2356,"folylpolyglutamate synthetase (DHF), mitochondrial Astrocyte",4.0 atp[mA] + dhf[mA] + 4.0 glu-L[mA] --> 5dhf[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FPGS5m,0.710206602335634,1.0487814687329894e-15,2356,2356,2356,2356,"folylpolyglutamate  synthetase (DHF), mitochondrial Astrocyte",5dhf[mA] + atp[mA] + glu-L[mA] --> 6dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS5m,0.710206602335634,1.0487814687329894e-15,2356,2356,2356,2356,"folylpolyglutamate  synthetase (DHF), mitochondrial Astrocyte",5dhf[mA] + atp[mA] + glu-L[mA] --> 6dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS5m,0.710206602335634,1.0487814687329894e-15,2356,2356,2356,2356,"folylpolyglutamate  synthetase (DHF), mitochondrial Astrocyte",5dhf[mA] + atp[mA] + glu-L[mA] --> 6dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS6m,0.734216027744249,1.0487814687329894e-15,2356,2356,2356,2356,"folylpolyglutamate synthetase (DHF), mitochondrial Astrocyte",6dhf[mA] + atp[mA] + glu-L[mA] --> 7dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS6m,0.734216027744249,1.0487814687329894e-15,2356,2356,2356,2356,"folylpolyglutamate synthetase (DHF), mitochondrial Astrocyte",6dhf[mA] + atp[mA] + glu-L[mA] --> 7dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS6m,0.734216027744249,1.0487814687329894e-15,2356,2356,2356,2356,"folylpolyglutamate synthetase (DHF), mitochondrial Astrocyte",6dhf[mA] + atp[mA] + glu-L[mA] --> 7dhf[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS7m,0.7114057982569254,0,2356,2356,2356,2356,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf[mA] + 4.0 atp[mA] + 4.0 glu-L[mA] --> 10fthf5glu[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FPGS7m,0.7114057982569254,0,2356,2356,2356,2356,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf[mA] + 4.0 atp[mA] + 4.0 glu-L[mA] --> 10fthf5glu[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FPGS7m,0.7114057982569254,0,2356,2356,2356,2356,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf[mA] + 4.0 atp[mA] + 4.0 glu-L[mA] --> 10fthf5glu[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FPGS8m,0.7198781520193068,0.25450838475756304,2356,2356,2356,2356,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf5glu[mA] + atp[mA] + glu-L[mA] --> 10fthf6glu[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS8m,0.7198781520193068,0.25450838475756304,2356,2356,2356,2356,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf5glu[mA] + atp[mA] + glu-L[mA] --> 10fthf6glu[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS8m,0.7198781520193068,0.25450838475756304,2356,2356,2356,2356,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf5glu[mA] + atp[mA] + glu-L[mA] --> 10fthf6glu[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS9m,0.7342161824041843,0,2356,2356,2356,2356,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf6glu[mA] + atp[mA] + glu-L[mA] --> 10fthf7glu[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS9m,0.7342161824041843,0,2356,2356,2356,2356,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf6glu[mA] + atp[mA] + glu-L[mA] --> 10fthf7glu[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGS9m,0.7342161824041843,0,2356,2356,2356,2356,"folylpolyglutamate synthetase (10fthf), mitochondrial Astrocyte",10fthf6glu[mA] + atp[mA] + glu-L[mA] --> 10fthf7glu[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+FPGSm,0.716511147952393,5.504916306471799e-16,2356,2356,2356,2356,"folylpolyglutamate synthetase, mitochondrial Astrocyte",4.0 atp[mA] + 4.0 glu-L[mA] + thf[mA] --> 5thf[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FPGSm,0.716511147952393,5.504916306471799e-16,2356,2356,2356,2356,"folylpolyglutamate synthetase, mitochondrial Astrocyte",4.0 atp[mA] + 4.0 glu-L[mA] + thf[mA] --> 5thf[mA] + 4.0 adp[mA] + 4.0 h[mA] + 4.0 pi[mA],Astrocyte
+FTHFLm,0.08920330827726342,1.4694134741159986e-15,"25902, 4522",25902,NA,NA,"formate-tetrahydrofolate ligase, mitochondrial Astrocyte",atp[mA] + for[mA] + thf[mA] <=> 10fthf[mA] + adp[mA] + pi[mA],Astrocyte
+FTHFLm,0.08920330827726342,1.4694134741159986e-15,"4363, 6573, 6573, 2348, 2348, 2348, 2348, 2348, 2348, 2352, 1244, 10257, 10840, 160428, 25902, 4522, 2618, 2618, 8836, 5244, 10588, 10057, 113235, 1080, 85320, 9429, 2350, 286297",25902,NA,NA,"formate-tetrahydrofolate ligase, mitochondrial Astrocyte",atp[mA] + for[mA] + thf[mA] <=> 10fthf[mA] + adp[mA] + pi[mA],Astrocyte
+FTHFLm,0.08920330827726342,1.4694134741159986e-15,"25902, 4522, 286297",25902,NA,NA,"formate-tetrahydrofolate ligase, mitochondrial Astrocyte",atp[mA] + for[mA] + thf[mA] <=> 10fthf[mA] + adp[mA] + pi[mA],Astrocyte
+FUMSO3tm,0.004333596904060279,1.1389482013389929e-16,1468,1468,NA,NA,"Fumarate:sulfite antiport, mitochondrial Astrocyte",fum[cA] + so3[mA] <=> fum[mA] + so3[cA],Astrocyte
+FUMSO3tm,0.004333596904060279,1.1389482013389929e-16,"1468, 2184, 2271",1468,NA,NA,"Fumarate:sulfite antiport, mitochondrial Astrocyte",fum[cA] + so3[mA] <=> fum[mA] + so3[cA],Astrocyte
+FUMSO4tm,0.006427988849393912,0,1468,1468,NA,NA,"Fumarate:sulfate antiport, mitochondrial Astrocyte",fum[cA] + so4[mA] <=> fum[mA] + so4[cA],Astrocyte
+FUMSO4tm,0.006427988849393912,0,"1468, 2184, 2271",1468,NA,NA,"Fumarate:sulfate antiport, mitochondrial Astrocyte",fum[cA] + so4[mA] <=> fum[mA] + so4[cA],Astrocyte
+FUMTSULtm,0.002975226435688694,0,1468,1468,NA,NA,"Fumarate:thiosulfate antiport, mitochondrial Astrocyte",fum[cA] + tsul[mA] <=> fum[mA] + tsul[cA],Astrocyte
+FUMTSULtm,0.002975226435688694,0,"1468, 2184, 2271",1468,NA,NA,"Fumarate:thiosulfate antiport, mitochondrial Astrocyte",fum[cA] + tsul[mA] <=> fum[mA] + tsul[cA],Astrocyte
+FUMm,0.14955637472743816,3.7964940044633087e-16,2271,2271,NA,NA,"fumarase, mitochondrial Astrocyte",fum[mA] + h2o[mA] <=> mal-L[mA],Astrocyte
+FUMm,0.14955637472743816,3.7964940044633087e-16,"1468, 2184, 2271",2271,NA,NA,"fumarase, mitochondrial Astrocyte",fum[mA] + h2o[mA] <=> mal-L[mA],Astrocyte
+FUMtm,0.03551539348533349,9.491235011158273e-18,1468,1468,NA,NA,"fumarate transport, mitochondrial Astrocyte",fum[cA] + pi[mA] <=> fum[mA] + pi[cA],Astrocyte
+FUMtm,0.03551539348533349,9.491235011158273e-18,"1468, 2184, 2271",1468,NA,NA,"fumarate transport, mitochondrial Astrocyte",fum[cA] + pi[mA] <=> fum[mA] + pi[cA],Astrocyte
+G5SDym,0.6311244091050426,6.97605773320133e-16,5832,5832,5832,NA,glutamate-5-semialdehyde dehydrogenase (m) Astrocyte,glu5p[mA] + h[mA] + nadph[mA] --> glu5sa[mA] + nadp[mA] + pi[mA],Astrocyte
+G6PDH2r,0.14707905697633988,5.690189326418812e-32,"9563, 2539","9563, 2539",NA,NA,glucose 6-phosphate dehydrogenase Astrocyte,g6p[cA] + nadp[cA] <=> 6pgl[cA] + h[cA] + nadph[cA],Astrocyte
+GCALDDm,0.7604480529328004,1.0625914543187842e-15,"8659, 8659, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329","8659, 8659, 219, 217, 5832, 4329, 7915, 7915",NA,"Glycolaldehyde dehydrogenase, mitochondrial Astrocyte",gcald[mA] + h2o[mA] + nad[mA] --> glyclt[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+GCALDDm,0.7604480529328004,1.0625914543187842e-15,"221, 220, 218, 222, 8659, 8659, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329","8659, 8659, 219, 217, 5832, 4329, 7915, 7915",NA,"Glycolaldehyde dehydrogenase, mitochondrial Astrocyte",gcald[mA] + h2o[mA] + nad[mA] --> glyclt[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+GCC2am,0.6257764185872579,3.0371952035706474e-16,"1738, 2653, 275, 2731","1738, 275, 2731, 2653","275, 1738, 2731, 2653",NA,"glycine-cleavage complex (lipoamide), mitochondrial Astrocyte",gly[mA] + h[mA] + lpam[mA] <=> alpam[mA] + co2[mA],Astrocyte
+GCC2bim,0.0076752850543066785,0.09559313845952658,"1738, 2653, 275, 2731","1738, 275, 2731, 2653","275, 1738, 2731, 2653",NA,"glycine-cleavage system (lipoamide) irreversible, mitochondrial Astrocyte",alpam[mA] + thf[mA] --> dhlam[mA] + mlthf[mA] + nh4[mA],Astrocyte
+GCC2cm,0.6129603101346366,4.745617505579137e-18,"1738, 2653, 275, 2731","1738, 275, 2731, 2653","275, 1738, 2731, 2653",NA,"glycine-cleavage complex (lipoamide), mitochondrial Astrocyte",dhlam[mA] + nad[mA] <=> h[mA] + lpam[mA] + nadh[mA],Astrocyte
+GCCam,0.6257764185869908,7.873456389951942e-16,"1738, 2653, 275, 2731","1738, 275, 2731, 2653","275, 1738, 2731, 2653",NA,"glycine-cleavage complex (lipoylprotein), mitochondrial Astrocyte",gly[mA] + h[mA] + lpro[mA] <=> alpro[mA] + co2[mA],Astrocyte
+GCCbim,0.007675285054307687,0.09559313845952658,"1738, 2653, 275, 2731","1738, 275, 2731, 2653",NA,"275.1, 1738.1, 2731.1, 2653.1","glycine-cleavage complex (lipoylprotein) irreversible, mitochondrial Astrocyte",alpro[mA] + thf[mA] --> dhlpro[mA] + mlthf[mA] + nh4[mA],Astrocyte
+GCCcm,0.6129603101337453,4.745617505579137e-18,"1738, 2653, 275, 2731","1738, 275, 2731, 2653","275, 1738, 2731, 2653",NA,"glycine-cleavage complex (lipoylprotein), mitochondrial Astrocyte",dhlpro[mA] + nad[mA] <=> h[mA] + lpro[mA] + nadh[mA],Astrocyte
+GHMT2rm,0.1591092830805102,1.1507918277601062e-15,"6470, 6472",6472,NA,NA,"glycine hydroxymethyltransferase, reversible, mitochondrial Astrocyte",ser-L[mA] + thf[mA] <=> gly[mA] + h2o[mA] + mlthf[mA],Astrocyte
+GHMT2rm,0.1591092830805102,1.1507918277601062e-15,"6470, 6472, 6470",6472,NA,NA,"glycine hydroxymethyltransferase, reversible, mitochondrial Astrocyte",ser-L[mA] + thf[mA] <=> gly[mA] + h2o[mA] + mlthf[mA],Astrocyte
+GHMT3m,0.5815753428037271,0,"6470, 6470",6472,6472,NA,"glycine hydroxymethyltransferase, mitochondrial Astrocyte",3htmelys[mA] + h[mA] --> 4tmeabut[mA] + gly[mA],Astrocyte
+GLACOm,0.7604480529333149,0,"221, 220, 218, 222, 8854, 8854, 224, 223, 8854, 216","8659, 219, 217","8659, 8659, 219, 217",NA,"D-Glucuronolactone:NAD+ oxidoreductase, mitochondrial Astrocyte",glac[mA] + 2.0 h2o[mA] + nad[mA] --> glcr[mA] + 3.0 h[mA] + nadh[mA],Astrocyte
+GLCt1r,0.030741603534847776,0.9452277321530848,"6517, 6515, 6513, 66035, 6514, 155184, 29988, 81031, 56606, 144195, 11182, 154091, 56606","6513, 56606, 6515, 29988, 11182, 154091, 81031, 66035","66035, 6517, 56606, 154091, 6513, 11182, 29988, 6514, 155184, 56606, 144195, 6515, 81031",NA,glucose transport (uniport) Astrocyte,glc-D[e] --> glc-D[cA],Astrocyte
+GLCt2r,0.16545479949792355,0.717722970916663,NA,6524,NA,NA,D-glucose transport in via proton symport Astrocyte,glc-D[e] + h[e] --> glc-D[cA] + h[cA],Astrocyte
+GLNS,0.10451252142875422,0.25516432380248727,"6510, 2752, 51557",2752,"2752, 51557",NA,glutamine synthetase Astrocyte,atp[cA] + glu-L[cA] + nh4[cA] --> adp[cA] + gln-L[cA] + h[cA] + pi[cA],Astrocyte
+GLNtm,0.003923681727373919,0,,,NA,NA,L-glutamine transport via electroneutral transporter Astrocyte,gln-L[cA] --> gln-L[mA],Astrocyte
+GLU5Km,0.04413045347390617,1.5185976017853237e-16,5832,5832,NA,NA,glutamate 5-kinase (m) Astrocyte,atp[mA] + glu-L[mA] --> adp[mA] + glu5p[mA],Astrocyte
+GLUDxm,0.7972438344781763,1.7902098631612855e-14,"2746, 2747","2746, 2747","2747, 2746","2746, 2747",glutamate dehydrogenase (NAD) (mitochondrial) Astrocyte,glu-L[mA] + h2o[mA] + nad[mA] <=> akg[mA] + h[mA] + nadh[mA] + nh4[mA],Astrocyte
+GLUDym,0.7596192399818245,0.03248377960335635,"2746, 2747","2746, 2747","2747, 2746","2746, 2747","glutamate dehydrogenase (NADP), mitochondrial Astrocyte",glu-L[mA] + h2o[mA] + nadp[mA] --> akg[mA] + h[mA] + nadph[mA] + nh4[mA],Astrocyte
+GLUNm,0.2069209058010304,0.10162624639766835,"27165, 27165, 2744","2744, 27165","2744, 27165, 27165",NA,glutaminase (mitochondrial) Astrocyte,gln-L[mA] + h2o[mA] --> glu-L[mA] + nh4[mA],Astrocyte
+GLUTCOADHm,0.7045518117995234,1.423685251673741e-17,"2639, 2639",2639,"2639, 2639",2639,glutaryl-CoA dehydrogenase (mitochondria) Astrocyte,fad[mA] + glutcoa[mA] + h[mA] --> b2coa[mA] + co2[mA] + fadh2[mA],Astrocyte
+GLUVESSEC,0.12821225405945275,0.5879223687504412,"57030, 246213, 57084","246213, 57030, 57084","57084, 246213, 57030",NA,L-glutamate secretion via secretory vesicle (ATP driven) Astrocyte,atp[cA] + glu-L[cA] + h2o[cA] --> adp[cA] + glu-L[e] + h[cA] + pi[cA],Astrocyte
+GLUt2m,0.9124903240300153,1.706729681756187e-14,"10165, 8604, 83733, 79751","10165, 8604, 79751, 83733","10165, 8604, 83733, 79751",NA,"L-glutamate reversible transport via proton symport, mitochondrial Astrocyte",glu-L[cA] + h[cA] <=> glu-L[mA] + h[mA],Astrocyte
+GLUt6,0.09227421555389621,0.5735118844228785,"6505, 6511, 6512, 6507, 6506","6512, 6507, 6511, 6505, 6506","6511, 6505, 6507, 6506, 6512",NA,"Glutamate transport via Na, H symport and K antiport Astrocyte",glu-L[e] + h[e] + k[cA] + 3.0 na1[e] --> glu-L[cA] + h[cA] + k[e] + 3.0 na1[cA],Astrocyte
+GLYATm,0.005738406120785257,0,23464,23464,NA,NA,glycine C-acetyltransferase Astrocyte,accoa[mA] + gly[mA] <=> 2aobut[mA] + coa[mA],Astrocyte
+GLYCLTDym,0.5779051323871973,8.015824915119316e-16,9380,9380,NA,9380,"Glycolate dehydrogenase (NADP), mitochondrial Astrocyte",glx[mA] + h[mA] + nadph[mA] --> glyclt[mA] + nadp[mA],Astrocyte
+GLYCLTDym,0.5779051323871973,8.015824915119316e-16,,9380,NA,9380,"Glycolate dehydrogenase (NADP), mitochondrial Astrocyte",glx[mA] + h[mA] + nadph[mA] --> glyclt[mA] + nadp[mA],Astrocyte
+GLYCt,0.04603485118269927,0,NA,,NA,NA,glycerol transport via channel Astrocyte,glyc[cA] <=> glyc[e],Astrocyte
+GLYCtm,0.10227127458607639,0,,,NA,NA,glycerol transport Astrocyte,glyc[cA] <=> glyc[mA],Astrocyte
+GLYKm,0.7707166165272604,1.423685251673741e-17,"2713, 2710, 2710, 2712","2712, 2710, 2713","2710, 2712, 2710, 2713","256356, 2710, 2712",glycerol kinase Astrocyte,atp[mA] + glyc[mA] --> adp[mA] + glyc3p[mA] + h[mA],Astrocyte
+GLYKm,0.7707166165272604,1.423685251673741e-17,"2713, 2710, 2710, 2712","2712, 2710, 2713","2710, 2712, 2710, 2713","256356, 2710, 2712",glycerol kinase Astrocyte,atp[mA] + glyc[mA] --> adp[mA] + glyc3p[mA] + h[mA],Astrocyte
+GLYOXm,0.7142990972453503,0.2816417527133569,3029,3029,3029,3029,"hydroxyacylglutathione hydrolase, mitochondrial Astrocyte",h2o[mA] + lgt-S[mA] --> gthrd[mA] + h[mA] + lac-D[mA],Astrocyte
+GLYOXm,0.7142990972453503,0.2816417527133569,"3029, 84264, 84264",3029,3029,3029,"hydroxyacylglutathione hydrolase, mitochondrial Astrocyte",h2o[mA] + lgt-S[mA] --> gthrd[mA] + h[mA] + lac-D[mA],Astrocyte
+GLYt2r,0.0825914502608876,4.997032995040523e-15,"206358, 153201",206358,NA,NA,glycine reversible transport via proton symport Astrocyte,gly[e] + h[e] <=> gly[cA] + h[cA],Astrocyte
+GLYtm,0.008852823311322639,3.1992273203848366e-16,,,NA,NA,glycine passive transport to mitochondria Astrocyte,gly[cA] <=> gly[mA],Astrocyte
+GND,0.1152952832166447,0.41270566661342056,5226,5226,NA,5226.1,phosphogluconate dehydrogenase Astrocyte,6pgc[cA] + nadp[cA] --> co2[cA] + nadph[cA] + ru5p-D[cA],Astrocyte
+GTHOm,0.5842166357354408,0.25450838475756465,2936,2936,2936,2936,glutathione oxidoreductase Astrocyte,gthox[mA] + h[mA] + nadph[mA] --> 2.0 gthrd[mA] + nadp[mA],Astrocyte
+GTHOm,0.5842166357354408,0.25450838475756465,2936,2936,2936,2936,glutathione oxidoreductase Astrocyte,gthox[mA] + h[mA] + nadph[mA] --> 2.0 gthrd[mA] + nadp[mA],Astrocyte
+GTHPm,0.15336343720222742,0,"2877, 7001, 2879, 2876, 5052, 7001, 5052, 5052, 2876, 7001, 2878, 2882, 257202, 10935, 10935","2879, 10935",NA,NA,"glutathione peroxidase, mitochondria Astrocyte",2.0 gthrd[mA] + h2o2[mA] <=> gthox[mA] + 2.0 h2o[mA],Astrocyte
+GTHPm,0.15336343720222742,0,"2879, 2876, 10935, 10935","2879, 10935",NA,NA,"glutathione peroxidase, mitochondria Astrocyte",2.0 gthrd[mA] + h2o2[mA] <=> gthox[mA] + 2.0 h2o[mA],Astrocyte
+H2CO3Dm,0.20138453296397454,0,"11238, 763",11238,NA,NA,carboxylic acid dissociation Astrocyte,co2[mA] + h2o[mA] <=> h2co3[mA],Astrocyte
+H2CO3Dm,0.20138453296397454,0,"11238, 763, 771, 762, 377677, 759, 768, 766, 23632, 760, 765, 771, 766, 761",11238,NA,NA,carboxylic acid dissociation Astrocyte,co2[mA] + h2o[mA] <=> h2co3[mA],Astrocyte
+H2O2t,0.029683967831645997,0,,,NA,NA,hydrogen peroxide transport via diffusion Astrocyte,h2o2[e] <=> h2o2[cA],Astrocyte
+H2O2tm,0.006420213878445164,0,,,NA,NA,hydrogen peroxide mitochondrial transport Astrocyte,h2o2[cA] <=> h2o2[mA],Astrocyte
+H2O2tm,0.006420213878445164,0,,,NA,NA,hydrogen peroxide mitochondrial transport Astrocyte,h2o2[cA] <=> h2o2[mA],Astrocyte
+H2Ot,0.04416450989104994,0.2551643238024977,"343, 4284, 362, 361, 358, 359","361, 366","358, 361, 4284, 359, 362, 343",NA,H2O transport via diffusion Astrocyte,h2o[e] <=> h2o[cA],Astrocyte
+H2Otm,0.24379756340914427,2.4470664742577602e-14,343,366,NA,343.1,"H2O transport, mitochondrial Astrocyte",h2o[cA] <=> h2o[mA],Astrocyte
+H2Otm,0.24379756340914427,2.4470664742577602e-14,"343, 4284, 362, 361, 358, 359",366,NA,343.1,"H2O transport, mitochondrial Astrocyte",h2o[cA] <=> h2o[mA],Astrocyte
+HACD1m,0.6139697629886925,6.169302757252878e-17,"3032, 3030, 3033, 3028","3030, 3032, 3028, 3033","3028, 3033, 3030, 3032",NA,3-hydroxyacyl-CoA dehydrogenase (acetoacetyl-CoA) (mitochondria) Astrocyte,aacoa[mA] + h[mA] + nadh[mA] <=> 3hbcoa[mA] + nad[mA],Astrocyte
+HACD9m,0.6131561694518225,1.4236852516740252e-17,"1962, 3033, 3028",3028,"3028, 1962, 3033",NA,"3-hydroxyacyl-CoA dehydrogenase (2-Methylacetoacetyl-CoA), mitochondrial Astrocyte",3hmbcoa[mA] + nad[mA] <=> 2maacoa[mA] + h[mA] + nadh[mA],Astrocyte
+HBZOPT10m,0.12428490294217165,0,27235,27235,NA,NA,Hydroxybenzoate Decaprenyltransferase Astrocyte,4hbz[mA] + decdp[mA] --> 3dphb[mA] + ppi[mA],Astrocyte
+HCO3Em,0.7605192160901787,2.8416077817186307e-30,NA,,NA,NA,HCO3 equilibration reaction Astrocyte,co2[mA] + h2o[mA] <=> h[mA] + hco3[mA],Astrocyte
+HIBDm,0.6145677066116941,6.169302757253881e-17,11112,11112,11112,NA,"3-hydroxyisobutyrate dehydrogenase, mitochondrial Astrocyte",3hmp[mA] + nad[mA] <=> 2mop[mA] + h[mA] + nadh[mA],Astrocyte
+HMBS,0.01850250093273869,3.784629960699362e-16,3145,3145,NA,NA,hydroxymethylbilane synthase Astrocyte,h2o[cA] + 4.0 ppbng[cA] --> hmbil[cA] + 4.0 nh4[cA],Astrocyte
+HMGCOASim,0.8009729832626552,9.72851588643723e-16,"3157, 3157, 3158",3158,3158,"3157, 3158",Hydroxymethylglutaryl CoA synthase (ir) Astrocyte,aacoa[mA] + accoa[mA] + h2o[mA] --> coa[mA] + h[mA] + hmgcoa[mA],Astrocyte
+HMGCOASim,0.8009729832626552,9.72851588643723e-16,3158,3158,3158,"3157, 3158",Hydroxymethylglutaryl CoA synthase (ir) Astrocyte,aacoa[mA] + accoa[mA] + h2o[mA] --> coa[mA] + h[mA] + hmgcoa[mA],Astrocyte
+HMGLm,0.00737681272490755,0.12049383658017873,"3155, 54511",54511,"3155, 54511","3155, 54511",hydroxymethylglutaryl-CoA lyase Astrocyte,hmgcoa[mA] --> acac[mA] + accoa[mA],Astrocyte
+HPROxm,0.6289548651177644,0,NA,8659,NA,NA,"L-hydroxyproline dehydrogenase (NAD), mitochondrial Astrocyte",4hpro-LT[mA] + nad[mA] --> 1p3h5c[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+Ht,0.07841169548331152,0,NA,"7352, 9016, 9481",NA,NA,proton diffusion Astrocyte,h[cA] <=> h[e],Astrocyte
+Htm,0.8729056923090123,0.032483779603355065,NA,"7352, 9016, 9481","9016, 7352, 7352, 7351, 9016, 7350, 9481",NA,Uncoupling protein Astrocyte,h[cA] --> h[mA],Astrocyte
+ICDHxm,0.09198837344318318,0.032483779603355634,"3419, 3420, 3421, 3421, 3420, 3420","3421, 3420, 3419","3421, 3420, 3419, 3420, 3421, 3419, 3420, 3421, 3419, 3420, 3421, 3419, 3421, 3419, 3420, 3421, 3419, 3420",NA,Isocitrate dehydrogenase (NAD+) Astrocyte,icit[mA] + nad[mA] --> akg[mA] + co2[mA] + nadh[mA],Astrocyte
+ICDHyrm,0.05650382738365311,4.522816031543701e-16,"3417, 3418",3418,NA,NA,Isocitrate dehydrogenase (NADP+) Astrocyte,icit[mA] + nadp[mA] <=> akg[mA] + co2[mA] + nadph[mA],Astrocyte
+ICDHyrm,0.05650382738365311,4.522816031543701e-16,3418,3418,NA,NA,Isocitrate dehydrogenase (NADP+) Astrocyte,icit[mA] + nadp[mA] <=> akg[mA] + co2[mA] + nadph[mA],Astrocyte
+ILETA,0.02927122010479953,3.0371952035706474e-16,"587, 586","586, 587",NA,NA,isoleucine transaminase Astrocyte,akg[cA] + ile-L[cA] <=> 3mop[cA] + glu-L[cA],Astrocyte
+ILETAm,0.017552138787868012,2.8416077817186307e-30,587,587,NA,NA,"isoleucine transaminase, mitochondrial Astrocyte",akg[mA] + ile-L[mA] <=> 3mop[mA] + glu-L[mA],Astrocyte
+ILETAm,0.017552138787868012,2.8416077817186307e-30,"587, 586",587,NA,NA,"isoleucine transaminase, mitochondrial Astrocyte",akg[mA] + ile-L[mA] <=> 3mop[mA] + glu-L[mA],Astrocyte
+ILEt5m,0.0043837757949132155,2.8416077817186307e-30,,,NA,NA,Isoleucine mitochondrial transport Astrocyte,ile-L[cA] <=> ile-L[mA],Astrocyte
+ILEtec,0.028676689935811996,0,"124935, 8501",124935,NA,NA,L-isoleucine transport via diffusion (extracellular to cytosol) Astrocyte,ile-L[e] <=> ile-L[cA],Astrocyte
+IMACTDm,0.7604480529262219,9.491235011158273e-18,"8854, 8854, 501, 224, 223, 8854, 216","8659, 219, 217",NA,NA,Imidazole acetaldeyde dehydrogenase (mito) Astrocyte,h2o[mA] + im4act[mA] + nad[mA] --> 2.0 h[mA] + im4ac[mA] + nadh[mA],Astrocyte
+ITCOAL1m,0.04024039112922538,0,"1591, 1594, 47, 47, 3177, 2030, 9154, 9154, 64078, 9153, 55315, 83884, 10166, 19, 9058, 6576, 2542, 160728, 8801, 8802, 8803, 6528, 284111, 6568, 6574, 6575, 142680, 949, 29881, 171425, 171425, 10786, 10050, 10246, 6569, 10568, 948","8802, 8801",NA,NA,"Itaconate--CoA ligase (GDP-forming), mitochondrial Astrocyte",coa[mA] + gtp[mA] + itacon[mA] <=> gdp[mA] + itaccoa[mA] + pi[mA],Astrocyte
+ITCOAL1m,0.04024039112922538,0,"8801, 8802","8802, 8801",NA,NA,"Itaconate--CoA ligase (GDP-forming), mitochondrial Astrocyte",coa[mA] + gtp[mA] + itacon[mA] <=> gdp[mA] + itaccoa[mA] + pi[mA],Astrocyte
+ITCOALm,0.06480859943747296,0,"1591, 1594, 47, 47, 3177, 2030, 9154, 9154, 64078, 9153, 55315, 83884, 10166, 19, 9058, 6576, 2542, 160728, 8801, 8802, 8803, 6528, 284111, 6568, 6574, 6575, 142680, 949, 29881, 171425, 171425, 10786, 10050, 10246, 6569, 10568, 948","8802, 8803",NA,NA,"Itaconate--CoA ligase (ADP-forming), mitochondrial Astrocyte",atp[mA] + coa[mA] + itacon[mA] <=> adp[mA] + itaccoa[mA] + pi[mA],Astrocyte
+ITCOALm,0.06480859943747296,0,"8802, 8803","8802, 8803",NA,NA,"Itaconate--CoA ligase (ADP-forming), mitochondrial Astrocyte",atp[mA] + coa[mA] + itacon[mA] <=> adp[mA] + itaccoa[mA] + pi[mA],Astrocyte
+Kt1r,0.002295300291752417,0,NA,,NA,NA,potassium transport via uniport (facilitated diffusion) Astrocyte,k[e] <=> k[cA],Astrocyte
+L-LACt2r,0.0934074110312391,0,NA,"6566, 9194, 9123",NA,NA,L-lactate reversible transport via proton symport Astrocyte,h[e] + lac-L[e] <=> h[cA] + lac-L[cA],Astrocyte
+L-LACtm,0.873657550863863,0.2316318208042137,NA,"6566, 9194",6566,NA,"L-lactate transport, mitochondrial Astrocyte",h[cA] + lac-L[cA] --> h[mA] + lac-L[mA],Astrocyte
+LCADiDm,0.7604480529321161,0.09559313845952841,"221, 220, 218, 222, 8854, 8854, 501, 224, 223, 8854, 216","8659, 219, 217, 5832, 7915, 4329",NA,NA,"lactaldehyde dehydrogenase, mitochondrial Astrocyte",h2o[mA] + lald-D[mA] + nad[mA] --> 2.0 h[mA] + lac-D[mA] + nadh[mA],Astrocyte
+LCADiDm,0.7604480529321161,0.09559313845952841,"221, 220, 218, 222, 8659, 8659, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329",NA,NA,"lactaldehyde dehydrogenase, mitochondrial Astrocyte",h2o[mA] + lald-D[mA] + nad[mA] --> 2.0 h[mA] + lac-D[mA] + nadh[mA],Astrocyte
+LCADim,0.7611348882498157,1.2338605514505756e-16,"8659, 8659, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329","8659, 8659, 219, 217, 5832, 4329, 7915, 7915","217, 219, 223, 224, 501","lactaldehyde dehydrogenase, mitochondrial Astrocyte",h2o[mA] + lald-L[mA] + nad[mA] --> 2.0 h[mA] + lac-L[mA] + nadh[mA],Astrocyte
+LCADim,0.7611348882498157,1.2338605514505756e-16,"221, 220, 218, 222, 8659, 8659, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329","8659, 8659, 219, 217, 5832, 4329, 7915, 7915","217, 219, 223, 224, 501","lactaldehyde dehydrogenase, mitochondrial Astrocyte",h2o[mA] + lald-L[mA] + nad[mA] --> 2.0 h[mA] + lac-L[mA] + nadh[mA],Astrocyte
+LCYSTATm,0.016203081834253178,0,2805,2806,NA,NA,"L-Cysteate:2-oxoglutarate aminotransferase, mitochondrial Astrocyte",Lcyst[mA] + akg[mA] <=> 3spyr[mA] + glu-L[mA],Astrocyte
+LDHL,0.08261252061285247,0.33698693032713994,"3948, 3945, 160287, 3948, 55293, 92483, 3939, 197257","160287, 3945, 3939, 3948",NA,NA,L-lactate dehydrogenase Astrocyte,lac-L[cA] + nad[cA] <-- h[cA] + nadh[cA] + pyr[cA],Astrocyte
+LDHLm,0.6171492926085196,6.169302757252878e-17,"3945, 3939, 197257",3939,NA,NA,L-lactate dehydrogenase Astrocyte,lac-L[mA] + nad[mA] <=> h[mA] + nadh[mA] + pyr[mA],Astrocyte
+LDHLm,0.6171492926085196,6.169302757252878e-17,"3948, 3945, 160287, 3948, 55293, 92483, 3939, 197257",3939,NA,NA,L-lactate dehydrogenase Astrocyte,lac-L[mA] + nad[mA] <=> h[mA] + nadh[mA] + pyr[mA],Astrocyte
+LEUTA,0.02927126227970203,3.0371952035706474e-16,"587, 586","586, 587",NA,NA,leucine transaminase Astrocyte,akg[cA] + leu-L[cA] <=> 4mop[cA] + glu-L[cA],Astrocyte
+LEUTAm,0.017552259332638664,0,587,587,NA,NA,"leucine transaminase, mitochondrial Astrocyte",akg[mA] + leu-L[mA] <=> 4mop[mA] + glu-L[mA],Astrocyte
+LEUTAm,0.017552259332638664,0,"587, 586",587,NA,NA,"leucine transaminase, mitochondrial Astrocyte",akg[mA] + leu-L[mA] <=> 4mop[mA] + glu-L[mA],Astrocyte
+LEUt5m,0.0043837575491299996,0,,,NA,NA,leucine mitochondrial transport Astrocyte,leu-L[cA] <=> leu-L[mA],Astrocyte
+LEUtec,0.028676687253213293,0,"124935, 8501",124935,NA,NA,L-leucine transport via diffusion (extracellular to cytosol) Astrocyte,leu-L[e] <=> leu-L[cA],Astrocyte
+LSOProd,0.02363001197225385,0.022548956154016617,NA,,NA,NA,Lumped superoxide production Astrocyte,focytC[mA] + o2[mA] --> ficytC[mA] + o2s[mA],Astrocyte
+LYStiDF,0.006278367181924566,0,"6541, 6542, 55089, 84889","6541, 84889",NA,NA,L-lysine transport via diffusion (extracellular to cytosol) Astrocyte,lys-L[e] <=> lys-L[cA],Astrocyte
+LYStm,0.898236269731813,1.423685251673738e-17,"83884, 10166",83884,"83884, 10166",NA,Lysine mitochondrial transport via ornithine carrier Astrocyte,h[mA] + lys-L[cA] <=> h[cA] + lys-L[mA],Astrocyte
+MALSO3tm,0.004881688481590135,5.694741006694964e-17,1468,1468,NA,NA,"Malate:sulfite antiport, mitochondrial Astrocyte",mal-L[cA] + so3[mA] <=> mal-L[mA] + so3[cA],Astrocyte
+MALSO4tm,0.008230844489008947,0,1468,1468,NA,NA,"Malate:sulfate antiport, mitochondrial Astrocyte",mal-L[cA] + so4[mA] <=> mal-L[mA] + so4[cA],Astrocyte
+MALTSULtm,0.0039598836236808795,0,1468,1468,NA,NA,"Malate:thiosulfate antiport, mitochondrial Astrocyte",mal-L[cA] + tsul[mA] <=> mal-L[mA] + tsul[cA],Astrocyte
+MALTSULtm,0.0039598836236808795,0,"1468, 8402, 6515, 8972, 2548, 2595",1468,NA,NA,"Malate:thiosulfate antiport, mitochondrial Astrocyte",mal-L[cA] + tsul[mA] <=> mal-L[mA] + tsul[cA],Astrocyte
+MALtm,0.03886192942519513,1.706255120005629e-14,"1468, 8402","8402, 1468",NA,NA,"malate transport, mitochondrial Astrocyte",mal-L[cA] + pi[mA] <=> mal-L[mA] + pi[cA],Astrocyte
+MALtm,0.03886192942519513,1.706255120005629e-14,"1468, 8402, 6515, 8972, 2548, 2595","8402, 1468",NA,NA,"malate transport, mitochondrial Astrocyte",mal-L[cA] + pi[mA] <=> mal-L[mA] + pi[cA],Astrocyte
+MCCCrm,0.6759520818704055,1.6182555694024854e-15,"64087, 56922","56922, 64087","56922, 64087","56922, 64087","methylcrotonoyl-CoA carboxylase, mitochondrial Astrocyte",3mb2coa[mA] + atp[mA] + hco3[mA] <=> 3mgcoa[mA] + adp[mA] + h[mA] + pi[mA],Astrocyte
+MDH,0.08914832146784685,1.852689074178095e-14,"4191, 4190, 130752","4190, 4191",NA,NA,malate dehydrogenase Astrocyte,mal-L[cA] + nad[cA] <=> h[cA] + nadh[cA] + oaa[cA],Astrocyte
+MDHm,0.6213138661238209,1.9113213823727588e-14,"4191, 4190",4191,"4191, 4190",NA,"malate dehydrogenase, mitochondrial Astrocyte",mal-L[mA] + nad[mA] <=> h[mA] + nadh[mA] + oaa[mA],Astrocyte
+MDHm,0.6213138661238209,1.9113213823727588e-14,"4191, 4190, 130752",4191,"4191, 4190",NA,"malate dehydrogenase, mitochondrial Astrocyte",mal-L[mA] + nad[mA] <=> h[mA] + nadh[mA] + oaa[mA],Astrocyte
+MECOALm,0.06480859943633265,0,"8802, 8803","8802, 8803",NA,NA,"mesaconate--CoA ligase (ADP-forming), mitochondrial Astrocyte",atp[mA] + coa[mA] + mescon[mA] <=> adp[mA] + mescoa[mA] + pi[mA],Astrocyte
+MECOAS1m,0.04024039112959224,0,"8801, 8802","8802, 8801",NA,NA,mesaconate--CoA ligase (GDP-forming) Astrocyte,coa[mA] + gtp[mA] + mescon[mA] <=> gdp[mA] + mescoa[mA] + pi[mA],Astrocyte
+MGCHrm,0.14720254382132797,0,549,549,NA,NA,"methylglutaconyl-CoA hydratase (reversible), mitochondrial Astrocyte",3mgcoa[mA] + h2o[mA] <=> hmgcoa[mA],Astrocyte
+MMCDm,0.6310181476207332,0.12049383658017869,23417,23417,23417,23417,"Methylmalonyl-CoA decarboxylase, mitochondrial Astrocyte",h[mA] + mmcoa-S[mA] --> co2[mA] + ppcoa[mA],Astrocyte
+MMEm,0.006121195200013699,2.8416077817186307e-30,84693,84693,NA,NA,methylmalonyl-CoA epimerase/racemase Astrocyte,mmcoa-R[mA] <=> mmcoa-S[mA],Astrocyte
+MMMm,0.0033185035139689217,2.8416077817186307e-30,4594,4594,NA,NA,methylmalonyl-CoA mutase Astrocyte,mmcoa-R[mA] <=> succoa[mA],Astrocyte
+MMSAD1m,0.10020284209697176,0.30858520349919577,4329,4329,4329,4329,methylmalonate-semialdehyde dehydrogenase Astrocyte,2mop[mA] + coa[mA] + nad[mA] --> co2[mA] + nadh[mA] + ppcoa[mA],Astrocyte
+MMSAD3m,0.10594478833081925,0.03098273041885492,4329,4329,4329,NA,"methylmalonate-semialdehyde dehydrogenase (malonic semialdehyde), mitochondrial Astrocyte",coa[mA] + msa[mA] + nad[mA] --> accoa[mA] + co2[mA] + nadh[mA],Astrocyte
+MTHFCm,0.7236528116508855,6.123164809281978e-16,"25902, 10797",25902,25902,"10797, 441024, 4522","methenyltetrahydrifikate cyclohydrolase, mitochondrial Astrocyte",h2o[mA] + methf[mA] <=> 10fthf[mA] + h[mA],Astrocyte
+MTHFCm,0.7236528116508855,6.123164809281978e-16,"25902, 4522, 10797, 100287639, 441024",25902,25902,"10797, 441024, 4522","methenyltetrahydrifikate cyclohydrolase, mitochondrial Astrocyte",h2o[mA] + methf[mA] <=> 10fthf[mA] + h[mA],Astrocyte
+MTHFDm,0.022166496937449123,1.2197555216423273e-15,"25902, 4522, 10797",25902,NA,NA,"methylenetetrahydrofolate dehydrogenase (NADP), mitochondrial Astrocyte",mlthf[mA] + nadp[mA] <=> methf[mA] + nadph[mA],Astrocyte
+MTHFDm,0.022166496937449123,1.2197555216423273e-15,"25902, 4522, 10797, 4524, 100287639, 441024",25902,NA,NA,"methylenetetrahydrofolate dehydrogenase (NADP), mitochondrial Astrocyte",mlthf[mA] + nadp[mA] <=> methf[mA] + nadph[mA],Astrocyte
+NABTNOm,0.7604480529332476,9.491235011158273e-18,"8854, 8854, 501, 224, 223, 8854, 216","8659, 219, 217","8659, 219, 217",NA,N4-Acetylaminobutanal:NAD+ oxidoreductase (m) Astrocyte,h2o[mA] + n4abutn[mA] + nad[mA] --> 4aabutn[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+NDPK10m,0.019910086154534375,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dIDP), mitochondrial Astrocyte",atp[mA] + didp[mA] <=> adp[mA] + ditp[mA],Astrocyte
+NDPK10m,0.019910086154534375,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dIDP), mitochondrial Astrocyte",atp[mA] + didp[mA] <=> adp[mA] + ditp[mA],Astrocyte
+NDPK1m,0.02188719878645854,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:GDP), mitochondrial Astrocyte",atp[mA] + gdp[mA] <=> adp[mA] + gtp[mA],Astrocyte
+NDPK1m,0.02188719878645854,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:GDP), mitochondrial Astrocyte",atp[mA] + gdp[mA] <=> adp[mA] + gtp[mA],Astrocyte
+NDPK2m,0.01991008615457793,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:UDP), mitochondrial Astrocyte",atp[mA] + udp[mA] <=> adp[mA] + utp[mA],Astrocyte
+NDPK3m,0.022548097225992544,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:CDP), mitochondrial Astrocyte",atp[mA] + cdp[mA] <=> adp[mA] + ctp[mA],Astrocyte
+NDPK3m,0.022548097225992544,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:CDP), mitochondrial Astrocyte",atp[mA] + cdp[mA] <=> adp[mA] + ctp[mA],Astrocyte
+NDPK4m,0.019919602539790193,3.7964940044633093e-17,4833,4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dTDP), mitochondrial Astrocyte",atp[mA] + dtdp[mA] <=> adp[mA] + dttp[mA],Astrocyte
+NDPK4m,0.019919602539790193,3.7964940044633093e-17,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dTDP), mitochondrial Astrocyte",atp[mA] + dtdp[mA] <=> adp[mA] + dttp[mA],Astrocyte
+NDPK5m,0.019919602539790193,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dGDP), mitochondrial Astrocyte",atp[mA] + dgdp[mA] <=> adp[mA] + dgtp[mA],Astrocyte
+NDPK5m,0.019919602539790193,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dGDP), mitochondrial Astrocyte",atp[mA] + dgdp[mA] <=> adp[mA] + dgtp[mA],Astrocyte
+NDPK6m,0.02278079705619091,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dUDP), mitochondrial Astrocyte",atp[mA] + dudp[mA] <=> adp[mA] + dutp[mA],Astrocyte
+NDPK6m,0.02278079705619091,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dUDP), mitochondrial Astrocyte",atp[mA] + dudp[mA] <=> adp[mA] + dutp[mA],Astrocyte
+NDPK7m,0.019919602539605966,0,4833,4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dCDP), mitochondrial Astrocyte",atp[mA] + dcdp[mA] <=> adp[mA] + dctp[mA],Astrocyte
+NDPK7m,0.019919602539605966,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dCDP), mitochondrial Astrocyte",atp[mA] + dcdp[mA] <=> adp[mA] + dctp[mA],Astrocyte
+NDPK8m,0.01986660655248501,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dADP), mitochondrial Astrocyte",atp[mA] + dadp[mA] <=> adp[mA] + datp[mA],Astrocyte
+NDPK8m,0.01986660655248501,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dADP), mitochondrial Astrocyte",atp[mA] + dadp[mA] <=> adp[mA] + datp[mA],Astrocyte
+NDPK9m,0.019910086153708383,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:IDP), mitochondrial Astrocyte",atp[mA] + idp[mA] <=> adp[mA] + itp[mA],Astrocyte
+NH4t3r,0.09493871690495241,2.8822192264548878e-15,"57127, 6005",57127,NA,NA,ammonia transport via proton antiport Astrocyte,h[e] + nh4[cA] <=> h[cA] + nh4[e],Astrocyte
+NMNATm,0.681989756695749,1.423685251673741e-17,349565,349565,349565,"23057, 349565, 64802","nicotinamide-nucleotide adenylyltransferase, mitochondrial Astrocyte",atp[mA] + h[mA] + nmn[mA] --> nad[mA] + ppi[mA],Astrocyte
+NNATm,0.6423770158458592,1.423685251673741e-17,NA,349565,349565,NA,"nicotinate-nucleotide adenylyltransferase, mitochondrial Astrocyte",atp[mA] + h[mA] + nicrnt[mA] --> dnad[mA] + ppi[mA],Astrocyte
+NTD1m,0.2207949078943969,9.491235011158273e-18,56953,56953,NA,NA,"5'-nucleotidase (dUMP),mitochondrial Astrocyte",dump[mA] + h2o[mA] --> duri[mA] + pi[mA],Astrocyte
+NTD1m,0.2207949078943969,9.491235011158273e-18,"30833, 5251, 56953, 4907, 84618, 22978, 51251, 93034, 93034",56953,NA,NA,"5'-nucleotidase (dUMP),mitochondrial Astrocyte",dump[mA] + h2o[mA] --> duri[mA] + pi[mA],Astrocyte
+NTD2m,0.2228788085483323,0,"51205, 54, 55, 53, 4907, 51251",56953,NA,NA,"5'-nucleotidase (UMP), mitochondrial Astrocyte",h2o[mA] + ump[mA] --> pi[mA] + uri[mA],Astrocyte
+NTD5m,0.22269223140289568,0.1204938365801788,56953,56953,56953,"100526794, 115024, 22978, 30833, 4907, 51251, 55, 56953, 84618, 93034","5'-nucleotidase (dTMP), mitochondrial Astrocyte",dtmp[mA] + h2o[mA] --> pi[mA] + thymd[mA],Astrocyte
+NTD5m,0.22269223140289568,0.1204938365801788,"51205, 54, 55, 53, 30833, 56953, 4907, 84618, 22978, 51251, 93034",56953,56953,"100526794, 115024, 22978, 30833, 4907, 51251, 55, 56953, 84618, 93034","5'-nucleotidase (dTMP), mitochondrial Astrocyte",dtmp[mA] + h2o[mA] --> pi[mA] + thymd[mA],Astrocyte
+NaKt,0.12284799182595578,3.7964940044633093e-17,"23439, 476, 481, 480, 478, 477, 482, 483","477, 481, 480, 476, 482, 478, 483",NA,NA,Na+/K+ exchanging ATPase Astrocyte,atp[cA] + h2o[cA] + 2.0 k[e] + 3.0 na1[cA] --> adp[cA] + h[cA] + 2.0 k[cA] + 3.0 na1[e] + pi[cA],Astrocyte
+O2St,0.03988773510295041,0,,,NA,NA,superoxide anion transport via diffusion (extracellular) Astrocyte,o2s[cA] <=> o2s[e],Astrocyte
+O2Stm,0.09718845523261195,0,,,NA,NA,superoxide anion transport via diffusion (mitochondria) Astrocyte,o2s[cA] <=> o2s[mA],Astrocyte
+O2Stm,0.09718845523261195,0,,,NA,NA,superoxide anion transport via diffusion (mitochondria) Astrocyte,o2s[cA] <=> o2s[mA],Astrocyte
+O2t,0.022612378417385576,0.5948953862997169,,,NA,NA,o2 transport (diffusion) Astrocyte,o2[e] <=> o2[cA],Astrocyte
+O2tm,0.009360367128794114,1.5945274818745863e-15,,,NA,NA,O2 transport (diffusion) Astrocyte,o2[cA] <=> o2[mA],Astrocyte
+O2tm,0.009360367128794114,1.5945274818745863e-15,,,NA,NA,O2 transport (diffusion) Astrocyte,o2[cA] <=> o2[mA],Astrocyte
+OCOAT1m,0.0068000644228410935,1.214878081428259e-15,"64064, 5019",5019,NA,NA,3-oxoacid CoA-transferase Astrocyte,acac[mA] + succoa[mA] <=> aacoa[mA] + succ[mA],Astrocyte
+OIVD1m,0.10599863530779513,0,"1738, 1629, 594, 593, 594","1738, 1629, 594, 593",NA,NA,"2-oxoisovalerate dehydrogenase (acylating; 4-methyl-2-oxopentaoate), mitochondrial Astrocyte",4mop[mA] + coa[mA] + nad[mA] --> co2[mA] + ivcoa[mA] + nadh[mA],Astrocyte
+OIVD2m,0.10591997169933033,1.0039196743396377e-29,"1738, 1629, 594, 593, 594","1738, 1629, 594, 593",NA,NA,"2-oxoisovalerate dehydrogenase (acylating; 3-methyl-2-oxobutanoate), mitochondrial Astrocyte",3mob[mA] + coa[mA] + nad[mA] --> co2[mA] + ibcoa[mA] + nadh[mA],Astrocyte
+OIVD3m,0.10592092170192602,2.8416077817186307e-30,"1738, 1629, 594, 593, 594","1738, 1629, 594, 593",NA,NA,"2-oxoisovalerate dehydrogenase (acylating; 3-methyl-2-oxopentanoate), mitochondrial Astrocyte",3mop[mA] + coa[mA] + nad[mA] --> 2mbcoa[mA] + co2[mA] + nadh[mA],Astrocyte
+ORNTArm,0.02103180945917932,0,4942,4942,NA,NA,ornithine transaminase reversible (m) Astrocyte,akg[mA] + orn[mA] <=> glu-L[mA] + glu5sa[mA],Astrocyte
+ORNt3m,0.8834081084874545,1.423685251673738e-17,"83884, 10166",83884,"83884, 10166",NA,ornithine mitochondrial transport via proton antiport Astrocyte,h[cA] + orn[mA] <=> h[mA] + orn[cA],Astrocyte
+ORNt4m,0.8869307942709613,1.423685251673738e-17,"83884, 10166",83884,"83884, 10166",NA,ornithine mitochondrial transport exchange with citruline Astrocyte,citr-L[cA] + h[cA] + orn[mA] <=> citr-L[mA] + h[mA] + orn[cA],Astrocyte
+ORNtiDF,0.02708460384612846,0,"6541, 6542, 84889","6541, 84889",NA,NA,ornithine transport via diffusion (extracellular to cytosol) Astrocyte,orn[e] --> orn[cA],Astrocyte
+P45011A1m,0.8240268480592522,0.254508384757564,1583,1583,1583,NA,"Cytochrome P450 11A1, mitochondrial [Precursor] Astrocyte",chsterol[mA] + h[mA] + nadph[mA] + 2.0 o2[mA] --> 4mptnl[mA] + 2.0 h2o[mA] + nadp[mA] + prgnlone[mA],Astrocyte
+P5CDm,0.7853027646160629,6.169302757252878e-17,"8659, 8659",8659,"8659, 8659",8659,"1-pyrroline-5-carboxylate dehydrogenase, mitochondrial Astrocyte",1pyr5c[mA] + 2.0 h2o[mA] + nad[mA] --> glu-L[mA] + h[mA] + nadh[mA],Astrocyte
+PCFLOPm,0.1379848673465788,0,57194,57194,57194,NA,phosphatidylcholine flippase Astrocyte,atp[cA] + h2o[cA] + pchol_hs[mA] --> adp[cA] + h[cA] + pchol_hs[cA] + pi[cA],Astrocyte
+PCm,0.6838595264846147,0.21279607091181427,"5091, 5091",5091,"5091, 5091",5091,pyruvate carboxylase Astrocyte,atp[mA] + hco3[mA] + pyr[mA] --> adp[mA] + h[mA] + oaa[mA] + pi[mA],Astrocyte
+PDHm,0.11224712125269136,3.0371952035706193e-16,"1738, 8050, 5160, 5161, 5162, 1737","8050, 1738, 5162, 5161, 1737, 5160",NA,NA,pyruvate dehydrogenase Astrocyte,coa[mA] + nad[mA] + pyr[mA] --> accoa[mA] + co2[mA] + nadh[mA],Astrocyte
+PEFLIP,0.13262846054140154,1.8982470022316547e-17,"57194, 5244, 10396","57194, 10396","10396, 57194, 5244",NA,phosphatidylethanolamine flippase Astrocyte,atp[cA] + h2o[cA] + pe_hs[e] --> adp[cA] + h[cA] + pe_hs[cA] + pi[cA],Astrocyte
+PEFLIPm,0.12860912040514144,0,"57194, 5244, 10396","57194, 10396","57194, 10396",NA,phosphatidylethanolamine flippase Astrocyte,atp[cA] + h2o[cA] + pe_hs[cA] --> adp[cA] + h[cA] + pe_hs[mA] + pi[cA],Astrocyte
+PEFLIPm,0.12860912040514144,0,"57194, 10396","57194, 10396","57194, 10396",NA,phosphatidylethanolamine flippase Astrocyte,atp[cA] + h2o[cA] + pe_hs[cA] --> adp[cA] + h[cA] + pe_hs[mA] + pi[cA],Astrocyte
+PETOHMmhs,0.5834759988260231,9.918340586660396e-15,"5833, 10400, 10400, 10400, 122970, 10005, 2168",10400,NA,NA,phosphatidylethanolamine N-methyltransferase Astrocyte,3.0 amet[mA] + pe_hs[mA] --> 3.0 ahcys[mA] + 3.0 h[mA] + pchol_hs[mA],Astrocyte
+PETOHMmhs,0.5834759988260231,9.918340586660396e-15,"10400, 10400, 10400",10400,NA,NA,phosphatidylethanolamine N-methyltransferase Astrocyte,3.0 amet[mA] + pe_hs[mA] --> 3.0 ahcys[mA] + 3.0 h[mA] + pchol_hs[mA],Astrocyte
+PGCD,0.2070271898995431,1.7463872420531224e-15,26227,26227,NA,NA,phosphoglycerate dehydrogenase Astrocyte,3pg[cA] + nad[cA] --> 3php[cA] + h[cA] + nadh[cA],Astrocyte
+PGL,0.09259010703188256,7.474347571287139e-17,"10165, 8604, 8714, 6565, 9563, 23169, 80146, 54578, 54600, 54658, 6564, 25796, 21","10165, 8604, 25796",NA,NA,6-phosphogluconolactonase Astrocyte,6pgl[cA] + h2o[cA] --> 6pgc[cA] + h[cA],Astrocyte
+PHCDm,0.7564581530177089,6.169302757252878e-17,"8659, 8659",8659,"8659, 8659",8659,L-1-pyrroline-3-hydroxy-5-carboxylate dehydrogenase Astrocyte,1p3h5c[mA] + 2.0 h2o[mA] + nad[mA] --> e4hglu[mA] + h[mA] + nadh[mA],Astrocyte
+PHCHGSm,0.7142990972369775,1.8033346521200719e-16,,,NA,NA,"L-1-Pyrroline-3-hydroxy-5-carboxylate spontaneous conversion to L-4-Hydroxyglutamate semialdehyde, mitochondrial Astrocyte",1p3h5c[mA] + h2o[mA] + h[mA] <=> 4hglusa[mA],Astrocyte
+PHEMEtm,0.03965930615341105,0,,,NA,NA,Heme transport to cytosol Astrocyte,pheme[mA] <=> pheme[cA],Astrocyte
+PHETA1m,0.014181500091048476,0,"2806, 6898",2806,NA,NA,phenylalanine transaminase (m) Astrocyte,akg[mA] + phe-L[mA] <=> glu-L[mA] + phpyr[mA],Astrocyte
+PHETA1m,0.014181500091048476,0,"2805, 2806, 6898",2806,NA,NA,phenylalanine transaminase (m) Astrocyte,akg[mA] + phe-L[mA] <=> glu-L[mA] + phpyr[mA],Astrocyte
+PIt2m,1,1.239129384979873e-14,NA,5250,"5250, 5250, 5250, 5250",NA,"phosphate transporter, mitochondrial Astrocyte",h[cA] + pi[cA] <=> h[mA] + pi[mA],Astrocyte
+PIt7,0.02691420860927867,0,"6568, 10786, 10050, 10246, 6569, 10568","57084, 10568, 6569",NA,NA,phosphate transport in/out via three Na+ symporter Astrocyte,3.0 na1[e] + pi[e] <=> 3.0 na1[cA] + pi[cA],Astrocyte
+PNTKm,0.6360222274914543,1.423685251673741e-17,"55229, 79646, 80025, 53354, 80025, 80025, 53354, 53354, 80025",80025,80025,NA,pantothenate kinase (mitochondrial) Astrocyte,atp[mA] + pnto-R[mA] --> 4ppan[mA] + adp[mA] + h[mA],Astrocyte
+PPA2m,0.7735929920899649,1.423685251673741e-17,,,NA,"27068, 5464, 64077","inorganic triphosphatase, mitochondrial Astrocyte",h2o[mA] + pppi[mA] --> h[mA] + pi[mA] + ppi[mA],Astrocyte
+PPA2m,0.7735929920899649,1.423685251673741e-17,"8854, 8854, 501, 224, 223, 8854, 216, 57818, 92579, 2538, 160728, 27068, 27068, 27068, 27068, 8612, 8613, 8611, 8611, 64077, 5464",,NA,"27068, 5464, 64077","inorganic triphosphatase, mitochondrial Astrocyte",h2o[mA] + pppi[mA] --> h[mA] + pi[mA] + ppi[mA],Astrocyte
+PPAt,0.04569058454047687,0,,,NA,NA,"Propionate transport, diffusion Astrocyte",ppa[e] --> ppa[cA],Astrocyte
+PPAt,0.04569058454047687,0,"8854, 8854, 501, 224, 223, 8854, 216, 57818, 92579, 2538, 160728, 27068, 27068, 27068, 27068, 8612, 8613, 8611, 8611, 64077, 5464",,NA,NA,"Propionate transport, diffusion Astrocyte",ppa[e] --> ppa[cA],Astrocyte
+PPAtm,0.11623623263582314,0,,,NA,NA,"Propionate transport, diffusion Astrocyte",ppa[cA] --> ppa[mA],Astrocyte
+PPAtm,0.11623623263582314,0,,,NA,NA,"Propionate transport, diffusion Astrocyte",ppa[cA] --> ppa[mA],Astrocyte
+PPAtm,0.11623623263582314,0,"8854, 8854, 501, 224, 223, 8854, 216, 57818, 92579, 2538, 160728, 27068, 27068, 27068, 27068, 8612, 8613, 8611, 8611, 64077, 5464",,NA,NA,"Propionate transport, diffusion Astrocyte",ppa[cA] --> ppa[mA],Astrocyte
+PPBNGS,0.09833125075998576,1.4948695142574285e-16,"210, 210",210,NA,NA,porphobilinogen synthase Astrocyte,2.0 5aop[cA] --> 2.0 h2o[cA] + h[cA] + ppbng[cA],Astrocyte
+PPCOACm,0.6806332497376004,3.1795637287380505e-16,NA,"5095, 5096","5096, 5095","5095, 5096","Propionyl-CoA carboxylase, mitochondrial Astrocyte",atp[mA] + hco3[mA] + ppcoa[mA] --> adp[mA] + h[mA] + mmcoa-S[mA] + pi[mA],Astrocyte
+PPCOAOm,0.019627931834287186,0,NA,"34, 36, 28976, 80724, 27034",NA,NA,"Propanoyl-CoA:FAD 2,3-oxidoreductase, mitochondrial Astrocyte",fad[mA] + ppcoa[mA] --> fadh2[mA] + prpncoa[mA],Astrocyte
+PPPG9tm,0.007129346598950267,0,,,NA,NA,protoporphyrinogen IX mitochondrial transport Astrocyte,pppg9[cA] <=> pppg9[mA],Astrocyte
+PPPGOm,0.1476351421668599,4.555792805355971e-16,5498,5498,NA,NA,"protoporphyrinogen oxidase, mitochondrial Astrocyte",3.0 o2[mA] + 2.0 pppg9[mA] --> 6.0 h2o[mA] + 2.0 ppp9[mA],Astrocyte
+PRGNLONEtm,0.03892467527897877,0,,,NA,NA,pregnenolone intracellular transport Astrocyte,prgnlone[cA] <=> prgnlone[mA],Astrocyte
+PRO1xm,0.6123839483448362,0.08945010681678645,58510,5625,5625,NA,"proline oxidase (NAD), mitochondrial Astrocyte",nad[mA] + pro-L[mA] --> 1pyr5c[mA] + 2.0 h[mA] + nadh[mA],Astrocyte
+PROD2m,0.6426653040242911,0.09236690168139317,5625,5625,5625,NA,Proline dehydrogenase (m) Astrocyte,fad[mA] + pro-L[mA] --> 1pyr5c[mA] + fadh2[mA] + h[mA],Astrocyte
+PROD2m,0.6426653040242911,0.09236690168139317,"5625, 58510",5625,5625,NA,Proline dehydrogenase (m) Astrocyte,fad[mA] + pro-L[mA] --> 1pyr5c[mA] + fadh2[mA] + h[mA],Astrocyte
+PROt2r,0.09299665196125233,0,"206358, 153201",206358,NA,NA,L-proline reversible transport via proton symport Astrocyte,h[e] + pro-L[e] <=> h[cA] + pro-L[cA],Astrocyte
+PROtm,0.00437638612918171,0,,,NA,NA,"L-proline transport, mitochondrial Astrocyte",pro-L[cA] <=> pro-L[mA],Astrocyte
+PRPNCOAHYDm,0.14001939050368245,7.592988008926619e-17,NA,"3030, 3032, 549, 1892",NA,NA,Propenoyl-CoA hydrolase (m) Astrocyte,h2o[mA] + prpncoa[mA] --> 3hpcoa[mA],Astrocyte
+PSERT,0.005158257811179533,1.7463872420531224e-15,"6565, 6564, 29968, 29968",29968,NA,NA,phosphoserine transaminase Astrocyte,3php[cA] + glu-L[cA] --> akg[cA] + pser-L[cA],Astrocyte
+PSFLIP,0.13262846053114236,0.10162624639766828,"57194, 10396","57194, 10396","10396, 57194",NA,phosphatidylserine flippase Astrocyte,atp[cA] + h2o[cA] + ps_hs[e] --> adp[cA] + h[cA] + pi[cA] + ps_hs[cA],Astrocyte
+PSFLIPm,0.12318706041564967,0.10162624639766828,"57194, 10396","57194, 10396","10396, 57194",NA,phosphatidylserine flippase Astrocyte,atp[cA] + h2o[cA] + ps_hs[cA] --> adp[cA] + h[cA] + pi[cA] + ps_hs[mA],Astrocyte
+PSFLIPm,0.12318706041564967,0.10162624639766828,"57194, 10396","57194, 10396","10396, 57194",NA,phosphatidylserine flippase Astrocyte,atp[cA] + h2o[cA] + ps_hs[cA] --> adp[cA] + h[cA] + pi[cA] + ps_hs[mA],Astrocyte
+PSPL,0.017926166839227636,1.7665561164518338e-15,"5723, 8781",5723,NA,NA,phosphoserine phosphatase (L-serine) Astrocyte,h2o[cA] + pser-L[cA] --> pi[cA] + ser-L[cA],Astrocyte
+PYLALDOXm,0.7604480529448593,9.491235011158273e-18,NA,"8659, 219, 217","8659, 8659, 219, 217",NA,Perillyl aldehyde:NAD+ oxidoreductase (m) Astrocyte,h2o[mA] + nad[mA] + pylald[mA] --> 2.0 h[mA] + nadh[mA] + peracd[mA],Astrocyte
+PYRt2m,0.8845002578341493,3.1795637287379933e-16,6566,6566,6566,NA,pyruvate mitochondrial transport via proton symport Astrocyte,h[cA] + pyr[cA] <=> h[mA] + pyr[mA],Astrocyte
+PYRt2r,0.0940942246039769,0,"9123, 9194, 6566","6566, 9194, 9123",NA,NA,pyruvate reversible transport via proton symport Astrocyte,h[e] + pyr[e] <=> h[cA] + pyr[cA],Astrocyte
+RPE,0.027462249701813907,0,"6564, 6120, 6120",6120,NA,NA,ribulose 5-phosphate 3-epimerase Astrocyte,ru5p-D[cA] <=> xu5p-D[cA],Astrocyte
+RPI,0.01749449509776507,0,"6565, 22934, 6564",22934,NA,NA,ribose-5-phosphate isomerase Astrocyte,r5p[cA] <=> ru5p-D[cA],Astrocyte
+SACCD3m,0.759898791130509,6.169302757252878e-17,10157,10157,10157,10157,"saccharopine dehydrogenase (NADP, L-lysine forming), mitochondrial Astrocyte",akg[mA] + h[mA] + lys-L[mA] + nadph[mA] --> h2o[mA] + nadp[mA] + saccrp-L[mA],Astrocyte
+SACCD4m,0.7456410176799835,2.1355278775106113e-16,10157,10157,10157,10157,"saccharopine dehydrogenase (NAD, L-glutamate forming), mitochondrial Astrocyte",h2o[mA] + nadp[mA] + saccrp-L[mA] --> L2aadp6sa[mA] + glu-L[mA] + h[mA] + nadph[mA],Astrocyte
+SARCStex,0.04972153231585645,0,,,NA,NA,Sarcosine transport (extracellular to cytosol) Astrocyte,sarcs[e] <=> sarcs[cA],Astrocyte
+SARCStm,0.09384265936126157,0,,,NA,NA,Sarcosine transport (mitochondrial) Astrocyte,sarcs[cA] --> sarcs[mA],Astrocyte
+SARDHm,0.04596709096382085,1.1389482013389929e-16,1757,1757,NA,NA,Sarcosine dehydrogenase (m) Astrocyte,fad[mA] + sarcs[mA] + thf[mA] --> fadh2[mA] + gly[mA] + mlthf[mA],Astrocyte
+SERGLNexR,0.005401084613286732,0.49186567223944944,"6520, 56301","6520, 56301","56301, 6520",NA,L-Serine/Glutamine reversible exchange Astrocyte,gln-L[cA] + ser-L[e] --> gln-L[e] + ser-L[cA],Astrocyte
+SERGLYexR,0.004841069648130542,0,"6520, 56301","6520, 56301",NA,NA,L-Serine/Glycine reversible exchange Astrocyte,gly[cA] + ser-L[e] <=> gly[e] + ser-L[cA],Astrocyte
+SERt4,0.005043844026653325,0.0356467646820834,"11254, 57393, 59272, 54407, 340024, 81539, 55089","11254, 81539, 54407",NA,"81539.1, 11254.1, 54407.1, 55089.1, 340024.1, 57393.1, 340024.1, 59272.1",L-serine via sodium symport Astrocyte,na1[e] + ser-L[e] --> na1[cA] + ser-L[cA],Astrocyte
+SLDxm,0.6145193813766083,4.745617505579137e-18,"4190, 130752",4191,4191,NA,"L-sulfolactate dehydrogenase (NAD+), mitochondrial Astrocyte",nad[mA] + sl-L[mA] <=> 3spyr[mA] + h[mA] + nadh[mA],Astrocyte
+SO4HCOtex,0.043866541990566145,0,"1811, 10861, 10861, 10861, 1836, 115019, 116369, 115111, 116369, 284129, 115111, 115019","115019, 10861, 116369, 284129",NA,NA,sulfate transport via bicarbonate countertransport Astrocyte,2.0 hco3[cA] + so4[e] --> 2.0 hco3[e] + so4[cA],Astrocyte
+SPODMm,0.6228252663414706,0.02008412559315792,6648,6648,NA,6648,superoxide dismutase Astrocyte,2.0 h[mA] + 2.0 o2s[mA] --> h2o2[mA] + o2[mA],Astrocyte
+SPODMm,0.6228252663414706,0.02008412559315792,"6649, 6648, 6647",6648,NA,6648,superoxide dismutase Astrocyte,2.0 h[mA] + 2.0 o2s[mA] --> h2o2[mA] + o2[mA],Astrocyte
+SSALxm,0.7732745777417783,0.24074095757367886,NA,7915,7915,7915,succinate-semialdehyde dehydrogenase (NAD) reversible (mitochondrial) Astrocyte,h2o[mA] + nad[mA] + sucsal[mA] --> 2.0 h[mA] + nadh[mA] + succ[mA],Astrocyte
+SUCCt2m,0.03644656500682152,9.491235011158273e-18,1468,1468,NA,NA,"succinate transport, mitochondrial Astrocyte",pi[mA] + succ[cA] <=> pi[cA] + succ[mA],Astrocyte
+SUCD1m,0.010607188261999119,3.416844604016978e-16,"6391, 6389, 6390, 6392","6390, 6389, 6391, 6392",NA,NA,succinate dehydrogenase Astrocyte,fad[mA] + succ[mA] <=> fadh2[mA] + fum[mA],Astrocyte
+SUCOAS1m,0.032074638368075226,0,"8801, 8802","8802, 8801",NA,NA,Succinate--CoA ligase (GDP-forming) Astrocyte,coa[mA] + gtp[mA] + succ[mA] --> gdp[mA] + pi[mA] + succoa[mA],Astrocyte
+SUCOASm,0.07016052052724207,3.0371952035706474e-16,"8802, 8803","8802, 8803",NA,NA,Succinate--CoA ligase (ADP-forming) Astrocyte,atp[mA] + coa[mA] + succ[mA] <=> adp[mA] + pi[mA] + succoa[mA],Astrocyte
+SULFOX,0.11701109127546011,2.0762076586908714e-16,6821,6821,NA,NA,sulfite oxidase Astrocyte,2.0 ficytC[mA] + h2o[cA] + so3[cA] --> 2.0 focytC[mA] + 2.0 h[cA] + so4[cA],Astrocyte
+T2M26DCOAHLm,0.13987429862726988,0,NA,"3030, 3032, 549",NA,NA,"trans-2-Methyl-5-isopropylhexa-2,5-dienoyl-CoA hydro-lyase (m) Astrocyte",h2o[mA] + t2m26dcoa[mA] <=> 3h26dm5coa[mA],Astrocyte
+T4HCINNMFM,0.1487424129202011,7.592988008926619e-17,,,NA,NA,4-hydroxycinnamate formation Astrocyte,34hpl[mA] --> T4hcinnm[mA] + h2o[mA],Astrocyte
+TALA,0.12899686748025488,0,"11136, 6519, 6888",6888,NA,NA,transaldolase Astrocyte,g3p[cA] + s7p[cA] <=> e4p[cA] + f6p[cA],Astrocyte
+TCYNTt,0.04541267509712388,0,,,NA,NA,Thiocyanate transport via diffusion (cytosol to extracellular) Astrocyte,tcynt[cA] --> tcynt[e],Astrocyte
+TCYNTtm,0.10111692290587314,0,,,NA,NA,Thiocyanate transport via diffusion (mitochondrial) Astrocyte,tcynt[mA] --> tcynt[cA],Astrocyte
+TCYNTtm,0.10111692290587314,0,,,NA,NA,Thiocyanate transport via diffusion (mitochondrial) Astrocyte,tcynt[mA] --> tcynt[cA],Astrocyte
+THD1m,0.9582790935574187,8.691140482554369e-16,"23530, 23530",23530,"23530, 23530",23530,NAD(P) transhydrogenase Astrocyte,h[cA] + nadh[mA] + nadp[mA] <=> h[mA] + nad[mA] + nadph[mA],Astrocyte
+THFtm,0.022044166062949233,0,,,NA,NA,"5,6,7,8-Tetrahydrofolate transport, diffusion, mitochondrial Astrocyte",thf[cA] <=> thf[mA],Astrocyte
+TKT1,0.11095428028452131,0,"84076, 8277, 7086","8277, 7086",NA,NA,transketolase Astrocyte,r5p[cA] + xu5p-D[cA] <=> g3p[cA] + s7p[cA],Astrocyte
+TKT2,0.1455240389488371,6.074390407141295e-16,"84076, 8277, 7086","8277, 7086",NA,"7086.1, 84076.1, 8277.1",transketolase Astrocyte,e4p[cA] + xu5p-D[cA] <=> f6p[cA] + g3p[cA],Astrocyte
+TMDK1m,0.646585310476176,1.423685251673741e-17,7084,7084,7084,NA,thymidine kinase (ATP:thymidine) Astrocyte,atp[mA] + thymd[mA] --> adp[mA] + dtmp[mA] + h[mA],Astrocyte
+TMDK1m,0.646585310476176,1.423685251673741e-17,"7083, 7084",7084,7084,NA,thymidine kinase (ATP:thymidine) Astrocyte,atp[mA] + thymd[mA] --> adp[mA] + dtmp[mA] + h[mA],Astrocyte
+TRDRm,0.5762136037451048,1.423685251673741e-17,"7296, 7296, 7296, 7296",10587,"114112, 10587, 10587, 10587",NA,thioredoxin reductase (NADPH) Astrocyte,h[mA] + nadph[mA] + trdox[mA] --> nadp[mA] + trdrd[mA],Astrocyte
+TYRTAm,0.03405831744599727,0,"117247, 2805, 2806, 11254, 57393, 59272, 340024, 6565, 6898, 6564",2806,NA,NA,"tyrosine transaminase, mitochondrial Astrocyte",akg[mA] + tyr-L[mA] <=> 34hpp[mA] + glu-L[mA],Astrocyte
+TYRTAm,0.03405831744599727,0,"2806, 6898",2806,NA,NA,"tyrosine transaminase, mitochondrial Astrocyte",akg[mA] + tyr-L[mA] <=> 34hpp[mA] + glu-L[mA],Astrocyte
+TYRTAm,0.03405831744599727,0,"2805, 2806, 6898",2806,NA,NA,"tyrosine transaminase, mitochondrial Astrocyte",akg[mA] + tyr-L[mA] <=> 34hpp[mA] + glu-L[mA],Astrocyte
+UPP3S,0.017828263589196227,7.474347571287141e-17,7390,7390,NA,NA,uroporphyrinogen-III synthase Astrocyte,hmbil[cA] --> h2o[cA] + uppg3[cA],Astrocyte
+UPPDC1,0.08580832112970627,1.1380378652837624e-31,7389,7389,NA,NA,uroporphyrinogen decarboxylase (uroporphyrinogen III) Astrocyte,4.0 h[cA] + uppg3[cA] --> 4.0 co2[cA] + cpppg3[cA],Astrocyte
+VALTA,0.029271220119996784,3.0371952035706474e-16,"587, 586","586, 587",NA,NA,valine transaminase Astrocyte,akg[cA] + val-L[cA] <=> 3mob[cA] + glu-L[cA],Astrocyte
+VALTAm,0.01755213670218736,1.0039196743396377e-29,587,587,NA,NA,"valine transaminase, mitochondiral Astrocyte",akg[mA] + val-L[mA] <=> 3mob[mA] + glu-L[mA],Astrocyte
+VALTAm,0.01755213670218736,1.0039196743396377e-29,"587, 586",587,NA,NA,"valine transaminase, mitochondiral Astrocyte",akg[mA] + val-L[mA] <=> 3mob[mA] + glu-L[mA],Astrocyte
+VALt5m,0.004383775791477398,1.0039196743396377e-29,,,NA,NA,Valine reversible mitochondrial transport Astrocyte,val-L[cA] <=> val-L[mA],Astrocyte
+VALtec,0.028676689941446936,0,"124935, 8501",124935,NA,NA,L-valine transport via diffusion (extracellular to cytosol) Astrocyte,val-L[e] <=> val-L[cA],Astrocyte
+VITD2Hm,0.7609266177498286,2.1355278775106113e-16,NA,"1594, 1591, 1593",1593,120227,Vitamin D-25-hydroxylase (D2) Astrocyte,h[mA] + nadph[mA] + o2[mA] + vitd2[mA] --> 25hvitd2[mA] + h2o[mA] + nadp[mA],Astrocyte
+VITD2tm,0.03892345839087216,0,NA,,NA,NA,Vitamin D2 transport from mitochondria Astrocyte,vitd2[mA] <=> vitd2[cA],Astrocyte
+VITD3Hm,0.7613410171459681,2.1355278775106113e-16,NA,"1594, 1591, 1593",1593,120227,Vitamin D-25-hydroxylase (D3) Astrocyte,h[mA] + nadph[mA] + o2[mA] + vitd3[mA] --> 25hvitd3[mA] + h2o[mA] + nadp[mA],Astrocyte
+VITD3tm,0.008957573180017341,0,"949, 29881, 948",,NA,NA,Vitamin D3 transport from mitochondria Astrocyte,vitd3[mA] --> vitd3[cA],Astrocyte
+VITD3tm3,0.00895757317947907,0,"949, 29881, 948",,NA,NA,Vitamin D3 transport in mitochondria Astrocyte,vitd3[cA] --> vitd3[mA],Astrocyte
+MTDNAploym,0.031425573422394965,0,NA,,NA,NA,polymerization of mtDNA Astrocyte,9218.0 datp[mA] + 7350.0 dctp[mA] + 7350.0 dgtp[mA] + 9218.0 dttp[mA] + mtDNAn-1[mA] --> mtDNAn[mA] + 33136.0 ppi[mA],Astrocyte
+MTDNAdpolym,0.7245807468680731,1.0569439308425854e-13,NA,,"5810, 5883, 11219, 11277","11219, 11277, 5810, 5883",depolymerization of mtDNA for repair Astrocyte,33136.0 h2o[mA] + mtDNAn[mA] --> 9218.0 damp[mA] + 7350.0 dcmp[mA] + 7350.0 dgmp[mA] + 9218.0 dtmp[mA] + 33136.0 h[mA] + mtDNAn-1[mA],Astrocyte
+DAKm,0.0043192099983705,0,NA,50808,NA,NA,adentylate kinase (GTP) / GTP-AMP Phosphotransferase Astrocyte,damp[mA] + gtp[mA] --> dadp[mA] + gdp[mA],Astrocyte
+DTKm,0.024512592543629187,3.7964940044633093e-17,NA,,NA,NA,deoxythymidylate kinase (ATP) Astrocyte,atp[mA] + dtmp[mA] --> adp[mA] + dtdp[mA],Astrocyte
+DCKm,0.02276788054215283,0,NA,,NA,NA,deoxycytidylate kinase (ATP) Astrocyte,atp[mA] + dcmp[mA] --> adp[mA] + dcdp[mA],Astrocyte
+DGKm,0.022767880541702434,0,NA,,NA,NA,deoxyguanylate kinase (ATP) Astrocyte,atp[mA] + dgmp[mA] --> adp[mA] + dgdp[mA],Astrocyte
+NH3tm,0.906897728995234,1.7854642456557065e-14,NA,366,NA,NA,mitochondrial ammonium transport Astrocyte,h[mA] + nh4[cA] <=> h[cA] + nh4[mA],Astrocyte
+NDPK1,0.012263395261177734,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833","4833, 10201, 4831, 4830, 4832",NA,NA,GTP-ADP Phosphotransferase Astrocyte,atp[cA] + gdp[cA] <=> adp[cA] + gtp[cA],Astrocyte
+GGNG,0.08207107491354858,2.276075730567525e-31,"2992, 2997, 8908, 2998","2992, 2997, 8908, 2998",NA,NA,glycogenin Astrocyte,Tyr-ggn[cA] + 8.0 udpg[cA] --> ggn[cA] + 8.0 h[cA] + 8.0 udp[cA],Astrocyte
+GLGNS1,0.09400408737420073,0.8826984114934225,"2992, 2997, 8908, 2998","2992, 2997, 8908, 2998","8908, 2998, 2992, 2997",NA,glycogen synthase Astrocyte,ggn[cA] + 3.0 udpg[cA] --> glygn1[cA] + 3.0 h[cA] + 3.0 udp[cA],Astrocyte
+GLBRAN,0.006809462149026882,0,2632,2632,NA,NA,"1,4-alpha-glucan branching enzyme (glygn1 -> glygn2) Astrocyte",glygn1[cA] --> glygn2[cA],Astrocyte
+GLPASE1,0.018568619239590172,1.7084223020084892e-16,"5837, 5834, 5836","5837, 5834, 5836",NA,NA,glycogen phosphorylase (glygn2 -> dxtrn) Astrocyte,glygn2[cA] + 3.0 pi[cA] --> dxtrn[cA] + 3.0 g1p[cA],Astrocyte
+GLDBRAN,0.02388285603702931,1.2896215571411306e-15,"178, 178, 178, 178, 178, 178",178,NA,NA,glycogen debranching enzyme Astrocyte,dxtrn[cA] + h2o[cA] --> glc-D[cA] + glygn3[cA],Astrocyte
+GLPASE2,0.023919627264636183,5.232043299900998e-16,"5837, 5834, 5836","5837, 5834, 5836",NA,NA,glycogen phosphorylase (amyls -> glc-D) Astrocyte,glygn3[cA] + 7.0 h2o[cA] --> Tyr-ggn[cA] + 7.0 glc-D[cA],Astrocyte
+SERtm,0.002361349473073314,9.989320675815738e-16,NA,,NA,NA,Serine mitochondrial transporter Astrocyte,ser-L[cA] <=> ser-L[mA],Astrocyte
+LacLtm,0.004366223892417056,0.21515060286482135,,366,366,NA,L-lactate mito transporter thorugh AQP9 Astrocyte,lac-L[cA] --> lac-L[mA],Astrocyte
+UREAt,0.04640624232002031,0,"6523, 366, 6528, 8170, 6563","366, 6563, 8170",NA,NA,Urea transporter Astrocyte,urea[e] <=> urea[cA],Astrocyte
+UREAtm,0.11901756766866169,0,366,366,NA,NA,Urea mitochondrial transporter Astrocyte,urea[cA] <=> urea[mA],Astrocyte
+UREAtm,0.11901756766866169,0,"6523, 366, 6528, 8170, 6563",366,NA,NA,Urea mitochondrial transporter Astrocyte,urea[cA] <=> urea[mA],Astrocyte
+GLNtN1,0.08519134652261967,0.4877863136962158,"10991, 92745","92745, 10991","92745, 10991",NA,Glutamine transporter Astrocyte,gln-L[e] + h[cA] + na1[e] --> gln-L[cA] + h[e] + na1[cA],Astrocyte
+sinkchsterol,0.02202068436201591,0,NA,,NA,NA,Cholesterol uptake into brain Astrocyte, --> chsterol[cA],Astrocyte
+sinkvitd3,0.011742578932292759,0.10415462927005129,NA,,NA,NA,vitd3 source Astrocyte, --> vitd3[cA],Astrocyte
+sinkvitd2,0.02202005891688465,0.10415462927005129,NA,,NA,NA,vitd2 source Astrocyte, --> vitd2[cA],Astrocyte
+CKc,0.03361651408747866,0,"1160, 548596, 1159, 1152, 1158, 1633, 57419, 25769, 123041, 123041, 123041, 9187, 5105, 5106","1152, 1158",NA,NA,ATP Creatine kinase Astrocyte,atp[cA] + creat[cA] <=> adp[cA] + pcreat[cA],Astrocyte
+CKc,0.03361651408747866,0,"1152, 1158","1152, 1158",NA,NA,ATP Creatine kinase Astrocyte,atp[cA] + creat[cA] <=> adp[cA] + pcreat[cA],Astrocyte
+CREATtmdiffir,0.009248287676799286,0,,,NA,NA,Creatine transport to/from mitochondria via diffusion Astrocyte,creat[cA] --> creat[mA],Astrocyte
+PCREATtmdiffir,0.009248287676799286,0.022932679057345553,,,NA,NA,Phosphocreatine transport to/from mitochondria via diffusion Astrocyte,pcreat[mA] --> pcreat[cA],Astrocyte
+ALATAL,0.06493393191686535,1.5610392243349075e-14,"2875, 84706","84706, 2875",NA,NA,L-alanine transaminase Astrocyte,akg[cA] + ala-L[cA] <=> glu-L[cA] + pyr[cA],Astrocyte
+ALATALm,0.012358659580536804,7.873456389951942e-16,"2875, 84706","84706, 2875",NA,NA,"L-alanine transaminase, mitochondrial Astrocyte",akg[mA] + ala-L[mA] <=> glu-L[mA] + pyr[mA],Astrocyte
+ALAtN1,0.006600307405243695,0,"10991, 92745","92745, 10991",NA,NA,"Alanine transport (Na, H coupled) Astrocyte",ala-L[e] <=> ala-L[cA],Astrocyte
+PSDmhs,0.6320000600443088,2.25416831515009e-16,23761,23761,NA,NA,Phosphatidylserine decarboxylase Astrocyte,h[mA] + ps_hs[mA] --> co2[mA] + pe_hs[mA],Astrocyte
+25HVITD2tInt,0.004090606823604529,0,,,NA,NA,25-hydroxyvitamin D2 transport from cytoplasm Interstitial And Synapse,25hvitd2[cA] --> 25hvitd2[I],Astrocyte
+25HVITD2tinInt,0.004090606823602134,0,,,NA,NA,25-hydroxyvitamin D2 transport in cytoplasm Interstitial And Synapse,25hvitd2[I] --> 25hvitd2[cA],Astrocyte
+25HVITD3tInt,0.004090617901905814,0,,,NA,NA,25-hydroxyvitamin D3 transport from cytoplasm Interstitial And Synapse,25hvitd3[cA] --> 25hvitd3[I],Astrocyte
+25HVITD3tinInt,0.0040906179018568994,0,,,NA,NA,25-hydroxyvitamin D3 transport in cytoplasm Interstitial And Synapse,25hvitd3[I] --> 25hvitd3[cA],Astrocyte
+3AIBtInt,0.022346381721046936,1.0039196743396377e-29,NA,,NA,NA,3-amino-isobutyrate transport Interstitial And Synapse,3aib[cA] --> 3aib[I],Astrocyte
+ABUTt2rInt,0.07894801431044375,2.845094663209406e-32,206358,206358,NA,NA,4-aminobutyrate reversible transport in via proton symport Interstitial And Synapse,4abut[I] + h[I] <=> 4abut[cA] + h[cA],Astrocyte
+ACACt2Int,0.07915121913349278,2.845094663209406e-32,"9194, 6566","6566, 9194",NA,NA,acetoacetate transport via proton symport Interstitial And Synapse,acac[I] + h[I] <=> acac[cA] + h[cA],Astrocyte
+ACALDtInt,0.0020814669452776336,0,,,NA,NA,acetaldehyde reversible transport Interstitial And Synapse,acald[I] <=> acald[cA],Astrocyte
+ACt2rInt,0.07738290523711262,2.845094663209406e-32,"9123, 9194, 6566, 23539, 682","6566, 9194, 9123",NA,NA,acetate reversible transport via proton symport Interstitial And Synapse,ac[I] + h[I] <=> ac[cA] + h[cA],Astrocyte
+ARGLYSexInt,0.008979418933645709,4.7456175055791365e-17,"6520, 9057","9057, 6520",NA,NA,Arginine/Lysine exchanger (Arg in) Interstitial And Synapse,arg-L[I] + lys-L[cA] --> arg-L[cA] + lys-L[I],Astrocyte
+ARGtiDFInt,0.0027725759237136483,2.3728087527895682e-17,NA,"6541, 84889",NA,NA,L-arginine transport via diffusion (extracellular to cytosol) Interstitial And Synapse,arg-L[I] --> arg-L[cA],Astrocyte
+ASNt4Int,0.0057140074966895976,0.04328107473014821,"11254, 57393, 59272, 54407, 340024, 81539, 55089","11254, 81539, 54407",NA,NA,L-asparagine transport in via sodium symport Interstitial And Synapse,asn-L[I] + na1[I] --> asn-L[cA] + na1[cA],Astrocyte
+BALAVECSECInt,0.1166512102545698,2.6575458031243166e-16,140679,140679,NA,NA,B-alanine secretion via secretory vesicle (ATP driven) Interstitial And Synapse,3.0 ala-B[cA] + atp[cA] + h2o[cA] --> adp[cA] + 3.0 ala-B[I] + h[cA] + pi[cA],Astrocyte
+BHBtInt,0.07738290523603182,2.845094663209406e-32,,,NA,NA,(R)-3-Hydroxybutanoate transport via H+ symport Interstitial And Synapse,bhb[I] + h[I] <=> bhb[cA] + h[cA],Astrocyte
+BTNt2Int,0.07738290523603182,0.15733754037239153,6566,6566,NA,NA,Biotin reversible transport via proton symport Interstitial And Synapse,btn[I] + h[I] <=> btn[cA] + h[cA],Astrocyte
+BTNt4iInt,0.0773829052366959,0.15733754037239153,80704,80704,NA,NA,Biotin uptake (antiport) Interstitial And Synapse,btn[I] + h[cA] --> btn[cA] + h[I],Astrocyte
+CO2tInt,0.007908803861494153,0.5948953862997167,,,NA,NA,CO2 transporter via diffusion Interstitial And Synapse,co2[I] <=> co2[cA],Astrocyte
+CRNtInt,0.017904086593732726,0,"788, 6510, 6584, 6583",6584,NA,NA,L-carnitine reversible transport Interstitial And Synapse,crn[I] <=> crn[cA],Astrocyte
+CYANtInt,0.024696395598548783,0,,,NA,NA,Cyanide transport via diffusion (extracellular to cytosol) Interstitial And Synapse,cyan[I] <=> cyan[cA],Astrocyte
+CYSGLUexRInt,0.0032102837352566273,0.18018178760793116,"6520, 56301, 8140","6520, 56301",NA,NA,L-cysteine/L-glutamine reversible exchanger Interstitial And Synapse,cys-L[I] + gln-L[cA] --> cys-L[cA] + gln-L[I],Astrocyte
+CYSGLYexInt,0.002371967606734561,0,NA,"6520, 23428",NA,NA,L-cysteine/glycine exchanger Interstitial And Synapse,cys-L[cA] + gly[I] --> cys-L[I] + gly[cA],Astrocyte
+CYStecInt,0.0014685368751224807,0,124935,124935,NA,NA,L-cysteine transport via diffusion (extracellular to cytosol) Interstitial And Synapse,cys-L[I] <=> cys-L[cA],Astrocyte
+D-LACt2Int,0.07738290523653774,2.845094663209406e-32,NA,"6566, 9194, 9123",NA,NA,D-lactate transport via proton symport Interstitial And Synapse,h[I] + lac-D[I] <=> h[cA] + lac-D[cA],Astrocyte
+DGSNtInt,0.017285225710032617,0,3177,,NA,NA,deoyguanosine transport via diffusion Interstitial And Synapse,dgsn[I] <=> dgsn[cA],Astrocyte
+ETOHtInt,0.0016508349809555077,0,,,NA,NA,ethanol reversible transport Interstitial And Synapse,etoh[I] <=> etoh[cA],Astrocyte
+FE2tInt,0.006283564348364909,0,,4891,NA,NA,iron (II) transport Interstitial And Synapse,fe2[I] --> fe2[cA],Astrocyte
+GLCt2rInt,0.10415143484004467,0.717722970916663,NA,6524,NA,NA,D-glucose transport in via proton symport Interstitial And Synapse,glc-D[I] + h[I] --> glc-D[cA] + h[cA],Astrocyte
+GLUt6Int,0.10845876747254313,0.25516432380248716,"6505, 6511, 6512, 6507, 6506","6512, 6507, 6511, 6505, 6506",NA,NA,"Glutamate transport via Na, H symport and K antiport Interstitial And Synapse",glu-L[I] + h[I] + k[cA] + 3.0 na1[I] --> glu-L[cA] + h[cA] + k[I] + 3.0 na1[cA],Astrocyte
+GLYCtInt,0.025807681125573016,0,NA,,NA,NA,glycerol transport via channel Interstitial And Synapse,glyc[cA] <=> glyc[I],Astrocyte
+GLYt2rInt,0.08629237808840115,2.9731089499024945e-15,"206358, 153201",206358,NA,NA,glycine reversible transport via proton symport Interstitial And Synapse,gly[I] + h[I] <=> gly[cA] + h[cA],Astrocyte
+H2O2tInt,0.005690636609680475,0,,,NA,NA,hydrogen peroxide transport via diffusion Interstitial And Synapse,h2o2[I] <=> h2o2[cA],Astrocyte
+H2OtInt,0.0266526148425009,3.740083834113703e-18,"343, 4284, 362, 361, 358, 359",361,NA,NA,H2O transport via diffusion Interstitial And Synapse,h2o[I] <=> h2o[cA],Astrocyte
+HtInt,0.07738290523585006,0,NA,,NA,NA,proton diffusion Interstitial And Synapse,h[cA] --> h[I],Astrocyte
+ILEtecInt,0.0069638116264770615,2.8416077817186307e-30,"124935, 8501",124935,NA,NA,L-isoleucine transport via diffusion (extracellular to cytosol) Interstitial And Synapse,ile-L[I] <=> ile-L[cA],Astrocyte
+Kt1rInt,0.0015805073422769966,0.11212400096301246,NA,,NA,NA,potassium transport via uniport (facilitated diffusion) Interstitial And Synapse,k[I] <=> k[cA],Astrocyte
+L-LACt2rInt,0.07758214860550261,0.33698693032713994,NA,"6566, 9194, 9123",NA,NA,L-lactate reversible transport via proton symport Interstitial And Synapse,h[I] + lac-L[I] <-- h[cA] + lac-L[cA],Astrocyte
+LEUtecInt,0.006963790764571553,0,"124935, 8501",124935,NA,NA,L-leucine transport via diffusion (extracellular to cytosol) Interstitial And Synapse,leu-L[I] <=> leu-L[cA],Astrocyte
+LYStiDFInt,0.0027851027836808774,0,"6541, 6542, 55089, 84889","6541, 84889",NA,NA,L-lysine transport via diffusion (extracellular to cytosol) Interstitial And Synapse,lys-L[I] <=> lys-L[cA],Astrocyte
+NH4t3rInt,0.08111991872554329,0.25516432380249354,"57127, 6005",57127,NA,NA,ammonia transport via proton antiport Interstitial And Synapse,h[I] + nh4[cA] <=> h[cA] + nh4[I],Astrocyte
+NaKtInt,0.11719544020224465,0.19532483578668997,"23439, 476, 481, 480, 478, 477, 482, 483","477, 481, 480, 476, 482, 478, 483",NA,NA,Na+/K+ exchanging ATPase Interstitial And Synapse,atp[cA] + h2o[cA] + 2.0 k[I] + 3.0 na1[cA] --> adp[cA] + h[cA] + 2.0 k[cA] + 3.0 na1[I] + pi[cA],Astrocyte
+O2StInt,0.020495937454930058,2.909298131638729e-15,,,NA,NA,superoxide anion transport via diffusion (extracellular) Interstitial And Synapse,o2s[cA] <=> o2s[I],Astrocyte
+O2tInt,0.00405230330293836,0.5948953862997175,,,NA,NA,o2 transport (diffusion) Interstitial And Synapse,o2[I] <=> o2[cA],Astrocyte
+ORNtiDFInt,0.0054295928411107735,0.13078157017084205,"6541, 6542, 84889","6541, 84889",NA,NA,ornithine transport via diffusion (extracellular to cytosol) Interstitial And Synapse,orn[I] --> orn[cA],Astrocyte
+PEFLIPInt,0.12307965490977416,0.19959167316108165,"57194, 5244, 10396","57194, 10396",NA,NA,phosphatidylethanolamine flippase Interstitial And Synapse,atp[cA] + h2o[cA] + pe_hs[I] --> adp[cA] + h[cA] + pe_hs[cA] + pi[cA],Astrocyte
+PIt7Int,0.012928833070155457,0,"6568, 10786, 10050, 10246, 6569, 10568","57084, 10568, 6569",NA,NA,phosphate transport in/out via three Na+ symporter Interstitial And Synapse,3.0 na1[I] + pi[I] <=> 3.0 na1[cA] + pi[cA],Astrocyte
+PPAtInt,0.020005821634956178,0,,,NA,NA,"Propionate transport, diffusion Interstitial And Synapse",ppa[I] --> ppa[cA],Astrocyte
+PPAtInt,0.020005821634956178,0,"8854, 8854, 501, 224, 223, 8854, 216, 57818, 92579, 2538, 160728, 27068, 27068, 27068, 27068, 8612, 8613, 8611, 8611, 64077, 5464",,NA,NA,"Propionate transport, diffusion Interstitial And Synapse",ppa[I] --> ppa[cA],Astrocyte
+PROt2rInt,0.078167083295329,2.845094663209406e-32,"206358, 153201",206358,NA,NA,L-proline reversible transport via proton symport Interstitial And Synapse,h[I] + pro-L[I] <=> h[cA] + pro-L[cA],Astrocyte
+PSFLIPInt,0.12307965489920343,0.10162624639766828,"57194, 10396","57194, 10396",NA,NA,phosphatidylserine flippase Interstitial And Synapse,atp[cA] + h2o[cA] + ps_hs[I] --> adp[cA] + h[cA] + pi[cA] + ps_hs[cA],Astrocyte
+PYRt2rInt,0.07802481598038478,0.08680866587348107,"9123, 9194, 6566","6566, 9194, 9123",NA,NA,pyruvate reversible transport via proton symport Interstitial And Synapse,h[I] + pyr[I] --> h[cA] + pyr[cA],Astrocyte
+SARCStexInt,0.012368789024027374,0,,,NA,NA,Sarcosine transport (extracellular to cytosol) Interstitial And Synapse,sarcs[I] <=> sarcs[cA],Astrocyte
+SERGLNexRInt,0.0018170551584210193,0.18018178760793124,"6520, 56301","6520, 56301",NA,NA,L-Serine/Glutamine reversible exchange Interstitial And Synapse,gln-L[cA] + ser-L[I] --> gln-L[I] + ser-L[cA],Astrocyte
+SERGLYexRInt,0.0028614308410024876,2.007720833456609e-15,"6520, 56301","6520, 56301",NA,NA,L-Serine/Glycine reversible exchange Interstitial And Synapse,gly[cA] + ser-L[I] <=> gly[I] + ser-L[cA],Astrocyte
+SERt4Int,0.003740359875536097,0.03564676468208342,"11254, 57393, 59272, 54407, 340024, 81539, 55089","11254, 81539, 54407",NA,NA,L-serine via sodium symport Interstitial And Synapse,na1[I] + ser-L[I] --> na1[cA] + ser-L[cA],Astrocyte
+SO4HCOtexInt,0.0032319496500647243,0,"1811, 10861, 10861, 10861, 1836, 115019, 116369, 115111, 116369, 284129, 115111, 115019","115019, 10861, 116369, 284129",NA,NA,sulfate transport via bicarbonate countertransport Interstitial And Synapse,2.0 hco3[cA] + so4[I] --> 2.0 hco3[I] + so4[cA],Astrocyte
+TCYNTtInt,0.024696395595649304,0,,,NA,NA,Thiocyanate transport via diffusion (cytosol to extracellular) Interstitial And Synapse,tcynt[cA] --> tcynt[I],Astrocyte
+VALtecInt,0.006963811633883906,1.0039196743396377e-29,"124935, 8501",124935,NA,NA,L-valine transport via diffusion (extracellular to cytosol) Interstitial And Synapse,val-L[I] <=> val-L[cA],Astrocyte
+UREAtInt,0.02539403391312289,0,"6523, 366, 6528, 8170, 6563","6563, 8170",NA,NA,Urea transporter Interstitial And Synapse,urea[I] <=> urea[cA],Astrocyte
+GLNtN1Int,0.095107932955031,0.2551643238024872,"10991, 92745","92745, 10991",NA,NA,Glutamine transporter Interstitial And Synapse,gln-L[I] + h[cA] + na1[I] <=> gln-L[cA] + h[I] + na1[cA],Astrocyte
+ALAtN1Int,0.006119195143034164,1.530667272299201e-14,"10991, 92745","92745, 10991",NA,NA,"Alanine transport (Na, H coupled) Interstitial And Synapse",ala-L[I] --> ala-L[cA],Astrocyte
+ALDH1L1,0.7757215565934008,5.166070346260353e-16,NA,,10840,NA,ALDH1L1,10fthf[mA] + h2o[mA] + nadp[mA] --> co2[mA] + h[mA] + nadph[mA] + thf[mA],Astrocyte

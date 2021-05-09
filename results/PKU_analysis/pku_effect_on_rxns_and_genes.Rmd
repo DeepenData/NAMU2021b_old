@@ -29,13 +29,6 @@ get_genes_by_centrality <- function(FC){
 
 ```
 
-
-
-
-
-
-
-
 log2(ce_ko/ce_wt)
 
 

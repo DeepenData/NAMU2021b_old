@@ -1,0 +1,539 @@
+ID,Centrality,Optimality,recon3_genes,Lewis2010_genes,VMH_gene_IDs,KEGG_genes,Name,Reaction,Node type
+10FTHF5GLUtmNeuron,0.03133301751579723,0,,,NA,NA,"5-glutamyl-10FTHF transport, mitochondrial Neuron",10fthf5glu[mN] --> 10fthf5glu[cN],Neuron
+10FTHF6GLUtmNeuron,0.031332829679187754,0,,,NA,NA,"6-glutamyl-10FTHF transport, mitochondrial Neuron",10fthf6glu[mN] --> 10fthf6glu[cN],Neuron
+10FTHF7GLUtmNeuron,0.04072785025875881,0,,,NA,NA,"7-glutamyl-10FTHF transport, mitochondrial Neuron",10fthf7glu[mN] --> 10fthf7glu[cN],Neuron
+10FTHFtmNeuron,0.0068345107206594004,0,,,NA,NA,10-Formyltetrahydrofolate mitochondrial transport via diffusion Neuron,10fthf[cN] <=> 10fthf[mN],Neuron
+1a2425VITD2HmNeuron,0.5213036093084393,0,,1594,NA,NA,"1-alpha-Vitamin D-24,25-hydroxylase (D2) Neuron",2425dhvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+1a2425VITD3HmNeuron,0.5213036093062093,5.22017925613705e-17,NA,1594,NA,NA,"1-alpha-Vitamin D-24,25-hydroxylase (D3) Neuron",2425dhvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+1a25VITD2HmNeuron,0.5213036093089645,0,,1591,NA,NA,"1-alpha,24R,25-Vitamin D-hydroxylase (D2) Neuron",1a25dhvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+1a25VITD3HmNeuron,0.5213036093086744,1.04403585122741e-16,NA,1591,NA,NA,"1-alpha,24R,25-Vitamin D-hydroxylase (D3) Neuron",1a25dhvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a2425thvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+2425VITD2HmNeuron,0.519303842456168,7.592988008926619e-17,1591,"1594, 1591",NA,NA,24R-Vitamin D-25-hydroxylase (D2) Neuron,25hvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 2425dhvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+2425VITD3HmNeuron,0.5193038831742829,5.22017925613705e-17,1591,"1594, 1591",NA,NA,24R-Vitamin D-25-hydroxylase (D3) Neuron,25hvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 2425dhvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+25HVITD2tNeuron,0.004451381890124079,0,,,NA,NA,25-hydroxyvitamin D2 transport from cytoplasm Neuron,25hvitd2[cN] --> 25hvitd2[I],Neuron
+25HVITD2tinNeuron,0.004451381890124079,0,,,NA,NA,25-hydroxyvitamin D2 transport in cytoplasm Neuron,25hvitd2[I] --> 25hvitd2[cN],Neuron
+25HVITD2tinmNeuron,0.006585514492067251,0,,,NA,NA,25-hydroxyvitamin D2 transport in mitochondria Neuron,25hvitd2[cN] --> 25hvitd2[mN],Neuron
+25HVITD2tinmNeuron,0.006585514492067251,0,,,NA,NA,25-hydroxyvitamin D2 transport in mitochondria Neuron,25hvitd2[cN] --> 25hvitd2[mN],Neuron
+25HVITD2tmNeuron,0.006585514492067251,0,,,NA,NA,25-hydroxyvitamin D2 transport from mitochondria Neuron,25hvitd2[mN] --> 25hvitd2[cN],Neuron
+25HVITD3tNeuron,0.004451278656716804,0,,,NA,NA,25-hydroxyvitamin D3 transport from cytoplasm Neuron,25hvitd3[cN] --> 25hvitd3[I],Neuron
+25HVITD3tinNeuron,0.004451278656716804,0,,,NA,NA,25-hydroxyvitamin D3 transport in cytoplasm Neuron,25hvitd3[I] --> 25hvitd3[cN],Neuron
+25HVITD3tinmNeuron,0.006585865678552944,0,,,NA,NA,25-hydroxyvitamin D3 transport in mitochondria Neuron,25hvitd3[cN] --> 25hvitd3[mN],Neuron
+25HVITD3tinmNeuron,0.006585865678552944,0,,,NA,NA,25-hydroxyvitamin D3 transport in mitochondria Neuron,25hvitd3[cN] --> 25hvitd3[mN],Neuron
+25HVITD3tmNeuron,0.006585865678552944,0,,,NA,NA,25-hydroxyvitamin D3 transport from mitochondria Neuron,25hvitd3[mN] --> 25hvitd3[cN],Neuron
+25VITD2HmNeuron,0.5193038424561789,5.22017925613705e-17,"1591, 1594","1594, 1591",NA,NA,1-alpha-Vitamin D-25-hydroxylase (D2) Neuron,25hvitd2[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a25dhvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+25VITD3HmNeuron,0.519303883192032,5.22017925613705e-17,"1591, 1594","1594, 1591",NA,NA,1-alpha-Vitamin D-25-hydroxylase (D3) Neuron,25hvitd3[mN] + h[mN] + nadph[mN] + o2[mN] --> 1a25dhvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+2AMADPTmNeuron,0.007979806903264362,0,89874,89874,NA,NA,L-2-aminoadipate shuttle (cytosol/mitochondria) Neuron,L2aadp[cN] + akg[mN] <=> L2aadp[mN] + akg[cN],Neuron
+2OXOADOXmNeuron,0.10265726452739832,1.5185976017853237e-15,"4967, 1738, 4967, 1743, 8050","8050, 1738, 4967, 1743",NA,NA,2-Oxoadipate:lipoamde 2-oxidoreductase(decarboxylating and acceptor-succinylating) (mitochondria) Neuron,2oxoadp[mN] + coa[mN] + nad[mN] --> co2[mN] + glutcoa[mN] + nadh[mN],Neuron
+2OXOADPTmNeuron,0.007447383597440421,0,89874,89874,NA,NA,2-oxoadipate shuttle (cytosol/mitochondria) Neuron,2oxoadp[cN] + akg[mN] <=> 2oxoadp[mN] + akg[cN],Neuron
+2OXOADPTmNeuron,0.007447383597440421,0,89874,89874,NA,NA,2-oxoadipate shuttle (cytosol/mitochondria) Neuron,2oxoadp[cN] + akg[mN] <=> 2oxoadp[mN] + akg[cN],Neuron
+34HPLFMNeuron,0.4693067141104773,2.3728087527895682e-17,,,NA,NA,3-(4-hydroxyphenyl-)lactate formation Neuron,34hpp[mN] + h[mN] + nadh[mN] --> 34hpl[mN] + nad[mN],Neuron
+3AIBTmNeuron,0.0896788135246233,1.0039196743396377e-29,"18, 18, 64902",18,NA,NA,"L-3-aminoisobutyrate transaminase, mitochondrial Neuron",2mop[mN] + glu-L[mN] <=> 3aib[mN] + akg[mN],Neuron
+3AIBtNeuron,0.013063855582134565,6.074390407141395e-16,NA,,NA,NA,3-amino-isobutyrate transport Neuron,3aib[cN] --> 3aib[I],Neuron
+3AIBtmNeuron,0.034941925020354064,1.0039196743396377e-29,"18, 18, 64902",18,NA,NA,"3-amino-isobutyrate transport, mitochondrial Neuron",3aib[mN] --> 3aib[cN],Neuron
+3DPHBH1Neuron,0.5418793862150878,1.0914920262832015e-16,,,NA,NA,Hydroxylation of 3-Decaprenyl-4-hydroxybenzoate (NADH) Neuron,3dphb[mN] + h[mN] + nadh[mN] + o2[mN] --> 3dpdhb[mN] + h2o[mN] + nad[mN],Neuron
+3DPHBH2Neuron,0.5238886012213364,0.04231154086752685,,,NA,NA,Hydroxylation of 3-Decaprenyl-4-hydroxybenzoate (NADPH) Neuron,3dphb[mN] + h[mN] + nadph[mN] + o2[mN] --> 3dpdhb[mN] + h2o[mN] + nadp[mN],Neuron
+3HBCDmNeuron,0.14077031246018312,0,55268,55268,NA,NA,"3-hydroxybutyryl-CoA dehydratase, mitochondrial Neuron",b2coa[mN] + h2o[mN] <=> 3hbcoa-R[mN],Neuron
+3HBCOAHLmNeuron,0.553642351959766,9.965796761717191e-17,,26275,NA,NA,"3-hydroxyisobutyryl-CoA hydrolase, mitochondrial Neuron",3hibutcoa[mN] + h2o[mN] --> 3hmp[mN] + coa[mN] + h[mN],Neuron
+3SALAASPmNeuron,0.005440273835519049,0,"10165, 8604","10165, 8604",NA,NA,cysteinesulfinate-aspartate mitochondrial shuttle Neuron,3sala[mN] + asp-L[cN] <=> 3sala[cN] + asp-L[mN],Neuron
+3SALATAimNeuron,0.4696423785854731,1.2813167265063668e-16,"2805, 2806",2806,NA,NA,"3-sulfino-alanine transaminase (irreversible), mitochondrial Neuron",3sala[mN] + akg[mN] + h[mN] --> 3snpyr[mN] + glu-L[mN],Neuron
+3SALATAimNeuron,0.4696423785854731,1.2813167265063668e-16,2806,2806,NA,NA,"3-sulfino-alanine transaminase (irreversible), mitochondrial Neuron",3sala[mN] + akg[mN] + h[mN] --> 3snpyr[mN] + glu-L[mN],Neuron
+3SPYRSPmNeuron,0.5173447084537863,9.965796761716188e-17,,,NA,NA,"3-sulfinopyruvate hydrolase (spotaneous reaction), mitochondrial Neuron",3snpyr[mN] + h2o[mN] --> h[mN] + pyr[mN] + so3[mN],Neuron
+3SPYRSPmNeuron,0.5173447084537863,9.965796761716188e-17,,,NA,NA,"3-sulfinopyruvate hydrolase (spotaneous reaction), mitochondrial Neuron",3snpyr[mN] + h2o[mN] --> h[mN] + pyr[mN] + so3[mN],Neuron
+4ABUTtmNeuron,0.005385143022083994,0,,,NA,NA,4-aminobutanoate mitochondrial transport via diffusion Neuron,4abut[cN] <=> 4abut[mN],Neuron
+4HBZCOAFmNeuron,0.5589561533117153,9.965796761716188e-17,,,NA,NA,4-hydroxybenzoyl-CoA formation Neuron,coa[mN] + coucoa[mN] + h2o[mN] + nad[mN] --> 4hbzcoa[mN] + accoa[mN] + h[mN] + nadh[mN],Neuron
+4HBZFmNeuron,0.5605178859736341,9.965796761716188e-17,,,NA,NA,4-hydroxybenzoate formation Neuron,4hbzcoa[mN] + h2o[mN] --> 4hbz[mN] + coa[mN] + h[mN],Neuron
+4HGLSDmNeuron,0.5342544712922148,5.694741006694964e-17,"8659, 8659",8659,NA,NA,"L-4-hydroxyglutamate semialdehyde dehydrogenase, mitochondrial Neuron",4hglusa[mN] + h2o[mN] + nad[mN] <=> e4hglu[mN] + 2.0 h[mN] + nadh[mN],Neuron
+5AOPtmNeuron,0.008077452432478656,0,,,NA,NA,5-Aminolevulinate mitochondrial transport Neuron,5aop[cN] <=> 5aop[mN],Neuron
+5AOPtmNeuron,0.008077452432478656,0,,,NA,NA,5-Aminolevulinate mitochondrial transport Neuron,5aop[cN] <=> 5aop[mN],Neuron
+5HOXINDACTOXmNeuron,0.5317786162616632,9.491235011158273e-18,NA,"8659, 219, 217",NA,NA,5-Hydroxyindoleacetaldehyde:NAD+ oxidoreductase (mito) Neuron,5hoxindact[mN] + h2o[mN] + nad[mN] --> 5hoxindoa[mN] + 2.0 h[mN] + nadh[mN],Neuron
+5THFtmNeuron,0.03129607779315013,0,,,NA,NA,"5-glutamyl-THF transport,m mitochondrial Neuron",5thf[mN] --> 5thf[cN],Neuron
+6DHFtmNeuron,0.03133293914371551,1.0630183212497266e-15,,,NA,NA,"6-glutamyl-DHF transport,m mitochondrial Neuron",6dhf[mN] --> 6dhf[cN],Neuron
+6THFtmNeuron,0.03133282958440372,0,,,NA,NA,"6-glutamyl-THF transport,m mitochondrial Neuron",6thf[mN] --> 6thf[cN],Neuron
+7DHFtmNeuron,0.04072785027970567,0,,,NA,NA,"7-glutamyl-DHF transport,m mitochondrial Neuron",7dhf[mN] --> 7dhf[cN],Neuron
+7THFtmNeuron,0.04072785026545911,0,,,NA,NA,"7-glutamyl-THF transport,m mitochondrial Neuron",7thf[mN] --> 7thf[cN],Neuron
+AACOATNeuron,0.04120492266128161,0.6265040045668268,65985,65985,NA,NA,Acetoacetyl-CoA:acetate CoA-transferase Neuron,acac[cN] + atp[cN] + coa[cN] --> aacoa[cN] + amp[cN] + ppi[cN],Neuron
+AACTOORNeuron,0.035643637089844235,7.592988008926619e-17,8639,8639,NA,NA,Aminoacetone:oxygen oxidoreductase(deaminating)(flavin-containing) Neuron,aact[cN] + h2o[cN] + o2[cN] --> h2o2[cN] + mthgxl[cN] + nh4[cN],Neuron
+AACTtmNeuron,0.007035331397680104,0,,,NA,NA,Aminoacetone transport (mitochondrial) Neuron,aact[mN] --> aact[cN],Neuron
+AASAD3mNeuron,0.5324862602589612,2.847370503347482e-17,,60496,NA,NA,"L-aminoadipate-semialdehyde dehydrogenase (NADH), mitochondrial Neuron",L2aadp6sa[mN] + h2o[mN] + nad[mN] --> L2aadp[mN] + 2.0 h[mN] + nadh[mN],Neuron
+AATAiNeuron,0.004035744034758925,0,"51166, 51166",51166,NA,NA,"2-aminoadipate transaminase, irreversible Neuron",L2aadp[cN] + akg[cN] --> 2oxoadp[cN] + glu-L[cN],Neuron
+ABTArmNeuron,0.022243167454738286,0,"18, 18",18,NA,NA,"4-aminobutyrate transaminase, reversible (mitochondrial) Neuron",4abut[mN] + akg[mN] <=> glu-L[mN] + sucsal[mN],Neuron
+ABUTt2rNeuron,0.13243575833219492,0,206358,206358,NA,NA,4-aminobutyrate reversible transport in via proton symport Neuron,4abut[I] + h[I] <=> 4abut[cN] + h[cN],Neuron
+ACACT10mNeuron,0.01778466975222387,2.8416077817186307e-30,"38, 10449, 3032",38,NA,NA,"acetyl-CoA C-acetyltransferase, mitochondrial Neuron",2maacoa[mN] + coa[mN] <=> accoa[mN] + ppcoa[mN],Neuron
+ACACT1rNeuron,0.021154040311480354,0,"38, 3032, 3030, 39",39,NA,NA,acetyl-CoA C-acetyltransferase Neuron,2.0 accoa[cN] <=> aacoa[cN] + coa[cN],Neuron
+ACACT1rmNeuron,0.015242044429895562,0,"38, 3032, 3030","38, 3030, 3032",NA,NA,"acetyl-CoA C-acetyltransferase, mitochondrial Neuron",2.0 accoa[mN] <=> aacoa[mN] + coa[mN],Neuron
+ACACT1rmNeuron,0.015242044429895562,0,"38, 3032, 3030, 39","38, 3030, 3032",NA,NA,"acetyl-CoA C-acetyltransferase, mitochondrial Neuron",2.0 accoa[mN] <=> aacoa[mN] + coa[mN],Neuron
+ACACt2Neuron,0.13049598034434245,0.20164994065519187,"9194, 6566","6566, 9194",NA,NA,acetoacetate transport via proton symport Neuron,acac[I] + h[I] --> acac[cN] + h[cN],Neuron
+ACACt2mNeuron,0.623813331161634,1.2338605514505756e-16,6566,6566,NA,NA,Acetoacetate mitochondrial transport via H+ symport Neuron,acac[cN] + h[cN] <=> acac[mN] + h[mN],Neuron
+ACACt2mNeuron,0.623813331161634,1.2338605514505756e-16,"9194, 6566",6566,NA,NA,Acetoacetate mitochondrial transport via H+ symport Neuron,acac[cN] + h[cN] <=> acac[mN] + h[mN],Neuron
+ACALDtNeuron,0.002035335689310971,0,,,NA,NA,acetaldehyde reversible transport Neuron,acald[I] <=> acald[cN],Neuron
+ACALDtmNeuron,0.004786028663885058,0,,,NA,NA,acetaldehyde mitochondrial diffusion Neuron,acald[mN] <=> acald[cN],Neuron
+ACALDtmNeuron,0.004786028663885058,0,,,NA,NA,acetaldehyde mitochondrial diffusion Neuron,acald[mN] <=> acald[cN],Neuron
+ACCOALmNeuron,0.14963120123664345,3.0371952035706474e-16,"84532, 79611",84532,NA,NA,acetate-CoA ligase (AMP-forming) Neuron,atp[mN] + coa[mN] + ppa[mN] --> amp[mN] + ppcoa[mN] + ppi[mN],Neuron
+ACCOALmNeuron,0.14963120123664345,3.0371952035706474e-16,"84532, 79611, 55902, 55902",84532,NA,NA,acetate-CoA ligase (AMP-forming) Neuron,atp[mN] + coa[mN] + ppa[mN] --> amp[mN] + ppcoa[mN] + ppi[mN],Neuron
+ACOAD10mNeuron,0.0138660652800262,1.4047027816514273e-15,"34, 36","34, 36",NA,NA,"acyl-CoA dehydrogenase (2-methylbutanoyl-CoA), mitochondrial Neuron",2mbcoa[mN] + fad[mN] --> 2mb2coa[mN] + fadh2[mN],Neuron
+ACOAD1fmNeuron,0.014354719024865644,0.04231154086752678,"34, 36, 35, 80724, 27034, 84129, 28976","34, 36, 28976, 80724, 27034",NA,NA,"acyl-CoA dehydrogenase (butanoyl-CoA), mitochondrial Neuron",btcoa[mN] + fad[mN] --> b2coa[mN] + fadh2[mN],Neuron
+ACOAD8mNeuron,0.013518903160026508,0.3000741007317247,3712,3712,NA,NA,"acyl-CoA dehydrogenase (isovaleryl-CoA), mitochondrial Neuron",fad[mN] + ivcoa[mN] --> 3mb2coa[mN] + fadh2[mN],Neuron
+ACOAD9mNeuron,0.01386478422788594,1.0039196743396377e-29,"34, 27034","34, 27034",NA,NA,"acyl-CoA dehydrogenase (isobutyryl-CoA), mitochondrial Neuron",fad[mN] + ibcoa[mN] --> 2mp2coa[mN] + fadh2[mN],Neuron
+ACONTmNeuron,0.007246896105409634,0.40833999354103945,"50, 48",50,NA,NA,Aconitate hydratase Neuron,cit[mN] <=> icit[mN],Neuron
+ACONTmNeuron,0.007246896105409634,0.40833999354103945,"50, 48, 3658",50,NA,NA,Aconitate hydratase Neuron,cit[mN] <=> icit[mN],Neuron
+ACRNtmNeuron,0.013453096546289154,0,788,788,NA,NA,O-acetylcarnintine transport into mitochondria via diffusion Neuron,acrn[cN] --> acrn[mN],Neuron
+ACSmNeuron,0.06786449591600757,0.3716638157312585,"84532, 160728",84532,NA,NA,acetyl-CoA synthetase Neuron,ac[mN] + atp[mN] + coa[mN] --> accoa[mN] + amp[mN] + ppi[mN],Neuron
+ACSmNeuron,0.06786449591600757,0.3716638157312585,"6818, 84532, 65985, 55902, 55902, 438, 160728",84532,NA,NA,acetyl-CoA synthetase Neuron,ac[mN] + atp[mN] + coa[mN] --> accoa[mN] + amp[mN] + ppi[mN],Neuron
+ACt2mNeuron,0.6076942349989459,2.847370503347482e-17,6566,6566,NA,NA,acetate mitochondrial transport via proton symport Neuron,ac[cN] + h[cN] <=> ac[mN] + h[mN],Neuron
+ADCimNeuron,0.4616741677393238,1.2813167265063668e-16,,,NA,NA,"Acetoacetate decarboxylation (irreversible), mitochondrial Neuron",acac[mN] + h[mN] --> acetone[mN] + co2[mN],Neuron
+ADK1Neuron,0.01181853931925166,0.1506962774412709,"204, 205, 205, 204, 205, 204, 26289, 26289, 122481, 203","203, 26289",NA,NA,adenylate kinase Neuron,amp[cN] + atp[cN] --> 2.0 adp[cN],Neuron
+ADK1mNeuron,0.03633948053267873,0,"204, 205, 205, 204, 205, 204","205, 204",NA,NA,"adenylate kinase, mitochondrial Neuron",amp[mN] + atp[mN] <=> 2.0 adp[mN],Neuron
+ADK1mNeuron,0.03633948053267873,0,"204, 205, 205, 204, 205, 204, 26289, 26289, 122481, 203","205, 204",NA,NA,"adenylate kinase, mitochondrial Neuron",amp[mN] + atp[mN] <=> 2.0 adp[mN],Neuron
+ADK3mNeuron,0.02757315503231874,0,"26289, 26289, 50808","205, 50808",NA,NA,adentylate kinase (GTP) Neuron,amp[mN] + gtp[mN] <=> adp[mN] + gdp[mN],Neuron
+ADK3mNeuron,0.02757315503231874,0,50808,"205, 50808",NA,NA,adentylate kinase (GTP) Neuron,amp[mN] + gtp[mN] <=> adp[mN] + gdp[mN],Neuron
+ADPRDPmNeuron,0.521557801003502,0.24683119087704655,11164,53343,NA,NA,ADPribose diphosphatase (mitochondrial) Neuron,adprib[mN] + h2o[mN] --> amp[mN] + 2.0 h[mN] + r5p[mN],Neuron
+AGMTmNeuron,0.2286923002711218,0,79814,79814,NA,NA,agmatinase (m) Neuron,agm[mN] + h2o[mN] --> ptrc[mN] + urea[mN],Neuron
+AGPRimNeuron,0.4781052826490323,1.423685251673741e-17,NA,5832,NA,NA,"N-acetyl-g-glutamyl-phosphate reductase, irreversible, mitochondrial Neuron",acg5p[mN] + h[mN] + nadph[mN] --> acg5sa[mN] + nadp[mN] + pi[mN],Neuron
+AGTimNeuron,0.008449638907358389,0,"64902, 64850",64850,NA,NA,"alanine-glyoxylate transaminase (irreversible), mitochondrial Neuron",ala-L[mN] + glx[mN] --> gly[mN] + pyr[mN],Neuron
+AKGDmNeuron,0.12154436398372824,0.40833999354103945,"4967, 1738, 4967, 1743, 8050","8050, 1738, 4967, 1743",NA,NA,2-oxoglutarate dehydrogenase Neuron,akg[mN] + coa[mN] + nad[mN] --> co2[mN] + nadh[mN] + succoa[mN],Neuron
+AKGMALtmNeuron,0.009798638488280796,0.4083399935410398,"1468, 8402",8402,NA,NA,alpha-ketoglutarate/malate transporter Neuron,akg[mN] + mal-L[cN] <=> akg[cN] + mal-L[mN],Neuron
+ALASmNeuron,0.5006867842934617,1.2813167265063668e-16,"212, 23464, 211, 211","23464, 211",NA,NA,5-aminolevulinate synthase Neuron,gly[mN] + h[mN] + succoa[mN] --> 5aop[mN] + co2[mN] + coa[mN],Neuron
+ALCD2ifNeuron,0.06445582546834856,0.20143233217756468,"124, 126, 130, 127, 131, 128, 137872, 125, 284273, 284273","126, 124, 128, 284273, 137872",NA,NA,"alcohol dehydrogenase, forward rxn (ethanol -> acetaldehyde) Neuron",etoh[cN] + nad[cN] --> acald[cN] + h[cN] + nadh[cN],Neuron
+ALCD2yfNeuron,0.0643971933376426,0.17590884836391987,"10327, 10327",10327,NA,NA,"alcohol dehydrogenase (ethanol, NADP), forward reaction Neuron",etoh[cN] + nadp[cN] --> acald[cN] + h[cN] + nadph[cN],Neuron
+ALDD20xmNeuron,0.5317786162730642,9.491235011158273e-18,"8659, 8659, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217","8659, 219, 217",NA,NA,"aldehyde dehydrogenase (indole-3-acetaldehyde, NAD), mitochondrial Neuron",h2o[mN] + id3acald[mN] + nad[mN] --> 2.0 h[mN] + ind3ac[mN] + nadh[mN],Neuron
+ALDD20xmNeuron,0.5317786162730642,9.491235011158273e-18,"8659, 8659, 219, 217","8659, 219, 217",NA,NA,"aldehyde dehydrogenase (indole-3-acetaldehyde, NAD), mitochondrial Neuron",h2o[mN] + id3acald[mN] + nad[mN] --> 2.0 h[mN] + ind3ac[mN] + nadh[mN],Neuron
+ALDD2xNeuron,0.081937793028258,0.04231154086752739,"221, 220, 218, 222, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217","223, 224, 501, 8854, 220, 216",NA,NA,"aldehyde dehydrogenase (acetaldehyde, NAD) Neuron",acald[cN] + h2o[cN] + nad[cN] --> ac[cN] + 2.0 h[cN] + nadh[cN],Neuron
+ALDD2xmNeuron,0.537108370224516,2.676528273146633e-15,"219, 217","219, 217",NA,NA,"aldehyde dehydrogenase (acetylaldehyde, NAD), mitochondrial Neuron",acald[mN] + h2o[mN] + nad[mN] --> ac[mN] + 2.0 h[mN] + nadh[mN],Neuron
+ALDD2xmNeuron,0.537108370224516,2.676528273146633e-15,"221, 220, 218, 222, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217","219, 217",NA,NA,"aldehyde dehydrogenase (acetylaldehyde, NAD), mitochondrial Neuron",acald[mN] + h2o[mN] + nad[mN] --> ac[mN] + 2.0 h[mN] + nadh[mN],Neuron
+ALDD2yNeuron,0.08201171341083872,2.847370503347482e-17,"221, 218, 222, 8854, 8854, 224, 223, 8854, 219","223, 224, 8854",NA,NA,"aldehyde dehydrogenase (acetaldehyde, NADP) Neuron",acald[cN] + h2o[cN] + nadp[cN] --> ac[cN] + 2.0 h[cN] + nadph[cN],Neuron
+ALRNeuron,0.08220039761668,0.19995746017621074,NA,231,NA,NA,Aldose reductase Neuron,h2o[cN] + mthgxl[cN] + nadp[cN] --> 2.0 h[cN] + nadph[cN] + pyr[cN],Neuron
+AMETt2mNeuron,0.04769645011247784,0,"115286, 115286, 115286",115286,NA,NA,"S-Adenosyl-L-methionine reversible transport, mitochondrial Neuron",ahcys[mN] + amet[cN] <=> ahcys[cN] + amet[mN],Neuron
+AMETt2mNeuron,0.04769645011247784,0,"115286, 115286, 115286",115286,NA,NA,"S-Adenosyl-L-methionine reversible transport, mitochondrial Neuron",ahcys[mN] + amet[cN] <=> ahcys[cN] + amet[mN],Neuron
+AOBUTDsmNeuron,0.4680956455146336,2.3728087527895682e-17,,,NA,NA,"L-2-amino-3-oxobutanoate decarboxylation, mitochondrial  (spontaneous) Neuron",2aobut[mN] + h[mN] --> aact[mN] + co2[mN],Neuron
+APAT2rmNeuron,0.019072320690906714,0,"18, 18",18,NA,NA,3-Aminopropanoate:2-oxoglutarate aminotransferase (m) Neuron,akg[mN] + ala-B[mN] <=> glu-L[mN] + msa[mN],Neuron
+APOCLYSBTNPmNeuron,0.14044132244051127,3.7964940044633093e-17,,,NA,NA,"proteolysis of apoC-Lys-btn, mitochondrial Neuron",apoC-Lys_btn[mN] + h2o[mN] --> apoC[mN] + biocyt[mN],Neuron
+APOCLYSBTNPmNeuron,0.14044132244051127,3.7964940044633093e-17,,,NA,NA,"proteolysis of apoC-Lys-btn, mitochondrial Neuron",apoC-Lys_btn[mN] + h2o[mN] --> apoC[mN] + biocyt[mN],Neuron
+APOCFmNeuron,0.5213388954451961,0.24683119087704608,,,NA,NA,"Apocarboxylase formation, mitochondrial Neuron",apoC[mN] + lys-L[mN] --> apoC-Lys[mN] + h2o[mN] + h[mN],Neuron
+APOCFmNeuron,0.5213388954451961,0.24683119087704608,,,NA,NA,"Apocarboxylase formation, mitochondrial Neuron",apoC[mN] + lys-L[mN] --> apoC-Lys[mN] + h2o[mN] + h[mN],Neuron
+ARGDCmNeuron,0.4656579939304202,4.17614340490964e-16,113451,113451,NA,NA,arginine decarboxylase (m) Neuron,arg-L[mN] + h[mN] --> agm[mN] + co2[mN],Neuron
+ARGtiDFNeuron,0.005084391608606747,0,NA,"6541, 84889",NA,NA,L-arginine transport via diffusion (extracellular to cytosol) Neuron,arg-L[I] --> arg-L[cN],Neuron
+ARGtmNeuron,0.6095809644177809,9.0166732606003594e-17,"83884, 10166",83884,NA,NA,arginine mitochondrial transport via ornithine carrier Neuron,arg-L[cN] + h[mN] <=> arg-L[mN] + h[cN],Neuron
+ASNNmNeuron,0.1502802315359996,7.592988008926619e-17,80150,80150,NA,NA,L-asparaginase (mitochondrial) Neuron,asn-L[mN] + h2o[mN] --> asp-L[mN] + nh4[mN],Neuron
+ASNt4Neuron,0.00879809952410012,0.16135807451028,"11254, 57393, 59272, 54407, 340024, 81539, 55089","11254, 81539, 54407",NA,NA,L-asparagine transport in via sodium symport Neuron,asn-L[I] + na1[I] --> asn-L[cN] + na1[cN],Neuron
+ASNtmNeuron,0.006550699332453666,0,,,NA,NA,"L-asparagine transport, mitochondrial Neuron",asn-L[cN] --> asn-L[mN],Neuron
+ASPGLUmNeuron,0.6341770510986168,0.40833999354103706,"10165, 8604","10165, 8604",NA,NA,aspartate-glutamate mitochondrial shuttle Neuron,asp-L[mN] + glu-L[cN] + h[cN] --> asp-L[cN] + glu-L[mN] + h[mN],Neuron
+ASPNATmNeuron,0.5723899265202667,1.2813167265063668e-16,,,NA,NA,"aspartate N-acetyltransferase, mitochondrial Neuron",accoa[mN] + asp-L[mN] --> Nacasp[mN] + coa[mN] + h[mN],Neuron
+ASPTANeuron,0.004445483848472197,0.4083399935410369,"2805, 2806",2805,NA,NA,aspartate transaminase Neuron,akg[cN] + asp-L[cN] <=> glu-L[cN] + oaa[cN],Neuron
+ASPTAmNeuron,0.02317055516790652,0.4083399935410369,2806,2806,NA,NA,aspartate transaminase Neuron,akg[mN] + asp-L[mN] <=> glu-L[mN] + oaa[mN],Neuron
+ASPTAmNeuron,0.02317055516790652,0.4083399935410369,"2805, 2806",2806,NA,NA,aspartate transaminase Neuron,akg[mN] + asp-L[mN] <=> glu-L[mN] + oaa[mN],Neuron
+ATPtmNeuron,0.04990351094063163,0.8581238802303919,"292, 291, 293","292, 291, 293",NA,NA,"ADP/ATP transporter, mitochondrial Neuron",adp[cN] + atp[mN] --> adp[mN] + atp[cN],Neuron
+BACCLmNeuron,0.4845533197422776,2.3728087527895683e-18,3141,3141,NA,NA,"biotin-[acetyl-CoA-carboxylase] ligase, mitochondrial Neuron",atp[mN] + btn[mN] + h[mN] --> btamp[mN] + ppi[mN],Neuron
+BACCLmNeuron,0.4845533197422776,2.3728087527895683e-18,3141,3141,NA,NA,"biotin-[acetyl-CoA-carboxylase] ligase, mitochondrial Neuron",atp[mN] + btn[mN] + h[mN] --> btamp[mN] + ppi[mN],Neuron
+BALAVECSECNeuron,0.12035053211543054,3.0371952035706474e-16,140679,140679,NA,NA,B-alanine secretion via secretory vesicle (ATP driven) Neuron,3.0 ala-B[cN] + atp[cN] + h2o[cN] --> adp[cN] + 3.0 ala-B[I] + h[cN] + pi[cN],Neuron
+BALAtmrNeuron,0.006166778783259378,0,,,NA,NA,Beta-alanine reversible mitochondrial transport (diffusion) Neuron,ala-B[cN] <=> ala-B[mN],Neuron
+BAMPPALDOXmNeuron,0.5353671074064636,2.847370503347482e-17,"8854, 8854, 501, 224, 223, 8854, 216","8659, 219, 217",NA,NA,beta-Aminopropion aldehyde:NAD+ oxidoreductase (m) Neuron,bamppald[mN] + h2o[mN] + nad[mN] --> ala-B[mN] + 2.0 h[mN] + nadh[mN],Neuron
+BDHmNeuron,0.46357532050095696,1.2813167265063668e-16,"622, 622, 622",622,NA,NA,(R)-3-Hydroxybutanoate:NAD+ oxidoreductase Neuron,bhb[mN] + nad[mN] <=> acac[mN] + h[mN] + nadh[mN],Neuron
+BETALDHxmNeuron,0.5317786162794549,9.491235011158273e-18,,,NA,NA,"betaine-aldehyde dehydrogenase, mitochondrial Neuron",betald[mN] + h2o[mN] + nad[mN] --> glyb[mN] + 2.0 h[mN] + nadh[mN],Neuron
+BHBtNeuron,0.12735931642455345,0.13622865829905514,,,NA,NA,(R)-3-Hydroxybutanoate transport via H+ symport Neuron,bhb[I] + h[I] --> bhb[cN] + h[cN],Neuron
+BHBtmNeuron,0.6020573404308102,1.2338605514505756e-16,,,NA,NA,(R)-3-Hydroxybutanoate mitochondrial transport via H+ symport Neuron,bhb[cN] + h[cN] <=> bhb[mN] + h[mN],Neuron
+BHBtmNeuron,0.6020573404308102,1.2338605514505756e-16,,,NA,NA,(R)-3-Hydroxybutanoate mitochondrial transport via H+ symport Neuron,bhb[cN] + h[cN] <=> bhb[mN] + h[mN],Neuron
+BTNDmNeuron,0.13914402270989973,7.592988008926619e-17,686,686,NA,NA,"biotinidase (biotin), mitochondrial Neuron",biocyt[mN] + h2o[mN] --> btn[mN] + lys-L[mN],Neuron
+BTNPLmNeuron,0.45720426091543437,4.745617505579137e-18,3141,3141,NA,NA,"holocarboxylase synthestase (biotin protein ligase), mitochondrial Neuron",apoC-Lys[mN] + btamp[mN] --> amp[mN] + apoC-Lys_btn[mN] + h[mN],Neuron
+BTNPLmNeuron,0.45720426091543437,4.745617505579137e-18,3141,3141,NA,NA,"holocarboxylase synthestase (biotin protein ligase), mitochondrial Neuron",apoC-Lys[mN] + btamp[mN] --> amp[mN] + apoC-Lys_btn[mN] + h[mN],Neuron
+BTNt2Neuron,0.1273593164257262,9.183942876889191e-16,6566,6566,NA,NA,Biotin reversible transport via proton symport Neuron,btn[I] + h[I] <=> btn[cN] + h[cN],Neuron
+BTNt2mNeuron,0.6087027759543957,7.118426258368705e-18,6566,6566,NA,NA,"Biotin reversible transport via proton symport, mitochondria Neuron",btn[cN] + h[cN] <=> btn[mN] + h[mN],Neuron
+BTNt2mNeuron,0.6087027759543957,7.118426258368705e-18,6566,6566,NA,NA,"Biotin reversible transport via proton symport, mitochondria Neuron",btn[cN] + h[cN] <=> btn[mN] + h[mN],Neuron
+BTNt4iNeuron,0.12735931642428158,2.0288687839944374e-15,80704,80704,NA,NA,Biotin uptake (antiport) Neuron,btn[I] + h[cN] --> btn[cN] + h[I],Neuron
+C160CPT2Neuron,0.03146638404229291,0.503599290500154,"1374, 1376",1376,NA,NA,C160 transport into the mitochondria Neuron,coa[mN] + pmtcrn[mN] --> crn[mN] + pmtcoa[mN],Neuron
+C160CRNtNeuron,0.013468871825237847,0,788,788,NA,NA,C160 transport into the mitochondria Neuron,pmtcrn[cN] --> pmtcrn[mN],Neuron
+C204CPT2Neuron,0.013659460971899141,0.503599290500154,1376,1376,NA,NA,arachidonic acid transport into the mitochondria Neuron,arachdcrn[mN] + coa[mN] --> arachdcoa[mN] + crn[mN],Neuron
+C226CPT2Neuron,0.013659460971903495,0.503599290500154,1376,1376,NA,NA,C226 transport into the mitochondria Neuron,c226crn[mN] + coa[mN] --> c226coa[mN] + crn[mN],Neuron
+C2M26DCOAHLmNeuron,0.1344429821827949,0,NA,"3030, 3032, 549",NA,NA,"cis-2-Methyl-5-isopropylhexa-2,5-dienoyl-CoA hydro-lyase (m) Neuron",c2m26dcoa[mN] + h2o[mN] <=> 3h26dm5coa[mN],Neuron
+CATmNeuron,0.14224027517903662,9.937035443500545e-16,847,847,NA,NA,catalase Neuron,2.0 h2o2[mN] --> 2.0 h2o[mN] + o2[mN],Neuron
+CBLATmNeuron,0.46987268323036885,2.3728087527895683e-18,NA,166785,NA,NA,"cob(I)alamin adenosyltransferase, mitochondrial Neuron",atp[mN] + cbl1[mN] + h[mN] <=> adocbl[mN] + pppi[mN],Neuron
+CDPDAGtmNeuron,0.013027948012988165,0,,,NA,NA,intracellular transport Neuron,cdpdag_hs[cN] <=> cdpdag_hs[mN],Neuron
+CDSmNeuron,0.47514033734273114,0,"8760, 1040",8760,NA,NA,phosphatidate cytidylyltransferase Neuron,ctp[mN] + h[mN] + pa_hs[mN] --> cdpdag_hs[mN] + ppi[mN],Neuron
+CDSmNeuron,0.47514033734273114,0,"8760, 1040",8760,NA,NA,phosphatidate cytidylyltransferase Neuron,ctp[mN] + h[mN] + pa_hs[mN] --> cdpdag_hs[mN] + ppi[mN],Neuron
+CHSTEROLt3Neuron,0.040205184369927975,0,,,NA,NA,cholesterol intracellular transport Neuron,chsterol[cN] <=> chsterol[mN],Neuron
+CHSTEROLt3Neuron,0.040205184369927975,0,"10948, 19, 64241, 64240",,NA,NA,cholesterol intracellular transport Neuron,chsterol[cN] <=> chsterol[mN],Neuron
+CITRtmNeuron,0.012529134497403829,0,"83884, 10166",83884,NA,NA,citrulline mitochondrial transport via proton antiport Neuron,citr-L[mN] <=> citr-L[cN],Neuron
+CITtamNeuron,0.004781127819075532,0,6576,6576,NA,NA,"citrate transport, mitochondrial Neuron",cit[cN] + mal-L[mN] <=> cit[mN] + mal-L[cN],Neuron
+CITtbmNeuron,0.09515419634975185,3.0371952035706474e-16,6576,6576,NA,NA,"citrate transport, mitochondrial Neuron",cit[cN] + pep[mN] <=> cit[mN] + pep[cN],Neuron
+CKNeuron,0.049694823763233385,0,"1160, 548596, 1159, 1152, 1158, 1633, 57419, 25769, 123041, 123041, 123041, 9187, 5105, 5106","1160, 1159, 5105",NA,NA,ATP Creatine kinase Neuron,atp[mN] + creat[mN] <=> adp[mN] + pcreat[mN],Neuron
+CO2tNeuron,0.008195054671833813,0.5948953862997167,,,NA,NA,CO2 transporter via diffusion Neuron,co2[I] <=> co2[cN],Neuron
+CO2tmNeuron,0.03150132562261608,0.5948953862997167,,,NA,NA,"CO2 transport (diffusion), mitochondrial Neuron",co2[cN] <=> co2[mN],Neuron
+CO2tmNeuron,0.03150132562261608,0.5948953862997167,,,NA,NA,"CO2 transport (diffusion), mitochondrial Neuron",co2[cN] <=> co2[mN],Neuron
+COQ3mNeuron,0.44475603003266695,0.3649308603518458,51805,51805,NA,NA,methyltransferase COQ3 Neuron,2dpmhobq[mN] + amet[mN] --> ahcys[mN] + h[mN] + q10[mN],Neuron
+COQ5mNeuron,0.44482377551878505,1.0487814687329894e-15,,84274,NA,NA,Ubiquinone biosynthesis methyltransferase COQ5 Neuron,2dp6mobq[mN] + amet[mN] --> 2dp6mobq_me[mN] + ahcys[mN] + h[mN],Neuron
+COQ6mNeuron,0.1411527781121992,5.576100569055485e-16,"51004, 51004",51004,NA,NA,Ubiquinone biosynthesis monooxgenase COQ6 Neuron,2dp6mep[mN] + o2[mN] --> 2dp6mobq[mN] + h2o[mN],Neuron
+COQ7mNeuron,0.5168493958714838,2.3728087527895682e-17,10229,10229,NA,NA,Ubiquinone biosynthesis COQ7 Neuron,2dp6mobq_me[mN] + h[mN] + nadph[mN] + o2[mN] --> 2dpmhobq[mN] + h2o[mN] + nadp[mN],Neuron
+COUCOAFmNeuron,0.06168436765615517,6.074390407141295e-16,,,NA,NA,p-coumaroyl-CoA formation Neuron,T4hcinnm[mN] + atp[mN] + coa[mN] --> amp[mN] + coucoa[mN] + ppi[mN],Neuron
+CPPPGONeuron,0.09996267297239989,8.067549759484532e-16,1371,1371,NA,NA,coproporphyrinogen oxidase (O2 required) Neuron,cpppg3[cN] + 2.0 h[cN] + o2[cN] --> 2.0 co2[cN] + 2.0 h2o[cN] + pppg9[cN],Neuron
+CRNtNeuron,0.01636051756225104,0,"788, 6510, 6584, 6583","788, 6584",NA,NA,L-carnitine reversible transport Neuron,crn[I] <=> crn[cN],Neuron
+CRNtimNeuron,0.03473775962355249,0,"788, 6510, 6584, 6583",788,NA,NA,L-carnitine transport out of mitochondria via diffusion Neuron,crn[mN] --> crn[cN],Neuron
+CRNtimNeuron,0.03473775962355249,0,788,788,NA,NA,L-carnitine transport out of mitochondria via diffusion Neuron,crn[mN] --> crn[cN],Neuron
+CSNAT2mNeuron,0.01856690893809474,0,1384,1384,NA,NA,"carnitine O-aceyltransferase, mitochondrial Neuron",coa[mN] + pcrn[mN] <=> crn[mN] + ppcoa[mN],Neuron
+CSNATmNeuron,0.03148849879869,0,1384,1384,NA,NA,"carnitine O-aceyltransferase, mitochondrial Neuron",acrn[mN] + coa[mN] <=> accoa[mN] + crn[mN],Neuron
+CSmNeuron,0.5763608044245774,0.40833999354103956,"84532, 1431, 1431, 160728, 1576, 1558, 1565, 1577, 5446","84532, 1431",NA,NA,citrate synthase Neuron,accoa[mN] + h2o[mN] + oaa[mN] --> cit[mN] + coa[mN] + h[mN],Neuron
+CYANSTmNeuron,0.5932551117280516,2.3490806652616724e-16,NA,7263,NA,NA,"Cyanide sulfurtransferase, mitochondrial Neuron",cyan[mN] + tsul[mN] --> h[mN] + so3[mN] + tcynt[mN],Neuron
+CYANtNeuron,0.015808934138086633,0,,,NA,NA,Cyanide transport via diffusion (extracellular to cytosol) Neuron,cyan[I] <=> cyan[cN],Neuron
+CYANtmNeuron,0.038210596617163424,0,,,NA,NA,Cyanide transport via diffusion (mitochondrial) Neuron,cyan[cN] <=> cyan[mN],Neuron
+CYANtmNeuron,0.038210596617163424,0,,,NA,NA,Cyanide transport via diffusion (mitochondrial) Neuron,cyan[cN] <=> cyan[mN],Neuron
+CYSGLUexRNeuron,0,6.074390407141295e-16,"6520, 56301, 8140","6520, 56301",NA,NA,L-cysteine/L-glutamine reversible exchanger Neuron,cys-L[I] + gln-L[cN] --> cys-L[cN] + gln-L[I],Neuron
+CYSGLYexRNeuron,6.044406628685339e-4,2.9731089499024945e-15,"6520, 56301, 23428, 23428","6520, 56301",NA,NA,L-cysteine/glycine reversible exchanger Neuron,cys-L[cN] + gly[I] <=> cys-L[I] + gly[cN],Neuron
+CYSONeuron,0.07061870771026756,4.7456175055791365e-17,1036,1036,NA,NA,cysteine oxidase Neuron,cys-L[cN] + o2[cN] --> 3sala[cN] + 2.0 h[cN],Neuron
+CYSTAmNeuron,0.01506104606410883,0,"2805, 11136, 6519",2806,NA,NA,cysteine transaminase (mitochondrial) Neuron,akg[mN] + cys-L[mN] <=> glu-L[mN] + mercppyr[mN],Neuron
+CYStecNeuron,0.002026530862932274,2.681225149558411e-15,124935,124935,NA,NA,L-cysteine transport via diffusion (extracellular to cytosol) Neuron,cys-L[I] <=> cys-L[cN],Neuron
+CYTK1mNeuron,0.03085572777269912,0,129607,51727,NA,NA,"cytidylate kinase (CMP),mitochondrial Neuron",atp[mN] + cmp[mN] <=> adp[mN] + cdp[mN],Neuron
+CYTK1mNeuron,0.03085572777269912,0,"51727, 129607",51727,NA,NA,"cytidylate kinase (CMP),mitochondrial Neuron",atp[mN] + cmp[mN] <=> adp[mN] + cdp[mN],Neuron
+D-LACt2Neuron,0.12735931642705092,2.845094663209406e-32,NA,"6566, 9194, 9123",NA,NA,D-lactate transport via proton symport Neuron,h[I] + lac-D[I] <=> h[cN] + lac-D[cN],Neuron
+D-LACtmNeuron,0.6020573404325112,9.491235011158273e-18,NA,6566,NA,NA,"D-lactate transport, mitochondrial Neuron",h[cN] + lac-D[cN] <=> h[mN] + lac-D[mN],Neuron
+DDPGAmNeuron,0.0057953737458720685,1.5185976017853237e-16,,,NA,NA,"2-dehydro-3-deoxy-phosphogluconate aldolase, mitochondrial Neuron",4h2oglt[mN] <=> glx[mN] + pyr[mN],Neuron
+DECDPtmNeuron,0.08551885804022072,0,,,NA,NA,"lipid, flip-flop intracellular transport Neuron",decdp[cN] <=> decdp[mN],Neuron
+DGNSKmNeuron,0.5441423695574948,4.745617505579137e-18,"1716, 1716, 1716, 1716, 1716",1716,NA,NA,deoxyguanosine kinase Neuron,atp[mN] + dgsn[mN] --> adp[mN] + dgmp[mN] + h[mN],Neuron
+DGSNtNeuron,0.01150194634009209,0,3177,,NA,NA,deoyguanosine transport via diffusion Neuron,dgsn[I] <=> dgsn[cN],Neuron
+DGSNtmNeuron,0.03398582798581249,0,3177,,NA,NA,deoyguanosine transport in mitochondria Neuron,dgsn[cN] <=> dgsn[mN],Neuron
+DGSNtmNeuron,0.03398582798581249,0,,,NA,NA,deoyguanosine transport in mitochondria Neuron,dgsn[cN] <=> dgsn[mN],Neuron
+DHDPBMTmNeuron,0.4394672216587985,1.3430097540788956e-15,51805,51805,NA,NA,dihydroxydecaprenylbenzoate methyltransferase Neuron,3dpdhb[mN] + amet[mN] --> 3dpdhb_me[mN] + ahcys[mN] + h[mN],Neuron
+DHFtmNeuron,0.040728111880661756,0,,,NA,NA,dihydrofolate reversible mitochondrial transport Neuron,dhf[cN] <=> dhf[mN],Neuron
+DMGDHmNeuron,0.2832269709453717,1.8982470022316547e-17,29958,29958,NA,NA,"dimethylglycine dehydrogenase, mitochondrial Neuron",dmgly[mN] + fad[mN] + h2o[mN] --> fadh2[mN] + fald[mN] + sarcs[mN],Neuron
+DMGtmNeuron,0.04947679629886646,0,,,NA,NA,dimethylglycine transport via diffusion (cytosol to mitochondria) Neuron,dmgly[cN] <=> dmgly[mN],Neuron
+DPHMBDCmNeuron,0.46586607516054923,2.6338177155964213e-16,,,NA,NA,3-Decaprenyl-4-hydroxy-5-methoxybenzoate  decarboxylation Neuron,3dpdhb_me[mN] + h[mN] --> 2dp6mep[mN] + co2[mN],Neuron
+DURIK1mNeuron,0.47855491718078047,0.15069627744127104,"7083, 7084",7084,NA,NA,"deoxyuridine kinase (ATP:Deoxyuridine), mitochondrial Neuron",atp[mN] + duri[mN] --> adp[mN] + dump[mN] + h[mN],Neuron
+DURIK1mNeuron,0.47855491718078047,0.15069627744127104,7084,7084,NA,NA,"deoxyuridine kinase (ATP:Deoxyuridine), mitochondrial Neuron",atp[mN] + duri[mN] --> adp[mN] + dump[mN] + h[mN],Neuron
+DUTPDPmNeuron,0.5300052739288142,0.15069627744127118,"3704, 1854",1854,NA,NA,dUTP diphosphatase Neuron,dutp[mN] + h2o[mN] --> dump[mN] + h[mN] + ppi[mN],Neuron
+DUTPDPmNeuron,0.5300052739288142,0.15069627744127118,"3704, 1854",1854,NA,NA,dUTP diphosphatase Neuron,dutp[mN] + h2o[mN] --> dump[mN] + h[mN] + ppi[mN],Neuron
+ECOAH12mNeuron,0.1344337923745928,1.0039196743396377e-29,"3032, 3030, 1892","3030, 3032, 1892",NA,NA,3-hydroxyacyl-CoA dehydratase (3-hydroxyisobutyryl-CoA) (mitochondria) Neuron,2mp2coa[mN] + h2o[mN] <=> 3hibutcoa[mN],Neuron
+ECOAH1mNeuron,0.13363677358581819,0,"3032, 3030, 1892, 549","3030, 3032, 549, 1892",NA,NA,3-hydroxyacyl-CoA dehydratase (3-hydroxybutanoyl-CoA) (mitochondria) Neuron,3hbcoa[mN] <=> b2coa[mN] + h2o[mN],Neuron
+ECOAH9mNeuron,0.14055370838938874,2.8416077817186307e-30,"3032, 3030, 1892","3030, 3032, 1892",NA,NA,"2-Methylprop-2-enoyl-CoA (2-Methylbut-2-enoyl-CoA), mitochondrial Neuron",2mb2coa[mN] + h2o[mN] <=> 3hmbcoa[mN],Neuron
+EHGLAT2mNeuron,0.006875462919422519,0,2806,2806,NA,NA,"L-erythro-4-Hydroxyglutamate:2-oxoglutarate aminotransferase 2, mitochondrial Neuron",e4hglu[mN] + oaa[mN] --> 4h2oglt[mN] + asp-L[mN],Neuron
+EHGLATmNeuron,0.01975006031121847,0,2806,2806,NA,NA,"L-erythro-4-Hydroxyglutamate:2-oxoglutarate aminotransferase, mitochondrial Neuron",akg[mN] + e4hglu[mN] --> 4h2oglt[mN] + glu-L[mN],Neuron
+ETFNeuron,0.014024532401512486,0.40833999354103945,"2109, 2109, 2108, 2110, 2168","2109, 2108",NA,NA,electron transfer flavoprotein Neuron,etfox[mN] + fadh2[mN] --> etfrd[mN] + fad[mN],Neuron
+ETFQONeuron,0.02135116468485499,0.40833999354103945,"2109, 2109, 2108, 2110, 2168",2110,NA,NA,Electron transfer flavoprotein-ubiquinone oxidoreductase Neuron,etfrd[mN] + q10[mN] --> etfox[mN] + q10h2[mN],Neuron
+ETFQONeuron,0.02135116468485499,0.40833999354103945,2110,2110,NA,NA,Electron transfer flavoprotein-ubiquinone oxidoreductase Neuron,etfrd[mN] + q10[mN] --> etfox[mN] + q10h2[mN],Neuron
+ETOHMONeuron,0.08468907997769795,0.43212301374922035,1571,1571,NA,NA,ethanol monooxygenase Neuron,etoh[cN] + h[cN] + nadph[cN] + o2[cN] --> acald[cN] + 2.0 h2o[cN] + nadp[cN],Neuron
+ETOHtNeuron,0.0030543564858963317,0,,,NA,NA,ethanol reversible transport Neuron,etoh[I] <=> etoh[cN],Neuron
+FALDtmNeuron,0.04947679630237956,0,,,NA,NA,formaldehyde transport via diffusion (mitochondrial) Neuron,fald[mN] <=> fald[cN],Neuron
+FCLTmNeuron,0.48800594457391677,7.782812709149784e-16,"2235, 2235",2235,NA,NA,"Ferrochelatase, mitochondrial Neuron",fe2[mN] + ppp9[mN] --> 2.0 h[mN] + pheme[mN],Neuron
+FE2tmNeuron,0.6246828401964147,0,,,NA,NA,iron (II) transport Neuron,fe2[cN] + h[cN] --> fe2[mN] + h[mN],Neuron
+FE2tmNeuron,0.6246828401964147,0,,,NA,NA,iron (II) transport Neuron,fe2[cN] + h[cN] --> fe2[mN] + h[mN],Neuron
+FORt2mNeuron,0.0434041662830348,2.8473705033475493e-17,,,NA,NA,formate mitochondrial transport Neuron,for[mN] <=> for[cN],Neuron
+FPGS2mNeuron,0.526709152276193,4.318511930077015e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase, mitochondrial Neuron",5thf[mN] + atp[mN] + glu-L[mN] --> 6thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS2mNeuron,0.526709152276193,4.318511930077015e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase, mitochondrial Neuron",5thf[mN] + atp[mN] + glu-L[mN] --> 6thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS2mNeuron,0.526709152276193,4.318511930077015e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase, mitochondrial Neuron",5thf[mN] + atp[mN] + glu-L[mN] --> 6thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS3mNeuron,0.5423529232685311,4.318511930077015e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase, mitochondrial Neuron",6thf[mN] + atp[mN] + glu-L[mN] --> 7thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS3mNeuron,0.5423529232685311,4.318511930077015e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase, mitochondrial Neuron",6thf[mN] + atp[mN] + glu-L[mN] --> 7thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS3mNeuron,0.5423529232685311,4.318511930077015e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase, mitochondrial Neuron",6thf[mN] + atp[mN] + glu-L[mN] --> 7thf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS4mNeuron,0.5517805118015765,7.023513908257123e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase (DHF), mitochondrial Neuron",4.0 atp[mN] + dhf[mN] + 4.0 glu-L[mN] --> 5dhf[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FPGS4mNeuron,0.5517805118015765,7.023513908257123e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase (DHF), mitochondrial Neuron",4.0 atp[mN] + dhf[mN] + 4.0 glu-L[mN] --> 5dhf[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FPGS4mNeuron,0.5517805118015765,7.023513908257123e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase (DHF), mitochondrial Neuron",4.0 atp[mN] + dhf[mN] + 4.0 glu-L[mN] --> 5dhf[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FPGS5mNeuron,0.5170970024623011,1.2813167265063668e-16,2356,2356,NA,NA,"folylpolyglutamate  synthetase (DHF), mitochondrial Neuron",5dhf[mN] + atp[mN] + glu-L[mN] --> 6dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS5mNeuron,0.5170970024623011,1.2813167265063668e-16,2356,2356,NA,NA,"folylpolyglutamate  synthetase (DHF), mitochondrial Neuron",5dhf[mN] + atp[mN] + glu-L[mN] --> 6dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS5mNeuron,0.5170970024623011,1.2813167265063668e-16,2356,2356,NA,NA,"folylpolyglutamate  synthetase (DHF), mitochondrial Neuron",5dhf[mN] + atp[mN] + glu-L[mN] --> 6dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS6mNeuron,0.5423527723403314,2.3728087527895682e-17,2356,2356,NA,NA,"folylpolyglutamate synthetase (DHF), mitochondrial Neuron",6dhf[mN] + atp[mN] + glu-L[mN] --> 7dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS6mNeuron,0.5423527723403314,2.3728087527895682e-17,2356,2356,NA,NA,"folylpolyglutamate synthetase (DHF), mitochondrial Neuron",6dhf[mN] + atp[mN] + glu-L[mN] --> 7dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS6mNeuron,0.5423527723403314,2.3728087527895682e-17,2356,2356,NA,NA,"folylpolyglutamate synthetase (DHF), mitochondrial Neuron",6dhf[mN] + atp[mN] + glu-L[mN] --> 7dhf[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS7mNeuron,0.5188828677610912,0,2356,2356,NA,NA,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf[mN] + 4.0 atp[mN] + 4.0 glu-L[mN] --> 10fthf5glu[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FPGS7mNeuron,0.5188828677610912,0,2356,2356,NA,NA,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf[mN] + 4.0 atp[mN] + 4.0 glu-L[mN] --> 10fthf5glu[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FPGS7mNeuron,0.5188828677610912,0,2356,2356,NA,NA,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf[mN] + 4.0 atp[mN] + 4.0 glu-L[mN] --> 10fthf5glu[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FPGS8mNeuron,0.526697201279841,6.074390407141295e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf5glu[mN] + atp[mN] + glu-L[mN] --> 10fthf6glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS8mNeuron,0.526697201279841,6.074390407141295e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf5glu[mN] + atp[mN] + glu-L[mN] --> 10fthf6glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS8mNeuron,0.526697201279841,6.074390407141295e-16,2356,2356,NA,NA,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf5glu[mN] + atp[mN] + glu-L[mN] --> 10fthf6glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS9mNeuron,0.5423529231163996,0,2356,2356,NA,NA,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf6glu[mN] + atp[mN] + glu-L[mN] --> 10fthf7glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS9mNeuron,0.5423529231163996,0,2356,2356,NA,NA,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf6glu[mN] + atp[mN] + glu-L[mN] --> 10fthf7glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGS9mNeuron,0.5423529231163996,0,2356,2356,NA,NA,"folylpolyglutamate synthetase (10fthf), mitochondrial Neuron",10fthf6glu[mN] + atp[mN] + glu-L[mN] --> 10fthf7glu[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+FPGSmNeuron,0.5289297522051349,9.491235011158273e-17,2356,2356,NA,NA,"folylpolyglutamate synthetase, mitochondrial Neuron",4.0 atp[mN] + 4.0 glu-L[mN] + thf[mN] --> 5thf[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FPGSmNeuron,0.5289297522051349,9.491235011158273e-17,2356,2356,NA,NA,"folylpolyglutamate synthetase, mitochondrial Neuron",4.0 atp[mN] + 4.0 glu-L[mN] + thf[mN] --> 5thf[mN] + 4.0 adp[mN] + 4.0 h[mN] + 4.0 pi[mN],Neuron
+FTHFLmNeuron,0.09641639422801754,6.601044655563766e-16,"25902, 4522",25902,NA,NA,"formate-tetrahydrofolate ligase, mitochondrial Neuron",atp[mN] + for[mN] + thf[mN] <=> 10fthf[mN] + adp[mN] + pi[mN],Neuron
+FTHFLmNeuron,0.09641639422801754,6.601044655563766e-16,"4363, 6573, 6573, 2348, 2348, 2348, 2348, 2348, 2348, 2352, 1244, 10257, 10840, 160428, 25902, 4522, 2618, 2618, 8836, 5244, 10588, 10057, 113235, 1080, 85320, 9429, 2350, 286297",25902,NA,NA,"formate-tetrahydrofolate ligase, mitochondrial Neuron",atp[mN] + for[mN] + thf[mN] <=> 10fthf[mN] + adp[mN] + pi[mN],Neuron
+FTHFLmNeuron,0.09641639422801754,6.601044655563766e-16,"25902, 4522, 286297",25902,NA,NA,"formate-tetrahydrofolate ligase, mitochondrial Neuron",atp[mN] + for[mN] + thf[mN] <=> 10fthf[mN] + adp[mN] + pi[mN],Neuron
+FUMSO3tmNeuron,0.0049553020409583625,1.5185976017853237e-16,1468,1468,NA,NA,"Fumarate:sulfite antiport, mitochondrial Neuron",fum[cN] + so3[mN] <=> fum[mN] + so3[cN],Neuron
+FUMSO3tmNeuron,0.0049553020409583625,1.5185976017853237e-16,"1468, 2184, 2271",1468,NA,NA,"Fumarate:sulfite antiport, mitochondrial Neuron",fum[cN] + so3[mN] <=> fum[mN] + so3[cN],Neuron
+FUMSO4tmNeuron,0.004570015858306918,0,1468,1468,NA,NA,"Fumarate:sulfate antiport, mitochondrial Neuron",fum[cN] + so4[mN] <=> fum[mN] + so4[cN],Neuron
+FUMSO4tmNeuron,0.004570015858306918,0,"1468, 2184, 2271",1468,NA,NA,"Fumarate:sulfate antiport, mitochondrial Neuron",fum[cN] + so4[mN] <=> fum[mN] + so4[cN],Neuron
+FUMTSULtmNeuron,0.0036824656046761956,0,1468,1468,NA,NA,"Fumarate:thiosulfate antiport, mitochondrial Neuron",fum[cN] + tsul[mN] <=> fum[mN] + tsul[cN],Neuron
+FUMTSULtmNeuron,0.0036824656046761956,0,"1468, 2184, 2271",1468,NA,NA,"Fumarate:thiosulfate antiport, mitochondrial Neuron",fum[cN] + tsul[mN] <=> fum[mN] + tsul[cN],Neuron
+FUMmNeuron,0.1320630812805514,0.4083399935410395,2271,2271,NA,NA,"fumarase, mitochondrial Neuron",fum[mN] + h2o[mN] <=> mal-L[mN],Neuron
+FUMmNeuron,0.1320630812805514,0.4083399935410395,"1468, 2184, 2271",2271,NA,NA,"fumarase, mitochondrial Neuron",fum[mN] + h2o[mN] <=> mal-L[mN],Neuron
+FUMtmNeuron,0.042441921931746396,3.321932253905396e-17,1468,1468,NA,NA,"fumarate transport, mitochondrial Neuron",fum[cN] + pi[mN] <=> fum[mN] + pi[cN],Neuron
+FUMtmNeuron,0.042441921931746396,3.321932253905396e-17,"1468, 2184, 2271",1468,NA,NA,"fumarate transport, mitochondrial Neuron",fum[cN] + pi[mN] <=> fum[mN] + pi[cN],Neuron
+G5SDymNeuron,0.46716259441155356,9.965796761716188e-17,5832,5832,NA,NA,glutamate-5-semialdehyde dehydrogenase (m) Neuron,glu5p[mN] + h[mN] + nadph[mN] --> glu5sa[mN] + nadp[mN] + pi[mN],Neuron
+G6PDH2rNeuron,0.1165471105915161,9.0166732606003594e-17,"9563, 2539","9563, 2539",NA,NA,glucose 6-phosphate dehydrogenase Neuron,g6p[cN] + nadp[cN] <=> 6pgl[cN] + h[cN] + nadph[cN],Neuron
+GCALDDmNeuron,0.5317786162584154,9.491235011158273e-18,"8659, 8659, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329",NA,NA,"Glycolaldehyde dehydrogenase, mitochondrial Neuron",gcald[mN] + h2o[mN] + nad[mN] --> glyclt[mN] + 2.0 h[mN] + nadh[mN],Neuron
+GCALDDmNeuron,0.5317786162584154,9.491235011158273e-18,"221, 220, 218, 222, 8659, 8659, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329",NA,NA,"Glycolaldehyde dehydrogenase, mitochondrial Neuron",gcald[mN] + h2o[mN] + nad[mN] --> glyclt[mN] + 2.0 h[mN] + nadh[mN],Neuron
+GCC2amNeuron,0.47026759802806517,2.987345802419232e-15,"1738, 2653, 275, 2731","1738, 275, 2731, 2653",NA,NA,"glycine-cleavage complex (lipoamide), mitochondrial Neuron",gly[mN] + h[mN] + lpam[mN] <=> alpam[mN] + co2[mN],Neuron
+GCC2bimNeuron,0.007265613126236495,2.9731089499024945e-15,"1738, 2653, 275, 2731","1738, 275, 2731, 2653",NA,NA,"glycine-cleavage system (lipoamide) irreversible, mitochondrial Neuron",alpam[mN] + thf[mN] --> dhlam[mN] + mlthf[mN] + nh4[mN],Neuron
+GCC2cmNeuron,0.4628815605380539,2.987345802419232e-15,"1738, 2653, 275, 2731","1738, 275, 2731, 2653",NA,NA,"glycine-cleavage complex (lipoamide), mitochondrial Neuron",dhlam[mN] + nad[mN] <=> h[mN] + lpam[mN] + nadh[mN],Neuron
+GCCamNeuron,0.470267598023992,1.423685251673741e-17,"1738, 2653, 275, 2731","1738, 275, 2731, 2653",NA,NA,"glycine-cleavage complex (lipoylprotein), mitochondrial Neuron",gly[mN] + h[mN] + lpro[mN] <=> alpro[mN] + co2[mN],Neuron
+GCCbimNeuron,0.0072656131287710405,0,"1738, 2653, 275, 2731","1738, 275, 2731, 2653",NA,NA,"glycine-cleavage complex (lipoylprotein) irreversible, mitochondrial Neuron",alpro[mN] + thf[mN] --> dhlpro[mN] + mlthf[mN] + nh4[mN],Neuron
+GCCcmNeuron,0.46288156053709123,1.423685251673741e-17,"1738, 2653, 275, 2731","1738, 275, 2731, 2653",NA,NA,"glycine-cleavage complex (lipoylprotein), mitochondrial Neuron",dhlpro[mN] + nad[mN] <=> h[mN] + lpro[mN] + nadh[mN],Neuron
+GHMT2rmNeuron,0.16235102954558772,2.007720833456609e-15,"6470, 6472",6472,NA,NA,"glycine hydroxymethyltransferase, reversible, mitochondrial Neuron",ser-L[mN] + thf[mN] <=> gly[mN] + h2o[mN] + mlthf[mN],Neuron
+GHMT2rmNeuron,0.16235102954558772,2.007720833456609e-15,"6470, 6472, 6470",6472,NA,NA,"glycine hydroxymethyltransferase, reversible, mitochondrial Neuron",ser-L[mN] + thf[mN] <=> gly[mN] + h2o[mN] + mlthf[mN],Neuron
+GHMT3mNeuron,0.44620425374584494,0,"6470, 6470",6472,NA,NA,"glycine hydroxymethyltransferase, mitochondrial Neuron",3htmelys[mN] + h[mN] --> 4tmeabut[mN] + gly[mN],Neuron
+GLACOmNeuron,0.5317786162551881,0,"221, 220, 218, 222, 8854, 8854, 224, 223, 8854, 216","8659, 219, 217",NA,NA,"D-Glucuronolactone:NAD+ oxidoreductase, mitochondrial Neuron",glac[mN] + 2.0 h2o[mN] + nad[mN] --> glcr[mN] + 3.0 h[mN] + nadh[mN],Neuron
+GLNtmNeuron,0.0039942265748541565,0.25516432380248716,,,NA,NA,L-glutamine transport via electroneutral transporter Neuron,gln-L[cN] --> gln-L[mN],Neuron
+GLU5KmNeuron,0.04039741472850429,0,5832,5832,NA,NA,glutamate 5-kinase (m) Neuron,atp[mN] + glu-L[mN] --> adp[mN] + glu5p[mN],Neuron
+GLUDxmNeuron,0.55118374077955,1.540633069060917e-14,"2746, 2747","2746, 2747",NA,NA,glutamate dehydrogenase (NAD) (mitochondrial) Neuron,glu-L[mN] + h2o[mN] + nad[mN] <=> akg[mN] + h[mN] + nadh[mN] + nh4[mN],Neuron
+GLUDymNeuron,0.5392380159780746,0.042311540867526407,"2746, 2747","2746, 2747",NA,NA,"glutamate dehydrogenase (NADP), mitochondrial Neuron",glu-L[mN] + h2o[mN] + nadp[mN] --> akg[mN] + h[mN] + nadph[mN] + nh4[mN],Neuron
+GLUNmNeuron,0.1894103583153217,0.2551643238024872,"27165, 27165, 2744","2744, 27165",NA,NA,glutaminase (mitochondrial) Neuron,gln-L[mN] + h2o[mN] --> glu-L[mN] + nh4[mN],Neuron
+GLUTCOADHmNeuron,0.5648536796051123,6.026934232085503e-16,"2639, 2639",2639,NA,NA,glutaryl-CoA dehydrogenase (mitochondria) Neuron,fad[mN] + glutcoa[mN] + h[mN] --> b2coa[mN] + co2[mN] + fadh2[mN],Neuron
+GLUVESSECNeuron,0.12802749011572517,0.25516432380248716,"57030, 246213, 57084","246213, 57030, 57084",NA,NA,L-glutamate secretion via secretory vesicle (ATP driven) Neuron,atp[cN] + glu-L[cN] + h2o[cN] --> adp[cN] + glu-L[I] + h[cN] + pi[cN],Neuron
+GLUt2mNeuron,0.6250198373995698,0.25516432380248066,"10165, 8604, 83733, 79751","10165, 8604, 79751, 83733",NA,NA,"L-glutamate reversible transport via proton symport, mitochondrial Neuron",glu-L[cN] + h[cN] <=> glu-L[mN] + h[mN],Neuron
+GLYATmNeuron,0.02106543163310118,0,23464,23464,NA,NA,glycine C-acetyltransferase Neuron,accoa[mN] + gly[mN] <=> 2aobut[mN] + coa[mN],Neuron
+GLYCLTDymNeuron,0.44652992775782147,0.4569737160686769,9380,9380,NA,NA,"Glycolate dehydrogenase (NADP), mitochondrial Neuron",glx[mN] + h[mN] + nadph[mN] --> glyclt[mN] + nadp[mN],Neuron
+GLYCLTDymNeuron,0.44652992775782147,0.4569737160686769,,9380,NA,NA,"Glycolate dehydrogenase (NADP), mitochondrial Neuron",glx[mN] + h[mN] + nadph[mN] --> glyclt[mN] + nadp[mN],Neuron
+GLYCtNeuron,0.01694028421660137,0,NA,,NA,NA,glycerol transport via channel Neuron,glyc[cN] <=> glyc[I],Neuron
+GLYCtmNeuron,0.039399818455788584,0,,,NA,NA,glycerol transport Neuron,glyc[cN] <=> glyc[mN],Neuron
+GLYKmNeuron,0.5495096643998887,0.17911629030497433,"2713, 2710, 2710, 2712","2712, 2710, 2713",NA,NA,glycerol kinase Neuron,atp[mN] + glyc[mN] --> adp[mN] + glyc3p[mN] + h[mN],Neuron
+GLYKmNeuron,0.5495096643998887,0.17911629030497433,"2713, 2710, 2710, 2712","2712, 2710, 2713",NA,NA,glycerol kinase Neuron,atp[mN] + glyc[mN] --> adp[mN] + glyc3p[mN] + h[mN],Neuron
+GLYOXmNeuron,0.521338895423824,0.2816417527133567,3029,3029,NA,NA,"hydroxyacylglutathione hydrolase, mitochondrial Neuron",h2o[mN] + lgt-S[mN] --> gthrd[mN] + h[mN] + lac-D[mN],Neuron
+GLYOXmNeuron,0.521338895423824,0.2816417527133567,"3029, 84264, 84264",3029,NA,NA,"hydroxyacylglutathione hydrolase, mitochondrial Neuron",h2o[mN] + lgt-S[mN] --> gthrd[mN] + h[mN] + lac-D[mN],Neuron
+GLYtmNeuron,0.008083223452641048,5.30444468786264e-16,,,NA,NA,glycine passive transport to mitochondria Neuron,gly[cN] <=> gly[mN],Neuron
+GNDNeuron,0.11951605461679994,3.7964940044633093e-17,5226,5226,NA,NA,phosphogluconate dehydrogenase Neuron,6pgc[cN] + nadp[cN] --> co2[cN] + nadph[cN] + ru5p-D[cN],Neuron
+GTHOmNeuron,0.450783460284387,0.296866814184105,2936,2936,NA,NA,glutathione oxidoreductase Neuron,gthox[mN] + h[mN] + nadph[mN] --> 2.0 gthrd[mN] + nadp[mN],Neuron
+GTHOmNeuron,0.450783460284387,0.296866814184105,2936,2936,NA,NA,glutathione oxidoreductase Neuron,gthox[mN] + h[mN] + nadph[mN] --> 2.0 gthrd[mN] + nadp[mN],Neuron
+GTHPmNeuron,0.1332360236384383,0,"2877, 7001, 2879, 2876, 5052, 7001, 5052, 5052, 2876, 7001, 2878, 2882, 257202, 10935, 10935","2879, 10935",NA,NA,"glutathione peroxidase, mitochondria Neuron",2.0 gthrd[mN] + h2o2[mN] <=> gthox[mN] + 2.0 h2o[mN],Neuron
+GTHPmNeuron,0.1332360236384383,0,"2879, 2876, 10935, 10935","2879, 10935",NA,NA,"glutathione peroxidase, mitochondria Neuron",2.0 gthrd[mN] + h2o2[mN] <=> gthox[mN] + 2.0 h2o[mN],Neuron
+H2CO3DmNeuron,0.1781731278573492,0,"11238, 763",11238,NA,NA,carboxylic acid dissociation Neuron,co2[mN] + h2o[mN] <=> h2co3[mN],Neuron
+H2CO3DmNeuron,0.1781731278573492,0,"11238, 763, 771, 762, 377677, 759, 768, 766, 23632, 760, 765, 771, 766, 761",11238,NA,NA,carboxylic acid dissociation Neuron,co2[mN] + h2o[mN] <=> h2co3[mN],Neuron
+H2O2tNeuron,0.0070331633234732805,0,,,NA,NA,hydrogen peroxide transport via diffusion Neuron,h2o2[I] <=> h2o2[cN],Neuron
+H2O2tNeuron,0.0070331633234732805,0,,,NA,NA,hydrogen peroxide transport via diffusion Neuron,h2o2[I] <=> h2o2[cN],Neuron
+H2O2tmNeuron,0.002824906052114258,1.1342025838334139e-15,,,NA,NA,hydrogen peroxide mitochondrial transport Neuron,h2o2[cN] <=> h2o2[mN],Neuron
+H2O2tmNeuron,0.002824906052114258,1.1342025838334139e-15,,,NA,NA,hydrogen peroxide mitochondrial transport Neuron,h2o2[cN] <=> h2o2[mN],Neuron
+H2OtNeuron,0.02616862735866564,5.1073589154378375e-18,,361,NA,NA,H2O transport via diffusion Neuron,h2o[I] <=> h2o[cN],Neuron
+H2OtNeuron,0.02616862735866564,5.1073589154378375e-18,"343, 4284, 362, 361, 358, 359",361,NA,NA,H2O transport via diffusion Neuron,h2o[I] <=> h2o[cN],Neuron
+H2OtmNeuron,0.23155061818372816,0.887340820938889,343,366,NA,NA,"H2O transport, mitochondrial Neuron",h2o[cN] <=> h2o[mN],Neuron
+H2OtmNeuron,0.23155061818372816,0.887340820938889,"343, 4284, 362, 361, 358, 359",366,NA,NA,"H2O transport, mitochondrial Neuron",h2o[cN] <=> h2o[mN],Neuron
+HACD1mNeuron,0.46939299686779395,1.423685251673741e-17,"3032, 3030, 3033, 3028","3030, 3032, 3028, 3033",NA,NA,3-hydroxyacyl-CoA dehydrogenase (acetoacetyl-CoA) (mitochondria) Neuron,aacoa[mN] + h[mN] + nadh[mN] <=> 3hbcoa[mN] + nad[mN],Neuron
+HACD9mNeuron,0.46885899502595757,1.4236852516740252e-17,"1962, 3033, 3028",3028,NA,NA,"3-hydroxyacyl-CoA dehydrogenase (2-Methylacetoacetyl-CoA), mitochondrial Neuron",3hmbcoa[mN] + nad[mN] <=> 2maacoa[mN] + h[mN] + nadh[mN],Neuron
+HBZOPT10mNeuron,0.12845077219513593,2.2778964026779857e-16,27235,27235,NA,NA,Hydroxybenzoate Decaprenyltransferase Neuron,4hbz[mN] + decdp[mN] --> 3dphb[mN] + ppi[mN],Neuron
+HCO3EmNeuron,0.5400820740029861,2.8416077817186307e-30,NA,,NA,NA,HCO3 equilibration reaction Neuron,co2[mN] + h2o[mN] <=> h[mN] + hco3[mN],Neuron
+HIBDmNeuron,0.46403022052527787,1.2813167265064671e-16,11112,11112,NA,NA,"3-hydroxyisobutyrate dehydrogenase, mitochondrial Neuron",3hmp[mN] + nad[mN] <=> 2mop[mN] + h[mN] + nadh[mN],Neuron
+HMBSNeuron,0.013210236080591025,5.315091606248633e-16,3145,3145,NA,NA,hydroxymethylbilane synthase Neuron,h2o[cN] + 4.0 ppbng[cN] --> hmbil[cN] + 4.0 nh4[cN],Neuron
+HMGCOASimNeuron,0.5551086574529607,0.40833999354103967,"3157, 3157, 3158",3158,NA,NA,Hydroxymethylglutaryl CoA synthase (ir) Neuron,aacoa[mN] + accoa[mN] + h2o[mN] --> coa[mN] + h[mN] + hmgcoa[mN],Neuron
+HMGCOASimNeuron,0.5551086574529607,0.40833999354103967,3158,3158,NA,NA,Hydroxymethylglutaryl CoA synthase (ir) Neuron,aacoa[mN] + accoa[mN] + h2o[mN] --> coa[mN] + h[mN] + hmgcoa[mN],Neuron
+HMGLmNeuron,0.008887131722989702,0.40833999354103945,"3155, 54511",54511,NA,NA,hydroxymethylglutaryl-CoA lyase Neuron,hmgcoa[mN] --> acac[mN] + accoa[mN],Neuron
+HPROxmNeuron,0.48000837426479115,0,NA,8659,NA,NA,"L-hydroxyproline dehydrogenase (NAD), mitochondrial Neuron",4hpro-LT[mN] + nad[mN] --> 1p3h5c[mN] + 2.0 h[mN] + nadh[mN],Neuron
+HtNeuron,0.12735931643592577,1.1104744963055181e-15,NA,,NA,NA,proton diffusion Neuron,h[cN] --> h[I],Neuron
+HtmNeuron,0.6020573404428992,0.0423115408675267,NA,"7352, 9016, 9481",NA,NA,Uncoupling protein Neuron,h[cN] --> h[mN],Neuron
+ICDHxmNeuron,0.09747659355323966,0.042311540867526455,"3419, 3420, 3421, 3421, 3420, 3420","3421, 3420, 3419",NA,NA,Isocitrate dehydrogenase (NAD+) Neuron,icit[mN] + nad[mN] --> akg[mN] + co2[mN] + nadh[mN],Neuron
+ICDHyrmNeuron,0.05407264685110995,0.4083399935410395,"3417, 3418",3418,NA,NA,Isocitrate dehydrogenase (NADP+) Neuron,icit[mN] + nadp[mN] <=> akg[mN] + co2[mN] + nadph[mN],Neuron
+ICDHyrmNeuron,0.05407264685110995,0.4083399935410395,3418,3418,NA,NA,Isocitrate dehydrogenase (NADP+) Neuron,icit[mN] + nadp[mN] <=> akg[mN] + co2[mN] + nadph[mN],Neuron
+ILETANeuron,0.013025534678585847,0,"587, 586",586,NA,NA,isoleucine transaminase Neuron,akg[cN] + ile-L[cN] <=> 3mop[cN] + glu-L[cN],Neuron
+ILETAmNeuron,0.018846338787511886,2.8416077817186307e-30,587,587,NA,NA,"isoleucine transaminase, mitochondrial Neuron",akg[mN] + ile-L[mN] <=> 3mop[mN] + glu-L[mN],Neuron
+ILETAmNeuron,0.018846338787511886,2.8416077817186307e-30,"587, 586",587,NA,NA,"isoleucine transaminase, mitochondrial Neuron",akg[mN] + ile-L[mN] <=> 3mop[mN] + glu-L[mN],Neuron
+ILEt5mNeuron,0.0055737869975400235,2.8416077817186307e-30,,,NA,NA,Isoleucine mitochondrial transport Neuron,ile-L[cN] <=> ile-L[mN],Neuron
+ILEtecNeuron,0.005607315441126479,2.8416077817186307e-30,"124935, 8501",124935,NA,NA,L-isoleucine transport via diffusion (extracellular to cytosol) Neuron,ile-L[I] <=> ile-L[cN],Neuron
+IMACTDmNeuron,0.531778616257208,9.491235011158273e-18,"8854, 8854, 501, 224, 223, 8854, 216","8659, 219, 217",NA,NA,Imidazole acetaldeyde dehydrogenase (mito) Neuron,h2o[mN] + im4act[mN] + nad[mN] --> 2.0 h[mN] + im4ac[mN] + nadh[mN],Neuron
+ITCOAL1mNeuron,0.04240960298143629,0,"1591, 1594, 47, 47, 3177, 2030, 9154, 9154, 64078, 9153, 55315, 83884, 10166, 19, 9058, 6576, 2542, 160728, 8801, 8802, 8803, 6528, 284111, 6568, 6574, 6575, 142680, 949, 29881, 171425, 171425, 10786, 10050, 10246, 6569, 10568, 948","8802, 8801",NA,NA,"Itaconate--CoA ligase (GDP-forming), mitochondrial Neuron",coa[mN] + gtp[mN] + itacon[mN] <=> gdp[mN] + itaccoa[mN] + pi[mN],Neuron
+ITCOAL1mNeuron,0.04240960298143629,0,"8801, 8802","8802, 8801",NA,NA,"Itaconate--CoA ligase (GDP-forming), mitochondrial Neuron",coa[mN] + gtp[mN] + itacon[mN] <=> gdp[mN] + itaccoa[mN] + pi[mN],Neuron
+ITCOALmNeuron,0.0649540739263112,0,"1591, 1594, 47, 47, 3177, 2030, 9154, 9154, 64078, 9153, 55315, 83884, 10166, 19, 9058, 6576, 2542, 160728, 8801, 8802, 8803, 6528, 284111, 6568, 6574, 6575, 142680, 949, 29881, 171425, 171425, 10786, 10050, 10246, 6569, 10568, 948","8802, 8803",NA,NA,"Itaconate--CoA ligase (ADP-forming), mitochondrial Neuron",atp[mN] + coa[mN] + itacon[mN] <=> adp[mN] + itaccoa[mN] + pi[mN],Neuron
+ITCOALmNeuron,0.0649540739263112,0,"8802, 8803","8802, 8803",NA,NA,"Itaconate--CoA ligase (ADP-forming), mitochondrial Neuron",atp[mN] + coa[mN] + itacon[mN] <=> adp[mN] + itaccoa[mN] + pi[mN],Neuron
+Kt1rNeuron,0.002585650555222514,0.9327452401202374,NA,,NA,NA,potassium transport via uniport (facilitated diffusion) Neuron,k[I] <=> k[cN],Neuron
+L-LACt2rNeuron,0.12735931643489953,0.33698693032713994,NA,"6566, 9194, 9123",NA,NA,L-lactate reversible transport via proton symport Neuron,h[I] + lac-L[I] --> h[cN] + lac-L[cN],Neuron
+L-LACtmNeuron,0.6020573404417512,0.04231154086752444,NA,"6566, 9194",NA,NA,"L-lactate transport, mitochondrial Neuron",h[cN] + lac-L[cN] --> h[mN] + lac-L[mN],Neuron
+LCADiDmNeuron,0.5317786162507837,9.491235011158273e-18,"221, 220, 218, 222, 8854, 8854, 501, 224, 223, 8854, 216","8659, 219, 217, 5832, 7915, 4329",NA,NA,"lactaldehyde dehydrogenase, mitochondrial Neuron",h2o[mN] + lald-D[mN] + nad[mN] --> 2.0 h[mN] + lac-D[mN] + nadh[mN],Neuron
+LCADiDmNeuron,0.5317786162507837,9.491235011158273e-18,"221, 220, 218, 222, 8659, 8659, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329",NA,NA,"lactaldehyde dehydrogenase, mitochondrial Neuron",h2o[mN] + lald-D[mN] + nad[mN] --> 2.0 h[mN] + lac-D[mN] + nadh[mN],Neuron
+LCADimNeuron,0.5317786162506449,2.847370503347482e-17,"8659, 8659, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329",NA,NA,"lactaldehyde dehydrogenase, mitochondrial Neuron",h2o[mN] + lald-L[mN] + nad[mN] --> 2.0 h[mN] + lac-L[mN] + nadh[mN],Neuron
+LCADimNeuron,0.5317786162506449,2.847370503347482e-17,"221, 220, 218, 222, 8659, 8659, 8854, 8854, 501, 224, 223, 8854, 216, 219, 217, 5832, 4329, 7915, 7915","8659, 219, 217, 5832, 7915, 4329",NA,NA,"lactaldehyde dehydrogenase, mitochondrial Neuron",h2o[mN] + lald-L[mN] + nad[mN] --> 2.0 h[mN] + lac-L[mN] + nadh[mN],Neuron
+LCYSTATmNeuron,0.01712312034771944,0,2805,2806,NA,NA,"L-Cysteate:2-oxoglutarate aminotransferase, mitochondrial Neuron",Lcyst[mN] + akg[mN] <=> 3spyr[mN] + glu-L[mN],Neuron
+LDHLNeuron,0.06302158256694665,0.33698693032714,"3948, 3945, 160287, 3948, 55293, 92483, 3939, 197257","160287, 3945, 3939, 3948",NA,NA,L-lactate dehydrogenase Neuron,lac-L[cN] + nad[cN] --> h[cN] + nadh[cN] + pyr[cN],Neuron
+LDHLmNeuron,0.4684909414914027,1.2813167265063668e-16,"3945, 3939, 197257",3939,NA,NA,L-lactate dehydrogenase Neuron,lac-L[mN] + nad[mN] --> h[mN] + nadh[mN] + pyr[mN],Neuron
+LDHLmNeuron,0.4684909414914027,1.2813167265063668e-16,"3948, 3945, 160287, 3948, 55293, 92483, 3939, 197257",3939,NA,NA,L-lactate dehydrogenase Neuron,lac-L[mN] + nad[mN] --> h[mN] + nadh[mN] + pyr[mN],Neuron
+LEUTANeuron,0.013025815174522186,0,"587, 586",586,NA,NA,leucine transaminase Neuron,akg[cN] + leu-L[cN] <=> 4mop[cN] + glu-L[cN],Neuron
+LEUTAmNeuron,0.0188465010513566,3.0371952035706474e-16,587,587,NA,NA,"leucine transaminase, mitochondrial Neuron",akg[mN] + leu-L[mN] <=> 4mop[mN] + glu-L[mN],Neuron
+LEUTAmNeuron,0.0188465010513566,3.0371952035706474e-16,"587, 586",587,NA,NA,"leucine transaminase, mitochondrial Neuron",akg[mN] + leu-L[mN] <=> 4mop[mN] + glu-L[mN],Neuron
+LEUt5mNeuron,0.005573766137733358,0,,,NA,NA,leucine mitochondrial transport Neuron,leu-L[cN] <=> leu-L[mN],Neuron
+LEUtecNeuron,0.005607294581552775,0,"124935, 8501",124935,NA,NA,L-leucine transport via diffusion (extracellular to cytosol) Neuron,leu-L[I] <=> leu-L[cN],Neuron
+LSOProdNeuron,0.032438134111656136,0.04231154086752676,NA,,NA,NA,Lumped superoxide production Neuron,focytC[mN] + o2[mN] --> ficytC[mN] + o2s[mN],Neuron
+LYStiDFNeuron,0.005125962830130315,0,"6541, 6542, 55089, 84889","6541, 84889",NA,NA,L-lysine transport via diffusion (extracellular to cytosol) Neuron,lys-L[I] <=> lys-L[cN],Neuron
+LYStmNeuron,0.6162776565205632,1.2338605514505756e-16,"83884, 10166",83884,NA,NA,Lysine mitochondrial transport via ornithine carrier Neuron,h[mN] + lys-L[cN] <=> h[cN] + lys-L[mN],Neuron
+MALSO3tmNeuron,0.0056290473306315186,7.592988008926619e-17,1468,1468,NA,NA,"Malate:sulfite antiport, mitochondrial Neuron",mal-L[cN] + so3[mN] <=> mal-L[mN] + so3[cN],Neuron
+MALSO4tmNeuron,0.004886027676900621,0,1468,1468,NA,NA,"Malate:sulfate antiport, mitochondrial Neuron",mal-L[cN] + so4[mN] <=> mal-L[mN] + so4[cN],Neuron
+MALTSULtmNeuron,0.0047032197071182604,0,1468,1468,NA,NA,"Malate:thiosulfate antiport, mitochondrial Neuron",mal-L[cN] + tsul[mN] <=> mal-L[mN] + tsul[cN],Neuron
+MALTSULtmNeuron,0.0047032197071182604,0,"1468, 8402, 6515, 8972, 2548, 2595",1468,NA,NA,"Malate:thiosulfate antiport, mitochondrial Neuron",mal-L[cN] + tsul[mN] <=> mal-L[mN] + tsul[cN],Neuron
+MALtmNeuron,0.04271226705634045,1.5339892045531065e-14,"1468, 8402","8402, 1468",NA,NA,"malate transport, mitochondrial Neuron",mal-L[cN] + pi[mN] <=> mal-L[mN] + pi[cN],Neuron
+MALtmNeuron,0.04271226705634045,1.5339892045531065e-14,"1468, 8402, 6515, 8972, 2548, 2595","8402, 1468",NA,NA,"malate transport, mitochondrial Neuron",mal-L[cN] + pi[mN] <=> mal-L[mN] + pi[cN],Neuron
+MCCCrmNeuron,0.49789847582335134,4.745617505579137e-18,"64087, 56922","56922, 64087",NA,NA,"methylcrotonoyl-CoA carboxylase, mitochondrial Neuron",3mb2coa[mN] + atp[mN] + hco3[mN] <=> 3mgcoa[mN] + adp[mN] + h[mN] + pi[mN],Neuron
+MDHNeuron,0.07200446947868316,0.4083399935410377,"4191, 4190, 130752",4190,NA,NA,malate dehydrogenase Neuron,mal-L[cN] + nad[cN] <=> h[cN] + nadh[cN] + oaa[cN],Neuron
+MDHmNeuron,0.4614502608725876,0.5257719676123819,"4191, 4190",4191,NA,NA,"malate dehydrogenase, mitochondrial Neuron",mal-L[mN] + nad[mN] <=> h[mN] + nadh[mN] + oaa[mN],Neuron
+MDHmNeuron,0.4614502608725876,0.5257719676123819,"4191, 4190, 130752",4191,NA,NA,"malate dehydrogenase, mitochondrial Neuron",mal-L[mN] + nad[mN] <=> h[mN] + nadh[mN] + oaa[mN],Neuron
+ME2mNeuron,0.056878484666538796,2.2778964026779857e-16,"4200, 4199, 10873","10873, 4200",NA,NA,"malic enzyme (NADP), mitochondrial Neuron",mal-L[mN] + nadp[mN] --> co2[mN] + nadph[mN] + pyr[mN],Neuron
+ME2mNeuron,0.056878484666538796,2.2778964026779857e-16,"4200, 10873","10873, 4200",NA,NA,"malic enzyme (NADP), mitochondrial Neuron",mal-L[mN] + nadp[mN] --> co2[mN] + nadph[mN] + pyr[mN],Neuron
+MECOALmNeuron,0.06495407392493052,0,"8802, 8803","8802, 8803",NA,NA,"mesaconate--CoA ligase (ADP-forming), mitochondrial Neuron",atp[mN] + coa[mN] + mescon[mN] <=> adp[mN] + mescoa[mN] + pi[mN],Neuron
+MECOAS1mNeuron,0.04240960298432416,0,"8801, 8802","8802, 8801",NA,NA,mesaconate--CoA ligase (GDP-forming) Neuron,coa[mN] + gtp[mN] + mescon[mN] <=> gdp[mN] + mescoa[mN] + pi[mN],Neuron
+MGCHrmNeuron,0.14115054988418227,0,549,549,NA,NA,"methylglutaconyl-CoA hydratase (reversible), mitochondrial Neuron",3mgcoa[mN] + h2o[mN] <=> hmgcoa[mN],Neuron
+MMCDmNeuron,0.4687392736314124,0.15069627744127181,23417,23417,NA,NA,"Methylmalonyl-CoA decarboxylase, mitochondrial Neuron",h[mN] + mmcoa-S[mN] --> co2[mN] + ppcoa[mN],Neuron
+MMEmNeuron,0.0068556095441421674,2.8416077817186307e-30,84693,84693,NA,NA,methylmalonyl-CoA epimerase/racemase Neuron,mmcoa-R[mN] <=> mmcoa-S[mN],Neuron
+MMMmNeuron,0.0040955331743567636,2.8416077817186307e-30,4594,4594,NA,NA,methylmalonyl-CoA mutase Neuron,mmcoa-R[mN] <=> succoa[mN],Neuron
+MMSAD1mNeuron,0.10934867899382078,0.17911629030497628,4329,4329,NA,NA,methylmalonate-semialdehyde dehydrogenase Neuron,2mop[mN] + coa[mN] + nad[mN] --> co2[mN] + nadh[mN] + ppcoa[mN],Neuron
+MMSAD3mNeuron,0.10359331475918582,9.111585610711943e-16,4329,4329,NA,NA,"methylmalonate-semialdehyde dehydrogenase (malonic semialdehyde), mitochondrial Neuron",coa[mN] + msa[mN] + nad[mN] --> accoa[mN] + co2[mN] + nadh[mN],Neuron
+MTHFCmNeuron,0.5283777150473619,4.275692077829989e-16,"25902, 10797",25902,NA,NA,"methenyltetrahydrifikate cyclohydrolase, mitochondrial Neuron",h2o[mN] + methf[mN] <=> 10fthf[mN] + h[mN],Neuron
+MTHFCmNeuron,0.5283777150473619,4.275692077829989e-16,"25902, 4522, 10797, 100287639, 441024",25902,NA,NA,"methenyltetrahydrifikate cyclohydrolase, mitochondrial Neuron",h2o[mN] + methf[mN] <=> 10fthf[mN] + h[mN],Neuron
+MTHFDmNeuron,0.02145444990495342,9.65388116445886e-16,"25902, 4522, 10797",25902,NA,NA,"methylenetetrahydrofolate dehydrogenase (NADP), mitochondrial Neuron",mlthf[mN] + nadp[mN] <=> methf[mN] + nadph[mN],Neuron
+MTHFDmNeuron,0.02145444990495342,9.65388116445886e-16,"25902, 4522, 10797, 4524, 100287639, 441024",25902,NA,NA,"methylenetetrahydrofolate dehydrogenase (NADP), mitochondrial Neuron",mlthf[mN] + nadp[mN] <=> methf[mN] + nadph[mN],Neuron
+NABTNOmNeuron,0.5317786162519125,9.491235011158273e-18,"8854, 8854, 501, 224, 223, 8854, 216","8659, 219, 217",NA,NA,N4-Acetylaminobutanal:NAD+ oxidoreductase (m) Neuron,h2o[mN] + n4abutn[mN] + nad[mN] --> 4aabutn[mN] + 2.0 h[mN] + nadh[mN],Neuron
+NDPK10mNeuron,0.03085572777145567,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dIDP), mitochondrial Neuron",atp[mN] + didp[mN] <=> adp[mN] + ditp[mN],Neuron
+NDPK10mNeuron,0.03085572777145567,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dIDP), mitochondrial Neuron",atp[mN] + didp[mN] <=> adp[mN] + ditp[mN],Neuron
+NDPK1mNeuron,0.03281830519668997,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:GDP), mitochondrial Neuron",atp[mN] + gdp[mN] <=> adp[mN] + gtp[mN],Neuron
+NDPK1mNeuron,0.03281830519668997,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:GDP), mitochondrial Neuron",atp[mN] + gdp[mN] <=> adp[mN] + gtp[mN],Neuron
+NDPK2mNeuron,0.03085572777026865,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:UDP), mitochondrial Neuron",atp[mN] + udp[mN] <=> adp[mN] + utp[mN],Neuron
+NDPK3mNeuron,0.033433767912760384,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:CDP), mitochondrial Neuron",atp[mN] + cdp[mN] <=> adp[mN] + ctp[mN],Neuron
+NDPK3mNeuron,0.033433767912760384,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:CDP), mitochondrial Neuron",atp[mN] + cdp[mN] <=> adp[mN] + ctp[mN],Neuron
+NDPK4mNeuron,0.03085891472470182,0,4833,4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dTDP), mitochondrial Neuron",atp[mN] + dtdp[mN] <=> adp[mN] + dttp[mN],Neuron
+NDPK4mNeuron,0.03085891472470182,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dTDP), mitochondrial Neuron",atp[mN] + dtdp[mN] <=> adp[mN] + dttp[mN],Neuron
+NDPK5mNeuron,0.03085891472497577,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dGDP), mitochondrial Neuron",atp[mN] + dgdp[mN] <=> adp[mN] + dgtp[mN],Neuron
+NDPK5mNeuron,0.03085891472497577,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dGDP), mitochondrial Neuron",atp[mN] + dgdp[mN] <=> adp[mN] + dgtp[mN],Neuron
+NDPK6mNeuron,0.03366012548240799,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dUDP), mitochondrial Neuron",atp[mN] + dudp[mN] <=> adp[mN] + dutp[mN],Neuron
+NDPK6mNeuron,0.03366012548240799,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dUDP), mitochondrial Neuron",atp[mN] + dudp[mN] <=> adp[mN] + dutp[mN],Neuron
+NDPK7mNeuron,0.03085891472420608,0,4833,4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dCDP), mitochondrial Neuron",atp[mN] + dcdp[mN] <=> adp[mN] + dctp[mN],Neuron
+NDPK7mNeuron,0.03085891472420608,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dCDP), mitochondrial Neuron",atp[mN] + dcdp[mN] <=> adp[mN] + dctp[mN],Neuron
+NDPK8mNeuron,0.03080739960361568,0,"10201, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dADP), mitochondrial Neuron",atp[mN] + dadp[mN] <=> adp[mN] + datp[mN],Neuron
+NDPK8mNeuron,0.03080739960361568,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:dADP), mitochondrial Neuron",atp[mN] + dadp[mN] <=> adp[mN] + datp[mN],Neuron
+NDPK9mNeuron,0.03085572777069117,0,"4832, 4830, 29922, 10201, 29922, 4831, 4830",4833,NA,NA,"nucleoside-diphosphate kinase (ATP:IDP), mitochondrial Neuron",atp[mN] + idp[mN] <=> adp[mN] + itp[mN],Neuron
+NH4t3rNeuron,0.13175073927275976,0.2551643238024937,"57127, 6005",57127,NA,NA,ammonia transport via proton antiport Neuron,h[I] + nh4[cN] <=> h[cN] + nh4[I],Neuron
+NMNATmNeuron,0.5048787311964592,0.29686681418410393,349565,349565,NA,NA,"nicotinamide-nucleotide adenylyltransferase, mitochondrial Neuron",atp[mN] + h[mN] + nmn[mN] --> nad[mN] + ppi[mN],Neuron
+NNATmNeuron,0.47895428807107393,6.738776857922374e-16,NA,349565,NA,NA,"nicotinate-nucleotide adenylyltransferase, mitochondrial Neuron",atp[mN] + h[mN] + nicrnt[mN] --> dnad[mN] + ppi[mN],Neuron
+NTD1mNeuron,0.20237563162255415,0,56953,56953,NA,NA,"5'-nucleotidase (dUMP),mitochondrial Neuron",dump[mN] + h2o[mN] --> duri[mN] + pi[mN],Neuron
+NTD1mNeuron,0.20237563162255415,0,"30833, 5251, 56953, 4907, 84618, 22978, 51251, 93034, 93034",56953,NA,NA,"5'-nucleotidase (dUMP),mitochondrial Neuron",dump[mN] + h2o[mN] --> duri[mN] + pi[mN],Neuron
+NTD2mNeuron,0.1948988984326548,0,"51205, 54, 55, 53, 4907, 51251",56953,NA,NA,"5'-nucleotidase (UMP), mitochondrial Neuron",h2o[mN] + ump[mN] --> pi[mN] + uri[mN],Neuron
+NTD5mNeuron,0.19016315431475167,4.745617505579137e-18,56953,56953,NA,NA,"5'-nucleotidase (dTMP), mitochondrial Neuron",dtmp[mN] + h2o[mN] --> pi[mN] + thymd[mN],Neuron
+NTD5mNeuron,0.19016315431475167,4.745617505579137e-18,"51205, 54, 55, 53, 30833, 56953, 4907, 84618, 22978, 51251, 93034",56953,NA,NA,"5'-nucleotidase (dTMP), mitochondrial Neuron",dtmp[mN] + h2o[mN] --> pi[mN] + thymd[mN],Neuron
+NaKtNeuron,0.14136223705540402,0.8142410713786291,"23439, 476, 481, 480, 478, 477, 482, 483","477, 481, 480, 476, 482, 478, 483",NA,NA,Na+/K+ exchanging ATPase Neuron,atp[cN] + h2o[cN] + 2.0 k[I] + 3.0 na1[cN] --> adp[cN] + h[cN] + 2.0 k[cN] + 3.0 na1[I] + pi[cN],Neuron
+O2StNeuron,0.011898883859907743,0,,,NA,NA,superoxide anion transport via diffusion (extracellular) Neuron,o2s[cN] <=> o2s[I],Neuron
+O2StNeuron,0.011898883859907743,0,,,NA,NA,superoxide anion transport via diffusion (extracellular) Neuron,o2s[cN] <=> o2s[I],Neuron
+O2StmNeuron,0.03403503120372455,0,,,NA,NA,superoxide anion transport via diffusion (mitochondria) Neuron,o2s[cN] <=> o2s[mN],Neuron
+O2StmNeuron,0.03403503120372455,0,,,NA,NA,superoxide anion transport via diffusion (mitochondria) Neuron,o2s[cN] <=> o2s[mN],Neuron
+O2tNeuron,0.004002409523822959,0.5948953862997172,,,NA,NA,o2 transport (diffusion) Neuron,o2[I] <=> o2[cN],Neuron
+O2tNeuron,0.004002409523822959,0.5948953862997172,,,NA,NA,o2 transport (diffusion) Neuron,o2[I] <=> o2[cN],Neuron
+O2tmNeuron,0.022189536220490278,0.5948953862997172,,,NA,NA,O2 transport (diffusion) Neuron,o2[cN] <=> o2[mN],Neuron
+O2tmNeuron,0.022189536220490278,0.5948953862997172,,,NA,NA,O2 transport (diffusion) Neuron,o2[cN] <=> o2[mN],Neuron
+OCOAT1mNeuron,0.0075955432950815865,0.40833999354103945,"64064, 5019",5019,NA,NA,3-oxoacid CoA-transferase Neuron,acac[mN] + succoa[mN] <=> aacoa[mN] + succ[mN],Neuron
+OIVD1mNeuron,0.10371291496578755,0,"1738, 1629, 594, 593, 594","1738, 1629, 594, 593",NA,NA,"2-oxoisovalerate dehydrogenase (acylating; 4-methyl-2-oxopentaoate), mitochondrial Neuron",4mop[mN] + coa[mN] + nad[mN] --> co2[mN] + ivcoa[mN] + nadh[mN],Neuron
+OIVD2mNeuron,0.1036208616930055,1.0039196743396377e-29,"1738, 1629, 594, 593, 594","1738, 1629, 594, 593",NA,NA,"2-oxoisovalerate dehydrogenase (acylating; 3-methyl-2-oxobutanoate), mitochondrial Neuron",3mob[mN] + coa[mN] + nad[mN] --> co2[mN] + ibcoa[mN] + nadh[mN],Neuron
+OIVD3mNeuron,0.10362200218536746,2.8416077817186307e-30,"1738, 1629, 594, 593, 594","1738, 1629, 594, 593",NA,NA,"2-oxoisovalerate dehydrogenase (acylating; 3-methyl-2-oxopentanoate), mitochondrial Neuron",3mop[mN] + coa[mN] + nad[mN] --> 2mbcoa[mN] + co2[mN] + nadh[mN],Neuron
+ORNTArmNeuron,0.021852823226330097,0,4942,4942,NA,NA,ornithine transaminase reversible (m) Neuron,akg[mN] + orn[mN] <=> glu-L[mN] + glu5sa[mN],Neuron
+ORNt3mNeuron,0.606467645430616,2.847370503347482e-17,"83884, 10166",83884,NA,NA,ornithine mitochondrial transport via proton antiport Neuron,h[cN] + orn[mN] <=> h[mN] + orn[cN],Neuron
+ORNt4mNeuron,0.618331812467068,5.694741006694964e-17,"83884, 10166",83884,NA,NA,ornithine mitochondrial transport exchange with citruline Neuron,citr-L[cN] + h[cN] + orn[mN] <=> citr-L[mN] + h[mN] + orn[cN],Neuron
+ORNtiDFNeuron,0.007234438063635427,9.111585610711943e-16,"6541, 6542, 84889","6541, 84889",NA,NA,ornithine transport via diffusion (extracellular to cytosol) Neuron,orn[I] --> orn[cN],Neuron
+P45011A1mNeuron,0.6401058904025825,0.2968668141841053,1583,1583,NA,NA,"Cytochrome P450 11A1, mitochondrial [Precursor] Neuron",chsterol[mN] + h[mN] + nadph[mN] + 2.0 o2[mN] --> 4mptnl[mN] + 2.0 h2o[mN] + nadp[mN] + prgnlone[mN],Neuron
+P5CDmNeuron,0.5607482881320363,2.3728087527895682e-17,"8659, 8659",8659,NA,NA,"1-pyrroline-5-carboxylate dehydrogenase, mitochondrial Neuron",1pyr5c[mN] + 2.0 h2o[mN] + nad[mN] --> glu-L[mN] + h[mN] + nadh[mN],Neuron
+PCFLOPmNeuron,0.12880278175260743,0.15069627744127104,57194,57194,NA,NA,phosphatidylcholine flippase Neuron,atp[cN] + h2o[cN] + pchol_hs[mN] --> adp[cN] + h[cN] + pchol_hs[cN] + pi[cN],Neuron
+PDHmNeuron,0.10142345864261734,0.40833999354103945,"1738, 8050, 5160, 5161, 5162, 1737","8050, 1738, 5162, 5161, 1737, 5160",NA,NA,pyruvate dehydrogenase Neuron,coa[mN] + nad[mN] + pyr[mN] --> accoa[mN] + co2[mN] + nadh[mN],Neuron
+PEFLIPNeuron,0.1228902718851002,0.15069627744127104,"57194, 5244, 10396","57194, 10396",NA,NA,phosphatidylethanolamine flippase Neuron,atp[cN] + h2o[cN] + pe_hs[I] --> adp[cN] + h[cN] + pe_hs[cN] + pi[cN],Neuron
+PEFLIPmNeuron,0.11927663174617362,0.1791162903049741,"57194, 5244, 10396","57194, 10396",NA,NA,phosphatidylethanolamine flippase Neuron,atp[cN] + h2o[cN] + pe_hs[cN] --> adp[cN] + h[cN] + pe_hs[mN] + pi[cN],Neuron
+PEFLIPmNeuron,0.11927663174617362,0.1791162903049741,"57194, 10396","57194, 10396",NA,NA,phosphatidylethanolamine flippase Neuron,atp[cN] + h2o[cN] + pe_hs[cN] --> adp[cN] + h[cN] + pe_hs[mN] + pi[cN],Neuron
+PETOHMmhsNeuron,0.44830011336413694,3.701581654351726e-16,"5833, 10400, 10400, 10400, 122970, 10005, 2168",10400,NA,NA,phosphatidylethanolamine N-methyltransferase Neuron,3.0 amet[mN] + pe_hs[mN] --> 3.0 ahcys[mN] + 3.0 h[mN] + pchol_hs[mN],Neuron
+PETOHMmhsNeuron,0.44830011336413694,3.701581654351726e-16,"10400, 10400, 10400",10400,NA,NA,phosphatidylethanolamine N-methyltransferase Neuron,3.0 amet[mN] + pe_hs[mN] --> 3.0 ahcys[mN] + 3.0 h[mN] + pchol_hs[mN],Neuron
+PGLNeuron,0.08161715040124484,2.3728087527895682e-17,"10165, 8604, 8714, 6565, 9563, 23169, 80146, 54578, 54600, 54658, 6564, 25796, 21",25796,NA,NA,6-phosphogluconolactonase Neuron,6pgl[cN] + h2o[cN] --> 6pgc[cN] + h[cN],Neuron
+PHCDmNeuron,0.5342544712995075,2.3728087527895682e-17,"8659, 8659",8659,NA,NA,L-1-pyrroline-3-hydroxy-5-carboxylate dehydrogenase Neuron,1p3h5c[mN] + 2.0 h2o[mN] + nad[mN] --> e4hglu[mN] + h[mN] + nadh[mN],Neuron
+PHCHGSmNeuron,0.5213388954229078,5.22017925613705e-17,,,NA,NA,"L-1-Pyrroline-3-hydroxy-5-carboxylate spontaneous conversion to L-4-Hydroxyglutamate semialdehyde, mitochondrial Neuron",1p3h5c[mN] + h2o[mN] + h[mN] <=> 4hglusa[mN],Neuron
+PHEMEtmNeuron,0.041016297088311025,0,,,NA,NA,Heme transport to cytosol Neuron,pheme[mN] <=> pheme[cN],Neuron
+PHETA1mNeuron,0.01506104605424751,0,"2806, 6898",2806,NA,NA,phenylalanine transaminase (m) Neuron,akg[mN] + phe-L[mN] <=> glu-L[mN] + phpyr[mN],Neuron
+PHETA1mNeuron,0.01506104605424751,0,"2805, 2806, 6898",2806,NA,NA,phenylalanine transaminase (m) Neuron,akg[mN] + phe-L[mN] <=> glu-L[mN] + phpyr[mN],Neuron
+PIt2mNeuron,0.7185261320851423,0.8581238802303918,NA,5250,NA,NA,"phosphate transporter, mitochondrial Neuron",h[cN] + pi[cN] <=> h[mN] + pi[mN],Neuron
+PIt7Neuron,0.01329488100684826,0,"6568, 10786, 10050, 10246, 6569, 10568","57084, 10568, 6569",NA,NA,phosphate transport in/out via three Na+ symporter Neuron,3.0 na1[I] + pi[I] <=> 3.0 na1[cN] + pi[cN],Neuron
+PNTKmNeuron,0.4719049469642309,0.17911629030497433,"55229, 79646, 80025, 53354, 80025, 80025, 53354, 53354, 80025",80025,NA,NA,pantothenate kinase (mitochondrial) Neuron,atp[mN] + pnto-R[mN] --> 4ppan[mN] + adp[mN] + h[mN],Neuron
+PPA2mNeuron,0.5452420313727424,2.5151772779569426e-16,,,NA,NA,"inorganic triphosphatase, mitochondrial Neuron",h2o[mN] + pppi[mN] --> h[mN] + pi[mN] + ppi[mN],Neuron
+PPA2mNeuron,0.5452420313727424,2.5151772779569426e-16,"8854, 8854, 501, 224, 223, 8854, 216, 57818, 92579, 2538, 160728, 27068, 27068, 27068, 27068, 8612, 8613, 8611, 8611, 64077, 5464",,NA,NA,"inorganic triphosphatase, mitochondrial Neuron",h2o[mN] + pppi[mN] --> h[mN] + pi[mN] + ppi[mN],Neuron
+PPAtNeuron,0.012502434538336073,0.26131925971246545,,,NA,NA,"Propionate transport, diffusion Neuron",ppa[I] --> ppa[cN],Neuron
+PPAtNeuron,0.012502434538336073,0.26131925971246545,"8854, 8854, 501, 224, 223, 8854, 216, 57818, 92579, 2538, 160728, 27068, 27068, 27068, 27068, 8612, 8613, 8611, 8611, 64077, 5464",,NA,NA,"Propionate transport, diffusion Neuron",ppa[I] --> ppa[cN],Neuron
+PPAtmNeuron,0.04200571351749416,0,,,NA,NA,"Propionate transport, diffusion Neuron",ppa[cN] --> ppa[mN],Neuron
+PPAtmNeuron,0.04200571351749416,0,,,NA,NA,"Propionate transport, diffusion Neuron",ppa[cN] --> ppa[mN],Neuron
+PPAtmNeuron,0.04200571351749416,0,"8854, 8854, 501, 224, 223, 8854, 216, 57818, 92579, 2538, 160728, 27068, 27068, 27068, 27068, 8612, 8613, 8611, 8611, 64077, 5464",,NA,NA,"Propionate transport, diffusion Neuron",ppa[cN] --> ppa[mN],Neuron
+PPBNGSNeuron,0.08736574827764224,9.965796761716188e-17,"210, 210",210,NA,NA,porphobilinogen synthase Neuron,2.0 5aop[cN] --> 2.0 h2o[cN] + h[cN] + ppbng[cN],Neuron
+PPCOACmNeuron,0.501868871146707,5.837109531862367e-16,NA,"5095, 5096",NA,NA,"Propionyl-CoA carboxylase, mitochondrial Neuron",atp[mN] + hco3[mN] + ppcoa[mN] --> adp[mN] + h[mN] + mmcoa-S[mN] + pi[mN],Neuron
+PPCOAOmNeuron,0.020918767975528125,7.592988008926619e-17,NA,"34, 36, 28976, 80724, 27034",NA,NA,"Propanoyl-CoA:FAD 2,3-oxidoreductase, mitochondrial Neuron",fad[mN] + ppcoa[mN] --> fadh2[mN] + prpncoa[mN],Neuron
+PPPG9tmNeuron,0.007480811603235442,0,,,NA,NA,protoporphyrinogen IX mitochondrial transport Neuron,pppg9[cN] <=> pppg9[mN],Neuron
+PPPGOmNeuron,0.1390727693422221,1.5375800718076405e-15,5498,5498,NA,NA,"protoporphyrinogen oxidase, mitochondrial Neuron",3.0 o2[mN] + 2.0 pppg9[mN] --> 6.0 h2o[mN] + 2.0 ppp9[mN],Neuron
+PRGNLONEtmNeuron,0.04020518436381566,0,,,NA,NA,pregnenolone intracellular transport Neuron,prgnlone[cN] <=> prgnlone[mN],Neuron
+PRO1xmNeuron,0.46372990825322,6.54895215769921e-16,58510,5625,NA,NA,"proline oxidase (NAD), mitochondrial Neuron",nad[mN] + pro-L[mN] --> 1pyr5c[mN] + 2.0 h[mN] + nadh[mN],Neuron
+PROD2mNeuron,0.5275027373715799,0.15069627744127198,5625,5625,NA,NA,Proline dehydrogenase (m) Neuron,fad[mN] + pro-L[mN] --> 1pyr5c[mN] + fadh2[mN] + h[mN],Neuron
+PROD2mNeuron,0.5275027373715799,0.15069627744127198,"5625, 58510",5625,NA,NA,Proline dehydrogenase (m) Neuron,fad[mN] + pro-L[mN] --> 1pyr5c[mN] + fadh2[mN] + h[mN],Neuron
+PROt2rNeuron,0.1298684137647223,2.845094663209406e-32,"206358, 153201",206358,NA,NA,L-proline reversible transport via proton symport Neuron,h[I] + pro-L[I] <=> h[cN] + pro-L[cN],Neuron
+PROtmNeuron,0.004946980753556147,0,,,NA,NA,"L-proline transport, mitochondrial Neuron",pro-L[cN] <=> pro-L[mN],Neuron
+PRPNCOAHYDmNeuron,0.13469238524033408,7.592988008926619e-17,NA,"3030, 3032, 549, 1892",NA,NA,Propenoyl-CoA hydrolase (m) Neuron,h2o[mN] + prpncoa[mN] --> 3hpcoa[mN],Neuron
+PSFLIPNeuron,0.12289027188394606,0.15069627744127104,"57194, 10396","57194, 10396",NA,NA,phosphatidylserine flippase Neuron,atp[cN] + h2o[cN] + ps_hs[I] --> adp[cN] + h[cN] + pi[cN] + ps_hs[cN],Neuron
+PSFLIPmNeuron,0.11467570942749379,0.15069627744127104,"57194, 10396","57194, 10396",NA,NA,phosphatidylserine flippase Neuron,atp[cN] + h2o[cN] + ps_hs[cN] --> adp[cN] + h[cN] + pi[cN] + ps_hs[mN],Neuron
+PSFLIPmNeuron,0.11467570942749379,0.15069627744127104,"57194, 10396","57194, 10396",NA,NA,phosphatidylserine flippase Neuron,atp[cN] + h2o[cN] + ps_hs[cN] --> adp[cN] + h[cN] + pi[cN] + ps_hs[mN],Neuron
+PYLALDOXmNeuron,0.5317786162644366,9.491235011158273e-18,NA,"8659, 219, 217",NA,NA,Perillyl aldehyde:NAD+ oxidoreductase (m) Neuron,h2o[mN] + nad[mN] + pylald[mN] --> 2.0 h[mN] + nadh[mN] + peracd[mN],Neuron
+PYRt2mNeuron,0.617768029323684,0.4083399935410395,6566,6566,NA,NA,pyruvate mitochondrial transport via proton symport Neuron,h[cN] + pyr[cN] <=> h[mN] + pyr[mN],Neuron
+PYRt2rNeuron,0.1283422512892586,2.845094663209406e-32,"9123, 9194, 6566","6566, 9194, 9123",NA,NA,pyruvate reversible transport via proton symport Neuron,h[I] + pyr[I] <=> h[cN] + pyr[cN],Neuron
+RPENeuron,0.030462640881075156,0,"6564, 6120, 6120",6120,NA,NA,ribulose 5-phosphate 3-epimerase Neuron,ru5p-D[cN] <=> xu5p-D[cN],Neuron
+RPINeuron,0.01802959430963559,0,"6565, 22934, 6564",22934,NA,NA,ribose-5-phosphate isomerase Neuron,r5p[cN] <=> ru5p-D[cN],Neuron
+SACCD3mNeuron,0.5347704988884466,2.7999143282916905e-16,10157,10157,NA,NA,"saccharopine dehydrogenase (NADP, L-lysine forming), mitochondrial Neuron",akg[mN] + h[mN] + lys-L[mN] + nadph[mN] --> h2o[mN] + nadp[mN] + saccrp-L[mN],Neuron
+SACCD4mNeuron,0.5423932520273176,2.3728087527895682e-17,10157,10157,NA,NA,"saccharopine dehydrogenase (NAD, L-glutamate forming), mitochondrial Neuron",h2o[mN] + nadp[mN] + saccrp-L[mN] --> L2aadp6sa[mN] + glu-L[mN] + h[mN] + nadph[mN],Neuron
+SARCStmNeuron,0.013357664125626894,0,,,NA,NA,Sarcosine transport (mitochondrial) Neuron,sarcs[cN] --> sarcs[mN],Neuron
+SARDHmNeuron,0.029441685346304373,1.8982470022316547e-17,1757,1757,NA,NA,Sarcosine dehydrogenase (m) Neuron,fad[mN] + sarcs[mN] + thf[mN] --> fadh2[mN] + gly[mN] + mlthf[mN],Neuron
+SERGLNexRNeuron,9.880643207730063e-4,7.592988008926618e-16,"6520, 56301","6520, 56301",NA,NA,L-Serine/Glutamine reversible exchange Neuron,gln-L[cN] + ser-L[I] --> gln-L[I] + ser-L[cN],Neuron
+SERGLYexRNeuron,0.002380287178616725,2.007720833456609e-15,"6520, 56301","6520, 56301",NA,NA,L-Serine/Glycine reversible exchange Neuron,gly[cN] + ser-L[I] <=> gly[I] + ser-L[cN],Neuron
+SERt4Neuron,0.0033602205269686798,1.3667378416067913e-15,"11254, 57393, 59272, 54407, 340024, 81539, 55089","11254, 81539, 54407",NA,NA,L-serine via sodium symport Neuron,na1[I] + ser-L[I] --> na1[cN] + ser-L[cN],Neuron
+SLDxmNeuron,0.4639906350297333,1.423685251673741e-17,"4190, 130752",4191,NA,NA,"L-sulfolactate dehydrogenase (NAD+), mitochondrial Neuron",nad[mN] + sl-L[mN] <=> 3spyr[mN] + h[mN] + nadh[mN],Neuron
+SPODMmNeuron,0.4627551867594494,2.4392473978676763e-15,6648,6648,NA,NA,superoxide dismutase Neuron,2.0 h[mN] + 2.0 o2s[mN] --> h2o2[mN] + o2[mN],Neuron
+SPODMmNeuron,0.4627551867594494,2.4392473978676763e-15,"6649, 6648, 6647",6648,NA,NA,superoxide dismutase Neuron,2.0 h[mN] + 2.0 o2s[mN] --> h2o2[mN] + o2[mN],Neuron
+SSALxmNeuron,0.5448209796560715,9.39632266104669e-16,NA,7915,NA,NA,succinate-semialdehyde dehydrogenase (NAD) reversible (mitochondrial) Neuron,h2o[mN] + nad[mN] + sucsal[mN] --> 2.0 h[mN] + nadh[mN] + succ[mN],Neuron
+SUCCt2mNeuron,0.042542216532953404,1.1864043763947843e-16,1468,1468,NA,NA,"succinate transport, mitochondrial Neuron",pi[mN] + succ[cN] <=> pi[cN] + succ[mN],Neuron
+SUCD1mNeuron,0.010304551826285395,0.4083399935410395,"6391, 6389, 6390, 6392","6390, 6389, 6391, 6392",NA,NA,succinate dehydrogenase Neuron,fad[mN] + succ[mN] <=> fadh2[mN] + fum[mN],Neuron
+SUCOAS1mNeuron,0.0464390349125668,0.1506962774412712,"8801, 8802","8802, 8801",NA,NA,Succinate--CoA ligase (GDP-forming) Neuron,coa[mN] + gtp[mN] + succ[mN] --> gdp[mN] + pi[mN] + succoa[mN],Neuron
+SUCOASmNeuron,0.07030374651243954,0.1506962774412712,"8802, 8803","8802, 8803",NA,NA,Succinate--CoA ligase (ADP-forming) Neuron,atp[mN] + coa[mN] + succ[mN] --> adp[mN] + pi[mN] + succoa[mN],Neuron
+SULFOXNeuron,0.09524766445403447,0,6821,6821,NA,NA,sulfite oxidase Neuron,2.0 ficytC[mN] + h2o[cN] + so3[cN] --> 2.0 focytC[mN] + 2.0 h[cN] + so4[cN],Neuron
+T2M26DCOAHLmNeuron,0.1344429821960999,0,NA,"3030, 3032, 549",NA,NA,"trans-2-Methyl-5-isopropylhexa-2,5-dienoyl-CoA hydro-lyase (m) Neuron",h2o[mN] + t2m26dcoa[mN] <=> 3h26dm5coa[mN],Neuron
+T4HCINNMFMNeuron,0.14252062476227167,7.592988008926619e-17,,,NA,NA,4-hydroxycinnamate formation Neuron,34hpl[mN] --> T4hcinnm[mN] + h2o[mN],Neuron
+TALANeuron,0.13877034184638365,0,"11136, 6519, 6888",6888,NA,NA,transaldolase Neuron,g3p[cN] + s7p[cN] <=> e4p[cN] + f6p[cN],Neuron
+TCYNTtNeuron,0.015808934126492515,0,,,NA,NA,Thiocyanate transport via diffusion (cytosol to extracellular) Neuron,tcynt[cN] --> tcynt[I],Neuron
+TCYNTtmNeuron,0.03821059660809414,0,,,NA,NA,Thiocyanate transport via diffusion (mitochondrial) Neuron,tcynt[mN] --> tcynt[cN],Neuron
+TCYNTtmNeuron,0.03821059660809414,0,,,NA,NA,Thiocyanate transport via diffusion (mitochondrial) Neuron,tcynt[mN] --> tcynt[cN],Neuron
+THD1mNeuron,0.6742539965609694,0.4083399935410394,"23530, 23530",23530,NA,NA,NAD(P) transhydrogenase Neuron,h[cN] + nadh[mN] + nadp[mN] <=> h[mN] + nad[mN] + nadph[mN],Neuron
+THFtmNeuron,0.022888412970552507,0,,,NA,NA,"5,6,7,8-Tetrahydrofolate transport, diffusion, mitochondrial Neuron",thf[cN] <=> thf[mN],Neuron
+TKT1Neuron,0.11569041103379382,0,"84076, 8277, 7086","8277, 7086",NA,NA,transketolase Neuron,r5p[cN] + xu5p-D[cN] <=> g3p[cN] + s7p[cN],Neuron
+TKT2Neuron,0.15981406487899488,0,"84076, 8277, 7086","8277, 7086",NA,NA,transketolase Neuron,e4p[cN] + xu5p-D[cN] <=> f6p[cN] + g3p[cN],Neuron
+TMDK1mNeuron,0.4785697098033661,0.15069627744127104,7084,7084,NA,NA,thymidine kinase (ATP:thymidine) Neuron,atp[mN] + thymd[mN] --> adp[mN] + dtmp[mN] + h[mN],Neuron
+TMDK1mNeuron,0.4785697098033661,0.15069627744127104,"7083, 7084",7084,NA,NA,thymidine kinase (ATP:thymidine) Neuron,atp[mN] + thymd[mN] --> adp[mN] + dtmp[mN] + h[mN],Neuron
+TRDRmNeuron,0.4454940735483859,1.423685251673741e-17,"7296, 7296, 7296, 7296",10587,NA,NA,thioredoxin reductase (NADPH) Neuron,h[mN] + nadph[mN] + trdox[mN] --> nadp[mN] + trdrd[mN],Neuron
+TYRTAmNeuron,0.03558934332416184,7.592988008926619e-17,"117247, 2805, 2806, 11254, 57393, 59272, 340024, 6565, 6898, 6564",2806,NA,NA,"tyrosine transaminase, mitochondrial Neuron",akg[mN] + tyr-L[mN] <=> 34hpp[mN] + glu-L[mN],Neuron
+TYRTAmNeuron,0.03558934332416184,7.592988008926619e-17,"2806, 6898",2806,NA,NA,"tyrosine transaminase, mitochondrial Neuron",akg[mN] + tyr-L[mN] <=> 34hpp[mN] + glu-L[mN],Neuron
+TYRTAmNeuron,0.03558934332416184,7.592988008926619e-17,"2805, 2806, 6898",2806,NA,NA,"tyrosine transaminase, mitochondrial Neuron",akg[mN] + tyr-L[mN] <=> 34hpp[mN] + glu-L[mN],Neuron
+UPP3SNeuron,0.017359702679265385,7.592988008926619e-17,7390,7390,NA,NA,uroporphyrinogen-III synthase Neuron,hmbil[cN] --> h2o[cN] + uppg3[cN],Neuron
+UPPDC1Neuron,0.0673468660484796,2.08807170245482e-16,7389,7389,NA,NA,uroporphyrinogen decarboxylase (uroporphyrinogen III) Neuron,4.0 h[cN] + uppg3[cN] --> 4.0 co2[cN] + cpppg3[cN],Neuron
+VALTANeuron,0.013025534697074412,0,"587, 586",586,NA,NA,valine transaminase Neuron,akg[cN] + val-L[cN] <=> 3mob[cN] + glu-L[cN],Neuron
+VALTAmNeuron,0.018846336255322057,6.074390407141395e-16,587,587,NA,NA,"valine transaminase, mitochondiral Neuron",akg[mN] + val-L[mN] <=> 3mob[mN] + glu-L[mN],Neuron
+VALTAmNeuron,0.018846336255322057,6.074390407141395e-16,"587, 586",587,NA,NA,"valine transaminase, mitochondiral Neuron",akg[mN] + val-L[mN] <=> 3mob[mN] + glu-L[mN],Neuron
+VALt5mNeuron,0.005573786992121999,1.0039196743396377e-29,,,NA,NA,Valine reversible mitochondrial transport Neuron,val-L[cN] <=> val-L[mN],Neuron
+VALtecNeuron,0.0056073154461194485,1.0039196743396377e-29,"124935, 8501",124935,NA,NA,L-valine transport via diffusion (extracellular to cytosol) Neuron,val-L[I] <=> val-L[cN],Neuron
+VITD2HmNeuron,0.5599022224479955,5.22017925613705e-17,NA,"1594, 1591, 1593",NA,NA,Vitamin D-25-hydroxylase (D2) Neuron,h[mN] + nadph[mN] + o2[mN] + vitd2[mN] --> 25hvitd2[mN] + h2o[mN] + nadp[mN],Neuron
+VITD2tmNeuron,0.04020396844852627,0,NA,,NA,NA,Vitamin D2 transport from mitochondria Neuron,vitd2[mN] <=> vitd2[cN],Neuron
+VITD3HmNeuron,0.5609018590081525,5.22017925613705e-17,NA,"1594, 1591, 1593",NA,NA,Vitamin D-25-hydroxylase (D3) Neuron,h[mN] + nadph[mN] + o2[mN] + vitd3[mN] --> 25hvitd3[mN] + h2o[mN] + nadp[mN],Neuron
+VITD3tmNeuron,0.009639673071139408,0,"949, 29881, 948",,NA,NA,Vitamin D3 transport from mitochondria Neuron,vitd3[mN] --> vitd3[cN],Neuron
+VITD3tm3Neuron,0.009639673070950308,0,"949, 29881, 948",,NA,NA,Vitamin D3 transport in mitochondria Neuron,vitd3[cN] --> vitd3[mN],Neuron
+MTDNAploymNeuron,0.033395243119210063,3.1100879026593494e-12,NA,,NA,NA,polymerization of mtDNA Neuron,9218.0 datp[mN] + 7350.0 dctp[mN] + 7350.0 dgtp[mN] + 9218.0 dttp[mN] + mtDNAn-1[mN] --> mtDNAn[mN] + 33136.0 ppi[mN],Neuron
+MTDNAdpolymNeuron,0.5345388325110298,2.7942195872849958e-14,NA,,NA,NA,depolymerization of mtDNA for repair Neuron,33136.0 h2o[mN] + mtDNAn[mN] --> 9218.0 damp[mN] + 7350.0 dcmp[mN] + 7350.0 dgmp[mN] + 9218.0 dtmp[mN] + 33136.0 h[mN] + mtDNAn-1[mN],Neuron
+DAKmNeuron,0.004958337811347607,0.24683119087704575,NA,50808,NA,NA,adentylate kinase (GTP) / GTP-AMP Phosphotransferase Neuron,damp[mN] + gtp[mN] --> dadp[mN] + gdp[mN],Neuron
+DTKmNeuron,0.03532790470104109,0.24683119087704603,NA,,NA,NA,deoxythymidylate kinase (ATP) Neuron,atp[mN] + dtmp[mN] --> adp[mN] + dtdp[mN],Neuron
+DCKmNeuron,0.03364690997483573,0.24683119087704575,NA,,NA,NA,deoxycytidylate kinase (ATP) Neuron,atp[mN] + dcmp[mN] --> adp[mN] + dcdp[mN],Neuron
+DGKmNeuron,0.03364690997403021,0.24683119087704575,NA,,NA,NA,deoxyguanylate kinase (ATP) Neuron,atp[mN] + dgmp[mN] --> adp[mN] + dgdp[mN],Neuron
+NH3tmNeuron,0.6309885617266977,0.2551643238024936,NA,366,NA,NA,mitochondrial ammonium transport Neuron,h[mN] + nh4[cN] <=> h[cN] + nh4[mN],Neuron
+NDPK1Neuron,0.01062810370641537,0.11851353542658358,"4830, 4831, 4830","10201, 4831, 4830, 4832",NA,NA,GTP-ADP Phosphotransferase Neuron,atp[cN] + gdp[cN] --> adp[cN] + gtp[cN],Neuron
+NDPK1Neuron,0.01062810370641537,0.11851353542658358,"4832, 4830, 29922, 10201, 29922, 4831, 4830, 4833","10201, 4831, 4830, 4832",NA,NA,GTP-ADP Phosphotransferase Neuron,atp[cN] + gdp[cN] --> adp[cN] + gtp[cN],Neuron
+NACASPtmNeuron,0.07895901087349609,0,,,NA,NA,N-Acetyl-l-aspartate mitochondrial transport Neuron,Nacasp[mN] <=> Nacasp[cN],Neuron
+NACASPtmNeuron,0.07895901087349609,0,,,NA,NA,N-Acetyl-l-aspartate mitochondrial transport Neuron,Nacasp[mN] <=> Nacasp[cN],Neuron
+NACASPtNeuron,0.0613149086353384,0,,,NA,NA,N-Acetyl-l-aspartate transport Neuron,Nacasp[cN] --> Nacasp[I],Neuron
+GGNGNeuron,0.06260018597543458,0,"2992, 2997, 8908, 2998","2992, 2997, 8908, 2998",NA,NA,glycogenin Neuron,Tyr-ggn[cN] + 8.0 udpg[cN] --> ggn[cN] + 8.0 h[cN] + 8.0 udp[cN],Neuron
+GLGNS1Neuron,0.07886971214405238,0,"2992, 2997, 8908, 2998","2992, 2997, 8908, 2998",NA,NA,glycogen synthase Neuron,ggn[cN] + 3.0 udpg[cN] --> glygn1[cN] + 3.0 h[cN] + 3.0 udp[cN],Neuron
+GLBRANNeuron,0.01211970927226331,0,2632,2632,NA,NA,"1,4-alpha-glucan branching enzyme (glygn1 -> glygn2) Neuron",glygn1[cN] --> glygn2[cN],Neuron
+GLDBRANNeuron,0.016988404807890486,1.898247002231655e-15,"178, 178, 178, 178, 178, 178",178,NA,NA,glycogen debranching enzyme Neuron,dxtrn[cN] + h2o[cN] --> glc-D[cN] + glygn3[cN],Neuron
+SERtmNeuron,0.004057391303683448,2.6151598741707385e-15,NA,,NA,NA,Serine mitochondrial transporter Neuron,ser-L[cN] <=> ser-L[mN],Neuron
+UREAtNeuron,0.016235331180110054,0,"6523, 366, 6528, 8170, 6563","6563, 8170",NA,NA,Urea transporter Neuron,urea[I] <=> urea[cN],Neuron
+UREAtmNeuron,0.04563967268285769,0,366,366,NA,NA,Urea mitochondrial transporter Neuron,urea[cN] <=> urea[mN],Neuron
+UREAtmNeuron,0.04563967268285769,0,"6523, 366, 6528, 8170, 6563",366,NA,NA,Urea mitochondrial transporter Neuron,urea[cN] <=> urea[mN],Neuron
+GLNtN1Neuron,0.1462008656758114,0.2551643238024874,"10991, 92745","92745, 10991",NA,NA,Glutamine transporter Neuron,gln-L[I] + h[cN] + na1[I] <=> gln-L[cN] + h[I] + na1[cN],Neuron
+sinkchsterolNeuron,0.022592819303705915,0,NA,,NA,NA,Cholesterol uptake into brain Neuron, --> chsterol[cN],Neuron
+sinkvitd3Neuron,0.012314816935671985,0,NA,,NA,NA,vitd3 source Neuron, --> vitd3[cN],Neuron
+sinkvitd2Neuron,0.02259219389444906,0,NA,,NA,NA,vitd2 source Neuron, --> vitd2[cN],Neuron
+CKcNeuron,0.03173278167243994,0.1506962774412709,"1160, 548596, 1159, 1152, 1158, 1633, 57419, 25769, 123041, 123041, 123041, 9187, 5105, 5106","1152, 1158",NA,NA,ATP Creatine kinase Neuron,atp[cN] + creat[cN] --> adp[cN] + pcreat[cN],Neuron
+CKcNeuron,0.03173278167243994,0.1506962774412709,"1152, 1158","1152, 1158",NA,NA,ATP Creatine kinase Neuron,atp[cN] + creat[cN] --> adp[cN] + pcreat[cN],Neuron
+CREATtmdiffirNeuron,0.00935440740679258,0.1506962774412709,,,NA,NA,Creatine transport to/from mitochondria via diffusion Neuron,creat[cN] --> creat[mN],Neuron
+PCREATtmdiffirNeuron,0.009354407406664305,0,,,NA,NA,Phosphocreatine transport to/from mitochondria via diffusion Neuron,pcreat[mN] --> pcreat[cN],Neuron
+ALATALNeuron,0.024335603431619796,1.6217831284063203e-14,"2875, 84706",84706,NA,NA,L-alanine transaminase Neuron,akg[cN] + ala-L[cN] <=> glu-L[cN] + pyr[cN],Neuron
+ALATALmNeuron,0.02373539355084518,0,"2875, 84706","84706, 2875",NA,NA,"L-alanine transaminase, mitochondrial Neuron",akg[mN] + ala-L[mN] <=> glu-L[mN] + pyr[mN],Neuron
+ALAtN1Neuron,0.007104724502189164,1.530667272299201e-14,"10991, 92745","92745, 10991",NA,NA,"Alanine transport (Na, H coupled) Neuron",ala-L[I] <=> ala-L[cN],Neuron
+PSDmhsNeuron,0.4685370170013595,2.6338177155964213e-16,23761,23761,NA,NA,Phosphatidylserine decarboxylase Neuron,h[mN] + ps_hs[mN] --> co2[mN] + pe_hs[mN],Neuron
+KtNeuron,0.00258565054894155,0,NA,"477, 481, 480, 476, 482, 478, 483, 3786, 3785",NA,NA,Potassium channel Neuron,k[cN] --> k[I],Neuron
+HtrnsEXNeuron,0.15972785237754755,1.1104744963055181e-15,"6571, 6570",,NA,NA,HtrnsEX_Neuron,h[e] <=> h[cN],Neuron
+NaEXNeuron,0.002318913775753351,1,NA,,NA,NA,Sodium transport (added for simulation),na1[e] <=> na1[cN],Neuron
+GLCt1rNeuron,0.07899541370010305,0.8435695736090506,"6517, 6515, 6513, 66035, 6514, 155184, 29988, 81031, 56606, 144195, 11182, 154091, 56606","6513, 56606, 6515, 29988, 11182, 154091, 81031, 66035",NA,NA,Glucose transporter_Neuron,glc-D[e] --> glc-D[cN],Neuron
+Fe2tNeuron,0.009972440971082358,0,,4891,NA,NA,Iron transporter_Neuron,fe2[e] <=> fe2[cN],Neuron
+PEPCKNeuron,0.026670402818642917,0,"5105, 5106",5105,NA,NA,cytosolic Phosphoenolpyruvate carboxykinase_Neuron,gtp[cN] + oaa[cN] --> co2[cN] + gdp[cN] + pep[cN],Neuron

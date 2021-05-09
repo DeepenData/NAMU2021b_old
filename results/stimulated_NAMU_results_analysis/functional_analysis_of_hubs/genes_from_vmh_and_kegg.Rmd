@@ -113,6 +113,11 @@ inner_join(IDs_centrality_optimality, all_data) %>% filter(`Node type` == "Neuro
 Astrocyte_IDs_centrality_optimality%>% writexl::write_xlsx('Astrocyte_IDs_centrality_optimality.xlsx')
 Neuron_IDs_centrality_optimality%>% writexl::write_xlsx('Neuron_IDs_centrality_optimality.xlsx')
 
+
+Astrocyte_IDs_centrality_optimality%>% write_csv('Astrocyte_IDs_centrality_optimality.csv')
+Neuron_IDs_centrality_optimality%>% write_csv('Neuron_IDs_centrality_optimality.csv')
+
+
 ```
 
 ```{r message=FALSE, warning=FALSE}
