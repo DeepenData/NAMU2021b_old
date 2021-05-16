@@ -25,26 +25,27 @@ Type 5: Genes that are in optimal, central and hyper hubs.
 #NEURON ranked by pure genes
 ```{r fig.height=3, fig.width=14, message=F, warning=FALSE}
 neuron_url <- 
-"https://raw.githubusercontent.com/DeepenData/human-metnet/main/results/stimulated_NAMU_results_analysis/functional_analysis_of_hubs/Neuron_IDs_centrality_optimality.csv?token=AHI56JMYHSB2LRQ4FBZNKRLATAKDE"
-get_genes_from_each_hub(neuron_url, cut_off_optimality = 0.01 , cut_off_centrality =  0.01) -> list_of_genes_by_hubs
+"https://raw.githubusercontent.com/DeepenData/human-metnet/main/results/stimulated_NAMU_results_analysis/functional_analysis_of_hubs/Neuron_IDs_centrality_optimality.csv"
+get_genes_from_each_hub(neuron_url, cut_off_optimality = 0.407 , cut_off_centrality =  0.499) -> list_of_genes_by_hubs # 0.38  0.52
+list_of_genes_by_hubs %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-2)  %>% dotplot
+#analisis
 get_pure_gene_groups(list_of_genes_by_hubs) -> gene_groups
+gene_groups %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-2)  %>% dotplot
+gene_groups %>%compareCluster(fun='enrichKEGG',   pvalueCutoff=1e-2) %>% dotplot
 #para guardar resultados gene_groups
 gene_groups %>% tibble( group = names(gene_groups), genes=.) %>% unnest -> neuron_genes_for_xlsx
-#analisis
-gene_groups %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
-gene_groups %>%compareCluster(fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
 ```
 #ASTROCYTE ranked by pure genes
 ```{r fig.height=3, fig.width=14, message=F, warning=FALSE}
 astro_url <- 
-"https://raw.githubusercontent.com/DeepenData/human-metnet/main/results/stimulated_NAMU_results_analysis/functional_analysis_of_hubs/Astrocyte_IDs_centrality_optimality.csv?token=AHI56JIB3ZJSRV3IFNFNN3LATAKC6"
-get_genes_from_each_hub(astro_url, cut_off_optimality = 0.01 , cut_off_centrality =  0.01) -> list_of_genes_by_hubs
+"https://raw.githubusercontent.com/DeepenData/human-metnet/main/results/stimulated_NAMU_results_analysis/functional_analysis_of_hubs/Astrocyte_IDs_centrality_optimality.csv"
+get_genes_from_each_hub(astro_url, cut_off_optimality = 0.228 , cut_off_centrality =  0.741) -> list_of_genes_by_hubs
+list_of_genes_by_hubs %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
 get_pure_gene_groups(list_of_genes_by_hubs) -> gene_groups
-#para Guardar resultados
-gene_groups %>% tibble( group = names(gene_groups), genes=.) %>% unnest -> astrocyte_genes_for_xlsx
 #analisis
 gene_groups %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-3)  %>% dotplot
-gene_groups %>%compareCluster(fun='enrichKEGG', pvalueCutoff=1e-3) %>% dotplot
+gene_groups %>%compareCluster(fun='enrichKEGG',    pvalueCutoff=1e-3) %>% dotplot
+gene_groups %>% tibble( group = names(gene_groups), genes=.) %>% unnest -> astrocyte_genes_for_xlsx
 ```
 
 Exportar resultados en .xlsx
@@ -53,6 +54,22 @@ neuron_genes_for_xlsx %>% writexl::write_xlsx(paste0('AA_neuron_genes','.xlsx'))
 astrocyte_genes_for_xlsx %>%writexl::write_xlsx(paste0('AA_astrocyte_genes','.xlsx'))
 ```
 
+```{r message=FALSE, warning=FALSE}
+seq(.34, .44, by=.02) -> my_range
+hola2 <- ""
+for(optimality in 1:length(my_range)){
+     for(centrality in 1:length(my_range)){
+        get_genes_from_each_hub(astro_url, cut_off_optimality = my_range[optimality] , cut_off_centrality =  my_range[centrality]) -> list_of_genes_by_hubs
+        list_of_genes_by_hubs %>%compareCluster(fun='enrichPathway', pvalueCutoff=1e-3) -> hola
+        hola@compareClusterResult %>% dplyr::select(Cluster) %>% .[[1]] %>% str_detect('hyper') %>% any -> result 
+        rbind(hola2, c(my_range[optimality], my_range[centrality], as.character(result), abs((10*my_range[optimality])-(10*my_range[centrality]) )   )) -> hola2
+  }
+}
+
+
+
+as_tibble(hola2) %>% dplyr::filter(V3 == TRUE) %>% dplyr::filter(V4 == 1 | V4 == 0)
+```
 
 
 ######################--------------------------------------------END------------------------------------------#########################################3
