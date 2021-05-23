@@ -14,13 +14,15 @@ stimulated.reactions.get_by_id('GLCt1r_Neuron').bounds
 
 #Generate uptake ranges to compute PHPPs
 fba_solution                       =  stimulated.optimize()
-# %%
+
 optimal_astrocytic_glucose_uptake, optimal_overall_oxygen_uptake_rate  =  fba_solution["GLCt1r"], -1*fba_solution["EX_o2(e)"]
 def generate_uptake_range(optimal, first_step, last_step, direction, intervals=100):
     lower   = np.linspace(first_step, optimal, num=intervals, endpoint=True)
     upper   = np.linspace(optimal, last_step*optimal,num=intervals, endpoint=True)
     myrange = direction*np.unique(np.concatenate(( lower, upper)))
     return myrange
+
+# %%
 
 
 range_of_glucose_uptake_rates = generate_uptake_range(optimal_astrocytic_glucose_uptake, 1, 1.7,1) 
