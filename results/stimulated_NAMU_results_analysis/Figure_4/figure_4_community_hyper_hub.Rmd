@@ -12,7 +12,7 @@ setwd("~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure
 path_figure_1 = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_1/"
 path_figure_2 = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_2/"
 path_figure_3 = "~/AA_PostDoc/human-metnet/results/stimulated_NAMU_results_analysis/Figure_3/"
-id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% select(c("ID", "Name" ))
+id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% dplyr::select(c("ID", "Name" ))
 Centrality0      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(total.abs.centrality > 0) 
 Optimality0      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
 
@@ -53,7 +53,7 @@ Centrality %<>% column_to_rownames("ID")
 
 Optimality[only_optimal,] %>% filter(Node == 'Astrocyte' | Node == 'Neuron') %>% mutate(Module = 'Optimal')-> Optimal_hubs
 Centrality[only_central,]%>% filter(Node == 'Astrocyte' | Node == 'Neuron')%>% mutate(Module = 'Central')  -> Central_hubs
-get_node_and_module <- function(df){ df %>% select(Node,Module)}
+get_node_and_module <- function(df){ df %>% dplyr::select(Node,Module)}
 list(Hyperhubs,
 Optimal_hubs,
 Central_hubs) %>% map(get_node_and_module) %>% purrr::reduce(rbind) %>% set_colnames(c("Cell","Module")) -> Cell_Module
@@ -80,7 +80,7 @@ plot.my_counts_stacked
 library(scales)
 library(magrittr)
 library(ggplot2)
-id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>% select(c("ID", "Name" ))
+id_name <- read_rds(paste0(path_figure_1, "all_data.rds")) %>% .[[1]] %>%  dplyr::select(c("ID", "Name" ))
 
 Centrality0      <- read_csv(paste0(path_figure_2, "total_centrality_by_node.csv"))  %>% filter(total.abs.centrality > 0.5) 
 Optimality0      <- read_csv(paste0(path_figure_3, "optimality_values.csv"))
@@ -106,8 +106,8 @@ hyperhubs %>% filter(Node == 'Astrocyte' | Node == 'Neuron') -> hyperhubs
 colnames(hyperhubs) <- c("ID"  , "Name",        "Reaction" ,  "Node"   ,    "Optimal"   ,  "Central")
 hyperhubs %<>%mutate(Optimal = rescale(Optimal, to = c(0, 1)), Central = rescale(Central, to = c(0, 1))) 
 hyperhubs %<>% mutate(Hubness = Optimal + Central)
-hyperhubs %>% select(ID,Name,Optimal,Node) ->hyperhubs_Optimal
-hyperhubs %>% select(ID,Name,Central,Node) ->hyperhubs_Central
+hyperhubs %>% dplyr::select(ID,Name,Optimal,Node) ->hyperhubs_Optimal
+hyperhubs %>% dplyr::select(ID,Name,Central,Node) ->hyperhubs_Central
 plot_sorted_nodes <- function(df, varname_values, x_lab, y_lab, leg_pos, mycolors, y_labels ="ID"){df %>% 
   ggplot(aes(y= reorder(.data[[y_labels]],  .data[[varname_values]]),x= .data[[varname_values]], fill = Node)) + 
   geom_col()+  scale_fill_manual(values=mycolors) +
@@ -124,6 +124,8 @@ c("deepskyblue3", "brown2") -> mycolors
 hyperhubs %>% as.data.frame() %>% write_csv("hyperhubs.csv")
 
 hyperhubs %>% plot_sorted_nodes('Hubness' , x_lab, y_lab, leg_pos, mycolors, y_labels = "Name") -> hyperhubs_plot
+
+hyperhubs_plot
 ```
 
 
@@ -131,6 +133,8 @@ hyperhubs %>% plot_sorted_nodes('Hubness' , x_lab, y_lab, leg_pos, mycolors, y_l
 ggarrange(NA, plot.my_counts_stacked,  hyperhubs_plot, widths = c(.9,.35,1),
                     labels = c("a","", "e"),
                     ncol = 3, nrow = 1) -> upper_panel
+
+upper_panel
 
 ```
 
