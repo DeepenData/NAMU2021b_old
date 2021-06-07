@@ -126,14 +126,14 @@ def generate_pa_graph(A, p):
     import random as rd
     import numpy as np
     from networkx import bipartite
-    pa_graph = preferential_attachment_graph(aseq = A_degree_sequence,  p = p)
+    pa_graph = preferential_attachment_graph(aseq = A,  p = p)
     pa_graph = nx.DiGraph(pa_graph).to_directed()
     ebunch    = rd.sample(list(pa_graph.edges),len(A))
     pa_graph.remove_edges_from(ebunch)
     
 
     while  np.invert(nx.is_connected(nx.Graph(pa_graph))) :
-        pa_graph = preferential_attachment_graph(aseq = A_degree_sequence,  p = p)
+        pa_graph = preferential_attachment_graph(aseq = A,  p = p)
         pa_graph = nx.DiGraph(pa_graph).to_directed()
         ebunch    = rd.sample(list(pa_graph.edges),len(A)-2)
         pa_graph.remove_edges_from(ebunch)
