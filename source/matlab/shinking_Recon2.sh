@@ -6,7 +6,7 @@
 #SBATCH --error=%j_%x.err
 #SBATCH --partition=slims
 #SBATCH -N 1
-#SBATCH -n 10
+#SBATCH -n 1
 #SBATCH -L matlab,matlab-distrib_computing
 #SBATCH --mem=48000
 

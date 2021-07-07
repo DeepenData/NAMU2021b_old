@@ -2,19 +2,17 @@ addpath(genpath('/home/aacevedo'));
 initCobraToolbox;
 changeCobraSolver('gurobi');
 myPath = '/home/aacevedo/NLHPC/models';
-recon = readCbModel([myPath filesep 'small_metabolism.mat']);
-model = recon;
+
+load /home/aacevedo/NLHPC/models/small_metabolism.mat
+
+%recon = readCbModel([myPath filesep 'small_metabolism.mat']);
+%model = recon;
+model = toy_metabolism
 sol = optimizeCbModel(model);sol.f
-model.lb(sol.x<0)  = sol.x(sol.x<0);
-model.ub(sol.x<0)  = 0;
-model.lb(sol.x>0)  = 0;
-model.ub(sol.x>0)  = sol.x(sol.x>0);
-model.lb(sol.x==0) = 0;
-model.ub(sol.x==0) = 0;
-sol2 = optimizeCbModel(model);sol2.f
+
 sampleFile                    =   [];
 samplerName                   =  'ACHR';
-options.nStepsPerPoint        =  10;%- Number of sampler steps per point saved (200)
+options.nStepsPerPoint        =  20;%- Number of sampler steps per point saved (200)
 options.nPointsReturned       =  500;%- Number of points loaded for analysis (2000)
 options.nWarmupPoints         =  10;%. - Number of warmup points (5000). ACHR only.
 options.nFiles                =  50;%. - Number of output files (10). ACHR only.
@@ -25,8 +23,9 @@ options.maxTime               =  36000; %. - Maximum time limit (Default = 36000
 %options.lambda               =  %. - the bias vector for exponential sampling. CHRR_EXP only.
 modelSampling                 =  [];
 [modelSampled,samples_leftraru ,volume_leftraru ] = sampleCbModel(model, sampleFile, samplerName, options, modelSampling);
-ACHR_shrunk_leftraru          = modelSampled;
+
+%ACHR_shrunk_leftraru          = modelSampled;
 
 %clear  myPath modelSampled model sampleFile samplerName options modelSampling
 scriptPath = '/home/aacevedo/NLHPC/output';
-csvwrite([scriptPath filesep 'samples_leftraru.csv'], samples_leftraru) 
+csvwrite([scriptPath filesep 'samples_leftraru.csv'], samples_leftraru)
